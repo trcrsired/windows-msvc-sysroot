@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 		{
 			continue;
 		}
-		::fast_io::native_file_loader loader({::fast_io::mmap_prot::prot_read,
+		::fast_io::allocation_file_loader loader({::fast_io::mmap_prot::prot_read,
 			::fast_io::mmap_flags::map_shared}, drt(ent), ::fast_io::open_mode::in|::fast_io::open_mode::out);
 		auto bg{loader.data()};
 		auto ed{loader.data() + loader.size()};
