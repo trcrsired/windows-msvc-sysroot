@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "DirectXMath.h"
+#include "directxmath.h"
 
 namespace DirectX
 {
@@ -346,7 +346,7 @@ namespace DirectX
 #pragma prefast(disable : 26495, "Union initialization confuses /analyze")
 #endif
 
-#include "DirectXCollision.inl"
+#include "directxcollision.inl"
 
 #ifdef _PREFAST_
 #pragma prefast(pop)

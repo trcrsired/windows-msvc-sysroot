@@ -136,18 +136,18 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "AsyncInfo.h"
-#include "EventToken.h"
+#include "asyncinfo.h"
+#include "eventtoken.h"
 #include "windowscontracts.h"
-#include "Windows.Foundation.h"
-#include "Windows.ApplicationModel.h"
-#include "Windows.ApplicationModel.Activation.h"
-#include "Windows.ApplicationModel.Background.h"
-#include "Windows.ApplicationModel.Core.h"
-#include "Windows.ApplicationModel.Wallet.h"
-#include "Windows.Graphics.Printing.h"
-#include "Windows.System.h"
-#include "Windows.Web.UI.h"
+#include "windows.foundation.h"
+#include "windows.applicationmodel.h"
+#include "windows.applicationmodel.activation.h"
+#include "windows.applicationmodel.background.h"
+#include "windows.applicationmodel.core.h"
+#include "windows.applicationmodel.wallet.h"
+#include "windows.graphics.printing.h"
+#include "windows.system.h"
+#include "windows.web.ui.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */

@@ -9,8 +9,8 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.foundation.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Foundation_IAsyncAction<D>::Completed(winrt::Windows::Foundation::AsyncActionCompletedHandler const& handler) const

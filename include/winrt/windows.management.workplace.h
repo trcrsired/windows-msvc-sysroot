@@ -9,8 +9,8 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Management.h"
-#include "winrt/impl/Windows.Management.Workplace.2.h"
+#include "winrt/windows.management.h"
+#include "winrt/impl/windows.management.workplace.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(bool) consume_Windows_Management_Workplace_IMdmAllowPolicyStatics<D>::IsBrowserAllowed() const

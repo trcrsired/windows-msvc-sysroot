@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Bluetooth_Background_2_H
 #define WINRT_Windows_Devices_Bluetooth_Background_2_H
-#include "winrt/impl/Windows.Devices.Bluetooth.Background.1.h"
+#include "winrt/impl/windows.devices.bluetooth.background.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Bluetooth::Background
 {
     struct __declspec(empty_bases) BluetoothLEAdvertisementPublisherTriggerDetails : winrt::Windows::Devices::Bluetooth::Background::IBluetoothLEAdvertisementPublisherTriggerDetails,

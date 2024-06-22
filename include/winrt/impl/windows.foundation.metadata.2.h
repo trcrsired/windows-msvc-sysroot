@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Foundation_Metadata_2_H
 #define WINRT_Windows_Foundation_Metadata_2_H
-#include "winrt/impl/Windows.Foundation.Metadata.1.h"
+#include "winrt/impl/windows.foundation.metadata.1.h"
 WINRT_EXPORT namespace winrt::Windows::Foundation::Metadata
 {
     struct ApiInformation

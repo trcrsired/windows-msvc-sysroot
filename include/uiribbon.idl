@@ -27,7 +27,7 @@ import "propsys.idl";
 
 #include <sdkddkver.h>
 
-cpp_quote("#include <UIRibbonKeyDef.h>")
+cpp_quote("#include <uiribbonkeydef.h>")
 
 // Core command properties
 cpp_quote("DEFINE_UIPROPERTYKEY(UI_PKEY_Enabled,                      VT_BOOL,                1); ")

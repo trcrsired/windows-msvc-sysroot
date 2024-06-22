@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Email_DataProvider_2_H
 #define WINRT_Windows_ApplicationModel_Email_DataProvider_2_H
-#include "winrt/impl/Windows.ApplicationModel.Email.DataProvider.1.h"
+#include "winrt/impl/windows.applicationmodel.email.dataprovider.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Email::DataProvider
 {
     struct __declspec(empty_bases) EmailDataProviderConnection : winrt::Windows::ApplicationModel::Email::DataProvider::IEmailDataProviderConnection

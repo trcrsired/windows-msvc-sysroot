@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Printing_Workflow_2_H
 #define WINRT_Windows_Graphics_Printing_Workflow_2_H
-#include "winrt/impl/Windows.ApplicationModel.Activation.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Graphics.Printing.Workflow.1.h"
+#include "winrt/impl/windows.applicationmodel.activation.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.graphics.printing.workflow.1.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::Workflow
 {
     struct __declspec(empty_bases) PrintWorkflowBackgroundSession : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowBackgroundSession

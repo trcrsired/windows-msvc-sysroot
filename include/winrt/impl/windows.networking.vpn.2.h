@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_Networking_Vpn_2_H
 #define WINRT_Windows_Networking_Vpn_2_H
-#include "winrt/impl/Windows.ApplicationModel.Activation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Networking.1.h"
-#include "winrt/impl/Windows.Networking.Vpn.1.h"
+#include "winrt/impl/windows.applicationmodel.activation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.networking.1.h"
+#include "winrt/impl/windows.networking.vpn.1.h"
 WINRT_EXPORT namespace winrt::Windows::Networking::Vpn
 {
     struct __declspec(empty_bases) VpnAppId : winrt::Windows::Networking::Vpn::IVpnAppId

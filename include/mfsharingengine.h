@@ -104,7 +104,7 @@ typedef interface IPlayToSourceClassFactory IPlayToSourceClassFactory;
 
 
 /* header files for imported files */
-#include "MFMediaEngine.h"
+#include "mfmediaengine.h"
 #include "inspectable.h"
 
 #ifdef __cplusplus

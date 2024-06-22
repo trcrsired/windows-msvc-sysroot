@@ -23,7 +23,7 @@
 #if !defined(NTDDI_VERSION) || (NTDDI_VERSION < NTDDI_WIN8)
 // 
 // Application is targetting below Windows 8
-#include "adoint_Backcompat.h"
+#include "adoint_backcompat.h"
 // 
 #else
 // 

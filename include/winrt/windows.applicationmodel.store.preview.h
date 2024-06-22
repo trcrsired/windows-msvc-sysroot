@@ -9,15 +9,15 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.ApplicationModel.Store.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Security.Authentication.Web.Core.2.h"
-#include "winrt/impl/Windows.Security.Credentials.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.System.2.h"
-#include "winrt/impl/Windows.UI.Xaml.2.h"
-#include "winrt/impl/Windows.ApplicationModel.Store.Preview.2.h"
+#include "winrt/windows.applicationmodel.store.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.security.authentication.web.core.2.h"
+#include "winrt/impl/windows.security.credentials.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.system.2.h"
+#include "winrt/impl/windows.ui.xaml.2.h"
+#include "winrt/impl/windows.applicationmodel.store.preview.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::ApplicationModel::Store::Preview::DeliveryOptimizationDownloadMode) consume_Windows_ApplicationModel_Store_Preview_IDeliveryOptimizationSettings<D>::DownloadMode() const

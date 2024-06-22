@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Input_Inking_2_H
 #define WINRT_Windows_UI_Input_Inking_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.UI.Input.Inking.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.ui.input.inking.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input::Inking
 {
     struct __declspec(empty_bases) InkDrawingAttributes : winrt::Windows::UI::Input::Inking::IInkDrawingAttributes,

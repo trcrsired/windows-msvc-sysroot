@@ -264,12 +264,12 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "AsyncInfo.h"
-#include "EventToken.h"
+#include "asyncinfo.h"
+#include "eventtoken.h"
 #include "windowscontracts.h"
-#include "Windows.Foundation.h"
-#include "Windows.UI.Core.CoreWindowFactory.h"
-#include "Windows.UI.Core.h"
+#include "windows.foundation.h"
+#include "windows.ui.core.corewindowfactory.h"
+#include "windows.ui.core.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */

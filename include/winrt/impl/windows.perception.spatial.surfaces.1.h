@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Perception_Spatial_Surfaces_1_H
 #define WINRT_Windows_Perception_Spatial_Surfaces_1_H
-#include "winrt/impl/Windows.Perception.Spatial.Surfaces.0.h"
+#include "winrt/impl/windows.perception.spatial.surfaces.0.h"
 WINRT_EXPORT namespace winrt::Windows::Perception::Spatial::Surfaces
 {
     struct __declspec(empty_bases) ISpatialSurfaceInfo :

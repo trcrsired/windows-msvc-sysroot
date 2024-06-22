@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Interop_2_H
 #define WINRT_Windows_UI_Xaml_Interop_2_H
-#include "winrt/impl/Windows.UI.Xaml.Interop.1.h"
+#include "winrt/impl/windows.ui.xaml.interop.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Interop
 {
     struct BindableVectorChangedEventHandler : winrt::Windows::Foundation::IUnknown

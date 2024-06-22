@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_UserActivities_1_H
 #define WINRT_Windows_ApplicationModel_UserActivities_1_H
-#include "winrt/impl/Windows.ApplicationModel.UserActivities.0.h"
+#include "winrt/impl/windows.applicationmodel.useractivities.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserActivities
 {
     struct __declspec(empty_bases) IUserActivity :

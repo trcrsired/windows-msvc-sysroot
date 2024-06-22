@@ -2190,10 +2190,10 @@ namespace DirectX
 #endif
     }
 
-#include "DirectXMathConvert.inl"
-#include "DirectXMathVector.inl"
-#include "DirectXMathMatrix.inl"
-#include "DirectXMathMisc.inl"
+#include "directxmathconvert.inl"
+#include "directxmathvector.inl"
+#include "directxmathmatrix.inl"
+#include "directxmathmisc.inl"
 
 #ifdef __clang__
 #pragma clang diagnostic pop

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Web_UI_2_H
 #define WINRT_Windows_Web_UI_2_H
-#include "winrt/impl/Windows.Web.UI.1.h"
+#include "winrt/impl/windows.web.ui.1.h"
 WINRT_EXPORT namespace winrt::Windows::Web::UI
 {
     struct __declspec(empty_bases) WebViewControlContentLoadingEventArgs : winrt::Windows::Web::UI::IWebViewControlContentLoadingEventArgs

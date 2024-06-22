@@ -9,7 +9,7 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/impl/Windows.UI.2.h"
+#include "winrt/impl/windows.ui.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::UI::Color) consume_Windows_UI_IColorHelperStatics<D>::FromArgb(uint8_t a, uint8_t r, uint8_t g, uint8_t b) const

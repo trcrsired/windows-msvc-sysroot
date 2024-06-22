@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Sensors_1_H
 #define WINRT_Windows_Devices_Sensors_1_H
-#include "winrt/impl/Windows.Devices.Sensors.0.h"
+#include "winrt/impl/windows.devices.sensors.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Sensors
 {
     struct __declspec(empty_bases) IAccelerometer :

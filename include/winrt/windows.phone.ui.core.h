@@ -9,8 +9,8 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Phone.UI.Core.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.phone.ui.core.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(uint32_t) consume_Windows_Phone_UI_Core_ICoreSelectionChangedEventArgs<D>::Start() const

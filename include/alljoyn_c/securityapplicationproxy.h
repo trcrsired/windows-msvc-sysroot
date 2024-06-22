@@ -21,10 +21,10 @@
 #ifndef _ALLJOYN_C_SECURITY_APPLICATION_PROXY_H
 #define _ALLJOYN_C_SECURITY_APPLICATION_PROXY_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/PermissionConfigurator.h>
-#include <alljoyn_c/BusAttachment.h>
-#include <alljoyn_c/Session.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/permissionconfigurator.h>
+#include <alljoyn_c/busattachment.h>
+#include <alljoyn_c/session.h>
 
 #ifdef __cplusplus
 extern "C" {

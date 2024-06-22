@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Text_2_H
 #define WINRT_Windows_UI_Text_2_H
-#include "winrt/impl/Windows.UI.Text.1.h"
+#include "winrt/impl/windows.ui.text.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Text
 {
     struct FontWeight

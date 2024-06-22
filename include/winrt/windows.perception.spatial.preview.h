@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Perception.Spatial.h"
-#include "winrt/impl/Windows.Foundation.Numerics.2.h"
-#include "winrt/impl/Windows.Perception.Spatial.2.h"
-#include "winrt/impl/Windows.Perception.Spatial.Preview.2.h"
+#include "winrt/windows.perception.spatial.h"
+#include "winrt/impl/windows.foundation.numerics.2.h"
+#include "winrt/impl/windows.perception.spatial.2.h"
+#include "winrt/impl/windows.perception.spatial.preview.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Perception::Spatial::SpatialCoordinateSystem) consume_Windows_Perception_Spatial_Preview_ISpatialGraphInteropFrameOfReferencePreview<D>::CoordinateSystem() const

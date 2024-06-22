@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Networking_PushNotifications_1_H
 #define WINRT_Windows_Networking_PushNotifications_1_H
-#include "winrt/impl/Windows.Networking.PushNotifications.0.h"
+#include "winrt/impl/windows.networking.pushnotifications.0.h"
 WINRT_EXPORT namespace winrt::Windows::Networking::PushNotifications
 {
     struct __declspec(empty_bases) IPushNotificationChannel :

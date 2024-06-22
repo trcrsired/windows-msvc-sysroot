@@ -9,14 +9,14 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Devices.Perception.h"
-#include "winrt/impl/Windows.Devices.Perception.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Foundation.Numerics.2.h"
-#include "winrt/impl/Windows.Graphics.Imaging.2.h"
-#include "winrt/impl/Windows.Media.2.h"
-#include "winrt/impl/Windows.Devices.Perception.Provider.2.h"
+#include "winrt/windows.devices.perception.h"
+#include "winrt/impl/windows.devices.perception.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.foundation.numerics.2.h"
+#include "winrt/impl/windows.graphics.imaging.2.h"
+#include "winrt/impl/windows.media.2.h"
+#include "winrt/impl/windows.devices.perception.provider.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_Devices_Perception_Provider_IKnownPerceptionFrameKindStatics<D>::Color() const

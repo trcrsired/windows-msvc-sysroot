@@ -9,13 +9,13 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.ApplicationModel.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.System.2.h"
-#include "winrt/impl/Windows.UI.2.h"
-#include "winrt/impl/Windows.UI.Popups.2.h"
-#include "winrt/impl/Windows.ApplicationModel.Appointments.2.h"
+#include "winrt/windows.applicationmodel.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.system.2.h"
+#include "winrt/impl/windows.ui.2.h"
+#include "winrt/impl/windows.ui.popups.2.h"
+#include "winrt/impl/windows.applicationmodel.appointments.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Foundation::DateTime) consume_Windows_ApplicationModel_Appointments_IAppointment<D>::StartTime() const

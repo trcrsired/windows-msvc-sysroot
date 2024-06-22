@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_UI_WindowManagement_Preview_2_H
 #define WINRT_Windows_UI_WindowManagement_Preview_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.UI.WindowManagement.1.h"
-#include "winrt/impl/Windows.UI.WindowManagement.Preview.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.ui.windowmanagement.1.h"
+#include "winrt/impl/windows.ui.windowmanagement.preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::WindowManagement::Preview
 {
     struct __declspec(empty_bases) WindowManagementPreview : winrt::Windows::UI::WindowManagement::Preview::IWindowManagementPreview

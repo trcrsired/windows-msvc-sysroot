@@ -20,7 +20,7 @@ Environment:
 Quick start:
 
 #include <windows.h> // or <wdm.h> for kernel-mode.
-#include <TraceLoggingProvider.h>
+#include <traceloggingprovider.h>
 
 TRACELOGGING_DEFINE_PROVIDER( // defines g_hProvider
     g_hProvider,  // Name of the provider variable

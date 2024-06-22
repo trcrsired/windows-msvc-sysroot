@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Resources_Management_1_H
 #define WINRT_Windows_ApplicationModel_Resources_Management_1_H
-#include "winrt/impl/Windows.ApplicationModel.Resources.Management.0.h"
+#include "winrt/impl/windows.applicationmodel.resources.management.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Resources::Management
 {
     struct __declspec(empty_bases) IIndexedResourceCandidate :

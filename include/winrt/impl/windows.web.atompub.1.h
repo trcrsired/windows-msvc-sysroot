@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Web_AtomPub_1_H
 #define WINRT_Windows_Web_AtomPub_1_H
-#include "winrt/impl/Windows.Web.Syndication.0.h"
-#include "winrt/impl/Windows.Web.AtomPub.0.h"
+#include "winrt/impl/windows.web.syndication.0.h"
+#include "winrt/impl/windows.web.atompub.0.h"
 WINRT_EXPORT namespace winrt::Windows::Web::AtomPub
 {
     struct __declspec(empty_bases) IAtomPubClient :

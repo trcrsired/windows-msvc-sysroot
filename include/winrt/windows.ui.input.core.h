@@ -9,12 +9,12 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.UI.Input.h"
-#include "winrt/impl/Windows.ApplicationModel.Core.2.h"
-#include "winrt/impl/Windows.System.2.h"
-#include "winrt/impl/Windows.UI.Core.2.h"
-#include "winrt/impl/Windows.UI.Input.2.h"
-#include "winrt/impl/Windows.UI.Input.Core.2.h"
+#include "winrt/windows.ui.input.h"
+#include "winrt/impl/windows.applicationmodel.core.2.h"
+#include "winrt/impl/windows.system.2.h"
+#include "winrt/impl/windows.ui.core.2.h"
+#include "winrt/impl/windows.ui.input.2.h"
+#include "winrt/impl/windows.ui.input.core.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::UI::Input::RadialController) consume_Windows_UI_Input_Core_IRadialControllerIndependentInputSource<D>::Controller() const

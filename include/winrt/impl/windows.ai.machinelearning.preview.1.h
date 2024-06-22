@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_AI_MachineLearning_Preview_1_H
 #define WINRT_Windows_AI_MachineLearning_Preview_1_H
-#include "winrt/impl/Windows.Foundation.Collections.0.h"
-#include "winrt/impl/Windows.AI.MachineLearning.Preview.0.h"
+#include "winrt/impl/windows.foundation.collections.0.h"
+#include "winrt/impl/windows.ai.machinelearning.preview.0.h"
 WINRT_EXPORT namespace winrt::Windows::AI::MachineLearning::Preview
 {
     struct __declspec(empty_bases) IImageVariableDescriptorPreview :

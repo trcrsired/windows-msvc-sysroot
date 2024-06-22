@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Networking_XboxLive_1_H
 #define WINRT_Windows_Networking_XboxLive_1_H
-#include "winrt/impl/Windows.Networking.XboxLive.0.h"
+#include "winrt/impl/windows.networking.xboxlive.0.h"
 WINRT_EXPORT namespace winrt::Windows::Networking::XboxLive
 {
     struct __declspec(empty_bases) IXboxLiveDeviceAddress :

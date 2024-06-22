@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Media.Core.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Media.2.h"
-#include "winrt/impl/Windows.Media.Core.Preview.2.h"
+#include "winrt/windows.media.core.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.media.2.h"
+#include "winrt/impl/windows.media.core.preview.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Media::SoundLevel) consume_Windows_Media_Core_Preview_ISoundLevelBrokerStatics<D>::SoundLevel() const

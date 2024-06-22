@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Input_Inking_Analysis_2_H
 #define WINRT_Windows_UI_Input_Inking_Analysis_2_H
-#include "winrt/impl/Windows.UI.Input.Inking.Analysis.1.h"
+#include "winrt/impl/windows.ui.input.inking.analysis.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input::Inking::Analysis
 {
     struct __declspec(empty_bases) InkAnalysisInkBullet : winrt::Windows::UI::Input::Inking::Analysis::IInkAnalysisInkBullet

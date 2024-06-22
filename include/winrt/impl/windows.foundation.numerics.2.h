@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Foundation_Numerics_2_H
 #define WINRT_Windows_Foundation_Numerics_2_H
-#include "winrt/impl/Windows.Foundation.Numerics.1.h"
+#include "winrt/impl/windows.foundation.numerics.1.h"
 WINRT_EXPORT namespace winrt::Windows::Foundation::Numerics
 {
     struct Rational

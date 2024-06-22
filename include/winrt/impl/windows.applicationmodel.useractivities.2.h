@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_UserActivities_2_H
 #define WINRT_Windows_ApplicationModel_UserActivities_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Security.Credentials.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.ApplicationModel.UserActivities.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.security.credentials.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.applicationmodel.useractivities.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserActivities
 {
     struct __declspec(empty_bases) UserActivity : winrt::Windows::ApplicationModel::UserActivities::IUserActivity,

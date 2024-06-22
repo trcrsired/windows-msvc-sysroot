@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Store_LicenseManagement_1_H
 #define WINRT_Windows_ApplicationModel_Store_LicenseManagement_1_H
-#include "winrt/impl/Windows.ApplicationModel.Store.LicenseManagement.0.h"
+#include "winrt/impl/windows.applicationmodel.store.licensemanagement.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Store::LicenseManagement
 {
     struct __declspec(empty_bases) ILicenseManagerStatics :

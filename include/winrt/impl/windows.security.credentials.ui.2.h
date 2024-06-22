@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Credentials_UI_2_H
 #define WINRT_Windows_Security_Credentials_UI_2_H
-#include "winrt/impl/Windows.Security.Credentials.UI.1.h"
+#include "winrt/impl/windows.security.credentials.ui.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Credentials::UI
 {
     struct CredentialPicker

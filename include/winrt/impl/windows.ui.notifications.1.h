@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Notifications_1_H
 #define WINRT_Windows_UI_Notifications_1_H
-#include "winrt/impl/Windows.UI.Notifications.0.h"
+#include "winrt/impl/windows.ui.notifications.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Notifications
 {
     struct __declspec(empty_bases) IAdaptiveNotificationContent :

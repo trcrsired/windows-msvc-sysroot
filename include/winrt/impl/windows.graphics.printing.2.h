@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Printing_2_H
 #define WINRT_Windows_Graphics_Printing_2_H
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Graphics.Printing.1.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.graphics.printing.1.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing
 {
     struct PrintTaskSourceRequestedHandler : winrt::Windows::Foundation::IUnknown

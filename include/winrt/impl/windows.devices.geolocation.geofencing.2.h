@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Geolocation_Geofencing_2_H
 #define WINRT_Windows_Devices_Geolocation_Geofencing_2_H
-#include "winrt/impl/Windows.Devices.Geolocation.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Devices.Geolocation.Geofencing.1.h"
+#include "winrt/impl/windows.devices.geolocation.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.devices.geolocation.geofencing.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Geolocation::Geofencing
 {
     struct __declspec(empty_bases) Geofence : winrt::Windows::Devices::Geolocation::Geofencing::IGeofence

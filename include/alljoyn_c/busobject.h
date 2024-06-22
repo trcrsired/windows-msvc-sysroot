@@ -24,12 +24,12 @@
 #ifndef _ALLJOYN_C_LOCALBUSOBJECT_H
 #define _ALLJOYN_C_LOCALBUSOBJECT_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/InterfaceDescription.h>
-#include <alljoyn_c/MsgArg.h>
-#include <alljoyn_c/MessageReceiver.h>
-#include <alljoyn_c/Session.h>
-#include <alljoyn_c/Status.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/interfacedescription.h>
+#include <alljoyn_c/msgarg.h>
+#include <alljoyn_c/messagereceiver.h>
+#include <alljoyn_c/session.h>
+#include <alljoyn_c/status.h>
 
 #ifdef __cplusplus
 extern "C" {

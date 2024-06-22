@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Data_Pdf_1_H
 #define WINRT_Windows_Data_Pdf_1_H
-#include "winrt/impl/Windows.Data.Pdf.0.h"
+#include "winrt/impl/windows.data.pdf.0.h"
 WINRT_EXPORT namespace winrt::Windows::Data::Pdf
 {
     struct __declspec(empty_bases) IPdfDocument :

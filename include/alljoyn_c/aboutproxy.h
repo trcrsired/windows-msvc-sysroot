@@ -22,10 +22,10 @@
 #ifndef _ALLJOYN_ABOUTPROXY_C_H_
 #define _ALLJOYN_ABOUTPROXY_C_H_
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/MsgArg.h>
-#include <alljoyn_c/BusAttachment.h>
-#include <alljoyn_c/Session.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/msgarg.h>
+#include <alljoyn_c/busattachment.h>
+#include <alljoyn_c/session.h>
 
 #ifdef __cplusplus
 extern "C" {

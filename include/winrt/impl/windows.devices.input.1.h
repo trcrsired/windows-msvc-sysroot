@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Input_1_H
 #define WINRT_Windows_Devices_Input_1_H
-#include "winrt/impl/Windows.Devices.Input.0.h"
+#include "winrt/impl/windows.devices.input.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Input
 {
     struct __declspec(empty_bases) IKeyboardCapabilities :

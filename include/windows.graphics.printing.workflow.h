@@ -120,15 +120,15 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "AsyncInfo.h"
-#include "EventToken.h"
+#include "asyncinfo.h"
+#include "eventtoken.h"
 #include "windowscontracts.h"
-#include "Windows.Foundation.h"
-#include "Windows.ApplicationModel.Activation.h"
-#include "Windows.Devices.Printers.h"
-#include "Windows.Graphics.Printing.PrintTicket.h"
-#include "Windows.Storage.h"
-#include "Windows.Storage.Streams.h"
+#include "windows.foundation.h"
+#include "windows.applicationmodel.activation.h"
+#include "windows.devices.printers.h"
+#include "windows.graphics.printing.printticket.h"
+#include "windows.storage.h"
+#include "windows.storage.streams.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 

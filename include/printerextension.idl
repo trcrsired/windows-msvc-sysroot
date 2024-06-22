@@ -7,7 +7,7 @@ cpp_quote("//  Copyright (c) Microsoft Corporation. All rights reserved.")
 #define DO_NO_IMPORTS
 import "oaidl.idl";
 
-#include "PrinterExtensionDispId.h"
+#include "printerextensiondispid.h"
 
 #define PRINTSCHEMA_KEYWORDS_NAMESPACE_URI  "http://schemas.microsoft.com/windows/2003/08/printing/printschemakeywords"
 cpp_quote("#define PRINTSCHEMA_KEYWORDS_NAMESPACE_URI  \"http://schemas.microsoft.com/windows/2003/08/printing/printschemakeywords\"")

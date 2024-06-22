@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Printing_OptionDetails_1_H
 #define WINRT_Windows_Graphics_Printing_OptionDetails_1_H
-#include "winrt/impl/Windows.Graphics.Printing.OptionDetails.0.h"
+#include "winrt/impl/windows.graphics.printing.optiondetails.0.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::OptionDetails
 {
     struct __declspec(empty_bases) IPrintBindingOptionDetails :

@@ -10,7 +10,7 @@ cpp_quote("#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)")
 import "oaidl.idl";
 import "ocidl.idl";
 import "propsys.idl";
-#include "FunctionDiscoveryConstraints.h"
+#include "functiondiscoveryconstraints.h"
 
 cpp_quote("//#if ( WINVER >= 0x0600 )")
 cpp_quote("#ifndef FD_LONGHORN")

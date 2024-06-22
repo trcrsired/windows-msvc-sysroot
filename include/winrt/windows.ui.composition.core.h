@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.UI.Composition.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.UI.Composition.2.h"
-#include "winrt/impl/Windows.UI.Composition.Core.2.h"
+#include "winrt/windows.ui.composition.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.ui.composition.2.h"
+#include "winrt/impl/windows.ui.composition.core.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::UI::Composition::Compositor) consume_Windows_UI_Composition_Core_ICompositorController<D>::Compositor() const

@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "DirectXMath.h"
+#include "directxmath.h"
 
 namespace DirectX
 {

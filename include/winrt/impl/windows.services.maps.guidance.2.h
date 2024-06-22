@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Services_Maps_Guidance_2_H
 #define WINRT_Windows_Services_Maps_Guidance_2_H
-#include "winrt/impl/Windows.Services.Maps.1.h"
-#include "winrt/impl/Windows.Services.Maps.Guidance.1.h"
+#include "winrt/impl/windows.services.maps.1.h"
+#include "winrt/impl/windows.services.maps.guidance.1.h"
 WINRT_EXPORT namespace winrt::Windows::Services::Maps::Guidance
 {
     struct __declspec(empty_bases) GuidanceAudioNotificationRequestedEventArgs : winrt::Windows::Services::Maps::Guidance::IGuidanceAudioNotificationRequestedEventArgs

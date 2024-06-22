@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Notifications_2_H
 #define WINRT_Windows_UI_Notifications_2_H
-#include "winrt/impl/Windows.Data.Xml.Dom.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.UI.Notifications.1.h"
+#include "winrt/impl/windows.data.xml.dom.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.ui.notifications.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Notifications
 {
     struct __declspec(empty_bases) AdaptiveNotificationText : winrt::Windows::UI::Notifications::IAdaptiveNotificationText,

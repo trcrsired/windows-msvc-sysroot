@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Enumeration_Pnp_2_H
 #define WINRT_Windows_Devices_Enumeration_Pnp_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Devices.Enumeration.Pnp.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.devices.enumeration.pnp.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Enumeration::Pnp
 {
     struct __declspec(empty_bases) PnpObject : winrt::Windows::Devices::Enumeration::Pnp::IPnpObject

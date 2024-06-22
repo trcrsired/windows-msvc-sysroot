@@ -14,7 +14,7 @@ cpp_quote("#include <winapifamily.h>")
 #pragma region Desktop Family
 cpp_quote("#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)")
 
-#include <SpecStrings.h>
+#include <specstrings.h>
 typedef _Null_terminated_ WCHAR *        PWSTR;
 typedef _Null_terminated_ WCHAR const *  PCWSTR;
 typedef _Null_terminated_ CHAR *         PSTR;

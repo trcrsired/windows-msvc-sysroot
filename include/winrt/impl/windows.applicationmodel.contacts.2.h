@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Contacts_2_H
 #define WINRT_Windows_ApplicationModel_Contacts_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.UI.Popups.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Contacts.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.ui.popups.1.h"
+#include "winrt/impl/windows.applicationmodel.contacts.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Contacts
 {
     struct __declspec(empty_bases) AggregateContactManager : winrt::Windows::ApplicationModel::Contacts::IAggregateContactManager,

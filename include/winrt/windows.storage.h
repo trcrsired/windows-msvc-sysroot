@@ -9,14 +9,14 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Storage.FileProperties.2.h"
-#include "winrt/impl/Windows.Storage.Provider.2.h"
-#include "winrt/impl/Windows.Storage.Search.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.System.2.h"
-#include "winrt/impl/Windows.Storage.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.storage.fileproperties.2.h"
+#include "winrt/impl/windows.storage.provider.2.h"
+#include "winrt/impl/windows.storage.search.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.system.2.h"
+#include "winrt/impl/windows.storage.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_Storage_IAppDataPaths<D>::Cookies() const

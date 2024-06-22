@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Services_Cortana_2_H
 #define WINRT_Windows_Services_Cortana_2_H
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.Services.Cortana.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.services.cortana.1.h"
 WINRT_EXPORT namespace winrt::Windows::Services::Cortana
 {
     struct __declspec(empty_bases) CortanaActionableInsights : winrt::Windows::Services::Cortana::ICortanaActionableInsights

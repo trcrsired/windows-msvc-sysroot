@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Input_2_H
 #define WINRT_Windows_UI_Input_2_H
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.System.2.h"
-#include "winrt/impl/Windows.UI.Input.1.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.system.2.h"
+#include "winrt/impl/windows.ui.input.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input
 {
     struct CrossSlideThresholds

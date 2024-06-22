@@ -20,13 +20,13 @@
 #ifndef _ALLJOYN_ABOUT_C_H
 #define _ALLJOYN_ABOUT_C_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/AboutData.h>
-#include <alljoyn_c/AboutDataListener.h>
-#include <alljoyn_c/BusAttachment.h>
-#include <alljoyn_c/Session.h>
-#include <alljoyn_c/SessionListener.h>
-#include <alljoyn_c/SessionPortListener.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/aboutdata.h>
+#include <alljoyn_c/aboutdatalistener.h>
+#include <alljoyn_c/busattachment.h>
+#include <alljoyn_c/session.h>
+#include <alljoyn_c/sessionlistener.h>
+#include <alljoyn_c/sessionportlistener.h>
 
 #ifdef __cplusplus
 extern "C" {

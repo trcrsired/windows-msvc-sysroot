@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Data_Html_1_H
 #define WINRT_Windows_Data_Html_1_H
-#include "winrt/impl/Windows.Data.Html.0.h"
+#include "winrt/impl/windows.data.html.0.h"
 WINRT_EXPORT namespace winrt::Windows::Data::Html
 {
     struct __declspec(empty_bases) IHtmlUtilities :

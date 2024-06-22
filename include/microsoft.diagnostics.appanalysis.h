@@ -83,7 +83,7 @@
 // Header files for imported files
 #include "oaidl.h"
 #include "inspectable.h"
-#include "Windows.Foundation.h"
+#include "windows.foundation.h"
 #include "eventtoken.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>

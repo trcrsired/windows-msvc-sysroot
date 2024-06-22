@@ -20,8 +20,8 @@
 #ifndef _ALLJOYN_C_KEYSTORE_LISTENER_H
 #define _ALLJOYN_C_KEYSTORE_LISTENER_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/Status.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/status.h>
 
 #ifdef __cplusplus
 extern "C" {

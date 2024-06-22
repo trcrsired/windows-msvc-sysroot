@@ -69,7 +69,7 @@ typedef interface ISpellCheckProviderFactory ISpellCheckProviderFactory;
 
 
 /* header files for imported files */
-#include "SpellCheck.h"
+#include "spellcheck.h"
 
 #ifdef __cplusplus
 extern "C"{

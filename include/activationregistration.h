@@ -81,8 +81,8 @@
 
 
 // Header files for imported files
-#include "Inspectable.h"
-#include "Windows.Foundation.h"
+#include "inspectable.h"
+#include "windows.foundation.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 

@@ -27,8 +27,8 @@ Abstract:
 #endif // NTDDI_VERSION < NTDDI_WIN7
 
 
-#include <WcnTypes.h>
-#include <WcnDevice.h>
+#include <wcntypes.h>
+#include <wcndevice.h>
 
 #ifndef NO_WCN_PKEYS
 #  include <WcnFunctionDiscoveryKeys.h>

@@ -21,7 +21,7 @@
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 #include <polarity.h>
-#include <ProvExce.h>
+#include <provexce.h>
 
 class POLARITY CHStringArray 
 {

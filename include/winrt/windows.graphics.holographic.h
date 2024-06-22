@@ -9,16 +9,16 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Graphics.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Foundation.Numerics.2.h"
-#include "winrt/impl/Windows.Graphics.DirectX.2.h"
-#include "winrt/impl/Windows.Graphics.DirectX.Direct3D11.2.h"
-#include "winrt/impl/Windows.Perception.2.h"
-#include "winrt/impl/Windows.Perception.Spatial.2.h"
-#include "winrt/impl/Windows.UI.Core.2.h"
-#include "winrt/impl/Windows.Graphics.Holographic.2.h"
+#include "winrt/windows.graphics.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.foundation.numerics.2.h"
+#include "winrt/impl/windows.graphics.directx.2.h"
+#include "winrt/impl/windows.graphics.directx.direct3d11.2.h"
+#include "winrt/impl/windows.perception.2.h"
+#include "winrt/impl/windows.perception.spatial.2.h"
+#include "winrt/impl/windows.ui.core.2.h"
+#include "winrt/impl/windows.graphics.holographic.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Foundation::Size) consume_Windows_Graphics_Holographic_IHolographicCamera<D>::RenderTargetSize() const

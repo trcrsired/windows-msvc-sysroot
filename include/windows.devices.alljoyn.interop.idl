@@ -11,9 +11,9 @@ typedef void* alljoyn_msgarg;
 typedef const CHAR* PCSTR;
 cpp_quote("#endif")
 
-cpp_quote("#include <alljoyn_c\BusAttachment.h>")
-cpp_quote("#include <alljoyn_c\BusObject.h>")
-cpp_quote("#include <alljoyn_c\MsgArg.h>")
+cpp_quote("#include <alljoyn_c\busattachment.h>")
+cpp_quote("#include <alljoyn_c\busobject.h>")
+cpp_quote("#include <alljoyn_c\msgarg.h>")
 
 cpp_quote("#if (NTDDI_VERSION >= NTDDI_WINTHRESHOLD)")
 

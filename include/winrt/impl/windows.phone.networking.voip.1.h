@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Phone_Networking_Voip_1_H
 #define WINRT_Windows_Phone_Networking_Voip_1_H
-#include "winrt/impl/Windows.Phone.Networking.Voip.0.h"
+#include "winrt/impl/windows.phone.networking.voip.0.h"
 WINRT_EXPORT namespace winrt::Windows::Phone::Networking::Voip
 {
     struct __declspec(empty_bases) ICallAnswerEventArgs :

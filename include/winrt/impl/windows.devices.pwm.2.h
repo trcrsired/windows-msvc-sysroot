@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Pwm_2_H
 #define WINRT_Windows_Devices_Pwm_2_H
-#include "winrt/impl/Windows.Devices.Pwm.Provider.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Devices.Pwm.1.h"
+#include "winrt/impl/windows.devices.pwm.provider.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.devices.pwm.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Pwm
 {
     struct __declspec(empty_bases) PwmController : winrt::Windows::Devices::Pwm::IPwmController

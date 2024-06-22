@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Devices_Core_2_H
 #define WINRT_Windows_Media_Devices_Core_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Numerics.1.h"
-#include "winrt/impl/Windows.Media.Devices.Core.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.numerics.1.h"
+#include "winrt/impl/windows.media.devices.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Devices::Core
 {
     struct __declspec(empty_bases) CameraIntrinsics : winrt::Windows::Media::Devices::Core::ICameraIntrinsics,

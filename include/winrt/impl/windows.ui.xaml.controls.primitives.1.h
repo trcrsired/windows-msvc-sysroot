@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Controls_Primitives_1_H
 #define WINRT_Windows_UI_Xaml_Controls_Primitives_1_H
-#include "winrt/impl/Windows.UI.Xaml.Controls.Primitives.0.h"
+#include "winrt/impl/windows.ui.xaml.controls.primitives.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Controls::Primitives
 {
     struct __declspec(empty_bases) IAppBarButtonTemplateSettings :

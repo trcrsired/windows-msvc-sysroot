@@ -107,7 +107,7 @@ typedef interface ISpatialAudioClient2 ISpatialAudioClient2;
 #include "wtypes.h"
 #include "unknwn.h"
 #include "hstring.h"
-#include "AudioClient.h"
+#include "audioclient.h"
 #include "propsys.h"
 
 #ifdef __cplusplus

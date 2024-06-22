@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Input_Core_2_H
 #define WINRT_Windows_UI_Input_Core_2_H
-#include "winrt/impl/Windows.ApplicationModel.Core.1.h"
-#include "winrt/impl/Windows.UI.Input.Core.1.h"
+#include "winrt/impl/windows.applicationmodel.core.1.h"
+#include "winrt/impl/windows.ui.input.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input::Core
 {
     struct __declspec(empty_bases) RadialControllerIndependentInputSource : winrt::Windows::UI::Input::Core::IRadialControllerIndependentInputSource,

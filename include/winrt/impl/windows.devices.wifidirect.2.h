@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_WiFiDirect_2_H
 #define WINRT_Windows_Devices_WiFiDirect_2_H
-#include "winrt/impl/Windows.Devices.Enumeration.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Devices.WiFiDirect.1.h"
+#include "winrt/impl/windows.devices.enumeration.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.devices.wifidirect.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::WiFiDirect
 {
     struct __declspec(empty_bases) WiFiDirectAdvertisement : winrt::Windows::Devices::WiFiDirect::IWiFiDirectAdvertisement,

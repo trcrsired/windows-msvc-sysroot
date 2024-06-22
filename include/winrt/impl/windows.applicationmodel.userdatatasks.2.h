@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_UserDataTasks_2_H
 #define WINRT_Windows_ApplicationModel_UserDataTasks_2_H
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.ApplicationModel.UserDataTasks.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.applicationmodel.userdatatasks.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserDataTasks
 {
     struct __declspec(empty_bases) UserDataTask : winrt::Windows::ApplicationModel::UserDataTasks::IUserDataTask

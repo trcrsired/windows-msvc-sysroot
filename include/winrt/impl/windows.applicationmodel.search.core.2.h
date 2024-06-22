@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Search_Core_2_H
 #define WINRT_Windows_ApplicationModel_Search_Core_2_H
-#include "winrt/impl/Windows.ApplicationModel.Search.Core.1.h"
+#include "winrt/impl/windows.applicationmodel.search.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Search::Core
 {
     struct __declspec(empty_bases) RequestingFocusOnKeyboardInputEventArgs : winrt::Windows::ApplicationModel::Search::Core::IRequestingFocusOnKeyboardInputEventArgs

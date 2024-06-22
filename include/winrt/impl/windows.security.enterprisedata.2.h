@@ -6,12 +6,12 @@
 #pragma once
 #ifndef WINRT_Windows_Security_EnterpriseData_2_H
 #define WINRT_Windows_Security_EnterpriseData_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Networking.1.h"
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Security.EnterpriseData.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.networking.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.security.enterprisedata.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::EnterpriseData
 {
     struct __declspec(empty_bases) BufferProtectUnprotectResult : winrt::Windows::Security::EnterpriseData::IBufferProtectUnprotectResult

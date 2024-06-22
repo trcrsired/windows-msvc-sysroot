@@ -20,7 +20,7 @@
 #pragma region Desktop Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
-//#include "ThrdBase.h"
+//#include "thrdbase.h"
 //#include "refptrco.h"
 
 class CInstance;

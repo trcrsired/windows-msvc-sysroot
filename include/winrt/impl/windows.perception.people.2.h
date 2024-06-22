@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Perception_People_2_H
 #define WINRT_Windows_Perception_People_2_H
-#include "winrt/impl/Windows.Foundation.Numerics.2.h"
-#include "winrt/impl/Windows.Perception.People.1.h"
+#include "winrt/impl/windows.foundation.numerics.2.h"
+#include "winrt/impl/windows.perception.people.1.h"
 WINRT_EXPORT namespace winrt::Windows::Perception::People
 {
     struct HandMeshVertex

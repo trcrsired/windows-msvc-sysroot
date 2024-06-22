@@ -170,7 +170,7 @@ typedef interface IAcousticEchoCancellationControl IAcousticEchoCancellationCont
 #include "wtypes.h"
 #include "unknwn.h"
 #include "mmreg.h"
-#include "AudioSessionTypes.h"
+#include "audiosessiontypes.h"
 
 #ifdef __cplusplus
 extern "C"{

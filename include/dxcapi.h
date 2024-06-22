@@ -34,7 +34,7 @@
 #else
 
 #include <dlfcn.h>
-#include "dxc/Support/WinAdapter.h"
+#include "dxc/support/winadapter.h"
 #endif
 
 struct IMalloc;

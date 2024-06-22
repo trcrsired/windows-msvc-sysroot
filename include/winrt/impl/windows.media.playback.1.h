@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Playback_1_H
 #define WINRT_Windows_Media_Playback_1_H
-#include "winrt/impl/Windows.Foundation.Collections.0.h"
-#include "winrt/impl/Windows.Media.Playback.0.h"
+#include "winrt/impl/windows.foundation.collections.0.h"
+#include "winrt/impl/windows.media.playback.0.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Playback
 {
     struct __declspec(empty_bases) IBackgroundMediaPlayerStatics :

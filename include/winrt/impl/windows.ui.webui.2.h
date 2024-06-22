@@ -6,14 +6,14 @@
 #pragma once
 #ifndef WINRT_Windows_UI_WebUI_2_H
 #define WINRT_Windows_UI_WebUI_2_H
-#include "winrt/impl/Windows.ApplicationModel.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Activation.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Background.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Graphics.Printing.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.Web.UI.1.h"
-#include "winrt/impl/Windows.UI.WebUI.1.h"
+#include "winrt/impl/windows.applicationmodel.1.h"
+#include "winrt/impl/windows.applicationmodel.activation.1.h"
+#include "winrt/impl/windows.applicationmodel.background.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.graphics.printing.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.web.ui.1.h"
+#include "winrt/impl/windows.ui.webui.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::WebUI
 {
     struct ActivatedEventHandler : winrt::Windows::Foundation::IUnknown

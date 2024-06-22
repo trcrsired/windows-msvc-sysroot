@@ -9,12 +9,12 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Devices.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Networking.Connectivity.2.h"
-#include "winrt/impl/Windows.Security.Credentials.2.h"
-#include "winrt/impl/Windows.Devices.WiFi.2.h"
+#include "winrt/windows.devices.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.networking.connectivity.2.h"
+#include "winrt/impl/windows.security.credentials.2.h"
+#include "winrt/impl/windows.devices.wifi.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Networking::Connectivity::NetworkAdapter) consume_Windows_Devices_WiFi_IWiFiAdapter<D>::NetworkAdapter() const

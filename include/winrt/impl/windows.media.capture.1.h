@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Capture_1_H
 #define WINRT_Windows_Media_Capture_1_H
-#include "winrt/impl/Windows.Foundation.0.h"
-#include "winrt/impl/Windows.Storage.Streams.0.h"
-#include "winrt/impl/Windows.Media.Capture.0.h"
+#include "winrt/impl/windows.foundation.0.h"
+#include "winrt/impl/windows.storage.streams.0.h"
+#include "winrt/impl/windows.media.capture.0.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Capture
 {
     struct __declspec(empty_bases) IAdvancedCapturedPhoto :

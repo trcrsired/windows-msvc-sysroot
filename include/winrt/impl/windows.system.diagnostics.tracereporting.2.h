@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_System_Diagnostics_TraceReporting_2_H
 #define WINRT_Windows_System_Diagnostics_TraceReporting_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.System.Diagnostics.TraceReporting.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.system.diagnostics.tracereporting.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::Diagnostics::TraceReporting
 {
     struct PlatformDiagnosticActions

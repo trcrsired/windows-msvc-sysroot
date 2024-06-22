@@ -11,9 +11,9 @@
 #ifndef _NOTESDEVICESERVICE_H_
 #define _NOTESDEVICESERVICE_H_
 
-#include <DeviceServices.h>
+#include <deviceservices.h>
 
-#include <MessageDeviceService.h>
+#include <messagedeviceservice.h>
 
 
 /*****************************************************************************

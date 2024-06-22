@@ -9,14 +9,14 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.UI.Xaml.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.UI.Composition.2.h"
-#include "winrt/impl/Windows.UI.WindowManagement.2.h"
-#include "winrt/impl/Windows.UI.Xaml.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Controls.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Controls.Primitives.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Hosting.2.h"
+#include "winrt/windows.ui.xaml.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.ui.composition.2.h"
+#include "winrt/impl/windows.ui.windowmanagement.2.h"
+#include "winrt/impl/windows.ui.xaml.2.h"
+#include "winrt/impl/windows.ui.xaml.controls.2.h"
+#include "winrt/impl/windows.ui.xaml.controls.primitives.2.h"
+#include "winrt/impl/windows.ui.xaml.hosting.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(uint32_t) consume_Windows_UI_Xaml_Hosting_IDesignerAppExitedEventArgs<D>::ExitCode() const

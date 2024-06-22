@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.System.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Web.Http.2.h"
-#include "winrt/impl/Windows.System.Implementation.FileExplorer.2.h"
+#include "winrt/windows.system.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.web.http.2.h"
+#include "winrt/impl/windows.system.implementation.fileexplorer.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_System_Implementation_FileExplorer_ISysStorageProviderEventReceivedEventArgs<D>::Json() const

@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Notifications_Preview_2_H
 #define WINRT_Windows_UI_Notifications_Preview_2_H
-#include "winrt/impl/Windows.UI.1.h"
-#include "winrt/impl/Windows.UI.Notifications.Preview.1.h"
+#include "winrt/impl/windows.ui.1.h"
+#include "winrt/impl/windows.ui.notifications.preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Notifications::Preview
 {
     struct ToastOcclusionManagerPreview

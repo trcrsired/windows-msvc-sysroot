@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Media.Capture.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Media.Capture.2.h"
-#include "winrt/impl/Windows.Media.Capture.Core.2.h"
+#include "winrt/windows.media.capture.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.media.capture.2.h"
+#include "winrt/impl/windows.media.capture.core.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Media::Capture::CapturedFrame) consume_Windows_Media_Capture_Core_IVariablePhotoCapturedEventArgs<D>::Frame() const

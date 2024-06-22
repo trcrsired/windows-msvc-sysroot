@@ -41,7 +41,7 @@ Abstract:
 #include <ntddndis.h>
 #endif
 
-#include <WlanTypes.h>
+#include <wlantypes.h>
 
 // These are needed for wlanapi.h for pre-vista targets
 #ifdef __midl

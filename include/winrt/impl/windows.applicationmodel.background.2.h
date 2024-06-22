@@ -6,17 +6,17 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Background_2_H
 #define WINRT_Windows_ApplicationModel_Background_2_H
-#include "winrt/impl/Windows.ApplicationModel.Calls.Background.1.h"
-#include "winrt/impl/Windows.Devices.Bluetooth.Background.1.h"
-#include "winrt/impl/Windows.Devices.Bluetooth.GenericAttributeProfile.1.h"
-#include "winrt/impl/Windows.Devices.Sensors.1.h"
-#include "winrt/impl/Windows.Devices.SmartCards.1.h"
-#include "winrt/impl/Windows.Devices.Sms.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.UI.Notifications.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Background.1.h"
+#include "winrt/impl/windows.applicationmodel.calls.background.1.h"
+#include "winrt/impl/windows.devices.bluetooth.background.1.h"
+#include "winrt/impl/windows.devices.bluetooth.genericattributeprofile.1.h"
+#include "winrt/impl/windows.devices.sensors.1.h"
+#include "winrt/impl/windows.devices.smartcards.1.h"
+#include "winrt/impl/windows.devices.sms.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.ui.notifications.1.h"
+#include "winrt/impl/windows.applicationmodel.background.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Background
 {
     struct BackgroundTaskCanceledEventHandler : winrt::Windows::Foundation::IUnknown

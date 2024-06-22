@@ -29,7 +29,7 @@ Abstract:
 #pragma region Desktop Family or OneCore Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM)
 
-#include <WinHvPlatformDefs.h>
+#include <winhvplatformdefs.h>
 
 typedef union WHV_EMULATOR_STATUS
 {

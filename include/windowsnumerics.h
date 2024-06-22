@@ -37,7 +37,7 @@
 #define _WINDOWS_NUMERICS_END_NAMESPACE_ }}
 
 
-#include "WindowsNumerics.impl.h"
+#include "windowsnumerics.impl.h"
 
 
 #undef _WINDOWS_NUMERICS_CX_PROJECTION_

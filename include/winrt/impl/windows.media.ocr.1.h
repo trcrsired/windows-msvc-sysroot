@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Ocr_1_H
 #define WINRT_Windows_Media_Ocr_1_H
-#include "winrt/impl/Windows.Media.Ocr.0.h"
+#include "winrt/impl/windows.media.ocr.0.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Ocr
 {
     struct __declspec(empty_bases) IOcrEngine :

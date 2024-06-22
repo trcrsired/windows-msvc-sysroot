@@ -9,8 +9,8 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Graphics.h"
-#include "winrt/impl/Windows.Graphics.DirectX.2.h"
+#include "winrt/windows.graphics.h"
+#include "winrt/impl/windows.graphics.directx.2.h"
 namespace winrt::impl
 {
 }

@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_Storage_BulkAccess_2_H
 #define WINRT_Windows_Storage_BulkAccess_2_H
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.Storage.FileProperties.1.h"
-#include "winrt/impl/Windows.Storage.Search.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Storage.BulkAccess.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.storage.fileproperties.1.h"
+#include "winrt/impl/windows.storage.search.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.storage.bulkaccess.1.h"
 WINRT_EXPORT namespace winrt::Windows::Storage::BulkAccess
 {
     struct __declspec(empty_bases) FileInformation : winrt::Windows::Storage::BulkAccess::IStorageItemInformation,

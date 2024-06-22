@@ -23,9 +23,9 @@
 #ifndef _ALLJOYN_C_APPLICATIONSTATELISTENER_H
 #define _ALLJOYN_C_APPLICATIONSTATELISTENER_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/Status.h>
-#include <alljoyn_c/PermissionConfigurator.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/status.h>
+#include <alljoyn_c/permissionconfigurator.h>
 
 #ifdef __cplusplus
 extern "C" {

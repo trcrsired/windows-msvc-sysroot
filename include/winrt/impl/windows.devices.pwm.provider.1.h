@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Pwm_Provider_1_H
 #define WINRT_Windows_Devices_Pwm_Provider_1_H
-#include "winrt/impl/Windows.Devices.Pwm.Provider.0.h"
+#include "winrt/impl/windows.devices.pwm.provider.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Pwm::Provider
 {
     struct __declspec(empty_bases) IPwmControllerProvider :

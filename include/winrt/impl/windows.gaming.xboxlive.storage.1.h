@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Gaming_XboxLive_Storage_1_H
 #define WINRT_Windows_Gaming_XboxLive_Storage_1_H
-#include "winrt/impl/Windows.Gaming.XboxLive.Storage.0.h"
+#include "winrt/impl/windows.gaming.xboxlive.storage.0.h"
 WINRT_EXPORT namespace winrt::Windows::Gaming::XboxLive::Storage
 {
     struct __declspec(empty_bases) IGameSaveBlobGetResult :

@@ -29,7 +29,7 @@ interface PortableDeviceConnect_Imports
 #define MIDL_PASS
 #define UNICODE
 
-#include "PortableDeviceConnectImports.h"
+#include "portabledeviceconnectimports.h"
 
 //
 // All .idl files need to contain at least one function prototype

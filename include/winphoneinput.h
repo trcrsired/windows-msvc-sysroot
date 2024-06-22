@@ -9,7 +9,7 @@
 #ifndef _WINPHONEINPUT_H_
 #define _WINPHONEINPUT_H_
 
-#include <InputEventFlags.h>
+#include <inputeventflags.h>
 
 //
 // Define a device interface unique GUID for touch 

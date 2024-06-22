@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Media_AppBroadcasting_1_H
 #define WINRT_Windows_Media_AppBroadcasting_1_H
-#include "winrt/impl/Windows.Media.AppBroadcasting.0.h"
+#include "winrt/impl/windows.media.appbroadcasting.0.h"
 WINRT_EXPORT namespace winrt::Windows::Media::AppBroadcasting
 {
     struct __declspec(empty_bases) IAppBroadcastingMonitor :

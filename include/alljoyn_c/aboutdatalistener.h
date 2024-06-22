@@ -23,8 +23,8 @@
 #ifndef _ALLJOYN_ABOUTDATALISTENER_C_H
 #define _ALLJOYN_ABOUTDATALISTENER_C_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/MsgArg.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/msgarg.h>
 
 #ifdef __cplusplus
 extern "C" {

@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Store_2_H
 #define WINRT_Windows_ApplicationModel_Store_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Store.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.applicationmodel.store.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Store
 {
     struct LicenseChangedEventHandler : winrt::Windows::Foundation::IUnknown

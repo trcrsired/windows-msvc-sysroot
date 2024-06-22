@@ -22,9 +22,9 @@
 #ifndef _ALLJOYN_OBSERVER_C_H
 #define _ALLJOYN_OBSERVER_C_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/BusAttachment.h>
-#include <alljoyn_c/ProxyBusObject.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/busattachment.h>
+#include <alljoyn_c/proxybusobject.h>
 
 #ifdef __cplusplus
 extern "C" {

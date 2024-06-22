@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Input_Inking_Preview_1_H
 #define WINRT_Windows_UI_Input_Inking_Preview_1_H
-#include "winrt/impl/Windows.UI.Input.Inking.Preview.0.h"
+#include "winrt/impl/windows.ui.input.inking.preview.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input::Inking::Preview
 {
     struct __declspec(empty_bases) IPalmRejectionDelayZonePreview :

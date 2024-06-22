@@ -67,7 +67,7 @@ typedef struct WaaSAssessor WaaSAssessor;
 
 
 /* header files for imported files */
-#include "WaaSAPITypes.h"
+#include "waasapitypes.h"
 
 #ifdef __cplusplus
 extern "C"{

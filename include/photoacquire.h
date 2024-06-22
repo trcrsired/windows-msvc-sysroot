@@ -214,7 +214,7 @@ extern "C"{
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 
-#include <PhotoAcquireProperties.h>
+#include <photoacquireproperties.h>
 
 
 extern RPC_IF_HANDLE __MIDL_itf_photoacquire_0000_0000_v0_0_c_ifspec;

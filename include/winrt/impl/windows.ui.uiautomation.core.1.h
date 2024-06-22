@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_UIAutomation_Core_1_H
 #define WINRT_Windows_UI_UIAutomation_Core_1_H
-#include "winrt/impl/Windows.UI.UIAutomation.Core.0.h"
+#include "winrt/impl/windows.ui.uiautomation.core.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::UIAutomation::Core
 {
     struct __declspec(empty_bases) IAutomationRemoteOperationResult :

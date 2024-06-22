@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Management_Deployment_1_H
 #define WINRT_Windows_Management_Deployment_1_H
-#include "winrt/impl/Windows.Management.Deployment.0.h"
+#include "winrt/impl/windows.management.deployment.0.h"
 WINRT_EXPORT namespace winrt::Windows::Management::Deployment
 {
     struct __declspec(empty_bases) IAddPackageOptions :

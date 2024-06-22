@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Gaming_UI_2_H
 #define WINRT_Windows_Gaming_UI_2_H
-#include "winrt/impl/Windows.ApplicationModel.Activation.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Gaming.UI.1.h"
+#include "winrt/impl/windows.applicationmodel.activation.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.gaming.ui.1.h"
 WINRT_EXPORT namespace winrt::Windows::Gaming::UI
 {
     struct GameBar

@@ -9,9 +9,9 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.UI.Xaml.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Interop.2.h"
+#include "winrt/windows.ui.xaml.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.ui.xaml.interop.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::UI::Xaml::Interop::IBindableIterator) consume_Windows_UI_Xaml_Interop_IBindableIterable<D>::First() const

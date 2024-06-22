@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Radios_2_H
 #define WINRT_Windows_Devices_Radios_2_H
-#include "winrt/impl/Windows.Devices.Radios.1.h"
+#include "winrt/impl/windows.devices.radios.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Radios
 {
     struct __declspec(empty_bases) Radio : winrt::Windows::Devices::Radios::IRadio

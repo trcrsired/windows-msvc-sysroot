@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Imaging_1_H
 #define WINRT_Windows_Graphics_Imaging_1_H
-#include "winrt/impl/Windows.Foundation.0.h"
-#include "winrt/impl/Windows.Graphics.Imaging.0.h"
+#include "winrt/impl/windows.foundation.0.h"
+#include "winrt/impl/windows.graphics.imaging.0.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Imaging
 {
     struct __declspec(empty_bases) IBitmapBuffer :

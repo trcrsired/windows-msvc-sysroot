@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Bluetooth_GenericAttributeProfile_2_H
 #define WINRT_Windows_Devices_Bluetooth_GenericAttributeProfile_2_H
-#include "winrt/impl/Windows.Devices.Bluetooth.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Devices.Bluetooth.GenericAttributeProfile.1.h"
+#include "winrt/impl/windows.devices.bluetooth.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.devices.bluetooth.genericattributeprofile.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile
 {
     struct __declspec(empty_bases) GattCharacteristic : winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::IGattCharacteristic,

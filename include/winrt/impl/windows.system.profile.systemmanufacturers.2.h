@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_System_Profile_SystemManufacturers_2_H
 #define WINRT_Windows_System_Profile_SystemManufacturers_2_H
-#include "winrt/impl/Windows.System.Profile.SystemManufacturers.1.h"
+#include "winrt/impl/windows.system.profile.systemmanufacturers.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::Profile::SystemManufacturers
 {
     struct __declspec(empty_bases) OemSupportInfo : winrt::Windows::System::Profile::SystemManufacturers::IOemSupportInfo

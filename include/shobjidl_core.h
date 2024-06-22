@@ -1901,7 +1901,7 @@ typedef interface IPropertyKeyStore IPropertyKeyStore;
 #include "servprov.h"
 #include "comcat.h"
 #include "propsys.h"
-#include "ObjectArray.h"
+#include "objectarray.h"
 
 #ifdef __cplusplus
 extern "C"{

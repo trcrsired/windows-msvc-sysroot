@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Capture_1_H
 #define WINRT_Windows_Graphics_Capture_1_H
-#include "winrt/impl/Windows.Graphics.Capture.0.h"
+#include "winrt/impl/windows.graphics.capture.0.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Capture
 {
     struct __declspec(empty_bases) IDirect3D11CaptureFrame :

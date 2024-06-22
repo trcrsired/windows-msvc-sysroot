@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Management_2_H
 #define WINRT_Windows_Management_2_H
-#include "winrt/impl/Windows.Management.1.h"
+#include "winrt/impl/windows.management.1.h"
 WINRT_EXPORT namespace winrt::Windows::Management
 {
     struct __declspec(empty_bases) MdmAlert : winrt::Windows::Management::IMdmAlert

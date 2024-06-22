@@ -21,21 +21,21 @@
 #ifndef _ALLJOYN_C_BUSATTACHMENT_H
 #define _ALLJOYN_C_BUSATTACHMENT_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/ApplicationStateListener.h>
-#include <alljoyn_c/KeyStoreListener.h>
-#include <alljoyn_c/AuthListener.h>
-#include <alljoyn_c/BusListener.h>
-#include <alljoyn_c/BusObject.h>
-#include <alljoyn_c/ProxyBusObject.h>
-#include <alljoyn_c/PermissionConfigurationListener.h>
-#include <alljoyn_c/PermissionConfigurator.h>
-#include <alljoyn_c/InterfaceDescription.h>
-#include <alljoyn_c/Session.h>
-#include <alljoyn_c/SessionListener.h>
-#include <alljoyn_c/SessionPortListener.h>
-#include <alljoyn_c/AboutListener.h>
-#include <alljoyn_c/Status.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/applicationstatelistener.h>
+#include <alljoyn_c/keystorelistener.h>
+#include <alljoyn_c/authlistener.h>
+#include <alljoyn_c/buslistener.h>
+#include <alljoyn_c/busobject.h>
+#include <alljoyn_c/proxybusobject.h>
+#include <alljoyn_c/permissionconfigurationlistener.h>
+#include <alljoyn_c/permissionconfigurator.h>
+#include <alljoyn_c/interfacedescription.h>
+#include <alljoyn_c/session.h>
+#include <alljoyn_c/sessionlistener.h>
+#include <alljoyn_c/sessionportlistener.h>
+#include <alljoyn_c/aboutlistener.h>
+#include <alljoyn_c/status.h>
 
 #ifdef __cplusplus
 extern "C" {

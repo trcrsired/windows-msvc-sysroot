@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Media.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.System.2.h"
-#include "winrt/impl/Windows.Media.AppBroadcasting.2.h"
+#include "winrt/windows.media.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.system.2.h"
+#include "winrt/impl/windows.media.appbroadcasting.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(bool) consume_Windows_Media_AppBroadcasting_IAppBroadcastingMonitor<D>::IsCurrentAppBroadcasting() const

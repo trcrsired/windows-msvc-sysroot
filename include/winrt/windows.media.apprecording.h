@@ -9,11 +9,11 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Media.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Storage.2.h"
-#include "winrt/impl/Windows.Media.AppRecording.2.h"
+#include "winrt/windows.media.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.storage.2.h"
+#include "winrt/impl/windows.media.apprecording.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Media::AppRecording::AppRecordingStatus) consume_Windows_Media_AppRecording_IAppRecordingManager<D>::GetStatus() const

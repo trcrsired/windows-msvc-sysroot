@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Input_Spatial_2_H
 #define WINRT_Windows_UI_Input_Spatial_2_H
-#include "winrt/impl/Windows.Perception.1.h"
-#include "winrt/impl/Windows.Perception.Spatial.1.h"
-#include "winrt/impl/Windows.UI.Input.Spatial.1.h"
+#include "winrt/impl/windows.perception.1.h"
+#include "winrt/impl/windows.perception.spatial.1.h"
+#include "winrt/impl/windows.ui.input.spatial.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input::Spatial
 {
     struct __declspec(empty_bases) SpatialGestureRecognizer : winrt::Windows::UI::Input::Spatial::ISpatialGestureRecognizer

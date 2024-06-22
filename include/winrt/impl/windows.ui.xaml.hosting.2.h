@@ -6,13 +6,13 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Hosting_2_H
 #define WINRT_Windows_UI_Xaml_Hosting_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.UI.Composition.1.h"
-#include "winrt/impl/Windows.UI.WindowManagement.1.h"
-#include "winrt/impl/Windows.UI.Xaml.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Controls.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Controls.Primitives.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Hosting.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.ui.composition.1.h"
+#include "winrt/impl/windows.ui.windowmanagement.1.h"
+#include "winrt/impl/windows.ui.xaml.1.h"
+#include "winrt/impl/windows.ui.xaml.controls.1.h"
+#include "winrt/impl/windows.ui.xaml.controls.primitives.1.h"
+#include "winrt/impl/windows.ui.xaml.hosting.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Hosting
 {
     struct __declspec(empty_bases) DesignerAppExitedEventArgs : winrt::Windows::UI::Xaml::Hosting::IDesignerAppExitedEventArgs

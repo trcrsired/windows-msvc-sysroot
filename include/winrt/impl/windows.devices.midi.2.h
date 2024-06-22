@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Midi_2_H
 #define WINRT_Windows_Devices_Midi_2_H
-#include "winrt/impl/Windows.Devices.Enumeration.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Devices.Midi.1.h"
+#include "winrt/impl/windows.devices.enumeration.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.devices.midi.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Midi
 {
     struct __declspec(empty_bases) MidiActiveSensingMessage : winrt::Windows::Devices::Midi::IMidiMessage

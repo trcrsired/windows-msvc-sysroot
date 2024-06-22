@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Appointments_DataProvider_2_H
 #define WINRT_Windows_ApplicationModel_Appointments_DataProvider_2_H
-#include "winrt/impl/Windows.ApplicationModel.Appointments.DataProvider.1.h"
+#include "winrt/impl/windows.applicationmodel.appointments.dataprovider.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Appointments::DataProvider
 {
     struct __declspec(empty_bases) AppointmentCalendarCancelMeetingRequest : winrt::Windows::ApplicationModel::Appointments::DataProvider::IAppointmentCalendarCancelMeetingRequest

@@ -9,11 +9,11 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Devices.Input.h"
-#include "winrt/impl/Windows.Devices.HumanInterfaceDevice.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Devices.Input.Preview.2.h"
+#include "winrt/windows.devices.input.h"
+#include "winrt/impl/windows.devices.humaninterfacedevice.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.devices.input.preview.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(uint32_t) consume_Windows_Devices_Input_Preview_IGazeDevicePreview<D>::Id() const

@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Authentication_Web_Core_2_H
 #define WINRT_Windows_Security_Authentication_Web_Core_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Security.Credentials.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.Security.Authentication.Web.Core.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.security.credentials.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.security.authentication.web.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Web::Core
 {
     struct __declspec(empty_bases) FindAllAccountsResult : winrt::Windows::Security::Authentication::Web::Core::IFindAllAccountsResult

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Transcoding_2_H
 #define WINRT_Windows_Media_Transcoding_2_H
-#include "winrt/impl/Windows.Media.Transcoding.1.h"
+#include "winrt/impl/windows.media.transcoding.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Transcoding
 {
     struct __declspec(empty_bases) MediaTranscoder : winrt::Windows::Media::Transcoding::IMediaTranscoder,

@@ -9,15 +9,15 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Devices.Display.h"
-#include "winrt/impl/Windows.Devices.Display.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Graphics.2.h"
-#include "winrt/impl/Windows.Graphics.DirectX.2.h"
-#include "winrt/impl/Windows.Graphics.DirectX.Direct3D11.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.Devices.Display.Core.2.h"
+#include "winrt/windows.devices.display.h"
+#include "winrt/impl/windows.devices.display.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.graphics.2.h"
+#include "winrt/impl/windows.graphics.directx.2.h"
+#include "winrt/impl/windows.graphics.directx.direct3d11.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.devices.display.core.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Graphics::DisplayAdapterId) consume_Windows_Devices_Display_Core_IDisplayAdapter<D>::Id() const

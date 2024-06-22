@@ -57,7 +57,7 @@ extern "C"{
 #include <winapifamily.h>
 #pragma region Desktop Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
-#include "RecDefs.h"
+#include "recdefs.h"
 #define SAFE_PARTIAL     1
 #define BEST_COMPLETE    2
 #define MAX_VENDORNAME   32
@@ -226,7 +226,7 @@ typedef struct tagCHARACTER_RANGE *PCHARACTER_RANGE;
 #pragma endregion
 #pragma region APP Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
-#include "RecDefs.h"
+#include "recdefs.h"
 #define SAFE_PARTIAL     1
 #define BEST_COMPLETE    2
 #define MAX_VENDORNAME   32

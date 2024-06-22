@@ -6,19 +6,19 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_2_H
 #define WINRT_Windows_UI_Xaml_2_H
-#include "winrt/impl/Windows.ApplicationModel.2.h"
-#include "winrt/impl/Windows.ApplicationModel.Activation.2.h"
-#include "winrt/impl/Windows.ApplicationModel.Core.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.UI.Composition.2.h"
-#include "winrt/impl/Windows.UI.Core.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Automation.Peers.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Controls.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Controls.Primitives.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Input.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Interop.2.h"
-#include "winrt/impl/Windows.UI.Xaml.1.h"
+#include "winrt/impl/windows.applicationmodel.2.h"
+#include "winrt/impl/windows.applicationmodel.activation.2.h"
+#include "winrt/impl/windows.applicationmodel.core.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.ui.composition.2.h"
+#include "winrt/impl/windows.ui.core.2.h"
+#include "winrt/impl/windows.ui.xaml.automation.peers.2.h"
+#include "winrt/impl/windows.ui.xaml.controls.2.h"
+#include "winrt/impl/windows.ui.xaml.controls.primitives.2.h"
+#include "winrt/impl/windows.ui.xaml.input.2.h"
+#include "winrt/impl/windows.ui.xaml.interop.2.h"
+#include "winrt/impl/windows.ui.xaml.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml
 {
     struct ApplicationInitializationCallback : winrt::Windows::Foundation::IUnknown

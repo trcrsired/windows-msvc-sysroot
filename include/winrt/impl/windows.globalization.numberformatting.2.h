@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Globalization_NumberFormatting_2_H
 #define WINRT_Windows_Globalization_NumberFormatting_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Globalization.NumberFormatting.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.globalization.numberformatting.1.h"
 WINRT_EXPORT namespace winrt::Windows::Globalization::NumberFormatting
 {
     struct __declspec(empty_bases) CurrencyFormatter : winrt::Windows::Globalization::NumberFormatting::ICurrencyFormatter,

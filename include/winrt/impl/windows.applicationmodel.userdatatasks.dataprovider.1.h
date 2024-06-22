@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_UserDataTasks_DataProvider_1_H
 #define WINRT_Windows_ApplicationModel_UserDataTasks_DataProvider_1_H
-#include "winrt/impl/Windows.ApplicationModel.UserDataTasks.DataProvider.0.h"
+#include "winrt/impl/windows.applicationmodel.userdatatasks.dataprovider.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserDataTasks::DataProvider
 {
     struct __declspec(empty_bases) IUserDataTaskDataProviderConnection :

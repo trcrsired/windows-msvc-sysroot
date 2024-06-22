@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Foundation.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Storage.2.h"
-#include "winrt/impl/Windows.Foundation.Diagnostics.2.h"
+#include "winrt/windows.foundation.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.storage.2.h"
+#include "winrt/impl/windows.foundation.diagnostics.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Foundation_Diagnostics_IAsyncCausalityTracerStatics<D>::TraceOperationCreation(winrt::Windows::Foundation::Diagnostics::CausalityTraceLevel const& traceLevel, winrt::Windows::Foundation::Diagnostics::CausalitySource const& source, winrt::guid const& platformId, uint64_t operationId, param::hstring const& operationName, uint64_t relatedContext) const

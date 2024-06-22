@@ -8,9 +8,9 @@ import "unknwn.idl";
 import "wtypes.idl";
 
 cpp_quote ("#if 0")
-#include <WlanIhvTypes.h>
+#include <wlanihvtypes.h>
 cpp_quote ("#endif")
-cpp_quote ("#include <WlanIhvTypes.h>")
+cpp_quote ("#include <wlanihvtypes.h>")
 
 
 // ENUM identifies a Property type (Tab) that IHV wants to extend/customize

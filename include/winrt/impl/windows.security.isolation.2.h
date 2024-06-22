@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Isolation_2_H
 #define WINRT_Windows_Security_Isolation_2_H
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Security.Isolation.1.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.security.isolation.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Isolation
 {
     struct HostMessageReceivedCallback : winrt::Windows::Foundation::IUnknown

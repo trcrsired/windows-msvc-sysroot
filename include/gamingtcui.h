@@ -29,7 +29,7 @@
 #include <ntrtl.h>
 #include <nturtl.h>
 #include <windows.h>
-#include <Inspectable.h>
+#include <inspectable.h>
 #endif
 
 #include <winstring.h>

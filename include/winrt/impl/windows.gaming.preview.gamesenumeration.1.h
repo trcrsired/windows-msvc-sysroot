@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Gaming_Preview_GamesEnumeration_1_H
 #define WINRT_Windows_Gaming_Preview_GamesEnumeration_1_H
-#include "winrt/impl/Windows.Gaming.Preview.GamesEnumeration.0.h"
+#include "winrt/impl/windows.gaming.preview.gamesenumeration.0.h"
 WINRT_EXPORT namespace winrt::Windows::Gaming::Preview::GamesEnumeration
 {
     struct __declspec(empty_bases) IGameListEntry :

@@ -21,10 +21,10 @@
 #ifndef _ALLJOYN_ABOUTICONOBJ_C_H
 #define _ALLJOYN_ABOUTICONOBJ_C_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/MsgArg.h>
-#include <alljoyn_c/AboutIcon.h>
-#include <alljoyn_c/BusAttachment.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/msgarg.h>
+#include <alljoyn_c/abouticon.h>
+#include <alljoyn_c/busattachment.h>
 
 #ifdef __cplusplus
 extern "C" {

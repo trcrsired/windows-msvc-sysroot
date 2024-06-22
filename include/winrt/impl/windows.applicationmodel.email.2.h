@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Email_2_H
 #define WINRT_Windows_ApplicationModel_Email_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Email.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.applicationmodel.email.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Email
 {
     struct __declspec(empty_bases) EmailAttachment : winrt::Windows::ApplicationModel::Email::IEmailAttachment,

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Interop_1_H
 #define WINRT_Windows_UI_Xaml_Interop_1_H
-#include "winrt/impl/Windows.UI.Xaml.Interop.0.h"
+#include "winrt/impl/windows.ui.xaml.interop.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Interop
 {
     struct __declspec(empty_bases) IBindableIterable :

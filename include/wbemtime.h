@@ -31,7 +31,7 @@
 #include <polarity.h>
 #include <time.h>
 #pragma warning( disable : 4290 ) // Ignore 'C++ Exception Specification ignored'
-#include <ProvExce.h>
+#include <provexce.h>
 
 ///////////////////////////////////////////////////////////////////////////
 // WBEMTimeSpan - This class holds time span values. 

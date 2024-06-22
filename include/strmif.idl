@@ -42,7 +42,7 @@ import "objidl.idl";	// for IPersist (IFilter's root)
 
 
 // Video Mixing Renderer
-#include "VMRender.idl"
+#include "vmrender.idl"
 
 cpp_quote("#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */")
 #pragma endregion

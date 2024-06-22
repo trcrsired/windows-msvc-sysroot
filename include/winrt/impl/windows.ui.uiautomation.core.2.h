@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_UIAutomation_Core_2_H
 #define WINRT_Windows_UI_UIAutomation_Core_2_H
-#include "winrt/impl/Windows.UI.UIAutomation.Core.1.h"
+#include "winrt/impl/windows.ui.uiautomation.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::UIAutomation::Core
 {
     struct AutomationAnnotationTypeRegistration

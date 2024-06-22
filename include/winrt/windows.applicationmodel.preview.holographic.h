@@ -9,11 +9,11 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.ApplicationModel.h"
-#include "winrt/impl/Windows.ApplicationModel.Activation.2.h"
-#include "winrt/impl/Windows.Foundation.Numerics.2.h"
-#include "winrt/impl/Windows.Perception.Spatial.2.h"
-#include "winrt/impl/Windows.ApplicationModel.Preview.Holographic.2.h"
+#include "winrt/windows.applicationmodel.h"
+#include "winrt/impl/windows.applicationmodel.activation.2.h"
+#include "winrt/impl/windows.foundation.numerics.2.h"
+#include "winrt/impl/windows.perception.spatial.2.h"
+#include "winrt/impl/windows.applicationmodel.preview.holographic.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(bool) consume_Windows_ApplicationModel_Preview_Holographic_IHolographicApplicationPreviewStatics<D>::IsCurrentViewPresentedOnHolographicDisplay() const

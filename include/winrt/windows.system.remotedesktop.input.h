@@ -9,9 +9,9 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.System.RemoteDesktop.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.System.RemoteDesktop.Input.2.h"
+#include "winrt/windows.system.remotedesktop.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.system.remotedesktop.input.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(bool) consume_Windows_System_RemoteDesktop_Input_IRemoteTextConnection<D>::IsEnabled() const

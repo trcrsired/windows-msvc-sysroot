@@ -76,7 +76,7 @@ typedef interface IWindowsDevicesAllJoynBusObjectFactoryInterop IWindowsDevicesA
 
 
 /* header files for imported files */
-#include "Inspectable.h"
+#include "inspectable.h"
 
 #ifdef __cplusplus
 extern "C"{
@@ -96,9 +96,9 @@ typedef void *alljoyn_msgarg;
 typedef const CHAR *PCSTR;
 
 #endif
-#include <alljoyn_c\BusAttachment.h>
-#include <alljoyn_c\BusObject.h>
-#include <alljoyn_c\MsgArg.h>
+#include <alljoyn_c\busattachment.h>
+#include <alljoyn_c\busobject.h>
+#include <alljoyn_c\msgarg.h>
 #if (NTDDI_VERSION >= NTDDI_WINTHRESHOLD)
 
 

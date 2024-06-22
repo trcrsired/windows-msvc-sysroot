@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Management_Workplace_2_H
 #define WINRT_Windows_Management_Workplace_2_H
-#include "winrt/impl/Windows.Management.Workplace.1.h"
+#include "winrt/impl/windows.management.workplace.1.h"
 WINRT_EXPORT namespace winrt::Windows::Management::Workplace
 {
     struct MdmPolicy

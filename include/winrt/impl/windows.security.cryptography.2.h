@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Cryptography_2_H
 #define WINRT_Windows_Security_Cryptography_2_H
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Security.Cryptography.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.security.cryptography.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Cryptography
 {
     struct CryptographicBuffer

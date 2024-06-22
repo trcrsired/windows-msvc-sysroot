@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Printers_1_H
 #define WINRT_Windows_Devices_Printers_1_H
-#include "winrt/impl/Windows.Devices.Printers.0.h"
+#include "winrt/impl/windows.devices.printers.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Printers
 {
     struct __declspec(empty_bases) IIppAttributeError :

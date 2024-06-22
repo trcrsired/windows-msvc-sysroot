@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Globalization_DateTimeFormatting_2_H
 #define WINRT_Windows_Globalization_DateTimeFormatting_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Globalization.DateTimeFormatting.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.globalization.datetimeformatting.1.h"
 WINRT_EXPORT namespace winrt::Windows::Globalization::DateTimeFormatting
 {
     struct __declspec(empty_bases) DateTimeFormatter : winrt::Windows::Globalization::DateTimeFormatting::IDateTimeFormatter,

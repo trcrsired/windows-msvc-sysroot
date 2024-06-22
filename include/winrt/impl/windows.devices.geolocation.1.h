@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Geolocation_1_H
 #define WINRT_Windows_Devices_Geolocation_1_H
-#include "winrt/impl/Windows.Devices.Geolocation.0.h"
+#include "winrt/impl/windows.devices.geolocation.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Geolocation
 {
     struct __declspec(empty_bases) ICivicAddress :

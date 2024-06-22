@@ -22,8 +22,8 @@
 #ifndef _ALLJOYN_C_AUTHLISTENER_H
 #define _ALLJOYN_C_AUTHLISTENER_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/Message.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/message.h>
 
 #ifdef __cplusplus
 extern "C" {

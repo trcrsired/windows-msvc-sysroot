@@ -9,8 +9,8 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Phone.Networking.Voip.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.phone.networking.voip.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Phone::Networking::Voip::VoipCallMedia) consume_Windows_Phone_Networking_Voip_ICallAnswerEventArgs<D>::AcceptedMedia() const

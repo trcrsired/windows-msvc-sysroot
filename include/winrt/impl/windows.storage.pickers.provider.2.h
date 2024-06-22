@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Storage_Pickers_Provider_2_H
 #define WINRT_Windows_Storage_Pickers_Provider_2_H
-#include "winrt/impl/Windows.Storage.Pickers.Provider.1.h"
+#include "winrt/impl/windows.storage.pickers.provider.1.h"
 WINRT_EXPORT namespace winrt::Windows::Storage::Pickers::Provider
 {
     struct __declspec(empty_bases) FileOpenPickerUI : winrt::Windows::Storage::Pickers::Provider::IFileOpenPickerUI

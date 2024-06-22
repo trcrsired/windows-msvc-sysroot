@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Networking_ServiceDiscovery_Dnssd_1_H
 #define WINRT_Windows_Networking_ServiceDiscovery_Dnssd_1_H
-#include "winrt/impl/Windows.Networking.ServiceDiscovery.Dnssd.0.h"
+#include "winrt/impl/windows.networking.servicediscovery.dnssd.0.h"
 WINRT_EXPORT namespace winrt::Windows::Networking::ServiceDiscovery::Dnssd
 {
     struct __declspec(empty_bases) IDnssdRegistrationResult :

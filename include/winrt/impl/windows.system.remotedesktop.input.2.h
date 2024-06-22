@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_System_RemoteDesktop_Input_2_H
 #define WINRT_Windows_System_RemoteDesktop_Input_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.System.RemoteDesktop.Input.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.system.remotedesktop.input.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::RemoteDesktop::Input
 {
     struct RemoteTextConnectionDataHandler : winrt::Windows::Foundation::IUnknown

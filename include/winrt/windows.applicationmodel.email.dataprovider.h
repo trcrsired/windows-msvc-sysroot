@@ -9,12 +9,12 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.ApplicationModel.Email.h"
-#include "winrt/impl/Windows.ApplicationModel.Email.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Security.Cryptography.Certificates.2.h"
-#include "winrt/impl/Windows.ApplicationModel.Email.DataProvider.2.h"
+#include "winrt/windows.applicationmodel.email.h"
+#include "winrt/impl/windows.applicationmodel.email.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.security.cryptography.certificates.2.h"
+#include "winrt/impl/windows.applicationmodel.email.dataprovider.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::event_token) consume_Windows_ApplicationModel_Email_DataProvider_IEmailDataProviderConnection<D>::MailboxSyncRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Email::DataProvider::EmailDataProviderConnection, winrt::Windows::ApplicationModel::Email::DataProvider::EmailMailboxSyncManagerSyncRequestEventArgs> const& handler) const

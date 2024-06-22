@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Services_Maps_1_H
 #define WINRT_Windows_Services_Maps_1_H
-#include "winrt/impl/Windows.Services.Maps.0.h"
+#include "winrt/impl/windows.services.maps.0.h"
 WINRT_EXPORT namespace winrt::Windows::Services::Maps
 {
     struct __declspec(empty_bases) IEnhancedWaypoint :

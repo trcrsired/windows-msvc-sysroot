@@ -6,13 +6,13 @@
 #pragma once
 #ifndef WINRT_Windows_AI_MachineLearning_2_H
 #define WINRT_Windows_AI_MachineLearning_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Graphics.DirectX.Direct3D11.1.h"
-#include "winrt/impl/Windows.Media.1.h"
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.AI.MachineLearning.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.graphics.directx.direct3d11.1.h"
+#include "winrt/impl/windows.media.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.ai.machinelearning.1.h"
 WINRT_EXPORT namespace winrt::Windows::AI::MachineLearning
 {
     struct __declspec(empty_bases) ImageFeatureDescriptor : winrt::Windows::AI::MachineLearning::IImageFeatureDescriptor,

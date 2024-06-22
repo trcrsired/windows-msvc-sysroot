@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_System_Preview_2_H
 #define WINRT_Windows_System_Preview_2_H
-#include "winrt/impl/Windows.System.Preview.1.h"
+#include "winrt/impl/windows.system.preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::Preview
 {
     struct __declspec(empty_bases) TwoPanelHingedDevicePosturePreview : winrt::Windows::System::Preview::ITwoPanelHingedDevicePosturePreview

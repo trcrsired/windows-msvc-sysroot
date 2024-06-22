@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Core_Direct_2_H
 #define WINRT_Windows_UI_Xaml_Core_Direct_2_H
-#include "winrt/impl/Windows.UI.Xaml.Core.Direct.1.h"
+#include "winrt/impl/windows.ui.xaml.core.direct.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Core::Direct
 {
     struct __declspec(empty_bases) XamlDirect : winrt::Windows::UI::Xaml::Core::Direct::IXamlDirect

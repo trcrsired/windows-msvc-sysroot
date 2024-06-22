@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_UserActivities_Core_2_H
 #define WINRT_Windows_ApplicationModel_UserActivities_Core_2_H
-#include "winrt/impl/Windows.ApplicationModel.UserActivities.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.ApplicationModel.UserActivities.Core.1.h"
+#include "winrt/impl/windows.applicationmodel.useractivities.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.applicationmodel.useractivities.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserActivities::Core
 {
     struct CoreUserActivityManager

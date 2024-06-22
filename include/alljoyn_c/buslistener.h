@@ -22,9 +22,9 @@
 #ifndef _ALLJOYN_C_BUSLISTENER_H
 #define _ALLJOYN_C_BUSLISTENER_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/TransportMask.h>
-#include <alljoyn_c/MsgArg.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/transportmask.h>
+#include <alljoyn_c/msgarg.h>
 
 #ifdef __cplusplus
 extern "C" {

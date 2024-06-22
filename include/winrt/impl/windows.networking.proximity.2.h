@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Networking_Proximity_2_H
 #define WINRT_Windows_Networking_Proximity_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Networking.Proximity.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.networking.proximity.1.h"
 WINRT_EXPORT namespace winrt::Windows::Networking::Proximity
 {
     struct DeviceArrivedEventHandler : winrt::Windows::Foundation::IUnknown

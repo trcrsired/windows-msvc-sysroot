@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Networking_Connectivity_1_H
 #define WINRT_Windows_Networking_Connectivity_1_H
-#include "winrt/impl/Windows.Foundation.0.h"
-#include "winrt/impl/Windows.Networking.Connectivity.0.h"
+#include "winrt/impl/windows.foundation.0.h"
+#include "winrt/impl/windows.networking.connectivity.0.h"
 WINRT_EXPORT namespace winrt::Windows::Networking::Connectivity
 {
     struct __declspec(empty_bases) IAttributedNetworkUsage :

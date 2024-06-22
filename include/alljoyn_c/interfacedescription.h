@@ -21,9 +21,9 @@
 #ifndef _ALLJOYN_C_INTERFACEDESCRIPTION_H
 #define _ALLJOYN_C_INTERFACEDESCRIPTION_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/Message.h>
-#include <alljoyn_c/Status.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/message.h>
+#include <alljoyn_c/status.h>
 
 #ifdef __cplusplus
 extern "C" {

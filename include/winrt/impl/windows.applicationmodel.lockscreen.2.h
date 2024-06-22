@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_LockScreen_2_H
 #define WINRT_Windows_ApplicationModel_LockScreen_2_H
-#include "winrt/impl/Windows.ApplicationModel.LockScreen.1.h"
+#include "winrt/impl/windows.applicationmodel.lockscreen.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::LockScreen
 {
     struct __declspec(empty_bases) LockApplicationHost : winrt::Windows::ApplicationModel::LockScreen::ILockApplicationHost

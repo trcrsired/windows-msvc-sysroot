@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_WiFi_1_H
 #define WINRT_Windows_Devices_WiFi_1_H
-#include "winrt/impl/Windows.Devices.WiFi.0.h"
+#include "winrt/impl/windows.devices.wifi.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::WiFi
 {
     struct __declspec(empty_bases) IWiFiAdapter :

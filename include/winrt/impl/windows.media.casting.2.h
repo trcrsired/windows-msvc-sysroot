@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Casting_2_H
 #define WINRT_Windows_Media_Casting_2_H
-#include "winrt/impl/Windows.Devices.Enumeration.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Media.Casting.1.h"
+#include "winrt/impl/windows.devices.enumeration.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.media.casting.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Casting
 {
     struct __declspec(empty_bases) CastingConnection : winrt::Windows::Media::Casting::ICastingConnection

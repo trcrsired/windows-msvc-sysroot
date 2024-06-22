@@ -6,14 +6,14 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Authentication_Web_Provider_2_H
 #define WINRT_Windows_Security_Authentication_Web_Provider_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Security.Authentication.Web.Core.1.h"
-#include "winrt/impl/Windows.Security.Credentials.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.Web.Http.1.h"
-#include "winrt/impl/Windows.Security.Authentication.Web.Provider.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.security.authentication.web.core.1.h"
+#include "winrt/impl/windows.security.credentials.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.web.http.1.h"
+#include "winrt/impl/windows.security.authentication.web.provider.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Web::Provider
 {
     struct __declspec(empty_bases) WebAccountClientView : winrt::Windows::Security::Authentication::Web::Provider::IWebAccountClientView

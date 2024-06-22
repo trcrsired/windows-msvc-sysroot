@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_System_Diagnostics_TraceReporting_1_H
 #define WINRT_Windows_System_Diagnostics_TraceReporting_1_H
-#include "winrt/impl/Windows.System.Diagnostics.TraceReporting.0.h"
+#include "winrt/impl/windows.system.diagnostics.tracereporting.0.h"
 WINRT_EXPORT namespace winrt::Windows::System::Diagnostics::TraceReporting
 {
     struct __declspec(empty_bases) IPlatformDiagnosticActionsStatics :

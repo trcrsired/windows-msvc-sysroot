@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Web_Http_Diagnostics_2_H
 #define WINRT_Windows_Web_Http_Diagnostics_2_H
-#include "winrt/impl/Windows.System.Diagnostics.1.h"
-#include "winrt/impl/Windows.Web.Http.Diagnostics.1.h"
+#include "winrt/impl/windows.system.diagnostics.1.h"
+#include "winrt/impl/windows.web.http.diagnostics.1.h"
 WINRT_EXPORT namespace winrt::Windows::Web::Http::Diagnostics
 {
     struct __declspec(empty_bases) HttpDiagnosticProvider : winrt::Windows::Web::Http::Diagnostics::IHttpDiagnosticProvider

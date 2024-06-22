@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Foundation_Collections_1_H
 #define WINRT_Windows_Foundation_Collections_1_H
-#include "winrt/impl/Windows.Foundation.Collections.0.h"
+#include "winrt/impl/windows.foundation.collections.0.h"
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
     template <typename T>

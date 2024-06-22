@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Core_1_H
 #define WINRT_Windows_Media_Core_1_H
-#include "winrt/impl/Windows.Foundation.0.h"
-#include "winrt/impl/Windows.Media.0.h"
-#include "winrt/impl/Windows.Media.Effects.0.h"
-#include "winrt/impl/Windows.Media.Playback.0.h"
-#include "winrt/impl/Windows.Media.Core.0.h"
+#include "winrt/impl/windows.foundation.0.h"
+#include "winrt/impl/windows.media.0.h"
+#include "winrt/impl/windows.media.effects.0.h"
+#include "winrt/impl/windows.media.playback.0.h"
+#include "winrt/impl/windows.media.core.0.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Core
 {
     struct __declspec(empty_bases) IAudioStreamDescriptor :

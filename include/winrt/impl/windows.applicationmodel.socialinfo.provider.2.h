@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_SocialInfo_Provider_2_H
 #define WINRT_Windows_ApplicationModel_SocialInfo_Provider_2_H
-#include "winrt/impl/Windows.ApplicationModel.SocialInfo.1.h"
-#include "winrt/impl/Windows.ApplicationModel.SocialInfo.Provider.1.h"
+#include "winrt/impl/windows.applicationmodel.socialinfo.1.h"
+#include "winrt/impl/windows.applicationmodel.socialinfo.provider.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::SocialInfo::Provider
 {
     struct __declspec(empty_bases) SocialDashboardItemUpdater : winrt::Windows::ApplicationModel::SocialInfo::Provider::ISocialDashboardItemUpdater

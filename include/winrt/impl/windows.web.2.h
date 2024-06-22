@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Web_2_H
 #define WINRT_Windows_Web_2_H
-#include "winrt/impl/Windows.Web.1.h"
+#include "winrt/impl/windows.web.1.h"
 WINRT_EXPORT namespace winrt::Windows::Web
 {
     struct WebError

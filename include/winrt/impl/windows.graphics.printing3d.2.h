@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Printing3D_2_H
 #define WINRT_Windows_Graphics_Printing3D_2_H
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.Graphics.Printing3D.1.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.graphics.printing3d.1.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing3D
 {
     struct Print3DTaskSourceRequestedHandler : winrt::Windows::Foundation::IUnknown

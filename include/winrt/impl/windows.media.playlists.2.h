@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Playlists_2_H
 #define WINRT_Windows_Media_Playlists_2_H
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.Media.Playlists.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.media.playlists.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Playlists
 {
     struct __declspec(empty_bases) Playlist : winrt::Windows::Media::Playlists::IPlaylist

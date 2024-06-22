@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_System_RemoteSystems_1_H
 #define WINRT_Windows_System_RemoteSystems_1_H
-#include "winrt/impl/Windows.System.RemoteSystems.0.h"
+#include "winrt/impl/windows.system.remotesystems.0.h"
 WINRT_EXPORT namespace winrt::Windows::System::RemoteSystems
 {
     struct __declspec(empty_bases) IKnownRemoteSystemCapabilitiesStatics :

@@ -11,7 +11,7 @@ cpp_quote("#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)")
 import "oaidl.idl";
 import "ocidl.idl";
 
-cpp_quote( "#include <SpecStrings.h>" )
+cpp_quote( "#include <specstrings.h>" )
 
 #ifndef ALGIDDEF
 #define ALGIDDEF

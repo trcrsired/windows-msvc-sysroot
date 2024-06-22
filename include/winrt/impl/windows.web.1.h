@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Web_1_H
 #define WINRT_Windows_Web_1_H
-#include "winrt/impl/Windows.Web.0.h"
+#include "winrt/impl/windows.web.0.h"
 WINRT_EXPORT namespace winrt::Windows::Web
 {
     struct __declspec(empty_bases) IUriToStreamResolver :

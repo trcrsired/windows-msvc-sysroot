@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Composition_Diagnostics_1_H
 #define WINRT_Windows_UI_Composition_Diagnostics_1_H
-#include "winrt/impl/Windows.UI.Composition.Diagnostics.0.h"
+#include "winrt/impl/windows.ui.composition.diagnostics.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Composition::Diagnostics
 {
     struct __declspec(empty_bases) ICompositionDebugHeatMaps :

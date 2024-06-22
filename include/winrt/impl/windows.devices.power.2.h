@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Power_2_H
 #define WINRT_Windows_Devices_Power_2_H
-#include "winrt/impl/Windows.Devices.Power.1.h"
+#include "winrt/impl/windows.devices.power.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Power
 {
     struct __declspec(empty_bases) Battery : winrt::Windows::Devices::Power::IBattery

@@ -21,10 +21,10 @@
 #ifndef _ALLJOYN_ABOUTICONPROXY_C_H
 #define _ALLJOYN_ABOUTICONPROXY_C_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/AboutIcon.h>
-#include <alljoyn_c/BusAttachment.h>
-#include <alljoyn_c/Session.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/abouticon.h>
+#include <alljoyn_c/busattachment.h>
+#include <alljoyn_c/session.h>
 
 #ifdef __cplusplus
 extern "C" {

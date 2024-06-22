@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Enumeration_1_H
 #define WINRT_Windows_Devices_Enumeration_1_H
-#include "winrt/impl/Windows.Devices.Enumeration.0.h"
+#include "winrt/impl/windows.devices.enumeration.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Enumeration
 {
     struct __declspec(empty_bases) IDeviceAccessChangedEventArgs :

@@ -78,8 +78,8 @@ typedef interface IPrintDocumentPageSource IPrintDocumentPageSource;
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
-#include "Inspectable.h"
-#include "DocumentTarget.h"
+#include "inspectable.h"
+#include "documenttarget.h"
 
 #ifdef __cplusplus
 extern "C"{

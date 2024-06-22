@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Authentication_Identity_2_H
 #define WINRT_Windows_Security_Authentication_Identity_2_H
-#include "winrt/impl/Windows.Security.Authentication.Identity.1.h"
+#include "winrt/impl/windows.security.authentication.identity.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Identity
 {
     struct __declspec(empty_bases) EnterpriseKeyCredentialRegistrationInfo : winrt::Windows::Security::Authentication::Identity::IEnterpriseKeyCredentialRegistrationInfo

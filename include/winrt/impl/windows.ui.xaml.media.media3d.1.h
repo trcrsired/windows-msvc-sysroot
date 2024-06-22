@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Media_Media3D_1_H
 #define WINRT_Windows_UI_Xaml_Media_Media3D_1_H
-#include "winrt/impl/Windows.UI.Xaml.Media.Media3D.0.h"
+#include "winrt/impl/windows.ui.xaml.media.media3d.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Media::Media3D
 {
     struct __declspec(empty_bases) ICompositeTransform3D :

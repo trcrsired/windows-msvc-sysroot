@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_Web_Http_2_H
 #define WINRT_Windows_Web_Http_2_H
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.Web.Http.Filters.2.h"
-#include "winrt/impl/Windows.Web.Http.1.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.web.http.filters.2.h"
+#include "winrt/impl/windows.web.http.1.h"
 WINRT_EXPORT namespace winrt::Windows::Web::Http
 {
     struct HttpProgress

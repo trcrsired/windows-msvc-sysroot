@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Web_UI_1_H
 #define WINRT_Windows_Web_UI_1_H
-#include "winrt/impl/Windows.Web.UI.0.h"
+#include "winrt/impl/windows.web.ui.0.h"
 WINRT_EXPORT namespace winrt::Windows::Web::UI
 {
     struct __declspec(empty_bases) IWebViewControl :

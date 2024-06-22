@@ -56,7 +56,7 @@ typedef interface ICorrelationVectorInformation ICorrelationVectorInformation;
 
 /* header files for imported files */
 #include "unknwn.h"
-#include "Inspectable.h"
+#include "inspectable.h"
 
 #ifdef __cplusplus
 extern "C"{

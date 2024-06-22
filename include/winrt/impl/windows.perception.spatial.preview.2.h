@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Perception_Spatial_Preview_2_H
 #define WINRT_Windows_Perception_Spatial_Preview_2_H
-#include "winrt/impl/Windows.Foundation.Numerics.1.h"
-#include "winrt/impl/Windows.Perception.Spatial.1.h"
-#include "winrt/impl/Windows.Perception.Spatial.Preview.1.h"
+#include "winrt/impl/windows.foundation.numerics.1.h"
+#include "winrt/impl/windows.perception.spatial.1.h"
+#include "winrt/impl/windows.perception.spatial.preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::Perception::Spatial::Preview
 {
     struct __declspec(empty_bases) SpatialGraphInteropFrameOfReferencePreview : winrt::Windows::Perception::Spatial::Preview::ISpatialGraphInteropFrameOfReferencePreview

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Printing_PrintTicket_2_H
 #define WINRT_Windows_Graphics_Printing_PrintTicket_2_H
-#include "winrt/impl/Windows.Graphics.Printing.PrintTicket.1.h"
+#include "winrt/impl/windows.graphics.printing.printticket.1.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintTicket
 {
     struct __declspec(empty_bases) PrintTicketCapabilities : winrt::Windows::Graphics::Printing::PrintTicket::IPrintTicketCapabilities

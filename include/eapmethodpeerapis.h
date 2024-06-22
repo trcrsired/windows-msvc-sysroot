@@ -19,10 +19,10 @@
 
 #include "objbase.h"
 #include "msxml6.h"
-#include "EapMethodTypes.h"
+#include "eapmethodtypes.h"
 
 #ifndef EAPAUTHENTICATORACTIONDEFINE_H
-#include "EapAuthenticatorActionDefine.h"
+#include "eapauthenticatoractiondefine.h"
 #endif
 
 #ifndef _NGCTICKETCONTEXT_

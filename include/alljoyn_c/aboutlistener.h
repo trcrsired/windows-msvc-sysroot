@@ -20,11 +20,11 @@
 #ifndef _ALLJOYN_ABOUTLISTENER_C_H
 #define _ALLJOYN_ABOUTLISTENER_C_H
 
-#include <alljoyn_c/AjAPI.h>
-#include <alljoyn_c/MsgArg.h>
-#include <alljoyn_c/Session.h>
-#include <alljoyn_c/SessionListener.h>
-#include <alljoyn_c/SessionPortListener.h>
+#include <alljoyn_c/ajapi.h>
+#include <alljoyn_c/msgarg.h>
+#include <alljoyn_c/session.h>
+#include <alljoyn_c/sessionlistener.h>
+#include <alljoyn_c/sessionportlistener.h>
 
 #ifdef __cplusplus
 extern "C" {

@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_System_Diagnostics_2_H
 #define WINRT_Windows_System_Diagnostics_2_H
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.System.Diagnostics.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.system.diagnostics.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::Diagnostics
 {
     struct __declspec(empty_bases) DiagnosticActionResult : winrt::Windows::System::Diagnostics::IDiagnosticActionResult

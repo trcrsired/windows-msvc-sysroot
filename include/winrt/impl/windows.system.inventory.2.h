@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_System_Inventory_2_H
 #define WINRT_Windows_System_Inventory_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.System.Inventory.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.system.inventory.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::Inventory
 {
     struct __declspec(empty_bases) InstalledDesktopApp : winrt::Windows::System::Inventory::IInstalledDesktopApp,

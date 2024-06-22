@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_I2c_1_H
 #define WINRT_Windows_Devices_I2c_1_H
-#include "winrt/impl/Windows.Foundation.0.h"
-#include "winrt/impl/Windows.Devices.I2c.0.h"
+#include "winrt/impl/windows.foundation.0.h"
+#include "winrt/impl/windows.devices.i2c.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::I2c
 {
     struct __declspec(empty_bases) II2cConnectionSettings :

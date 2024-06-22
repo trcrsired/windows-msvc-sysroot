@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Holographic_2_H
 #define WINRT_Windows_ApplicationModel_Holographic_2_H
-#include "winrt/impl/Windows.ApplicationModel.Holographic.1.h"
+#include "winrt/impl/windows.applicationmodel.holographic.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Holographic
 {
     struct __declspec(empty_bases) HolographicKeyboard : winrt::Windows::ApplicationModel::Holographic::IHolographicKeyboard

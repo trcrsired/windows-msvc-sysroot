@@ -9,11 +9,11 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.UI.Input.Inking.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.UI.Input.Inking.2.h"
-#include "winrt/impl/Windows.UI.Input.Inking.Analysis.2.h"
+#include "winrt/windows.ui.input.inking.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.ui.input.inking.2.h"
+#include "winrt/impl/windows.ui.input.inking.analysis.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_UI_Input_Inking_Analysis_IInkAnalysisInkBullet<D>::RecognizedText() const

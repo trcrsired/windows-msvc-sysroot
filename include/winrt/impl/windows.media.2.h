@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_Media_2_H
 #define WINRT_Windows_Media_2_H
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Graphics.DirectX.2.h"
-#include "winrt/impl/Windows.Graphics.DirectX.Direct3D11.2.h"
-#include "winrt/impl/Windows.Graphics.Imaging.2.h"
-#include "winrt/impl/Windows.Media.1.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.graphics.directx.2.h"
+#include "winrt/impl/windows.graphics.directx.direct3d11.2.h"
+#include "winrt/impl/windows.graphics.imaging.2.h"
+#include "winrt/impl/windows.media.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media
 {
     struct MediaTimeRange

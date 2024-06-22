@@ -9,14 +9,14 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Web.Http.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Globalization.2.h"
-#include "winrt/impl/Windows.Networking.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.Web.Http.2.h"
-#include "winrt/impl/Windows.Web.Http.Headers.2.h"
+#include "winrt/windows.web.http.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.globalization.2.h"
+#include "winrt/impl/windows.networking.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.web.http.2.h"
+#include "winrt/impl/windows.web.http.headers.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Foundation::IReference<winrt::Windows::Foundation::TimeSpan>) consume_Windows_Web_Http_Headers_IHttpCacheDirectiveHeaderValueCollection<D>::MaxAge() const

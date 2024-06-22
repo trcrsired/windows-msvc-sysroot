@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Resources_2_H
 #define WINRT_Windows_UI_Xaml_Resources_2_H
-#include "winrt/impl/Windows.UI.Xaml.Resources.1.h"
+#include "winrt/impl/windows.ui.xaml.resources.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Resources
 {
     struct __declspec(empty_bases) CustomXamlResourceLoader : winrt::Windows::UI::Xaml::Resources::ICustomXamlResourceLoader,

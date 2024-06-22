@@ -6,12 +6,12 @@
 #pragma once
 #ifndef WINRT_Windows_Perception_Spatial_2_H
 #define WINRT_Windows_Perception_Spatial_2_H
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Foundation.Numerics.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.System.RemoteSystems.2.h"
-#include "winrt/impl/Windows.Perception.Spatial.1.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.foundation.numerics.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.system.remotesystems.2.h"
+#include "winrt/impl/windows.perception.spatial.1.h"
 WINRT_EXPORT namespace winrt::Windows::Perception::Spatial
 {
     struct SpatialBoundingBox

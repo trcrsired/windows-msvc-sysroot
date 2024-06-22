@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_DataTransfer_DragDrop_2_H
 #define WINRT_Windows_ApplicationModel_DataTransfer_DragDrop_2_H
-#include "winrt/impl/Windows.ApplicationModel.DataTransfer.DragDrop.1.h"
+#include "winrt/impl/windows.applicationmodel.datatransfer.dragdrop.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::DataTransfer::DragDrop
 {
 }

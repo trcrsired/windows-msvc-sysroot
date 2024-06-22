@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Core_Preview_Communications_2_H
 #define WINRT_Windows_UI_Core_Preview_Communications_2_H
-#include "winrt/impl/Windows.UI.Core.Preview.Communications.1.h"
+#include "winrt/impl/windows.ui.core.preview.communications.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Core::Preview::Communications
 {
     struct __declspec(empty_bases) PreviewTeamCleanupRequestedEventArgs : winrt::Windows::UI::Core::Preview::Communications::IPreviewTeamCleanupRequestedEventArgs

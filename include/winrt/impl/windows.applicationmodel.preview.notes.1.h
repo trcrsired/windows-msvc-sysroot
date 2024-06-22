@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Preview_Notes_1_H
 #define WINRT_Windows_ApplicationModel_Preview_Notes_1_H
-#include "winrt/impl/Windows.ApplicationModel.Preview.Notes.0.h"
+#include "winrt/impl/windows.applicationmodel.preview.notes.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Preview::Notes
 {
     struct __declspec(empty_bases) INotePlacementChangedPreviewEventArgs :

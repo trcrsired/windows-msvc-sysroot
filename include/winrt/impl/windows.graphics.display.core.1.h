@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Display_Core_1_H
 #define WINRT_Windows_Graphics_Display_Core_1_H
-#include "winrt/impl/Windows.Graphics.Display.Core.0.h"
+#include "winrt/impl/windows.graphics.display.core.0.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Display::Core
 {
     struct __declspec(empty_bases) IHdmiDisplayInformation :

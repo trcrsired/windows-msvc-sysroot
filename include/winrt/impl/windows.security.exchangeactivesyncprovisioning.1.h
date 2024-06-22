@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Security_ExchangeActiveSyncProvisioning_1_H
 #define WINRT_Windows_Security_ExchangeActiveSyncProvisioning_1_H
-#include "winrt/impl/Windows.Security.ExchangeActiveSyncProvisioning.0.h"
+#include "winrt/impl/windows.security.exchangeactivesyncprovisioning.0.h"
 WINRT_EXPORT namespace winrt::Windows::Security::ExchangeActiveSyncProvisioning
 {
     struct __declspec(empty_bases) IEasClientDeviceInformation :

@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.ApplicationModel.UserActivities.h"
-#include "winrt/impl/Windows.ApplicationModel.UserActivities.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.ApplicationModel.UserActivities.Core.2.h"
+#include "winrt/windows.applicationmodel.useractivities.h"
+#include "winrt/impl/windows.applicationmodel.useractivities.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.applicationmodel.useractivities.core.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::ApplicationModel::UserActivities::UserActivitySession) consume_Windows_ApplicationModel_UserActivities_Core_ICoreUserActivityManagerStatics<D>::CreateUserActivitySessionInBackground(winrt::Windows::ApplicationModel::UserActivities::UserActivity const& activity) const

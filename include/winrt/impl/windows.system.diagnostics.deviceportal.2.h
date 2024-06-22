@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_System_Diagnostics_DevicePortal_2_H
 #define WINRT_Windows_System_Diagnostics_DevicePortal_2_H
-#include "winrt/impl/Windows.ApplicationModel.AppService.1.h"
-#include "winrt/impl/Windows.System.Diagnostics.DevicePortal.1.h"
+#include "winrt/impl/windows.applicationmodel.appservice.1.h"
+#include "winrt/impl/windows.system.diagnostics.deviceportal.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::Diagnostics::DevicePortal
 {
     struct __declspec(empty_bases) DevicePortalConnection : winrt::Windows::System::Diagnostics::DevicePortal::IDevicePortalConnection,

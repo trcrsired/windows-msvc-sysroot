@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_UserDataAccounts_Provider_2_H
 #define WINRT_Windows_ApplicationModel_UserDataAccounts_Provider_2_H
-#include "winrt/impl/Windows.ApplicationModel.UserDataAccounts.Provider.1.h"
+#include "winrt/impl/windows.applicationmodel.userdataaccounts.provider.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserDataAccounts::Provider
 {
     struct __declspec(empty_bases) UserDataAccountPartnerAccountInfo : winrt::Windows::ApplicationModel::UserDataAccounts::Provider::IUserDataAccountPartnerAccountInfo

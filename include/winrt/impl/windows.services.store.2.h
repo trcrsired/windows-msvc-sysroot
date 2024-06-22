@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Services_Store_2_H
 #define WINRT_Windows_Services_Store_2_H
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.System.2.h"
-#include "winrt/impl/Windows.Services.Store.1.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.system.2.h"
+#include "winrt/impl/windows.services.store.1.h"
 WINRT_EXPORT namespace winrt::Windows::Services::Store
 {
     struct StorePackageUpdateStatus

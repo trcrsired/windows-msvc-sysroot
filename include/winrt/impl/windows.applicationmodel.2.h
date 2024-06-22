@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_2_H
 #define WINRT_Windows_ApplicationModel_2_H
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.ApplicationModel.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.applicationmodel.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel
 {
     struct PackageInstallProgress

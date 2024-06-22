@@ -9,11 +9,11 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Devices.h"
-#include "winrt/impl/Windows.Devices.Enumeration.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.Devices.Midi.2.h"
+#include "winrt/windows.devices.h"
+#include "winrt/impl/windows.devices.enumeration.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.devices.midi.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(uint8_t) consume_Windows_Devices_Midi_IMidiChannelPressureMessage<D>::Channel() const

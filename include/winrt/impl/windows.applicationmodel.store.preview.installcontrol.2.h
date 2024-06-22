@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Store_Preview_InstallControl_2_H
 #define WINRT_Windows_ApplicationModel_Store_Preview_InstallControl_2_H
-#include "winrt/impl/Windows.ApplicationModel.Store.Preview.InstallControl.1.h"
+#include "winrt/impl/windows.applicationmodel.store.preview.installcontrol.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Store::Preview::InstallControl
 {
     struct __declspec(empty_bases) AppInstallItem : winrt::Windows::ApplicationModel::Store::Preview::InstallControl::IAppInstallItem,

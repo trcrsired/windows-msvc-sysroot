@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_System_Implementation_FileExplorer_1_H
 #define WINRT_Windows_System_Implementation_FileExplorer_1_H
-#include "winrt/impl/Windows.System.Implementation.FileExplorer.0.h"
+#include "winrt/impl/windows.system.implementation.fileexplorer.0.h"
 WINRT_EXPORT namespace winrt::Windows::System::Implementation::FileExplorer
 {
     struct __declspec(empty_bases) ISysStorageProviderEventReceivedEventArgs :

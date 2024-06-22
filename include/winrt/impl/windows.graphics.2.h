@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_2_H
 #define WINRT_Windows_Graphics_2_H
-#include "winrt/impl/Windows.Graphics.1.h"
+#include "winrt/impl/windows.graphics.1.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics
 {
     struct DisplayAdapterId

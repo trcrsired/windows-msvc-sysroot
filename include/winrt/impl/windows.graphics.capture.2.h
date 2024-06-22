@@ -6,13 +6,13 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Capture_2_H
 #define WINRT_Windows_Graphics_Capture_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Graphics.1.h"
-#include "winrt/impl/Windows.Graphics.DirectX.1.h"
-#include "winrt/impl/Windows.Graphics.DirectX.Direct3D11.1.h"
-#include "winrt/impl/Windows.UI.1.h"
-#include "winrt/impl/Windows.UI.Composition.1.h"
-#include "winrt/impl/Windows.Graphics.Capture.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.graphics.1.h"
+#include "winrt/impl/windows.graphics.directx.1.h"
+#include "winrt/impl/windows.graphics.directx.direct3d11.1.h"
+#include "winrt/impl/windows.ui.1.h"
+#include "winrt/impl/windows.ui.composition.1.h"
+#include "winrt/impl/windows.graphics.capture.1.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Capture
 {
     struct __declspec(empty_bases) Direct3D11CaptureFrame : winrt::Windows::Graphics::Capture::IDirect3D11CaptureFrame,

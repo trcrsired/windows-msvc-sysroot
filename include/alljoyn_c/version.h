@@ -21,7 +21,7 @@
 #ifndef _ALLJOYN_C_VERSION_H
 #define _ALLJOYN_C_VERSION_H
 
-#include <alljoyn_c/AjAPI.h>
+#include <alljoyn_c/ajapi.h>
 
 #ifdef __cplusplus
 extern "C" {

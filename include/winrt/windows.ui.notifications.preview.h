@@ -9,9 +9,9 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.UI.Notifications.h"
-#include "winrt/impl/Windows.UI.2.h"
-#include "winrt/impl/Windows.UI.Notifications.Preview.2.h"
+#include "winrt/windows.ui.notifications.h"
+#include "winrt/impl/windows.ui.2.h"
+#include "winrt/impl/windows.ui.notifications.preview.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_UI_Notifications_Preview_IToastOcclusionManagerPreviewStatics<D>::SetToastWindowMargin(winrt::Windows::UI::WindowId const& appWindowId, double margin) const

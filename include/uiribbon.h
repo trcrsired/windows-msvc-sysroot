@@ -184,7 +184,7 @@ extern "C"{
 #pragma warning(disable:4001) 
 #pragma once
 #pragma warning(pop)
-#include <UIRibbonKeyDef.h>
+#include <uiribbonkeydef.h>
 DEFINE_UIPROPERTYKEY(UI_PKEY_Enabled,                      VT_BOOL,                1); 
 DEFINE_UIPROPERTYKEY(UI_PKEY_LabelDescription,             VT_LPWSTR,              2); 
 DEFINE_UIPROPERTYKEY(UI_PKEY_Keytip,                       VT_LPWSTR,              3); 

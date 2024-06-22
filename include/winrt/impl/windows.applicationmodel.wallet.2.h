@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Wallet_2_H
 #define WINRT_Windows_ApplicationModel_Wallet_2_H
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Wallet.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.applicationmodel.wallet.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Wallet
 {
     struct __declspec(empty_bases) WalletBarcode : winrt::Windows::ApplicationModel::Wallet::IWalletBarcode

@@ -100,18 +100,18 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "AsyncInfo.h"
-#include "EventToken.h"
+#include "asyncinfo.h"
+#include "eventtoken.h"
 #include "windowscontracts.h"
-#include "Windows.Foundation.h"
-#include "Windows.Graphics.DirectX.Direct3D11.h"
-#include "Windows.Media.Core.h"
-#include "Windows.Media.Effects.h"
-#include "Windows.Media.MediaProperties.h"
-#include "Windows.Media.Transcoding.h"
-#include "Windows.Storage.h"
-#include "Windows.Storage.Streams.h"
-#include "Windows.UI.h"
+#include "windows.foundation.h"
+#include "windows.graphics.directx.direct3d11.h"
+#include "windows.media.core.h"
+#include "windows.media.effects.h"
+#include "windows.media.mediaproperties.h"
+#include "windows.media.transcoding.h"
+#include "windows.storage.h"
+#include "windows.storage.streams.h"
+#include "windows.ui.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 

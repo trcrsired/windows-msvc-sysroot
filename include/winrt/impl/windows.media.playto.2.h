@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Media_PlayTo_2_H
 #define WINRT_Windows_Media_PlayTo_2_H
-#include "winrt/impl/Windows.Media.PlayTo.1.h"
+#include "winrt/impl/windows.media.playto.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::PlayTo
 {
     struct __declspec(empty_bases) CurrentTimeChangeRequestedEventArgs : winrt::Windows::Media::PlayTo::ICurrentTimeChangeRequestedEventArgs

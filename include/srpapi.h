@@ -17,7 +17,7 @@
 #include <ntrtl.h>
 #include <nturtl.h>
 #include <apiquery.h>
-#include <Windows.h>
+#include <windows.h>
 #include <nlsp.h>
 #include <nls.h>
 #include <setupapi.h>

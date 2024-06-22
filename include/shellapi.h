@@ -19,7 +19,7 @@
 #ifndef _INC_SHELLAPI
 #define _INC_SHELLAPI
 
-#include <SpecStrings.h>
+#include <specstrings.h>
 
 //
 // Define API decoration for direct importing of DLL references.

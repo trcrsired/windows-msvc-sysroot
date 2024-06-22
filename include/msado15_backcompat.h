@@ -19,7 +19,7 @@
 //
 //-----------------------------------------------------------------------------
 
-#include "adoint_Backcompat.h"
+#include "adoint_backcompat.h"
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
 #pragma endregion

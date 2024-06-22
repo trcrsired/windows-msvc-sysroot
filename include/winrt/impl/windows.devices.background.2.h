@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Background_2_H
 #define WINRT_Windows_Devices_Background_2_H
-#include "winrt/impl/Windows.Devices.Background.1.h"
+#include "winrt/impl/windows.devices.background.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Background
 {
     struct __declspec(empty_bases) DeviceServicingDetails : winrt::Windows::Devices::Background::IDeviceServicingDetails

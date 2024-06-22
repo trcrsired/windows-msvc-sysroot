@@ -9,15 +9,15 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.UI.Xaml.Media.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.UI.2.h"
-#include "winrt/impl/Windows.UI.Composition.2.h"
-#include "winrt/impl/Windows.UI.Xaml.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Controls.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Controls.Primitives.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Media.Animation.2.h"
+#include "winrt/windows.ui.xaml.media.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.ui.2.h"
+#include "winrt/impl/windows.ui.composition.2.h"
+#include "winrt/impl/windows.ui.xaml.2.h"
+#include "winrt/impl/windows.ui.xaml.controls.2.h"
+#include "winrt/impl/windows.ui.xaml.controls.primitives.2.h"
+#include "winrt/impl/windows.ui.xaml.media.animation.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(double) consume_Windows_UI_Xaml_Media_Animation_IBackEase<D>::Amplitude() const

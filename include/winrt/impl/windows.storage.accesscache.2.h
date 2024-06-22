@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Storage_AccessCache_2_H
 #define WINRT_Windows_Storage_AccessCache_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.Storage.AccessCache.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.storage.accesscache.1.h"
 WINRT_EXPORT namespace winrt::Windows::Storage::AccessCache
 {
     struct AccessListEntry

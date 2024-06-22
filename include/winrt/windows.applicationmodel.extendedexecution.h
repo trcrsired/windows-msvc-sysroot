@@ -9,9 +9,9 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.ApplicationModel.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.ApplicationModel.ExtendedExecution.2.h"
+#include "winrt/windows.applicationmodel.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.applicationmodel.extendedexecution.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::ApplicationModel::ExtendedExecution::ExtendedExecutionRevokedReason) consume_Windows_ApplicationModel_ExtendedExecution_IExtendedExecutionRevokedEventArgs<D>::Reason() const

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Control_2_H
 #define WINRT_Windows_Media_Control_2_H
-#include "winrt/impl/Windows.Media.Control.1.h"
+#include "winrt/impl/windows.media.control.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Control
 {
     struct __declspec(empty_bases) CurrentSessionChangedEventArgs : winrt::Windows::Media::Control::ICurrentSessionChangedEventArgs

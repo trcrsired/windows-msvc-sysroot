@@ -9,12 +9,12 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/impl/Windows.Devices.Adc.Provider.2.h"
-#include "winrt/impl/Windows.Devices.Gpio.Provider.2.h"
-#include "winrt/impl/Windows.Devices.I2c.Provider.2.h"
-#include "winrt/impl/Windows.Devices.Pwm.Provider.2.h"
-#include "winrt/impl/Windows.Devices.Spi.Provider.2.h"
-#include "winrt/impl/Windows.Devices.2.h"
+#include "winrt/impl/windows.devices.adc.provider.2.h"
+#include "winrt/impl/windows.devices.gpio.provider.2.h"
+#include "winrt/impl/windows.devices.i2c.provider.2.h"
+#include "winrt/impl/windows.devices.pwm.provider.2.h"
+#include "winrt/impl/windows.devices.spi.provider.2.h"
+#include "winrt/impl/windows.devices.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Devices::Adc::Provider::IAdcControllerProvider) consume_Windows_Devices_ILowLevelDevicesAggregateProvider<D>::AdcControllerProvider() const

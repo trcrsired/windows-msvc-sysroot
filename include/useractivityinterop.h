@@ -70,7 +70,7 @@ typedef interface IUserActivityRequestManagerInterop IUserActivityRequestManager
 
 /* header files for imported files */
 #include "oaidl.h"
-#include "Inspectable.h"
+#include "inspectable.h"
 
 #ifdef __cplusplus
 extern "C"{

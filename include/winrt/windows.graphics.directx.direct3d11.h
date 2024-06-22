@@ -9,8 +9,8 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Graphics.DirectX.h"
-#include "winrt/impl/Windows.Graphics.DirectX.Direct3D11.2.h"
+#include "winrt/windows.graphics.directx.h"
+#include "winrt/impl/windows.graphics.directx.direct3d11.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Graphics_DirectX_Direct3D11_IDirect3DDevice<D>::Trim() const

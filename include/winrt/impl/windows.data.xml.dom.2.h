@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_Data_Xml_Dom_2_H
 #define WINRT_Windows_Data_Xml_Dom_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.Data.Xml.Dom.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.data.xml.dom.1.h"
 WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
 {
     struct __declspec(empty_bases) DtdEntity : winrt::Windows::Data::Xml::Dom::IDtdEntity

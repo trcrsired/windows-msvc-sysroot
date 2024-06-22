@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Capture_Core_1_H
 #define WINRT_Windows_Media_Capture_Core_1_H
-#include "winrt/impl/Windows.Media.Capture.Core.0.h"
+#include "winrt/impl/windows.media.capture.core.0.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Capture::Core
 {
     struct __declspec(empty_bases) IVariablePhotoCapturedEventArgs :

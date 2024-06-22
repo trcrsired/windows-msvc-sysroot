@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Effects_2_H
 #define WINRT_Windows_Media_Effects_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Media.1.h"
-#include "winrt/impl/Windows.Media.Capture.1.h"
-#include "winrt/impl/Windows.Media.Render.1.h"
-#include "winrt/impl/Windows.Media.Effects.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.media.1.h"
+#include "winrt/impl/windows.media.capture.1.h"
+#include "winrt/impl/windows.media.render.1.h"
+#include "winrt/impl/windows.media.effects.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Effects
 {
     struct __declspec(empty_bases) AudioCaptureEffectsManager : winrt::Windows::Media::Effects::IAudioCaptureEffectsManager

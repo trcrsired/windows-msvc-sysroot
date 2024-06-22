@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Services_TargetedContent_2_H
 #define WINRT_Windows_Services_TargetedContent_2_H
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Services.TargetedContent.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.services.targetedcontent.1.h"
 WINRT_EXPORT namespace winrt::Windows::Services::TargetedContent
 {
     struct __declspec(empty_bases) TargetedContentAction : winrt::Windows::Services::TargetedContent::ITargetedContentAction

@@ -9,15 +9,15 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.220110.5"
-#include "winrt/Windows.Graphics.Printing.h"
-#include "winrt/impl/Windows.ApplicationModel.Activation.2.h"
-#include "winrt/impl/Windows.Devices.Printers.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Graphics.Printing.PrintTicket.2.h"
-#include "winrt/impl/Windows.Storage.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.Graphics.Printing.Workflow.2.h"
+#include "winrt/windows.graphics.printing.h"
+#include "winrt/impl/windows.applicationmodel.activation.2.h"
+#include "winrt/impl/windows.devices.printers.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.graphics.printing.printticket.2.h"
+#include "winrt/impl/windows.storage.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.graphics.printing.workflow.2.h"
 namespace winrt::impl
 {
     template <typename D> WINRT_IMPL_AUTO(winrt::event_token) consume_Windows_Graphics_Printing_Workflow_IPrintWorkflowBackgroundSession<D>::SetupRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::PrintWorkflowBackgroundSetupRequestedEventArgs> const& setupEventHandler) const

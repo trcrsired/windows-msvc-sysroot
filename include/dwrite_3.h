@@ -12,7 +12,7 @@
 
 #pragma once
 
-#include <DWrite_2.h>
+#include <dwrite_2.h>
 
 interface IDWriteFontFaceReference;
 interface IDWriteFont3;

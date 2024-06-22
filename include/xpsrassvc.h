@@ -84,7 +84,7 @@ typedef interface IXpsRasterizationFactory2 IXpsRasterizationFactory2;
 
 /* header files for imported files */
 #include "wincodec.h"
-#include "XpsObjectModel.h"
+#include "xpsobjectmodel.h"
 
 #ifdef __cplusplus
 extern "C"{

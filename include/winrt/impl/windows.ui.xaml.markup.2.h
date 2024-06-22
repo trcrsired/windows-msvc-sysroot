@@ -6,12 +6,12 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Markup_2_H
 #define WINRT_Windows_UI_Xaml_Markup_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.UI.Xaml.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Interop.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Markup.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.ui.xaml.1.h"
+#include "winrt/impl/windows.ui.xaml.interop.1.h"
+#include "winrt/impl/windows.ui.xaml.markup.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Markup
 {
     struct XamlBinaryWriterErrorInformation

@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Resources_2_H
 #define WINRT_Windows_ApplicationModel_Resources_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.UI.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Resources.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.ui.1.h"
+#include "winrt/impl/windows.applicationmodel.resources.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Resources
 {
     struct __declspec(empty_bases) ResourceLoader : winrt::Windows::ApplicationModel::Resources::IResourceLoader,

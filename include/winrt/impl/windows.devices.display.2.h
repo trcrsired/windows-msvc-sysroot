@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Display_2_H
 #define WINRT_Windows_Devices_Display_2_H
-#include "winrt/impl/Windows.Devices.Display.1.h"
+#include "winrt/impl/windows.devices.display.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Display
 {
     struct __declspec(empty_bases) DisplayMonitor : winrt::Windows::Devices::Display::IDisplayMonitor,

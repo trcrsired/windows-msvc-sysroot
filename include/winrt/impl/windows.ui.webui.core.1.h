@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_WebUI_Core_1_H
 #define WINRT_Windows_UI_WebUI_Core_1_H
-#include "winrt/impl/Windows.UI.WebUI.Core.0.h"
+#include "winrt/impl/windows.ui.webui.core.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::WebUI::Core
 {
     struct __declspec(empty_bases) IWebUICommandBar :

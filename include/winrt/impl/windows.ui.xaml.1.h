@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_1_H
 #define WINRT_Windows_UI_Xaml_1_H
-#include "winrt/impl/Windows.UI.Xaml.0.h"
+#include "winrt/impl/windows.ui.xaml.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml
 {
     struct __declspec(empty_bases) IAdaptiveTrigger :

@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Globalization_Collation_2_H
 #define WINRT_Windows_Globalization_Collation_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Globalization.Collation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.globalization.collation.1.h"
 WINRT_EXPORT namespace winrt::Windows::Globalization::Collation
 {
     struct __declspec(empty_bases) CharacterGrouping : winrt::Windows::Globalization::Collation::ICharacterGrouping

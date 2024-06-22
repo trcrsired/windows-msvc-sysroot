@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Bluetooth_Advertisement_2_H
 #define WINRT_Windows_Devices_Bluetooth_Advertisement_2_H
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Devices.Bluetooth.Advertisement.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.devices.bluetooth.advertisement.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Bluetooth::Advertisement
 {
     struct __declspec(empty_bases) BluetoothLEAdvertisement : winrt::Windows::Devices::Bluetooth::Advertisement::IBluetoothLEAdvertisement

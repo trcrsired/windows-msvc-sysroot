@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Streaming_Adaptive_2_H
 #define WINRT_Windows_Media_Streaming_Adaptive_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Media.Core.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Web.Http.1.h"
-#include "winrt/impl/Windows.Media.Streaming.Adaptive.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.media.core.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.web.http.1.h"
+#include "winrt/impl/windows.media.streaming.adaptive.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Streaming::Adaptive
 {
     struct __declspec(empty_bases) AdaptiveMediaSource : winrt::Windows::Media::Streaming::Adaptive::IAdaptiveMediaSource,

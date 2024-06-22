@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_Data_Pdf_2_H
 #define WINRT_Windows_Data_Pdf_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Data.Pdf.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.data.pdf.1.h"
 WINRT_EXPORT namespace winrt::Windows::Data::Pdf
 {
     struct __declspec(empty_bases) PdfDocument : winrt::Windows::Data::Pdf::IPdfDocument

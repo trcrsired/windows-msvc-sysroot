@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Authentication_OnlineId_2_H
 #define WINRT_Windows_Security_Authentication_OnlineId_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.Security.Authentication.OnlineId.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.security.authentication.onlineid.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::OnlineId
 {
     struct __declspec(empty_bases) OnlineIdAuthenticator : winrt::Windows::Security::Authentication::OnlineId::IOnlineIdAuthenticator

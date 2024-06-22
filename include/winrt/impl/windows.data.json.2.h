@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Data_Json_2_H
 #define WINRT_Windows_Data_Json_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Data.Json.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.data.json.1.h"
 WINRT_EXPORT namespace winrt::Windows::Data::Json
 {
     struct __declspec(empty_bases) JsonArray : winrt::Windows::Data::Json::IJsonArray,

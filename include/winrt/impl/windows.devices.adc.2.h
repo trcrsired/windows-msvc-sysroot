@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Adc_2_H
 #define WINRT_Windows_Devices_Adc_2_H
-#include "winrt/impl/Windows.Devices.Adc.Provider.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Devices.Adc.1.h"
+#include "winrt/impl/windows.devices.adc.provider.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.devices.adc.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Adc
 {
     struct __declspec(empty_bases) AdcChannel : winrt::Windows::Devices::Adc::IAdcChannel
