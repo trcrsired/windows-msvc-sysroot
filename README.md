@@ -1,6 +1,6 @@
 # windows-msvc-sysroot
 
-This repository provides Windows headers and libraries with a standardized sysroot format, similar to other triplets, to facilitate cross-compilation and Canadian cross-compilation.
+This repository provides Windows headers and libraries with a standardized sysroot format, similar to other triplets, to facilitate cross-compilation and canadian-compilation.
 
 ## Planned Enhancements
 I intend to modify the Clang frontend to support the --sysroot= option, enabling it to locate this sysroot using path finding as demonstrated below.
