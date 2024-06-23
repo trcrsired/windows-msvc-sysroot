@@ -3,6 +3,10 @@
 // Copyright (c) Microsoft Corporation.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC system_header
+#endif
+
 #ifndef _LIMITS_
 #define _LIMITS_
 #include <yvals_core.h>
