@@ -1,6 +1,6 @@
 # Windows Microsoft Visual C++ Sysroot
 
-This repository provides Windows headers and libraries with a standardized sysroot format, similar to other triplets, to facilitate cross-compilation and canadian-compilation.
+This repository provides Windows headers and libraries with a standardized sysroot rule as what GCC and clang do, similar to other triplets, to facilitate cross-compilation and canadian-compilation.
 
 ## Planned Enhancements to LLVM/clang
 I intend to modify the clang frontend to support the ```--sysroot=``` option, enabling it to locate this sysroot using path finding as demonstrated below.
