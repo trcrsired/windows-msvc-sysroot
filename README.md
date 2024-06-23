@@ -1,4 +1,4 @@
-# windows-msvc-sysroot
+# Windows Microsoft Visual C++ Sysroot
 
 This repository provides Windows headers and libraries with a standardized sysroot format, similar to other triplets, to facilitate cross-compilation and canadian-compilation.
 
