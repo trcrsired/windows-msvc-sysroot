@@ -1,4 +1,4 @@
-# Windows Microsoft Visual C++ Sysroot
+# Windows Sysroot
 
 This repository provides Windows headers and libraries with a standardized sysroot rule as what GCC and clang do, similar to other triplets, to facilitate cross-compilation and canadian-compilation.
 
