@@ -101,7 +101,11 @@ _CRT_BEGIN_C_HEADER
     #ifdef _KERNEL_MODE
         #define _HAS_EXCEPTIONS 0
     #else
-        #define _HAS_EXCEPTIONS 1
+        #if defined(__cplusplus) && defined(__cpp_exceptions)
+            #define _HAS_EXCEPTIONS 1
+        #else
+            #define _HAS_EXCEPTIONS 0
+        #endif
     #endif /* _KERNEL_MODE */
 #endif /* _HAS_EXCEPTIONS */
 
