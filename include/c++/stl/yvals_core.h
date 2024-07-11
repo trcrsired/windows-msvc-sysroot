@@ -313,6 +313,7 @@
 // P2770R0 Stashing Stashing Iterators For Proper Flattening
 // P2905R2 Runtime Format Strings
 // P2909R4 Fix Formatting Of Code Units As Integers
+// P2997R1 Removing The Common Reference Requirement From The Indirectly Invocable Concepts
 
 // _HAS_CXX20 indirectly controls:
 // P0619R4 Removing C++17-Deprecated Features
@@ -897,8 +898,8 @@ _EMIT_STL_ERROR(STL1002, "Unexpected compiler version, expected CUDA 12.4 or new
 _EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
 #endif // ^^^ old Clang ^^^
 #elif defined(_MSC_VER)
-#if _MSC_VER < 1940 // Coarse-grained, not inspecting _MSC_FULL_VER
-_EMIT_STL_ERROR(STL1001, "Unexpected compiler version, expected MSVC 19.40 or newer.");
+#if _MSC_VER < 1941 // Coarse-grained, not inspecting _MSC_FULL_VER
+_EMIT_STL_ERROR(STL1001, "Unexpected compiler version, expected MSVC 19.41 or newer.");
 #endif // ^^^ old MSVC ^^^
 #else // vvv other compilers vvv
 // not attempting to detect other compilers
@@ -1837,7 +1838,8 @@ _EMIT_STL_ERROR(STL1004, "C++98 unexpected() is incompatible with C++23 unexpect
 #endif
 
 #if _HAS_CXX23
-#define __cpp_lib_ranges 202302L // P2609R3 Relaxing Ranges Just A Smidge
+// P2997R1 Removing The Common Reference Requirement From The Indirectly Invocable Concepts
+#define __cpp_lib_ranges 202406L
 #elif _HAS_CXX20
 #define __cpp_lib_ranges 202110L // P2415R2 What Is A view?
 #endif
