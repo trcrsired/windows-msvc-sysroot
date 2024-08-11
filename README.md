@@ -1,6 +1,9 @@
 # Windows MSVC Sysroot
 
-This repository provides Windows MSVC headers and libraries with a standardized sysroot rule as what GCC and clang do, similar to other triplets, to facilitate cross-compilation and canadian-compilation. Some people just prefer to use ```${ARCH}-windows-msvc``` triplet over ```${ARCH}-windows-gnu``` triplet, so I decide to provide one by myself.
+This repository provides Windows MSVC headers and libraries with a standardized sysroot rule as what GCC and clang do, similar to other triplets, to facilitate cross-compilation and canadian-compilation. Some people prefer to use ```${ARCH}-windows-msvc``` triplet over ```${ARCH}-windows-gnu``` triplet, so I decide to provide one by myself.
+
+## Why not /winsysroot?
+clang's winsysroot is pretty useless since it does not follow the rule of other targets are doing. That is a massive burden for libraries to maintain. Plus the file structures are overcomplicated to the point of useless.
 
 ## Planned Enhancements to LLVM/clang
 I intend to modify the clang frontend to support the ```--sysroot=``` option, enabling it to locate this sysroot using path finding as demonstrated below.
