@@ -8,7 +8,7 @@
       "is-std-library": true,
       "local-arguments": {
         "system-include-directories": [
-          "../../share/libc++/v1"
+          "../../share/x86_64-unknown-windows-msvc/libc++/v1"
         ]
       }
     },
