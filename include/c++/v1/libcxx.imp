@@ -438,6 +438,7 @@
   { include: [ "<__fwd/string_view.h>", "private", "<string_view>", "public" ] },
   { include: [ "<__fwd/subrange.h>", "private", "<ranges>", "public" ] },
   { include: [ "<__fwd/tuple.h>", "private", "<tuple>", "public" ] },
+  { include: [ "<__fwd/variant.h>", "private", "<variant>", "public" ] },
   { include: [ "<__fwd/vector.h>", "private", "<vector>", "public" ] },
   { include: [ "<__hash_table>", "private", "<unordered_map>", "public" ] },
   { include: [ "<__hash_table>", "private", "<unordered_set>", "public" ] },
