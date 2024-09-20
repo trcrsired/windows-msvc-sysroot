@@ -553,6 +553,7 @@
   { include: [ "<__memory/temporary_buffer.h>", "private", "<memory>", "public" ] },
   { include: [ "<__memory/uninitialized_algorithms.h>", "private", "<memory>", "public" ] },
   { include: [ "<__memory/unique_ptr.h>", "private", "<memory>", "public" ] },
+  { include: [ "<__memory/unique_temporary_buffer.h>", "private", "<memory>", "public" ] },
   { include: [ "<__memory/uses_allocator.h>", "private", "<memory>", "public" ] },
   { include: [ "<__memory/uses_allocator_construction.h>", "private", "<memory>", "public" ] },
   { include: [ "<__memory/voidify.h>", "private", "<memory>", "public" ] },
