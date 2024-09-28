@@ -1,11 +1,11 @@
 # Windows MSVC Sysroot
 
-This repository provides Windows MSVC headers and libraries with a standardized sysroot rule as what GCC and clang do, similar to other triplets, to facilitate cross-compilation and canadian-compilation. Some people prefer to use ```${ARCH}-windows-msvc``` triplet over ```${ARCH}-windows-gnu``` triplet, so I decide to provide one by myself.
+This repository provides Windows MSVC headers and libraries with a standardized sysroot rule as what GCC and Clang do, similar to other triplets, to facilitate cross-compilation and canadian-compilation. Some people prefer to use ```${ARCH}-windows-msvc``` triplet over ```${ARCH}-windows-gnu``` triplet, so I decide to provide one by myself.
 
 ## Why not /winsysroot?
-clang's winsysroot is pretty useless since it does not follow the rule of other targets are doing. That is a massive burden for libraries to maintain. Plus the file structures are overcomplicated to the point of useless.
+Clang's winsysroot is pretty useless since it does not follow the rule of other targets are doing. That is a massive burden for libraries to maintain. Plus the file structures are overcomplicated to the point of useless.
 
-## Planned Enhancements to LLVM/clang
+## Planned Enhancements to LLVM/Clang
 I intend to modify the clang frontend to support the ```--sysroot=``` option, enabling it to locate this sysroot using path finding as demonstrated below.
 
 ## Supported Triplets
@@ -71,7 +71,7 @@ $ wine ./hello.exe
 Hello World
 ```
 
-## CMake Tools in VSCode (User-local kits)
+## CMake Tools in VSCode (User-Local Kits)
 
 The user-local list of kits is stored in the `cmake-tools-kits.json` file, which you can edit by invoking Edit User-Local CMake Kits from the command palette.
 
@@ -92,7 +92,7 @@ By adding the following section, CMake Tools will get a correct toolchain:
   }
 ```
 
-Note that the name field should not be the same as the name of any toolchain automatically detected by CMake Tools, even if the automatically detected toolchain is incorrect. For more details, refer to the CMake Tools [documentation](https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/kits.md).
+Note that the `name` field should not be the same as the name of any toolchain automatically detected by CMake Tools, even if the automatically detected toolchain is incorrect. For more details, refer to the CMake Tools [documentation](https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/kits.md).
 
 ## CMake Presets
 
