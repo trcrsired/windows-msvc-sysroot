@@ -401,6 +401,10 @@ extern uintptr_t __security_cookie;
     #define __vcrt_free_normal(_Memory) free(_Memory)
 #endif
 
+#ifndef _USE_STD_VECTOR_ALGORITHMS
+#define _USE_STD_VECTOR_ALGORITHMS 0
+#endif
+
 _CRT_END_C_HEADER
 
 #pragma warning(pop) // _VCRUNTIME_DISABLED_WARNINGS
