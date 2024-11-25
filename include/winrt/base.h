@@ -377,83 +377,169 @@ __declspec(selectany) void(__stdcall* winrt_suspend_handler)(void const* token) 
 __declspec(selectany) void(__stdcall* winrt_resume_handler)(void const* token) noexcept {};
 __declspec(selectany) int32_t(__stdcall* winrt_activation_handler)(void* classId, winrt::guid const& iid, void** factory) noexcept {};
 
-extern "C"
-{
-    void* __stdcall WINRT_IMPL_LoadLibraryW(wchar_t const* name) noexcept;
-    int32_t __stdcall WINRT_IMPL_FreeLibrary(void* library) noexcept;
-    void* __stdcall WINRT_IMPL_GetProcAddress(void* library, char const* name) noexcept;
+#if defined(_MSC_VER) && !defined(__clang__)
+#define WINRT_IMPL_ASM_RENAME(function, count)
+#define WINRT_IMPL_ASM_RENAME_EXTERN_C_BEGIN extern "C" {
+#define WINRT_IMPL_ASM_RENAME_EXTERN_C_END }
+#define WINRT_IMPL_ASM_RENAME_DLLIMPORT
+#else
+#if SIZE_MAX <= UINT_LEAST32_MAX && (defined(__x86__) || defined(_M_IX86) || defined(__i386__))
+#if !defined(__clang__)
+#define WINRT_IMPL_ASM_RENAME(function, count) __asm__("_" #function "@" #count)
+#else
+#define WINRT_IMPL_ASM_RENAME(function, count) __asm__(#function "@" #count)
+#endif
+#else
+#define WINRT_IMPL_ASM_RENAME(function, count) __asm__(#function)
+#endif
+#define WINRT_IMPL_ASM_RENAME_EXTERN_C_BEGIN
+#define WINRT_IMPL_ASM_RENAME_EXTERN_C_END
+#define WINRT_IMPL_ASM_RENAME_DLLIMPORT [[__gnu__::__dllimport__]]
+#endif
 
-    int32_t __stdcall WINRT_IMPL_SetErrorInfo(uint32_t reserved, void* info) noexcept;
-    int32_t __stdcall WINRT_IMPL_GetErrorInfo(uint32_t reserved, void** info) noexcept;
-    int32_t __stdcall WINRT_IMPL_CoInitializeEx(void*, uint32_t type) noexcept;
-    void    __stdcall WINRT_IMPL_CoUninitialize() noexcept;
+WINRT_IMPL_ASM_RENAME_EXTERN_C_BEGIN
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void* __stdcall WINRT_IMPL_LoadLibraryW(wchar_t const* name) noexcept
+    WINRT_IMPL_ASM_RENAME(LoadLibraryW, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t __stdcall WINRT_IMPL_FreeLibrary(void* library) noexcept
+    WINRT_IMPL_ASM_RENAME(FreeLibrary, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void* __stdcall WINRT_IMPL_GetProcAddress(void* library, char const* name) noexcept
+    WINRT_IMPL_ASM_RENAME(GetProcAddress, 8);
 
-    int32_t  __stdcall WINRT_IMPL_CoCreateFreeThreadedMarshaler(void* outer, void** marshaler) noexcept;
-    int32_t  __stdcall WINRT_IMPL_CoCreateInstance(winrt::guid const& clsid, void* outer, uint32_t context, winrt::guid const& iid, void** object) noexcept;
-    int32_t  __stdcall WINRT_IMPL_CoGetCallContext(winrt::guid const& iid, void** object) noexcept;
-    int32_t  __stdcall WINRT_IMPL_CoGetObjectContext(winrt::guid const& iid, void** object) noexcept;
-    int32_t  __stdcall WINRT_IMPL_CoGetApartmentType(int32_t* type, int32_t* qualifier) noexcept;
-    void*    __stdcall WINRT_IMPL_CoTaskMemAlloc(std::size_t size) noexcept;
-    void     __stdcall WINRT_IMPL_CoTaskMemFree(void* ptr) noexcept;
-    winrt::impl::bstr __stdcall WINRT_IMPL_SysAllocString(wchar_t const* value) noexcept;
-    void     __stdcall WINRT_IMPL_SysFreeString(winrt::impl::bstr string) noexcept;
-    uint32_t __stdcall WINRT_IMPL_SysStringLen(winrt::impl::bstr string) noexcept;
-    int32_t  __stdcall WINRT_IMPL_IIDFromString(wchar_t const* string, winrt::guid* iid) noexcept;
-    int32_t  __stdcall WINRT_IMPL_MultiByteToWideChar(uint32_t codepage, uint32_t flags, char const* in_string, int32_t in_size, wchar_t* out_string, int32_t out_size) noexcept;
-    int32_t  __stdcall WINRT_IMPL_WideCharToMultiByte(uint32_t codepage, uint32_t flags, wchar_t const* int_string, int32_t in_size, char* out_string, int32_t out_size, char const* default_char, int32_t* default_used) noexcept;
-    void* __stdcall    WINRT_IMPL_HeapAlloc(void* heap, uint32_t flags, size_t bytes) noexcept;
-    int32_t  __stdcall WINRT_IMPL_HeapFree(void* heap, uint32_t flags, void* value) noexcept;
-    void*    __stdcall WINRT_IMPL_GetProcessHeap() noexcept;
-    uint32_t __stdcall WINRT_IMPL_FormatMessageW(uint32_t flags, void const* source, uint32_t code, uint32_t language, wchar_t* buffer, uint32_t size, va_list* arguments) noexcept;
-    uint32_t __stdcall WINRT_IMPL_GetLastError() noexcept;
-    void     __stdcall WINRT_IMPL_GetSystemTimePreciseAsFileTime(void* result) noexcept;
-    uintptr_t __stdcall WINRT_IMPL_VirtualQuery(void* address, void* buffer, uintptr_t length) noexcept;
-    void*    __stdcall WINRT_IMPL_EncodePointer(void* ptr) noexcept;
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t __stdcall WINRT_IMPL_SetErrorInfo(uint32_t reserved, void* info) noexcept
+    WINRT_IMPL_ASM_RENAME(SetErrorInfo, 8);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t __stdcall WINRT_IMPL_GetErrorInfo(uint32_t reserved, void** info) noexcept
+    WINRT_IMPL_ASM_RENAME(GetErrorInfo, 8);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t __stdcall WINRT_IMPL_CoInitializeEx(void*, uint32_t type) noexcept
+    WINRT_IMPL_ASM_RENAME(CoInitializeEx, 8);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void    __stdcall WINRT_IMPL_CoUninitialize() noexcept
+    WINRT_IMPL_ASM_RENAME(CoUninitialize, 0);
 
-    int32_t  __stdcall WINRT_IMPL_OpenProcessToken(void* process, uint32_t access, void** token) noexcept;
-    void*    __stdcall WINRT_IMPL_GetCurrentProcess() noexcept;
-    int32_t  __stdcall WINRT_IMPL_DuplicateToken(void* existing, uint32_t level, void** duplicate) noexcept;
-    int32_t  __stdcall WINRT_IMPL_OpenThreadToken(void* thread, uint32_t access, int32_t self, void** token) noexcept;
-    void*    __stdcall WINRT_IMPL_GetCurrentThread() noexcept;
-    int32_t  __stdcall WINRT_IMPL_SetThreadToken(void** thread, void* token) noexcept;
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_CoCreateFreeThreadedMarshaler(void* outer, void** marshaler) noexcept
+    WINRT_IMPL_ASM_RENAME(CoCreateFreeThreadedMarshaler, 8);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_CoCreateInstance(winrt::guid const& clsid, void* outer, uint32_t context, winrt::guid const& iid, void** object) noexcept
+    WINRT_IMPL_ASM_RENAME(WINRT_IMPL_CoCreateInstance, 20);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_CoGetCallContext(winrt::guid const& iid, void** object) noexcept
+    WINRT_IMPL_ASM_RENAME(CoGetCallContext, 8);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_CoGetObjectContext(winrt::guid const& iid, void** object) noexcept
+    WINRT_IMPL_ASM_RENAME(CoGetObjectContext, 8);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_CoGetApartmentType(int32_t* type, int32_t* qualifier) noexcept
+    WINRT_IMPL_ASM_RENAME(CoGetApartmentType, 8);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void*    __stdcall WINRT_IMPL_CoTaskMemAlloc(std::size_t size) noexcept
+    WINRT_IMPL_ASM_RENAME(CoTaskMemAlloc, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void     __stdcall WINRT_IMPL_CoTaskMemFree(void* ptr) noexcept
+    WINRT_IMPL_ASM_RENAME(CoTaskMemFree, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT winrt::impl::bstr __stdcall WINRT_IMPL_SysAllocString(wchar_t const* value) noexcept
+    WINRT_IMPL_ASM_RENAME(SysAllocString, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void     __stdcall WINRT_IMPL_SysFreeString(winrt::impl::bstr string) noexcept
+    WINRT_IMPL_ASM_RENAME(SysFreeString, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT uint32_t __stdcall WINRT_IMPL_SysStringLen(winrt::impl::bstr string) noexcept
+    WINRT_IMPL_ASM_RENAME(SysStringLen, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_IIDFromString(wchar_t const* string, winrt::guid* iid) noexcept
+    WINRT_IMPL_ASM_RENAME(IIDFromString, 8);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_MultiByteToWideChar(uint32_t codepage, uint32_t flags, char const* in_string, int32_t in_size, wchar_t* out_string, int32_t out_size) noexcept
+    WINRT_IMPL_ASM_RENAME(MultiByteToWideChar, 24);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_WideCharToMultiByte(uint32_t codepage, uint32_t flags, wchar_t const* int_string, int32_t in_size, char* out_string, int32_t out_size, char const* default_char, int32_t* default_used) noexcept
+    WINRT_IMPL_ASM_RENAME(WideCharToMultiByte, 32);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void* __stdcall    WINRT_IMPL_HeapAlloc(void* heap, uint32_t flags, size_t bytes) noexcept
+    WINRT_IMPL_ASM_RENAME(HeapAlloc, 12);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_HeapFree(void* heap, uint32_t flags, void* value) noexcept
+    WINRT_IMPL_ASM_RENAME(HeapFree, 12);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void*    __stdcall WINRT_IMPL_GetProcessHeap() noexcept
+    WINRT_IMPL_ASM_RENAME(GetProcessHeap, 0);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT uint32_t __stdcall WINRT_IMPL_FormatMessageW(uint32_t flags, void const* source, uint32_t code, uint32_t language, wchar_t* buffer, uint32_t size, va_list* arguments) noexcept
+    WINRT_IMPL_ASM_RENAME(FormatMessageW, 28);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT uint32_t __stdcall WINRT_IMPL_GetLastError() noexcept
+    WINRT_IMPL_ASM_RENAME(GetLastError, 0);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void     __stdcall WINRT_IMPL_GetSystemTimePreciseAsFileTime(void* result) noexcept
+    WINRT_IMPL_ASM_RENAME(GetSystemTimePreciseAsFileTime, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT uintptr_t __stdcall WINRT_IMPL_VirtualQuery(void* address, void* buffer, uintptr_t length) noexcept
+    WINRT_IMPL_ASM_RENAME(VirtualQuery, 12);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void*    __stdcall WINRT_IMPL_EncodePointer(void* ptr) noexcept
+    WINRT_IMPL_ASM_RENAME(EncodePointer, 4);
 
-    void    __stdcall WINRT_IMPL_AcquireSRWLockExclusive(winrt::impl::srwlock* lock) noexcept;
-    void    __stdcall WINRT_IMPL_AcquireSRWLockShared(winrt::impl::srwlock* lock) noexcept;
-    uint8_t __stdcall WINRT_IMPL_TryAcquireSRWLockExclusive(winrt::impl::srwlock* lock) noexcept;
-    uint8_t __stdcall WINRT_IMPL_TryAcquireSRWLockShared(winrt::impl::srwlock* lock) noexcept;
-    void    __stdcall WINRT_IMPL_ReleaseSRWLockExclusive(winrt::impl::srwlock* lock) noexcept;
-    void    __stdcall WINRT_IMPL_ReleaseSRWLockShared(winrt::impl::srwlock* lock) noexcept;
-    int32_t __stdcall WINRT_IMPL_SleepConditionVariableSRW(winrt::impl::condition_variable* cv, winrt::impl::srwlock* lock, uint32_t milliseconds, uint32_t flags) noexcept;
-    void    __stdcall WINRT_IMPL_WakeConditionVariable(winrt::impl::condition_variable* cv) noexcept;
-    void    __stdcall WINRT_IMPL_WakeAllConditionVariable(winrt::impl::condition_variable* cv) noexcept;
-    void*   __stdcall WINRT_IMPL_InterlockedPushEntrySList(void* head, void* entry) noexcept;
-    void*   __stdcall WINRT_IMPL_InterlockedFlushSList(void* head) noexcept;
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_OpenProcessToken(void* process, uint32_t access, void** token) noexcept
+    WINRT_IMPL_ASM_RENAME(OpenProcessToken, 12);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void*    __stdcall WINRT_IMPL_GetCurrentProcess() noexcept
+    WINRT_IMPL_ASM_RENAME(GetCurrentProcess, 0);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_DuplicateToken(void* existing, uint32_t level, void** duplicate) noexcept
+    WINRT_IMPL_ASM_RENAME(DuplicateToken, 12);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_OpenThreadToken(void* thread, uint32_t access, int32_t self, void** token) noexcept
+    WINRT_IMPL_ASM_RENAME(OpenThreadToken, 16);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void*    __stdcall WINRT_IMPL_GetCurrentThread() noexcept
+    WINRT_IMPL_ASM_RENAME(GetCurrentThread, 0);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_SetThreadToken(void** thread, void* token) noexcept
+    WINRT_IMPL_ASM_RENAME(SetThreadToken, 8);
 
-    void* __stdcall WINRT_IMPL_CreateEventW(void*, int32_t, int32_t, void*) noexcept;
-    int32_t __stdcall WINRT_IMPL_SetEvent(void*) noexcept;
-    int32_t  __stdcall WINRT_IMPL_CloseHandle(void* hObject) noexcept;
-    uint32_t __stdcall WINRT_IMPL_WaitForSingleObject(void* handle, uint32_t milliseconds) noexcept;
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void    __stdcall WINRT_IMPL_AcquireSRWLockExclusive(winrt::impl::srwlock* lock) noexcept
+    WINRT_IMPL_ASM_RENAME(AcquireSRWLockExclusive, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void    __stdcall WINRT_IMPL_AcquireSRWLockShared(winrt::impl::srwlock* lock) noexcept
+    WINRT_IMPL_ASM_RENAME(AcquireSRWLockShared, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT uint8_t __stdcall WINRT_IMPL_TryAcquireSRWLockExclusive(winrt::impl::srwlock* lock) noexcept
+    WINRT_IMPL_ASM_RENAME(TryAcquireSRWLockExclusive, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT uint8_t __stdcall WINRT_IMPL_TryAcquireSRWLockShared(winrt::impl::srwlock* lock) noexcept
+    WINRT_IMPL_ASM_RENAME(TryAcquireSRWLockShared, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void    __stdcall WINRT_IMPL_ReleaseSRWLockExclusive(winrt::impl::srwlock* lock) noexcept
+    WINRT_IMPL_ASM_RENAME(ReleaseSRWLockExclusive, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void    __stdcall WINRT_IMPL_ReleaseSRWLockShared(winrt::impl::srwlock* lock) noexcept
+    WINRT_IMPL_ASM_RENAME(ReleaseSRWLockShared, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t __stdcall WINRT_IMPL_SleepConditionVariableSRW(winrt::impl::condition_variable* cv, winrt::impl::srwlock* lock, uint32_t milliseconds, uint32_t flags) noexcept
+    WINRT_IMPL_ASM_RENAME(SleepConditionVariableSRW, 16);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void    __stdcall WINRT_IMPL_WakeConditionVariable(winrt::impl::condition_variable* cv) noexcept
+    WINRT_IMPL_ASM_RENAME(WakeConditionVariable, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void    __stdcall WINRT_IMPL_WakeAllConditionVariable(winrt::impl::condition_variable* cv) noexcept
+    WINRT_IMPL_ASM_RENAME(WakeAllConditionVariable, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void*   __stdcall WINRT_IMPL_InterlockedPushEntrySList(void* head, void* entry) noexcept
+    WINRT_IMPL_ASM_RENAME(InterlockedPushEntrySList, 8);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void*   __stdcall WINRT_IMPL_InterlockedFlushSList(void* head) noexcept
+    WINRT_IMPL_ASM_RENAME(InterlockedFlushSList, 4);
 
-    int32_t  __stdcall WINRT_IMPL_TrySubmitThreadpoolCallback(void(__stdcall *callback)(void*, void* context), void* context, void*) noexcept;
-    winrt::impl::ptp_timer __stdcall WINRT_IMPL_CreateThreadpoolTimer(void(__stdcall *callback)(void*, void* context, void*), void* context, void*) noexcept;
-    void     __stdcall WINRT_IMPL_SetThreadpoolTimer(winrt::impl::ptp_timer timer, void* time, uint32_t period, uint32_t window) noexcept;
-    void     __stdcall WINRT_IMPL_CloseThreadpoolTimer(winrt::impl::ptp_timer timer) noexcept;
-    winrt::impl::ptp_wait __stdcall WINRT_IMPL_CreateThreadpoolWait(void(__stdcall *callback)(void*, void* context, void*, uint32_t result), void* context, void*) noexcept;
-    void     __stdcall WINRT_IMPL_SetThreadpoolWait(winrt::impl::ptp_wait wait, void* handle, void* timeout) noexcept;
-    void     __stdcall WINRT_IMPL_CloseThreadpoolWait(winrt::impl::ptp_wait wait) noexcept;
-    winrt::impl::ptp_io __stdcall WINRT_IMPL_CreateThreadpoolIo(void* object, void(__stdcall *callback)(void*, void* context, void* overlapped, uint32_t result, std::size_t bytes, void*) noexcept, void* context, void*) noexcept;
-    void     __stdcall WINRT_IMPL_StartThreadpoolIo(winrt::impl::ptp_io io) noexcept;
-    void     __stdcall WINRT_IMPL_CancelThreadpoolIo(winrt::impl::ptp_io io) noexcept;
-    void     __stdcall WINRT_IMPL_CloseThreadpoolIo(winrt::impl::ptp_io io) noexcept;
-    winrt::impl::ptp_pool __stdcall WINRT_IMPL_CreateThreadpool(void* reserved) noexcept;
-    void __stdcall WINRT_IMPL_SetThreadpoolThreadMaximum(winrt::impl::ptp_pool pool, uint32_t value) noexcept;
-    int32_t __stdcall WINRT_IMPL_SetThreadpoolThreadMinimum(winrt::impl::ptp_pool pool, uint32_t value) noexcept;
-    void     __stdcall WINRT_IMPL_CloseThreadpool(winrt::impl::ptp_pool pool) noexcept;
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void* __stdcall WINRT_IMPL_CreateEventW(void*, int32_t, int32_t, void*) noexcept
+    WINRT_IMPL_ASM_RENAME(CreateEventW, 16);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t __stdcall WINRT_IMPL_SetEvent(void*) noexcept
+    WINRT_IMPL_ASM_RENAME(SetEvent, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_CloseHandle(void* hObject) noexcept
+    WINRT_IMPL_ASM_RENAME(CloseHandle, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT uint32_t __stdcall WINRT_IMPL_WaitForSingleObject(void* handle, uint32_t milliseconds) noexcept
+    WINRT_IMPL_ASM_RENAME(WaitForSingleObject, 8);
 
-    int32_t __stdcall WINRT_CanUnloadNow() noexcept;
-    int32_t __stdcall WINRT_GetActivationFactory(void* classId, void** factory) noexcept;
-}
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t  __stdcall WINRT_IMPL_TrySubmitThreadpoolCallback(void(__stdcall *callback)(void*, void* context), void* context, void*) noexcept
+    WINRT_IMPL_ASM_RENAME(TrySubmitThreadpoolCallback, 12);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT winrt::impl::ptp_timer __stdcall WINRT_IMPL_CreateThreadpoolTimer(void(__stdcall *callback)(void*, void* context, void*), void* context, void*) noexcept
+    WINRT_IMPL_ASM_RENAME(CreateThreadpoolTimer, 12);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void     __stdcall WINRT_IMPL_SetThreadpoolTimer(winrt::impl::ptp_timer timer, void* time, uint32_t period, uint32_t window) noexcept
+    WINRT_IMPL_ASM_RENAME(SetThreadpoolTimer, 16);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void     __stdcall WINRT_IMPL_CloseThreadpoolTimer(winrt::impl::ptp_timer timer) noexcept
+    WINRT_IMPL_ASM_RENAME(CloseThreadpoolTimer, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT winrt::impl::ptp_wait __stdcall WINRT_IMPL_CreateThreadpoolWait(void(__stdcall *callback)(void*, void* context, void*, uint32_t result), void* context, void*) noexcept
+    WINRT_IMPL_ASM_RENAME(CreateThreadpoolWait, 12);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void     __stdcall WINRT_IMPL_SetThreadpoolWait(winrt::impl::ptp_wait wait, void* handle, void* timeout) noexcept
+    WINRT_IMPL_ASM_RENAME(SetThreadpoolWait, 12);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void     __stdcall WINRT_IMPL_CloseThreadpoolWait(winrt::impl::ptp_wait wait) noexcept
+    WINRT_IMPL_ASM_RENAME(CloseThreadpoolWait, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT winrt::impl::ptp_io __stdcall WINRT_IMPL_CreateThreadpoolIo(void* object, void(__stdcall *callback)(void*, void* context, void* overlapped, uint32_t result, std::size_t bytes, void*) noexcept, void* context, void*) noexcept
+    WINRT_IMPL_ASM_RENAME(CreateThreadpoolIo, 16);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void     __stdcall WINRT_IMPL_StartThreadpoolIo(winrt::impl::ptp_io io) noexcept
+    WINRT_IMPL_ASM_RENAME(StartThreadpoolIo, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void     __stdcall WINRT_IMPL_CancelThreadpoolIo(winrt::impl::ptp_io io) noexcept
+    WINRT_IMPL_ASM_RENAME(CancelThreadpoolIo, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void     __stdcall WINRT_IMPL_CloseThreadpoolIo(winrt::impl::ptp_io io) noexcept
+    WINRT_IMPL_ASM_RENAME(CloseThreadpoolIo, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT winrt::impl::ptp_pool __stdcall WINRT_IMPL_CreateThreadpool(void* reserved) noexcept
+    WINRT_IMPL_ASM_RENAME(CreateThreadpool, 4);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void __stdcall WINRT_IMPL_SetThreadpoolThreadMaximum(winrt::impl::ptp_pool pool, uint32_t value) noexcept
+    WINRT_IMPL_ASM_RENAME(SetThreadpoolThreadMaximum, 8);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t __stdcall WINRT_IMPL_SetThreadpoolThreadMinimum(winrt::impl::ptp_pool pool, uint32_t value) noexcept
+    WINRT_IMPL_ASM_RENAME(SetThreadpoolThreadMinimum, 8);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT void     __stdcall WINRT_IMPL_CloseThreadpool(winrt::impl::ptp_pool pool) noexcept
+    WINRT_IMPL_ASM_RENAME(CloseThreadpool, 4);
 
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t __stdcall WINRT_CanUnloadNow() noexcept
+    WINRT_IMPL_ASM_RENAME(DllCanUnloadNow, 0);
+    WINRT_IMPL_ASM_RENAME_DLLIMPORT int32_t __stdcall WINRT_GetActivationFactory(void* classId, void** factory) noexcept
+    WINRT_IMPL_ASM_RENAME(GetActivationFactory, 8);
+WINRT_IMPL_ASM_RENAME_EXTERN_C_END
+
+#if defined(_MSC_VER) && !defined(__clang__)
 #ifdef _M_HYBRID
 #define WINRT_IMPL_LINK(function, count) __pragma(comment(linker, "/alternatename:#WINRT_IMPL_" #function "@" #count "=#" #function "@" #count))
 #elif _M_ARM64EC
@@ -535,6 +621,16 @@ WINRT_IMPL_LINK(SetThreadpoolThreadMinimum, 8)
 WINRT_IMPL_LINK(CloseThreadpool, 4)
 
 #undef WINRT_IMPL_LINK
+#endif
+#undef WINRT_IMPL_ASM_RENAME
+#undef WINRT_IMPL_ASM_RENAME_EXTERN_C_BEGIN
+#undef WINRT_IMPL_ASM_RENAME_EXTERN_C_END
+#undef WINRT_IMPL_ASM_RENAME_DLLIMPORT
+
+#if defined(_MSC_VER) && !defined(_KERNEL_MODE)
+#pragma comment(lib, "ole32.lib")
+#pragma comment(lib, "oleaut32.lib")
+#endif
 
 WINRT_EXPORT namespace winrt
 {
