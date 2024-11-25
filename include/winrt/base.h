@@ -658,6 +658,7 @@ WINRT_IMPL_EXTERN_C_END
 #if defined(_MSC_VER) && !defined(_KERNEL_MODE)
 #pragma comment(lib, "ole32.lib")
 #pragma comment(lib, "oleaut32.lib")
+#pragma comment(lib, "runtimeobject.lib")
 #endif
 
 WINRT_EXPORT namespace winrt
