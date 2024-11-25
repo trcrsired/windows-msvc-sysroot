@@ -546,11 +546,11 @@ __declspec(selectany) int32_t(__stdcall* winrt_activation_handler)(void* classId
 #define WINRT_IMPL_DLLIMPORT
 #elif SIZE_MAX <= UINT_LEAST32_MAX && (defined(__x86__) || defined(_M_IX86) || defined(__i386__))
 #if !defined(__clang__)
-#define WINRT_IMPL_LINK(function, count) __asm__("_" #function "@" #count)
-#define WINRT_IMPL_LINK2(function1, function2, count) __asm__("_" #function2 "@" #count)
-#else
 #define WINRT_IMPL_LINK(function, count) __asm__(#function "@" #count)
 #define WINRT_IMPL_LINK2(function1, function2, count) __asm__(#function2 "@" #count)
+#else
+#define WINRT_IMPL_LINK(function, count) __asm__("_" #function "@" #count)
+#define WINRT_IMPL_LINK2(function1, function2, count) __asm__("_" #function2 "@" #count)
 #endif
 #define WINRT_IMPL_DLLIMPORT [[__gnu__::__dllimport__]]
 #else
