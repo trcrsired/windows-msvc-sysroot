@@ -7,8 +7,8 @@
 #ifndef WINRT_Windows_Gaming_Preview_GamesEnumeration_H
 #define WINRT_Windows_Gaming_Preview_GamesEnumeration_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.0.220110.5"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.3.4.5"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.3.4.5"
 #include "winrt/impl/windows.applicationmodel.2.h"
 #include "winrt/impl/windows.foundation.2.h"
 #include "winrt/impl/windows.foundation.collections.2.h"

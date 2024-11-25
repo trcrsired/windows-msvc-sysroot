@@ -7,8 +7,8 @@
 #ifndef WINRT_Windows_Management_Deployment_Preview_H
 #define WINRT_Windows_Management_Deployment_Preview_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.0.220110.5"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.3.4.5"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.3.4.5"
 #include "winrt/windows.management.deployment.h"
 #include "winrt/impl/windows.management.deployment.preview.2.h"
 namespace winrt::impl

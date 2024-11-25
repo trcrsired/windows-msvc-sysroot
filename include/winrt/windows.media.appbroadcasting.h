@@ -7,8 +7,8 @@
 #ifndef WINRT_Windows_Media_AppBroadcasting_H
 #define WINRT_Windows_Media_AppBroadcasting_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.0.220110.5"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.3.4.5"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.3.4.5"
 #include "winrt/windows.media.h"
 #include "winrt/impl/windows.foundation.2.h"
 #include "winrt/impl/windows.system.2.h"

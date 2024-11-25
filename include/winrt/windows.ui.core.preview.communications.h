@@ -7,8 +7,8 @@
 #ifndef WINRT_Windows_UI_Core_Preview_Communications_H
 #define WINRT_Windows_UI_Core_Preview_Communications_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220110.5"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.0.220110.5"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.3.4.5"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.3.4.5"
 #include "winrt/windows.ui.core.preview.h"
 #include "winrt/impl/windows.foundation.2.h"
 #include "winrt/impl/windows.ui.core.preview.communications.2.h"
