@@ -6,7 +6,6 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.3.4.5"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.3.4.5"
-#include "winrt/microsoft.ui.h"
 #include "winrt/impl/windows.foundation.2.h"
 #include "winrt/impl/windows.storage.streams.2.h"
 #include "winrt/impl/windows.ui.2.h"

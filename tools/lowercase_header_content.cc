@@ -1,6 +1,8 @@
 #include <fast_io.h>
 #include <fast_io_device.h>
 #include <string_view>
+#include <fast_io_dsal/string_view.h>
+#include <fast_io_dsal/string.h>
 #include <algorithm>
 #include <functional>
 
@@ -22,9 +24,33 @@ int main(int argc, char **argv)
 	constexpr ::std::u8string_view vw(u8R"abc(#include)abc"sv);
 	::std::boyer_moore_horspool_searcher searcher(reinterpret_cast<char const *>(vw.data()),
 												  reinterpret_cast<char const *>(vw.data()) + vw.size());
-
-	::fast_io::dir_file df(fast_io::mnp::os_c_str(argv[1]));
 	::fast_io::out_buf_type obf{::fast_io::out()};
+	{
+	::fast_io::dir_file df(fast_io::mnp::os_c_str(argv[1]));
+	::fast_io::u8string newstrname;
+	for (auto ent : recursive(at(df)))
+	{
+		if (type(ent) != fast_io::file_type::regular)
+		{
+			continue;
+		}
+		newstrname.clear();
+		::fast_io::u8cstring_view fnm{u8filename(ent)};
+		for(auto const ch : fnm)
+		{
+			newstrname.push_back(::fast_io::char_category::to_c_lower(ch));
+		}
+		if(fnm!=newstrname)
+		{
+			::fast_io::native_renameat(at(ent),fnm,at(ent),newstrname);
+			::fast_io::io::println(obf, ::fast_io::mnp::code_cvt(fnm)," => ",
+					::fast_io::mnp::code_cvt(newstrname));
+		}
+	}
+	}
+	{
+	::fast_io::dir_file df(fast_io::mnp::os_c_str(argv[1]));
+
 
 	for (auto ent : recursive(at(df)))
 	{
@@ -78,5 +104,6 @@ int main(int argc, char **argv)
 			}
 			it=rightmatcherit;
 		}
+	}
 	}
 }

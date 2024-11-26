@@ -83,6 +83,7 @@ namespace winrt::impl
 export module winrt;
 #define WINRT_EXPORT export
 
+#include "winrt/microsoft.web.webview2.core.h"
 #include "winrt/windows.ai.machinelearning.h"
 #include "winrt/windows.ai.machinelearning.preview.h"
 #include "winrt/windows.applicationmodel.h"
