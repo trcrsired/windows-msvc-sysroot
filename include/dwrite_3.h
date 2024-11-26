@@ -12,7 +12,7 @@
 
 #pragma once
 
-#include <dwrite_2.h>
+#include "dwrite_2.h"
 
 interface IDWriteFontFaceReference;
 interface IDWriteFont3;
@@ -200,6 +200,12 @@ enum DWRITE_FONT_PROPERTY_ID
     DWRITE_FONT_PROPERTY_ID_TYPOGRAPHIC_FACE_NAME,
 
     /// <summary>
+    /// Font source name. The meaning of this value depends on the value of the DWRITE_FONT_SOURCE_TYPE of the font.
+    /// This property is not derived from the font itself, but describes how the font was added to the font set.
+    /// </summary>
+    DWRITE_FONT_PROPERTY_ID_FONT_SOURCE_NAME,
+
+    /// <summary>
     /// Total number of properties for NTDDI_WIN10 (IDWriteFontSet).
     /// </summary>
     /// <remarks>
@@ -211,6 +217,11 @@ enum DWRITE_FONT_PROPERTY_ID
     /// Total number of properties for NTDDI_WIN10_RS3 (IDWriteFontSet1).
     /// </summary>
     DWRITE_FONT_PROPERTY_ID_TOTAL_RS3 = DWRITE_FONT_PROPERTY_ID_TYPOGRAPHIC_FACE_NAME + 1,
+
+    /// <summary>
+    /// Total number of properties for NTDDI_WIN10_RS5 (IDWriteFontSet3).
+    /// </summary>
+    DWRITE_FONT_PROPERTY_ID_TOTAL_RS5 = DWRITE_FONT_PROPERTY_ID_FONT_SOURCE_NAME + 1,
 
     // Obsolete aliases kept to avoid breaking existing code.
     DWRITE_FONT_PROPERTY_ID_PREFERRED_FAMILY_NAME = DWRITE_FONT_PROPERTY_ID_TYPOGRAPHIC_FAMILY_NAME,
@@ -342,7 +353,7 @@ enum DWRITE_RENDERING_MODE1
 /// <summary>
 /// The interface that represents text rendering settings for glyph rasterization and filtering.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("B7924BAA-391B-412A-8C5C-E44CC2D867DC") IDWriteRenderingParams3 : public IDWriteRenderingParams2
+DWRITE_BEGIN_INTERFACE(IDWriteRenderingParams3, "B7924BAA-391B-412A-8C5C-E44CC2D867DC") : IDWriteRenderingParams2
 {
     /// <summary>
     /// Gets the rendering mode.
@@ -354,7 +365,7 @@ interface DWRITE_DECLARE_INTERFACE("B7924BAA-391B-412A-8C5C-E44CC2D867DC") IDWri
 /// <summary>
 /// The root factory interface for all DWrite objects.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("9A1B41C3-D3BB-466A-87FC-FE67556A3B65") IDWriteFactory3 : public IDWriteFactory2
+DWRITE_BEGIN_INTERFACE(IDWriteFactory3, "9A1B41C3-D3BB-466A-87FC-FE67556A3B65") : IDWriteFactory2
 {
     /// <summary>
     /// Creates a glyph run analysis object, which encapsulates information
@@ -535,7 +546,7 @@ interface DWRITE_DECLARE_INTERFACE("9A1B41C3-D3BB-466A-87FC-FE67556A3B65") IDWri
 /// Unlike IDWriteFontFamily and IDWriteFontList, which are part of the IDWriteFontCollection heirarchy, font sets
 /// are unordered flat lists.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("53585141-D9F8-4095-8321-D73CF6BD116B") IDWriteFontSet : public IUnknown
+DWRITE_BEGIN_INTERFACE(IDWriteFontSet, "53585141-D9F8-4095-8321-D73CF6BD116B") : IUnknown
 {
     /// <summary>
     /// Get the number of total fonts in the set.
@@ -562,7 +573,7 @@ interface DWRITE_DECLARE_INTERFACE("53585141-D9F8-4095-8321-D73CF6BD116B") IDWri
     /// Gets the index of the matching font face reference in the font set, with the same file, face index, and simulations.
     /// </summary>
     /// <param name="fontFaceReference">Font face reference object that specifies the physical font.</param>
-    /// <param name="listIndex">Receives the zero-based index of the matching font if the font was found, or UINT_MAX otherwise.</param>
+    /// <param name="listIndex">Receives the zero-based index of the matching font if the font was found, or UINT32_MAX otherwise.</param>
     /// <param name="exists">Receives TRUE if the font exists or FALSE otherwise.</param>
     /// <returns>
     /// Standard HRESULT error code.
@@ -577,7 +588,7 @@ interface DWRITE_DECLARE_INTERFACE("53585141-D9F8-4095-8321-D73CF6BD116B") IDWri
     /// Gets the index of the matching font face reference in the font set, with the same file, face index, and simulations.
     /// </summary>
     /// <param name="fontFaceReference">Font face object that specifies the physical font.</param>
-    /// <param name="listIndex">Receives the zero-based index of the matching font if the font was found, or UINT_MAX otherwise.</param>
+    /// <param name="listIndex">Receives the zero-based index of the matching font if the font was found, or UINT32_MAX otherwise.</param>
     /// <param name="exists">Receives TRUE if the font exists or FALSE otherwise.</param>
     /// <returns>
     /// Standard HRESULT error code.
@@ -718,7 +729,7 @@ interface DWRITE_DECLARE_INTERFACE("53585141-D9F8-4095-8321-D73CF6BD116B") IDWri
 /// <summary>
 /// Builder interface to add font face references and create a font set.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("2F642AFE-9C68-4F40-B8BE-457401AFCB3D") IDWriteFontSetBuilder : public IUnknown
+DWRITE_BEGIN_INTERFACE(IDWriteFontSetBuilder, "2F642AFE-9C68-4F40-B8BE-457401AFCB3D") : IUnknown
 {
     /// <summary>
     /// Adds a reference to a font to the set being built. The necessary
@@ -788,7 +799,7 @@ interface DWRITE_DECLARE_INTERFACE("2F642AFE-9C68-4F40-B8BE-457401AFCB3D") IDWri
 };
 
 
-interface DWRITE_DECLARE_INTERFACE("53585141-D9F8-4095-8321-D73CF6BD116C") IDWriteFontCollection1 : public IDWriteFontCollection
+DWRITE_BEGIN_INTERFACE(IDWriteFontCollection1, "53585141-D9F8-4095-8321-D73CF6BD116C") : IDWriteFontCollection
 {
     /// <summary>
     /// Get the underlying font set used by this collection.
@@ -822,7 +833,7 @@ interface DWRITE_DECLARE_INTERFACE("53585141-D9F8-4095-8321-D73CF6BD116C") IDWri
 /// The IDWriteFontFamily interface represents a set of fonts that share the same design but are differentiated
 /// by weight, stretch, and style.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("DA20D8EF-812A-4C43-9802-62EC4ABD7ADF") IDWriteFontFamily1 : public IDWriteFontFamily
+DWRITE_BEGIN_INTERFACE(IDWriteFontFamily1, "DA20D8EF-812A-4C43-9802-62EC4ABD7ADF") : IDWriteFontFamily
 {
     /// <summary>
     /// Gets the current locality of a font given its zero-based index.
@@ -874,7 +885,7 @@ interface DWRITE_DECLARE_INTERFACE("DA20D8EF-812A-4C43-9802-62EC4ABD7ADF") IDWri
 /// <summary>
 /// The IDWriteFontList interface represents a list of fonts.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("DA20D8EF-812A-4C43-9802-62EC4ABD7ADE") IDWriteFontList1 : public IDWriteFontList
+DWRITE_BEGIN_INTERFACE(IDWriteFontList1, "DA20D8EF-812A-4C43-9802-62EC4ABD7ADE") : IDWriteFontList
 {
     /// <summary>
     /// Gets the current locality of a font given its zero-based index.
@@ -929,7 +940,7 @@ interface DWRITE_DECLARE_INTERFACE("DA20D8EF-812A-4C43-9802-62EC4ABD7ADE") IDWri
 /// consists of a font file, font face index, and font face simulation. The file
 /// data may or may not be physically present on the local machine yet.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("5E7FA7CA-DDE3-424C-89F0-9FCD6FED58CD") IDWriteFontFaceReference : public IUnknown
+DWRITE_BEGIN_INTERFACE(IDWriteFontFaceReference, "5E7FA7CA-DDE3-424C-89F0-9FCD6FED58CD") : IUnknown
 {
     /// <summary>
     /// Creates a font face from the reference for use with layout,
@@ -1087,7 +1098,7 @@ interface DWRITE_DECLARE_INTERFACE("5E7FA7CA-DDE3-424C-89F0-9FCD6FED58CD") IDWri
 /// <summary>
 /// The IDWriteFont interface represents a font in a font collection.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("29748ED6-8C9C-4A6A-BE0B-D912E8538944") IDWriteFont3 : public IDWriteFont2
+DWRITE_BEGIN_INTERFACE(IDWriteFont3, "29748ED6-8C9C-4A6A-BE0B-D912E8538944") : IDWriteFont2
 {
     /// <summary>
     /// Creates a font face object for the font.
@@ -1151,7 +1162,7 @@ interface DWRITE_DECLARE_INTERFACE("29748ED6-8C9C-4A6A-BE0B-D912E8538944") IDWri
 /// It contains font face type, appropriate file references and face identification data.
 /// Various font data such as metrics, names and glyph outlines is obtained from IDWriteFontFace.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("D37D7598-09BE-4222-A236-2081341CC1F2") IDWriteFontFace3 : public IDWriteFontFace2
+DWRITE_BEGIN_INTERFACE(IDWriteFontFace3, "D37D7598-09BE-4222-A236-2081341CC1F2") : IDWriteFontFace2
 {
     /// <summary>
     /// Return a font face reference identifying this font.
@@ -1354,7 +1365,7 @@ interface DWRITE_DECLARE_INTERFACE("D37D7598-09BE-4222-A236-2081341CC1F2") IDWri
 /// font set. You can QueryInterface from an IDWriteLocalizedStrings to an
 /// IDWriteStringList.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("CFEE3140-1157-47CA-8B85-31BFCF3F2D0E") IDWriteStringList : public IUnknown
+DWRITE_BEGIN_INTERFACE(IDWriteStringList, "CFEE3140-1157-47CA-8B85-31BFCF3F2D0E") : IUnknown
 {
     /// <summary>
     /// Gets the number of strings.
@@ -1427,7 +1438,7 @@ interface DWRITE_DECLARE_INTERFACE("CFEE3140-1157-47CA-8B85-31BFCF3F2D0E") IDWri
 /// downloading thread, and objects must be prepared to handle calls on their methods
 /// from other threads at any time.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("B06FE5B9-43EC-4393-881B-DBE4DC72FDA7") IDWriteFontDownloadListener : public IUnknown
+DWRITE_BEGIN_INTERFACE(IDWriteFontDownloadListener, "B06FE5B9-43EC-4393-881B-DBE4DC72FDA7") : IUnknown
 {
     /// <summary>
     /// The DownloadCompleted method is called back on an arbitrary thread when a
@@ -1453,7 +1464,7 @@ interface DWRITE_DECLARE_INTERFACE("B06FE5B9-43EC-4393-881B-DBE4DC72FDA7") IDWri
 /// download completion. Callbacks to listeners will occur on the downloading thread, and objects must
 /// be must be able to handle calls on their methods from other threads at any time.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("B71E6052-5AEA-4FA3-832E-F60D431F7E91") IDWriteFontDownloadQueue : public IUnknown
+DWRITE_BEGIN_INTERFACE(IDWriteFontDownloadQueue, "B71E6052-5AEA-4FA3-832E-F60D431F7E91") : IUnknown
 {
     /// <summary>
     /// Registers a client-defined listener object that receives download notifications.
@@ -1549,7 +1560,7 @@ interface DWRITE_DECLARE_INTERFACE("B71E6052-5AEA-4FA3-832E-F60D431F7E91") IDWri
 /// <summary>
 /// The GDI interop interface provides interoperability with GDI.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("4556BE70-3ABD-4F70-90BE-421780A6F515") IDWriteGdiInterop1 : public IDWriteGdiInterop
+DWRITE_BEGIN_INTERFACE(IDWriteGdiInterop1, "4556BE70-3ABD-4F70-90BE-421780A6F515") : IDWriteGdiInterop
 {
     /// <summary>
     /// Creates a font object that matches the properties specified by the LOGFONT structure.
@@ -1609,7 +1620,7 @@ interface DWRITE_DECLARE_INTERFACE("4556BE70-3ABD-4F70-90BE-421780A6F515") IDWri
     /// Standard HRESULT error code.
     /// </returns>
     STDMETHOD(GetMatchingFontsByLOGFONT)(
-        _In_ LOGFONT const* logFont,
+        _In_ LOGFONTW const* logFont,
         _In_ IDWriteFontSet* fontSet,
         _COM_Outptr_ IDWriteFontSet** filteredSet
         ) PURE;
@@ -1702,7 +1713,7 @@ struct DWRITE_LINE_SPACING
     DWRITE_FONT_LINE_GAP_USAGE fontLineGapUsage;
 };
 
-interface DWRITE_DECLARE_INTERFACE("F67E0EDD-9E3D-4ECC-8C32-4183253DFE70") IDWriteTextFormat2 : public IDWriteTextFormat1
+DWRITE_BEGIN_INTERFACE(IDWriteTextFormat2, "F67E0EDD-9E3D-4ECC-8C32-4183253DFE70") : IDWriteTextFormat1
 {
     /// <summary>
     /// Set line spacing.
@@ -1726,7 +1737,7 @@ interface DWRITE_DECLARE_INTERFACE("F67E0EDD-9E3D-4ECC-8C32-4183253DFE70") IDWri
     using IDWriteTextFormat1::GetLineSpacing;
 };
 
-interface DWRITE_DECLARE_INTERFACE("07DDCD52-020E-4DE8-AC33-6C953D83F92D") IDWriteTextLayout3 : public IDWriteTextLayout2
+DWRITE_BEGIN_INTERFACE(IDWriteTextLayout3, "07DDCD52-020E-4DE8-AC33-6C953D83F92D") : IDWriteTextLayout2
 {
     /// <summary>
     /// Invalidates the layout, forcing layout to remeasure before calling the
@@ -1788,8 +1799,7 @@ interface DWRITE_DECLARE_INTERFACE("07DDCD52-020E-4DE8-AC33-6C953D83F92D") IDWri
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-#if NTDDI_VERSION >= NTDDI_WIN10_RS1
-
+#if DWRITE_CORE || NTDDI_VERSION >= /*NTDDI_WIN10_RS1*/0x0A000002 
 
 /// <summary>
 /// Represents a color glyph run. The IDWriteFactory4::TranslateColorGlyphRun
@@ -1872,7 +1882,7 @@ struct DWRITE_GLYPH_IMAGE_DATA
 /// <summary>
 /// Enumerator for an ordered collection of color glyph runs.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("7C5F86DA-C7A1-4F05-B8E1-55A179FE5A35") IDWriteColorGlyphRunEnumerator1 : public IDWriteColorGlyphRunEnumerator
+DWRITE_BEGIN_INTERFACE(IDWriteColorGlyphRunEnumerator1, "7C5F86DA-C7A1-4F05-B8E1-55A179FE5A35") : IDWriteColorGlyphRunEnumerator
 {
     /// <summary>
     /// Gets the current color glyph run.
@@ -1898,11 +1908,16 @@ interface DWRITE_DECLARE_INTERFACE("7C5F86DA-C7A1-4F05-B8E1-55A179FE5A35") IDWri
 /// It contains font face type, appropriate file references and face identification data.
 /// Various font data such as metrics, names and glyph outlines is obtained from IDWriteFontFace.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("27F2A904-4EB8-441D-9678-0563F53E3E2F") IDWriteFontFace4 : public IDWriteFontFace3
+DWRITE_BEGIN_INTERFACE(IDWriteFontFace4, "27F2A904-4EB8-441D-9678-0563F53E3E2F") : IDWriteFontFace3
 {
     /// <summary>
     /// Gets all the glyph image formats supported by the entire font (SVG, PNG, JPEG, ...).
     /// </summary>
+    /// <remarks>
+    /// If the font has an SBIX table, this method reports all of the supported SBIX formats
+    /// (PNG, JPEG, and TIFF) as potentially present. This is for performance reasons, to avoid
+    /// having to scan the entire SBIX table to determine what formats are actually used.
+    /// </remarks>
     STDMETHOD_(DWRITE_GLYPH_IMAGE_FORMATS, GetGlyphImageFormats)() PURE;
 
     /// <summary>
@@ -1959,7 +1974,7 @@ interface DWRITE_DECLARE_INTERFACE("27F2A904-4EB8-441D-9678-0563F53E3E2F") IDWri
 };
 
 
-interface DWRITE_DECLARE_INTERFACE("4B0B5BD3-0797-4549-8AC5-FE915CC53856") IDWriteFactory4 : public IDWriteFactory3
+DWRITE_BEGIN_INTERFACE(IDWriteFactory4, "4B0B5BD3-0797-4549-8AC5-FE915CC53856") : IDWriteFactory3
 {
     /// <summary>
     /// Translates a glyph run to a sequence of color glyph runs, which can be
@@ -2036,15 +2051,15 @@ interface DWRITE_DECLARE_INTERFACE("4B0B5BD3-0797-4549-8AC5-FE915CC53856") IDWri
         ) PURE;
 };
 
-#endif // NTDDI_VERSION >= NTDDI_WIN10_RS1
+#endif // DWRITE_CORE || NTDDI_VERSION >= NTDDI_WIN10_RS1
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-#if NTDDI_VERSION >= NTDDI_WIN10_RS2
+#if DWRITE_CORE || NTDDI_VERSION >= /*NTDDI_WIN10_RS2*/0x0A000003
 
-interface DWRITE_DECLARE_INTERFACE("3FF7715F-3CDC-4DC6-9B72-EC5621DCCAFD") IDWriteFontSetBuilder1 : public IDWriteFontSetBuilder
+DWRITE_BEGIN_INTERFACE(IDWriteFontSetBuilder1, "3FF7715F-3CDC-4DC6-9B72-EC5621DCCAFD") : IDWriteFontSetBuilder
 {
     /// <summary>
     /// Adds references to all the fonts in the specified font file. The method
@@ -2064,7 +2079,7 @@ interface DWRITE_DECLARE_INTERFACE("3FF7715F-3CDC-4DC6-9B72-EC5621DCCAFD") IDWri
 /// operation. A client can use the interface to wait for the operation to
 /// complete and to get the result.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("CE25F8FD-863B-4D13-9651-C1F88DC73FE2") IDWriteAsyncResult : public IUnknown
+DWRITE_BEGIN_INTERFACE(IDWriteAsyncResult, "CE25F8FD-863B-4D13-9651-C1F88DC73FE2") : IUnknown
 {
     /// <summary>
     /// The GetWaitHandleMethod method returns a handle that can be used to wait 
@@ -2107,7 +2122,7 @@ struct DWRITE_FILE_FRAGMENT
 /// <remarks>
 /// For more information, see the description of IDWriteRemoteFontFileLoader.
 /// </remarks>
-interface DWRITE_DECLARE_INTERFACE("4DB3757A-2C72-4ED9-B2B6-1ABABE1AFF9C") IDWriteRemoteFontFileStream : public IDWriteFontFileStream
+DWRITE_BEGIN_INTERFACE(IDWriteRemoteFontFileStream, "4DB3757A-2C72-4ED9-B2B6-1ABABE1AFF9C") : IDWriteFontFileStream
 {
     /// <summary>
     /// GetLocalFileSize returns the number of bytes of the font file that are
@@ -2154,6 +2169,8 @@ interface DWRITE_DECLARE_INTERFACE("4DB3757A-2C72-4ED9-B2B6-1ABABE1AFF9C") IDWri
     /// <summary>
     /// BeginDownload begins downloading all or part of the font file.
     /// </summary>
+    /// <param name="downloadOperationID">Unique identifier of a download 
+    /// operation.</param>
     /// <param name="fileFragments">Array of structures, each specifying a byte
     /// range to download.</param>
     /// <param name="fragmentCount">Number of elements in the fileFragments array.
@@ -2199,7 +2216,7 @@ enum DWRITE_CONTAINER_TYPE
 /// DWRITE_E_REMOTEFONT. This error signifies to DWrite that it should add requests to the 
 /// font download queue.
 /// </remarks>
-interface DWRITE_DECLARE_INTERFACE("68648C83-6EDE-46C0-AB46-20083A887FDE") IDWriteRemoteFontFileLoader : public IDWriteFontFileLoader
+DWRITE_BEGIN_INTERFACE(IDWriteRemoteFontFileLoader, "68648C83-6EDE-46C0-AB46-20083A887FDE") : IDWriteFontFileLoader
 {
     /// <summary>
     /// Creates a remote font file stream object that encapsulates an open file resource
@@ -2269,7 +2286,7 @@ interface DWRITE_DECLARE_INTERFACE("68648C83-6EDE-46C0-AB46-20083A887FDE") IDWri
 /// unregistering using IDWriteFactory::RegisterFontFileLoader and 
 /// IDWriteFactory::UnregisterFontFileLoader.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("DC102F47-A12D-4B1C-822D-9E117E33043F") IDWriteInMemoryFontFileLoader : public IDWriteFontFileLoader
+DWRITE_BEGIN_INTERFACE(IDWriteInMemoryFontFileLoader, "DC102F47-A12D-4B1C-822D-9E117E33043F") : IDWriteFontFileLoader
 {
     /// <summary>
     /// The CreateInMemoryFontFileReference method creates a font file reference
@@ -2310,7 +2327,7 @@ interface DWRITE_DECLARE_INTERFACE("DC102F47-A12D-4B1C-822D-9E117E33043F") IDWri
 /// <summary>
 /// The root factory interface for all DWrite objects.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("958DB99A-BE2A-4F09-AF7D-65189803D1D3") IDWriteFactory5 : public IDWriteFactory4
+DWRITE_BEGIN_INTERFACE(IDWriteFactory5, "958DB99A-BE2A-4F09-AF7D-65189803D1D3") : IDWriteFactory4
 {
     /// <summary>
     /// Creates an empty font set builder to add font face references
@@ -2354,8 +2371,8 @@ interface DWRITE_DECLARE_INTERFACE("958DB99A-BE2A-4F09-AF7D-65189803D1D3") IDWri
     /// Standard HRESULT error code.
     /// </returns>
     STDMETHOD(CreateHttpFontFileLoader)(
-        _In_opt_z_ wchar_t const* referrerUrl,
-        _In_opt_z_ wchar_t const* extraHeaders,
+        _In_opt_z_ WCHAR const* referrerUrl,
+        _In_opt_z_ WCHAR const* extraHeaders,
         _COM_Outptr_ IDWriteRemoteFontFileLoader** newLoader
         ) PURE;
 
@@ -2393,13 +2410,13 @@ interface DWRITE_DECLARE_INTERFACE("958DB99A-BE2A-4F09-AF7D-65189803D1D3") IDWri
         ) PURE;
 };
 
-#endif // NTDDI_VERSION >= NTDDI_WIN10_RS2
+#endif // DWRITE_CORE || NTDDI_VERSION >= NTDDI_WIN10_RS2
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-#if NTDDI_VERSION >= NTDDI_WIN10_RS3
+#if DWRITE_CORE || NTDDI_VERSION >= /*NTDDI_WIN10_RS3*/0x0A000004
 
 
 interface IDWriteFontResource;
@@ -2516,7 +2533,7 @@ enum DWRITE_AUTOMATIC_FONT_AXES
 };
 
 #ifdef DEFINE_ENUM_FLAG_OPERATORS
-DEFINE_ENUM_FLAG_OPERATORS(DWRITE_AUTOMATIC_FONT_AXES);
+DEFINE_ENUM_FLAG_OPERATORS(DWRITE_AUTOMATIC_FONT_AXES)
 #endif
 
 
@@ -2549,11 +2566,11 @@ enum DWRITE_FONT_AXIS_ATTRIBUTES
 };
 
 #ifdef DEFINE_ENUM_FLAG_OPERATORS
-DEFINE_ENUM_FLAG_OPERATORS(DWRITE_FONT_AXIS_ATTRIBUTES);
+DEFINE_ENUM_FLAG_OPERATORS(DWRITE_FONT_AXIS_ATTRIBUTES)
 #endif
 
 
-interface DWRITE_DECLARE_INTERFACE("F3744D80-21F7-42EB-B35D-995BC72FC223") IDWriteFactory6 : public IDWriteFactory5
+DWRITE_BEGIN_INTERFACE(IDWriteFactory6, "F3744D80-21F7-42EB-B35D-995BC72FC223") : IDWriteFactory5
 {
     /// <summary>
     /// Creates a reference to a specific font instance within a file.
@@ -2689,7 +2706,7 @@ interface DWRITE_DECLARE_INTERFACE("F3744D80-21F7-42EB-B35D-995BC72FC223") IDWri
 };
 
 
-interface DWRITE_DECLARE_INTERFACE("98EFF3A5-B667-479A-B145-E2FA5B9FDC29") IDWriteFontFace5 : public IDWriteFontFace4
+DWRITE_BEGIN_INTERFACE(IDWriteFontFace5, "98EFF3A5-B667-479A-B145-E2FA5B9FDC29") : IDWriteFontFace4
 {
     /// <summary>
     /// Get the number of axes defined by the font. This includes both static and variable axes.
@@ -2741,7 +2758,7 @@ interface DWRITE_DECLARE_INTERFACE("98EFF3A5-B667-479A-B145-E2FA5B9FDC29") IDWri
 /// <summary>
 /// Interface to return axis information for a font resource and create specific font face instances.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("1F803A76-6871-48E8-987F-B975551C50F2") IDWriteFontResource : public IUnknown
+DWRITE_BEGIN_INTERFACE(IDWriteFontResource, "1F803A76-6871-48E8-987F-B975551C50F2") : IUnknown
 {
     /// <summary>
     /// Get the font file of the resource.
@@ -2914,7 +2931,7 @@ interface DWRITE_DECLARE_INTERFACE("1F803A76-6871-48E8-987F-B975551C50F2") IDWri
 };
 
 
-interface DWRITE_DECLARE_INTERFACE("C081FE77-2FD1-41AC-A5A3-34983C4BA61A") IDWriteFontFaceReference1 : public IDWriteFontFaceReference
+DWRITE_BEGIN_INTERFACE(IDWriteFontFaceReference1, "C081FE77-2FD1-41AC-A5A3-34983C4BA61A") : IDWriteFontFaceReference
 {
     /// <summary>
     /// Creates a font face from the reference for use with layout, shaping, or rendering.
@@ -2952,7 +2969,7 @@ interface DWRITE_DECLARE_INTERFACE("C081FE77-2FD1-41AC-A5A3-34983C4BA61A") IDWri
 };
 
 
-interface DWRITE_DECLARE_INTERFACE("EE5BA612-B131-463C-8F4F-3189B9401E45") IDWriteFontSetBuilder2 : public IDWriteFontSetBuilder1
+DWRITE_BEGIN_INTERFACE(IDWriteFontSetBuilder2, "EE5BA612-B131-463C-8F4F-3189B9401E45") : IDWriteFontSetBuilder1
 {
     /// <summary>
     /// Adds a font to the set being built, with the caller supplying enough information to search on
@@ -3002,7 +3019,7 @@ interface DWRITE_DECLARE_INTERFACE("EE5BA612-B131-463C-8F4F-3189B9401E45") IDWri
 };
 
 
-interface DWRITE_DECLARE_INTERFACE("7E9FDA85-6C92-4053-BC47-7AE3530DB4D3") IDWriteFontSet1 : public IDWriteFontSet
+DWRITE_BEGIN_INTERFACE(IDWriteFontSet1, "7E9FDA85-6C92-4053-BC47-7AE3530DB4D3") : IDWriteFontSet
 {
     /// <summary>
     /// Generates a matching font set based on the requested inputs, ordered so that nearer matches are earlier.
@@ -3025,6 +3042,8 @@ interface DWRITE_DECLARE_INTERFACE("7E9FDA85-6C92-4053-BC47-7AE3530DB4D3") IDWri
         UINT32 fontAxisValueCount,
         _COM_Outptr_ IDWriteFontSet1** matchingFonts
         ) PURE;
+		
+	using IDWriteFontSet::GetMatchingFonts;
 
     /// <summary>
     /// Returns a font set that contains only the first occurrence of each font resource in the given set.
@@ -3230,7 +3249,7 @@ interface DWRITE_DECLARE_INTERFACE("7E9FDA85-6C92-4053-BC47-7AE3530DB4D3") IDWri
 };
 
 
-interface DWRITE_DECLARE_INTERFACE("C0763A34-77AF-445A-B735-08C37B0A5BF5") IDWriteFontList2 : public IDWriteFontList1
+DWRITE_BEGIN_INTERFACE(IDWriteFontList2, "C0763A34-77AF-445A-B735-08C37B0A5BF5") : IDWriteFontList1
 {
     /// <summary>
     /// Get the underlying font set used by this list.
@@ -3245,7 +3264,7 @@ interface DWRITE_DECLARE_INTERFACE("C0763A34-77AF-445A-B735-08C37B0A5BF5") IDWri
 };
 
 
-interface DWRITE_DECLARE_INTERFACE("3ED49E77-A398-4261-B9CF-C126C2131EF3") IDWriteFontFamily2 : public IDWriteFontFamily1
+DWRITE_BEGIN_INTERFACE(IDWriteFontFamily2, "3ED49E77-A398-4261-B9CF-C126C2131EF3") : IDWriteFontFamily1
 {
     /// <summary>
     /// Gets a list of fonts in the font family ranked in order of how well they match the specified axis values.
@@ -3277,7 +3296,7 @@ interface DWRITE_DECLARE_INTERFACE("3ED49E77-A398-4261-B9CF-C126C2131EF3") IDWri
 };
 
 
-interface DWRITE_DECLARE_INTERFACE("514039C6-4617-4064-BF8B-92EA83E506E0") IDWriteFontCollection2 : public IDWriteFontCollection1
+DWRITE_BEGIN_INTERFACE(IDWriteFontCollection2, "514039C6-4617-4064-BF8B-92EA83E506E0") : IDWriteFontCollection1
 {
     /// <summary>
     /// Creates a font family object given a zero-based font family index.
@@ -3291,6 +3310,9 @@ interface DWRITE_DECLARE_INTERFACE("514039C6-4617-4064-BF8B-92EA83E506E0") IDWri
         UINT32 index,
         _COM_Outptr_ IDWriteFontFamily2** fontFamily
         ) PURE;
+
+    using IDWriteFontCollection::GetFontFamily;
+    using IDWriteFontCollection1::GetFontFamily;
 
     /// <summary>
     /// Gets a list of fonts in the specified font family ranked in order of how well they match the specified axis values.
@@ -3332,13 +3354,11 @@ interface DWRITE_DECLARE_INTERFACE("514039C6-4617-4064-BF8B-92EA83E506E0") IDWri
         _COM_Outptr_ IDWriteFontSet1** fontSet
         ) PURE;
 
-    using IDWriteFontCollection::GetFontFamily;
-    using IDWriteFontCollection1::GetFontFamily;
     using IDWriteFontCollection1::GetFontSet;
 };
 
 
-interface DWRITE_DECLARE_INTERFACE("05A9BF42-223F-4441-B5FB-8263685F55E9") IDWriteTextLayout4 : public IDWriteTextLayout3
+DWRITE_BEGIN_INTERFACE(IDWriteTextLayout4, "05A9BF42-223F-4441-B5FB-8263685F55E9") : IDWriteTextLayout3
 {
     /// <summary>
     /// Set values for font axes over a range of text.
@@ -3395,7 +3415,7 @@ interface DWRITE_DECLARE_INTERFACE("05A9BF42-223F-4441-B5FB-8263685F55E9") IDWri
 };
 
 
-interface DWRITE_DECLARE_INTERFACE("6D3B5641-E550-430D-A85B-B7BF48A93427") IDWriteTextFormat3 : public IDWriteTextFormat2
+DWRITE_BEGIN_INTERFACE(IDWriteTextFormat3, "6D3B5641-E550-430D-A85B-B7BF48A93427") : IDWriteTextFormat2
 {
     /// <summary>
     /// Set values for font axes of the format.
@@ -3447,7 +3467,7 @@ interface DWRITE_DECLARE_INTERFACE("6D3B5641-E550-430D-A85B-B7BF48A93427") IDWri
 };
 
 
-interface DWRITE_DECLARE_INTERFACE("2397599D-DD0D-4681-BD6A-F4F31EAADE77") IDWriteFontFallback1 : public IDWriteFontFallback
+DWRITE_BEGIN_INTERFACE(IDWriteFontFallback1, "2397599D-DD0D-4681-BD6A-F4F31EAADE77") : IDWriteFontFallback
 {
     /// <summary>
     /// Determines an appropriate font to use to render the range of text.
@@ -3485,11 +3505,11 @@ interface DWRITE_DECLARE_INTERFACE("2397599D-DD0D-4681-BD6A-F4F31EAADE77") IDWri
     using IDWriteFontFallback::MapCharacters;
 };
 
-#endif // NTDDI_VERSION >= NTDDI_WIN10_RS3
+#endif // DWRITE_CORE || NTDDI_VERSION >= NTDDI_WIN10_RS3
 
-#if NTDDI_VERSION >= NTDDI_WIN10_RS4
+#if DWRITE_CORE || NTDDI_VERSION >= /*NTDDI_WIN10_RS4*/0x0A000005
 
-interface DWRITE_DECLARE_INTERFACE("DC7EAD19-E54C-43AF-B2DA-4E2B79BA3F7F") IDWriteFontSet2 : public IDWriteFontSet1
+DWRITE_BEGIN_INTERFACE(IDWriteFontSet2, "DC7EAD19-E54C-43AF-B2DA-4E2B79BA3F7F") : IDWriteFontSet1
 {
     /// <summary>
     /// Gets the expiration event for the font set, if any. The expiration event is set on a system font set object if
@@ -3507,7 +3527,7 @@ interface DWRITE_DECLARE_INTERFACE("DC7EAD19-E54C-43AF-B2DA-4E2B79BA3F7F") IDWri
     STDMETHOD_(HANDLE, GetExpirationEvent)() PURE;
 };
 
-interface DWRITE_DECLARE_INTERFACE("A4D055A6-F9E3-4E25-93B7-9E309F3AF8E9") IDWriteFontCollection3 : public IDWriteFontCollection2
+DWRITE_BEGIN_INTERFACE(IDWriteFontCollection3, "A4D055A6-F9E3-4E25-93B7-9E309F3AF8E9") : IDWriteFontCollection2
 {
     /// <summary>
     /// Gets the expiration event for the font collection, if any. The expiration event is set on a system font 
@@ -3526,7 +3546,7 @@ interface DWRITE_DECLARE_INTERFACE("A4D055A6-F9E3-4E25-93B7-9E309F3AF8E9") IDWri
     STDMETHOD_(HANDLE, GetExpirationEvent)() PURE;
 };
 
-interface DWRITE_DECLARE_INTERFACE("35D0E0B3-9076-4D2E-A016-A91B568A06B4") IDWriteFactory7 : public IDWriteFactory6
+DWRITE_BEGIN_INTERFACE(IDWriteFactory7, "35D0E0B3-9076-4D2E-A016-A91B568A06B4") : IDWriteFactory6
 {
     /// <summary>
     /// Retrieves the set of system fonts.
@@ -3561,9 +3581,9 @@ interface DWRITE_DECLARE_INTERFACE("35D0E0B3-9076-4D2E-A016-A91B568A06B4") IDWri
     using IDWriteFactory6::GetSystemFontCollection;
 };
 
-#endif // NTDDI_VERSION >= NTDDI_WIN10_RS4
+#endif // DWRITE_CORE || NTDDI_VERSION >= NTDDI_WIN10_RS4
 
-#if NTDDI_VERSION >= NTDDI_WIN10_RS5
+#if DWRITE_CORE || NTDDI_VERSION >= /*NTDDI_WIN10_RS5*/0x0A000006
 
 /// <summary>
 /// The font source type identifies the mechanism by which a font came to be included in a font set.
@@ -3597,7 +3617,7 @@ enum DWRITE_FONT_SOURCE_TYPE
     DWRITE_FONT_SOURCE_TYPE_REMOTE_FONT_PROVIDER
 };
 
-interface DWRITE_DECLARE_INTERFACE("7C073EF2-A7F4-4045-8C32-8AB8AE640F90") IDWriteFontSet3 : public IDWriteFontSet2
+DWRITE_BEGIN_INTERFACE(IDWriteFontSet3, "7C073EF2-A7F4-4045-8C32-8AB8AE640F90") : IDWriteFontSet2
 {
     /// <summary>
     /// Gets the font source type of the specified font.
@@ -3628,11 +3648,11 @@ interface DWRITE_DECLARE_INTERFACE("7C073EF2-A7F4-4045-8C32-8AB8AE640F90") IDWri
         ) PURE;
 };
 
-#endif // NTDDI_VERSION >= NTDDI_WIN10_RS5
+#endif // DWRITE_CORE || NTDDI_VERSION >= NTDDI_WIN10_RS5
 
-#if NTDDI_VERSION >= NTDDI_WIN10_MN
+#if DWRITE_CORE || NTDDI_VERSION >= /*NTDDI_WIN10_MN*/0x0A000009
 
-interface DWRITE_DECLARE_INTERFACE("C4B1FE1B-6E84-47D5-B54C-A597981B06AD") IDWriteFontFace6 : public IDWriteFontFace5
+DWRITE_BEGIN_INTERFACE(IDWriteFontFace6, "C4B1FE1B-6E84-47D5-B54C-A597981B06AD") : IDWriteFontFace5
 {
     /// <summary>
     /// Creates a localized strings object that contains the family names for the font, indexed by locale name.
@@ -3644,7 +3664,7 @@ interface DWRITE_DECLARE_INTERFACE("C4B1FE1B-6E84-47D5-B54C-A597981B06AD") IDWri
     /// </returns>
     STDMETHOD(GetFamilyNames)(
         DWRITE_FONT_FAMILY_MODEL fontFamilyModel,
-        _COM_Outptr_ IDWriteLocalizedStrings** names
+        _COM_Outptr_ IDWriteLocalizedStrings * *names
         ) PURE;
 
     using IDWriteFontFace3::GetFamilyNames;
@@ -3659,17 +3679,17 @@ interface DWRITE_DECLARE_INTERFACE("C4B1FE1B-6E84-47D5-B54C-A597981B06AD") IDWri
     /// </returns>
     STDMETHOD(GetFaceNames)(
         DWRITE_FONT_FAMILY_MODEL fontFamilyModel,
-        _COM_Outptr_ IDWriteLocalizedStrings** names
+        _COM_Outptr_ IDWriteLocalizedStrings * *names
         ) PURE;
 
     using IDWriteFontFace3::GetFaceNames;
 };
 
-#endif // NTDDI_VERSION >= NTDDI_WIN10_MN
+#endif // DWRITE_CORE || NTDDI_VERSION >= NTDDI_WIN10_MN
 
-#if NTDDI_VERSION >= NTDDI_WIN10_NI
+#if DWRITE_CORE || NTDDI_VERSION >= /*NTDDI_WIN10_NI*/0x0A00000C
 
-interface DWRITE_DECLARE_INTERFACE("EEC175FC-BEA9-4C86-8B53-CCBDD7DF0C82") IDWriteFontSet4 : public IDWriteFontSet3
+DWRITE_BEGIN_INTERFACE(IDWriteFontSet4, "EEC175FC-BEA9-4C86-8B53-CCBDD7DF0C82") : IDWriteFontSet3
 {
     /// <summary>
     /// Computes derived font axis values from the specified font weight, stretch, style, and size.
@@ -3730,9 +3750,9 @@ interface DWRITE_DECLARE_INTERFACE("EEC175FC-BEA9-4C86-8B53-CCBDD7DF0C82") IDWri
         ) PURE;
 };
 
-#endif // NTDDI_VERSION >= NTDDI_WIN10_NI
+#endif // DWRITE_CORE || NTDDI_VERSION >= NTDDI_WIN10_NI
 
-#if NTDDI_VERSION >= NTDDI_WIN10_NI
+#if DWRITE_CORE
 
 /// <summary>
 /// Contains information about a bitmap associated with an IDWriteBitmapRenderTarget.
@@ -3759,6 +3779,15 @@ DWRITE_BEGIN_INTERFACE(IDWriteBitmapRenderTarget2, "C553A742-FC01-44DA-A66E-B8B9
 };
 
 /// <summary>
+/// DWRITE_GLYPH_IMAGE_FORMATS_COLR_PAINT_TREE image format represents a color glyph that can be
+/// rendered by drawing paint elements returned by IDWritePaintReader.
+/// </summary>
+#ifndef DWRITE_GLYPH_IMAGE_FORMATS_COLR_PAINT_TREE_DEFINED
+#define DWRITE_GLYPH_IMAGE_FORMATS_COLR_PAINT_TREE_DEFINED
+#define DWRITE_GLYPH_IMAGE_FORMATS_COLR_PAINT_TREE static_cast<DWRITE_GLYPH_IMAGE_FORMATS>(0x00000100)
+#endif
+
+/// <summary>
 /// Defines known feature level for use with the IDWritePaintReader interface and 
 /// related APIs. A feature level represents a level of functionality. For example, it
 /// determines what DWRITE_PAINT_TYPE values might be returned.
@@ -3767,7 +3796,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteBitmapRenderTarget2, "C553A742-FC01-44DA-A66E-B8B9
 /// See the DWRITE_PAINT_TYPE enumeration for which paint types are required for each
 /// feature level.
 /// </remarks>
-enum DWRITE_PAINT_FEATURE_LEVEL : INT32
+enum DWRITE_PAINT_FEATURE_LEVEL
 {
     /// <summary>
     /// No paint API support.
@@ -4261,7 +4290,7 @@ DWRITE_BEGIN_INTERFACE(IDWritePaintReader, "8128E912-3B97-42A5-AB6C-24AAD3A86E54
     // Inline overload of SetCurrentGlyph, in which structSize is implied.
     HRESULT SetCurrentGlyph(
         UINT32 glyphIndex,
-        _Out_writes_bytes_(structSize) DWRITE_PAINT_ELEMENT* paintElement,
+        _Out_ DWRITE_PAINT_ELEMENT* paintElement,
         _Out_ D2D_RECT_F* clipBox,
         _Out_opt_ DWRITE_PAINT_ATTRIBUTES* glyphAttributes = nullptr
         )
@@ -4547,6 +4576,107 @@ DWRITE_BEGIN_INTERFACE(IDWriteBitmapRenderTarget3, "AEEC37DB-C337-40F1-8E2A-9A41
         ) PURE;
 };
 
-#endif
+#endif // DWRITE_CORE
+
+#if DWRITE_CORE
+
+/// <summary>
+/// Specifies the data type of a parameter passed to
+/// IDWriteEventSink::LogEvent.
+/// </summary>
+enum DWRITE_EVENT_PARAM_TYPE : UINT32
+{
+    /// <summary>
+    /// An event tag, which is a UINT64 value encoding up to eight ASCII characters
+    /// in little-endian order.
+    /// </summary>
+    DWRITE_EVENT_PARAM_TYPE_TAG,
+
+    /// <summary>
+    /// 32-bit unsigned value.
+    /// </summary>
+    DWRITE_EVENT_PARAM_TYPE_UINT32,
+
+    /// <summary>
+    /// Time in system clock ticks as reported by std::chrono::system_clock.
+    /// </summary>
+    DWRITE_EVENT_PARAM_TYPE_DATETIME,
+
+    /// <summary>
+    /// Null-terminated string of WCHAR.
+    /// </summary>
+    DWRITE_EVENT_PARAM_TYPE_STRINGW,
+
+    /// <summary>
+    /// Null-terminated UTF-8 string.
+    /// </summary>
+    DWRITE_EVENT_PARAM_TYPE_STRINGA
+};
+
+/// <summary>
+/// Represents a parameter passed to IDWriteEventSink::LogEvent.
+/// </summary>
+struct DWRITE_EVENT_PARAM
+{
+    DWRITE_EVENT_PARAM_TYPE paramType;
+
+    union DWRITE_EVENT_PARAM_VALUE
+    {
+        UINT64 tag;                         // DWRITE_EVENT_PARAM_TYPE_TAG
+        UINT32 uint32;                      // DWRITE_EVENT_PARAM_TYPE_UINT32
+        UINT64 dateTime;                    // DWRITE_EVENT_PARAM_TYPE_DATETIME
+        _Field_z_ WCHAR const* stringW;     // DWRITE_EVENT_PARAM_TYPE_STRINGW
+        _Field_z_ char const* stringA;      // DWRITE_EVENT_PARAM_TYPE_STRINGA
+    } paramValue;
+};
+
+/// <summary>
+/// Callback interface that receives internal events from DWriteCore.
+/// </summary>
+/// <remarks>
+/// Events sent to this interface should be used for diagnostic purposes only,
+/// they may change from version to version.
+/// 
+/// Each type of event is idenfied by a "tag" comprising up to 8 ASCII characters
+/// encoded as a UINT64. The first character of the tag is in the low-order byte.
+/// Following are some well-known event tags and the expected parameters for each.
+/// 
+///     "state" (TAG newState) ...
+///         Indicates an object is transitioning to the state specified by newState.
+///         Common states are "ctor" for a new object and "dtor" for a destroyed
+///         object.
+/// 
+///     "error" (UINT32 errorCode) (TAG taskID) (UINT32 lineNumber) ...
+///     
+///     "warning" (STRINGA message) (UINT32 lineNumber)?
+/// 
+///     "badfont" (STRINGA message)
+/// 
+///     "assert" (STRINGA fileName) (UINT32 lineNumber) (STRINGA expression)
+/// 
+/// </remarks>
+DWRITE_BEGIN_INTERFACE(IDWriteEventSink, "b2839dc9-5419-4223-a069-c792d2dc6ba0") : IUnknown
+{
+    /// <summary>
+    /// Notifies the event sink of an internal DWriteCore event.
+    /// </summary>
+    /// <param name="objectId">Unique integer ID of the object that logged the
+    /// event, or zero if the event did not come from a specific object.</param>
+    /// <param name="classTag">Event tag identifying the type of object that
+    /// logged the event, or zero if the event did not come from a specific
+    /// object.</param>
+    /// <param name="eventTag">Event tag identifying the type of event.</param>
+    /// <param name="eventParams">Array of additional event parameters.</param>
+    /// <param name="eventParamCount">Number of additional event parameters.</param>
+    STDMETHOD_(void, LogEvent)(
+        UINT32 objectId,
+        UINT64 classTag,
+        UINT64 eventTag,
+        _In_reads_(eventParamCount) DWRITE_EVENT_PARAM const* eventParams,
+        UINT32 eventParamCount
+        ) PURE;
+};
+
+#endif // DWRITE_CORE
 
 #endif // DWRITE_3_H_INCLUDED

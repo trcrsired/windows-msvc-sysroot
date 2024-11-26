@@ -12,9 +12,7 @@
 
 #pragma once
 
-#include <dwrite.h>
-
-
+#include "dwrite.h"
 
 /// <summary>
 /// The overall kind of family.
@@ -1015,7 +1013,7 @@ interface IDWriteRenderingParams1;
 /// <summary>
 /// The root factory interface for all DWrite objects.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("30572f99-dac6-41db-a16e-0486307e606a") IDWriteFactory1 : public IDWriteFactory
+DWRITE_BEGIN_INTERFACE(IDWriteFactory1, "30572f99-dac6-41db-a16e-0486307e606a") : IDWriteFactory
 {
     /// <summary>
     /// Gets a font collection representing the set of end-user defined
@@ -1087,7 +1085,7 @@ interface DWRITE_DECLARE_INTERFACE("30572f99-dac6-41db-a16e-0486307e606a") IDWri
 /// It contains font face type, appropriate file references and face identification data.
 /// Various font data such as metrics, names and glyph outlines is obtained from IDWriteFontFace.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("a71efdb4-9fdb-4838-ad90-cfc3be8c3daf") IDWriteFontFace1 : public IDWriteFontFace
+DWRITE_BEGIN_INTERFACE(IDWriteFontFace1, "a71efdb4-9fdb-4838-ad90-cfc3be8c3daf") : IDWriteFontFace
 {
     /// <summary>
     /// Gets common metrics for the font in design units.
@@ -1345,7 +1343,7 @@ interface DWRITE_DECLARE_INTERFACE("a71efdb4-9fdb-4838-ad90-cfc3be8c3daf") IDWri
 /// <summary>
 /// The IDWriteFont interface represents a physical font in a font collection.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("acd16696-8c14-4f5d-877e-fe3fc1d32738") IDWriteFont1 : public IDWriteFont
+DWRITE_BEGIN_INTERFACE(IDWriteFont1, "acd16696-8c14-4f5d-877e-fe3fc1d32738") : IDWriteFont
 {
     /// <summary>
     /// Gets common metrics for the font in design units.
@@ -1407,7 +1405,7 @@ interface DWRITE_DECLARE_INTERFACE("acd16696-8c14-4f5d-877e-fe3fc1d32738") IDWri
 /// <summary>
 /// The interface that represents text rendering settings for glyph rasterization and filtering.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("94413cf4-a6fc-4248-8b50-6674348fcad3") IDWriteRenderingParams1 : public IDWriteRenderingParams
+DWRITE_BEGIN_INTERFACE(IDWriteRenderingParams1, "94413cf4-a6fc-4248-8b50-6674348fcad3") : IDWriteRenderingParams
 {
     /// <summary>
     /// Gets the amount of contrast enhancement to use for grayscale antialiasing.
@@ -1419,7 +1417,7 @@ interface DWRITE_DECLARE_INTERFACE("94413cf4-a6fc-4248-8b50-6674348fcad3") IDWri
 /// <summary>
 /// Analyzes various text properties for complex script processing.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("80DAD800-E21F-4E83-96CE-BFCCE500DB7C") IDWriteTextAnalyzer1 : public IDWriteTextAnalyzer
+DWRITE_BEGIN_INTERFACE(IDWriteTextAnalyzer1, "80DAD800-E21F-4E83-96CE-BFCCE500DB7C") : IDWriteTextAnalyzer
 {
     /// <summary>
     /// Applies spacing between characters, properly adjusting glyph clusters
@@ -1649,7 +1647,7 @@ interface DWRITE_DECLARE_INTERFACE("80DAD800-E21F-4E83-96CE-BFCCE500DB7C") IDWri
         _In_reads_(glyphCount) FLOAT const* glyphAdvances,
         _In_reads_(glyphCount) DWRITE_GLYPH_OFFSET const* glyphOffsets,
         _Out_writes_(glyphCount) FLOAT* justifiedGlyphAdvances,
-        _Out_writes_opt_(glyphCount) DWRITE_GLYPH_OFFSET* justifiedGlyphOffsets
+        _Out_writes_(glyphCount) DWRITE_GLYPH_OFFSET* justifiedGlyphOffsets
         ) PURE;
 
     /// <summary>
@@ -1697,14 +1695,14 @@ interface DWRITE_DECLARE_INTERFACE("80DAD800-E21F-4E83-96CE-BFCCE500DB7C") IDWri
         UINT32 textLength,
         UINT32 glyphCount,
         UINT32 maxGlyphCount,
-        _In_reads_opt_(textLength) UINT16 const* clusterMap,
+        _In_reads_(textLength) UINT16 const* clusterMap,
         _In_reads_(glyphCount) UINT16 const* glyphIndices,
         _In_reads_(glyphCount) FLOAT const* glyphAdvances,
         _In_reads_(glyphCount) FLOAT const* justifiedGlyphAdvances,
         _In_reads_(glyphCount) DWRITE_GLYPH_OFFSET const* justifiedGlyphOffsets,
         _In_reads_(glyphCount) DWRITE_SHAPING_GLYPH_PROPERTIES const* glyphProperties,
         _Out_range_(glyphCount, maxGlyphCount) UINT32* actualGlyphCount,
-        _Out_writes_opt_(textLength) UINT16* modifiedClusterMap,
+        _Out_writes_(textLength) UINT16* modifiedClusterMap,
         _Out_writes_to_(maxGlyphCount, *actualGlyphCount) UINT16* modifiedGlyphIndices,
         _Out_writes_to_(maxGlyphCount, *actualGlyphCount) FLOAT* modifiedGlyphAdvances,
         _Out_writes_to_(maxGlyphCount, *actualGlyphCount) DWRITE_GLYPH_OFFSET* modifiedGlyphOffsets
@@ -1718,7 +1716,7 @@ interface DWRITE_DECLARE_INTERFACE("80DAD800-E21F-4E83-96CE-BFCCE500DB7C") IDWri
 /// If any of these callbacks returns an error, the analysis functions will
 /// stop prematurely and return a callback error.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("639CFAD8-0FB4-4B21-A58A-067920120009") IDWriteTextAnalysisSource1 : public IDWriteTextAnalysisSource
+DWRITE_BEGIN_INTERFACE(IDWriteTextAnalysisSource1, "639CFAD8-0FB4-4B21-A58A-067920120009") : IDWriteTextAnalysisSource
 {
     /// <summary>
     /// The text analyzer calls back to this to get the desired glyph
@@ -1757,7 +1755,7 @@ interface DWRITE_DECLARE_INTERFACE("639CFAD8-0FB4-4B21-A58A-067920120009") IDWri
 /// The interface implemented by the client to receive the
 /// output of the text analyzers.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("B0D941A0-85E7-4D8B-9FD3-5CED9934482A") IDWriteTextAnalysisSink1 : public IDWriteTextAnalysisSink
+DWRITE_BEGIN_INTERFACE(IDWriteTextAnalysisSink1, "B0D941A0-85E7-4D8B-9FD3-5CED9934482A") : IDWriteTextAnalysisSink
 {
     /// <summary>
     /// The text analyzer calls back to this to report the actual orientation
@@ -1799,7 +1797,7 @@ interface DWRITE_DECLARE_INTERFACE("B0D941A0-85E7-4D8B-9FD3-5CED9934482A") IDWri
 ///
 /// All coordinates are in device independent pixels (DIPs).
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("9064D822-80A7-465C-A986-DF65F78B8FEB") IDWriteTextLayout1 : public IDWriteTextLayout
+DWRITE_BEGIN_INTERFACE(IDWriteTextLayout1, "9064D822-80A7-465C-A986-DF65F78B8FEB") : IDWriteTextLayout
 {
     /// <summary>
     /// Enables/disables pair-kerning on the given range.
@@ -1896,7 +1894,7 @@ enum DWRITE_TEXT_ANTIALIAS_MODE
 /// <summary>
 /// Encapsulates a 32-bit device independent bitmap and device context, which can be used for rendering glyphs.
 /// </summary>
-interface DWRITE_DECLARE_INTERFACE("791e8298-3ef3-4230-9880-c9bdecc42064") IDWriteBitmapRenderTarget1 : public IDWriteBitmapRenderTarget
+DWRITE_BEGIN_INTERFACE(IDWriteBitmapRenderTarget1, "791e8298-3ef3-4230-9880-c9bdecc42064") : IDWriteBitmapRenderTarget
 {
     /// <summary>
     /// Gets the current text antialiasing mode of the bitmap render target.
