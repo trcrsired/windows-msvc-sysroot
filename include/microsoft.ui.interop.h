@@ -7,7 +7,7 @@
 #endif
 
 #include <winerror.h>
-#include <Microsoft.UI.h>
+#include <microsoft.ui.h>
 
 #ifdef BUILD_WINDOWS
 namespace ABI::Microsoft::UI 

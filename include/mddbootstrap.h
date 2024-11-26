@@ -199,8 +199,8 @@ namespace DynamicDependency::Bootstrap
     /// ~~~~~
     /// #include <windows.h>
     ///
-    /// #include <WindowsAppSDK-VersionInfo.h>
-    /// #include <MddBootstrap.h>
+    /// #include <windowsappsdk-versioninfo.h>
+    /// #include <mddbootstrap.h>
     ///
     /// #include <iostream>
     ///
@@ -250,8 +250,8 @@ namespace DynamicDependency::Bootstrap
     ///
     /// #include <winrt\base.h>
     ///
-    /// #include <WindowsAppSDK-VersionInfo.h>
-    /// #include <MddBootstrap.h>
+    /// #include <windowsappsdk-versioninfo.h>
+    /// #include <mddbootstrap.h>
     ///
     /// #include <iostream>
     ///
@@ -302,8 +302,8 @@ namespace DynamicDependency::Bootstrap
     /// ~~~~~
     /// #include <windows.h>
     ///
-    /// #include <WindowsAppSDK-VersionInfo.h>
-    /// #include <MddBootstrap.h>
+    /// #include <windowsappsdk-versioninfo.h>
+    /// #include <mddbootstrap.h>
     ///
     /// #include <iostream>
     ///

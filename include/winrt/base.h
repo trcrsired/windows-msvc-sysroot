@@ -649,12 +649,6 @@ int32_t __stdcall WINRT_GetActivationFactory(void* classId, void** factory) noex
 #undef WINRT_IMPL_EXTERN_C_BEGIN
 #undef WINRT_IMPL_EXTERN_C_END
 
-#if defined(_MSC_VER) && !defined(_KERNEL_MODE)
-#pragma comment(lib, "ole32.lib")
-#pragma comment(lib, "oleaut32.lib")
-#pragma comment(lib, "runtimeobject.lib")
-#endif
-
 WINRT_EXPORT namespace winrt
 {
     hresult check_hresult(hresult const result, winrt::impl::slim_source_location const& sourceInformation = winrt::impl::slim_source_location::current());

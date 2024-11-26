@@ -1,15 +1,15 @@
 ﻿// Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-#include <Windows.h>
+#include <windows.h>
 #include <stdlib.h>
 
-#include <winrt/Windows.Foundation.h>
-#include <winrt/Windows.Foundation.Collections.h>
+#include <winrt/windows.foundation.h>
+#include <winrt/windows.foundation.collections.h>
 
-#include <winrt/Windows.Management.Deployment.h>
-#include <winrt/Windows.System.h>
-#include <winrt/Microsoft.Windows.ApplicationModel.WindowsAppRuntime.h>
+#include <winrt/windows.management.deployment.h>
+#include <winrt/windows.system.h>
+#include <winrt/microsoft.windows.applicationmodel.windowsappruntime.h>
 
 // If any options are defined use them, else use the default
 #if !defined(MICROSOFT_WINDOWSAPPSDK_DEPLOYMENTMANAGER_AUTO_INITIALIZE_OPTIONS_DEFAULT)

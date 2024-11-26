@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
 
-#include <Windows.h>
+#include <windows.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include <MddBootstrap.h>
-#include <WindowsAppSDK-VersionInfo.h>
+#include <mddbootstrap.h>
+#include <windowsappsdk-versioninfo.h>
 
 // If any options are defined use them, else use the default
 #if !defined(MICROSOFT_WINDOWSAPPSDK_BOOTSTRAP_AUTO_INITIALIZE_OPTIONS_DEFAULT)

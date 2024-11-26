@@ -119,8 +119,8 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "Windows.Foundation.h"
-#include "WinRTDirectXCommon.h"
+#include "windows.foundation.h"
+#include "winrtdirectxcommon.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */

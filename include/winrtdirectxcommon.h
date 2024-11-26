@@ -119,7 +119,7 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "Windows.Foundation.h"
+#include "windows.foundation.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */

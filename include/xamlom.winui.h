@@ -62,7 +62,7 @@ typedef interface IXamlDiagnostics2 IXamlDiagnostics2;
 
 
 /* header files for imported files */
-#include "XamlOM.h"
+#include "xamlom.h"
 
 #ifdef __cplusplus
 extern "C"{

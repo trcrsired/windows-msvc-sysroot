@@ -7,7 +7,7 @@
 #pragma once
 #endif
 
-#include <winrt/Microsoft.ui.composition.h>
+#include <winrt/microsoft.ui.composition.h>
 #include <sdkddkver.h>
 
 namespace winrt {
