@@ -179,7 +179,7 @@ inline void __stdcall _set_com_error_handler(void (__stdcall *pHandler)(HRESULT,
 
 #else
 
-#include <OleCtl.h>
+#include <olectl.h>
 
 #ifdef _NATIVE_WCHAR_T_DEFINED
 #if defined(_GUARDED_CRT)
