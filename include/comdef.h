@@ -32,7 +32,7 @@
 #endif /* WINAPI_FAMILY */
 
 #ifndef _COMDEF_WINAPI_FAMILY_PHONE_APP
-#include <Ole2.h>
+#include <ole2.h>
 
 #include <comutil.h>
 #endif /* _COMDEF_WINAPI_FAMILY_PHONE_APP */
