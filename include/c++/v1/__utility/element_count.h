@@ -6,10 +6,11 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef _LIBCPP___FWD_BIT_REFERENCE_H
-#define _LIBCPP___FWD_BIT_REFERENCE_H
+#ifndef _LIBCPP___UTILITY_ELEMENT_COUNT_H
+#define _LIBCPP___UTILITY_ELEMENT_COUNT_H
 
 #include <__config>
+#include <__cstddef/size_t.h>
 
 #if !defined(_LIBCPP_HAS_NO_PRAGMA_SYSTEM_HEADER)
 #  pragma GCC system_header
@@ -17,12 +18,10 @@
 
 _LIBCPP_BEGIN_NAMESPACE_STD
 
-template <class _Cp, bool _IsConst, typename _Cp::__storage_type = 0>
-class __bit_iterator;
-
-template <class, class = void>
-struct __size_difference_type_traits;
+// Type used to encode that a function takes an integer that represents a number
+// of elements as opposed to a number of bytes.
+enum class __element_count : size_t {};
 
 _LIBCPP_END_NAMESPACE_STD
 
-#endif // _LIBCPP___FWD_BIT_REFERENCE_H
+#endif // _LIBCPP___UTILITY_ELEMENT_COUNT_H
