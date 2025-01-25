@@ -275,6 +275,7 @@
   { include: [ "<__chrono/time_zone_link.h>", "private", "<chrono>", "public" ] },
   { include: [ "<__chrono/tzdb.h>", "private", "<chrono>", "public" ] },
   { include: [ "<__chrono/tzdb_list.h>", "private", "<chrono>", "public" ] },
+  { include: [ "<__chrono/utc_clock.h>", "private", "<chrono>", "public" ] },
   { include: [ "<__chrono/weekday.h>", "private", "<chrono>", "public" ] },
   { include: [ "<__chrono/year.h>", "private", "<chrono>", "public" ] },
   { include: [ "<__chrono/year_month.h>", "private", "<chrono>", "public" ] },
