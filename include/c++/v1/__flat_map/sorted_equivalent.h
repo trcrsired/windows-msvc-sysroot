@@ -6,29 +6,26 @@
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 //===----------------------------------------------------------------------===//
-
-#ifndef _LIBCPP___FUNCTIONAL_IS_TRANSPARENT
-#define _LIBCPP___FUNCTIONAL_IS_TRANSPARENT
+#ifndef _LIBCPP___FLAT_MAP_SORTED_EQUIVALENT_H
+#define _LIBCPP___FLAT_MAP_SORTED_EQUIVALENT_H
 
 #include <__config>
-#include <__type_traits/void_t.h>
 
 #if !defined(_LIBCPP_HAS_NO_PRAGMA_SYSTEM_HEADER)
 #  pragma GCC system_header
 #endif
 
+#if _LIBCPP_STD_VER >= 23
+
 _LIBCPP_BEGIN_NAMESPACE_STD
 
-#if _LIBCPP_STD_VER >= 14
-
-template <class _Tp, class _Key = void, class = void>
-inline const bool __is_transparent_v = false;
-
-template <class _Tp, class _Key>
-inline const bool __is_transparent_v<_Tp, _Key, __void_t<typename _Tp::is_transparent> > = true;
-
-#endif
+struct sorted_equivalent_t {
+  explicit sorted_equivalent_t() = default;
+};
+inline constexpr sorted_equivalent_t sorted_equivalent{};
 
 _LIBCPP_END_NAMESPACE_STD
 
-#endif // _LIBCPP___FUNCTIONAL_IS_TRANSPARENT
+#endif // _LIBCPP_STD_VER >= 23
+
+#endif // _LIBCPP___FLAT_MAP_SORTED_EQUIVALENT_H
