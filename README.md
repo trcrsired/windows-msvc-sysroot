@@ -8,6 +8,8 @@ Clang's winsysroot is pretty useless since it does not follow the rule of other 
 ## Planned Enhancements to LLVM/Clang
 I intend to modify the clang frontend to support the ```--sysroot=``` option, enabling it to locate this sysroot using path finding as demonstrated below.
 
+https://github.com/llvm/llvm-project/pull/96417
+
 ## Supported Triplets
 i686-windows-msvc
 
