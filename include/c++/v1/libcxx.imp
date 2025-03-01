@@ -511,6 +511,7 @@
   { include: [ "<__locale_dir/support/bsd_like.h>", "private", "<locale>", "public" ] },
   { include: [ "<__locale_dir/support/freebsd.h>", "private", "<locale>", "public" ] },
   { include: [ "<__locale_dir/support/fuchsia.h>", "private", "<locale>", "public" ] },
+  { include: [ "<__locale_dir/support/linux.h>", "private", "<locale>", "public" ] },
   { include: [ "<__locale_dir/support/no_locale/characters.h>", "private", "<locale>", "public" ] },
   { include: [ "<__locale_dir/support/no_locale/strtonum.h>", "private", "<locale>", "public" ] },
   { include: [ "<__locale_dir/support/windows.h>", "private", "<locale>", "public" ] },
