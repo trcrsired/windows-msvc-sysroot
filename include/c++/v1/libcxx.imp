@@ -860,6 +860,8 @@
   { include: [ "<__type_traits/negation.h>", "private", "<type_traits>", "public" ] },
   { include: [ "<__type_traits/promote.h>", "private", "<type_traits>", "public" ] },
   { include: [ "<__type_traits/rank.h>", "private", "<type_traits>", "public" ] },
+  { include: [ "<__type_traits/reference_constructs_from_temporary.h>", "private", "<type_traits>", "public" ] },
+  { include: [ "<__type_traits/reference_converts_from_temporary.h>", "private", "<type_traits>", "public" ] },
   { include: [ "<__type_traits/remove_all_extents.h>", "private", "<type_traits>", "public" ] },
   { include: [ "<__type_traits/remove_const.h>", "private", "<type_traits>", "public" ] },
   { include: [ "<__type_traits/remove_const_ref.h>", "private", "<type_traits>", "public" ] },
