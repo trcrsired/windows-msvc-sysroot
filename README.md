@@ -30,7 +30,7 @@ With ```-stdlib=libc++```, headers should be located in ```include/c++/v1```.
 ## Libraries
 Libraries should be placed in ```lib/$TRIPLET```.
 
-For example. on ```x86_64-windows-msvc```, it should find libs in ```lib/x86_64-windows-msvc```.
+For example. on ```x86_64-windows-msvc```, it should find libs in ```lib/x86_64-unknown-windows-msvc```.
 
 # How to use it right now?
 
@@ -47,7 +47,7 @@ int main()
 ```
 ```
 # Suppose the repository is cloned in $HOME on Linux
-$ clang++ -o hello.exe hello.cc -O3 -fuse-ld=lld --target=x86_64-windows-msvc -I$HOME/windows-msvc-sysroot/include -I$HOME/windows-msvc-sysroot/include/c++/stl -L$HOME/windows-msvc-sysroot/lib/x86_64-windows-msvc
+$ clang++ -o hello.exe hello.cc -O3 -fuse-ld=lld --target=x86_64-windows-msvc -I$HOME/windows-msvc-sysroot/include -I$HOME/windows-msvc-sysroot/include/c++/stl -L$HOME/windows-msvc-sysroot/lib/x86_64-unknown-windows-msvc
 $ wine ./hello.exe
 Hello World
 ```
@@ -68,7 +68,7 @@ This should equal to
 
 ```
 # Suppose the repository is cloned in $HOME on Linux
-$ clang++ -o hello.exe hello.cc -O3 -fuse-ld=lld --target=x86_64-windows-msvc -I$HOME/windows-msvc-sysroot/include -I$HOME/windows-msvc-sysroot/include/c++/v1 -L$HOME/windows-msvc-sysroot/lib/x86_64-windows-msvc
+$ clang++ -o hello.exe hello.cc -O3 -fuse-ld=lld --target=x86_64-windows-msvc -I$HOME/windows-msvc-sysroot/include -I$HOME/windows-msvc-sysroot/include/c++/v1 -L$HOME/windows-msvc-sysroot/lib/x86_64-unknown-windows-msvc
 $ wine ./hello.exe
 Hello World
 ```
