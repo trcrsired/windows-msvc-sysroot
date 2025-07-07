@@ -1725,9 +1725,15 @@ namespace chrono {
 
     _EXPORT_STD class _NODISCARD nonexistent_local_time : public runtime_error {
     public:
+#if _HAS_EXCEPTIONS
         template <class _Duration>
         nonexistent_local_time(const local_time<_Duration>& _Tp, const local_info& _Info)
             : runtime_error(_Make_string(_Tp, _Info)) {}
+#else // ^^^ _HAS_EXCEPTIONS / !_HAS_EXCEPTIONS vvv
+        template <class _Duration>
+        nonexistent_local_time(const local_time<_Duration>&, const local_info&)
+            : runtime_error("nonexistent local time") {}
+#endif // ^^^ !_HAS_EXCEPTIONS ^^^
 
     private:
         template <class _Duration>
@@ -1741,9 +1747,14 @@ namespace chrono {
 
     _EXPORT_STD class _NODISCARD ambiguous_local_time : public runtime_error {
     public:
+#if _HAS_EXCEPTIONS
         template <class _Duration>
         ambiguous_local_time(const local_time<_Duration>& _Tp, const local_info& _Info)
             : runtime_error(_Make_string(_Tp, _Info)) {}
+#else // ^^^ _HAS_EXCEPTIONS / !_HAS_EXCEPTIONS vvv
+        template <class _Duration>
+        ambiguous_local_time(const local_time<_Duration>&, const local_info&) : runtime_error("ambiguous local time") {}
+#endif // ^^^ !_HAS_EXCEPTIONS ^^^
 
     private:
         template <class _Duration>
@@ -2094,8 +2105,14 @@ namespace chrono {
 
     template <class _Ty>
     _NODISCARD const _Ty* _Locate_zone_impl(const vector<_Ty>& _Vec, string_view _Name) {
-        const auto _Result = _STD find_if(_Vec.begin(), _Vec.end(), [&](auto& _Tz) { return _Tz.name() == _Name; });
-        return _Result == _Vec.end() ? nullptr : &*_Result;
+        // N5008 [time.zone.db.tzdb]/1: "Each vector in a tzdb object is sorted to enable fast lookup."
+        const auto _Result = _STD lower_bound(
+            _Vec.begin(), _Vec.end(), _Name, [](const auto& _Tz, const auto& _Sv) { return _Tz.name() < _Sv; });
+        if (_Result != _Vec.end() && _Result->name() == _Name) {
+            return &*_Result;
+        } else {
+            return nullptr;
+        }
     }
 
     _EXPORT_STD struct tzdb {

@@ -74,16 +74,42 @@ __declspec(noalias) _Min_max_8u __stdcall __std_minmax_8u(const void* _First, co
 __declspec(noalias) _Min_max_f __stdcall __std_minmax_f(const void* _First, const void* _Last) noexcept;
 __declspec(noalias) _Min_max_d __stdcall __std_minmax_d(const void* _First, const void* _Last) noexcept;
 
+const void* __stdcall __std_is_sorted_until_1i(const void* _First, const void* _Last, bool _Greater) noexcept;
+const void* __stdcall __std_is_sorted_until_1u(const void* _First, const void* _Last, bool _Greater) noexcept;
+const void* __stdcall __std_is_sorted_until_2i(const void* _First, const void* _Last, bool _Greater) noexcept;
+const void* __stdcall __std_is_sorted_until_2u(const void* _First, const void* _Last, bool _Greater) noexcept;
+const void* __stdcall __std_is_sorted_until_4i(const void* _First, const void* _Last, bool _Greater) noexcept;
+const void* __stdcall __std_is_sorted_until_4u(const void* _First, const void* _Last, bool _Greater) noexcept;
+const void* __stdcall __std_is_sorted_until_8i(const void* _First, const void* _Last, bool _Greater) noexcept;
+const void* __stdcall __std_is_sorted_until_8u(const void* _First, const void* _Last, bool _Greater) noexcept;
+const void* __stdcall __std_is_sorted_until_f(const void* _First, const void* _Last, bool _Greater) noexcept;
+const void* __stdcall __std_is_sorted_until_d(const void* _First, const void* _Last, bool _Greater) noexcept;
+
 // TRANSITION, DevCom-10610477
 __declspec(noalias) void __stdcall __std_replace_4(
     void* _First, void* _Last, uint32_t _Old_val, uint32_t _New_val) noexcept;
 __declspec(noalias) void __stdcall __std_replace_8(
     void* _First, void* _Last, uint64_t _Old_val, uint64_t _New_val) noexcept;
 
+const void* __stdcall __std_search_n_1(const void* _First, const void* _Last, size_t _Count, uint8_t _Value) noexcept;
+const void* __stdcall __std_search_n_2(const void* _First, const void* _Last, size_t _Count, uint16_t _Value) noexcept;
+const void* __stdcall __std_search_n_4(const void* _First, const void* _Last, size_t _Count, uint32_t _Value) noexcept;
+const void* __stdcall __std_search_n_8(const void* _First, const void* _Last, size_t _Count, uint64_t _Value) noexcept;
+
+void* __stdcall __std_remove_copy_1(const void* _First, const void* _Last, void* _Out, uint8_t _Val) noexcept;
+void* __stdcall __std_remove_copy_2(const void* _First, const void* _Last, void* _Out, uint16_t _Val) noexcept;
+void* __stdcall __std_remove_copy_4(const void* _First, const void* _Last, void* _Out, uint32_t _Val) noexcept;
+void* __stdcall __std_remove_copy_8(const void* _First, const void* _Last, void* _Out, uint64_t _Val) noexcept;
+
 void* __stdcall __std_unique_1(void* _First, void* _Last) noexcept;
 void* __stdcall __std_unique_2(void* _First, void* _Last) noexcept;
 void* __stdcall __std_unique_4(void* _First, void* _Last) noexcept;
 void* __stdcall __std_unique_8(void* _First, void* _Last) noexcept;
+
+void* __stdcall __std_unique_copy_1(const void* _First, const void* _Last, void* _Dest) noexcept;
+void* __stdcall __std_unique_copy_2(const void* _First, const void* _Last, void* _Dest) noexcept;
+void* __stdcall __std_unique_copy_4(const void* _First, const void* _Last, void* _Dest) noexcept;
+void* __stdcall __std_unique_copy_8(const void* _First, const void* _Last, void* _Dest) noexcept;
 } // extern "C"
 
 _STD_BEGIN
@@ -192,6 +218,43 @@ auto _Minmax_vectorized(_Ty* const _First, _Ty* const _Last) noexcept {
     }
 }
 
+template <class _Ty>
+_Ty* _Is_sorted_until_vectorized(_Ty* const _First, _Ty* const _Last, const bool _Greater) noexcept {
+    constexpr bool _Signed = is_signed_v<_Ty>;
+
+    if constexpr (is_same_v<remove_const_t<_Ty>, float>) {
+        return const_cast<_Ty*>(static_cast<const _Ty*>(::__std_is_sorted_until_f(_First, _Last, _Greater)));
+    } else if constexpr (_Is_any_of_v<remove_const_t<_Ty>, double, long double>) {
+        return const_cast<_Ty*>(static_cast<const _Ty*>(::__std_is_sorted_until_d(_First, _Last, _Greater)));
+    } else if constexpr (sizeof(_Ty) == 1) {
+        if constexpr (_Signed) {
+            return const_cast<_Ty*>(static_cast<const _Ty*>(::__std_is_sorted_until_1i(_First, _Last, _Greater)));
+        } else {
+            return const_cast<_Ty*>(static_cast<const _Ty*>(::__std_is_sorted_until_1u(_First, _Last, _Greater)));
+        }
+    } else if constexpr (sizeof(_Ty) == 2) {
+        if constexpr (_Signed) {
+            return const_cast<_Ty*>(static_cast<const _Ty*>(::__std_is_sorted_until_2i(_First, _Last, _Greater)));
+        } else {
+            return const_cast<_Ty*>(static_cast<const _Ty*>(::__std_is_sorted_until_2u(_First, _Last, _Greater)));
+        }
+    } else if constexpr (sizeof(_Ty) == 4) {
+        if constexpr (_Signed) {
+            return const_cast<_Ty*>(static_cast<const _Ty*>(::__std_is_sorted_until_4i(_First, _Last, _Greater)));
+        } else {
+            return const_cast<_Ty*>(static_cast<const _Ty*>(::__std_is_sorted_until_4u(_First, _Last, _Greater)));
+        }
+    } else if constexpr (sizeof(_Ty) == 8) {
+        if constexpr (_Signed) {
+            return const_cast<_Ty*>(static_cast<const _Ty*>(::__std_is_sorted_until_8i(_First, _Last, _Greater)));
+        } else {
+            return const_cast<_Ty*>(static_cast<const _Ty*>(::__std_is_sorted_until_8u(_First, _Last, _Greater)));
+        }
+    } else {
+        _STL_INTERNAL_STATIC_ASSERT(false); // unexpected size
+    }
+}
+
 template <class _Ty, class _TVal1, class _TVal2>
 __declspec(noalias) void _Replace_vectorized(
     _Ty* const _First, _Ty* const _Last, const _TVal1 _Old_val, const _TVal2 _New_val) noexcept {
@@ -205,6 +268,33 @@ __declspec(noalias) void _Replace_vectorized(
         ::__std_replace_4(_First, _Last, static_cast<uint32_t>(_Old_val), static_cast<uint32_t>(_New_val));
     } else if constexpr (sizeof(_Ty) == 8) {
         ::__std_replace_8(_First, _Last, static_cast<uint64_t>(_Old_val), static_cast<uint64_t>(_New_val));
+    } else {
+        _STL_INTERNAL_STATIC_ASSERT(false); // unexpected size
+    }
+}
+
+template <class _Ty, class _TVal>
+_Ty* _Search_n_vectorized(_Ty* const _First, _Ty* const _Last, const size_t _Count, const _TVal _Val) noexcept {
+    if constexpr (is_pointer_v<_Ty>) {
+#ifdef _WIN64
+        return const_cast<_Ty*>(
+            static_cast<const _Ty*>(::__std_search_n_8(_First, _Last, _Count, reinterpret_cast<uint64_t>(_Val))));
+#else // ^^^ defined(_WIN64) / !defined(_WIN64) vvv
+        return const_cast<_Ty*>(
+            static_cast<const _Ty*>(::__std_search_n_4(_First, _Last, _Count, reinterpret_cast<uint32_t>(_Val))));
+#endif // ^^^ !defined(_WIN64) ^^^
+    } else if constexpr (sizeof(_Ty) == 1) {
+        return const_cast<_Ty*>(
+            static_cast<const _Ty*>(::__std_search_n_1(_First, _Last, _Count, static_cast<uint8_t>(_Val))));
+    } else if constexpr (sizeof(_Ty) == 2) {
+        return const_cast<_Ty*>(
+            static_cast<const _Ty*>(::__std_search_n_2(_First, _Last, _Count, static_cast<uint16_t>(_Val))));
+    } else if constexpr (sizeof(_Ty) == 4) {
+        return const_cast<_Ty*>(
+            static_cast<const _Ty*>(::__std_search_n_4(_First, _Last, _Count, static_cast<uint32_t>(_Val))));
+    } else if constexpr (sizeof(_Ty) == 8) {
+        return const_cast<_Ty*>(
+            static_cast<const _Ty*>(::__std_search_n_8(_First, _Last, _Count, static_cast<uint64_t>(_Val))));
     } else {
         _STL_INTERNAL_STATIC_ASSERT(false); // unexpected size
     }
@@ -225,10 +315,42 @@ _Ty* _Unique_vectorized(_Ty* const _First, _Ty* const _Last) noexcept {
     }
 }
 
-// Can we activate the vector algorithms for find_first_of?
-template <class _It1, class _It2, class _Pr>
-constexpr bool _Vector_alg_in_find_first_of_is_safe = _Equal_memcmp_is_safe<_It1, _It2, _Pr>;
+template <class _Ty, class _TVal>
+_Ty* _Remove_copy_vectorized(
+    const _Ty* const _First, const _Ty* const _Last, _Ty* const _Dest, const _TVal _Val) noexcept {
+    if constexpr (is_pointer_v<_Ty>) {
+#ifdef _WIN64
+        return reinterpret_cast<_Ty*>(::__std_remove_copy_8(_First, _Last, _Dest, reinterpret_cast<uint64_t>(_Val)));
+#else // ^^^ defined(_WIN64) / !defined(_WIN64) vvv
+        return reinterpret_cast<_Ty*>(::__std_remove_copy_4(_First, _Last, _Dest, reinterpret_cast<uint32_t>(_Val)));
+#endif // ^^^ !defined(_WIN64) ^^^
+    } else if constexpr (sizeof(_Ty) == 1) {
+        return reinterpret_cast<_Ty*>(::__std_remove_copy_1(_First, _Last, _Dest, static_cast<uint8_t>(_Val)));
+    } else if constexpr (sizeof(_Ty) == 2) {
+        return reinterpret_cast<_Ty*>(::__std_remove_copy_2(_First, _Last, _Dest, static_cast<uint16_t>(_Val)));
+    } else if constexpr (sizeof(_Ty) == 4) {
+        return reinterpret_cast<_Ty*>(::__std_remove_copy_4(_First, _Last, _Dest, static_cast<uint32_t>(_Val)));
+    } else if constexpr (sizeof(_Ty) == 8) {
+        return reinterpret_cast<_Ty*>(::__std_remove_copy_8(_First, _Last, _Dest, static_cast<uint64_t>(_Val)));
+    } else {
+        _STL_INTERNAL_STATIC_ASSERT(false); // Unexpected size
+    }
+}
 
+template <class _Ty>
+_Ty* _Unique_copy_vectorized(const _Ty* const _First, const _Ty* const _Last, _Ty* const _Dest) noexcept {
+    if constexpr (sizeof(_Ty) == 1) {
+        return reinterpret_cast<_Ty*>(::__std_unique_copy_1(_First, _Last, _Dest));
+    } else if constexpr (sizeof(_Ty) == 2) {
+        return reinterpret_cast<_Ty*>(::__std_unique_copy_2(_First, _Last, _Dest));
+    } else if constexpr (sizeof(_Ty) == 4) {
+        return reinterpret_cast<_Ty*>(::__std_unique_copy_4(_First, _Last, _Dest));
+    } else if constexpr (sizeof(_Ty) == 8) {
+        return reinterpret_cast<_Ty*>(::__std_unique_copy_8(_First, _Last, _Dest));
+    } else {
+        _STL_INTERNAL_STATIC_ASSERT(false); // Unexpected size
+    }
+}
 // Can we activate the vector algorithms for replace?
 template <class _Iter, class _Ty1>
 constexpr bool _Vector_alg_in_replace_is_safe = _Vector_alg_in_find_is_safe<_Iter, _Ty1> // can search for the value
@@ -240,9 +362,27 @@ constexpr bool _Vector_alg_in_ranges_replace_is_safe =
     _Vector_alg_in_replace_is_safe<_Iter, _Ty1> // can search and replace
     && _Vector_alg_in_find_is_safe_elem<_Ty2, _Iter_value_t<_Iter>>; // replacement fits
 
+template <class _Iter, class _Ty, class _Pr>
+constexpr bool _Vector_alg_in_search_n_is_safe = _Vector_alg_in_find_is_safe<_Iter, _Ty>
+                                              && _Is_any_of_v<_Pr,
+#if _HAS_CXX20
+                                                  ranges::equal_to,
+#endif
+                                                  equal_to<>>;
 // Can we activate the vector algorithms for unique?
 template <class _Iter, class _Pr>
-constexpr bool _Vector_alg_in_unique_is_safe = _Equal_memcmp_is_safe<_Iter, _Iter, _Pr>;
+constexpr bool _Vector_alg_in_unique_is_safe = _Vector_alg_in_search_is_safe<_Iter, _Iter, _Pr>;
+
+// Can we use this output iterator for remove_copy or unique_copy?
+template <class _Out, class _In>
+constexpr bool _Output_iterator_for_vector_alg_is_safe() {
+    if constexpr (_Iterator_is_contiguous<_Out>) {
+        return is_same_v<_Iter_value_t<_Out>, remove_const_t<_Iter_value_t<_In>>>;
+    } else {
+        return false;
+    }
+}
+
 _STD_END
 #endif // _USE_STD_VECTOR_ALGORITHMS
 
@@ -567,7 +707,7 @@ _NODISCARD _CONSTEXPR20 _FwdIt adjacent_find(const _FwdIt _First, _FwdIt _Last, 
     auto _ULast  = _STD _Get_unwrapped(_Last);
     if (_UFirst != _ULast) {
 #if _USE_STD_VECTOR_ALGORITHMS
-        if constexpr (_Equal_memcmp_is_safe<decltype(_UFirst), decltype(_UFirst), _Pr>) {
+        if constexpr (_Vector_alg_in_search_is_safe<decltype(_UFirst), decltype(_UFirst), _Pr>) {
             if (!_STD _Is_constant_evaluated()) {
                 const auto _First_ptr = _STD _To_address(_UFirst);
                 const auto _Result    = _STD _Adjacent_find_vectorized(_First_ptr, _STD _To_address(_ULast));
@@ -575,7 +715,7 @@ _NODISCARD _CONSTEXPR20 _FwdIt adjacent_find(const _FwdIt _First, _FwdIt _Last, 
                 if constexpr (is_pointer_v<decltype(_ULast)>) {
                     _ULast = _Result;
                 } else {
-                    _ULast = _UFirst + (_Result - _First_ptr);
+                    _ULast = _UFirst + static_cast<_Iter_diff_t<decltype(_UFirst)>>(_Result - _First_ptr);
                 }
 
                 _STD _Seek_wrapped(_Last, _ULast);
@@ -649,7 +789,7 @@ namespace ranges {
                     }
 
                     const auto _First_ptr = _STD _To_address(_First);
-                    const auto _Last_ptr  = _First_ptr + (_Last - _First);
+                    const auto _Last_ptr  = _First_ptr + static_cast<ptrdiff_t>(_Last - _First);
 
                     return static_cast<iter_difference_t<_It>>(_STD _Count_vectorized(_First_ptr, _Last_ptr, _Val));
                 }
@@ -743,7 +883,7 @@ _NODISCARD _CONSTEXPR20 pair<_InIt1, _InIt2> mismatch(_InIt1 _First1, const _InI
     const auto _ULast1 = _STD _Get_unwrapped(_Last1);
     auto _UFirst2      = _STD _Get_unwrapped_n(_First2, _STD _Idl_distance<_InIt1>(_UFirst1, _ULast1));
 #if _USE_STD_VECTOR_ALGORITHMS
-    if constexpr (_Equal_memcmp_is_safe<decltype(_UFirst1), decltype(_UFirst2), _Pr>) {
+    if constexpr (_Vector_alg_in_search_is_safe<decltype(_UFirst1), decltype(_UFirst2), _Pr>) {
         if (!_STD _Is_constant_evaluated()) {
             constexpr size_t _Elem_size = sizeof(_Iter_value_t<_InIt1>);
 
@@ -807,7 +947,7 @@ _NODISCARD _CONSTEXPR20 pair<_InIt1, _InIt2> mismatch(
         const auto _Count = static_cast<_Iter_diff_t<_InIt1>>((_STD min)(_Count1, _Count2));
         _ULast1           = _UFirst1 + _Count;
 #if _USE_STD_VECTOR_ALGORITHMS
-        if constexpr (_Equal_memcmp_is_safe<decltype(_UFirst1), decltype(_UFirst2), _Pr>) {
+        if constexpr (_Vector_alg_in_search_is_safe<decltype(_UFirst1), decltype(_UFirst2), _Pr>) {
             if (!_STD _Is_constant_evaluated()) {
                 constexpr size_t _Elem_size = sizeof(_Iter_value_t<_InIt1>);
 
@@ -2183,7 +2323,7 @@ _NODISCARD _CONSTEXPR20 _FwdItHaystack search(_FwdItHaystack _First1, _FwdItHays
                     if constexpr (is_pointer_v<decltype(_UFirst1)>) {
                         _UFirst1 = _Ptr_res1;
                     } else {
-                        _UFirst1 += _Ptr_res1 - _Ptr1;
+                        _UFirst1 += static_cast<_Iter_diff_t<decltype(_UFirst1)>>(_Ptr_res1 - _Ptr1);
                     }
 
                     _STD _Seek_wrapped(_Last1, _UFirst1);
@@ -2281,6 +2421,29 @@ _NODISCARD _CONSTEXPR20 _FwdIt search_n(
     auto _UFirst      = _STD _Get_unwrapped(_First);
     const auto _ULast = _STD _Get_unwrapped(_Last);
     if constexpr (_Is_ranges_random_iter_v<_FwdIt>) {
+#if _USE_STD_VECTOR_ALGORITHMS
+        if constexpr (_Vector_alg_in_search_n_is_safe<decltype(_UFirst), _Ty, _Pr>) {
+            if (!_STD _Is_constant_evaluated()) {
+                if (!_STD _Could_compare_equal_to_value_type<decltype(_UFirst)>(_Val)) {
+                    return _Last;
+                }
+
+                const auto _First_ptr = _STD _To_address(_UFirst);
+                const auto _Result =
+                    _STD _Search_n_vectorized(_First_ptr, _STD _To_address(_ULast), static_cast<size_t>(_Count), _Val);
+
+                if constexpr (is_pointer_v<decltype(_UFirst)>) {
+                    _UFirst = _Result;
+                } else {
+                    _UFirst += static_cast<_Iter_diff_t<decltype(_UFirst)>>(_Result - _First_ptr);
+                }
+
+                _STD _Seek_wrapped(_Last, _UFirst);
+                return _Last;
+            }
+        }
+#endif // _USE_STD_VECTOR_ALGORITHMS
+
         const auto _Count_diff = static_cast<_Iter_diff_t<_FwdIt>>(_Count);
         auto _UOld_first       = _UFirst;
         for (_Iter_diff_t<_FwdIt> _Inc = 0; _Count_diff <= _ULast - _UOld_first;) { // enough room, look for a match
@@ -2452,6 +2615,38 @@ namespace ranges {
                     _RANGES advance(_First, _Dist);
                     return {_First, _First};
                 }
+
+#if _USE_STD_VECTOR_ALGORITHMS
+                if constexpr (_Vector_alg_in_search_n_is_safe<_It, _Ty, _Pr> && is_same_v<_Pj, identity>) {
+                    if (!_STD is_constant_evaluated()) {
+                        if (!_STD _Could_compare_equal_to_value_type<_It>(_Val)) {
+                            _First += _Dist;
+                            return {_First, _First};
+                        }
+
+                        const auto _First_ptr = _STD _To_address(_First);
+                        const auto _Last_ptr  = _First_ptr + static_cast<ptrdiff_t>(_Dist);
+                        const auto _Result =
+                            _STD _Search_n_vectorized(_First_ptr, _Last_ptr, static_cast<size_t>(_Count), _Val);
+
+                        if constexpr (is_pointer_v<_It>) {
+                            if (_Result != _Last_ptr) {
+                                return {_Result, _Result + _Count};
+                            } else {
+                                return {_Result, _Result};
+                            }
+                        } else {
+                            if (_Result != _Last_ptr) {
+                                _First += static_cast<iter_difference_t<_It>>(_Result - _First_ptr);
+                                return {_First, _First + _Count};
+                            } else {
+                                _First += _Dist;
+                                return {_First, _First};
+                            }
+                        }
+                    }
+                }
+#endif // _USE_STD_VECTOR_ALGORITHMS
 
                 auto _Last = _RANGES next(_First, _Count);
                 auto _Mid1 = _First;
@@ -3122,13 +3317,13 @@ namespace ranges {
                     }
 
                     const auto _First_ptr = _STD _To_address(_First);
-                    const auto _Last_ptr  = _First_ptr + _Count;
+                    const auto _Last_ptr  = _First_ptr + static_cast<ptrdiff_t>(_Count);
 
                     const auto _Result = _STD _Find_last_vectorized(_First_ptr, _Last_ptr, _Value);
                     if constexpr (is_pointer_v<_It>) {
                         return {_Result, _Last_ptr};
                     } else {
-                        return {_First + (_Result - _First_ptr), _First + _Count};
+                        return {_First + static_cast<iter_difference_t<_It>>(_Result - _First_ptr), _First + _Count};
                     }
                 }
             }
@@ -3283,7 +3478,7 @@ _NODISCARD _CONSTEXPR20 _FwdIt1 find_end(
                     if constexpr (is_pointer_v<decltype(_UFirst1)>) {
                         _UFirst1 = _Ptr_res1;
                     } else {
-                        _UFirst1 += _Ptr_res1 - _Ptr1;
+                        _UFirst1 += static_cast<_Iter_diff_t<decltype(_UFirst1)>>(_Ptr_res1 - _Ptr1);
                     }
 
                     _STD _Seek_wrapped(_First1, _UFirst1);
@@ -3401,7 +3596,7 @@ namespace ranges {
                     if (!_STD is_constant_evaluated()) {
                         const auto _Ptr1      = _STD to_address(_First1);
                         const auto _Ptr2      = _STD to_address(_First2);
-                        const auto _Ptr_last1 = _Ptr1 + _Count1;
+                        const auto _Ptr_last1 = _Ptr1 + static_cast<ptrdiff_t>(_Count1);
 
                         const auto _Ptr_res1 =
                             _STD _Find_end_vectorized(_Ptr1, _Ptr_last1, _Ptr2, static_cast<size_t>(_Count2));
@@ -3413,7 +3608,7 @@ namespace ranges {
                                 return {_Ptr_res1, _Ptr_res1};
                             }
                         } else {
-                            _First1 += _Ptr_res1 - _Ptr1;
+                            _First1 += static_cast<iter_difference_t<_It1>>(_Ptr_res1 - _Ptr1);
                             if (_Ptr_res1 != _Ptr_last1) {
                                 return {_First1, _First1 + _Count2_as1};
                             } else {
@@ -3596,7 +3791,7 @@ _NODISCARD _CONSTEXPR20 _FwdIt1 find_first_of(
     }
 
 #if _USE_STD_VECTOR_ALGORITHMS
-    if constexpr (_Vector_alg_in_find_first_of_is_safe<decltype(_UFirst1), decltype(_UFirst2), _Pr>) {
+    if constexpr (_Vector_alg_in_search_is_safe<decltype(_UFirst1), decltype(_UFirst2), _Pr>) {
         if (!_STD _Is_constant_evaluated() && _ULast1 - _UFirst1 >= _Threshold_find_first_of) {
             const auto _First1_ptr = _STD _To_address(_UFirst1);
             const auto _Result     = _STD _Find_first_of_vectorized(
@@ -3605,7 +3800,7 @@ _NODISCARD _CONSTEXPR20 _FwdIt1 find_first_of(
             if constexpr (is_pointer_v<decltype(_UFirst1)>) {
                 _UFirst1 = _Result;
             } else {
-                _UFirst1 += _Result - _First1_ptr;
+                _UFirst1 += static_cast<_Iter_diff_t<decltype(_UFirst1)>>(_Result - _First1_ptr);
             }
             _STD _Seek_wrapped(_First1, _UFirst1);
             return _First1;
@@ -3700,14 +3895,14 @@ namespace ranges {
             }
 
 #if _USE_STD_VECTOR_ALGORITHMS
-            if constexpr (_Vector_alg_in_find_first_of_is_safe<_It1, _It2, _Pr> && sized_sentinel_for<_Se1, _It1>
+            if constexpr (_Vector_alg_in_search_is_safe<_It1, _It2, _Pr> && sized_sentinel_for<_Se1, _It1>
                           && sized_sentinel_for<_Se2, _It2> && is_same_v<_Pj1, identity> && is_same_v<_Pj2, identity>) {
                 if (!_STD is_constant_evaluated() && _Last1 - _First1 >= _Threshold_find_first_of) {
-                    const auto _Count1     = _Last1 - _First1;
+                    const auto _Count1     = static_cast<ptrdiff_t>(_Last1 - _First1);
                     const auto _First1_ptr = _STD _To_address(_First1);
                     const auto _Last1_ptr  = _First1_ptr + _Count1;
 
-                    const auto _Count2     = _Last2 - _First2;
+                    const auto _Count2     = static_cast<ptrdiff_t>(_Last2 - _First2);
                     const auto _First2_ptr = _STD _To_address(_First2);
                     const auto _Last2_ptr  = _First2_ptr + _Count2;
 
@@ -3717,7 +3912,7 @@ namespace ranges {
                     if constexpr (is_pointer_v<_It1>) {
                         return _Result;
                     } else {
-                        return _First1 + (_Result - _First1_ptr);
+                        return _First1 + static_cast<iter_difference_t<_It1>>(_Result - _First1_ptr);
                     }
                 }
             }
@@ -3749,6 +3944,57 @@ namespace ranges {
     _EXPORT_STD template <class _In1, class _In2>
     using swap_ranges_result = in_in_result<_In1, _In2>;
 
+    template <class _It1, class _Se1, class _It2, class _Se2>
+    _NODISCARD constexpr swap_ranges_result<_It1, _It2> _Swap_ranges_common(
+        _It1 _First1, const _Se1 _Last1, _It2 _First2, const _Se2 _Last2) {
+        _STL_INTERNAL_STATIC_ASSERT(input_iterator<_It1>);
+        _STL_INTERNAL_STATIC_ASSERT(sentinel_for<_Se1, _It1>);
+        _STL_INTERNAL_STATIC_ASSERT(input_iterator<_It2>);
+        _STL_INTERNAL_STATIC_ASSERT(sentinel_for<_Se2, _It2>);
+        _STL_INTERNAL_STATIC_ASSERT(indirectly_swappable<_It1, _It2>);
+
+#if _USE_STD_VECTOR_ALGORITHMS
+        using _Elem1 = remove_reference_t<iter_reference_t<_It1>>;
+        using _Elem2 = remove_reference_t<iter_reference_t<_It2>>;
+        if constexpr (same_as<_Elem1, _Elem2> && _Is_trivially_ranges_swappable_v<_Elem1> //
+                      && contiguous_iterator<_It1> && _Sized_or_unreachable_sentinel_for<_Se1, _It1> //
+                      && contiguous_iterator<_It2> && _Sized_or_unreachable_sentinel_for<_Se2, _It2>) {
+            if (!_STD is_constant_evaluated()) {
+                constexpr bool _Is_sized1 = sized_sentinel_for<_Se1, _It1>;
+                constexpr bool _Is_sized2 = sized_sentinel_for<_Se2, _It2>;
+                const auto _First1_addr   = _STD to_address(_First1);
+                const auto _First2_addr   = _STD to_address(_First2);
+                if constexpr (_Is_sized1 && _Is_sized2) {
+                    const size_t _Count =
+                        (_STD min)(static_cast<size_t>(_Last1 - _First1), static_cast<size_t>(_Last2 - _First2));
+                    const auto _Last1_addr = _First1_addr + _Count;
+                    ::__std_swap_ranges_trivially_swappable_noalias(_First1_addr, _Last1_addr, _First2_addr);
+                    return {_First1 + static_cast<iter_difference_t<_It1>>(_Count),
+                        _First2 + static_cast<iter_difference_t<_It2>>(_Count)};
+                } else if constexpr (_Is_sized1) {
+                    const auto _Final1     = _RANGES next(_First1, _Last1);
+                    const auto _Last1_addr = _STD to_address(_Final1);
+                    ::__std_swap_ranges_trivially_swappable_noalias(_First1_addr, _Last1_addr, _First2_addr);
+                    return {_Final1, _First2 + static_cast<iter_difference_t<_It2>>(_Last1 - _First1)};
+                } else if constexpr (_Is_sized2) {
+                    const auto _Final2     = _RANGES next(_First2, _Last2);
+                    const auto _Last2_addr = _STD to_address(_Final2);
+                    ::__std_swap_ranges_trivially_swappable_noalias(_First2_addr, _Last2_addr, _First1_addr);
+                    return {_First1 + static_cast<iter_difference_t<_It1>>(_Last2 - _First2), _Final2};
+                } else {
+                    _STL_ASSERT(false, "Tried to swap_ranges with two unreachable sentinels");
+                }
+            }
+        }
+#endif // _USE_STD_VECTOR_ALGORITHMS
+
+        for (; _First1 != _Last1 && _First2 != _Last2; ++_First1, (void) ++_First2) {
+            _RANGES iter_swap(_First1, _First2);
+        }
+
+        return {_STD move(_First1), _STD move(_First2)};
+    }
+
     class _Swap_ranges_fn {
     public:
         template <input_iterator _It1, sentinel_for<_It1> _Se1, input_iterator _It2, sentinel_for<_It2> _Se2>
@@ -3758,7 +4004,7 @@ namespace ranges {
             _STD _Adl_verify_range(_First1, _Last1);
             _STD _Adl_verify_range(_First2, _Last2);
 
-            auto _UResult = _Swap_ranges_unchecked(_RANGES _Unwrap_iter<_Se1>(_STD move(_First1)),
+            auto _UResult = _RANGES _Swap_ranges_common(_RANGES _Unwrap_iter<_Se1>(_STD move(_First1)),
                 _RANGES _Unwrap_sent<_It1>(_STD move(_Last1)), _RANGES _Unwrap_iter<_Se2>(_STD move(_First2)),
                 _RANGES _Unwrap_sent<_It2>(_STD move(_Last2)));
 
@@ -3774,62 +4020,11 @@ namespace ranges {
             auto _First1 = _RANGES begin(_Range1);
             auto _First2 = _RANGES begin(_Range2);
 
-            auto _UResult = _Swap_ranges_unchecked(_RANGES _Unwrap_range_iter<_Rng1>(_STD move(_First1)),
+            auto _UResult = _RANGES _Swap_ranges_common(_RANGES _Unwrap_range_iter<_Rng1>(_STD move(_First1)),
                 _Uend(_Range1), _RANGES _Unwrap_range_iter<_Rng2>(_STD move(_First2)), _Uend(_Range2));
 
             _STD _Seek_wrapped(_First1, _STD move(_UResult.in1));
             _STD _Seek_wrapped(_First2, _STD move(_UResult.in2));
-            return {_STD move(_First1), _STD move(_First2)};
-        }
-
-    private:
-        template <class _It1, class _Se1, class _It2, class _Se2>
-        _NODISCARD static constexpr swap_ranges_result<_It1, _It2> _Swap_ranges_unchecked(
-            _It1 _First1, const _Se1 _Last1, _It2 _First2, const _Se2 _Last2) {
-            _STL_INTERNAL_STATIC_ASSERT(input_iterator<_It1>);
-            _STL_INTERNAL_STATIC_ASSERT(sentinel_for<_Se1, _It1>);
-            _STL_INTERNAL_STATIC_ASSERT(input_iterator<_It2>);
-            _STL_INTERNAL_STATIC_ASSERT(sentinel_for<_Se2, _It2>);
-            _STL_INTERNAL_STATIC_ASSERT(indirectly_swappable<_It1, _It2>);
-
-#if _USE_STD_VECTOR_ALGORITHMS
-            using _Elem1 = remove_reference_t<iter_reference_t<_It1>>;
-            using _Elem2 = remove_reference_t<iter_reference_t<_It2>>;
-            if constexpr (same_as<_Elem1, _Elem2> && _Is_trivially_ranges_swappable_v<_Elem1> //
-                          && contiguous_iterator<_It1> && _Sized_or_unreachable_sentinel_for<_Se1, _It1> //
-                          && contiguous_iterator<_It2> && _Sized_or_unreachable_sentinel_for<_Se2, _It2>) {
-                if (!_STD is_constant_evaluated()) {
-                    constexpr bool _Is_sized1 = sized_sentinel_for<_Se1, _It1>;
-                    constexpr bool _Is_sized2 = sized_sentinel_for<_Se2, _It2>;
-                    const auto _First1_addr   = _STD to_address(_First1);
-                    const auto _First2_addr   = _STD to_address(_First2);
-                    if constexpr (_Is_sized1 && _Is_sized2) {
-                        const size_t _Count =
-                            (_STD min)(static_cast<size_t>(_Last1 - _First1), static_cast<size_t>(_Last2 - _First2));
-                        const auto _Last1_addr = _First1_addr + _Count;
-                        ::__std_swap_ranges_trivially_swappable_noalias(_First1_addr, _Last1_addr, _First2_addr);
-                        return {_First1 + _Count, _First2 + _Count};
-                    } else if constexpr (_Is_sized1) {
-                        const auto _Final1     = _RANGES next(_First1, _Last1);
-                        const auto _Last1_addr = _STD to_address(_Final1);
-                        ::__std_swap_ranges_trivially_swappable_noalias(_First1_addr, _Last1_addr, _First2_addr);
-                        return {_Final1, _First2 + (_Last1 - _First1)};
-                    } else if constexpr (_Is_sized2) {
-                        const auto _Final2     = _RANGES next(_First2, _Last2);
-                        const auto _Last2_addr = _STD to_address(_Final2);
-                        ::__std_swap_ranges_trivially_swappable_noalias(_First2_addr, _Last2_addr, _First1_addr);
-                        return {_First1 + (_Last2 - _First2), _Final2};
-                    } else {
-                        _STL_ASSERT(false, "Tried to swap_ranges with two unreachable sentinels");
-                    }
-                }
-            }
-#endif // _USE_STD_VECTOR_ALGORITHMS
-
-            for (; _First1 != _Last1 && _First2 != _Last2; ++_First1, (void) ++_First2) {
-                _RANGES iter_swap(_First1, _First2);
-            }
-
             return {_STD move(_First1), _STD move(_First2)};
         }
     };
@@ -4144,7 +4339,7 @@ namespace ranges {
 
                     if (_STD _Could_compare_equal_to_value_type<_It>(_Oldval)) {
                         const auto _First_ptr = _STD to_address(_First);
-                        const auto _Last_ptr  = _First_ptr + _Count;
+                        const auto _Last_ptr  = _First_ptr + static_cast<ptrdiff_t>(_Count);
                         _STD _Replace_vectorized(_First_ptr, _Last_ptr, _Oldval, _Newval);
                     }
 
@@ -4252,6 +4447,7 @@ _EXPORT_STD template <class _InIt, class _OutIt, class _Ty>
 _CONSTEXPR20 _OutIt replace_copy(_InIt _First, _InIt _Last, _OutIt _Dest, const _Ty& _Oldval, const _Ty& _Newval) {
     // copy replacing each matching _Oldval with _Newval
     _STD _Adl_verify_range(_First, _Last);
+    _STD _Verify_ranges_do_not_overlap(_First, _Last, _Dest);
     auto _UFirst      = _STD _Get_unwrapped(_First);
     const auto _ULast = _STD _Get_unwrapped(_Last);
     auto _UDest       = _STD _Get_unwrapped_n(_Dest, _STD _Idl_distance<_InIt>(_UFirst, _ULast));
@@ -4300,7 +4496,7 @@ namespace ranges {
             auto _UFirst      = _RANGES _Unwrap_iter<_Se>(_STD move(_First));
             auto _ULast       = _RANGES _Unwrap_sent<_It>(_STD move(_Last));
             const auto _Count = _RANGES _Idl_distance<_It>(_UFirst, _ULast);
-            auto _UResult     = _Replace_copy_unchecked(_STD move(_UFirst), _STD move(_ULast),
+            auto _UResult     = _Replace_copy_common(_STD move(_UFirst), _STD move(_ULast),
                     _STD _Get_unwrapped_n(_STD move(_Output), _Count), _Oldval, _Newval, _STD _Pass_fn(_Proj));
 
             _STD _Seek_wrapped(_First, _STD move(_UResult.in));
@@ -4315,8 +4511,8 @@ namespace ranges {
             _Out _Output, const _Ty1& _Oldval, const _Ty2& _Newval, _Pj _Proj = {}) _CONST_CALL_OPERATOR {
             const auto _Count = _RANGES _Idl_distance(_Range);
             auto _First       = _RANGES begin(_Range);
-            auto _UResult = _Replace_copy_unchecked(_RANGES _Unwrap_range_iter<_Rng>(_STD move(_First)), _Uend(_Range),
-                _STD _Get_unwrapped_n(_STD move(_Output), _Count), _Oldval, _Newval, _STD _Pass_fn(_Proj));
+            auto _UResult     = _Replace_copy_common(_RANGES _Unwrap_range_iter<_Rng>(_STD move(_First)), _Uend(_Range),
+                    _STD _Get_unwrapped_n(_STD move(_Output), _Count), _Oldval, _Newval, _STD _Pass_fn(_Proj));
 
             _STD _Seek_wrapped(_First, _STD move(_UResult.in));
             _STD _Seek_wrapped(_Output, _STD move(_UResult.out));
@@ -4325,7 +4521,7 @@ namespace ranges {
 
     private:
         template <class _It, class _Se, class _Ty1, class _Ty2, class _Out, class _Pj>
-        _NODISCARD static constexpr replace_copy_result<_It, _Out> _Replace_copy_unchecked(
+        _NODISCARD static constexpr replace_copy_result<_It, _Out> _Replace_copy_common(
             _It _First, const _Se _Last, _Out _Output, const _Ty1& _Oldval, const _Ty2& _Newval, _Pj _Proj) {
             // copy [_First, _Last) to _Output while replacing projected _Oldval with _Newval
             _STL_INTERNAL_STATIC_ASSERT(input_iterator<_It>);
@@ -4333,6 +4529,8 @@ namespace ranges {
             _STL_INTERNAL_STATIC_ASSERT(output_iterator<_Out, const _Ty2&>);
             _STL_INTERNAL_STATIC_ASSERT(indirectly_copyable<_It, _Out>);
             _STL_INTERNAL_STATIC_ASSERT(indirect_binary_predicate<equal_to, projected<_It, _Pj>, const _Ty1*>);
+
+            _STD _Verify_ranges_do_not_overlap(_First, _Last, _Output);
 
             for (; _First != _Last; ++_First, (void) ++_Output) {
                 if constexpr (_Can_vectorize_replace_copy<_Out, iter_value_t<_It>, _Ty2>) {
@@ -4358,6 +4556,7 @@ _EXPORT_STD template <class _InIt, class _OutIt, class _Pr, class _Ty>
 _CONSTEXPR20 _OutIt replace_copy_if(_InIt _First, _InIt _Last, _OutIt _Dest, _Pr _Pred, const _Ty& _Val) {
     // copy replacing each satisfying _Pred with _Val
     _STD _Adl_verify_range(_First, _Last);
+    _STD _Verify_ranges_do_not_overlap(_First, _Last, _Dest);
     auto _UFirst      = _STD _Get_unwrapped(_First);
     const auto _ULast = _STD _Get_unwrapped(_Last);
     auto _UDest       = _STD _Get_unwrapped_n(_Dest, _STD _Idl_distance<_InIt>(_UFirst, _ULast));
@@ -4407,7 +4606,7 @@ namespace ranges {
             auto _ULast       = _RANGES _Unwrap_sent<_It>(_STD move(_Last));
             const auto _Count = _RANGES _Idl_distance<_It>(_UFirst, _ULast);
 
-            auto _UResult = _Replace_copy_if_unchecked(_STD move(_UFirst), _STD move(_ULast),
+            auto _UResult = _Replace_copy_if_common(_STD move(_UFirst), _STD move(_ULast),
                 _STD _Get_unwrapped_n(_STD move(_Output), _Count), _STD _Pass_fn(_Pred), _Newval, _STD _Pass_fn(_Proj));
 
             _STD _Seek_wrapped(_First, _STD move(_UResult.in));
@@ -4422,9 +4621,8 @@ namespace ranges {
             _Rng&& _Range, _Out _Output, _Pr _Pred, const _Ty& _Newval, _Pj _Proj = {}) _CONST_CALL_OPERATOR {
             const auto _Count = _RANGES _Idl_distance(_Range);
             auto _First       = _RANGES begin(_Range);
-            auto _UResult     = _Replace_copy_if_unchecked(_RANGES _Unwrap_range_iter<_Rng>(_STD move(_First)),
-                    _Uend(_Range), _STD _Get_unwrapped_n(_STD move(_Output), _Count), _STD _Pass_fn(_Pred), _Newval,
-                    _STD _Pass_fn(_Proj));
+            auto _UResult = _Replace_copy_if_common(_RANGES _Unwrap_range_iter<_Rng>(_STD move(_First)), _Uend(_Range),
+                _STD _Get_unwrapped_n(_STD move(_Output), _Count), _STD _Pass_fn(_Pred), _Newval, _STD _Pass_fn(_Proj));
 
             _STD _Seek_wrapped(_First, _STD move(_UResult.in));
             _STD _Seek_wrapped(_Output, _STD move(_UResult.out));
@@ -4433,7 +4631,7 @@ namespace ranges {
 
     private:
         template <class _It, class _Se, class _Ty, class _Out, class _Pj, class _Pr>
-        _NODISCARD static constexpr replace_copy_if_result<_It, _Out> _Replace_copy_if_unchecked(
+        _NODISCARD static constexpr replace_copy_if_result<_It, _Out> _Replace_copy_if_common(
             _It _First, const _Se _Last, _Out _Output, _Pr _Pred, const _Ty& _Newval, _Pj _Proj) {
             // copy [_First, _Last) to _Output while replacing _Oldval with _Newval if projected _Oldval fulfills _Pred
             _STL_INTERNAL_STATIC_ASSERT(input_iterator<_It>);
@@ -4441,6 +4639,8 @@ namespace ranges {
             _STL_INTERNAL_STATIC_ASSERT(output_iterator<_Out, const _Ty&>);
             _STL_INTERNAL_STATIC_ASSERT(indirectly_copyable<_It, _Out>);
             _STL_INTERNAL_STATIC_ASSERT(indirect_unary_predicate<_Pr, projected<_It, _Pj>>);
+
+            _STD _Verify_ranges_do_not_overlap(_First, _Last, _Output);
 
             for (; _First != _Last; ++_First, (void) ++_Output) {
                 if constexpr (_Can_vectorize_replace_copy<_Out, iter_value_t<_It>, _Ty>) {
@@ -4624,6 +4824,33 @@ _CONSTEXPR20 _OutIt remove_copy(_InIt _First, _InIt _Last, _OutIt _Dest, const _
     auto _UFirst      = _STD _Get_unwrapped(_First);
     const auto _ULast = _STD _Get_unwrapped(_Last);
     auto _UDest       = _STD _Get_unwrapped_unverified(_Dest);
+
+#if _USE_STD_VECTOR_ALGORITHMS
+    if constexpr (_Vector_alg_in_find_is_safe<decltype(_UFirst), _Ty>
+                  && _Output_iterator_for_vector_alg_is_safe<decltype(_UDest), decltype(_UFirst)>()) {
+        if (!_STD _Is_constant_evaluated()) {
+            if (!_STD _Could_compare_equal_to_value_type<decltype(_UFirst)>(_Val)) {
+                _UDest = _STD _Copy_unchecked(_UFirst, _ULast, _UDest);
+                _STD _Seek_wrapped(_Dest, _UDest);
+                return _Dest;
+            }
+
+            const auto _Dest_ptr = _STD _To_address(_UDest);
+            const auto _Result =
+                _STD _Remove_copy_vectorized(_STD _To_address(_UFirst), _STD _To_address(_ULast), _Dest_ptr, _Val);
+
+            if constexpr (is_pointer_v<decltype(_UDest)>) {
+                _UDest = _Result;
+            } else {
+                _UDest += static_cast<_Iter_diff_t<decltype(_UDest)>>(_Result - _Dest_ptr);
+            }
+
+            _STD _Seek_wrapped(_Dest, _UDest);
+            return _Dest;
+        }
+    }
+#endif // _USE_STD_VECTOR_ALGORITHMS
+
     for (; _UFirst != _ULast; ++_UFirst) {
         if (!(*_UFirst == _Val)) {
             *_UDest = *_UFirst;
@@ -4733,7 +4960,7 @@ namespace ranges {
                     if constexpr (is_pointer_v<_It>) {
                         return {_Result, _Last_ptr};
                     } else {
-                        return {_First + (_Result - _First_ptr), _First + _Size};
+                        return {_First + static_cast<iter_difference_t<_It>>(_Result - _First_ptr), _First + _Size};
                     }
                 }
             }
@@ -4849,6 +5076,32 @@ namespace ranges {
             _STL_INTERNAL_STATIC_ASSERT(indirectly_copyable<_It, _Out>);
             _STL_INTERNAL_STATIC_ASSERT(indirect_binary_predicate<ranges::equal_to, projected<_It, _Pj>, const _Ty*>);
 
+#if _USE_STD_VECTOR_ALGORITHMS
+            if constexpr (_Vector_alg_in_find_is_safe<_It, _Ty> && _Output_iterator_for_vector_alg_is_safe<_Out, _It>()
+                          && sized_sentinel_for<_Se, _It> && is_same_v<_Pj, identity>) {
+                if (!_STD is_constant_evaluated()) {
+                    const auto _Size = _Last - _First;
+                    auto _End        = _First + _Size;
+
+                    if (!_STD _Could_compare_equal_to_value_type<_It>(_Val)) {
+                        _Output = _STD _Copy_unchecked(_First, _Last, _Output);
+                        return {_STD move(_End), _STD move(_Output)};
+                    }
+
+                    const auto _Dest_ptr = _STD to_address(_Output);
+                    const auto _Result =
+                        _STD _Remove_copy_vectorized(_STD to_address(_First), _STD to_address(_End), _Dest_ptr, _Val);
+
+                    if constexpr (is_pointer_v<_Out>) {
+                        return {_STD move(_End), _Result};
+                    } else {
+                        return {_STD move(_End),
+                            _STD move(_Output) + static_cast<iter_difference_t<_Out>>(_Result - _Dest_ptr)};
+                    }
+                }
+            }
+#endif // _USE_STD_VECTOR_ALGORITHMS
+
             for (; _First != _Last; ++_First) {
                 if (_STD invoke(_Proj, *_First) != _Val) {
                     *_Output = *_First;
@@ -4939,7 +5192,7 @@ _NODISCARD_UNIQUE_ALG _CONSTEXPR20 _FwdIt unique(_FwdIt _First, _FwdIt _Last, _P
             if constexpr (is_pointer_v<decltype(_UFirst)>) {
                 _UFirst = _Result;
             } else {
-                _UFirst += _Result - _First_ptr;
+                _UFirst += static_cast<_Iter_diff_t<decltype(_UFirst)>>(_Result - _First_ptr);
             }
 
             _STD _Seek_wrapped(_Last, _UFirst);
@@ -5036,7 +5289,7 @@ namespace ranges {
                     if constexpr (is_pointer_v<_It>) {
                         return {_Result, _Last_ptr};
                     } else {
-                        return {_First + (_Result - _First_ptr), _First + _Size};
+                        return {_First + static_cast<iter_difference_t<_It>>(_Result - _First_ptr), _First + _Size};
                     }
                 }
             }
@@ -5095,6 +5348,26 @@ _CONSTEXPR20 _OutIt unique_copy(_InIt _First, _InIt _Last, _OutIt _Dest, _Pr _Pr
     }
 
     auto _UDest = _STD _Get_unwrapped_unverified(_Dest);
+
+#if _USE_STD_VECTOR_ALGORITHMS
+    if constexpr (_Vector_alg_in_unique_is_safe<decltype(_UFirst), _Pr>
+                  && _Output_iterator_for_vector_alg_is_safe<decltype(_UDest), decltype(_UFirst)>()) {
+        if (!_STD _Is_constant_evaluated()) {
+            const auto _First_ptr = _STD _To_address(_UFirst);
+            const auto _Dest_ptr  = _STD _To_address(_UDest);
+            const auto _Result    = _STD _Unique_copy_vectorized(_First_ptr, _STD _To_address(_ULast), _Dest_ptr);
+
+            if constexpr (is_pointer_v<decltype(_UDest)>) {
+                _UDest = _Result;
+            } else {
+                _UDest += static_cast<_Iter_diff_t<decltype(_UDest)>>(_Result - _Dest_ptr);
+            }
+
+            _STD _Seek_wrapped(_Dest, _UDest);
+            return _Dest;
+        }
+    }
+#endif // _USE_STD_VECTOR_ALGORITHMS
 
     if constexpr (_Is_ranges_fwd_iter_v<_InIt>) { // can reread the source for comparison
         auto _Firstb = _UFirst;
@@ -5223,6 +5496,27 @@ namespace ranges {
                 return {_STD move(_First), _STD move(_Output)};
             }
 
+#if _USE_STD_VECTOR_ALGORITHMS
+            if constexpr (is_same_v<_Pj, identity> && sized_sentinel_for<_Se, _It>
+                          && _Vector_alg_in_unique_is_safe<_It, _Pr>
+                          && _Output_iterator_for_vector_alg_is_safe<_Out, _It>()) {
+                if (!_STD is_constant_evaluated()) {
+                    const auto _Size       = _Last - _First;
+                    const auto _First_ptr  = _STD to_address(_First);
+                    const auto _Last_ptr   = _First_ptr + static_cast<size_t>(_Size);
+                    const auto _Output_ptr = _STD to_address(_Output);
+                    const auto _Result     = _STD _Unique_copy_vectorized(_First_ptr, _Last_ptr, _Output_ptr);
+
+                    if constexpr (is_pointer_v<_It> && is_pointer_v<_Out>) {
+                        return {_Last_ptr, _Result};
+                    } else {
+                        return {_STD move(_First) + _Size,
+                            _STD move(_Output) + static_cast<iter_difference_t<_Out>>(_Result - _Output_ptr)};
+                    }
+                }
+            }
+#endif // _USE_STD_VECTOR_ALGORITHMS
+
             if constexpr (_Is_input_with_value_type<_Out, iter_value_t<_It>>) {
                 // Can reread _Output
                 *_Output = *_First;
@@ -5317,10 +5611,15 @@ namespace ranges {
 } // namespace ranges
 #endif // _HAS_CXX20
 
+template <class _Ty>
+struct _Is_trivially_copy_assignable_returning_same_reference
+    : bool_constant<_Is_trivially_assignable_returning_same_reference_v<_Ty&, const _Ty&>> {};
+
 _EXPORT_STD template <class _BidIt, class _OutIt>
 _CONSTEXPR20 _OutIt reverse_copy(_BidIt _First, _BidIt _Last, _OutIt _Dest) {
     // copy reversing elements in [_First, _Last)
     _STD _Adl_verify_range(_First, _Last);
+    _STD _Verify_ranges_do_not_overlap(_First, _Last, _Dest);
     const auto _UFirst = _STD _Get_unwrapped(_First);
     auto _ULast        = _STD _Get_unwrapped(_Last);
     auto _UDest        = _STD _Get_unwrapped_n(_Dest, _STD _Idl_distance<_BidIt>(_UFirst, _ULast));
@@ -5329,8 +5628,8 @@ _CONSTEXPR20 _OutIt reverse_copy(_BidIt _First, _BidIt _Last, _OutIt _Dest) {
     using _Elem                         = remove_reference_t<_Iter_ref_t<remove_const_t<decltype(_UFirst)>>>;
     using _DestElem                     = remove_reference_t<_Iter_ref_t<decltype(_UDest)>>;
     constexpr bool _Allow_vectorization = conjunction_v<is_same<remove_const_t<_Elem>, _DestElem>,
-        bool_constant<_Iterators_are_contiguous<decltype(_ULast), decltype(_UDest)>>, is_trivially_copyable<_Elem>,
-        negation<is_volatile<_Elem>>>;
+        bool_constant<_Iterators_are_contiguous<decltype(_ULast), decltype(_UDest)>>,
+        _Is_trivially_copy_assignable_returning_same_reference<_Elem>, negation<is_volatile<_Elem>>>;
     constexpr size_t _Nx                = sizeof(_Elem);
 
     if constexpr (_Allow_vectorization && _Nx <= 8 && (_Nx & (_Nx - 1)) == 0) {
@@ -5412,12 +5711,14 @@ namespace ranges {
             _STL_INTERNAL_STATIC_ASSERT(weakly_incrementable<_Out>);
             _STL_INTERNAL_STATIC_ASSERT(indirectly_copyable<_It, _Out>);
 
+            _STD _Verify_ranges_do_not_overlap(_First, _Last, _Output);
+
 #if _USE_STD_VECTOR_ALGORITHMS
             if constexpr (contiguous_iterator<_It> && contiguous_iterator<_Out>) {
                 using _Elem                         = remove_reference_t<iter_reference_t<_It>>;
                 using _DestElem                     = remove_reference_t<iter_reference_t<_Out>>;
                 constexpr bool _Allow_vectorization = conjunction_v<is_same<remove_const_t<_Elem>, _DestElem>,
-                    is_trivially_copyable<_Elem>, negation<is_volatile<_Elem>>>;
+                    _Is_trivially_copy_assignable_returning_same_reference<_Elem>, negation<is_volatile<_Elem>>>;
                 constexpr size_t _Nx                = sizeof(_Elem);
 
                 if constexpr (_Allow_vectorization && _Nx <= 8 && (_Nx & (_Nx - 1)) == 0) {
@@ -5474,6 +5775,19 @@ namespace ranges {
         }
 
         if constexpr (bidirectional_iterator<_It>) {
+#if _USE_STD_VECTOR_ALGORITHMS
+            using _Elem = remove_reference_t<iter_reference_t<_It>>;
+
+            if constexpr (contiguous_iterator<_It> && sized_sentinel_for<_Se, _It>
+                          && conjunction_v<_Is_trivially_ranges_swappable<_Elem>, negation<is_volatile<_Elem>>>) {
+                if (!_STD is_constant_evaluated()) {
+                    const _It _Last_it = _First + (_Last - _First);
+                    ::__std_rotate(_STD to_address(_First), _STD to_address(_Mid), _STD to_address(_Last_it));
+                    return {_First + (_Last - _Mid), _Last};
+                }
+            }
+#endif // _USE_STD_VECTOR_ALGORITHMS
+
             _RANGES _Reverse_common(_First, _Mid);
             auto _Final = _RANGES _Get_final_iterator_unwrapped<_It>(_Mid, _STD move(_Last));
             _RANGES _Reverse_common(_Mid, _Final);
@@ -5557,6 +5871,7 @@ _CONSTEXPR20 _OutIt rotate_copy(_FwdIt _First, _FwdIt _Mid, _FwdIt _Last, _OutIt
     // copy rotating [_First, _Last)
     _STD _Adl_verify_range(_First, _Mid);
     _STD _Adl_verify_range(_Mid, _Last);
+    _STD _Verify_ranges_do_not_overlap(_First, _Last, _Dest);
     const auto _UFirst = _STD _Get_unwrapped(_First);
     const auto _UMid   = _STD _Get_unwrapped(_Mid);
     const auto _ULast  = _STD _Get_unwrapped(_Last);
@@ -5592,7 +5907,7 @@ namespace ranges {
             auto _UFirst      = _RANGES _Unwrap_iter<_Se>(_STD move(_First));
             auto _ULast       = _RANGES _Unwrap_sent<_It>(_STD move(_Last));
             const auto _Count = _RANGES _Idl_distance<_It>(_UFirst, _ULast);
-            auto _UResult     = _Rotate_copy_unchecked(_STD move(_UFirst), _RANGES _Unwrap_iter<_Se>(_STD move(_Mid)),
+            auto _UResult     = _Rotate_copy_common(_STD move(_UFirst), _RANGES _Unwrap_iter<_Se>(_STD move(_Mid)),
                     _STD move(_ULast), _STD _Get_unwrapped_n(_STD move(_Output), _Count));
 
             _STD _Seek_wrapped(_First, _STD move(_UResult.in));
@@ -5607,21 +5922,23 @@ namespace ranges {
             _STD _Adl_verify_range(_RANGES begin(_Range), _Mid);
             _STD _Adl_verify_range(_Mid, _RANGES end(_Range));
             const auto _Count = _RANGES _Idl_distance(_Range);
-            auto _UResult = _Rotate_copy_unchecked(_Ubegin(_Range), _RANGES _Unwrap_range_iter<_Rng>(_STD move(_Mid)),
-                _Uend(_Range), _STD _Get_unwrapped_n(_STD move(_Output), _Count));
+            auto _UResult     = _Rotate_copy_common(_Ubegin(_Range), _RANGES _Unwrap_range_iter<_Rng>(_STD move(_Mid)),
+                    _Uend(_Range), _STD _Get_unwrapped_n(_STD move(_Output), _Count));
             _STD _Seek_wrapped(_Output, _STD move(_UResult.out));
             return {_RANGES _Rewrap_iterator(_Range, _STD move(_UResult.in)), _STD move(_Output)};
         }
 
     private:
         template <class _It, class _Se, class _Out>
-        _NODISCARD static constexpr rotate_copy_result<_It, _Out> _Rotate_copy_unchecked(
+        _NODISCARD static constexpr rotate_copy_result<_It, _Out> _Rotate_copy_common(
             _It _First, _It _Mid, _Se _Last, _Out _Output) {
             // Copy the content of [_Mid, _Last) and [_First, _Mid) to _Output
             _STL_INTERNAL_STATIC_ASSERT(forward_iterator<_It>);
             _STL_INTERNAL_STATIC_ASSERT(sentinel_for<_Se, _It>);
             _STL_INTERNAL_STATIC_ASSERT(weakly_incrementable<_Out>);
             _STL_INTERNAL_STATIC_ASSERT(indirectly_copyable<_It, _Out>);
+
+            _STD _Verify_ranges_do_not_overlap(_First, _Last, _Output);
 
             auto _UResult1 = _RANGES _Copy_unchecked(_Mid, _STD move(_Last), _STD move(_Output));
             auto _UResult2 = _RANGES _Copy_unchecked(_STD move(_First), _STD move(_Mid), _STD move(_UResult1.out));
@@ -8040,6 +8357,25 @@ namespace ranges {
             return _First;
         }
 
+#if _USE_STD_VECTOR_ALGORITHMS
+        if constexpr (_Is_min_max_iterators_safe<_It> && sized_sentinel_for<_Se, _It> && is_same_v<_Pj, identity>) {
+            constexpr bool _Is_greater = _Is_predicate_greater<_It, _Pr>;
+            if constexpr (_Is_greater || _Is_predicate_less<_It, _Pr>) {
+                if (!_STD is_constant_evaluated()) {
+                    const auto _First_ptr = _STD _To_address(_First);
+                    const auto _Last_ptr  = _First_ptr + static_cast<size_t>(_Last - _First);
+                    const auto _Result    = _STD _Is_sorted_until_vectorized(_First_ptr, _Last_ptr, _Is_greater);
+
+                    if constexpr (is_pointer_v<_It>) {
+                        return _Result;
+                    } else {
+                        return _First + static_cast<iter_difference_t<_It>>(_Result - _First_ptr);
+                    }
+                }
+            }
+        }
+#endif // _USE_STD_VECTOR_ALGORITHMS
+
         for (auto _Prev = _First; ++_First != _Last; ++_Prev) {
             if (_STD invoke(_Pred, _STD invoke(_Proj, *_First), _STD invoke(_Proj, *_Prev))) {
                 break;
@@ -8410,12 +8746,10 @@ _CONSTEXPR20 void _Guess_median_unchecked(_RanIt _First, _RanIt _Mid, _RanIt _La
 }
 
 template <class _RanIt, class _Pr>
-_CONSTEXPR20 pair<_RanIt, _RanIt> _Partition_by_median_guess_unchecked(_RanIt _First, _RanIt _Last, _Pr _Pred) {
-    // partition [_First, _Last)
-    _RanIt _Mid = _First + ((_Last - _First) >> 1); // shift for codegen
-    _STD _Guess_median_unchecked(_First, _Mid, _STD _Prev_iter(_Last), _Pred);
-    _RanIt _Pfirst = _Mid;
-    _RanIt _Plast  = _STD _Next_iter(_Pfirst);
+_CONSTEXPR20 pair<_RanIt, _RanIt> _Partition_by_pivot_unchecked(
+    _RanIt _First, _RanIt _Pfirst, _RanIt _Last, _Pr _Pred) {
+    // partition [_First, _Last) by pivot _Pfirst
+    _RanIt _Plast = _STD _Next_iter(_Pfirst);
 
     while (_First < _Pfirst && !_DEBUG_LT_PRED(_Pred, *_STD _Prev_iter(_Pfirst), *_Pfirst)
            && !_Pred(*_Pfirst, *_STD _Prev_iter(_Pfirst))) {
@@ -8478,6 +8812,15 @@ _CONSTEXPR20 pair<_RanIt, _RanIt> _Partition_by_median_guess_unchecked(_RanIt _F
             ++_Gfirst;
         }
     }
+}
+
+template <class _RanIt, class _Pr>
+_CONSTEXPR20 pair<_RanIt, _RanIt> _Partition_by_median_guess_unchecked(_RanIt _First, _RanIt _Last, _Pr _Pred) {
+    // partition [_First, _Last)
+    _RanIt _Mid = _First + ((_Last - _First) >> 1); // shift for codegen
+    _STD _Guess_median_unchecked(_First, _Mid, _STD _Prev_iter(_Last), _Pred);
+
+    return _STD _Partition_by_pivot_unchecked(_First, _Mid, _Last, _Pred);
 }
 
 template <class _RanIt, class _Pr>
@@ -8605,14 +8948,12 @@ namespace ranges {
 
     template <random_access_iterator _It, class _Pr, class _Pj>
         requires sortable<_It, _Pr, _Pj>
-    _NODISCARD constexpr subrange<_It> _Partition_by_median_guess_common(_It _First, _It _Last, _Pr _Pred, _Pj _Proj) {
-        // Choose a pivot, partition [_First, _Last) into elements less than pivot, elements equal to pivot, and
+    _NODISCARD constexpr subrange<_It> _Partition_by_pivot_common(
+        _It _First, _It _Pfirst, _It _Last, _Pr _Pred, _Pj _Proj) {
+        // Partition [_First, _Last) by pivot _Pfirst into elements less than pivot, elements equal to pivot, and
         // elements greater than pivot; return the equal partition as a subrange.
 
-        _It _Mid = _First + ((_Last - _First) >> 1); // shift for codegen
-        _RANGES _Guess_median_common(_First, _Mid, _RANGES prev(_Last), _Pred, _Proj);
-        _It _Pfirst = _Mid;
-        _It _Plast  = _RANGES next(_Pfirst);
+        _It _Plast = _RANGES next(_Pfirst);
 
         while (_First < _Pfirst
                && !_STD invoke(_Pred, _STD invoke(_Proj, *_RANGES prev(_Pfirst)), _STD invoke(_Proj, *_Pfirst))
@@ -8677,6 +9018,17 @@ namespace ranges {
                 ++_Gfirst;
             }
         }
+    }
+
+    template <random_access_iterator _It, class _Pr, class _Pj>
+        requires sortable<_It, _Pr, _Pj>
+    _NODISCARD constexpr subrange<_It> _Partition_by_median_guess_common(_It _First, _It _Last, _Pr _Pred, _Pj _Proj) {
+        // Choose a pivot, partition [_First, _Last) into elements less than pivot, elements equal to pivot, and
+        // elements greater than pivot; return the equal partition as a subrange.
+
+        _It _Mid = _First + ((_Last - _First) >> 1); // shift for codegen
+        _RANGES _Guess_median_common(_First, _Mid, _RANGES prev(_Last), _Pred, _Proj);
+        return _RANGES _Partition_by_pivot_common(_First, _Mid, _Last, _Pred, _Proj);
     }
 
     class _Sort_fn {
@@ -9465,6 +9817,121 @@ namespace ranges {
 #endif // _HAS_CXX20
 #endif // _HAS_CXX17
 
+template <class _RanIt, class _Pr>
+_CONSTEXPR20 void _Swap_med5_unchecked(_RanIt _First, _RanIt _Dest, _Pr _Pred) {
+    _RanIt _Guess = _First;
+    ++_Guess;
+    _RanIt _Third = _Guess;
+    ++_Third;
+    _STD _Med3_unchecked(_First, _Guess, _Third, _Pred);
+
+    _RanIt _Fourth = _Third;
+    ++_Fourth;
+    _RanIt _Fifth = _Fourth;
+    ++_Fifth;
+    if (_DEBUG_LT_PRED(_Pred, *_Fifth, *_Fourth)) {
+        swap(*_Fourth, *_Fifth); // intentional ADL
+    }
+
+    // we have _First <= _Guess (second) <= _Third and _Fourth <= _Fifth
+    if (_DEBUG_LT_PRED(_Pred, *_Fifth, *_Guess)) {
+        if (_DEBUG_LT_PRED(_Pred, *_First, *_Fifth)) {
+            _Guess = _Fifth;
+        } else {
+            _Guess = _First;
+        }
+    } else if (_DEBUG_LT_PRED(_Pred, *_Guess, *_Fourth)) {
+        if (_DEBUG_LT_PRED(_Pred, *_Third, *_Fourth)) {
+            _Guess = _Third;
+        } else {
+            _Guess = _Fourth;
+        }
+    }
+
+    swap(*_Dest, *_Guess); // intentional ADL
+}
+
+template <class _RanIt, class _Pr>
+_CONSTEXPR20 void _Nth_element_median_of_medians(_RanIt _First, _RanIt _Nth, _RanIt _Last, _Pr _Pred) {
+    using _Diff = _Iter_diff_t<_RanIt>;
+    for (;;) {
+        const auto _Length = _Last - _First;
+        if (_Length <= _ISORT_MAX) {
+            _STD _Insertion_sort_unchecked(_First, _Last, _Pred); // sort any remainder
+            return;
+        }
+
+        // collect the medians of five at the beginning of the range
+        const _Diff _Median_count = _Length / static_cast<_Diff>(5);
+        const auto _Median_last   = _First + _Median_count;
+        auto _Current             = _First;
+        for (auto _Median_dest = _First; _Median_dest != _Median_last; ++_Median_dest) {
+            _STD _Swap_med5_unchecked(_Current, _Median_dest, _Pred);
+            _Current += static_cast<_Diff>(5);
+        }
+
+        // find the median of medians
+        const auto _Median_mid = _First + (_Median_count >> 1);
+        _STD _Nth_element_median_of_medians(_First, _Median_mid, _Median_last, _Pred);
+
+        // The medians before and after _Median_mid are
+        // less-equal and greater-equal _Median_mid, respectively.
+        // Move the ones after _Median_mid near _Last and then partition
+        // the elements between the medians at front and back by the pivot _Median_mid
+        // so that they do not have to be considered or moved in the partitioning pass.
+        const _Diff _Median_greater_count = (_Median_last - _Median_mid) - 1;
+        const auto _Median_greater_first  = _Last - _Median_greater_count;
+        _STD _Swap_ranges_unchecked(_Median_mid + static_cast<_Diff>(1), _Median_last, _Median_greater_first);
+
+        // Swap the median of medians to the middle
+        // to reduce the number of times it will be moved by the partition function.
+        const auto _Middle = _First + (_Length >> 1);
+        swap(*_Median_mid, *_Middle); // intentional ADL
+
+        const auto _Mid = _STD _Partition_by_pivot_unchecked(_Median_mid, _Middle, _Median_greater_first, _Pred);
+
+        if (_Mid.second <= _Nth) {
+            _First = _Mid.second;
+        } else if (_Mid.first <= _Nth) {
+            return; // _Nth is in the subrange of elements equal to the pivot; done
+        } else {
+            _Last = _Mid.first;
+        }
+    }
+}
+
+template <class _RanIt, class _Pr>
+_CONSTEXPR20 void _Nth_element_unchecked(_RanIt _First, _RanIt _Nth, _RanIt _Last, _Pr _Pred) {
+    auto _Ideal = _Last - _First;
+
+    for (;;) {
+        const auto _Length = _Last - _First;
+        if (_Length <= _ISORT_MAX) {
+            _STD _Insertion_sort_unchecked(_First, _Last, _Pred); // sort any remainder
+            return;
+        }
+
+        if (_Ideal < (_Length >> 1)) {
+            // fall back to medians-of-medians-of-five algorithm to guarantee O(n) runtime performance
+            _STD _Nth_element_median_of_medians(_First, _Nth, _Last, _Pred);
+            return;
+        }
+
+        const auto _Mid = _STD _Partition_by_median_guess_unchecked(_First, _Last, _Pred);
+
+        if (_Mid.second <= _Nth) {
+            _First = _Mid.second;
+        } else if (_Mid.first <= _Nth) {
+            return; // _Nth is in the subrange of elements equal to the pivot; done
+        } else {
+            _Last = _Mid.first;
+        }
+
+        // processed range should be reduced by 25% per iteration on average
+        _Ideal = (_Ideal >> 1) + (_Ideal >> 2);
+    }
+}
+
 _EXPORT_STD template <class _RanIt, class _Pr>
 _CONSTEXPR20 void nth_element(_RanIt _First, _RanIt _Nth, _RanIt _Last, _Pr _Pred) {
     // order Nth element
@@ -9477,19 +9944,7 @@ _CONSTEXPR20 void nth_element(_RanIt _First, _RanIt _Nth, _RanIt _Last, _Pr _Pre
         return; // nothing to do
     }
 
-    while (_ISORT_MAX < _ULast - _UFirst) { // divide and conquer, ordering partition containing Nth
-        auto _UMid = _STD _Partition_by_median_guess_unchecked(_UFirst, _ULast, _STD _Pass_fn(_Pred));
-
-        if (_UMid.second <= _UNth) {
-            _UFirst = _UMid.second;
-        } else if (_UMid.first <= _UNth) {
-            return; // _Nth is in the subrange of elements equal to the pivot; done
-        } else {
-            _ULast = _UMid.first;
-        }
-    }
-
-    _STD _Insertion_sort_unchecked(_UFirst, _ULast, _STD _Pass_fn(_Pred)); // sort any remainder
+    _STD _Nth_element_unchecked(_UFirst, _UNth, _ULast, _STD _Pass_fn(_Pred));
 }
 
 _EXPORT_STD template <class _RanIt>
@@ -9558,16 +10013,82 @@ namespace ranges {
 
     private:
         template <class _It, class _Pr, class _Pj>
-        static constexpr void _Nth_element_common(_It _First, _It _Nth, _It _Last, _Pr _Pred, _Pj _Proj) {
-            _STL_INTERNAL_STATIC_ASSERT(random_access_iterator<_It>);
-            _STL_INTERNAL_STATIC_ASSERT(sortable<_It, _Pr, _Pj>);
+        static constexpr void _Swap_med5(_It _First, _It _Dest, _Pr _Pred, _Pj _Proj) {
+            _It _Guess = _First;
+            ++_Guess;
+            _It _Third = _Guess;
+            ++_Third;
+            _RANGES _Med3_common(_First, _Guess, _Third, _Pred, _Proj);
 
-            if (_Nth == _Last) {
-                return; // nothing to do
+            _It _Fourth = _Third;
+            ++_Fourth;
+            _It _Fifth = _Fourth;
+            ++_Fifth;
+            if (_STD invoke(_Pred, _STD invoke(_Proj, *_Fifth), _STD invoke(_Proj, *_Fourth))) {
+                _RANGES iter_swap(_Fourth, _Fifth);
             }
 
-            while (_ISORT_MAX < _Last - _First) { // divide and conquer, ordering partition containing Nth
-                subrange<_It> _Mid = _RANGES _Partition_by_median_guess_common(_First, _Last, _Pred, _Proj);
+            // we have _First <= _Guess (second) <= _Third and _Fourth <= _Fifth
+            if (_STD invoke(_Pred, _STD invoke(_Proj, *_Fifth), _STD invoke(_Proj, *_Guess))) {
+                if (_STD invoke(_Pred, _STD invoke(_Proj, *_First), _STD invoke(_Proj, *_Fifth))) {
+                    _Guess = _STD move(_Fifth);
+                } else {
+                    _Guess = _STD move(_First);
+                }
+            } else if (_STD invoke(_Pred, _STD invoke(_Proj, *_Guess), _STD invoke(_Proj, *_Fourth))) {
+                if (_STD invoke(_Pred, _STD invoke(_Proj, *_Third), _STD invoke(_Proj, *_Fourth))) {
+                    _Guess = _STD move(_Third);
+                } else {
+                    _Guess = _STD move(_Fourth);
+                }
+            }
+
+            _RANGES iter_swap(_Dest, _Guess);
+        }
+
+        template <class _It, class _Pr, class _Pj>
+        static constexpr void _Nth_element_median_of_medians_unchecked(
+            _It _First, _It _Nth, _It _Last, _Pr _Pred, _Pj _Proj) {
+
+            using _Diff = iter_difference_t<_It>;
+            for (;;) {
+                const auto _Length = _Last - _First;
+                if (_Length <= _ISORT_MAX) {
+                    // sort any remainder
+                    _RANGES _Insertion_sort_common(_STD move(_First), _STD move(_Last), _Pred, _Proj);
+                    return;
+                }
+
+                // collect the medians of five at the beginning of the range
+                const _Diff _Median_count = _Length / static_cast<_Diff>(5);
+                auto _Median_last         = _First + _Median_count;
+                auto _Current             = _First;
+                for (auto _Median_dest = _First; _Median_dest != _Median_last; ++_Median_dest) {
+                    _Swap_med5(_Current, _Median_dest, _Pred, _Proj);
+                    _Current += static_cast<_Diff>(5);
+                }
+
+                // find the median of medians
+                auto _Median_mid = _First + (_Median_count >> 1);
+                _Nth_element_median_of_medians_unchecked(_First, _Median_mid, _Median_last, _Pred, _Proj);
+
+                // The medians before and after _Median_mid are
+                // less-equal and greater-equal _Median_mid, respectively.
+                // Move the ones after _Median_mid near _Last and then partition
+                // the elements between the medians at front and back by the pivot _Median_mid
+                // so that they do not have to be considered or moved in the partitioning pass.
+                const _Diff _Median_greater_count = (_Median_last - _Median_mid) - 1;
+                auto _Median_greater_first        = _Last - _Median_greater_count;
+                (void) _RANGES _Swap_ranges_common(
+                    _Median_mid + static_cast<_Diff>(1), _STD move(_Median_last), _Median_greater_first, _Last);
+
+                // Swap the median of medians to the middle
+                // to reduce the number of times it will be moved by the partition function.
+                auto _Middle = _First + (_Length >> 1);
+                _RANGES iter_swap(_Median_mid, _Middle);
+
+                const subrange<_It> _Mid = _RANGES _Partition_by_pivot_common(
+                    _STD move(_Median_mid), _STD move(_Middle), _STD move(_Median_greater_first), _Pred, _Proj);
 
                 if (_Mid.end() <= _Nth) {
                     _First = _Mid.end();
@@ -9577,9 +10098,47 @@ namespace ranges {
                     _Last = _Mid.begin();
                 }
             }
+        }
 
-            // sort any remainder
-            _RANGES _Insertion_sort_common(_STD move(_First), _STD move(_Last), _Pred, _Proj);
+        template <class _It, class _Pr, class _Pj>
+        static constexpr void _Nth_element_common(_It _First, _It _Nth, _It _Last, _Pr _Pred, _Pj _Proj) {
+            _STL_INTERNAL_STATIC_ASSERT(random_access_iterator<_It>);
+            _STL_INTERNAL_STATIC_ASSERT(sortable<_It, _Pr, _Pj>);
+
+            if (_Nth == _Last) {
+                return; // nothing to do
+            }
+
+            auto _Ideal = _Last - _First;
+
+            for (;;) {
+                const auto _Length = _Last - _First;
+                if (_Length <= _ISORT_MAX) {
+                    // sort any remainder
+                    _RANGES _Insertion_sort_common(_STD move(_First), _STD move(_Last), _Pred, _Proj);
+                    return;
+                }
+
+                if (_Ideal < (_Length >> 1)) {
+                    // fall back to medians-of-medians-of-five algorithm to guarantee O(n) runtime performance
+                    _Nth_element_median_of_medians_unchecked(
+                        _STD move(_First), _STD move(_Nth), _STD move(_Last), _Pred, _Proj);
+                    return;
+                }
+
+                const subrange<_It> _Mid = _RANGES _Partition_by_median_guess_common(_First, _Last, _Pred, _Proj);
+
+                if (_Mid.end() <= _Nth) {
+                    _First = _Mid.end();
+                } else if (_Mid.begin() <= _Nth) {
+                    return; // _Nth is in the subrange of elements equal to the pivot; done
+                } else {
+                    _Last = _Mid.begin();
+                }
+
+                // processed range should be reduced by 25% per iteration on average
+                _Ideal = (_Ideal >> 1) + (_Ideal >> 2);
+            }
         }
     };
 
@@ -9599,17 +10158,31 @@ _NODISCARD _CONSTEXPR20 bool includes(_InIt1 _First1, _InIt1 _Last1, _InIt2 _Fir
     const auto _ULast2 = _STD _Get_unwrapped(_Last2);
     _DEBUG_ORDER_SET_UNWRAPPED(_InIt2, _UFirst1, _ULast1, _Pred);
     _DEBUG_ORDER_SET_UNWRAPPED(_InIt1, _UFirst2, _ULast2, _Pred);
-    for (; _UFirst1 != _ULast1 && _UFirst2 != _ULast2; ++_UFirst1) {
-        if (_DEBUG_LT_PRED(_Pred, *_UFirst2, *_UFirst1)) {
-            return false;
-        }
 
-        if (!_Pred(*_UFirst1, *_UFirst2)) {
-            ++_UFirst2;
-        }
+    if (_UFirst2 == _ULast2) {
+        return true;
+    } else if (_UFirst1 == _ULast1) {
+        return false;
     }
 
-    return _UFirst2 == _ULast2;
+    for (;;) {
+        if (_DEBUG_LT_PRED(_Pred, *_UFirst1, *_UFirst2)) {
+            ++_UFirst1;
+            if (_UFirst1 == _ULast1) {
+                return false;
+            }
+        } else if (_Pred(*_UFirst2, *_UFirst1)) {
+            return false;
+        } else {
+            ++_UFirst1;
+            ++_UFirst2;
+            if (_UFirst2 == _ULast2) {
+                return true;
+            } else if (_UFirst1 == _ULast1) {
+                return false;
+            }
+        }
+    }
 }
 
 _EXPORT_STD template <class _InIt1, class _InIt2>
@@ -9687,20 +10260,16 @@ namespace ranges {
                     if (_First1 == _Last1) {
                         return false;
                     }
-
-                    continue;
-                }
-
-                if (_STD invoke(_Pred, _STD invoke(_Proj2, *_First2), _STD invoke(_Proj1, *_First1))) {
+                } else if (_STD invoke(_Pred, _STD invoke(_Proj2, *_First2), _STD invoke(_Proj1, *_First1))) {
                     return false;
-                }
-
-                ++_First1;
-                ++_First2;
-                if (_First2 == _Last2) {
-                    return true;
-                } else if (_First1 == _Last1) {
-                    return false;
+                } else {
+                    ++_First1;
+                    ++_First2;
+                    if (_First2 == _Last2) {
+                        return true;
+                    } else if (_First1 == _Last1) {
+                        return false;
+                    }
                 }
             }
         }
@@ -10279,7 +10848,8 @@ constexpr pair<_FwdIt, _FwdIt> _Minmax_element_unchecked(_FwdIt _First, _FwdIt _
             if constexpr (is_pointer_v<_FwdIt>) {
                 return _Result;
             } else {
-                return {_First + (_Result.first - _First_ptr), _First + (_Result.second - _First_ptr)};
+                return {_First + static_cast<_Iter_diff_t<_FwdIt>>(_Result.first - _First_ptr),
+                    _First + static_cast<_Iter_diff_t<_FwdIt>>(_Result.second - _First_ptr)};
             }
         }
     }
@@ -10401,12 +10971,13 @@ namespace ranges {
                           && sized_sentinel_for<_Se, _It>) {
                 if (!_STD is_constant_evaluated()) {
                     const auto _First_ptr = _STD to_address(_First);
-                    const auto _Last_ptr  = _First_ptr + (_Last - _First);
+                    const auto _Last_ptr  = _First_ptr + static_cast<ptrdiff_t>(_Last - _First);
                     const auto _Result    = _STD _Minmax_element_vectorized(_First_ptr, _Last_ptr);
                     if constexpr (is_pointer_v<_It>) {
                         return {_Result.first, _Result.second};
                     } else {
-                        return {_First + (_Result.first - _First_ptr), _First + (_Result.second - _First_ptr)};
+                        return {_First + static_cast<iter_difference_t<_It>>(_Result.first - _First_ptr),
+                            _First + static_cast<iter_difference_t<_It>>(_Result.second - _First_ptr)};
                     }
                 }
             }
@@ -10568,14 +11139,14 @@ namespace ranges {
                 if constexpr (_Is_min_max_value_optimization_safe<decltype(_UFirst), _Pr>) {
                     if (!_STD is_constant_evaluated()) {
                         const auto _First_ptr = _STD to_address(_UFirst);
-                        const auto _Last_ptr  = _First_ptr + (_ULast - _UFirst);
+                        const auto _Last_ptr  = _First_ptr + static_cast<ptrdiff_t>(_ULast - _UFirst);
                         const auto _Result    = _STD _Minmax_vectorized(_First_ptr, _Last_ptr);
                         return {static_cast<_Vty>(_Result._Min), static_cast<_Vty>(_Result._Max)};
                     }
                 } else if constexpr (_Is_min_max_optimization_safe<decltype(_UFirst), _Pr>) {
                     if (!_STD is_constant_evaluated()) {
                         const auto _First_ptr = _STD to_address(_UFirst);
-                        const auto _Last_ptr  = _First_ptr + (_ULast - _UFirst);
+                        const auto _Last_ptr  = _First_ptr + static_cast<ptrdiff_t>(_ULast - _UFirst);
                         const auto _Result    = _STD _Minmax_element_vectorized(_First_ptr, _Last_ptr);
                         return {*static_cast<const _Vty*>(_Result.first), *static_cast<const _Vty*>(_Result.second)};
                     }
@@ -10908,6 +11479,29 @@ _NODISCARD _CONSTEXPR20 _FwdIt is_sorted_until(const _FwdIt _First, _FwdIt _Last
     _STD _Adl_verify_range(_First, _Last);
     auto _UFirst = _STD _Get_unwrapped(_First);
     auto _ULast  = _STD _Get_unwrapped(_Last);
+
+#if _USE_STD_VECTOR_ALGORITHMS
+    if constexpr (_Is_min_max_iterators_safe<decltype(_UFirst)>) {
+        constexpr bool _Is_greater = _Is_predicate_greater<decltype(_UFirst), _Pr>;
+        if constexpr (_Is_greater || _Is_predicate_less<decltype(_UFirst), _Pr>) {
+            if (!_STD _Is_constant_evaluated()) {
+                const auto _First_ptr = _STD _To_address(_UFirst);
+                const auto _Result =
+                    _STD _Is_sorted_until_vectorized(_First_ptr, _STD _To_address(_ULast), _Is_greater);
+
+                if constexpr (is_pointer_v<decltype(_UFirst)>) {
+                    _UFirst = _Result;
+                } else {
+                    _UFirst += static_cast<_Iter_diff_t<decltype(_UFirst)>>(_Result - _First_ptr);
+                }
+
+                _STD _Seek_wrapped(_Last, _UFirst);
+                return _Last;
+            }
+        }
+    }
+#endif // _USE_STD_VECTOR_ALGORITHMS
+
     if (_UFirst != _ULast) {
         for (auto _UNext = _UFirst; ++_UNext != _ULast; ++_UFirst) {
             if (_DEBUG_LT_PRED(_Pred, *_UNext, *_UFirst)) {

@@ -54,14 +54,22 @@ _STL_DISABLE_CLANG_WARNINGS
 #ifndef _USE_STD_VECTOR_FLOATING_ALGORITHMS
 #if _USE_STD_VECTOR_ALGORITHMS && !defined(_M_FP_EXCEPT)
 #define _USE_STD_VECTOR_FLOATING_ALGORITHMS 1
-#else // ^^^ use vector algorithms and fast math / not use vector algorithms or not use fast math vvv
+#else // ^^^ use vector algorithms and not use _M_FP_EXCEPT / not use vector algorithms or use _M_FP_EXCEPT vvv
 #define _USE_STD_VECTOR_FLOATING_ALGORITHMS 0
-#endif // ^^^ not use vector algorithms or not use fast math ^^^
+#endif // ^^^ not use vector algorithms or use _M_FP_EXCEPT ^^^
 #else // ^^^ !defined(_USE_STD_VECTOR_FLOATING_ALGORITHMS) / defined(_USE_STD_VECTOR_FLOATING_ALGORITHMS) vvv
 #if _USE_STD_VECTOR_FLOATING_ALGORITHMS && !_USE_STD_VECTOR_ALGORITHMS
 #error _USE_STD_VECTOR_FLOATING_ALGORITHMS must imply _USE_STD_VECTOR_ALGORITHMS.
 #endif // _USE_STD_VECTOR_FLOATING_ALGORITHMS && !_USE_STD_VECTOR_ALGORITHMS
 #endif // ^^^ defined(_USE_STD_VECTOR_FLOATING_ALGORITHMS) ^^^
+
+#ifndef _USE_BUILTIN_IS_TRIVIALLY_EQUALITY_COMPARABLE
+#if defined(__clang__) && __clang_major__ >= 19
+#define _USE_BUILTIN_IS_TRIVIALLY_EQUALITY_COMPARABLE 1
+#else // ^^^ defined(__clang__) && __clang_major__ >= 19 / !defined(__clang__) || __clang_major__ < 19 vvv
+#define _USE_BUILTIN_IS_TRIVIALLY_EQUALITY_COMPARABLE 0
+#endif // ^^^ !defined(__clang__) || __clang_major__ < 19 ^^^
+#endif // ^^^ !defined(_USE_BUILTIN_IS_TRIVIALLY_EQUALITY_COMPARABLE) ^^^
 
 #if _USE_STD_VECTOR_ALGORITHMS
 extern "C" {
@@ -78,6 +86,8 @@ __declspec(noalias) void __cdecl __std_reverse_trivially_swappable_4(void* _Firs
 __declspec(noalias) void __cdecl __std_reverse_trivially_swappable_8(void* _First, void* _Last) noexcept;
 __declspec(noalias) void __cdecl __std_swap_ranges_trivially_swappable_noalias(
     void* _First1, void* _Last1, void* _First2) noexcept;
+
+__declspec(noalias) void __stdcall __std_rotate(void* _First, void* _Mid, void* _Last) noexcept;
 
 __declspec(noalias) size_t __stdcall __std_count_trivial_1(
     const void* _First, const void* _Last, uint8_t _Val) noexcept;
@@ -107,11 +117,20 @@ const void* __stdcall __std_search_1(
     const void* _First1, const void* _Last1, const void* _First2, size_t _Count2) noexcept;
 const void* __stdcall __std_search_2(
     const void* _First1, const void* _Last1, const void* _First2, size_t _Count2) noexcept;
+const void* __stdcall __std_search_4(
+    const void* _First1, const void* _Last1, const void* _First2, size_t _Count2) noexcept;
+const void* __stdcall __std_search_8(
+    const void* _First1, const void* _Last1, const void* _First2, size_t _Count2) noexcept;
 
 const void* __stdcall __std_find_end_1(
     const void* _First1, const void* _Last1, const void* _First2, size_t _Count2) noexcept;
 const void* __stdcall __std_find_end_2(
     const void* _First1, const void* _Last1, const void* _First2, size_t _Count2) noexcept;
+const void* __stdcall __std_find_end_4(
+    const void* _First1, const void* _Last1, const void* _First2, size_t _Count2) noexcept;
+const void* __stdcall __std_find_end_8(
+    const void* _First1, const void* _Last1, const void* _First2, size_t _Count2) noexcept;
+
 
 const void* __stdcall __std_min_element_1(const void* _First, const void* _Last, bool _Signed) noexcept;
 const void* __stdcall __std_min_element_2(const void* _First, const void* _Last, bool _Signed) noexcept;
@@ -270,6 +289,10 @@ _Ty1* _Search_vectorized(_Ty1* const _First1, _Ty1* const _Last1, _Ty2* const _F
         return const_cast<_Ty1*>(static_cast<const _Ty1*>(::__std_search_1(_First1, _Last1, _First2, _Count2)));
     } else if constexpr (sizeof(_Ty1) == 2) {
         return const_cast<_Ty1*>(static_cast<const _Ty1*>(::__std_search_2(_First1, _Last1, _First2, _Count2)));
+    } else if constexpr (sizeof(_Ty1) == 4) {
+        return const_cast<_Ty1*>(static_cast<const _Ty1*>(::__std_search_4(_First1, _Last1, _First2, _Count2)));
+    } else if constexpr (sizeof(_Ty1) == 8) {
+        return const_cast<_Ty1*>(static_cast<const _Ty1*>(::__std_search_8(_First1, _Last1, _First2, _Count2)));
     } else {
         _STL_INTERNAL_STATIC_ASSERT(false); // unexpected size
     }
@@ -283,6 +306,10 @@ _Ty1* _Find_end_vectorized(
         return const_cast<_Ty1*>(static_cast<const _Ty1*>(::__std_find_end_1(_First1, _Last1, _First2, _Count2)));
     } else if constexpr (sizeof(_Ty1) == 2) {
         return const_cast<_Ty1*>(static_cast<const _Ty1*>(::__std_find_end_2(_First1, _Last1, _First2, _Count2)));
+    } else if constexpr (sizeof(_Ty1) == 4) {
+        return const_cast<_Ty1*>(static_cast<const _Ty1*>(::__std_find_end_4(_First1, _Last1, _First2, _Count2)));
+    } else if constexpr (sizeof(_Ty1) == 8) {
+        return const_cast<_Ty1*>(static_cast<const _Ty1*>(::__std_find_end_8(_First1, _Last1, _First2, _Count2)));
     } else {
         _STL_INTERNAL_STATIC_ASSERT(false); // unexpected size
     }
@@ -1094,7 +1121,8 @@ struct _Projected_impl {
 
         using value_type = remove_cvref_t<indirect_result_t<_Proj&, _It>>;
         [[noreturn]] indirect_result_t<_Proj&, _It> operator*() const {
-            _CSTD abort(); // shouldn't be called, see GH-3888
+            _STL_REPORT_ERROR("std::projected::operator*() can't be called (N5008 [projected]/1)");
+            _STL_UNREACHABLE; // no return value available for "continue on error"
         }
     };
 };
@@ -4664,6 +4692,25 @@ constexpr bool _Is_pointer_address_convertible = is_void_v<_Source>
 #endif // defined(__cpp_lib_is_pointer_interconvertible)
     ;
 
+#pragma warning(push)
+#pragma warning(disable : 4242) // '%s': conversion from '%s' to '%s', possible loss of data
+#pragma warning(disable : 4244) // '%s': conversion from '%s' to '%s', possible loss of data (Yes, duplicated message.)
+#pragma warning(disable : 4267) // '%s': conversion from '%s' to '%s', possible loss of data (Yes, duplicated message!)
+#pragma warning(disable : 4365) // '%s': conversion from '%s' to '%s', signed/unsigned mismatch
+#pragma warning(disable : 5267) // definition of implicit assignment operator for '%s' is deprecated because it has a
+                                // user-provided copy constructor
+
+// Determines whether _DestRef is trivially assignable from _SourceRef, and if _Remove_cvref_t<_DestRef> is a class, the
+// assignment uses _Remove_cvref_t<_DestRef>::operator=.
+// Not pedantically reliable for vectorization, but working due to bugs of MSVC, Clang, and EDG. See LLVM-37038.
+template <class _DestRef, class _SourceRef, bool = is_trivially_assignable_v<_DestRef, _SourceRef>>
+constexpr bool _Is_trivially_assignable_returning_same_reference_v =
+    is_same_v<_DestRef, decltype(_STD declval<_DestRef>() = _STD declval<_SourceRef>())>;
+template <class _DestRef, class _SourceRef>
+constexpr bool _Is_trivially_assignable_returning_same_reference_v<_DestRef, _SourceRef, false> = false;
+
+#pragma warning(pop)
+
 template <class _Source, class _Dest, class _SourceRef, class _DestRef>
 struct _Trivial_cat {
     using _USource = _Unwrap_enum_t<_Source>;
@@ -4682,7 +4729,7 @@ struct _Trivial_cat {
         _Same_size_and_compatible && is_trivially_constructible_v<_Dest, _SourceRef>;
 
     static constexpr bool _Bitcopy_assignable =
-        _Same_size_and_compatible && is_trivially_assignable_v<_DestRef, _SourceRef>;
+        _Same_size_and_compatible && _Is_trivially_assignable_returning_same_reference_v<_DestRef, _SourceRef>;
 };
 
 template <class _Source, class _Dest, class _SourceRef, class _DestRef>
@@ -4691,7 +4738,8 @@ struct _Trivial_cat<_Source*, _Dest*, _SourceRef, _DestRef> {
         _Is_pointer_address_convertible<_Source, _Dest> && is_trivially_constructible_v<_Dest*, _SourceRef>;
 
     static constexpr bool _Bitcopy_assignable =
-        _Is_pointer_address_convertible<_Source, _Dest> && is_trivially_assignable_v<_DestRef, _SourceRef>;
+        _Is_pointer_address_convertible<_Source, _Dest>
+        && _Is_trivially_assignable_returning_same_reference_v<_DestRef, _SourceRef>;
 };
 
 struct _False_trivial_cat {
@@ -4737,7 +4785,7 @@ _CONSTEXPR20 void _Verify_ranges_do_not_overlap(const _Iter1& _First1, const _Se
         }
 #endif // _HAS_CXX20
 
-        const auto _Offset     = _Last1 - _First1;
+        const auto _Offset     = static_cast<ptrdiff_t>(_Last1 - _First1);
         const auto _Ptr1Offset = _Offset * sizeof(*_STD _To_address(_First1));
         const auto _Ptr2Offset = _Offset * sizeof(*_STD _To_address(_First2));
         // This cast to `cv char*` allows us to compare pointers to distinct types,
@@ -5357,7 +5405,7 @@ _CONSTEXPR20 _OutIt fill_n(_OutIt _Dest, const _Diff _Count_raw, const _Ty& _Val
                 } else if constexpr (_Fill_zero_memset_is_safe<decltype(_UDest), _Ty>) {
                     if (_STD _Is_all_bits_zero(_Val)) {
                         _STD _Fill_zero_memset(_UDest, static_cast<size_t>(_Count));
-                        _STD _Seek_wrapped(_Dest, _UDest + _Count);
+                        _STD _Seek_wrapped(_Dest, _UDest + static_cast<_Iter_diff_t<decltype(_UDest)>>(_Count));
                         return _Dest;
                     }
                 }
@@ -5462,8 +5510,14 @@ inline constexpr bool _Can_memcmp_elements<byte, byte, false> = true;
 template <class _Ty1, class _Ty2>
 constexpr bool _Can_memcmp_elements<_Ty1*, _Ty2*, false> = _Is_pointer_address_comparable<_Ty1, _Ty2>;
 
+#if _USE_BUILTIN_IS_TRIVIALLY_EQUALITY_COMPARABLE
+template <class _Elem1, class _Elem2>
+constexpr bool _Can_memcmp_elements<_Elem1, _Elem2, false> =
+    is_same_v<_Elem1, _Elem2> && __is_trivially_equality_comparable(_Elem1);
+#else // ^^^ _USE_BUILTIN_IS_TRIVIALLY_EQUALITY_COMPARABLE / !_USE_BUILTIN_IS_TRIVIALLY_EQUALITY_COMPARABLE vvv
 template <class _Elem1, class _Elem2>
 constexpr bool _Can_memcmp_elements<_Elem1, _Elem2, false> = false;
+#endif // ^^^ !_USE_BUILTIN_IS_TRIVIALLY_EQUALITY_COMPARABLE ^^^
 
 // _Can_memcmp_elements_with_pred<_Elem1, _Elem2, _Pr> reports whether the memcmp optimization is applicable,
 // given contiguously stored elements. (This avoids having to repeat the metaprogramming that finds the element types.)
@@ -5500,10 +5554,15 @@ template <class _Iter1, class _Iter2, class _Pr>
 constexpr bool _Equal_memcmp_is_safe =
     _Equal_memcmp_is_safe_helper<remove_const_t<_Iter1>, remove_const_t<_Iter2>, remove_const_t<_Pr>>;
 
+#if _USE_STD_VECTOR_ALGORITHMS
+template <size_t _Size>
+constexpr bool _Is_vector_element_size = _Size == 1 || _Size == 2 || _Size == 4 || _Size == 8;
+
 // Can we activate the vector algorithms for std::search?
 template <class _It1, class _It2, class _Pr>
-constexpr bool _Vector_alg_in_search_is_safe = _Equal_memcmp_is_safe<_It1, _It2, _Pr> // can search bitwise
-                                            && sizeof(_Iter_value_t<_It1>) <= 2; // pcmpestri compatible element size
+constexpr bool _Vector_alg_in_search_is_safe =
+    _Equal_memcmp_is_safe<_It1, _It2, _Pr> && _Is_vector_element_size<sizeof(_Iter_value_t<_It1>)>;
+#endif // _USE_STD_VECTOR_ALGORITHMS
 
 template <class _CtgIt1, class _CtgIt2>
 _NODISCARD int _Memcmp_count(_CtgIt1 _First1, _CtgIt2 _First2, const size_t _Count) {
@@ -5661,7 +5720,7 @@ namespace ranges {
         _It1 _First1, _It2 _First2, iter_difference_t<_It1> _Count, _Pr _Pred, _Pj1 _Proj1, _Pj2 _Proj2) {
         _STL_INTERNAL_CHECK(_Count >= 0);
 #if _USE_STD_VECTOR_ALGORITHMS
-        if constexpr (_Equal_memcmp_is_safe<_It1, _It2, _Pr> && is_same_v<_Pj1, identity>
+        if constexpr (_Vector_alg_in_search_is_safe<_It1, _It2, _Pr> && is_same_v<_Pj1, identity>
                       && is_same_v<_Pj2, identity>) {
             if (!_STD is_constant_evaluated()) {
                 constexpr size_t _Elem_size = sizeof(iter_value_t<_It1>);
@@ -6141,7 +6200,7 @@ _NODISCARD _CONSTEXPR20 _InIt _Find_unchecked(_InIt _First, const _InIt _Last, c
             if constexpr (is_pointer_v<_InIt>) {
                 return _Result;
             } else {
-                return _First + (_Result - _First_ptr);
+                return _First + static_cast<_Iter_diff_t<_InIt>>(_Result - _First_ptr);
             }
 #else // ^^^ _USE_STD_VECTOR_ALGORITHMS / !_USE_STD_VECTOR_ALGORITHMS vvv
             if constexpr (sizeof(_Iter_value_t<_InIt>) <= 2) {
@@ -6231,7 +6290,7 @@ namespace ranges {
 #if _USE_STD_VECTOR_ALGORITHMS
                 if constexpr (_Is_sized) {
                     // When _Is_sized && _Elements_are_1_byte, prefer this over memchr() for performance
-                    const auto _Last_ptr = _First_ptr + (_Last - _First);
+                    const auto _Last_ptr = _First_ptr + static_cast<ptrdiff_t>(_Last - _First);
                     _Result              = _STD _Find_vectorized(_First_ptr, _Last_ptr, _Val);
                 } else
 #endif // ^^^ _USE_STD_VECTOR_ALGORITHMS ^^^
@@ -6581,6 +6640,17 @@ _CONSTEXPR20 _FwdIt rotate(_FwdIt _First, _FwdIt _Mid, _FwdIt _Last) {
     }
 
     if constexpr (_Is_cpp17_random_iter_v<_FwdIt>) {
+#if _USE_STD_VECTOR_ALGORITHMS
+        using _Elem = remove_reference_t<_Iter_ref_t<decltype(_UFirst)>>;
+
+        if constexpr (conjunction_v<bool_constant<_Iterator_is_contiguous<decltype(_UFirst)>>,
+                          _Is_trivially_swappable<_Elem>, negation<is_volatile<_Elem>>>) {
+            if (!_STD _Is_constant_evaluated()) {
+                ::__std_rotate(_STD _To_address(_UFirst), _STD _To_address(_UMid), _STD _To_address(_ULast));
+                return _First + (_Last - _Mid);
+            }
+        }
+#endif // _USE_STD_VECTOR_ALGORITHMS
         _STD reverse(_UFirst, _UMid);
         _STD reverse(_UMid, _ULast);
         _STD reverse(_UFirst, _ULast);
@@ -6800,17 +6870,17 @@ namespace ranges {
             }
 
 #if _USE_STD_VECTOR_ALGORITHMS
-            if constexpr (_Equal_memcmp_is_safe<_It, _It, _Pr> && sized_sentinel_for<_Se, _It>
+            if constexpr (_Vector_alg_in_search_is_safe<_It, _It, _Pr> && sized_sentinel_for<_Se, _It>
                           && is_same_v<_Pj, identity>) {
                 if (!_STD is_constant_evaluated()) {
                     const auto _First_ptr = _STD _To_address(_First);
-                    const auto _Last_ptr  = _First_ptr + (_Last - _First);
+                    const auto _Last_ptr  = _First_ptr + static_cast<ptrdiff_t>(_Last - _First);
 
                     const auto _Result = _STD _Adjacent_find_vectorized(_First_ptr, _Last_ptr);
                     if constexpr (is_pointer_v<_It>) {
                         return _Result;
                     } else {
-                        return _First + (_Result - _First_ptr);
+                        return _First + static_cast<iter_difference_t<_It>>(_Result - _First_ptr);
                     }
                 }
             }
@@ -6927,7 +6997,7 @@ namespace ranges {
                             return {_Ptr_res1, _Ptr_res1};
                         }
                     } else {
-                        _First1 += _Ptr_res1 - _Ptr1;
+                        _First1 += static_cast<iter_difference_t<_It1>>(_Ptr_res1 - _Ptr1);
                         if (_First1 != _Last1) {
                             return {_First1, _First1 + static_cast<iter_difference_t<_It1>>(_Count2)};
                         } else {
@@ -6981,24 +7051,37 @@ namespace ranges {
 } // namespace ranges
 #endif // _HAS_CXX20
 
-template <class _Iter, class _Pr, class _Elem = _Iter_value_t<_Iter>>
-constexpr bool _Is_min_max_optimization_safe = // Activate the vector algorithms for min_/max_element?
+template <class _Iter, class _Elem = _Iter_value_t<_Iter>>
+constexpr bool _Is_min_max_iterators_safe =
     _Iterator_is_contiguous<_Iter> // The iterator must be contiguous so we can get raw pointers.
     && !_Iterator_is_volatile<_Iter> // The iterator must not be volatile.
-    && conjunction_v<disjunction<
+    && disjunction_v<
 #if _USE_STD_VECTOR_FLOATING_ALGORITHMS
 #if defined(__LDBL_DIG__) && __LDBL_DIG__ == 18
-                         is_same<_Elem, float>, is_same<_Elem, double>,
+        is_same<_Elem, float>, is_same<_Elem, double>,
 #else // ^^^ 80-bit long double (not supported by MSVC in general, see GH-1316) / 64-bit long double vvv
-                         is_floating_point<_Elem>, // Element is floating-point or...
+        is_floating_point<_Elem>, // Element is floating-point or...
 #endif // ^^^ 64-bit long double ^^^
 #endif // _USE_STD_VECTOR_FLOATING_ALGORITHMS
-                         is_integral<_Elem>, is_pointer<_Elem>>, // ... integral or pointer type.
-        disjunction< // And either of the following:
+        is_integral<_Elem>, is_pointer<_Elem>>; // ... integral or pointer type.
+
+template <class _Iter, class _Pr>
+constexpr bool _Is_predicate_less = _Is_any_of_v<_Pr,
 #if _HAS_CXX20
-            is_same<_Pr, _RANGES less>, // predicate is ranges::less
+    _RANGES less,
 #endif // _HAS_CXX20
-            is_same<_Pr, less<>>, is_same<_Pr, less<_Elem>>>>; // predicate is less
+    less<>, less<_Iter_value_t<_Iter>>>;
+
+template <class _Iter, class _Pr>
+constexpr bool _Is_predicate_greater = _Is_any_of_v<_Pr,
+#if _HAS_CXX20
+    _RANGES greater,
+#endif // _HAS_CXX20
+    greater<>, greater<_Iter_value_t<_Iter>>>;
+
+template <class _Iter, class _Pr>
+constexpr bool _Is_min_max_optimization_safe = // Activate the vector algorithms for min_/max_element?
+    _Is_min_max_iterators_safe<_Iter> && _Is_predicate_less<_Iter, _Pr>;
 
 // Unlike the position-based vectorized implementation, the value-based vectorized implementation
 // does not always produce the expected results for floating-point types.
@@ -7016,7 +7099,7 @@ constexpr bool _Is_min_max_value_optimization_safe = // Activate the vector algo
 #ifndef _M_FP_FAST
     !is_floating_point_v<_Elem> &&
 #endif // ^^^ !defined(_M_FP_FAST) ^^^
-    _Is_min_max_optimization_safe<_Iter, _Pr, _Elem>;
+    _Is_min_max_optimization_safe<_Iter, _Pr>;
 
 template <class _FwdIt, class _Pr>
 constexpr _FwdIt _Max_element_unchecked(_FwdIt _First, _FwdIt _Last, _Pr _Pred) { // find largest element
@@ -7028,7 +7111,7 @@ constexpr _FwdIt _Max_element_unchecked(_FwdIt _First, _FwdIt _Last, _Pr _Pred) 
             if constexpr (is_pointer_v<_FwdIt>) {
                 return _Result;
             } else {
-                return _First + (_Result - _First_ptr);
+                return _First + static_cast<_Iter_diff_t<_FwdIt>>(_Result - _First_ptr);
             }
         }
     }
@@ -7089,12 +7172,12 @@ namespace ranges {
                       && sized_sentinel_for<_Se, _It>) {
             if (!_STD is_constant_evaluated()) {
                 const auto _First_ptr = _STD to_address(_First);
-                const auto _Last_ptr  = _First_ptr + (_Last - _First);
+                const auto _Last_ptr  = _First_ptr + static_cast<ptrdiff_t>(_Last - _First);
                 const auto _Result    = _STD _Max_element_vectorized(_First_ptr, _Last_ptr);
                 if constexpr (is_pointer_v<_It>) {
                     return _Result;
                 } else {
-                    return _First + (_Result - _First_ptr);
+                    return _First + static_cast<iter_difference_t<_It>>(_Result - _First_ptr);
                 }
             }
         }
@@ -7217,7 +7300,7 @@ namespace ranges {
                           && sized_sentinel_for<decltype(_ULast), decltype(_UFirst)>) {
                 if (!_STD is_constant_evaluated()) {
                     const auto _First_ptr = _STD to_address(_UFirst);
-                    const auto _Last_ptr  = _First_ptr + (_ULast - _UFirst);
+                    const auto _Last_ptr  = _First_ptr + static_cast<ptrdiff_t>(_ULast - _UFirst);
                     return static_cast<range_value_t<_Rng>>(_STD _Max_vectorized(_First_ptr, _Last_ptr));
                 }
             }
@@ -7252,7 +7335,7 @@ constexpr _FwdIt _Min_element_unchecked(_FwdIt _First, _FwdIt _Last, _Pr _Pred) 
             if constexpr (is_pointer_v<_FwdIt>) {
                 return _Result;
             } else {
-                return _First + (_Result - _First_ptr);
+                return _First + static_cast<_Iter_diff_t<_FwdIt>>(_Result - _First_ptr);
             }
         }
     }
@@ -7313,12 +7396,12 @@ namespace ranges {
                       && sized_sentinel_for<_Se, _It>) {
             if (!_STD is_constant_evaluated()) {
                 const auto _First_ptr = _STD to_address(_First);
-                const auto _Last_ptr  = _First_ptr + (_Last - _First);
+                const auto _Last_ptr  = _First_ptr + static_cast<ptrdiff_t>(_Last - _First);
                 const auto _Result    = _STD _Min_element_vectorized(_First_ptr, _Last_ptr);
                 if constexpr (is_pointer_v<_It>) {
                     return _Result;
                 } else {
-                    return _First + (_Result - _First_ptr);
+                    return _First + static_cast<iter_difference_t<_It>>(_Result - _First_ptr);
                 }
             }
         }
@@ -7435,7 +7518,7 @@ namespace ranges {
                           && sized_sentinel_for<decltype(_ULast), decltype(_UFirst)>) {
                 if (!_STD is_constant_evaluated()) {
                     const auto _First_ptr = _STD to_address(_UFirst);
-                    const auto _Last_ptr  = _First_ptr + (_ULast - _UFirst);
+                    const auto _Last_ptr  = _First_ptr + static_cast<ptrdiff_t>(_ULast - _UFirst);
                     return static_cast<range_value_t<_Rng>>(_STD _Min_vectorized(_First_ptr, _Last_ptr));
                 }
             }
