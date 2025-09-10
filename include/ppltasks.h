@@ -5445,7 +5445,9 @@ namespace details
         template<typename _Function, typename _ClassPtr, typename _AsyncAttributesT>
         static task<typename _AsyncAttributesT::_ReturnType> _Generate_Task(const _Function& _Func, _ClassPtr _Ptr, cancellation_token_source _Cts, const _TaskCreationCallstack & _callstack)
         {
-            return _AsyncAttributesT::_TaskGenerator::_GenerateTask<_Function, _ClassPtr, _AsyncAttributesT::_ProgressType>(_Func, _Ptr, _Cts, _callstack);
+            typedef typename _AsyncAttributesT::_TaskGenerator _TaskGenerator;
+            typedef typename _AsyncAttributesT::_ProgressType _ProgressType;
+            return _TaskGenerator::template _GenerateTask<_Function, _ClassPtr, _ProgressType>(_Func, _Ptr, _Cts, _callstack);
         }
     };
 
@@ -6125,7 +6127,8 @@ namespace details
         if (_Task._GetImpl()->_IsCompleted())
         {
             _Func();
-            if (atomic_increment(_PParam->_M_completeCount) == _PParam->_M_numTasks)
+            const auto _NumTasks = _PParam->_M_numTasks; // must read before atomic_increment(), see VSO-2326552
+            if (atomic_increment(_PParam->_M_completeCount) == _NumTasks)
             {
                 // Inline execute its direct continuation, the _ReturnTask
                 _PParam->_M_completed.set(_Unit_type());
@@ -6149,7 +6152,8 @@ namespace details
                 _PParam->_M_completed._Cancel();
             }
 
-            if (atomic_increment(_PParam->_M_completeCount) == _PParam->_M_numTasks)
+            const auto _NumTasks = _PParam->_M_numTasks; // must read before atomic_increment(), see VSO-2326552
+            if (atomic_increment(_PParam->_M_completeCount) == _NumTasks)
             {
                 delete _PParam;
             }
@@ -6605,7 +6609,8 @@ namespace details
         if (_Task._GetImpl()->_IsCompleted() && !_IsTokenCanceled)
         {
             _Func();
-            if (atomic_increment(_PParam->_M_completeCount) == _PParam->_M_numTasks)
+            const auto _NumTasks = _PParam->_M_numTasks; // must read before atomic_increment(), see VSO-2326552
+            if (atomic_increment(_PParam->_M_completeCount) == _NumTasks)
             {
                 _PParam->_M_Completed._ClearStoredException();
                 delete _PParam;
@@ -6634,7 +6639,8 @@ namespace details
                 }
             }
 
-            if (atomic_increment(_PParam->_M_completeCount) == _PParam->_M_numTasks)
+            const auto _NumTasks = _PParam->_M_numTasks; // must read before atomic_increment(), see VSO-2326552
+            if (atomic_increment(_PParam->_M_completeCount) == _NumTasks)
             {
                 // If no one has be completed so far, we need to make some final cancellation decision.
                 if (!_PParam->_M_Completed._IsTriggered())

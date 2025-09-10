@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,10 +100,10 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
+#include "Windows.Foundation.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -282,7 +282,7 @@ namespace ABI {
             public:
             };
 
-            extern MIDL_CONST_ID IID& IID_IColorHelper = _uuidof(IColorHelper);
+            MIDL_CONST_ID IID& IID_IColorHelper = __uuidof(IColorHelper);
         } /* UI */
     } /* Windows */
 } /* ABI */
@@ -320,7 +320,7 @@ namespace ABI {
                     ) = 0;
             };
 
-            extern MIDL_CONST_ID IID& IID_IColorHelperStatics = _uuidof(IColorHelperStatics);
+            MIDL_CONST_ID IID& IID_IColorHelperStatics = __uuidof(IColorHelperStatics);
         } /* UI */
     } /* Windows */
 } /* ABI */
@@ -355,7 +355,7 @@ namespace ABI {
                     ) = 0;
             };
 
-            extern MIDL_CONST_ID IID& IID_IColorHelperStatics2 = _uuidof(IColorHelperStatics2);
+            MIDL_CONST_ID IID& IID_IColorHelperStatics2 = __uuidof(IColorHelperStatics2);
         } /* UI */
     } /* Windows */
 } /* ABI */
@@ -386,7 +386,7 @@ namespace ABI {
             public:
             };
 
-            extern MIDL_CONST_ID IID& IID_IColors = _uuidof(IColors);
+            MIDL_CONST_ID IID& IID_IColors = __uuidof(IColors);
         } /* UI */
     } /* Windows */
 } /* ABI */
@@ -840,7 +840,7 @@ namespace ABI {
                     ) = 0;
             };
 
-            extern MIDL_CONST_ID IID& IID_IColorsStatics = _uuidof(IColorsStatics);
+            MIDL_CONST_ID IID& IID_IColorsStatics = __uuidof(IColorsStatics);
         } /* UI */
     } /* Windows */
 } /* ABI */
@@ -874,7 +874,7 @@ namespace ABI {
                     ) = 0;
             };
 
-            extern MIDL_CONST_ID IID& IID_IUIContentRoot = _uuidof(IUIContentRoot);
+            MIDL_CONST_ID IID& IID_IUIContentRoot = __uuidof(IUIContentRoot);
         } /* UI */
     } /* Windows */
 } /* ABI */
@@ -905,7 +905,7 @@ namespace ABI {
             public:
             };
 
-            extern MIDL_CONST_ID IID& IID_IUIContext = _uuidof(IUIContext);
+            MIDL_CONST_ID IID& IID_IUIContext = __uuidof(IUIContext);
         } /* UI */
     } /* Windows */
 } /* ABI */

@@ -46,7 +46,7 @@ extern "C++" {
 
 namespace std {
 
-_VCRT_EXPORT_STD class exception
+_VCRT_EXPORT_STD class _NODISCARD exception
 {
 public:
 
@@ -101,7 +101,7 @@ private:
     __std_exception_data _Data;
 };
 
-_VCRT_EXPORT_STD class bad_exception
+_VCRT_EXPORT_STD class _NODISCARD bad_exception
     : public exception
 {
 public:
@@ -112,9 +112,9 @@ public:
     }
 };
 
-_VCRT_EXPORT_STD class bad_array_new_length;
+_VCRT_EXPORT_STD class _NODISCARD bad_array_new_length;
 
-_VCRT_EXPORT_STD class bad_alloc
+_VCRT_EXPORT_STD class _NODISCARD bad_alloc
     : public exception
 {
 public:
@@ -134,7 +134,7 @@ private:
     }
 };
 
-_VCRT_EXPORT_STD class bad_array_new_length
+_VCRT_EXPORT_STD class _NODISCARD bad_array_new_length
     : public bad_alloc
 {
 public:

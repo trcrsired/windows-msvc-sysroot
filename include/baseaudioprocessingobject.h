@@ -12,7 +12,7 @@
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 
-#include <audioenginebaseapo.h>
+#include <AudioEngineBaseAPO.h>
 
 // define this to keep older string functions from being deprecated
 // this is needed because some windows headers are still using deprecated string functions.

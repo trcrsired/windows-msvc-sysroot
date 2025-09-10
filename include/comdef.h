@@ -5,9 +5,7 @@
 *
 ****/
 
-#if _MSC_VER > 1000
 #pragma once
-#endif
 
 #if !defined(_INC_COMDEF)
 #define _INC_COMDEF
@@ -32,14 +30,13 @@
 #endif /* WINAPI_FAMILY */
 
 #ifndef _COMDEF_WINAPI_FAMILY_PHONE_APP
-#include <ole2.h>
+#include <Ole2.h>
 
 #include <comutil.h>
 #endif /* _COMDEF_WINAPI_FAMILY_PHONE_APP */
 
 #pragma warning(push)
 #pragma warning(disable: 4244)
-#pragma warning(disable: 4290)
 
 #ifdef _COMDEF_NOT_WINAPI_FAMILY_DESKTOP_APP
 
@@ -179,36 +176,36 @@ inline void __stdcall _set_com_error_handler(void (__stdcall *pHandler)(HRESULT,
 
 #else
 
-#include <olectl.h>
+#include <OleCtl.h>
 
-#ifdef _NATIVE_WCHAR_T_DEFINED
-#if defined(_GUARDED_CRT)
-# ifdef _DEBUG
-# pragma comment(lib, "comsuppwgd.lib")
+#ifdef UNICODE
+# ifdef _GUARDED_CRT
+#  ifdef _DEBUG
+#   pragma comment(lib, "comsuppwgd.lib")
+#  else
+#   pragma comment(lib, "comsuppwg.lib")
+#  endif
 # else
-# pragma comment(lib, "comsuppwg.lib")
+#  ifdef _DEBUG
+#   pragma comment(lib, "comsuppwd.lib")
+#  else
+#   pragma comment(lib, "comsuppw.lib")
+#  endif
 # endif
 #else
-# ifdef _DEBUG
-# pragma comment(lib, "comsuppwd.lib")
+# ifdef _GUARDED_CRT
+#  ifdef _DEBUG
+#   pragma comment(lib, "comsuppgd.lib")
+#  else
+#   pragma comment(lib, "comsuppg.lib")
+#  endif
 # else
-# pragma comment(lib, "comsuppw.lib")
+#  ifdef _DEBUG
+#   pragma comment(lib, "comsuppd.lib")
+#  else
+#   pragma comment(lib, "comsupp.lib")
+#  endif
 # endif
-#endif
-#else
-#if defined(_GUARDED_CRT)
-# ifdef _DEBUG
-# pragma comment(lib, "comsuppgd.lib")
-# else
-# pragma comment(lib, "comsuppg.lib")
-# endif
-#else
-# ifdef _DEBUG
-# pragma comment(lib, "comsuppd.lib")
-# else
-# pragma comment(lib, "comsupp.lib")
-# endif
-#endif
 #endif
 
 #pragma comment(lib, "user32.lib")

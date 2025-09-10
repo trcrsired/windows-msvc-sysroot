@@ -202,6 +202,13 @@ typedef interface IWICBitmapSourceTransform IWICBitmapSourceTransform;
 #endif 	/* __IWICBitmapSourceTransform_FWD_DEFINED__ */
 
 
+#ifndef __IWICBitmapSourceTransform2_FWD_DEFINED__
+#define __IWICBitmapSourceTransform2_FWD_DEFINED__
+typedef interface IWICBitmapSourceTransform2 IWICBitmapSourceTransform2;
+
+#endif 	/* __IWICBitmapSourceTransform2_FWD_DEFINED__ */
+
+
 #ifndef __IWICPlanarBitmapSourceTransform_FWD_DEFINED__
 #define __IWICPlanarBitmapSourceTransform_FWD_DEFINED__
 typedef interface IWICPlanarBitmapSourceTransform IWICPlanarBitmapSourceTransform;
@@ -216,11 +223,39 @@ typedef interface IWICBitmapFrameDecode IWICBitmapFrameDecode;
 #endif 	/* __IWICBitmapFrameDecode_FWD_DEFINED__ */
 
 
+#ifndef __IWICBitmapFrameChainReader_FWD_DEFINED__
+#define __IWICBitmapFrameChainReader_FWD_DEFINED__
+typedef interface IWICBitmapFrameChainReader IWICBitmapFrameChainReader;
+
+#endif 	/* __IWICBitmapFrameChainReader_FWD_DEFINED__ */
+
+
+#ifndef __IWICBitmapFrameChainWriter_FWD_DEFINED__
+#define __IWICBitmapFrameChainWriter_FWD_DEFINED__
+typedef interface IWICBitmapFrameChainWriter IWICBitmapFrameChainWriter;
+
+#endif 	/* __IWICBitmapFrameChainWriter_FWD_DEFINED__ */
+
+
 #ifndef __IWICProgressiveLevelControl_FWD_DEFINED__
 #define __IWICProgressiveLevelControl_FWD_DEFINED__
 typedef interface IWICProgressiveLevelControl IWICProgressiveLevelControl;
 
 #endif 	/* __IWICProgressiveLevelControl_FWD_DEFINED__ */
+
+
+#ifndef __IWICDisplayAdaptationControl_FWD_DEFINED__
+#define __IWICDisplayAdaptationControl_FWD_DEFINED__
+typedef interface IWICDisplayAdaptationControl IWICDisplayAdaptationControl;
+
+#endif 	/* __IWICDisplayAdaptationControl_FWD_DEFINED__ */
+
+
+#ifndef __IWICDisplayAdaptationControl2_FWD_DEFINED__
+#define __IWICDisplayAdaptationControl2_FWD_DEFINED__
+typedef interface IWICDisplayAdaptationControl2 IWICDisplayAdaptationControl2;
+
+#endif 	/* __IWICDisplayAdaptationControl2_FWD_DEFINED__ */
 
 
 #ifndef __IWICProgressCallback_FWD_DEFINED__
@@ -405,6 +440,8 @@ DEFINE_GUID(CLSID_WICHeifDecoder,  0xe9A4A80a, 0x44fe, 0x4DE4, 0x89, 0x71, 0x71,
 DEFINE_GUID(CLSID_WICHeifEncoder,  0x0dbecec1, 0x9eb3, 0x4860, 0x9c, 0x6f, 0xdd, 0xbe, 0x86, 0x63, 0x45, 0x75);
 DEFINE_GUID(CLSID_WICWebpDecoder,  0x7693E886, 0x51C9, 0x4070, 0x84, 0x19, 0x9F, 0x70, 0X73, 0X8E, 0XC8, 0XFA);
 DEFINE_GUID(CLSID_WICRAWDecoder,   0x41945702, 0x8302, 0x44A6, 0x94, 0x45, 0xAC, 0x98, 0xE8, 0xAF, 0xA0, 0x86);
+DEFINE_GUID(CLSID_WICJpegXLDecoder, 0xfc6ceece, 0xaef5, 0x4a23, 0x96, 0xec, 0x59, 0x84, 0xff, 0xb4, 0x86, 0xd9);
+DEFINE_GUID(CLSID_WICJpegXLEncoder, 0x0e4ecd3b, 0x1ba6, 0x4636, 0x81, 0x98, 0x56, 0xc7, 0x30, 0x40, 0x96, 0x4a);
 DEFINE_GUID(GUID_ContainerFormatBmp,  0x0af1d87e, 0xfcfe, 0x4188, 0xbd, 0xeb, 0xa7, 0x90, 0x64, 0x71, 0xcb, 0xe3);
 DEFINE_GUID(GUID_ContainerFormatPng,  0x1b7cfaf4, 0x713f, 0x473c, 0xbb, 0xcd, 0x61, 0x37, 0x42, 0x5f, 0xae, 0xaf);
 DEFINE_GUID(GUID_ContainerFormatIco,  0xa3a860c4, 0x338f, 0x4c17, 0x91, 0x9a, 0xfb, 0xa4, 0xb5, 0x62, 0x8f, 0x21);
@@ -417,6 +454,7 @@ DEFINE_GUID(GUID_ContainerFormatAdng, 0xf3ff6d0d, 0x38c0, 0x41c4, 0xb1, 0xfe, 0x
 DEFINE_GUID(GUID_ContainerFormatHeif, 0xe1e62521, 0x6787, 0x405b, 0xa3, 0x39, 0x50, 0x07, 0x15, 0xb5, 0x76, 0x3f);
 DEFINE_GUID(GUID_ContainerFormatWebp, 0xe094b0e2, 0x67f2, 0x45b3, 0xb0, 0xea, 0x11, 0x53, 0x37, 0xca, 0x7c, 0xf3);
 DEFINE_GUID(GUID_ContainerFormatRaw,  0xfe99ce60, 0xf19c, 0x433c, 0xa3, 0xae, 0x00, 0xac, 0xef, 0xa9, 0xca, 0x21);
+DEFINE_GUID(GUID_ContainerFormatJpegXL, 0xfec14e3f, 0x427a, 0x4736, 0xaa, 0xe6, 0x27, 0xed, 0x84, 0xf6, 0x93, 0x22);
 DEFINE_GUID(CLSID_WICImagingCategories, 0xfae3d380, 0xfea4, 0x4623, 0x8c, 0x75, 0xc6, 0xb6, 0x11, 0x10, 0xb6, 0x81);
 DEFINE_GUID(CATID_WICBitmapDecoders,    0x7ed96837, 0x96f0, 0x4812, 0xb2, 0x11, 0xf1, 0x3c, 0x24, 0x11, 0x7e, 0xd3);
 DEFINE_GUID(CATID_WICBitmapEncoders,    0xac757296, 0x3522, 0x4e11, 0x98, 0x62, 0xc1, 0x7b, 0xe5, 0xa1, 0x76, 0x7e);
@@ -529,6 +567,10 @@ DEFINE_GUID(GUID_WICPixelFormat2bppGray,   0x6fddc324, 0x4e03, 0x4bfe, 0xb1, 0x8
 DEFINE_GUID(GUID_WICPixelFormat4bppGray,   0x6fddc324, 0x4e03, 0x4bfe, 0xb1, 0x85, 0x3d, 0x77, 0x76, 0x8d, 0xc9, 0x07);
 DEFINE_GUID(GUID_WICPixelFormat8bppGray,   0x6fddc324, 0x4e03, 0x4bfe, 0xb1, 0x85, 0x3d, 0x77, 0x76, 0x8d, 0xc9, 0x08);
 DEFINE_GUID(GUID_WICPixelFormat8bppAlpha, 0xe6cd0116, 0xeeba, 0x4161, 0xaa, 0x85, 0x27, 0xdd, 0x9f, 0xb3, 0xa8, 0x95);
+DEFINE_GUID(GUID_WICPixelFormat8bppDepth, 0x4c9c9f45, 0x1d89, 0x4e31, 0x9b, 0xc7, 0x69, 0x34, 0x3a, 0x0d, 0xca, 0x69);
+DEFINE_GUID(GUID_WICPixelFormat8bppGain, 0xa884022a, 0xaf13, 0x4c16, 0xb7, 0x46, 0x61, 0x9b, 0xf6, 0x18, 0xb8, 0x78);
+DEFINE_GUID(GUID_WICPixelFormat24bppRGBGain, 0xa5022b24, 0x7109, 0x443b, 0x99, 0x48, 0x25, 0xb6, 0xed, 0x8f, 0x39, 0xfd);
+DEFINE_GUID(GUID_WICPixelFormat32bppBGRGain, 0x837d6738, 0x208a, 0x43e0, 0x89, 0x95, 0x79, 0xab, 0x74, 0x40, 0x74, 0x02);
 DEFINE_GUID(GUID_WICPixelFormat16bppBGR555, 0x6fddc324, 0x4e03, 0x4bfe, 0xb1, 0x85, 0x3d, 0x77, 0x76, 0x8d, 0xc9, 0x09);
 DEFINE_GUID(GUID_WICPixelFormat16bppBGR565, 0x6fddc324, 0x4e03, 0x4bfe, 0xb1, 0x85, 0x3d, 0x77, 0x76, 0x8d, 0xc9, 0x0a);
 DEFINE_GUID(GUID_WICPixelFormat16bppBGRA5551, 0x05ec7c2b, 0xf1e6, 0x4961, 0xad, 0x46, 0xe1, 0xcc, 0x81, 0x0a, 0x87, 0xd2);
@@ -793,6 +835,29 @@ enum WICComponentSigning
     } 	WICComponentSigning;
 
 typedef /* [public] */ 
+enum WICBitmapToneMappingMode
+    {
+        WICBitmapToneMappingMode_None	= 0,
+        WICBitmapToneMappingMode_Default	= 0x1,
+        WICBitmapToneMappingMode_D2D	= 0x2,
+        WICBitmapToneMappingMode_GainMap	= 0x3,
+        WICBITMAPTONEMAPPINGMODE_FORCE_DWORD	= 0x7fffffff
+    } 	WICBitmapToneMappingMode;
+
+typedef /* [public] */ 
+enum WICBitmapChainType
+    {
+        WICBitmapChainType_Alternate	= 0x1,
+        WICBitmapChainType_Layer	= 0x2,
+        WICBitmapChainType_Preview	= 0x3,
+        WICBitmapChainType_Thumbnail	= 0x4,
+        WICBitmapChainType_AlphaMap	= 0x5,
+        WICBitmapChainType_DepthMap	= 0x6,
+        WICBitmapChainType_GainMap	= 0x7,
+        WICBITMAPCHAINTYPE_FORCE_DWORD	= 0x7fffffff
+    } 	WICBitmapChainType;
+
+typedef /* [public] */ 
 enum WICGifLogicalScreenDescriptorProperties
     {
         WICGifLogicalScreenSignature	= 0x1,
@@ -974,6 +1039,8 @@ typedef /* [public] */
 enum WICHeifProperties
     {
         WICHeifOrientation	= 0x1,
+        WICHeifLayeredImageCanvasColor	= 0x2,
+        WICHeifLayeredImageLayerPositions	= 0x3,
         WICHeifProperties_FORCE_DWORD	= 0x7fffffff
     } 	WICHeifProperties;
 
@@ -1001,6 +1068,30 @@ enum WICWebpAnmfProperties
         WICWebpAnmfFrameDuration	= 0x1,
         WICWebpAnmfProperties_FORCE_DWORD	= 0x7fffffff
     } 	WICWebpAnmfProperties;
+
+typedef /* [public] */ 
+enum WICJpegXLAnimProperties
+    {
+        WICJpegXLAnimLoopCount	= 0x1,
+        WICJpegXLAnimFrameTicksPerSecondNumerator	= 0x2,
+        WICJpegXLAnimFrameTicksPerSecondDenominator	= 0x3,
+        WICJpegXLAnimProperties_FORCE_DWORD	= 0x7fffffff
+    } 	WICJpegXLAnimProperties;
+
+typedef /* [public] */ 
+enum WICJpegXLAnimFrameProperties
+    {
+        WICJpegXLAnimFrameDurationInTicks	= 0x1,
+        WICJpegXLAnimFrameName	= 0x2,
+        WICJpegXLAnimFrameProperties_FORCE_DWORD	= 0x7fffffff
+    } 	WICJpegXLAnimFrameProperties;
+
+typedef /* [public] */ 
+enum WICGainMapProperties
+    {
+        WICGainMapMetadata	= 0x1,
+        WICGainMapProperties_FORCE_DWORD	= 0x7fffffff
+    } 	WICGainMapProperties;
 
 typedef /* [public] */ 
 enum WICSectionAccessLevel
@@ -4400,6 +4491,138 @@ EXTERN_C const IID IID_IWICBitmapSourceTransform;
 #endif 	/* __IWICBitmapSourceTransform_INTERFACE_DEFINED__ */
 
 
+#ifndef __IWICBitmapSourceTransform2_INTERFACE_DEFINED__
+#define __IWICBitmapSourceTransform2_INTERFACE_DEFINED__
+
+/* interface IWICBitmapSourceTransform2 */
+/* [uuid][object] */ 
+
+
+EXTERN_C const IID IID_IWICBitmapSourceTransform2;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("c3373fdf-6d39-4e5f-8e79-bf40c0b7ed77")
+    IWICBitmapSourceTransform2 : public IWICBitmapSourceTransform
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetColorContextsForPixelFormat( 
+            /* [unique][in] */ __RPC__in_opt WICPixelFormatGUID *pPixelFormat,
+            /* [in] */ UINT cCount,
+            /* [size_is][unique][in] */ __RPC__in_ecount_full_opt(cCount) IWICColorContext **ppIColorContexts,
+            /* [out] */ __RPC__out UINT *pcActualCount) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IWICBitmapSourceTransform2Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            __RPC__in IWICBitmapSourceTransform2 * This,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            __RPC__in IWICBitmapSourceTransform2 * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            __RPC__in IWICBitmapSourceTransform2 * This);
+        
+        DECLSPEC_XFGVIRT(IWICBitmapSourceTransform, CopyPixels)
+        HRESULT ( STDMETHODCALLTYPE *CopyPixels )( 
+            __RPC__in IWICBitmapSourceTransform2 * This,
+            /* [unique][in] */ __RPC__in_opt const WICRect *prc,
+            /* [in] */ UINT uiWidth,
+            /* [in] */ UINT uiHeight,
+            /* [unique][in] */ __RPC__in_opt WICPixelFormatGUID *pguidDstFormat,
+            /* [in] */ WICBitmapTransformOptions dstTransform,
+            /* [in] */ UINT nStride,
+            /* [in] */ UINT cbBufferSize,
+            /* [size_is][out] */ __RPC__out_ecount_full(cbBufferSize) BYTE *pbBuffer);
+        
+        DECLSPEC_XFGVIRT(IWICBitmapSourceTransform, GetClosestSize)
+        HRESULT ( STDMETHODCALLTYPE *GetClosestSize )( 
+            __RPC__in IWICBitmapSourceTransform2 * This,
+            /* [out][in] */ __RPC__inout UINT *puiWidth,
+            /* [out][in] */ __RPC__inout UINT *puiHeight);
+        
+        DECLSPEC_XFGVIRT(IWICBitmapSourceTransform, GetClosestPixelFormat)
+        HRESULT ( STDMETHODCALLTYPE *GetClosestPixelFormat )( 
+            __RPC__in IWICBitmapSourceTransform2 * This,
+            /* [out][in] */ __RPC__inout WICPixelFormatGUID *pguidDstFormat);
+        
+        DECLSPEC_XFGVIRT(IWICBitmapSourceTransform, DoesSupportTransform)
+        HRESULT ( STDMETHODCALLTYPE *DoesSupportTransform )( 
+            __RPC__in IWICBitmapSourceTransform2 * This,
+            /* [in] */ WICBitmapTransformOptions dstTransform,
+            /* [out] */ __RPC__out BOOL *pfIsSupported);
+        
+        DECLSPEC_XFGVIRT(IWICBitmapSourceTransform2, GetColorContextsForPixelFormat)
+        HRESULT ( STDMETHODCALLTYPE *GetColorContextsForPixelFormat )( 
+            __RPC__in IWICBitmapSourceTransform2 * This,
+            /* [unique][in] */ __RPC__in_opt WICPixelFormatGUID *pPixelFormat,
+            /* [in] */ UINT cCount,
+            /* [size_is][unique][in] */ __RPC__in_ecount_full_opt(cCount) IWICColorContext **ppIColorContexts,
+            /* [out] */ __RPC__out UINT *pcActualCount);
+        
+        END_INTERFACE
+    } IWICBitmapSourceTransform2Vtbl;
+
+    interface IWICBitmapSourceTransform2
+    {
+        CONST_VTBL struct IWICBitmapSourceTransform2Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IWICBitmapSourceTransform2_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IWICBitmapSourceTransform2_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IWICBitmapSourceTransform2_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IWICBitmapSourceTransform2_CopyPixels(This,prc,uiWidth,uiHeight,pguidDstFormat,dstTransform,nStride,cbBufferSize,pbBuffer)	\
+    ( (This)->lpVtbl -> CopyPixels(This,prc,uiWidth,uiHeight,pguidDstFormat,dstTransform,nStride,cbBufferSize,pbBuffer) ) 
+
+#define IWICBitmapSourceTransform2_GetClosestSize(This,puiWidth,puiHeight)	\
+    ( (This)->lpVtbl -> GetClosestSize(This,puiWidth,puiHeight) ) 
+
+#define IWICBitmapSourceTransform2_GetClosestPixelFormat(This,pguidDstFormat)	\
+    ( (This)->lpVtbl -> GetClosestPixelFormat(This,pguidDstFormat) ) 
+
+#define IWICBitmapSourceTransform2_DoesSupportTransform(This,dstTransform,pfIsSupported)	\
+    ( (This)->lpVtbl -> DoesSupportTransform(This,dstTransform,pfIsSupported) ) 
+
+
+#define IWICBitmapSourceTransform2_GetColorContextsForPixelFormat(This,pPixelFormat,cCount,ppIColorContexts,pcActualCount)	\
+    ( (This)->lpVtbl -> GetColorContextsForPixelFormat(This,pPixelFormat,cCount,ppIColorContexts,pcActualCount) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IWICBitmapSourceTransform2_INTERFACE_DEFINED__ */
+
+
 #ifndef __IWICPlanarBitmapSourceTransform_INTERFACE_DEFINED__
 #define __IWICPlanarBitmapSourceTransform_INTERFACE_DEFINED__
 
@@ -4677,6 +4900,208 @@ EXTERN_C const IID IID_IWICBitmapFrameDecode;
 #endif 	/* __IWICBitmapFrameDecode_INTERFACE_DEFINED__ */
 
 
+#ifndef __IWICBitmapFrameChainReader_INTERFACE_DEFINED__
+#define __IWICBitmapFrameChainReader_INTERFACE_DEFINED__
+
+/* interface IWICBitmapFrameChainReader */
+/* [uuid][object] */ 
+
+
+EXTERN_C const IID IID_IWICBitmapFrameChainReader;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("0c599495-a120-4222-9130-a8c29410bd0b")
+    IWICBitmapFrameChainReader : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetChainedFrameCount( 
+            /* [in] */ WICBitmapChainType chainType,
+            /* [out] */ __RPC__out UINT *pCount) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetChainedFrame( 
+            /* [in] */ WICBitmapChainType chainType,
+            /* [in] */ UINT index,
+            /* [out] */ __RPC__deref_out_opt IWICBitmapFrameDecode **ppIBitmapFrame) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IWICBitmapFrameChainReaderVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            __RPC__in IWICBitmapFrameChainReader * This,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            __RPC__in IWICBitmapFrameChainReader * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            __RPC__in IWICBitmapFrameChainReader * This);
+        
+        DECLSPEC_XFGVIRT(IWICBitmapFrameChainReader, GetChainedFrameCount)
+        HRESULT ( STDMETHODCALLTYPE *GetChainedFrameCount )( 
+            __RPC__in IWICBitmapFrameChainReader * This,
+            /* [in] */ WICBitmapChainType chainType,
+            /* [out] */ __RPC__out UINT *pCount);
+        
+        DECLSPEC_XFGVIRT(IWICBitmapFrameChainReader, GetChainedFrame)
+        HRESULT ( STDMETHODCALLTYPE *GetChainedFrame )( 
+            __RPC__in IWICBitmapFrameChainReader * This,
+            /* [in] */ WICBitmapChainType chainType,
+            /* [in] */ UINT index,
+            /* [out] */ __RPC__deref_out_opt IWICBitmapFrameDecode **ppIBitmapFrame);
+        
+        END_INTERFACE
+    } IWICBitmapFrameChainReaderVtbl;
+
+    interface IWICBitmapFrameChainReader
+    {
+        CONST_VTBL struct IWICBitmapFrameChainReaderVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IWICBitmapFrameChainReader_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IWICBitmapFrameChainReader_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IWICBitmapFrameChainReader_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IWICBitmapFrameChainReader_GetChainedFrameCount(This,chainType,pCount)	\
+    ( (This)->lpVtbl -> GetChainedFrameCount(This,chainType,pCount) ) 
+
+#define IWICBitmapFrameChainReader_GetChainedFrame(This,chainType,index,ppIBitmapFrame)	\
+    ( (This)->lpVtbl -> GetChainedFrame(This,chainType,index,ppIBitmapFrame) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IWICBitmapFrameChainReader_INTERFACE_DEFINED__ */
+
+
+#ifndef __IWICBitmapFrameChainWriter_INTERFACE_DEFINED__
+#define __IWICBitmapFrameChainWriter_INTERFACE_DEFINED__
+
+/* interface IWICBitmapFrameChainWriter */
+/* [uuid][object] */ 
+
+
+EXTERN_C const IID IID_IWICBitmapFrameChainWriter;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("40d9ea28-4768-47b3-8c12-558a48e98e38")
+    IWICBitmapFrameChainWriter : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE AppendFrameToChain( 
+            /* [in] */ WICBitmapChainType chainType,
+            /* [out] */ __RPC__deref_out_opt IWICBitmapFrameEncode **ppIFrameEncode,
+            /* [unique][out][in] */ __RPC__deref_opt_inout_opt IPropertyBag2 **ppIEncoderOptions) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE DoesSupportChainType( 
+            /* [in] */ WICBitmapChainType chainType,
+            /* [out] */ __RPC__out BOOL *pfIsSupported) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IWICBitmapFrameChainWriterVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            __RPC__in IWICBitmapFrameChainWriter * This,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            __RPC__in IWICBitmapFrameChainWriter * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            __RPC__in IWICBitmapFrameChainWriter * This);
+        
+        DECLSPEC_XFGVIRT(IWICBitmapFrameChainWriter, AppendFrameToChain)
+        HRESULT ( STDMETHODCALLTYPE *AppendFrameToChain )( 
+            __RPC__in IWICBitmapFrameChainWriter * This,
+            /* [in] */ WICBitmapChainType chainType,
+            /* [out] */ __RPC__deref_out_opt IWICBitmapFrameEncode **ppIFrameEncode,
+            /* [unique][out][in] */ __RPC__deref_opt_inout_opt IPropertyBag2 **ppIEncoderOptions);
+        
+        DECLSPEC_XFGVIRT(IWICBitmapFrameChainWriter, DoesSupportChainType)
+        HRESULT ( STDMETHODCALLTYPE *DoesSupportChainType )( 
+            __RPC__in IWICBitmapFrameChainWriter * This,
+            /* [in] */ WICBitmapChainType chainType,
+            /* [out] */ __RPC__out BOOL *pfIsSupported);
+        
+        END_INTERFACE
+    } IWICBitmapFrameChainWriterVtbl;
+
+    interface IWICBitmapFrameChainWriter
+    {
+        CONST_VTBL struct IWICBitmapFrameChainWriterVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IWICBitmapFrameChainWriter_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IWICBitmapFrameChainWriter_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IWICBitmapFrameChainWriter_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IWICBitmapFrameChainWriter_AppendFrameToChain(This,chainType,ppIFrameEncode,ppIEncoderOptions)	\
+    ( (This)->lpVtbl -> AppendFrameToChain(This,chainType,ppIFrameEncode,ppIEncoderOptions) ) 
+
+#define IWICBitmapFrameChainWriter_DoesSupportChainType(This,chainType,pfIsSupported)	\
+    ( (This)->lpVtbl -> DoesSupportChainType(This,chainType,pfIsSupported) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IWICBitmapFrameChainWriter_INTERFACE_DEFINED__ */
+
+
 #ifndef __IWICProgressiveLevelControl_INTERFACE_DEFINED__
 #define __IWICProgressiveLevelControl_INTERFACE_DEFINED__
 
@@ -4781,6 +5206,270 @@ EXTERN_C const IID IID_IWICProgressiveLevelControl;
 
 
 #endif 	/* __IWICProgressiveLevelControl_INTERFACE_DEFINED__ */
+
+
+#ifndef __IWICDisplayAdaptationControl_INTERFACE_DEFINED__
+#define __IWICDisplayAdaptationControl_INTERFACE_DEFINED__
+
+/* interface IWICDisplayAdaptationControl */
+/* [uuid][object] */ 
+
+
+EXTERN_C const IID IID_IWICDisplayAdaptationControl;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("de9d91d2-70b4-4f41-836c-25fcd39626d3")
+    IWICDisplayAdaptationControl : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE DoesSupportChangingMaxLuminance( 
+            /* [unique][in] */ __RPC__in_opt WICPixelFormatGUID *pguidDstFormat,
+            /* [out] */ __RPC__out BOOL *pfIsSupported) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetDisplayMaxLuminance( 
+            /* [in] */ FLOAT fLuminanceInNits) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetDisplayMaxLuminance( 
+            /* [retval][out] */ __RPC__out FLOAT *pfLuminanceInNits) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IWICDisplayAdaptationControlVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            __RPC__in IWICDisplayAdaptationControl * This,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            __RPC__in IWICDisplayAdaptationControl * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            __RPC__in IWICDisplayAdaptationControl * This);
+        
+        DECLSPEC_XFGVIRT(IWICDisplayAdaptationControl, DoesSupportChangingMaxLuminance)
+        HRESULT ( STDMETHODCALLTYPE *DoesSupportChangingMaxLuminance )( 
+            __RPC__in IWICDisplayAdaptationControl * This,
+            /* [unique][in] */ __RPC__in_opt WICPixelFormatGUID *pguidDstFormat,
+            /* [out] */ __RPC__out BOOL *pfIsSupported);
+        
+        DECLSPEC_XFGVIRT(IWICDisplayAdaptationControl, SetDisplayMaxLuminance)
+        HRESULT ( STDMETHODCALLTYPE *SetDisplayMaxLuminance )( 
+            __RPC__in IWICDisplayAdaptationControl * This,
+            /* [in] */ FLOAT fLuminanceInNits);
+        
+        DECLSPEC_XFGVIRT(IWICDisplayAdaptationControl, GetDisplayMaxLuminance)
+        HRESULT ( STDMETHODCALLTYPE *GetDisplayMaxLuminance )( 
+            __RPC__in IWICDisplayAdaptationControl * This,
+            /* [retval][out] */ __RPC__out FLOAT *pfLuminanceInNits);
+        
+        END_INTERFACE
+    } IWICDisplayAdaptationControlVtbl;
+
+    interface IWICDisplayAdaptationControl
+    {
+        CONST_VTBL struct IWICDisplayAdaptationControlVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IWICDisplayAdaptationControl_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IWICDisplayAdaptationControl_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IWICDisplayAdaptationControl_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IWICDisplayAdaptationControl_DoesSupportChangingMaxLuminance(This,pguidDstFormat,pfIsSupported)	\
+    ( (This)->lpVtbl -> DoesSupportChangingMaxLuminance(This,pguidDstFormat,pfIsSupported) ) 
+
+#define IWICDisplayAdaptationControl_SetDisplayMaxLuminance(This,fLuminanceInNits)	\
+    ( (This)->lpVtbl -> SetDisplayMaxLuminance(This,fLuminanceInNits) ) 
+
+#define IWICDisplayAdaptationControl_GetDisplayMaxLuminance(This,pfLuminanceInNits)	\
+    ( (This)->lpVtbl -> GetDisplayMaxLuminance(This,pfLuminanceInNits) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IWICDisplayAdaptationControl_INTERFACE_DEFINED__ */
+
+
+#ifndef __IWICDisplayAdaptationControl2_INTERFACE_DEFINED__
+#define __IWICDisplayAdaptationControl2_INTERFACE_DEFINED__
+
+/* interface IWICDisplayAdaptationControl2 */
+/* [uuid][object] */ 
+
+
+EXTERN_C const IID IID_IWICDisplayAdaptationControl2;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("d7508d29-3ab7-447e-a676-4d80d7de726b")
+    IWICDisplayAdaptationControl2 : public IWICDisplayAdaptationControl
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE SetSdrWhiteLevel( 
+            /* [in] */ FLOAT fWhiteLevelInNits) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetSdrWhiteLevel( 
+            /* [retval][out] */ __RPC__out FLOAT *pfWhiteLevelInNits) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetToneMappingMode( 
+            /* [in] */ WICBitmapToneMappingMode mode) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetToneMappingMode( 
+            /* [retval][out] */ __RPC__out WICBitmapToneMappingMode *mode) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE DoesSupportToneMappingMode( 
+            /* [in] */ WICBitmapToneMappingMode mode,
+            /* [out] */ __RPC__out BOOL *pfIsSupported) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IWICDisplayAdaptationControl2Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            __RPC__in IWICDisplayAdaptationControl2 * This,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            __RPC__in IWICDisplayAdaptationControl2 * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            __RPC__in IWICDisplayAdaptationControl2 * This);
+        
+        DECLSPEC_XFGVIRT(IWICDisplayAdaptationControl, DoesSupportChangingMaxLuminance)
+        HRESULT ( STDMETHODCALLTYPE *DoesSupportChangingMaxLuminance )( 
+            __RPC__in IWICDisplayAdaptationControl2 * This,
+            /* [unique][in] */ __RPC__in_opt WICPixelFormatGUID *pguidDstFormat,
+            /* [out] */ __RPC__out BOOL *pfIsSupported);
+        
+        DECLSPEC_XFGVIRT(IWICDisplayAdaptationControl, SetDisplayMaxLuminance)
+        HRESULT ( STDMETHODCALLTYPE *SetDisplayMaxLuminance )( 
+            __RPC__in IWICDisplayAdaptationControl2 * This,
+            /* [in] */ FLOAT fLuminanceInNits);
+        
+        DECLSPEC_XFGVIRT(IWICDisplayAdaptationControl, GetDisplayMaxLuminance)
+        HRESULT ( STDMETHODCALLTYPE *GetDisplayMaxLuminance )( 
+            __RPC__in IWICDisplayAdaptationControl2 * This,
+            /* [retval][out] */ __RPC__out FLOAT *pfLuminanceInNits);
+        
+        DECLSPEC_XFGVIRT(IWICDisplayAdaptationControl2, SetSdrWhiteLevel)
+        HRESULT ( STDMETHODCALLTYPE *SetSdrWhiteLevel )( 
+            __RPC__in IWICDisplayAdaptationControl2 * This,
+            /* [in] */ FLOAT fWhiteLevelInNits);
+        
+        DECLSPEC_XFGVIRT(IWICDisplayAdaptationControl2, GetSdrWhiteLevel)
+        HRESULT ( STDMETHODCALLTYPE *GetSdrWhiteLevel )( 
+            __RPC__in IWICDisplayAdaptationControl2 * This,
+            /* [retval][out] */ __RPC__out FLOAT *pfWhiteLevelInNits);
+        
+        DECLSPEC_XFGVIRT(IWICDisplayAdaptationControl2, SetToneMappingMode)
+        HRESULT ( STDMETHODCALLTYPE *SetToneMappingMode )( 
+            __RPC__in IWICDisplayAdaptationControl2 * This,
+            /* [in] */ WICBitmapToneMappingMode mode);
+        
+        DECLSPEC_XFGVIRT(IWICDisplayAdaptationControl2, GetToneMappingMode)
+        HRESULT ( STDMETHODCALLTYPE *GetToneMappingMode )( 
+            __RPC__in IWICDisplayAdaptationControl2 * This,
+            /* [retval][out] */ __RPC__out WICBitmapToneMappingMode *mode);
+        
+        DECLSPEC_XFGVIRT(IWICDisplayAdaptationControl2, DoesSupportToneMappingMode)
+        HRESULT ( STDMETHODCALLTYPE *DoesSupportToneMappingMode )( 
+            __RPC__in IWICDisplayAdaptationControl2 * This,
+            /* [in] */ WICBitmapToneMappingMode mode,
+            /* [out] */ __RPC__out BOOL *pfIsSupported);
+        
+        END_INTERFACE
+    } IWICDisplayAdaptationControl2Vtbl;
+
+    interface IWICDisplayAdaptationControl2
+    {
+        CONST_VTBL struct IWICDisplayAdaptationControl2Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IWICDisplayAdaptationControl2_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IWICDisplayAdaptationControl2_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IWICDisplayAdaptationControl2_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IWICDisplayAdaptationControl2_DoesSupportChangingMaxLuminance(This,pguidDstFormat,pfIsSupported)	\
+    ( (This)->lpVtbl -> DoesSupportChangingMaxLuminance(This,pguidDstFormat,pfIsSupported) ) 
+
+#define IWICDisplayAdaptationControl2_SetDisplayMaxLuminance(This,fLuminanceInNits)	\
+    ( (This)->lpVtbl -> SetDisplayMaxLuminance(This,fLuminanceInNits) ) 
+
+#define IWICDisplayAdaptationControl2_GetDisplayMaxLuminance(This,pfLuminanceInNits)	\
+    ( (This)->lpVtbl -> GetDisplayMaxLuminance(This,pfLuminanceInNits) ) 
+
+
+#define IWICDisplayAdaptationControl2_SetSdrWhiteLevel(This,fWhiteLevelInNits)	\
+    ( (This)->lpVtbl -> SetSdrWhiteLevel(This,fWhiteLevelInNits) ) 
+
+#define IWICDisplayAdaptationControl2_GetSdrWhiteLevel(This,pfWhiteLevelInNits)	\
+    ( (This)->lpVtbl -> GetSdrWhiteLevel(This,pfWhiteLevelInNits) ) 
+
+#define IWICDisplayAdaptationControl2_SetToneMappingMode(This,mode)	\
+    ( (This)->lpVtbl -> SetToneMappingMode(This,mode) ) 
+
+#define IWICDisplayAdaptationControl2_GetToneMappingMode(This,mode)	\
+    ( (This)->lpVtbl -> GetToneMappingMode(This,mode) ) 
+
+#define IWICDisplayAdaptationControl2_DoesSupportToneMappingMode(This,mode,pfIsSupported)	\
+    ( (This)->lpVtbl -> DoesSupportToneMappingMode(This,mode,pfIsSupported) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IWICDisplayAdaptationControl2_INTERFACE_DEFINED__ */
 
 
 #ifndef __IWICProgressCallback_INTERFACE_DEFINED__
@@ -7073,14 +7762,14 @@ EXTERN_C const IID IID_IWICImagingFactory;
 #endif 	/* __IWICImagingFactory_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wincodec_0000_0035 */
+/* interface __MIDL_itf_wincodec_0000_0040 */
 /* [local] */ 
 
 #if (_WIN32_WINNT >= _WIN32_WINNT_WIN8) || defined(_WIN7_PLATFORM_UPDATE)
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0035_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0035_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0040_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0040_v0_0_s_ifspec;
 
 #ifndef __IWICImagingFactory2_INTERFACE_DEFINED__
 #define __IWICImagingFactory2_INTERFACE_DEFINED__
@@ -7413,7 +8102,7 @@ EXTERN_C const IID IID_IWICImagingFactory2;
 #endif 	/* __IWICImagingFactory2_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wincodec_0000_0036 */
+/* interface __MIDL_itf_wincodec_0000_0041 */
 /* [local] */ 
 
 #endif
@@ -7506,6 +8195,19 @@ enum WICPngFilterOption
         WICPngFilterAdaptive	= 0x6,
         WICPNGFILTEROPTION_FORCE_DWORD	= 0x7fffffff
     } 	WICPngFilterOption;
+
+typedef /* [public] */ 
+enum WICHeifCompressionOption
+    {
+        WICHeifCompressionDontCare	= 0,
+        WICHeifCompressionNone	= 0x1,
+        WICHeifCompressionHEVC	= 0x2,
+        WICHeifCompressionAV1	= 0x3,
+        WICHeifCompressionJpegXL	= 0x4,
+        WICHeifCompressionBrotli	= 0x5,
+        WICHeifCompressionDeflate	= 0x6,
+        WICHEIFCOMPRESSIONOPTION_FORCE_DWORD	= 0x7fffffff
+    } 	WICHeifCompressionOption;
 
 typedef /* [public] */ 
 enum WICNamedWhitePoint
@@ -7611,8 +8313,8 @@ typedef /* [public] */ struct WICRawToneCurve
 #define WICRawChangeNotification_RenderMode                 0x00002000
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0036_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0036_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0041_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0041_v0_0_s_ifspec;
 
 #ifndef __IWICDevelopRawNotificationCallback_INTERFACE_DEFINED__
 #define __IWICDevelopRawNotificationCallback_INTERFACE_DEFINED__
@@ -8258,7 +8960,7 @@ void __RPC_STUB IWICDevelopRaw_Remote_GetToneCurve_Stub(
 #endif 	/* __IWICDevelopRaw_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wincodec_0000_0038 */
+/* interface __MIDL_itf_wincodec_0000_0043 */
 /* [local] */ 
 
 typedef /* [public] */ 
@@ -8296,8 +8998,8 @@ typedef /* [public] */ struct WICDdsParameters
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0038_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0038_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0043_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0043_v0_0_s_ifspec;
 
 #ifndef __IWICDdsDecoder_INTERFACE_DEFINED__
 #define __IWICDdsDecoder_INTERFACE_DEFINED__
@@ -8512,7 +9214,7 @@ EXTERN_C const IID IID_IWICDdsEncoder;
 #endif 	/* __IWICDdsEncoder_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wincodec_0000_0040 */
+/* interface __MIDL_itf_wincodec_0000_0045 */
 /* [local] */ 
 
 typedef /* [public] */ struct WICDdsFormatInfo
@@ -8525,8 +9227,8 @@ typedef /* [public] */ struct WICDdsFormatInfo
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0040_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0040_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0045_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wincodec_0000_0045_v0_0_s_ifspec;
 
 #ifndef __IWICDdsFrameDecode_INTERFACE_DEFINED__
 #define __IWICDdsFrameDecode_INTERFACE_DEFINED__

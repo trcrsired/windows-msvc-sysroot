@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,12 +9,10 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct HResult;
-    template <typename TResult> struct __declspec(empty_bases) IAsyncOperation;
 }
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename T> struct __declspec(empty_bases) IIterable;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -41,6 +39,7 @@ WINRT_EXPORT namespace winrt::Windows::Media::AppRecording
     struct AppRecordingSavedScreenshotInfo;
     struct AppRecordingStatus;
     struct AppRecordingStatusDetails;
+    struct AppRecordingContract;
 }
 namespace winrt::impl
 {
@@ -72,6 +71,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Media::AppRecording::IAppRecordingSavedScreenshotInfo> = L"Windows.Media.AppRecording.IAppRecordingSavedScreenshotInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::Media::AppRecording::IAppRecordingStatus> = L"Windows.Media.AppRecording.IAppRecordingStatus";
     template <> inline constexpr auto& name_v<winrt::Windows::Media::AppRecording::IAppRecordingStatusDetails> = L"Windows.Media.AppRecording.IAppRecordingStatusDetails";
+    template <> inline constexpr auto& name_v<winrt::Windows::Media::AppRecording::AppRecordingContract> = L"Windows.Media.AppRecording.AppRecordingContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Media::AppRecording::IAppRecordingManager>{ 0xE7E26076,0xA044,0x48E2,{ 0xA5,0x12,0x30,0x94,0xD5,0x74,0xC7,0xCC } }; // E7E26076-A044-48E2-A512-3094D574C7CC
     template <> inline constexpr guid guid_v<winrt::Windows::Media::AppRecording::IAppRecordingManagerStatics>{ 0x50E709F7,0x38CE,0x4BD3,{ 0x9D,0xB2,0xE7,0x2B,0xBE,0x9D,0xE1,0x1D } }; // 50E709F7-38CE-4BD3-9DB2-E72BBE9DE11D
     template <> inline constexpr guid guid_v<winrt::Windows::Media::AppRecording::IAppRecordingResult>{ 0x3A900864,0xC66D,0x46F9,{ 0xB2,0xD9,0x5B,0xC2,0xDA,0xD0,0x70,0xD7 } }; // 3A900864-C66D-46F9-B2D9-5BC2DAD070D7
@@ -87,7 +87,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Media::AppRecording::AppRecordingStatusDetails>{ using type = winrt::Windows::Media::AppRecording::IAppRecordingStatusDetails; };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingManager>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetStatus(void**) noexcept = 0;
             virtual int32_t __stdcall StartRecordingToFileAsync(void*, void**) noexcept = 0;
@@ -98,14 +98,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingManagerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Succeeded(bool*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -115,7 +115,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingSaveScreenshotResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Succeeded(bool*) noexcept = 0;
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
@@ -124,7 +124,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingSavedScreenshotInfo>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_File(void**) noexcept = 0;
             virtual int32_t __stdcall get_MediaEncodingSubtype(void**) noexcept = 0;
@@ -132,7 +132,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingStatus>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanRecord(bool*) noexcept = 0;
             virtual int32_t __stdcall get_CanRecordTimeSpan(bool*) noexcept = 0;
@@ -142,7 +142,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Media::AppRecording::IAppRecordingStatusDetails>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsAnyAppBroadcasting(bool*) noexcept = 0;
             virtual int32_t __stdcall get_IsCaptureResourceUnavailable(bool*) noexcept = 0;
@@ -158,11 +158,11 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Media_AppRecording_IAppRecordingManager
     {
-        WINRT_IMPL_AUTO(winrt::Windows::Media::AppRecording::AppRecordingStatus) GetStatus() const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Media::AppRecording::AppRecordingResult>) StartRecordingToFileAsync(winrt::Windows::Storage::StorageFile const& file) const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Media::AppRecording::AppRecordingResult>) RecordTimeSpanToFileAsync(winrt::Windows::Foundation::DateTime const& startTime, winrt::Windows::Foundation::TimeSpan const& duration, winrt::Windows::Storage::StorageFile const& file) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Collections::IVectorView<hstring>) SupportedScreenshotMediaEncodingSubtypes() const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Media::AppRecording::AppRecordingSaveScreenshotResult>) SaveScreenshotToFilesAsync(winrt::Windows::Storage::StorageFolder const& folder, param::hstring const& filenamePrefix, winrt::Windows::Media::AppRecording::AppRecordingSaveScreenshotOption const& option, param::async_iterable<hstring> const& requestedFormats) const;
+        auto GetStatus() const;
+        auto StartRecordingToFileAsync(winrt::Windows::Storage::StorageFile const& file) const;
+        auto RecordTimeSpanToFileAsync(winrt::Windows::Foundation::DateTime const& startTime, winrt::Windows::Foundation::TimeSpan const& duration, winrt::Windows::Storage::StorageFile const& file) const;
+        [[nodiscard]] auto SupportedScreenshotMediaEncodingSubtypes() const;
+        auto SaveScreenshotToFilesAsync(winrt::Windows::Storage::StorageFolder const& folder, param::hstring const& filenamePrefix, winrt::Windows::Media::AppRecording::AppRecordingSaveScreenshotOption const& option, param::async_iterable<hstring> const& requestedFormats) const;
     };
     template <> struct consume<winrt::Windows::Media::AppRecording::IAppRecordingManager>
     {
@@ -171,7 +171,7 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Media_AppRecording_IAppRecordingManagerStatics
     {
-        WINRT_IMPL_AUTO(winrt::Windows::Media::AppRecording::AppRecordingManager) GetDefault() const;
+        auto GetDefault() const;
     };
     template <> struct consume<winrt::Windows::Media::AppRecording::IAppRecordingManagerStatics>
     {
@@ -180,10 +180,10 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Media_AppRecording_IAppRecordingResult
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) Succeeded() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::hresult) ExtendedError() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::TimeSpan) Duration() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsFileTruncated() const;
+        [[nodiscard]] auto Succeeded() const;
+        [[nodiscard]] auto ExtendedError() const;
+        [[nodiscard]] auto Duration() const;
+        [[nodiscard]] auto IsFileTruncated() const;
     };
     template <> struct consume<winrt::Windows::Media::AppRecording::IAppRecordingResult>
     {
@@ -192,9 +192,9 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Media_AppRecording_IAppRecordingSaveScreenshotResult
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) Succeeded() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::hresult) ExtendedError() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Media::AppRecording::AppRecordingSavedScreenshotInfo>) SavedScreenshotInfos() const;
+        [[nodiscard]] auto Succeeded() const;
+        [[nodiscard]] auto ExtendedError() const;
+        [[nodiscard]] auto SavedScreenshotInfos() const;
     };
     template <> struct consume<winrt::Windows::Media::AppRecording::IAppRecordingSaveScreenshotResult>
     {
@@ -203,8 +203,8 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Media_AppRecording_IAppRecordingSavedScreenshotInfo
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Storage::StorageFile) File() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(hstring) MediaEncodingSubtype() const;
+        [[nodiscard]] auto File() const;
+        [[nodiscard]] auto MediaEncodingSubtype() const;
     };
     template <> struct consume<winrt::Windows::Media::AppRecording::IAppRecordingSavedScreenshotInfo>
     {
@@ -213,10 +213,10 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Media_AppRecording_IAppRecordingStatus
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) CanRecord() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) CanRecordTimeSpan() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::TimeSpan) HistoricalBufferDuration() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Media::AppRecording::AppRecordingStatusDetails) Details() const;
+        [[nodiscard]] auto CanRecord() const;
+        [[nodiscard]] auto CanRecordTimeSpan() const;
+        [[nodiscard]] auto HistoricalBufferDuration() const;
+        [[nodiscard]] auto Details() const;
     };
     template <> struct consume<winrt::Windows::Media::AppRecording::IAppRecordingStatus>
     {
@@ -225,15 +225,15 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Media_AppRecording_IAppRecordingStatusDetails
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsAnyAppBroadcasting() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsCaptureResourceUnavailable() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsGameStreamInProgress() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsTimeSpanRecordingDisabled() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsGpuConstrained() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsAppInactive() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsBlockedForApp() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsDisabledByUser() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsDisabledBySystem() const;
+        [[nodiscard]] auto IsAnyAppBroadcasting() const;
+        [[nodiscard]] auto IsCaptureResourceUnavailable() const;
+        [[nodiscard]] auto IsGameStreamInProgress() const;
+        [[nodiscard]] auto IsTimeSpanRecordingDisabled() const;
+        [[nodiscard]] auto IsGpuConstrained() const;
+        [[nodiscard]] auto IsAppInactive() const;
+        [[nodiscard]] auto IsBlockedForApp() const;
+        [[nodiscard]] auto IsDisabledByUser() const;
+        [[nodiscard]] auto IsDisabledBySystem() const;
     };
     template <> struct consume<winrt::Windows::Media::AppRecording::IAppRecordingStatusDetails>
     {

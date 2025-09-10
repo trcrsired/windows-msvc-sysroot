@@ -5,9 +5,7 @@
 *
 ****/
 
-#if _MSC_VER > 1000
 #pragma once
-#endif
 
 #ifdef _M_CEE_PURE
 #error comutil.h header cannot be included under /clr:safe or /clr:pure
@@ -16,7 +14,7 @@
 #if !defined(_INC_COMUTIL)
 #define _INC_COMUTIL
 
-#include <ole2.h>
+#include <Ole2.h>
 
 #if !defined(_COM_ASSERT)
 # if defined(_DEBUG)
@@ -51,7 +49,6 @@
 #endif
 
 #pragma warning(push)
-#pragma warning(disable: 4290)
 #pragma warning(disable: 4310)
 
 #pragma push_macro("new")
@@ -315,7 +312,7 @@ inline _bstr_t::_bstr_t(const char* s)
     }
 }
 
-// Construct a _bstr_t from a const whar_t*
+// Construct a _bstr_t from a const wchar_t*
 //
 inline _bstr_t::_bstr_t(const wchar_t* s)
     : m_Data(new Data_t(s))
@@ -1052,7 +1049,7 @@ public:
     operator bool() const ;                            // Extracts a bool from a VT_BOOL
     operator IUnknown*() const ;                       // Extracts a IUnknown* from a VT_UNKNOWN
     operator DECIMAL() const ;                         // Extracts a DECIMAL from a VT_DECIMAL
-    operator BYTE() const ;                            // Extracts a BTYE (unsigned char) from a VT_UI1
+    operator BYTE() const ;                            // Extracts a BYTE (unsigned char) from a VT_UI1
     operator VARIANT() const throw();
 
     operator char() const ;                            // Extracts a char from a VT_I1
@@ -1986,7 +1983,7 @@ inline _variant_t& _variant_t::operator=(const DECIMAL& decSrc)
     return *this;
 }
 
-// Assign a BTYE (unsigned char) creating a VT_UI1 VARIANT
+// Assign a BYTE (unsigned char) creating a VT_UI1 VARIANT
 //
 inline _variant_t& _variant_t::operator=(BYTE bSrc)
 {

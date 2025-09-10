@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,24 +7,48 @@
 #ifndef WINRT_Windows_ApplicationModel_Preview_InkWorkspace_H
 #define WINRT_Windows_ApplicationModel_Preview_InkWorkspace_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.3.4.5"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.3.4.5"
-#include "winrt/windows.applicationmodel.h"
-#include "winrt/impl/windows.foundation.2.h"
-#include "winrt/impl/windows.graphics.imaging.2.h"
-#include "winrt/impl/windows.applicationmodel.preview.inkworkspace.2.h"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.1"
+#include "winrt/Windows.ApplicationModel.h"
+#include "winrt/impl/Windows.Foundation.2.h"
+#include "winrt/impl/Windows.Graphics.Imaging.2.h"
+#include "winrt/impl/Windows.ApplicationModel.Preview.InkWorkspace.2.h"
 namespace winrt::impl
 {
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncAction) consume_Windows_ApplicationModel_Preview_InkWorkspace_IInkWorkspaceHostedAppManager<D>::SetThumbnailAsync(winrt::Windows::Graphics::Imaging::SoftwareBitmap const& bitmap) const
+    template <typename D> auto consume_Windows_ApplicationModel_Preview_InkWorkspace_IInkWorkspaceHostedAppManager<D>::SetThumbnailAsync(winrt::Windows::Graphics::Imaging::SoftwareBitmap const& bitmap) const
     {
         void* action{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Preview::InkWorkspace::IInkWorkspaceHostedAppManager)->SetThumbnailAsync(*(void**)(&bitmap), &action));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Preview::InkWorkspace::IInkWorkspaceHostedAppManager>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Preview::InkWorkspace::IInkWorkspaceHostedAppManager, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Preview::InkWorkspace::IInkWorkspaceHostedAppManager>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->SetThumbnailAsync(*(void**)(&bitmap), &action));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Preview::InkWorkspace::IInkWorkspaceHostedAppManager>**)this;
+            check_hresult(_winrt_abi_type->SetThumbnailAsync(*(void**)(&bitmap), &action));
+        }
         return winrt::Windows::Foundation::IAsyncAction{ action, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::ApplicationModel::Preview::InkWorkspace::InkWorkspaceHostedAppManager) consume_Windows_ApplicationModel_Preview_InkWorkspace_IInkWorkspaceHostedAppManagerStatics<D>::GetForCurrentApp() const
+    template <typename D> auto consume_Windows_ApplicationModel_Preview_InkWorkspace_IInkWorkspaceHostedAppManagerStatics<D>::GetForCurrentApp() const
     {
         void* current{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Preview::InkWorkspace::IInkWorkspaceHostedAppManagerStatics)->GetForCurrentApp(&current));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Preview::InkWorkspace::IInkWorkspaceHostedAppManagerStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Preview::InkWorkspace::IInkWorkspaceHostedAppManagerStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Preview::InkWorkspace::IInkWorkspaceHostedAppManagerStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetForCurrentApp(&current));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Preview::InkWorkspace::IInkWorkspaceHostedAppManagerStatics>**)this;
+            check_hresult(_winrt_abi_type->GetForCurrentApp(&current));
+        }
         return winrt::Windows::ApplicationModel::Preview::InkWorkspace::InkWorkspaceHostedAppManager{ current, take_ownership_from_abi };
     }
 #ifndef WINRT_LEAN_AND_MEAN

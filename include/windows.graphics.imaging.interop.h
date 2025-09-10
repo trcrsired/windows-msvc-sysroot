@@ -62,9 +62,9 @@ typedef interface ISoftwareBitmapNativeFactory ISoftwareBitmapNativeFactory;
 
 
 /* header files for imported files */
-#include "inspectable.h"
+#include "Inspectable.h"
 #include "mfobjects.h"
-#include "wincodec.h"
+#include "Wincodec.h"
 
 #ifdef __cplusplus
 extern "C"{

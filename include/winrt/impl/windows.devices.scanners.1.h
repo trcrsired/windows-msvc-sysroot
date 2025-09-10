@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -6,17 +6,17 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Scanners_1_H
 #define WINRT_Windows_Devices_Scanners_1_H
-#include "winrt/impl/windows.devices.scanners.0.h"
+#include "winrt/impl/Windows.Devices.Scanners.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Scanners
 {
-    struct __declspec(empty_bases) IImageScanner :
+    struct WINRT_IMPL_EMPTY_BASES IImageScanner :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IImageScanner>
     {
         IImageScanner(std::nullptr_t = nullptr) noexcept {}
         IImageScanner(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IImageScannerFeederConfiguration :
+    struct WINRT_IMPL_EMPTY_BASES IImageScannerFeederConfiguration :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IImageScannerFeederConfiguration>,
         impl::require<winrt::Windows::Devices::Scanners::IImageScannerFeederConfiguration, winrt::Windows::Devices::Scanners::IImageScannerFormatConfiguration, winrt::Windows::Devices::Scanners::IImageScannerSourceConfiguration>
@@ -24,28 +24,28 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Scanners
         IImageScannerFeederConfiguration(std::nullptr_t = nullptr) noexcept {}
         IImageScannerFeederConfiguration(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IImageScannerFormatConfiguration :
+    struct WINRT_IMPL_EMPTY_BASES IImageScannerFormatConfiguration :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IImageScannerFormatConfiguration>
     {
         IImageScannerFormatConfiguration(std::nullptr_t = nullptr) noexcept {}
         IImageScannerFormatConfiguration(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IImageScannerPreviewResult :
+    struct WINRT_IMPL_EMPTY_BASES IImageScannerPreviewResult :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IImageScannerPreviewResult>
     {
         IImageScannerPreviewResult(std::nullptr_t = nullptr) noexcept {}
         IImageScannerPreviewResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IImageScannerScanResult :
+    struct WINRT_IMPL_EMPTY_BASES IImageScannerScanResult :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IImageScannerScanResult>
     {
         IImageScannerScanResult(std::nullptr_t = nullptr) noexcept {}
         IImageScannerScanResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IImageScannerSourceConfiguration :
+    struct WINRT_IMPL_EMPTY_BASES IImageScannerSourceConfiguration :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IImageScannerSourceConfiguration>,
         impl::require<winrt::Windows::Devices::Scanners::IImageScannerSourceConfiguration, winrt::Windows::Devices::Scanners::IImageScannerFormatConfiguration>
@@ -53,7 +53,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Scanners
         IImageScannerSourceConfiguration(std::nullptr_t = nullptr) noexcept {}
         IImageScannerSourceConfiguration(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IImageScannerStatics :
+    struct WINRT_IMPL_EMPTY_BASES IImageScannerStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IImageScannerStatics>
     {

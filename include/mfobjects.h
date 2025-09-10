@@ -89,6 +89,13 @@ typedef interface IMFDXGIBuffer IMFDXGIBuffer;
 #endif 	/* __IMFDXGIBuffer_FWD_DEFINED__ */
 
 
+#ifndef __IMFDXGICrossAdapterBuffer_FWD_DEFINED__
+#define __IMFDXGICrossAdapterBuffer_FWD_DEFINED__
+typedef interface IMFDXGICrossAdapterBuffer IMFDXGICrossAdapterBuffer;
+
+#endif 	/* __IMFDXGICrossAdapterBuffer_FWD_DEFINED__ */
+
+
 #ifndef __IMFMediaType_FWD_DEFINED__
 #define __IMFMediaType_FWD_DEFINED__
 typedef interface IMFMediaType IMFMediaType;
@@ -1945,6 +1952,163 @@ EXTERN_C const IID IID_IMFDXGIBuffer;
 #endif 	/* __IMFDXGIBuffer_INTERFACE_DEFINED__ */
 
 
+#ifndef __IMFDXGICrossAdapterBuffer_INTERFACE_DEFINED__
+#define __IMFDXGICrossAdapterBuffer_INTERFACE_DEFINED__
+
+/* interface IMFDXGICrossAdapterBuffer */
+/* [local][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IMFDXGICrossAdapterBuffer;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("B25D03FB-D148-45EF-BFED-F778B7566C07")
+    IMFDXGICrossAdapterBuffer : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetResourceForDevice( 
+            /* [annotation][in] */ 
+            _In_  IUnknown *pUnkDevice,
+            /* [annotation][in] */ 
+            _In_  REFIID riid,
+            /* [annotation][out] */ 
+            _COM_Outptr_  LPVOID *ppvObject) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetSubresourceIndexForDevice( 
+            /* [annotation][in] */ 
+            _In_  IUnknown *pUnkDevice,
+            /* [annotation][out] */ 
+            _Out_  UINT *puSubresource) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetUnknownForDevice( 
+            /* [annotation][in] */ 
+            _In_  IUnknown *pUnkDevice,
+            /* [annotation][in] */ 
+            _In_  REFIID guid,
+            /* [annotation][in] */ 
+            _In_  REFIID riid,
+            /* [annotation][out] */ 
+            _COM_Outptr_  LPVOID *ppvObject) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetUnknownForDevice( 
+            /* [annotation][in] */ 
+            _In_  IUnknown *pUnkDevice,
+            /* [annotation][in] */ 
+            _In_  REFIID guid,
+            /* [annotation][in] */ 
+            _In_opt_  IUnknown *pUnkData) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IMFDXGICrossAdapterBufferVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            IMFDXGICrossAdapterBuffer * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            IMFDXGICrossAdapterBuffer * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            IMFDXGICrossAdapterBuffer * This);
+        
+        DECLSPEC_XFGVIRT(IMFDXGICrossAdapterBuffer, GetResourceForDevice)
+        HRESULT ( STDMETHODCALLTYPE *GetResourceForDevice )( 
+            IMFDXGICrossAdapterBuffer * This,
+            /* [annotation][in] */ 
+            _In_  IUnknown *pUnkDevice,
+            /* [annotation][in] */ 
+            _In_  REFIID riid,
+            /* [annotation][out] */ 
+            _COM_Outptr_  LPVOID *ppvObject);
+        
+        DECLSPEC_XFGVIRT(IMFDXGICrossAdapterBuffer, GetSubresourceIndexForDevice)
+        HRESULT ( STDMETHODCALLTYPE *GetSubresourceIndexForDevice )( 
+            IMFDXGICrossAdapterBuffer * This,
+            /* [annotation][in] */ 
+            _In_  IUnknown *pUnkDevice,
+            /* [annotation][out] */ 
+            _Out_  UINT *puSubresource);
+        
+        DECLSPEC_XFGVIRT(IMFDXGICrossAdapterBuffer, GetUnknownForDevice)
+        HRESULT ( STDMETHODCALLTYPE *GetUnknownForDevice )( 
+            IMFDXGICrossAdapterBuffer * This,
+            /* [annotation][in] */ 
+            _In_  IUnknown *pUnkDevice,
+            /* [annotation][in] */ 
+            _In_  REFIID guid,
+            /* [annotation][in] */ 
+            _In_  REFIID riid,
+            /* [annotation][out] */ 
+            _COM_Outptr_  LPVOID *ppvObject);
+        
+        DECLSPEC_XFGVIRT(IMFDXGICrossAdapterBuffer, SetUnknownForDevice)
+        HRESULT ( STDMETHODCALLTYPE *SetUnknownForDevice )( 
+            IMFDXGICrossAdapterBuffer * This,
+            /* [annotation][in] */ 
+            _In_  IUnknown *pUnkDevice,
+            /* [annotation][in] */ 
+            _In_  REFIID guid,
+            /* [annotation][in] */ 
+            _In_opt_  IUnknown *pUnkData);
+        
+        END_INTERFACE
+    } IMFDXGICrossAdapterBufferVtbl;
+
+    interface IMFDXGICrossAdapterBuffer
+    {
+        CONST_VTBL struct IMFDXGICrossAdapterBufferVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IMFDXGICrossAdapterBuffer_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IMFDXGICrossAdapterBuffer_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IMFDXGICrossAdapterBuffer_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IMFDXGICrossAdapterBuffer_GetResourceForDevice(This,pUnkDevice,riid,ppvObject)	\
+    ( (This)->lpVtbl -> GetResourceForDevice(This,pUnkDevice,riid,ppvObject) ) 
+
+#define IMFDXGICrossAdapterBuffer_GetSubresourceIndexForDevice(This,pUnkDevice,puSubresource)	\
+    ( (This)->lpVtbl -> GetSubresourceIndexForDevice(This,pUnkDevice,puSubresource) ) 
+
+#define IMFDXGICrossAdapterBuffer_GetUnknownForDevice(This,pUnkDevice,guid,riid,ppvObject)	\
+    ( (This)->lpVtbl -> GetUnknownForDevice(This,pUnkDevice,guid,riid,ppvObject) ) 
+
+#define IMFDXGICrossAdapterBuffer_SetUnknownForDevice(This,pUnkDevice,guid,pUnkData)	\
+    ( (This)->lpVtbl -> SetUnknownForDevice(This,pUnkDevice,guid,pUnkData) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IMFDXGICrossAdapterBuffer_INTERFACE_DEFINED__ */
+
+
 #ifndef __IMFMediaType_INTERFACE_DEFINED__
 #define __IMFMediaType_INTERFACE_DEFINED__
 
@@ -2354,7 +2518,7 @@ EXTERN_C const IID IID_IMFMediaType;
 #endif 	/* __IMFMediaType_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0007 */
+/* interface __MIDL_itf_mfobjects_0000_0008 */
 /* [local] */ 
 
 #define MF_MEDIATYPE_EQUAL_MAJOR_TYPES  0x00000001
@@ -2368,8 +2532,8 @@ EXTERN_C const IID IID_IMFMediaType;
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_GAMES)
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0007_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0007_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0008_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0008_v0_0_s_ifspec;
 
 #ifndef __IMFAudioMediaType_INTERFACE_DEFINED__
 #define __IMFAudioMediaType_INTERFACE_DEFINED__
@@ -2771,13 +2935,13 @@ EXTERN_C const IID IID_IMFAudioMediaType;
 #endif 	/* __IMFAudioMediaType_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0008 */
+/* interface __MIDL_itf_mfobjects_0000_0009 */
 /* [local] */ 
 
 #ifndef _WINGDI_
 typedef DWORD RGBQUAD;
 
-typedef /* [public][public] */ struct __MIDL___MIDL_itf_mfobjects_0000_0008_0001
+typedef /* [public][public] */ struct __MIDL___MIDL_itf_mfobjects_0000_0009_0001
     {
     DWORD biSize;
     LONG biWidth;
@@ -2792,7 +2956,7 @@ typedef /* [public][public] */ struct __MIDL___MIDL_itf_mfobjects_0000_0008_0001
     DWORD biClrImportant;
     } 	BITMAPINFOHEADER;
 
-typedef /* [public] */ struct __MIDL___MIDL_itf_mfobjects_0000_0008_0002
+typedef /* [public] */ struct __MIDL___MIDL_itf_mfobjects_0000_0009_0002
     {
     BITMAPINFOHEADER bmiHeader;
     RGBQUAD bmiColors[ 1 ];
@@ -2804,7 +2968,7 @@ typedef /* [public] */ struct __MIDL___MIDL_itf_mfobjects_0000_0008_0002
 #pragma endregion
 #pragma region Application Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES)
-typedef /* [public] */ struct __MIDL___MIDL_itf_mfobjects_0000_0008_0003
+typedef /* [public] */ struct __MIDL___MIDL_itf_mfobjects_0000_0009_0003
     {
     GUID guidMajorType;
     GUID guidSubtype;
@@ -2853,7 +3017,9 @@ enum _MFVideoTransferFunction
         MFVideoTransFunc_2084	= 15,
         MFVideoTransFunc_HLG	= 16,
         MFVideoTransFunc_10_rel	= 17,
-        MFVideoTransFunc_Last	= ( MFVideoTransFunc_10_rel + 1 ) ,
+        MFVideoTransFunc_BT1361_ECG	= 18,
+        MFVideoTransFunc_SMPTE428	= 19,
+        MFVideoTransFunc_Last	= ( MFVideoTransFunc_SMPTE428 + 1 ) ,
         MFVideoTransFunc_ForceDWORD	= 0x7fffffff
     } 	MFVideoTransferFunction;
 
@@ -2873,7 +3039,8 @@ enum _MFVideoPrimaries
         MFVideoPrimaries_XYZ	= 10,
         MFVideoPrimaries_DCI_P3	= 11,
         MFVideoPrimaries_ACES	= 12,
-        MFVideoPrimaries_Last	= ( MFVideoPrimaries_ACES + 1 ) ,
+        MFVideoPrimaries_Display_P3	= 13,
+        MFVideoPrimaries_Last	= ( MFVideoPrimaries_Display_P3 + 1 ) ,
         MFVideoPrimaries_ForceDWORD	= 0x7fffffff
     } 	MFVideoPrimaries;
 
@@ -2898,7 +3065,14 @@ enum _MFVideoTransferMatrix
         MFVideoTransferMatrix_SMPTE240M	= 3,
         MFVideoTransferMatrix_BT2020_10	= 4,
         MFVideoTransferMatrix_BT2020_12	= 5,
-        MFVideoTransferMatrix_Last	= ( MFVideoTransferMatrix_BT2020_12 + 1 ) ,
+        MFVideoTransferMatrix_Identity	= 6,
+        MFVideoTransferMatrix_FCC47	= 7,
+        MFVideoTransferMatrix_YCgCo	= 8,
+        MFVideoTransferMatrix_SMPTE2085	= 9,
+        MFVideoTransferMatrix_Chroma	= 10,
+        MFVideoTransferMatrix_Chroma_const	= 11,
+        MFVideoTransferMatrix_ICtCp	= 12,
+        MFVideoTransferMatrix_Last	= ( MFVideoTransferMatrix_ICtCp + 1 ) ,
         MFVideoTransferMatrix_ForceDWORD	= 0x7fffffff
     } 	MFVideoTransferMatrix;
 
@@ -3097,8 +3271,8 @@ enum _MFStandardVideoFormat
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_GAMES)
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0008_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0008_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0009_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0009_v0_0_s_ifspec;
 
 #ifndef __IMFVideoMediaType_INTERFACE_DEFINED__
 #define __IMFVideoMediaType_INTERFACE_DEFINED__
@@ -3517,7 +3691,7 @@ EXTERN_C const IID IID_IMFVideoMediaType;
 #endif 	/* __IMFVideoMediaType_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0009 */
+/* interface __MIDL_itf_mfobjects_0000_0010 */
 /* [local] */ 
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_GAMES) */
@@ -3526,8 +3700,8 @@ EXTERN_C const IID IID_IMFVideoMediaType;
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES)
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0009_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0009_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0010_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0010_v0_0_s_ifspec;
 
 #ifndef __IMFAsyncResult_INTERFACE_DEFINED__
 #define __IMFAsyncResult_INTERFACE_DEFINED__
@@ -3750,7 +3924,7 @@ EXTERN_C const IID IID_IMFAsyncCallback;
 #endif 	/* __IMFAsyncCallback_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0011 */
+/* interface __MIDL_itf_mfobjects_0000_0012 */
 /* [local] */ 
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES) */
@@ -3759,8 +3933,8 @@ EXTERN_C const IID IID_IMFAsyncCallback;
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_GAMES)
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0011_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0011_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0012_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0012_v0_0_s_ifspec;
 
 #ifndef __IMFAsyncCallbackLogging_INTERFACE_DEFINED__
 #define __IMFAsyncCallbackLogging_INTERFACE_DEFINED__
@@ -3871,7 +4045,7 @@ EXTERN_C const IID IID_IMFAsyncCallbackLogging;
 #endif 	/* __IMFAsyncCallbackLogging_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0012 */
+/* interface __MIDL_itf_mfobjects_0000_0013 */
 /* [local] */ 
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_GAMES) */
@@ -3893,7 +4067,7 @@ EXTERN_C const IID IID_IMFAsyncCallbackLogging;
 #define MFASYNC_CALLBACK_QUEUE_PRIVATE_MASK           0xFFFF0000
 #define MFASYNC_CALLBACK_QUEUE_ALL                    0xFFFFFFFF
 
-enum __MIDL___MIDL_itf_mfobjects_0000_0012_0001
+enum __MIDL___MIDL_itf_mfobjects_0000_0013_0001
     {
         MEUnknown	= 0,
         MEError	= 1,
@@ -4020,8 +4194,8 @@ typedef DWORD MediaEventType;
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0012_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0012_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0013_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0013_v0_0_s_ifspec;
 
 #ifndef __IMFMediaEvent_INTERFACE_DEFINED__
 #define __IMFMediaEvent_INTERFACE_DEFINED__
@@ -4413,15 +4587,15 @@ EXTERN_C const IID IID_IMFMediaEvent;
 #endif 	/* __IMFMediaEvent_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0013 */
+/* interface __MIDL_itf_mfobjects_0000_0014 */
 /* [local] */ 
 
 #define MF_EVENT_FLAG_NO_WAIT 0x00000001
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0013_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0013_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0014_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0014_v0_0_s_ifspec;
 
 #ifndef __IMFMediaEventGenerator_INTERFACE_DEFINED__
 #define __IMFMediaEventGenerator_INTERFACE_DEFINED__
@@ -4580,7 +4754,7 @@ void __RPC_STUB IMFMediaEventGenerator_RemoteEndGetEvent_Stub(
 #endif 	/* __IMFMediaEventGenerator_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0014 */
+/* interface __MIDL_itf_mfobjects_0000_0015 */
 /* [local] */ 
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES) */
@@ -4589,8 +4763,8 @@ void __RPC_STUB IMFMediaEventGenerator_RemoteEndGetEvent_Stub(
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_GAMES)
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0014_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0014_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0015_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0015_v0_0_s_ifspec;
 
 #ifndef __IMFRemoteAsyncCallback_INTERFACE_DEFINED__
 #define __IMFRemoteAsyncCallback_INTERFACE_DEFINED__
@@ -4678,7 +4852,7 @@ EXTERN_C const IID IID_IMFRemoteAsyncCallback;
 #endif 	/* __IMFRemoteAsyncCallback_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0015 */
+/* interface __MIDL_itf_mfobjects_0000_0016 */
 /* [local] */ 
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_GAMES) */
@@ -4694,8 +4868,8 @@ enum _MFBYTESTREAM_SEEK_ORIGIN
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0015_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0015_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0016_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0016_v0_0_s_ifspec;
 
 #ifndef __IMFByteStream_INTERFACE_DEFINED__
 #define __IMFByteStream_INTERFACE_DEFINED__
@@ -5024,7 +5198,7 @@ void __RPC_STUB IMFByteStream_RemoteEndWrite_Stub(
 #endif 	/* __IMFByteStream_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0016 */
+/* interface __MIDL_itf_mfobjects_0000_0017 */
 /* [local] */ 
 
 #define MFBYTESTREAM_IS_READABLE                0x00000001
@@ -5058,8 +5232,8 @@ EXTERN_GUID( MF_BYTESTREAM_TRANSCODED, 0xb6c5c282, 0x4dc9, 0x4db9, 0xab, 0x48, 0
 EXTERN_GUID(CLSID_MFByteStreamProxyClassFactory, 0x770e8e77, 0x4916, 0x441c, 0xa9, 0xa7, 0xb3, 0x42, 0xd0, 0xee, 0xbc, 0x71 );
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0016_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0016_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0017_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0017_v0_0_s_ifspec;
 
 #ifndef __IMFByteStreamProxyClassFactory_INTERFACE_DEFINED__
 #define __IMFByteStreamProxyClassFactory_INTERFACE_DEFINED__
@@ -5151,11 +5325,11 @@ EXTERN_C const IID IID_IMFByteStreamProxyClassFactory;
 #endif 	/* __IMFByteStreamProxyClassFactory_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0017 */
+/* interface __MIDL_itf_mfobjects_0000_0018 */
 /* [local] */ 
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_mfobjects_0000_0017_0001
+enum __MIDL___MIDL_itf_mfobjects_0000_0018_0001
     {
         MF_ACCESSMODE_READ	= 1,
         MF_ACCESSMODE_WRITE	= 2,
@@ -5163,7 +5337,7 @@ enum __MIDL___MIDL_itf_mfobjects_0000_0017_0001
     } 	MF_FILE_ACCESSMODE;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_mfobjects_0000_0017_0002
+enum __MIDL___MIDL_itf_mfobjects_0000_0018_0002
     {
         MF_OPENMODE_FAIL_IF_NOT_EXIST	= 0,
         MF_OPENMODE_FAIL_IF_EXIST	= 1,
@@ -5173,7 +5347,7 @@ enum __MIDL___MIDL_itf_mfobjects_0000_0017_0002
     } 	MF_FILE_OPENMODE;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_mfobjects_0000_0017_0003
+enum __MIDL___MIDL_itf_mfobjects_0000_0018_0003
     {
         MF_FILEFLAGS_NONE	= 0,
         MF_FILEFLAGS_NOBUFFERING	= 0x1,
@@ -5186,8 +5360,8 @@ enum __MIDL___MIDL_itf_mfobjects_0000_0017_0003
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES)
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0017_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0017_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0018_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0018_v0_0_s_ifspec;
 
 #ifndef __IMFSampleOutputStream_INTERFACE_DEFINED__
 #define __IMFSampleOutputStream_INTERFACE_DEFINED__
@@ -5987,7 +6161,7 @@ EXTERN_C const IID IID_IMFActivate;
 #endif 	/* __IMFActivate_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0021 */
+/* interface __MIDL_itf_mfobjects_0000_0022 */
 /* [local] */ 
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES) */
@@ -6006,8 +6180,8 @@ enum _MF_Plugin_Type
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0021_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0021_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0022_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0022_v0_0_s_ifspec;
 
 #ifndef __IMFPluginControl_INTERFACE_DEFINED__
 #define __IMFPluginControl_INTERFACE_DEFINED__
@@ -6186,7 +6360,7 @@ EXTERN_C const IID IID_IMFPluginControl;
 #endif 	/* __IMFPluginControl_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0022 */
+/* interface __MIDL_itf_mfobjects_0000_0023 */
 /* [local] */ 
 
 typedef 
@@ -6200,8 +6374,8 @@ enum MF_PLUGIN_CONTROL_POLICY
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0022_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0022_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0023_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0023_v0_0_s_ifspec;
 
 #ifndef __IMFPluginControl2_INTERFACE_DEFINED__
 #define __IMFPluginControl2_INTERFACE_DEFINED__
@@ -6355,7 +6529,7 @@ EXTERN_C const IID IID_IMFPluginControl2;
 #endif 	/* __IMFPluginControl2_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0023 */
+/* interface __MIDL_itf_mfobjects_0000_0024 */
 /* [local] */ 
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_GAMES) */
@@ -6364,8 +6538,8 @@ EXTERN_C const IID IID_IMFPluginControl2;
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES)
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0023_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0023_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0024_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0024_v0_0_s_ifspec;
 
 #ifndef __IMFDXGIDeviceManager_INTERFACE_DEFINED__
 #define __IMFDXGIDeviceManager_INTERFACE_DEFINED__
@@ -6559,8 +6733,16 @@ EXTERN_C const IID IID_IMFDXGIDeviceManager;
 #endif 	/* __IMFDXGIDeviceManager_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0024 */
+/* interface __MIDL_itf_mfobjects_0000_0025 */
 /* [local] */ 
+
+typedef 
+enum MF_DXGI_DEVICE_MANAGER_MODE
+    {
+        MF_DXGI_DEVICE_MANAGER_MODE_INVALID	= 0,
+        MF_DXGI_DEVICE_MANAGER_MODE_D3D11	= ( MF_DXGI_DEVICE_MANAGER_MODE_INVALID + 1 ) ,
+        MF_DXGI_DEVICE_MANAGER_MODE_D3D12	= ( MF_DXGI_DEVICE_MANAGER_MODE_D3D11 + 1 ) 
+    } 	MF_DXGI_DEVICE_MANAGER_MODE;
 
 typedef 
 enum _MF_STREAM_STATE
@@ -6578,8 +6760,8 @@ enum _MF_STREAM_STATE
 #if (NTDDI_VERSION >= NTDDI_WIN10_RS2)
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0024_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0024_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0025_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0025_v0_0_s_ifspec;
 
 #ifndef __IMFMuxStreamAttributesManager_INTERFACE_DEFINED__
 #define __IMFMuxStreamAttributesManager_INTERFACE_DEFINED__
@@ -7041,7 +7223,7 @@ EXTERN_C const IID IID_IMFSecureBuffer;
 #endif 	/* __IMFSecureBuffer_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mfobjects_0000_0028 */
+/* interface __MIDL_itf_mfobjects_0000_0029 */
 /* [local] */ 
 
 #endif // (NTDDI_VERSION >= NTDDI_WIN10_RS2)
@@ -7049,8 +7231,8 @@ EXTERN_C const IID IID_IMFSecureBuffer;
 #pragma endregion
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0028_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0028_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0029_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mfobjects_0000_0029_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

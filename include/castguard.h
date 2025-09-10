@@ -6,7 +6,7 @@
 // Declarations of CastGuard instrumentation support functions.
 //
 
-typedef void (*__check_guard_fp)(void*);
+typedef void (__cdecl* __check_guard_fp)(void*);
 
 #ifdef __cplusplus
 extern "C" {
@@ -16,4 +16,4 @@ __check_guard_fp __cdecl __castguard_set_user_handler(__check_guard_fp new_handl
 
 #ifdef __cplusplus
 } // extern "C"
-#endif 
+#endif

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,6 +14,7 @@ WINRT_EXPORT namespace winrt::Windows::Perception::Automation::Core
 {
     struct ICorePerceptionAutomationStatics;
     struct CorePerceptionAutomation;
+    struct PerceptionAutomationCoreContract;
 }
 namespace winrt::impl
 {
@@ -21,10 +22,11 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Perception::Automation::Core::CorePerceptionAutomation>{ using type = class_category; };
     template <> inline constexpr auto& name_v<winrt::Windows::Perception::Automation::Core::CorePerceptionAutomation> = L"Windows.Perception.Automation.Core.CorePerceptionAutomation";
     template <> inline constexpr auto& name_v<winrt::Windows::Perception::Automation::Core::ICorePerceptionAutomationStatics> = L"Windows.Perception.Automation.Core.ICorePerceptionAutomationStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::Perception::Automation::Core::PerceptionAutomationCoreContract> = L"Windows.Perception.Automation.Core.PerceptionAutomationCoreContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Perception::Automation::Core::ICorePerceptionAutomationStatics>{ 0x0BB04541,0x4CE2,0x4923,{ 0x9A,0x76,0x81,0x87,0xEC,0xC5,0x91,0x12 } }; // 0BB04541-4CE2-4923-9A76-8187ECC59112
     template <> struct abi<winrt::Windows::Perception::Automation::Core::ICorePerceptionAutomationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall SetActivationFactoryProvider(void*) noexcept = 0;
         };
@@ -32,7 +34,7 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Perception_Automation_Core_ICorePerceptionAutomationStatics
     {
-        WINRT_IMPL_AUTO(void) SetActivationFactoryProvider(winrt::Windows::Foundation::IGetActivationFactory const& provider) const;
+        auto SetActivationFactoryProvider(winrt::Windows::Foundation::IGetActivationFactory const& provider) const;
     };
     template <> struct consume<winrt::Windows::Perception::Automation::Core::ICorePerceptionAutomationStatics>
     {

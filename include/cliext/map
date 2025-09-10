@@ -149,6 +149,12 @@ public:
 			_Is_ref_key, _Is_ref_mapped> > _Mybase_t;
 	typedef _STLCLR GenericPair<_Key_t, _Mapped_t> _Object_t;
 
+	typedef typename _Mybase_t::_Pairnb _Pairnb;
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::node_type node_type;
+	typedef typename _Mybase_t::size_type size_type;
+
 	typedef _Key_t key_type;
 	typedef _Mapped_t mapped_type;
 
@@ -184,7 +190,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -192,14 +198,14 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	property mapped_type default[key_type]
 		{	// get or set subscripted element
 		virtual mapped_type get(key_type _Key)
 			{	// get _Key element
-			_Pairnb _Ans = insert_node(
+			_Pairnb _Ans = this->insert_node(
 				gcnew _Object_t(_Key));
 
 			return (_Ans.first->_Value->second);
@@ -207,7 +213,7 @@ public:
 
 		virtual void set(key_type _Key, mapped_type _Val)
 			{	// set _Key element
-			node_type^ _Node = insert_node(
+			node_type^ _Node = this->insert_node(
 				gcnew _Object_t(_Key)).first;
 
 			_Node->_Value->second = _Val;
@@ -222,7 +228,7 @@ private:
 			= System::Collections::Generic::ICollection<_Mykvpair_t>
 				::Count::get
 			{	// get element count
-			return (size());
+			return (this->size());
 			}
 		};
 
@@ -239,9 +245,9 @@ private:
 	virtual void CopyTo(_Mykvarray_t^ _Dest, int _First) sealed
 		= System::Collections::Generic::ICollection<_Mykvpair_t>::CopyTo
 		{	// copy to _Dest, beginning at _First
-		node_type^ _Node = head_node();
+		node_type^ _Node = this->head_node();
 
-		for (int _Idx = size(); 0 <= --_Idx; )
+		for (int _Idx = this->size(); 0 <= --_Idx; )
 			{	// copy back to front
 			_Node = _Node->prev_node();
 			_Dest[_First + _Idx] = _Mykvpair_t(_Node->_Value->first,
@@ -255,19 +261,19 @@ private:
 			::GetEnumerator
 		{	// get enumerator for the container
 		return (gcnew TreeKVPEnumerator<
-			_Key_t, _Mapped_t, _Object_t^>(front_node()));
+			_Key_t, _Mapped_t, _Object_t^>(this->front_node()));
 		}
 
 	virtual void Add(_Mykvpair_t _Kvpair) sealed
 		= System::Collections::Generic::ICollection<_Mykvpair_t>::Add
 		{	// add element with value _Kvpair
-		insert_node(gcnew _Object_t(_Kvpair.Key, _Kvpair.Value));
+		this->insert_node(gcnew _Object_t(_Kvpair.Key, _Kvpair.Value));
 		}
 
 	virtual void Clear_dictionary() sealed
 		= System::Collections::Generic::ICollection<_Mykvpair_t>::Clear
 		{	// erase all elements
-		clear();
+		this->clear();
 		}
 
 	virtual bool Contains(_Mykvpair_t _Kvpair) sealed
@@ -275,7 +281,7 @@ private:
 		{	// search for element matching value _Kvpair
 		_Object_t^ _Val = gcnew _Object_t(_Kvpair.Key, _Kvpair.Value);
 
-		for (node_type^ _Node = front_node(); _Node != head_node();
+		for (node_type^ _Node = this->front_node(); _Node != this->head_node();
 			_Node = _Node->next_node())
 			if (((System::Object^)_Val)->Equals(
 				(System::Object^)_Node->_Value))
@@ -286,14 +292,14 @@ private:
 	virtual bool Remove(_Mykvpair_t _Kvpair) sealed
 		= System::Collections::Generic::ICollection<_Mykvpair_t>::Remove
 		{	// remove first element matching key _Keypair
-		for (node_type^ _Node = front_node(); _Node != head_node();
+		for (node_type^ _Node = this->front_node(); _Node != this->head_node();
 			_Node = _Node->next_node())
 			if (((System::Object^)_Kvpair.Key)->Equals(
 					(System::Object^)_Node->_Value->first)
 				&& ((System::Object^)_Kvpair.Value)->Equals(
 					(System::Object^)_Node->_Value->second))
 				{	// found a match, remove it
-				erase_node(_Node);
+				this->erase_node(_Node);
 				return (true);
 				}
 		return (false);
@@ -309,7 +315,7 @@ private:
 			System::Collections::Generic::List<_Key_t>^
 				_List = gcnew System::Collections::Generic::List<_Key_t>;
 
-			for (iterator _It = begin(); _It != end(); ++_It)
+			for (iterator _It = this->begin(); _It != this->end(); ++_It)
 				_List->Add(_It->first);
 			return (_List);
 			}
@@ -325,7 +331,7 @@ private:
 			System::Collections::Generic::List<_Mapped_t>^
 				_List = gcnew System::Collections::Generic::List<_Mapped_t>;
 
-			for (iterator _It = begin(); _It != end(); ++_It)
+			for (iterator _It = this->begin(); _It != this->end(); ++_It)
 				_List->Add(_It->second);
 			return (_List);
 			}
@@ -335,7 +341,7 @@ private:
 		= System::Collections::Generic::IDictionary<_Key_t, _Mapped_t>
 			::Add
 		{	// add element with value (_Keyval, _Mappedval)
-		insert_node(gcnew _Object_t(_Keyval, _Mappedval));
+		this->insert_node(gcnew _Object_t(_Keyval, _Mappedval));
 		}
 
 	virtual bool ContainsKey(key_type _Keyval) sealed
@@ -358,7 +364,7 @@ private:
 		{	// search for element matching key _Keyval and copy mapped value
 		iterator _Iter = _Mybase_t::find(_Keyval);
 
-		if (_Iter == end())
+		if (_Iter == this->end())
 			return (false);
 		else
 			{	// found, copy mapped
@@ -390,23 +396,19 @@ public:
 		_Mybase_t;
 	typedef _STLCLR GenericPair<_Key_t, _Mapped_t> _Object_t;
 
+	typedef typename _Mybase_t::_Myarray_t _Myarray_t;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::_Pairnb _Pairnb;
+	typedef typename _Mybase_t::_Value_t _Value_t;
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::node_type node_type;
+	typedef typename _Mybase_t::pair_iter_bool pair_iter_bool;
+	typedef typename _Mybase_t::size_type size_type;
+	typedef typename _Mybase_t::value_type value_type;
+
 	typedef _Key_t key_type;
 	typedef _Mapped_t mapped_type;
-//	typedef typename _Traits_t::value_type value_type;
-//	typedef typename _Traits_t::key_compare key_compare;
-//	typedef typename _Traits_t::value_compare value_compare;
-
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _STLCLR GenericPair<iterator^, bool> pair_iter_bool;
-//	typedef _STLCLR GenericPair<iterator^, iterator^> pair_iter_iter;
 
 	// basics
 	map_base()
@@ -436,7 +438,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -444,13 +446,13 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	// mutators
 	pair_iter_bool insert(value_type _Val) new
 		{	// try to insert node with value _Val, return iterator
-		_Pairnb _Ans = insert_node(_Val);
+		_Pairnb _Ans = this->insert_node(_Val);
 
 		return (pair_iter_bool(iterator(_Ans.first),
 			_Ans.second));
@@ -479,7 +481,7 @@ private:
 		virtual size_type get() sealed
 			= System::Collections::Generic::ICollection<_Value_t>::Count::get
 			{	// get element count
-			return (size());
+			return (this->size());
 			}
 		};
 
@@ -496,9 +498,9 @@ private:
 	virtual void CopyTo(_Myarray_t^ _Dest, int _First) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::CopyTo
 		{	// copy to _Dest, beginning at _First
-		node_type^ _Node = head_node();
+		node_type^ _Node = this->head_node();
 
-		for (int _Idx = size(); 0 <= --_Idx; )
+		for (int _Idx = this->size(); 0 <= --_Idx; )
 			{	// copy back to front
 			_Node = _Node->prev_node();
 			_Dest[_First + _Idx] = _Node->_Value;
@@ -510,25 +512,25 @@ private:
 		= System::Collections::Generic::IEnumerable<_Value_t>::GetEnumerator
 		{	// get enumerator for the container
 		return (gcnew _STLCLR TreeEnumerator<_Key_t, _Value_t>(
-			front_node()));
+			this->front_node()));
 		}
 
 	virtual void Add(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Add
 		{	// add element with value _Val
-		insert_node(_Val);
+		this->insert_node(_Val);
 		}
 
 	virtual void Clear() sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Clear
 		{	// erase all elements
-		clear();
+		this->clear();
 		}
 
 	virtual bool Contains(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Contains
 		{	// search for element matching value _Val
-		for (node_type^ _Node = front_node(); _Node != head_node();
+		for (node_type^ _Node = this->front_node(); _Node != this->head_node();
 			_Node = _Node->next_node())
 			if (((System::Object^)_Val)->Equals(
 				(System::Object^)_Node->_Value))
@@ -539,14 +541,14 @@ private:
 	virtual bool Remove(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Remove
 		{	// remove first element matching value _Val
-		for (node_type^ _Node = front_node(); _Node != head_node();
+		for (node_type^ _Node = this->front_node(); _Node != this->head_node();
 			_Node = _Node->next_node())
 			if (((System::Object^)_Val->first)->Equals(
 					(System::Object^)_Node->_Value->first)
 				&& ((System::Object^)_Val->second)->Equals(
 					(System::Object^)_Node->_Value->second))
 				{	// found a match, remove it
-				erase_node(_Node);
+				this->erase_node(_Node);
 				return (true);
 				}
 		return (false);
@@ -572,26 +574,15 @@ public:
 		_Mytype_t;
 	typedef map_base<_Gkey_t, _Gmapped_t, _Is_ref_key, _Is_ref_mapped>
 		_Mybase_t;
-//	typedef System::Collections::Generic::IEnumerable<_Value_t> _Myenum_it;
-//	typedef _STLCLR GenericPair<_Gkey_t, _Gmapped_t> _Object_t;
+
+	typedef typename _Mybase_t::_Object_t _Object_t;
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::pair_iter_bool pair_iter_bool;
+	typedef typename _Mybase_t::value_type value_type;
 
 	typedef _Key1_t key_type;
 	typedef _Mapped_t mapped_type;
-//	typedef typename _Traits_t::value_type value_type;
-//	typedef typename _Traits_t::key_compare key_compare;
-//	typedef typename _Traits_t::value_compare value_compare;
-
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _STLCLR GenericPair<iterator^, bool> pair_iter_bool;
-//	typedef _STLCLR GenericPair<iterator^, iterator^> pair_iter_iter;
 
 	// basics
 	map_select()
@@ -621,7 +612,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -629,7 +620,7 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	// accessors
@@ -663,7 +654,7 @@ public:
 
 	pair_iter_bool insert(cliext::pair<key_type, mapped_type> _Val)
 		{	// try to insert node with value _Val, return iterator
-		_Pairnb _Ans = insert_node(make_value(_Val.first, _Val.second));
+		_Pairnb _Ans = this->insert_node(make_value(_Val.first, _Val.second));
 
 		return (pair_iter_bool(iterator(_Ans.first),
 			_Ans.second));
@@ -700,26 +691,15 @@ public:
 	typedef map_select<_Key1_t, _Mapped_t, false, true> _Mytype_t;
 	typedef map_base<_Gkey_t, _Gmapped_t, false, true>
 		_Mybase_t;
-//	typedef System::Collections::Generic::IEnumerable<_Value_t> _Myenum_it;
 	typedef _STLCLR GenericPair<_Gkey_t, _Gmapped_t> _Object_t;
+
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::pair_iter_bool pair_iter_bool;
+	typedef typename _Mybase_t::value_type value_type;
 
 	typedef _Key1_t key_type;
 	typedef _Mapped_t mapped_type;
-//	typedef typename _Traits_t::value_type value_type;
-//	typedef typename _Traits_t::key_compare key_compare;
-//	typedef typename _Traits_t::value_compare value_compare;
-
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _STLCLR GenericPair<iterator^, bool> pair_iter_bool;
-//	typedef _STLCLR GenericPair<iterator^, iterator^> pair_iter_iter;
 
 	// basics
 	map_select()
@@ -749,7 +729,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -757,7 +737,7 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	// accessors
@@ -765,7 +745,7 @@ public:
 		{	// get or set subscripted element
 		mapped_type get(key_type _Key)
 			{	// get _Key element
-			_Pairnb _Ans = insert_node(
+			_Pairnb _Ans = this->insert_node(
 				gcnew _Object_t(_Key, gcnew _Mapped_t));
 
 			return (*_Ans.first->_Value->second);
@@ -773,7 +753,7 @@ public:
 
 		void set(key_type _Key, mapped_type _Val)
 			{	// set _Key element
-			node_type^ _Node = insert_node(
+			node_type^ _Node = this->insert_node(
 				gcnew _Object_t(_Key, gcnew _Mapped_t)).first;
 
 			_Node->_Value->second = gcnew _Mapped_t(_Val);
@@ -791,7 +771,7 @@ public:
 
 	pair_iter_bool insert(cliext::pair<key_type, mapped_type> _Val) new
 		{	// try to insert node with value _Val, return iterator
-		_Pairnb _Ans = insert_node(make_value(_Val.first, _Val.second));
+		_Pairnb _Ans = this->insert_node(make_value(_Val.first, _Val.second));
 
 		return (pair_iter_bool(iterator(_Ans.first),
 			_Ans.second));
@@ -828,26 +808,16 @@ public:
 	typedef map_select<_Key1_t, _Mapped_t, true, false> _Mytype_t;
 	typedef map_base<_Gkey_t, _Gmapped_t, true, false>
 		_Mybase_t;
-//	typedef System::Collections::Generic::IEnumerable<_Value_t> _Myenum_it;
-//	typedef _STLCLR GenericPair<_Gkey_t, _Gmapped_t> _Object_t;
+
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::pair_iter_bool pair_iter_bool;
+	typedef typename _Mybase_t::pair_iter_iter pair_iter_iter;
+	typedef typename _Mybase_t::size_type size_type;
+	typedef typename _Mybase_t::value_type value_type;
 
 	typedef _Key1_t key_type;
 	typedef _Mapped_t mapped_type;
-//	typedef typename _Traits_t::value_type value_type;
-//	typedef typename _Traits_t::key_compare key_compare;
-//	typedef typename _Traits_t::value_compare value_compare;
-
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _STLCLR GenericPair<iterator^, bool> pair_iter_bool;
-//	typedef _STLCLR GenericPair<iterator^, iterator^> pair_iter_iter;
 
 	// basics
 	map_select()
@@ -877,7 +847,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -885,7 +855,7 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	// accessors
@@ -893,7 +863,7 @@ public:
 		{	// get or set subscripted element
 		mapped_type get(key_type _Key)
 			{	// get _Key element
-			_Pairnb _Ans = insert_node(
+			_Pairnb _Ans = this->insert_node(
 				gcnew _Object_t(gcnew _Key1_t(_Key)));
 
 			return (_Ans.first->_Value->second);
@@ -901,7 +871,7 @@ public:
 
 		void set(key_type _Key, mapped_type _Val)
 			{	// set _Key element
-			node_type^ _Node = insert_node(
+			node_type^ _Node = this->insert_node(
 				gcnew _Object_t(gcnew _Key1_t(_Key))).first;
 
 			_Node->_Value->second = _Val;
@@ -922,7 +892,7 @@ public:
 
 	pair_iter_bool insert(cliext::pair<key_type, mapped_type> _Val)
 		{	// try to insert node with value _Val, return iterator
-		_Pairnb _Ans = insert_node(make_value(_Val.first, _Val.second));
+		_Pairnb _Ans = this->insert_node(make_value(_Val.first, _Val.second));
 
 		return (pair_iter_bool(iterator(_Ans.first),
 			_Ans.second));
@@ -978,26 +948,16 @@ public:
 	typedef map_select<_Key1_t, _Mapped_t, true, true> _Mytype_t;
 	typedef map_base<_Gkey_t, _Gmapped_t, true, true>
 		_Mybase_t;
-//	typedef System::Collections::Generic::IEnumerable<_Value_t> _Myenum_it;
-//	typedef _STLCLR GenericPair<_Gkey_t, _Gmapped_t> _Object_t;
+
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::pair_iter_bool pair_iter_bool;
+	typedef typename _Mybase_t::pair_iter_iter pair_iter_iter;
+	typedef typename _Mybase_t::size_type size_type;
+	typedef typename _Mybase_t::value_type value_type;
 
 	typedef _Key1_t key_type;
 	typedef _Mapped_t mapped_type;
-//	typedef typename _Traits_t::value_type value_type;
-//	typedef typename _Traits_t::key_compare key_compare;
-//	typedef typename _Traits_t::value_compare value_compare;
-
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _STLCLR GenericPair<iterator^, bool> pair_iter_bool;
-//	typedef _STLCLR GenericPair<iterator^, iterator^> pair_iter_iter;
 
 	// basics
 	map_select()
@@ -1027,7 +987,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -1035,7 +995,7 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	// accessors
@@ -1043,7 +1003,7 @@ public:
 		{	// get or set subscripted element
 		mapped_type get(key_type _Key)
 			{	// get _Key element
-			_Pairnb _Ans = insert_node(
+			_Pairnb _Ans = this->insert_node(
 				gcnew _Object_t(gcnew _Key1_t(_Key), gcnew _Mapped_t));
 
 			return (*_Ans.first->_Value->second);
@@ -1051,7 +1011,7 @@ public:
 
 		void set(key_type _Key, mapped_type _Val)
 			{	// set _Key element
-			node_type^ _Node = insert_node(
+			node_type^ _Node = this->insert_node(
 				gcnew _Object_t(gcnew _Key1_t(_Key), gcnew _Mapped_t)).first;
 
 			_Node->_Value->second = gcnew _Mapped_t(_Val);
@@ -1073,7 +1033,7 @@ public:
 
 	pair_iter_bool insert(cliext::pair<key_type, mapped_type> _Val) new
 		{	// try to insert node with value _Val, return iterator
-		_Pairnb _Ans = insert_node(make_value(_Val.first, _Val.second));
+		_Pairnb _Ans = this->insert_node(make_value(_Val.first, _Val.second));
 
 		return (pair_iter_bool(iterator(_Ans.first),
 			_Ans.second));
@@ -1139,23 +1099,9 @@ public:
 		__is_ref_class(typename _Dehandle<_Mapped_t>::type)
 			&& !is_handle<_Mapped_t>::value> _Mybase_t;
 
-//	typedef _Key1_t key_type;
-//	typedef _Mapped_t mapped_type;
-//	typedef typename _Traits_t::value_type value_type;
-//	typedef typename _Traits_t::key_compare key_compare;
-//	typedef typename _Traits_t::value_compare value_compare;
-
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _STLCLR GenericPair<iterator^, bool> pair_iter_bool;
-//	typedef _STLCLR GenericPair<iterator^, iterator^> pair_iter_iter;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::value_type value_type;
 
 	// basics
 	map()
@@ -1196,7 +1142,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -1204,14 +1150,14 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	map(_Myenum_it^ _Right)
 		:	_Mybase_t()
 		{	// construct map from enumeration, default comparator
 		for each (value_type _Val in _Right)
-			insert(_Val);
+			this->insert(_Val);
 		}
 
 	map(_Myenum_it^ _Right,
@@ -1219,7 +1165,7 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from enumeration, comparator
 		for each (value_type _Val in _Right)
-			insert(_Val);
+			this->insert(_Val);
 		}
 
 	// mutators
@@ -1272,6 +1218,10 @@ public:
 			_Is_ref_key, _Is_ref_mapped> > _Mybase_t;
 	typedef _STLCLR GenericPair<_Key_t, _Mapped_t> _Object_t;
 
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::node_type node_type;
+	typedef typename _Mybase_t::size_type size_type;
+
 	typedef _Key_t key_type;
 	typedef _Mapped_t mapped_type;
 
@@ -1307,7 +1257,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -1315,7 +1265,7 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	// interfaces
@@ -1326,7 +1276,7 @@ private:
 			= System::Collections::Generic::ICollection<_Mykvpair_t>
 				::Count::get
 			{	// get element count
-			return (size());
+			return (this->size());
 			}
 		};
 
@@ -1343,9 +1293,9 @@ private:
 	virtual void CopyTo(_Mykvarray_t^ _Dest, int _First) sealed
 		= System::Collections::Generic::ICollection<_Mykvpair_t>::CopyTo
 		{	// copy to _Dest, beginning at _First
-		node_type^ _Node = head_node();
+		node_type^ _Node = this->head_node();
 
-		for (int _Idx = size(); 0 <= --_Idx; )
+		for (int _Idx = this->size(); 0 <= --_Idx; )
 			{	// copy back to front
 			_Node = _Node->prev_node();
 			_Dest[_First + _Idx] = _Mykvpair_t(_Node->_Value->first,
@@ -1359,19 +1309,19 @@ private:
 			::GetEnumerator
 		{	// get enumerator for the container
 		return (gcnew TreeKVPEnumerator<
-			_Key_t, _Mapped_t, _Object_t^>(front_node()));
+			_Key_t, _Mapped_t, _Object_t^>(this->front_node()));
 		}
 
 	virtual void Add(_Mykvpair_t _Kvpair) sealed
 		= System::Collections::Generic::ICollection<_Mykvpair_t>::Add
 		{	// add element with value _Kvpair
-		insert_node(gcnew _Object_t(_Kvpair.Key, _Kvpair.Value));
+		this->insert_node(gcnew _Object_t(_Kvpair.Key, _Kvpair.Value));
 		}
 
 	virtual void Clear_dictionary() sealed
 		= System::Collections::Generic::ICollection<_Mykvpair_t>::Clear
 		{	// erase all elements
-		clear();
+		this->clear();
 		}
 
 	virtual bool Contains(_Mykvpair_t _Kvpair) sealed
@@ -1379,7 +1329,7 @@ private:
 		{	// search for element matching value _Kvpair
 		_Object_t^ _Val = gcnew _Object_t(_Kvpair.Key, _Kvpair.Value);
 
-		for (node_type^ _Node = front_node(); _Node != head_node();
+		for (node_type^ _Node = this->front_node(); _Node != this->head_node();
 			_Node = _Node->next_node())
 			if (((System::Object^)_Val)->Equals(
 				(System::Object^)_Node->_Value))
@@ -1390,14 +1340,14 @@ private:
 	virtual bool Remove(_Mykvpair_t _Kvpair) sealed
 		= System::Collections::Generic::ICollection<_Mykvpair_t>::Remove
 		{	// remove first element matching key _Keypair
-		for (node_type^ _Node = front_node(); _Node != head_node();
+		for (node_type^ _Node = this->front_node(); _Node != this->head_node();
 			_Node = _Node->next_node())
 			if (((System::Object^)_Kvpair.Key)->Equals(
 					(System::Object^)_Node->_Value->first)
 				&& ((System::Object^)_Kvpair.Value)->Equals(
 					(System::Object^)_Node->_Value->second))
 				{	// found a match, remove it
-				erase_node(_Node);
+					this->erase_node(_Node);
 				return (true);
 				}
 		return (false);
@@ -1426,23 +1376,18 @@ public:
 		_Mybase_t;
 	typedef _STLCLR GenericPair<_Key_t, _Mapped_t> _Object_t;
 
+	typedef typename _Mybase_t::_Myarray_t _Myarray_t;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::_Pairnb _Pairnb;
+	typedef typename _Mybase_t::_Value_t _Value_t;
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::node_type node_type;
+	typedef typename _Mybase_t::size_type size_type;
+	typedef typename _Mybase_t::value_type value_type;
+
 	typedef _Key_t key_type;
 	typedef _Mapped_t mapped_type;
-//	typedef typename _Traits_t::value_type value_type;
-//	typedef typename _Traits_t::key_compare key_compare;
-//	typedef typename _Traits_t::value_compare value_compare;
-
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _STLCLR GenericPair<iterator^, bool> pair_iter_bool;
-//	typedef _STLCLR GenericPair<iterator^, iterator^> pair_iter_iter;
 
 	// basics
 	multimap_base()
@@ -1472,7 +1417,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -1480,15 +1425,15 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	// mutators
 	iterator insert(value_type _Val) new
 		{	// insert node with value _Val, return iterator
-		_Pairnb _Ans = insert_node(_Val);
+		_Pairnb _Ans = this->insert_node(_Val);
 
-		return (make_iterator(_Ans.first));
+		return (this->make_iterator(_Ans.first));
 		}
 
 	iterator insert(iterator _Where, value_type _Val) new
@@ -1515,7 +1460,7 @@ private:
 			= System::Collections::Generic::ICollection<_Value_t>
 				::Count::get
 			{	// get element count
-			return (size());
+			return (this->size());
 			}
 		};
 
@@ -1532,9 +1477,9 @@ private:
 	virtual void CopyTo(_Myarray_t^ _Dest, int _First) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::CopyTo
 		{	// copy to _Dest, beginning at _First
-		node_type^ _Node = head_node();
+		node_type^ _Node = this->head_node();
 
-		for (int _Idx = size(); 0 <= --_Idx; )
+		for (int _Idx = this->size(); 0 <= --_Idx; )
 			{	// copy back to front
 			_Node = _Node->prev_node();
 			_Dest[_First + _Idx] = _Node->_Value;
@@ -1546,25 +1491,25 @@ private:
 		= System::Collections::Generic::IEnumerable<_Value_t>::GetEnumerator
 		{	// get enumerator for the container
 		return (gcnew _STLCLR TreeEnumerator<_Key_t, _Value_t>(
-			front_node()));
+			this->front_node()));
 		}
 
 	virtual void Add(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Add
 		{	// add element with value _Val
-		insert_node(_Val);
+		this->insert_node(_Val);
 		}
 
 	virtual void Clear() sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Clear
 		{	// erase all elements
-		clear();
+		this->clear();
 		}
 
 	virtual bool Contains(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Contains
 		{	// search for element matching value _Val
-		for (node_type^ _Node = front_node(); _Node != head_node();
+		for (node_type^ _Node = this->front_node(); _Node != this->head_node();
 			_Node = _Node->next_node())
 			if (((System::Object^)_Val)->Equals(
 				(System::Object^)_Node->_Value))
@@ -1575,14 +1520,14 @@ private:
 	virtual bool Remove(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Remove
 		{	// remove first element matching value _Val
-		for (node_type^ _Node = front_node(); _Node != head_node();
+		for (node_type^ _Node = this->front_node(); _Node != this->head_node();
 			_Node = _Node->next_node())
 			if (((System::Object^)_Val->first)->Equals(
 					(System::Object^)_Node->_Value->first)
 				&& ((System::Object^)_Val->second)->Equals(
 					(System::Object^)_Node->_Value->second))
 				{	// found a match, remove it
-				erase_node(_Node);
+				this->erase_node(_Node);
 				return (true);
 				}
 		return (false);
@@ -1608,26 +1553,15 @@ public:
 		_Mytype_t;
 	typedef multimap_base<_Gkey_t, _Gmapped_t, _Is_ref_key, _Is_ref_mapped>
 		_Mybase_t;
-//	typedef System::Collections::Generic::IEnumerable<_Value_t> _Myenum_it;
-//	typedef _STLCLR GenericPair<_Gkey_t, _Gmapped_t> _Object_t;
+
+	typedef typename _Mybase_t::_Object_t _Object_t;
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::pair_iter_bool pair_iter_bool;
+	typedef typename _Mybase_t::value_type value_type;
 
 	typedef _Key1_t key_type;
 	typedef _Mapped_t mapped_type;
-//	typedef typename _Traits_t::value_type value_type;
-//	typedef typename _Traits_t::key_compare key_compare;
-//	typedef typename _Traits_t::value_compare value_compare;
-
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _STLCLR GenericPair<iterator^, bool> pair_iter_bool;
-//	typedef _STLCLR GenericPair<iterator^, iterator^> pair_iter_iter;
 
 	// basics
 	multimap_select()
@@ -1657,7 +1591,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -1665,7 +1599,7 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	// accessors
@@ -1682,7 +1616,7 @@ public:
 
 	pair_iter_bool insert(cliext::pair<key_type, mapped_type> _Val)
 		{	// try to insert node with value _Val, return iterator
-		_Pairnb _Ans = insert_node(make_value(_Val.first, _Val.second));
+		_Pairnb _Ans = this->insert_node(make_value(_Val.first, _Val.second));
 
 		return (pair_iter_bool(iterator(_Ans.first),
 			_Ans.second));
@@ -1719,26 +1653,15 @@ public:
 	typedef multimap_select<_Key1_t, _Mapped_t, false, true> _Mytype_t;
 	typedef multimap_base<_Gkey_t, _Gmapped_t, false, true>
 		_Mybase_t;
-//	typedef System::Collections::Generic::IEnumerable<_Value_t> _Myenum_it;
 	typedef _STLCLR GenericPair<_Gkey_t, _Gmapped_t> _Object_t;
+
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::pair_iter_bool pair_iter_bool;
+	typedef typename _Mybase_t::value_type value_type;
 
 	typedef _Key1_t key_type;
 	typedef _Mapped_t mapped_type;
-//	typedef typename _Traits_t::value_type value_type;
-//	typedef typename _Traits_t::key_compare key_compare;
-//	typedef typename _Traits_t::value_compare value_compare;
-
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _STLCLR GenericPair<iterator^, bool> pair_iter_bool;
-//	typedef _STLCLR GenericPair<iterator^, iterator^> pair_iter_iter;
 
 	// basics
 	multimap_select()
@@ -1768,7 +1691,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -1776,7 +1699,7 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	// accessors
@@ -1793,7 +1716,7 @@ public:
 
 	pair_iter_bool insert(cliext::pair<key_type, mapped_type> _Val) new
 		{	// try to insert node with value _Val, return iterator
-		_Pairnb _Ans = insert_node(make_value(_Val.first, _Val.second));
+		_Pairnb _Ans = this->insert_node(make_value(_Val.first, _Val.second));
 
 		return (pair_iter_bool(iterator(_Ans.first),
 			_Ans.second));
@@ -1830,26 +1753,16 @@ public:
 	typedef multimap_select<_Key1_t, _Mapped_t, true, false> _Mytype_t;
 	typedef multimap_base<_Gkey_t, _Gmapped_t, true, false>
 		_Mybase_t;
-//	typedef System::Collections::Generic::IEnumerable<_Value_t> _Myenum_it;
-//	typedef _STLCLR GenericPair<_Gkey_t, _Gmapped_t> _Object_t;
+
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::pair_iter_bool pair_iter_bool;
+	typedef typename _Mybase_t::pair_iter_iter pair_iter_iter;
+	typedef typename _Mybase_t::size_type size_type;
+	typedef typename _Mybase_t::value_type value_type;
 
 	typedef _Key1_t key_type;
 	typedef _Mapped_t mapped_type;
-//	typedef typename _Traits_t::value_type value_type;
-//	typedef typename _Traits_t::key_compare key_compare;
-//	typedef typename _Traits_t::value_compare value_compare;
-
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _STLCLR GenericPair<iterator^, bool> pair_iter_bool;
-//	typedef _STLCLR GenericPair<iterator^, iterator^> pair_iter_iter;
 
 	// basics
 	multimap_select()
@@ -1879,7 +1792,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -1887,7 +1800,7 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	// accessors
@@ -1907,7 +1820,7 @@ public:
 
 	pair_iter_bool insert(cliext::pair<key_type, mapped_type> _Val)
 		{	// try to insert node with value _Val, return iterator
-		_Pairnb _Ans = insert_node(make_value(_Val.first, _Val.second));
+		_Pairnb _Ans = this->insert_node(make_value(_Val.first, _Val.second));
 
 		return (pair_iter_bool(iterator(_Ans.first),
 			_Ans.second));
@@ -1963,26 +1876,16 @@ public:
 	typedef multimap_select<_Key1_t, _Mapped_t, true, true> _Mytype_t;
 	typedef multimap_base<_Gkey_t, _Gmapped_t, true, true>
 		_Mybase_t;
-//	typedef System::Collections::Generic::IEnumerable<_Value_t> _Myenum_it;
-//	typedef _STLCLR GenericPair<_Gkey_t, _Gmapped_t> _Object_t;
+
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::pair_iter_bool pair_iter_bool;
+	typedef typename _Mybase_t::pair_iter_iter pair_iter_iter;
+	typedef typename _Mybase_t::size_type size_type;
+	typedef typename _Mybase_t::value_type value_type;
 
 	typedef _Key1_t key_type;
 	typedef _Mapped_t mapped_type;
-//	typedef typename _Traits_t::value_type value_type;
-//	typedef typename _Traits_t::key_compare key_compare;
-//	typedef typename _Traits_t::value_compare value_compare;
-
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _STLCLR GenericPair<iterator^, bool> pair_iter_bool;
-//	typedef _STLCLR GenericPair<iterator^, iterator^> pair_iter_iter;
 
 	// basics
 	multimap_select()
@@ -2012,7 +1915,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -2020,7 +1923,7 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	// accessors
@@ -2041,7 +1944,7 @@ public:
 
 	pair_iter_bool insert(cliext::pair<key_type, mapped_type> _Val) new
 		{	// try to insert node with value _Val, return iterator
-		_Pairnb _Ans = insert_node(make_value(_Val.first, _Val.second));
+		_Pairnb _Ans = this->insert_node(make_value(_Val.first, _Val.second));
 
 		return (pair_iter_bool(iterator(_Ans.first),
 			_Ans.second));
@@ -2107,23 +2010,9 @@ public:
 		__is_ref_class(typename _Dehandle<_Mapped_t>::type)
 			&& !is_handle<_Mapped_t>::value> _Mybase_t;
 
-//	typedef _Key1_t key_type;
-//	typedef _Mapped_t mapped_type;
-//	typedef typename _Traits_t::value_type value_type;
-//	typedef typename _Traits_t::key_compare key_compare;
-//	typedef typename _Traits_t::value_compare value_compare;
-
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _STLCLR GenericPair<iterator^, bool> pair_iter_bool;
-//	typedef _STLCLR GenericPair<iterator^, iterator^> pair_iter_iter;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::key_compare key_compare;
+	typedef typename _Mybase_t::value_type value_type;
 
 	// basics
 	multimap()
@@ -2164,7 +2053,7 @@ public:
 		:	_Mybase_t()
 		{	// construct map from [_First, _Last), default comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	template<typename _Iter_t>
@@ -2172,14 +2061,14 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from [_First, _Last), comparator
 		for (; _First != _Last; ++_First)
-			insert((value_type)*_First);
+			this->insert((value_type)*_First);
 		}
 
 	multimap(_Myenum_it^ _Right)
 		:	_Mybase_t()
 		{	// construct map from enumeration, default comparator
 		for each (value_type _Val in _Right)
-			insert(_Val);
+			this->insert(_Val);
 		}
 
 	multimap(_Myenum_it^ _Right,
@@ -2187,7 +2076,7 @@ public:
 		:	_Mybase_t(_Pred)
 		{	// construct map from enumeration, comparator
 		for each (value_type _Val in _Right)
-			insert(_Val);
+			this->insert(_Val);
 		}
 
 	// mutators

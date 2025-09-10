@@ -143,7 +143,7 @@ namespace std {
 
 #pragma warning(push)
 #pragma warning(disable: 4577) // 'noexcept' used with no exception handling mode specified
-_VCRT_EXPORT_STD class bad_cast
+_VCRT_EXPORT_STD class _NODISCARD bad_cast
     : public exception
 {
 public:
@@ -166,7 +166,7 @@ private:
     }
 };
 
-_VCRT_EXPORT_STD class bad_typeid
+_VCRT_EXPORT_STD class _NODISCARD bad_typeid
     : public exception
 {
 public:
@@ -191,7 +191,7 @@ private:
     }
 };
 
-class __non_rtti_object
+class _NODISCARD __non_rtti_object
     : public bad_typeid
 {
 public:

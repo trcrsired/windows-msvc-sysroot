@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,35 +7,83 @@
 #ifndef WINRT_Windows_Devices_Portable_H
 #define WINRT_Windows_Devices_Portable_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.3.4.5"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.3.4.5"
-#include "winrt/windows.devices.h"
-#include "winrt/impl/windows.storage.2.h"
-#include "winrt/impl/windows.devices.portable.2.h"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.1"
+#include "winrt/Windows.Devices.h"
+#include "winrt/impl/Windows.Storage.2.h"
+#include "winrt/impl/Windows.Devices.Portable.2.h"
 namespace winrt::impl
 {
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_Devices_Portable_IServiceDeviceStatics<D>::GetDeviceSelector(winrt::Windows::Devices::Portable::ServiceDeviceType const& serviceType) const
+    template <typename D> auto consume_Windows_Devices_Portable_IServiceDeviceStatics<D>::GetDeviceSelector(winrt::Windows::Devices::Portable::ServiceDeviceType const& serviceType) const
     {
         void* selector{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Devices::Portable::IServiceDeviceStatics)->GetDeviceSelector(static_cast<int32_t>(serviceType), &selector));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Portable::IServiceDeviceStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Portable::IServiceDeviceStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Portable::IServiceDeviceStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetDeviceSelector(static_cast<int32_t>(serviceType), &selector));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Portable::IServiceDeviceStatics>**)this;
+            check_hresult(_winrt_abi_type->GetDeviceSelector(static_cast<int32_t>(serviceType), &selector));
+        }
         return hstring{ selector, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_Devices_Portable_IServiceDeviceStatics<D>::GetDeviceSelectorFromServiceId(winrt::guid const& serviceId) const
+    template <typename D> auto consume_Windows_Devices_Portable_IServiceDeviceStatics<D>::GetDeviceSelectorFromServiceId(winrt::guid const& serviceId) const
     {
         void* selector{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Devices::Portable::IServiceDeviceStatics)->GetDeviceSelectorFromServiceId(impl::bind_in(serviceId), &selector));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Portable::IServiceDeviceStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Portable::IServiceDeviceStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Portable::IServiceDeviceStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetDeviceSelectorFromServiceId(impl::bind_in(serviceId), &selector));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Portable::IServiceDeviceStatics>**)this;
+            check_hresult(_winrt_abi_type->GetDeviceSelectorFromServiceId(impl::bind_in(serviceId), &selector));
+        }
         return hstring{ selector, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Storage::StorageFolder) consume_Windows_Devices_Portable_IStorageDeviceStatics<D>::FromId(param::hstring const& deviceId) const
+    template <typename D> auto consume_Windows_Devices_Portable_IStorageDeviceStatics<D>::FromId(param::hstring const& deviceId) const
     {
         void* deviceRoot{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Devices::Portable::IStorageDeviceStatics)->FromId(*(void**)(&deviceId), &deviceRoot));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Portable::IStorageDeviceStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Portable::IStorageDeviceStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Portable::IStorageDeviceStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->FromId(*(void**)(&deviceId), &deviceRoot));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Portable::IStorageDeviceStatics>**)this;
+            check_hresult(_winrt_abi_type->FromId(*(void**)(&deviceId), &deviceRoot));
+        }
         return winrt::Windows::Storage::StorageFolder{ deviceRoot, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_Devices_Portable_IStorageDeviceStatics<D>::GetDeviceSelector() const
+    template <typename D> auto consume_Windows_Devices_Portable_IStorageDeviceStatics<D>::GetDeviceSelector() const
     {
         void* selector{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Devices::Portable::IStorageDeviceStatics)->GetDeviceSelector(&selector));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Portable::IStorageDeviceStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Portable::IStorageDeviceStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Portable::IStorageDeviceStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetDeviceSelector(&selector));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Portable::IStorageDeviceStatics>**)this;
+            check_hresult(_winrt_abi_type->GetDeviceSelector(&selector));
+        }
         return hstring{ selector, take_ownership_from_abi };
     }
 #ifndef WINRT_LEAN_AND_MEAN

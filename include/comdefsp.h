@@ -5,9 +5,7 @@
 *
 ****/
 
-#if _MSC_VER > 1000
 #pragma once
-#endif
 
 #if !defined(_INC_COMDEFSP)
 #define _INC_COMDEFSP

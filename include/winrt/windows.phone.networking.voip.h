@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,267 +7,950 @@
 #ifndef WINRT_Windows_Phone_Networking_Voip_H
 #define WINRT_Windows_Phone_Networking_Voip_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.3.4.5"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.3.4.5"
-#include "winrt/impl/windows.foundation.2.h"
-#include "winrt/impl/windows.phone.networking.voip.2.h"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.1"
+#include "winrt/impl/Windows.Foundation.2.h"
+#include "winrt/impl/Windows.Foundation.Collections.2.h"
+#include "winrt/impl/Windows.Phone.Networking.Voip.2.h"
 namespace winrt::impl
 {
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Phone::Networking::Voip::VoipCallMedia) consume_Windows_Phone_Networking_Voip_ICallAnswerEventArgs<D>::AcceptedMedia() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_ICallAnswerEventArgs<D>::AcceptedMedia() const
     {
         winrt::Windows::Phone::Networking::Voip::VoipCallMedia value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::ICallAnswerEventArgs)->get_AcceptedMedia(reinterpret_cast<uint32_t*>(&value)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::ICallAnswerEventArgs>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::ICallAnswerEventArgs, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::ICallAnswerEventArgs>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_AcceptedMedia(reinterpret_cast<uint32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::ICallAnswerEventArgs>**)this;
+            check_hresult(_winrt_abi_type->get_AcceptedMedia(reinterpret_cast<uint32_t*>(&value)));
+        }
         return value;
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Phone::Networking::Voip::VoipCallRejectReason) consume_Windows_Phone_Networking_Voip_ICallRejectEventArgs<D>::RejectReason() const
-    {
-        winrt::Windows::Phone::Networking::Voip::VoipCallRejectReason value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::ICallRejectEventArgs)->get_RejectReason(reinterpret_cast<int32_t*>(&value)));
-        return value;
-    }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Phone::Networking::Voip::VoipCallState) consume_Windows_Phone_Networking_Voip_ICallStateChangeEventArgs<D>::State() const
-    {
-        winrt::Windows::Phone::Networking::Voip::VoipCallState value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::ICallStateChangeEventArgs)->get_State(reinterpret_cast<int32_t*>(&value)));
-        return value;
-    }
-    template <typename D> WINRT_IMPL_AUTO(bool) consume_Windows_Phone_Networking_Voip_IMuteChangeEventArgs<D>::Muted() const
-    {
-        bool value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IMuteChangeEventArgs)->get_Muted(&value));
-        return value;
-    }
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_Phone_Networking_Voip_IQuerySeamlessUpgradeSupportOperation<D>::RemoteId() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_ICallAnswerEventArgs2<D>::SourceDeviceId() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IQuerySeamlessUpgradeSupportOperation)->get_RemoteId(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::ICallAnswerEventArgs2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::ICallAnswerEventArgs2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::ICallAnswerEventArgs2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_SourceDeviceId(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::ICallAnswerEventArgs2>**)this;
+            check_hresult(_winrt_abi_type->get_SourceDeviceId(&value));
+        }
         return hstring{ value, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IQuerySeamlessUpgradeSupportOperation<D>::NotifyCompletion(bool succeeded, winrt::Windows::Phone::Networking::Voip::SeamlessCallUpgradeSupport const& seamlessCallUpgradeSupport) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_ICallRejectEventArgs<D>::RejectReason() const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IQuerySeamlessUpgradeSupportOperation)->NotifyCompletion(succeeded, static_cast<int32_t>(seamlessCallUpgradeSupport)));
+        winrt::Windows::Phone::Networking::Voip::VoipCallRejectReason value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::ICallRejectEventArgs>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::ICallRejectEventArgs, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::ICallRejectEventArgs>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_RejectReason(reinterpret_cast<int32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::ICallRejectEventArgs>**)this;
+            check_hresult(_winrt_abi_type->get_RejectReason(reinterpret_cast<int32_t*>(&value)));
+        }
+        return value;
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::event_token) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::MuteRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipCallCoordinator, winrt::Windows::Phone::Networking::Voip::MuteChangeEventArgs> const& muteChangeHandler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_ICallStateChangeEventArgs<D>::State() const
+    {
+        winrt::Windows::Phone::Networking::Voip::VoipCallState value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::ICallStateChangeEventArgs>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::ICallStateChangeEventArgs, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::ICallStateChangeEventArgs>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_State(reinterpret_cast<int32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::ICallStateChangeEventArgs>**)this;
+            check_hresult(_winrt_abi_type->get_State(reinterpret_cast<int32_t*>(&value)));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IMuteChangeEventArgs<D>::Muted() const
+    {
+        bool value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IMuteChangeEventArgs>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IMuteChangeEventArgs, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IMuteChangeEventArgs>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Muted(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IMuteChangeEventArgs>**)this;
+            check_hresult(_winrt_abi_type->get_Muted(&value));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IQuerySeamlessUpgradeSupportOperation<D>::RemoteId() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IQuerySeamlessUpgradeSupportOperation>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IQuerySeamlessUpgradeSupportOperation, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IQuerySeamlessUpgradeSupportOperation>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_RemoteId(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IQuerySeamlessUpgradeSupportOperation>**)this;
+            check_hresult(_winrt_abi_type->get_RemoteId(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IQuerySeamlessUpgradeSupportOperation<D>::NotifyCompletion(bool succeeded, winrt::Windows::Phone::Networking::Voip::SeamlessCallUpgradeSupport const& seamlessCallUpgradeSupport) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IQuerySeamlessUpgradeSupportOperation>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IQuerySeamlessUpgradeSupportOperation, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IQuerySeamlessUpgradeSupportOperation>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->NotifyCompletion(succeeded, static_cast<int32_t>(seamlessCallUpgradeSupport)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IQuerySeamlessUpgradeSupportOperation>**)this;
+            check_hresult(_winrt_abi_type->NotifyCompletion(succeeded, static_cast<int32_t>(seamlessCallUpgradeSupport)));
+        }
+    }
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::MuteRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipCallCoordinator, winrt::Windows::Phone::Networking::Voip::MuteChangeEventArgs> const& muteChangeHandler) const
     {
         winrt::event_token token{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator)->add_MuteRequested(*(void**)(&muteChangeHandler), put_abi(token)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->add_MuteRequested(*(void**)(&muteChangeHandler), put_abi(token)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)this;
+            check_hresult(_winrt_abi_type->add_MuteRequested(*(void**)(&muteChangeHandler), put_abi(token)));
+        }
         return token;
     }
-    template <typename D> typename consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::MuteRequested_revoker consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::MuteRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipCallCoordinator, winrt::Windows::Phone::Networking::Voip::MuteChangeEventArgs> const& muteChangeHandler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::MuteRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipCallCoordinator, winrt::Windows::Phone::Networking::Voip::MuteChangeEventArgs> const& muteChangeHandler) const
     {
         return impl::make_event_revoker<D, MuteRequested_revoker>(this, MuteRequested(muteChangeHandler));
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::MuteRequested(winrt::event_token const& token) const noexcept
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::MuteRequested(winrt::event_token const& token) const noexcept
     {
-        WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator)->remove_MuteRequested(impl::bind_in(token));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)&_winrt_casted_result;
+            _winrt_abi_type->remove_MuteRequested(impl::bind_in(token));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)this;
+            _winrt_abi_type->remove_MuteRequested(impl::bind_in(token));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::event_token) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::UnmuteRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipCallCoordinator, winrt::Windows::Phone::Networking::Voip::MuteChangeEventArgs> const& muteChangeHandler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::UnmuteRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipCallCoordinator, winrt::Windows::Phone::Networking::Voip::MuteChangeEventArgs> const& muteChangeHandler) const
     {
         winrt::event_token token{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator)->add_UnmuteRequested(*(void**)(&muteChangeHandler), put_abi(token)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->add_UnmuteRequested(*(void**)(&muteChangeHandler), put_abi(token)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)this;
+            check_hresult(_winrt_abi_type->add_UnmuteRequested(*(void**)(&muteChangeHandler), put_abi(token)));
+        }
         return token;
     }
-    template <typename D> typename consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::UnmuteRequested_revoker consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::UnmuteRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipCallCoordinator, winrt::Windows::Phone::Networking::Voip::MuteChangeEventArgs> const& muteChangeHandler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::UnmuteRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipCallCoordinator, winrt::Windows::Phone::Networking::Voip::MuteChangeEventArgs> const& muteChangeHandler) const
     {
         return impl::make_event_revoker<D, UnmuteRequested_revoker>(this, UnmuteRequested(muteChangeHandler));
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::UnmuteRequested(winrt::event_token const& token) const noexcept
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::UnmuteRequested(winrt::event_token const& token) const noexcept
     {
-        WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator)->remove_UnmuteRequested(impl::bind_in(token));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)&_winrt_casted_result;
+            _winrt_abi_type->remove_UnmuteRequested(impl::bind_in(token));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)this;
+            _winrt_abi_type->remove_UnmuteRequested(impl::bind_in(token));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::RequestNewIncomingCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& contactNumber, winrt::Windows::Foundation::Uri const& contactImage, param::hstring const& serviceName, winrt::Windows::Foundation::Uri const& brandingImage, param::hstring const& callDetails, winrt::Windows::Foundation::Uri const& ringtone, winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& media, winrt::Windows::Foundation::TimeSpan const& ringTimeout, winrt::Windows::Phone::Networking::Voip::VoipPhoneCall& call) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::RequestNewIncomingCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& contactNumber, winrt::Windows::Foundation::Uri const& contactImage, param::hstring const& serviceName, winrt::Windows::Foundation::Uri const& brandingImage, param::hstring const& callDetails, winrt::Windows::Foundation::Uri const& ringtone, winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& media, winrt::Windows::Foundation::TimeSpan const& ringTimeout, winrt::Windows::Phone::Networking::Voip::VoipPhoneCall& call) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator)->RequestNewIncomingCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&contactImage), *(void**)(&serviceName), *(void**)(&brandingImage), *(void**)(&callDetails), *(void**)(&ringtone), static_cast<uint32_t>(media), impl::bind_in(ringTimeout), impl::bind_out(call)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->RequestNewIncomingCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&contactImage), *(void**)(&serviceName), *(void**)(&brandingImage), *(void**)(&callDetails), *(void**)(&ringtone), static_cast<uint32_t>(media), impl::bind_in(ringTimeout), impl::bind_out(call)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)this;
+            check_hresult(_winrt_abi_type->RequestNewIncomingCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&contactImage), *(void**)(&serviceName), *(void**)(&brandingImage), *(void**)(&callDetails), *(void**)(&ringtone), static_cast<uint32_t>(media), impl::bind_in(ringTimeout), impl::bind_out(call)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::RequestNewOutgoingCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& serviceName, winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& media, winrt::Windows::Phone::Networking::Voip::VoipPhoneCall& call) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::RequestNewOutgoingCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& serviceName, winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& media, param::vector<hstring> const& pAssociatedDeviceIds, winrt::Windows::Phone::Networking::Voip::VoipPhoneCall& call) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator)->RequestNewOutgoingCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&serviceName), static_cast<uint32_t>(media), impl::bind_out(call)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->RequestNewOutgoingCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&serviceName), static_cast<uint32_t>(media), *(void**)(&pAssociatedDeviceIds), impl::bind_out(call)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)this;
+            check_hresult(_winrt_abi_type->RequestNewOutgoingCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&serviceName), static_cast<uint32_t>(media), *(void**)(&pAssociatedDeviceIds), impl::bind_out(call)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::NotifyMuted() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::NotifyMuted() const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator)->NotifyMuted());
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->NotifyMuted());
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)this;
+            check_hresult(_winrt_abi_type->NotifyMuted());
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::NotifyUnmuted() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator<D>::NotifyUnmuted() const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator)->NotifyUnmuted());
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->NotifyUnmuted());
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator>**)this;
+            check_hresult(_winrt_abi_type->NotifyUnmuted());
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator2<D>::SetupNewAcceptedCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& contactNumber, param::hstring const& serviceName, winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& media, winrt::Windows::Phone::Networking::Voip::VoipPhoneCall& call) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator2<D>::SetupNewAcceptedCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& contactNumber, param::hstring const& serviceName, winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& media, param::vector<hstring> const& pAssociatedDeviceIds, winrt::Windows::Phone::Networking::Voip::VoipPhoneCall& call) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator2)->SetupNewAcceptedCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&serviceName), static_cast<uint32_t>(media), impl::bind_out(call)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->SetupNewAcceptedCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&serviceName), static_cast<uint32_t>(media), *(void**)(&pAssociatedDeviceIds), impl::bind_out(call)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator2>**)this;
+            check_hresult(_winrt_abi_type->SetupNewAcceptedCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&serviceName), static_cast<uint32_t>(media), *(void**)(&pAssociatedDeviceIds), impl::bind_out(call)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Phone::Networking::Voip::VoipPhoneCall) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator3<D>::RequestNewIncomingCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& contactNumber, winrt::Windows::Foundation::Uri const& contactImage, param::hstring const& serviceName, winrt::Windows::Foundation::Uri const& brandingImage, param::hstring const& callDetails, winrt::Windows::Foundation::Uri const& ringtone, winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& media, winrt::Windows::Foundation::TimeSpan const& ringTimeout, param::hstring const& contactRemoteId) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator3<D>::RequestNewIncomingCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& contactNumber, winrt::Windows::Foundation::Uri const& contactImage, param::hstring const& serviceName, winrt::Windows::Foundation::Uri const& brandingImage, param::hstring const& callDetails, winrt::Windows::Foundation::Uri const& ringtone, winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& media, winrt::Windows::Foundation::TimeSpan const& ringTimeout, param::hstring const& contactRemoteId, param::vector<hstring> const& pAssociatedDeviceIds) const
     {
         void* call{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator3)->RequestNewIncomingCallWithContactRemoteId(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&contactImage), *(void**)(&serviceName), *(void**)(&brandingImage), *(void**)(&callDetails), *(void**)(&ringtone), static_cast<uint32_t>(media), impl::bind_in(ringTimeout), *(void**)(&contactRemoteId), &call));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->RequestNewIncomingCallWithContactRemoteId(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&contactImage), *(void**)(&serviceName), *(void**)(&brandingImage), *(void**)(&callDetails), *(void**)(&ringtone), static_cast<uint32_t>(media), impl::bind_in(ringTimeout), *(void**)(&contactRemoteId), *(void**)(&pAssociatedDeviceIds), &call));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator3>**)this;
+            check_hresult(_winrt_abi_type->RequestNewIncomingCallWithContactRemoteId(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&contactImage), *(void**)(&serviceName), *(void**)(&brandingImage), *(void**)(&callDetails), *(void**)(&ringtone), static_cast<uint32_t>(media), impl::bind_in(ringTimeout), *(void**)(&contactRemoteId), *(void**)(&pAssociatedDeviceIds), &call));
+        }
         return winrt::Windows::Phone::Networking::Voip::VoipPhoneCall{ call, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator3<D>::RequestNewAppInitiatedCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& contactNumber, param::hstring const& serviceName, winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& media, winrt::Windows::Phone::Networking::Voip::VoipPhoneCall& call) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinator3<D>::RequestNewAppInitiatedCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& contactNumber, param::hstring const& serviceName, winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& media, param::vector<hstring> const& pAssociatedDeviceIds, winrt::Windows::Phone::Networking::Voip::VoipPhoneCall& call) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator3)->RequestNewAppInitiatedCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&serviceName), static_cast<uint32_t>(media), impl::bind_out(call)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->RequestNewAppInitiatedCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&serviceName), static_cast<uint32_t>(media), *(void**)(&pAssociatedDeviceIds), impl::bind_out(call)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator3>**)this;
+            check_hresult(_winrt_abi_type->RequestNewAppInitiatedCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&serviceName), static_cast<uint32_t>(media), *(void**)(&pAssociatedDeviceIds), impl::bind_out(call)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Phone::Networking::Voip::VoipCallCoordinator) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinatorStatics<D>::GetDefault() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinatorStatics<D>::GetDefault() const
     {
         void* coordinator{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorStatics)->GetDefault(&coordinator));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetDefault(&coordinator));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorStatics>**)this;
+            check_hresult(_winrt_abi_type->GetDefault(&coordinator));
+        }
         return winrt::Windows::Phone::Networking::Voip::VoipCallCoordinator{ coordinator, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinatorWithAppDeterminedUpgrade<D>::ConfirmNonSeamlessUpgrade(winrt::guid const& callUpgradeGuid) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinatorWithAppDeterminedUpgrade<D>::ConfirmNonSeamlessUpgrade(winrt::guid const& callUpgradeGuid) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithAppDeterminedUpgrade)->ConfirmNonSeamlessUpgrade(impl::bind_in(callUpgradeGuid)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithAppDeterminedUpgrade>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithAppDeterminedUpgrade, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithAppDeterminedUpgrade>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->ConfirmNonSeamlessUpgrade(impl::bind_in(callUpgradeGuid)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithAppDeterminedUpgrade>**)this;
+            check_hresult(_winrt_abi_type->ConfirmNonSeamlessUpgrade(impl::bind_in(callUpgradeGuid)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinatorWithAppDeterminedUpgrade<D>::CancelUpgrade(winrt::guid const& callUpgradeGuid) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinatorWithAppDeterminedUpgrade<D>::CancelUpgrade(winrt::guid const& callUpgradeGuid) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithAppDeterminedUpgrade)->CancelUpgrade(impl::bind_in(callUpgradeGuid)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithAppDeterminedUpgrade>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithAppDeterminedUpgrade, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithAppDeterminedUpgrade>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->CancelUpgrade(impl::bind_in(callUpgradeGuid)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithAppDeterminedUpgrade>**)this;
+            check_hresult(_winrt_abi_type->CancelUpgrade(impl::bind_in(callUpgradeGuid)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinatorWithUpgrade<D>::RequestOutgoingUpgradeToVideoCall(winrt::guid const& callUpgradeGuid, param::hstring const& context, param::hstring const& contactName, param::hstring const& serviceName, winrt::Windows::Phone::Networking::Voip::VoipPhoneCall& call) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinatorWithUpgrade<D>::RequestOutgoingUpgradeToVideoCall(winrt::guid const& callUpgradeGuid, param::hstring const& context, param::hstring const& contactName, param::hstring const& serviceName, winrt::Windows::Phone::Networking::Voip::VoipPhoneCall& call) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithUpgrade)->RequestOutgoingUpgradeToVideoCall(impl::bind_in(callUpgradeGuid), *(void**)(&context), *(void**)(&contactName), *(void**)(&serviceName), impl::bind_out(call)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithUpgrade>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithUpgrade, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithUpgrade>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->RequestOutgoingUpgradeToVideoCall(impl::bind_in(callUpgradeGuid), *(void**)(&context), *(void**)(&contactName), *(void**)(&serviceName), impl::bind_out(call)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithUpgrade>**)this;
+            check_hresult(_winrt_abi_type->RequestOutgoingUpgradeToVideoCall(impl::bind_in(callUpgradeGuid), *(void**)(&context), *(void**)(&contactName), *(void**)(&serviceName), impl::bind_out(call)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipCallCoordinatorWithUpgrade<D>::RequestIncomingUpgradeToVideoCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& contactNumber, winrt::Windows::Foundation::Uri const& contactImage, param::hstring const& serviceName, winrt::Windows::Foundation::Uri const& brandingImage, param::hstring const& callDetails, winrt::Windows::Foundation::Uri const& ringtone, winrt::Windows::Foundation::TimeSpan const& ringTimeout, winrt::Windows::Phone::Networking::Voip::VoipPhoneCall& call) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipCallCoordinatorWithUpgrade<D>::RequestIncomingUpgradeToVideoCall(param::hstring const& context, param::hstring const& contactName, param::hstring const& contactNumber, winrt::Windows::Foundation::Uri const& contactImage, param::hstring const& serviceName, winrt::Windows::Foundation::Uri const& brandingImage, param::hstring const& callDetails, winrt::Windows::Foundation::Uri const& ringtone, winrt::Windows::Foundation::TimeSpan const& ringTimeout, winrt::Windows::Phone::Networking::Voip::VoipPhoneCall& call) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithUpgrade)->RequestIncomingUpgradeToVideoCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&contactImage), *(void**)(&serviceName), *(void**)(&brandingImage), *(void**)(&callDetails), *(void**)(&ringtone), impl::bind_in(ringTimeout), impl::bind_out(call)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithUpgrade>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithUpgrade, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithUpgrade>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->RequestIncomingUpgradeToVideoCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&contactImage), *(void**)(&serviceName), *(void**)(&brandingImage), *(void**)(&callDetails), *(void**)(&ringtone), impl::bind_in(ringTimeout), impl::bind_out(call)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinatorWithUpgrade>**)this;
+            check_hresult(_winrt_abi_type->RequestIncomingUpgradeToVideoCall(*(void**)(&context), *(void**)(&contactName), *(void**)(&contactNumber), *(void**)(&contactImage), *(void**)(&serviceName), *(void**)(&brandingImage), *(void**)(&callDetails), *(void**)(&ringtone), impl::bind_in(ringTimeout), impl::bind_out(call)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(uint32_t) consume_Windows_Phone_Networking_Voip_IVoipOperation<D>::Id() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipOperation<D>::Id() const
     {
         uint32_t operationId{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipOperation)->get_Id(&operationId));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipOperation>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipOperation, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipOperation>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Id(&operationId));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipOperation>**)this;
+            check_hresult(_winrt_abi_type->get_Id(&operationId));
+        }
         return operationId;
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Phone::Networking::Voip::VoipOperationType) consume_Windows_Phone_Networking_Voip_IVoipOperation<D>::Type() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipOperation<D>::Type() const
     {
         winrt::Windows::Phone::Networking::Voip::VoipOperationType operationType{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipOperation)->get_Type(reinterpret_cast<int32_t*>(&operationType)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipOperation>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipOperation, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipOperation>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Type(reinterpret_cast<int32_t*>(&operationType)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipOperation>**)this;
+            check_hresult(_winrt_abi_type->get_Type(reinterpret_cast<int32_t*>(&operationType)));
+        }
         return operationType;
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Phone::Networking::Voip::IVoipOperation) consume_Windows_Phone_Networking_Voip_IVoipOperationsManager<D>::GetNextOperation() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipOperationsManager<D>::GetNextOperation() const
     {
         void* voipOperation{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipOperationsManager)->GetNextOperation(&voipOperation));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipOperationsManager>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipOperationsManager, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipOperationsManager>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetNextOperation(&voipOperation));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipOperationsManager>**)this;
+            check_hresult(_winrt_abi_type->GetNextOperation(&voipOperation));
+        }
         return winrt::Windows::Phone::Networking::Voip::IVoipOperation{ voipOperation, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::event_token) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::EndRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallStateChangeEventArgs> const& handler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::EndRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallStateChangeEventArgs> const& handler) const
     {
         winrt::event_token token{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->add_EndRequested(*(void**)(&handler), put_abi(token)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->add_EndRequested(*(void**)(&handler), put_abi(token)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->add_EndRequested(*(void**)(&handler), put_abi(token)));
+        }
         return token;
     }
-    template <typename D> typename consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::EndRequested_revoker consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::EndRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallStateChangeEventArgs> const& handler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::EndRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallStateChangeEventArgs> const& handler) const
     {
         return impl::make_event_revoker<D, EndRequested_revoker>(this, EndRequested(handler));
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::EndRequested(winrt::event_token const& token) const noexcept
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::EndRequested(winrt::event_token const& token) const noexcept
     {
-        WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->remove_EndRequested(impl::bind_in(token));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            _winrt_abi_type->remove_EndRequested(impl::bind_in(token));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            _winrt_abi_type->remove_EndRequested(impl::bind_in(token));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::event_token) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::HoldRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallStateChangeEventArgs> const& handler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::HoldRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallStateChangeEventArgs> const& handler) const
     {
         winrt::event_token token{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->add_HoldRequested(*(void**)(&handler), put_abi(token)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->add_HoldRequested(*(void**)(&handler), put_abi(token)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->add_HoldRequested(*(void**)(&handler), put_abi(token)));
+        }
         return token;
     }
-    template <typename D> typename consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::HoldRequested_revoker consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::HoldRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallStateChangeEventArgs> const& handler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::HoldRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallStateChangeEventArgs> const& handler) const
     {
         return impl::make_event_revoker<D, HoldRequested_revoker>(this, HoldRequested(handler));
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::HoldRequested(winrt::event_token const& token) const noexcept
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::HoldRequested(winrt::event_token const& token) const noexcept
     {
-        WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->remove_HoldRequested(impl::bind_in(token));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            _winrt_abi_type->remove_HoldRequested(impl::bind_in(token));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            _winrt_abi_type->remove_HoldRequested(impl::bind_in(token));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::event_token) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::ResumeRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallStateChangeEventArgs> const& handler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::ResumeRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallStateChangeEventArgs> const& handler) const
     {
         winrt::event_token token{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->add_ResumeRequested(*(void**)(&handler), put_abi(token)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->add_ResumeRequested(*(void**)(&handler), put_abi(token)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->add_ResumeRequested(*(void**)(&handler), put_abi(token)));
+        }
         return token;
     }
-    template <typename D> typename consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::ResumeRequested_revoker consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::ResumeRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallStateChangeEventArgs> const& handler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::ResumeRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallStateChangeEventArgs> const& handler) const
     {
         return impl::make_event_revoker<D, ResumeRequested_revoker>(this, ResumeRequested(handler));
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::ResumeRequested(winrt::event_token const& token) const noexcept
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::ResumeRequested(winrt::event_token const& token) const noexcept
     {
-        WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->remove_ResumeRequested(impl::bind_in(token));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            _winrt_abi_type->remove_ResumeRequested(impl::bind_in(token));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            _winrt_abi_type->remove_ResumeRequested(impl::bind_in(token));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::event_token) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::AnswerRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallAnswerEventArgs> const& acceptHandler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::AnswerRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallAnswerEventArgs> const& acceptHandler) const
     {
         winrt::event_token token{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->add_AnswerRequested(*(void**)(&acceptHandler), put_abi(token)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->add_AnswerRequested(*(void**)(&acceptHandler), put_abi(token)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->add_AnswerRequested(*(void**)(&acceptHandler), put_abi(token)));
+        }
         return token;
     }
-    template <typename D> typename consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::AnswerRequested_revoker consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::AnswerRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallAnswerEventArgs> const& acceptHandler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::AnswerRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallAnswerEventArgs> const& acceptHandler) const
     {
         return impl::make_event_revoker<D, AnswerRequested_revoker>(this, AnswerRequested(acceptHandler));
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::AnswerRequested(winrt::event_token const& token) const noexcept
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::AnswerRequested(winrt::event_token const& token) const noexcept
     {
-        WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->remove_AnswerRequested(impl::bind_in(token));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            _winrt_abi_type->remove_AnswerRequested(impl::bind_in(token));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            _winrt_abi_type->remove_AnswerRequested(impl::bind_in(token));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::event_token) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::RejectRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallRejectEventArgs> const& rejectHandler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::RejectRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallRejectEventArgs> const& rejectHandler) const
     {
         winrt::event_token token{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->add_RejectRequested(*(void**)(&rejectHandler), put_abi(token)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->add_RejectRequested(*(void**)(&rejectHandler), put_abi(token)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->add_RejectRequested(*(void**)(&rejectHandler), put_abi(token)));
+        }
         return token;
     }
-    template <typename D> typename consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::RejectRequested_revoker consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::RejectRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallRejectEventArgs> const& rejectHandler) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::RejectRequested(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall, winrt::Windows::Phone::Networking::Voip::CallRejectEventArgs> const& rejectHandler) const
     {
         return impl::make_event_revoker<D, RejectRequested_revoker>(this, RejectRequested(rejectHandler));
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::RejectRequested(winrt::event_token const& token) const noexcept
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::RejectRequested(winrt::event_token const& token) const noexcept
     {
-        WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->remove_RejectRequested(impl::bind_in(token));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            _winrt_abi_type->remove_RejectRequested(impl::bind_in(token));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            _winrt_abi_type->remove_RejectRequested(impl::bind_in(token));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::NotifyCallHeld() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::NotifyCallHeld() const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->NotifyCallHeld());
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->NotifyCallHeld());
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->NotifyCallHeld());
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::NotifyCallActive() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::NotifyCallActive() const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->NotifyCallActive());
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->NotifyCallActive());
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->NotifyCallActive());
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::NotifyCallEnded() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::NotifyCallEnded() const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->NotifyCallEnded());
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->NotifyCallEnded());
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->NotifyCallEnded());
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::ContactName() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::ContactName() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->get_ContactName(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_ContactName(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->get_ContactName(&value));
+        }
         return hstring{ value, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::ContactName(param::hstring const& value) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::ContactName(param::hstring const& value) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->put_ContactName(*(void**)(&value)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->put_ContactName(*(void**)(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->put_ContactName(*(void**)(&value)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Foundation::DateTime) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::StartTime() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::StartTime() const
     {
         winrt::Windows::Foundation::DateTime value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->get_StartTime(put_abi(value)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_StartTime(put_abi(value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->get_StartTime(put_abi(value)));
+        }
         return value;
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::StartTime(winrt::Windows::Foundation::DateTime const& value) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::StartTime(winrt::Windows::Foundation::DateTime const& value) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->put_StartTime(impl::bind_in(value)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->put_StartTime(impl::bind_in(value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->put_StartTime(impl::bind_in(value)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Phone::Networking::Voip::VoipCallMedia) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::CallMedia() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::CallMedia() const
     {
         winrt::Windows::Phone::Networking::Voip::VoipCallMedia value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->get_CallMedia(reinterpret_cast<uint32_t*>(&value)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_CallMedia(reinterpret_cast<uint32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->get_CallMedia(reinterpret_cast<uint32_t*>(&value)));
+        }
         return value;
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::CallMedia(winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& value) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall<D>::CallMedia(winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& value) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall)->put_CallMedia(static_cast<uint32_t>(value)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->put_CallMedia(static_cast<uint32_t>(value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall>**)this;
+            check_hresult(_winrt_abi_type->put_CallMedia(static_cast<uint32_t>(value)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall2<D>::TryShowAppUI() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall2<D>::TryShowAppUI() const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall2)->TryShowAppUI());
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->TryShowAppUI());
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall2>**)this;
+            check_hresult(_winrt_abi_type->TryShowAppUI());
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCall3<D>::NotifyCallAccepted(winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& media) const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall3<D>::NotifyCallAccepted(winrt::Windows::Phone::Networking::Voip::VoipCallMedia const& media) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall3)->NotifyCallAccepted(static_cast<uint32_t>(media)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->NotifyCallAccepted(static_cast<uint32_t>(media)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall3>**)this;
+            check_hresult(_winrt_abi_type->NotifyCallAccepted(static_cast<uint32_t>(media)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Phone_Networking_Voip_IVoipPhoneCallReady<D>::NotifyCallReady() const
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall4<D>::IsUsingAssociatedDevicesList() const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Phone::Networking::Voip::IVoipPhoneCallReady)->NotifyCallReady());
+        bool value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_IsUsingAssociatedDevicesList(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>**)this;
+            check_hresult(_winrt_abi_type->get_IsUsingAssociatedDevicesList(&value));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall4<D>::NotifyCallActive(param::iterable<hstring> const& associatedDeviceIds) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->NotifyCallActiveOnDevices(*(void**)(&associatedDeviceIds)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>**)this;
+            check_hresult(_winrt_abi_type->NotifyCallActiveOnDevices(*(void**)(&associatedDeviceIds)));
+        }
+    }
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall4<D>::AddAssociatedCallControlDevice(param::hstring const& deviceId) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->AddAssociatedCallControlDevice(*(void**)(&deviceId)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>**)this;
+            check_hresult(_winrt_abi_type->AddAssociatedCallControlDevice(*(void**)(&deviceId)));
+        }
+    }
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall4<D>::RemoveAssociatedCallControlDevice(param::hstring const& deviceId) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->RemoveAssociatedCallControlDevice(*(void**)(&deviceId)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>**)this;
+            check_hresult(_winrt_abi_type->RemoveAssociatedCallControlDevice(*(void**)(&deviceId)));
+        }
+    }
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall4<D>::SetAssociatedCallControlDevices(param::iterable<hstring> const& associatedDeviceIds) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->SetAssociatedCallControlDevices(*(void**)(&associatedDeviceIds)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>**)this;
+            check_hresult(_winrt_abi_type->SetAssociatedCallControlDevices(*(void**)(&associatedDeviceIds)));
+        }
+    }
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCall4<D>::GetAssociatedCallControlDevices() const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetAssociatedCallControlDevices(&result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>**)this;
+            check_hresult(_winrt_abi_type->GetAssociatedCallControlDevices(&result));
+        }
+        return winrt::Windows::Foundation::Collections::IVectorView<hstring>{ result, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Phone_Networking_Voip_IVoipPhoneCallReady<D>::NotifyCallReady() const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCallReady>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCallReady, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCallReady>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->NotifyCallReady());
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCallReady>**)this;
+            check_hresult(_winrt_abi_type->NotifyCallReady());
+        }
     }
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
@@ -277,6 +960,20 @@ namespace winrt::impl
         {
             typename D::abi_guard guard(this->shim());
             *value = detach_from<winrt::Windows::Phone::Networking::Voip::VoipCallMedia>(this->shim().AcceptedMedia());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::Phone::Networking::Voip::ICallAnswerEventArgs2> : produce_base<D, winrt::Windows::Phone::Networking::Voip::ICallAnswerEventArgs2>
+    {
+        int32_t __stdcall get_SourceDeviceId(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().SourceDeviceId());
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -382,11 +1079,11 @@ namespace winrt::impl
             return 0;
         }
         catch (...) { return to_hresult(); }
-        int32_t __stdcall RequestNewOutgoingCall(void* context, void* contactName, void* serviceName, uint32_t media, void** call) noexcept final try
+        int32_t __stdcall RequestNewOutgoingCall(void* context, void* contactName, void* serviceName, uint32_t media, void* pAssociatedDeviceIds, void** call) noexcept final try
         {
             clear_abi(call);
             typename D::abi_guard guard(this->shim());
-            this->shim().RequestNewOutgoingCall(*reinterpret_cast<hstring const*>(&context), *reinterpret_cast<hstring const*>(&contactName), *reinterpret_cast<hstring const*>(&serviceName), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipCallMedia const*>(&media), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall*>(call));
+            this->shim().RequestNewOutgoingCall(*reinterpret_cast<hstring const*>(&context), *reinterpret_cast<hstring const*>(&contactName), *reinterpret_cast<hstring const*>(&serviceName), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipCallMedia const*>(&media), *reinterpret_cast<winrt::Windows::Foundation::Collections::IVector<hstring> const*>(&pAssociatedDeviceIds), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall*>(call));
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -410,11 +1107,11 @@ namespace winrt::impl
     template <typename D>
     struct produce<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator2> : produce_base<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator2>
     {
-        int32_t __stdcall SetupNewAcceptedCall(void* context, void* contactName, void* contactNumber, void* serviceName, uint32_t media, void** call) noexcept final try
+        int32_t __stdcall SetupNewAcceptedCall(void* context, void* contactName, void* contactNumber, void* serviceName, uint32_t media, void* pAssociatedDeviceIds, void** call) noexcept final try
         {
             clear_abi(call);
             typename D::abi_guard guard(this->shim());
-            this->shim().SetupNewAcceptedCall(*reinterpret_cast<hstring const*>(&context), *reinterpret_cast<hstring const*>(&contactName), *reinterpret_cast<hstring const*>(&contactNumber), *reinterpret_cast<hstring const*>(&serviceName), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipCallMedia const*>(&media), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall*>(call));
+            this->shim().SetupNewAcceptedCall(*reinterpret_cast<hstring const*>(&context), *reinterpret_cast<hstring const*>(&contactName), *reinterpret_cast<hstring const*>(&contactNumber), *reinterpret_cast<hstring const*>(&serviceName), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipCallMedia const*>(&media), *reinterpret_cast<winrt::Windows::Foundation::Collections::IVector<hstring> const*>(&pAssociatedDeviceIds), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall*>(call));
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -424,19 +1121,19 @@ namespace winrt::impl
     template <typename D>
     struct produce<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator3> : produce_base<D, winrt::Windows::Phone::Networking::Voip::IVoipCallCoordinator3>
     {
-        int32_t __stdcall RequestNewIncomingCallWithContactRemoteId(void* context, void* contactName, void* contactNumber, void* contactImage, void* serviceName, void* brandingImage, void* callDetails, void* ringtone, uint32_t media, int64_t ringTimeout, void* contactRemoteId, void** call) noexcept final try
+        int32_t __stdcall RequestNewIncomingCallWithContactRemoteId(void* context, void* contactName, void* contactNumber, void* contactImage, void* serviceName, void* brandingImage, void* callDetails, void* ringtone, uint32_t media, int64_t ringTimeout, void* contactRemoteId, void* pAssociatedDeviceIds, void** call) noexcept final try
         {
             clear_abi(call);
             typename D::abi_guard guard(this->shim());
-            *call = detach_from<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall>(this->shim().RequestNewIncomingCall(*reinterpret_cast<hstring const*>(&context), *reinterpret_cast<hstring const*>(&contactName), *reinterpret_cast<hstring const*>(&contactNumber), *reinterpret_cast<winrt::Windows::Foundation::Uri const*>(&contactImage), *reinterpret_cast<hstring const*>(&serviceName), *reinterpret_cast<winrt::Windows::Foundation::Uri const*>(&brandingImage), *reinterpret_cast<hstring const*>(&callDetails), *reinterpret_cast<winrt::Windows::Foundation::Uri const*>(&ringtone), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipCallMedia const*>(&media), *reinterpret_cast<winrt::Windows::Foundation::TimeSpan const*>(&ringTimeout), *reinterpret_cast<hstring const*>(&contactRemoteId)));
+            *call = detach_from<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall>(this->shim().RequestNewIncomingCall(*reinterpret_cast<hstring const*>(&context), *reinterpret_cast<hstring const*>(&contactName), *reinterpret_cast<hstring const*>(&contactNumber), *reinterpret_cast<winrt::Windows::Foundation::Uri const*>(&contactImage), *reinterpret_cast<hstring const*>(&serviceName), *reinterpret_cast<winrt::Windows::Foundation::Uri const*>(&brandingImage), *reinterpret_cast<hstring const*>(&callDetails), *reinterpret_cast<winrt::Windows::Foundation::Uri const*>(&ringtone), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipCallMedia const*>(&media), *reinterpret_cast<winrt::Windows::Foundation::TimeSpan const*>(&ringTimeout), *reinterpret_cast<hstring const*>(&contactRemoteId), *reinterpret_cast<winrt::Windows::Foundation::Collections::IVector<hstring> const*>(&pAssociatedDeviceIds)));
             return 0;
         }
         catch (...) { return to_hresult(); }
-        int32_t __stdcall RequestNewAppInitiatedCall(void* context, void* contactName, void* contactNumber, void* serviceName, uint32_t media, void** call) noexcept final try
+        int32_t __stdcall RequestNewAppInitiatedCall(void* context, void* contactName, void* contactNumber, void* serviceName, uint32_t media, void* pAssociatedDeviceIds, void** call) noexcept final try
         {
             clear_abi(call);
             typename D::abi_guard guard(this->shim());
-            this->shim().RequestNewAppInitiatedCall(*reinterpret_cast<hstring const*>(&context), *reinterpret_cast<hstring const*>(&contactName), *reinterpret_cast<hstring const*>(&contactNumber), *reinterpret_cast<hstring const*>(&serviceName), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipCallMedia const*>(&media), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall*>(call));
+            this->shim().RequestNewAppInitiatedCall(*reinterpret_cast<hstring const*>(&context), *reinterpret_cast<hstring const*>(&contactName), *reinterpret_cast<hstring const*>(&contactNumber), *reinterpret_cast<hstring const*>(&serviceName), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipCallMedia const*>(&media), *reinterpret_cast<winrt::Windows::Foundation::Collections::IVector<hstring> const*>(&pAssociatedDeviceIds), *reinterpret_cast<winrt::Windows::Phone::Networking::Voip::VoipPhoneCall*>(call));
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -699,6 +1396,55 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4> : produce_base<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4>
+    {
+        int32_t __stdcall get_IsUsingAssociatedDevicesList(bool* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<bool>(this->shim().IsUsingAssociatedDevicesList());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall NotifyCallActiveOnDevices(void* associatedDeviceIds) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().NotifyCallActive(*reinterpret_cast<winrt::Windows::Foundation::Collections::IIterable<hstring> const*>(&associatedDeviceIds));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall AddAssociatedCallControlDevice(void* deviceId) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().AddAssociatedCallControlDevice(*reinterpret_cast<hstring const*>(&deviceId));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall RemoveAssociatedCallControlDevice(void* deviceId) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().RemoveAssociatedCallControlDevice(*reinterpret_cast<hstring const*>(&deviceId));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall SetAssociatedCallControlDevices(void* associatedDeviceIds) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().SetAssociatedCallControlDevices(*reinterpret_cast<winrt::Windows::Foundation::Collections::IIterable<hstring> const*>(&associatedDeviceIds));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall GetAssociatedCallControlDevices(void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::Foundation::Collections::IVectorView<hstring>>(this->shim().GetAssociatedCallControlDevices());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCallReady> : produce_base<D, winrt::Windows::Phone::Networking::Voip::IVoipPhoneCallReady>
     {
         int32_t __stdcall NotifyCallReady() noexcept final try
@@ -753,6 +1499,7 @@ namespace std
 {
 #ifndef WINRT_LEAN_AND_MEAN
     template<> struct hash<winrt::Windows::Phone::Networking::Voip::ICallAnswerEventArgs> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Phone::Networking::Voip::ICallAnswerEventArgs2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Phone::Networking::Voip::ICallRejectEventArgs> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Phone::Networking::Voip::ICallStateChangeEventArgs> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Phone::Networking::Voip::IMuteChangeEventArgs> : winrt::impl::hash_base {};
@@ -768,6 +1515,7 @@ namespace std
     template<> struct hash<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall3> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCall4> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Phone::Networking::Voip::IVoipPhoneCallReady> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Phone::Networking::Voip::CallAnswerEventArgs> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Phone::Networking::Voip::CallRejectEventArgs> : winrt::impl::hash_base {};

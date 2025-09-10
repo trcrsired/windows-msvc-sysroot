@@ -105,13 +105,13 @@ typedef enum _RTC_ErrorNumber {
     typedef struct _RTC_ALLOCA_NODE {
         __int32 guard1;
         struct _RTC_ALLOCA_NODE *next;
-#if defined (_M_IX86) || defined (_M_ARM)
+#if defined (_M_IX86)
         __int32 dummypad;
-#endif  /* defined (_M_IX86) || defined (_M_ARM) */
+#endif  /* defined (_M_IX86) */
         size_t allocaSize;
-#if defined (_M_IX86) || defined (_M_ARM)
+#if defined (_M_IX86)
         __int32 dummypad2;
-#endif  /* defined (_M_IX86) || defined (_M_ARM) */
+#endif  /* defined (_M_IX86) */
         __int32 guard2[3];
     } _RTC_ALLOCA_NODE;
 #pragma pack(pop)

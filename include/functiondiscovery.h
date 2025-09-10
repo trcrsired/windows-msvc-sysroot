@@ -95,7 +95,7 @@ typedef struct PropertyStoreCollection PropertyStoreCollection;
 #include "oaidl.h"
 #include "ocidl.h"
 #include "propsys.h"
-#include "functiondiscoveryapi.h"
+#include "FunctionDiscoveryAPI.h"
 
 #ifdef __cplusplus
 extern "C"{

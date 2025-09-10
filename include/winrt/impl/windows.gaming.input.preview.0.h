@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,8 +8,7 @@
 #define WINRT_Windows_Gaming_Input_Preview_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
-    template <typename K, typename V> struct __declspec(empty_bases) IMapView;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
+    template <typename K, typename V> struct WINRT_IMPL_EMPTY_BASES IMapView;
 }
 WINRT_EXPORT namespace winrt::Windows::Gaming::Input
 {
@@ -135,7 +134,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Gaming::Input::Preview::LegacyGipGameControllerProvider>{ using type = winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider; };
     template <> struct abi<winrt::Windows::Gaming::Input::Preview::IGameControllerProviderInfoStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetParentProviderId(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetProviderId(void*, void**) noexcept = 0;
@@ -143,7 +142,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_BatteryChargingState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_BatteryKind(int32_t*) noexcept = 0;
@@ -165,7 +164,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromGameController(void*, void**) noexcept = 0;
             virtual int32_t __stdcall FromGameControllerProvider(void*, void**) noexcept = 0;
@@ -178,8 +177,8 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Gaming_Input_Preview_IGameControllerProviderInfoStatics
     {
-        WINRT_IMPL_AUTO(hstring) GetParentProviderId(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider) const;
-        WINRT_IMPL_AUTO(hstring) GetProviderId(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider) const;
+        auto GetParentProviderId(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider) const;
+        auto GetProviderId(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider) const;
     };
     template <> struct consume<winrt::Windows::Gaming::Input::Preview::IGameControllerProviderInfoStatics>
     {
@@ -188,22 +187,22 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Gaming::Input::Preview::GameControllerBatteryChargingState) BatteryChargingState() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Gaming::Input::Preview::GameControllerBatteryKind) BatteryKind() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Gaming::Input::Preview::GameControllerBatteryLevel) BatteryLevel() const;
-        WINRT_IMPL_AUTO(winrt::Windows::Gaming::Input::Preview::GameControllerFirmwareCorruptReason) GetDeviceFirmwareCorruptionState() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsFirmwareCorrupted() const;
-        WINRT_IMPL_AUTO(bool) IsInterfaceSupported(winrt::guid const& interfaceId) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsSyntheticDevice() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Collections::IVectorView<hstring>) PreferredTypes() const;
-        WINRT_IMPL_AUTO(void) ExecuteCommand(winrt::Windows::Gaming::Input::Preview::DeviceCommand const& command) const;
-        WINRT_IMPL_AUTO(void) SetHomeLedIntensity(uint8_t intensity) const;
-        WINRT_IMPL_AUTO(com_array<uint8_t>) GetExtendedDeviceInfo() const;
-        WINRT_IMPL_AUTO(void) SetHeadsetOperation(winrt::Windows::Gaming::Input::Preview::HeadsetOperation const& operation, array_view<uint8_t const> buffer) const;
-        WINRT_IMPL_AUTO(com_array<uint8_t>) GetHeadsetOperation(winrt::Windows::Gaming::Input::Preview::HeadsetOperation const& operation) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(uint32_t) AppCompatVersion() const;
-        WINRT_IMPL_AUTO(void) SetStandardControllerButtonRemapping(winrt::Windows::System::User const& user, bool previous, param::map_view<winrt::Windows::Gaming::Input::Preview::RemappingButtonCategory, winrt::Windows::Foundation::IInspectable> const& remapping) const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::Collections::IMapView<winrt::Windows::Gaming::Input::Preview::RemappingButtonCategory, winrt::Windows::Foundation::IInspectable>) GetStandardControllerButtonRemapping(winrt::Windows::System::User const& user, bool previous) const;
+        [[nodiscard]] auto BatteryChargingState() const;
+        [[nodiscard]] auto BatteryKind() const;
+        [[nodiscard]] auto BatteryLevel() const;
+        auto GetDeviceFirmwareCorruptionState() const;
+        [[nodiscard]] auto IsFirmwareCorrupted() const;
+        auto IsInterfaceSupported(winrt::guid const& interfaceId) const;
+        [[nodiscard]] auto IsSyntheticDevice() const;
+        [[nodiscard]] auto PreferredTypes() const;
+        auto ExecuteCommand(winrt::Windows::Gaming::Input::Preview::DeviceCommand const& command) const;
+        auto SetHomeLedIntensity(uint8_t intensity) const;
+        auto GetExtendedDeviceInfo() const;
+        auto SetHeadsetOperation(winrt::Windows::Gaming::Input::Preview::HeadsetOperation const& operation, array_view<uint8_t const> buffer) const;
+        auto GetHeadsetOperation(winrt::Windows::Gaming::Input::Preview::HeadsetOperation const& operation) const;
+        [[nodiscard]] auto AppCompatVersion() const;
+        auto SetStandardControllerButtonRemapping(winrt::Windows::System::User const& user, bool previous, param::map_view<winrt::Windows::Gaming::Input::Preview::RemappingButtonCategory, winrt::Windows::Foundation::IInspectable> const& remapping) const;
+        auto GetStandardControllerButtonRemapping(winrt::Windows::System::User const& user, bool previous) const;
     };
     template <> struct consume<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>
     {
@@ -212,12 +211,12 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProviderStatics
     {
-        WINRT_IMPL_AUTO(winrt::Windows::Gaming::Input::Preview::LegacyGipGameControllerProvider) FromGameController(winrt::Windows::Gaming::Input::IGameController const& controller) const;
-        WINRT_IMPL_AUTO(winrt::Windows::Gaming::Input::Preview::LegacyGipGameControllerProvider) FromGameControllerProvider(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider) const;
-        WINRT_IMPL_AUTO(void) PairPilotToCopilot(winrt::Windows::System::User const& user, param::hstring const& pilotControllerProviderId, param::hstring const& copilotControllerProviderId) const;
-        WINRT_IMPL_AUTO(void) ClearPairing(winrt::Windows::System::User const& user, param::hstring const& controllerProviderId) const;
-        WINRT_IMPL_AUTO(hstring) IsPilot(winrt::Windows::System::User const& user, param::hstring const& controllerProviderId) const;
-        WINRT_IMPL_AUTO(hstring) IsCopilot(winrt::Windows::System::User const& user, param::hstring const& controllerProviderId) const;
+        auto FromGameController(winrt::Windows::Gaming::Input::IGameController const& controller) const;
+        auto FromGameControllerProvider(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider) const;
+        auto PairPilotToCopilot(winrt::Windows::System::User const& user, param::hstring const& pilotControllerProviderId, param::hstring const& copilotControllerProviderId) const;
+        auto ClearPairing(winrt::Windows::System::User const& user, param::hstring const& controllerProviderId) const;
+        auto IsPilot(winrt::Windows::System::User const& user, param::hstring const& controllerProviderId) const;
+        auto IsCopilot(winrt::Windows::System::User const& user, param::hstring const& controllerProviderId) const;
     };
     template <> struct consume<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>
     {

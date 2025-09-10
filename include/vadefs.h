@@ -11,6 +11,10 @@
 #pragma once
 #define _INC_VADEFS
 
+#ifdef _M_ARM
+#error Support for 32-bit ARM has been permanently removed.
+#endif
+
 #define _CRT_PACKING 8
 #pragma pack(push, _CRT_PACKING)
 
@@ -79,7 +83,7 @@ extern "C" {
     #define _ADDRESSOF(v) (&(v))
 #endif
 
-#if (defined _M_ARM || defined _M_HYBRID_X86_ARM64) && !defined _M_CEE_PURE
+#if defined _M_HYBRID_X86_ARM64 && !defined _M_CEE_PURE
     #define _VA_ALIGN       4
     #define _SLOTSIZEOF(t)  ((sizeof(t) + _VA_ALIGN - 1) & ~(_VA_ALIGN - 1))
     #define _APALIGN(t,ap)  (((va_list)0 - (ap)) & (__alignof(t) - 1))
@@ -92,7 +96,7 @@ extern "C" {
     #define _APALIGN(t,ap)  (__alignof(t))
 #endif
 
-#if defined _M_CEE_PURE || (defined _M_CEE && !defined _M_ARM && !defined _M_ARM64)
+#if defined _M_CEE_PURE || (defined _M_CEE && !defined _M_ARM64)
 
     void  __cdecl __va_start(va_list*, ...);
     void* __cdecl __va_arg(va_list*, ...);
@@ -109,18 +113,6 @@ extern "C" {
     #define __crt_va_start_a(ap, v) ((void)(ap = (va_list)_ADDRESSOF(v) + _INTSIZEOF(v)))
     #define __crt_va_arg(ap, t)     (*(t*)((ap += _INTSIZEOF(t)) - _INTSIZEOF(t)))
     #define __crt_va_end(ap)        ((void)(ap = (va_list)0))
-
-#elif defined _M_ARM
-
-    #ifdef __cplusplus
-        void __cdecl __va_start(va_list*, ...);
-        #define __crt_va_start_a(ap, v) ((void)(__va_start(&ap, _ADDRESSOF(v), _SLOTSIZEOF(v), _ADDRESSOF(v))))
-    #else
-        #define __crt_va_start_a(ap, v) ((void)(ap = (va_list)_ADDRESSOF(v) + _SLOTSIZEOF(v)))
-    #endif
-
-    #define __crt_va_arg(ap, t) (*(t*)((ap += _SLOTSIZEOF(t) + _APALIGN(t,ap)) - _SLOTSIZEOF(t)))
-    #define __crt_va_end(ap)    ((void)(ap = (va_list)0))
 
 #elif defined _M_HYBRID_X86_ARM64
     void __cdecl __va_start(va_list*, ...);

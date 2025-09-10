@@ -101,7 +101,7 @@ typedef struct RemoteTpmVirtualSmartCardManager RemoteTpmVirtualSmartCardManager
 
 /* header files for imported files */
 #include "oaidl.h"
-#include "tpmvscattestation.h"
+#include "TpmVscAttestation.h"
 
 #ifdef __cplusplus
 extern "C"{

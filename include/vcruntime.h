@@ -101,11 +101,7 @@ _CRT_BEGIN_C_HEADER
     #ifdef _KERNEL_MODE
         #define _HAS_EXCEPTIONS 0
     #else
-        #if defined(__cplusplus) && defined(__cpp_exceptions)
-            #define _HAS_EXCEPTIONS 1
-        #else
-            #define _HAS_EXCEPTIONS 0
-        #endif
+        #define _HAS_EXCEPTIONS 1
     #endif /* _KERNEL_MODE */
 #endif /* _HAS_EXCEPTIONS */
 
@@ -235,7 +231,7 @@ _CRT_BEGIN_C_HEADER
     #endif
 #endif
 
-#if defined _M_X64 || defined _M_ARM || defined _M_ARM64
+#if defined _M_X64 || defined _M_ARM64
     #define _UNALIGNED __unaligned
 #else
     #define _UNALIGNED
@@ -295,6 +291,14 @@ _CRT_BEGIN_C_HEADER
     #endif
 #endif // _HAS_CXX23
 
+#ifndef _HAS_CXX26
+    #if _HAS_CXX23 && _STL_LANG > 202302L
+        #define _HAS_CXX26 1
+    #else
+        #define _HAS_CXX26 0
+    #endif
+#endif // _HAS_CXX26
+
 #undef _STL_LANG
 
 #if _HAS_CXX20 && !_HAS_CXX17
@@ -303,6 +307,10 @@ _CRT_BEGIN_C_HEADER
 
 #if _HAS_CXX23 && !_HAS_CXX20
     #error _HAS_CXX23 must imply _HAS_CXX20.
+#endif
+
+#if _HAS_CXX26 && !_HAS_CXX23
+    #error _HAS_CXX26 must imply _HAS_CXX23.
 #endif
 
 // [[nodiscard]] attributes on STL functions
@@ -399,10 +407,6 @@ extern uintptr_t __security_cookie;
     #define __vcrt_malloc_normal(_Size) malloc(_Size)
     #define __vcrt_calloc_normal(_Count, _Size) calloc(_Count, _Size)
     #define __vcrt_free_normal(_Memory) free(_Memory)
-#endif
-
-#ifndef _USE_STD_VECTOR_ALGORITHMS
-#define _USE_STD_VECTOR_ALGORITHMS 0
 #endif
 
 _CRT_END_C_HEADER

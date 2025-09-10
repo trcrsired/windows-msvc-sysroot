@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -11,7 +11,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
     struct EventRegistrationToken;
     struct IAsyncAction;
     struct Size;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Imaging
 {
@@ -33,6 +33,7 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Preview::Notes
     struct NoteVisibilityChangedPreviewEventArgs;
     struct NotesWindowManagerPreview;
     struct NotesWindowManagerPreviewShowNoteOptions;
+    struct PreviewNotesContract;
 }
 namespace winrt::impl
 {
@@ -56,6 +57,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreview2> = L"Windows.ApplicationModel.Preview.Notes.INotesWindowManagerPreview2";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreviewShowNoteOptions> = L"Windows.ApplicationModel.Preview.Notes.INotesWindowManagerPreviewShowNoteOptions";
     template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreviewStatics> = L"Windows.ApplicationModel.Preview.Notes.INotesWindowManagerPreviewStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::ApplicationModel::Preview::Notes::PreviewNotesContract> = L"Windows.ApplicationModel.Preview.Notes.PreviewNotesContract";
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Preview::Notes::INotePlacementChangedPreviewEventArgs>{ 0x491D57B7,0xF780,0x4E7F,{ 0xA9,0x39,0x9A,0x4C,0xAF,0x96,0x52,0x14 } }; // 491D57B7-F780-4E7F-A939-9A4CAF965214
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Preview::Notes::INoteVisibilityChangedPreviewEventArgs>{ 0x0E34649E,0x3815,0x4FF6,{ 0x83,0xB3,0xA1,0x4D,0x17,0x12,0x0E,0x24 } }; // 0E34649E-3815-4FF6-83B3-A14D17120E24
     template <> inline constexpr guid guid_v<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreview>{ 0xDC2AC23E,0x4850,0x4F13,{ 0x9C,0xC7,0xFF,0x48,0x7E,0xFD,0xFC,0xDE } }; // DC2AC23E-4850-4F13-9CC7-FF487EFDFCDE
@@ -68,14 +70,14 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreviewShowNoteOptions>{ using type = winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreviewShowNoteOptions; };
     template <> struct abi<winrt::Windows::ApplicationModel::Preview::Notes::INotePlacementChangedPreviewEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ViewId(int32_t*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Preview::Notes::INoteVisibilityChangedPreviewEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ViewId(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_IsVisible(bool*) noexcept = 0;
@@ -83,7 +85,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreview>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsScreenLocked(bool*) noexcept = 0;
             virtual int32_t __stdcall ShowNote(int32_t) noexcept = 0;
@@ -104,7 +106,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreview2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall ShowNoteRelativeToWithOptions(int32_t, int32_t, void*) noexcept = 0;
             virtual int32_t __stdcall ShowNoteWithPlacementWithOptions(int32_t, void*, void*) noexcept = 0;
@@ -114,7 +116,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreviewShowNoteOptions>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ShowWithFocus(bool*) noexcept = 0;
             virtual int32_t __stdcall put_ShowWithFocus(bool) noexcept = 0;
@@ -122,7 +124,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreviewStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentApp(void**) noexcept = 0;
         };
@@ -130,7 +132,7 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_ApplicationModel_Preview_Notes_INotePlacementChangedPreviewEventArgs
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(int32_t) ViewId() const;
+        [[nodiscard]] auto ViewId() const;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Preview::Notes::INotePlacementChangedPreviewEventArgs>
     {
@@ -139,8 +141,8 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_ApplicationModel_Preview_Notes_INoteVisibilityChangedPreviewEventArgs
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(int32_t) ViewId() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsVisible() const;
+        [[nodiscard]] auto ViewId() const;
+        [[nodiscard]] auto IsVisible() const;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Preview::Notes::INoteVisibilityChangedPreviewEventArgs>
     {
@@ -149,27 +151,27 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_ApplicationModel_Preview_Notes_INotesWindowManagerPreview
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsScreenLocked() const;
-        WINRT_IMPL_AUTO(void) ShowNote(int32_t noteViewId) const;
-        WINRT_IMPL_AUTO(void) ShowNoteRelativeTo(int32_t noteViewId, int32_t anchorNoteViewId) const;
-        WINRT_IMPL_AUTO(void) ShowNoteWithPlacement(int32_t noteViewId, winrt::Windows::Storage::Streams::IBuffer const& data) const;
-        WINRT_IMPL_AUTO(void) HideNote(int32_t noteViewId) const;
-        WINRT_IMPL_AUTO(winrt::Windows::Storage::Streams::IBuffer) GetNotePlacement(int32_t noteViewId) const;
-        WINRT_IMPL_AUTO(bool) TrySetNoteSize(int32_t noteViewId, winrt::Windows::Foundation::Size const& size) const;
-        WINRT_IMPL_AUTO(void) SetFocusToNextView() const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncAction) SetNotesThumbnailAsync(winrt::Windows::Storage::Streams::IBuffer const& thumbnail) const;
-        WINRT_IMPL_AUTO(winrt::event_token) SystemLockStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreview, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        [[nodiscard]] auto IsScreenLocked() const;
+        auto ShowNote(int32_t noteViewId) const;
+        auto ShowNoteRelativeTo(int32_t noteViewId, int32_t anchorNoteViewId) const;
+        auto ShowNoteWithPlacement(int32_t noteViewId, winrt::Windows::Storage::Streams::IBuffer const& data) const;
+        auto HideNote(int32_t noteViewId) const;
+        auto GetNotePlacement(int32_t noteViewId) const;
+        auto TrySetNoteSize(int32_t noteViewId, winrt::Windows::Foundation::Size const& size) const;
+        auto SetFocusToNextView() const;
+        auto SetNotesThumbnailAsync(winrt::Windows::Storage::Streams::IBuffer const& thumbnail) const;
+        auto SystemLockStateChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreview, winrt::Windows::Foundation::IInspectable> const& handler) const;
         using SystemLockStateChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreview, &impl::abi_t<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreview>::remove_SystemLockStateChanged>;
-        [[nodiscard]] SystemLockStateChanged_revoker SystemLockStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreview, winrt::Windows::Foundation::IInspectable> const& handler) const;
-        WINRT_IMPL_AUTO(void) SystemLockStateChanged(winrt::event_token const& token) const noexcept;
-        WINRT_IMPL_AUTO(winrt::event_token) NotePlacementChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreview, winrt::Windows::ApplicationModel::Preview::Notes::NotePlacementChangedPreviewEventArgs> const& handler) const;
+        [[nodiscard]] auto SystemLockStateChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreview, winrt::Windows::Foundation::IInspectable> const& handler) const;
+        auto SystemLockStateChanged(winrt::event_token const& token) const noexcept;
+        auto NotePlacementChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreview, winrt::Windows::ApplicationModel::Preview::Notes::NotePlacementChangedPreviewEventArgs> const& handler) const;
         using NotePlacementChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreview, &impl::abi_t<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreview>::remove_NotePlacementChanged>;
-        [[nodiscard]] NotePlacementChanged_revoker NotePlacementChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreview, winrt::Windows::ApplicationModel::Preview::Notes::NotePlacementChangedPreviewEventArgs> const& handler) const;
-        WINRT_IMPL_AUTO(void) NotePlacementChanged(winrt::event_token const& token) const noexcept;
-        WINRT_IMPL_AUTO(winrt::event_token) NoteVisibilityChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreview, winrt::Windows::ApplicationModel::Preview::Notes::NoteVisibilityChangedPreviewEventArgs> const& handler) const;
+        [[nodiscard]] auto NotePlacementChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreview, winrt::Windows::ApplicationModel::Preview::Notes::NotePlacementChangedPreviewEventArgs> const& handler) const;
+        auto NotePlacementChanged(winrt::event_token const& token) const noexcept;
+        auto NoteVisibilityChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreview, winrt::Windows::ApplicationModel::Preview::Notes::NoteVisibilityChangedPreviewEventArgs> const& handler) const;
         using NoteVisibilityChanged_revoker = impl::event_revoker<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreview, &impl::abi_t<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreview>::remove_NoteVisibilityChanged>;
-        [[nodiscard]] NoteVisibilityChanged_revoker NoteVisibilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreview, winrt::Windows::ApplicationModel::Preview::Notes::NoteVisibilityChangedPreviewEventArgs> const& handler) const;
-        WINRT_IMPL_AUTO(void) NoteVisibilityChanged(winrt::event_token const& token) const noexcept;
+        [[nodiscard]] auto NoteVisibilityChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreview, winrt::Windows::ApplicationModel::Preview::Notes::NoteVisibilityChangedPreviewEventArgs> const& handler) const;
+        auto NoteVisibilityChanged(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreview>
     {
@@ -178,10 +180,10 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_ApplicationModel_Preview_Notes_INotesWindowManagerPreview2
     {
-        WINRT_IMPL_AUTO(void) ShowNoteRelativeTo(int32_t noteViewId, int32_t anchorNoteViewId, winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreviewShowNoteOptions const& options) const;
-        WINRT_IMPL_AUTO(void) ShowNoteWithPlacement(int32_t noteViewId, winrt::Windows::Storage::Streams::IBuffer const& data, winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreviewShowNoteOptions const& options) const;
-        WINRT_IMPL_AUTO(void) SetFocusToPreviousView() const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncAction) SetThumbnailImageForTaskSwitcherAsync(winrt::Windows::Graphics::Imaging::SoftwareBitmap const& bitmap) const;
+        auto ShowNoteRelativeTo(int32_t noteViewId, int32_t anchorNoteViewId, winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreviewShowNoteOptions const& options) const;
+        auto ShowNoteWithPlacement(int32_t noteViewId, winrt::Windows::Storage::Streams::IBuffer const& data, winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreviewShowNoteOptions const& options) const;
+        auto SetFocusToPreviousView() const;
+        auto SetThumbnailImageForTaskSwitcherAsync(winrt::Windows::Graphics::Imaging::SoftwareBitmap const& bitmap) const;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreview2>
     {
@@ -190,8 +192,8 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_ApplicationModel_Preview_Notes_INotesWindowManagerPreviewShowNoteOptions
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) ShowWithFocus() const;
-        WINRT_IMPL_AUTO(void) ShowWithFocus(bool value) const;
+        [[nodiscard]] auto ShowWithFocus() const;
+        auto ShowWithFocus(bool value) const;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreviewShowNoteOptions>
     {
@@ -200,7 +202,7 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_ApplicationModel_Preview_Notes_INotesWindowManagerPreviewStatics
     {
-        WINRT_IMPL_AUTO(winrt::Windows::ApplicationModel::Preview::Notes::NotesWindowManagerPreview) GetForCurrentApp() const;
+        auto GetForCurrentApp() const;
     };
     template <> struct consume<winrt::Windows::ApplicationModel::Preview::Notes::INotesWindowManagerPreviewStatics>
     {

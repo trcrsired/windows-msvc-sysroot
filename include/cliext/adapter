@@ -192,7 +192,7 @@ public:
 	// mutators
 	void swap(collection_adapter% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, swap
 			_Mycont_t^ _Tcont = _Mycont;
 
@@ -291,7 +291,7 @@ public:
 	// mutators
 	void swap(collection_adapter% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, swap
 			_Mycont_t^ _Tcont = _Mycont;
 
@@ -391,7 +391,7 @@ public:
 	// mutators
 	void swap(collection_adapter% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, swap
 			_Mycont_t^ _Tcont = _Mycont;
 
@@ -490,7 +490,7 @@ public:
 	// mutators
 	void swap(collection_adapter% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, swap
 			_Mycont_t^ _Tcont = _Mycont;
 
@@ -590,7 +590,7 @@ public:
 	// mutators
 	void swap(collection_adapter% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, swap
 			_Mycont_t^ _Tcont = _Mycont;
 
@@ -697,7 +697,7 @@ public:
 	// mutators
 	void swap(collection_adapter% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, swap
 			_Mycont_t^ _Tcont = _Mycont;
 
@@ -834,7 +834,7 @@ public:
 	// mutators
 	void swap(collection_adapter% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, swap
 			_Mycont_t^ _Tcont = _Mycont;
 
@@ -971,7 +971,7 @@ public:
 	// mutators
 	void swap(collection_adapter% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, swap
 			_Mycont_t^ _Tcont = _Mycont;
 
@@ -1137,7 +1137,7 @@ public:
 
 	range_impl% operator=(range_impl% _Right)
 		{	// assign
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, do it
 			_Myfirst = _Right._Myfirst;
 			_Mylast = _Right._Mylast;
@@ -1232,6 +1232,10 @@ public:
 	typedef range_base<_Iter_t, _Value_t, _Is_ref> _Mytype_t;
 	typedef range_impl<_Iter_t, _Value_t, _Is_ref> _Mybase_t;
 
+	typedef typename _Mybase_t::_Myarray_t _Myarray_t;
+	typedef typename _Mybase_t::size_type size_type;
+	typedef typename _Mybase_t::value_type value_type;
+
 	// basics
 	range_base()
 		:	_Mybase_t()
@@ -1262,7 +1266,7 @@ private:
 		virtual size_type get() sealed
 			= System::Collections::Generic::ICollection<_Value_t>::Count::get
 			{	// get element count
-			return (distance(_Myfirst, _Mylast));
+			return (distance(this->_Myfirst, this->_Mylast));
 			}
 		};
 
@@ -1281,7 +1285,7 @@ private:
 		{	// copy to _Dest, beginning at _First
 		int _Idx = 0;
 
-		for (_Iter_t _Next = _Myfirst; _Next != _Mylast; ++_Next, ++_Idx)
+		for (_Iter_t _Next = this->_Myfirst; _Next != this->_Mylast; ++_Next, ++_Idx)
 			{	// copy front to back
 			_Dest[_First + _Idx] = *_Next;
 			}
@@ -1291,7 +1295,7 @@ private:
 		GetEnumerator() sealed
 		= System::Collections::Generic::IEnumerable<_Value_t>::GetEnumerator
 		{	// get enumerator for the container
-		return (gcnew range_enumerator<_Iter_t, _Value_t>(_Myfirst, _Mylast));
+		return (gcnew range_enumerator<_Iter_t, _Value_t>(this->_Myfirst, this->_Mylast));
 		}
 
 	// mutators
@@ -1310,7 +1314,7 @@ private:
 	virtual bool Contains(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Contains
 		{	// search for element matching value _Val
-		for (_Iter_t _Next = _Myfirst; _Next != _Mylast; ++_Next)
+		for (_Iter_t _Next = this->_Myfirst; _Next != this->_Mylast; ++_Next)
 			{	// compare for object equality
 			value_type _Elem = *_Next;
 

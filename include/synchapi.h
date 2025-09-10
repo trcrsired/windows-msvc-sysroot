@@ -44,6 +44,7 @@ InitializeSRWLock(
 
 WINBASEAPI
 _Releases_exclusive_lock_(*SRWLock)
+_Releases_nonreentrant_lock_(*SRWLock)
 VOID
 WINAPI
 ReleaseSRWLockExclusive(
@@ -52,6 +53,7 @@ ReleaseSRWLockExclusive(
 
 WINBASEAPI
 _Releases_shared_lock_(*SRWLock)
+_Releases_nonreentrant_lock_(*SRWLock)
 VOID
 WINAPI
 ReleaseSRWLockShared(
@@ -60,6 +62,7 @@ ReleaseSRWLockShared(
 
 WINBASEAPI
 _Acquires_exclusive_lock_(*SRWLock)
+_Acquires_nonreentrant_lock_(*SRWLock)
 VOID
 WINAPI
 AcquireSRWLockExclusive(
@@ -68,6 +71,7 @@ AcquireSRWLockExclusive(
 
 WINBASEAPI
 _Acquires_shared_lock_(*SRWLock)
+_Acquires_nonreentrant_lock_(*SRWLock)
 VOID
 WINAPI
 AcquireSRWLockShared(
@@ -76,6 +80,7 @@ AcquireSRWLockShared(
 
 WINBASEAPI
 _When_(return!=0, _Acquires_exclusive_lock_(*SRWLock))
+_When_(return!=0, _Acquires_nonreentrant_lock_(*SRWLock))
 BOOLEAN
 WINAPI
 TryAcquireSRWLockExclusive(
@@ -84,6 +89,7 @@ TryAcquireSRWLockExclusive(
 
 WINBASEAPI
 _When_(return!=0, _Acquires_shared_lock_(*SRWLock))
+_When_(return!=0, _Acquires_nonreentrant_lock_(*SRWLock))
 BOOLEAN
 WINAPI
 TryAcquireSRWLockShared(
@@ -402,6 +408,7 @@ CreateMutexW(
     _In_ BOOL bInitialOwner,
     _In_opt_ LPCWSTR lpName
     );
+
 #ifdef UNICODE
 #define CreateMutex  CreateMutexW
 #else
@@ -443,6 +450,7 @@ CreateEventW(
     _In_ BOOL bInitialState,
     _In_opt_ LPCWSTR lpName
     );
+
 #ifdef UNICODE
 #define CreateEvent  CreateEventW
 #else
@@ -468,6 +476,7 @@ OpenEventW(
     _In_ BOOL bInheritHandle,
     _In_ LPCWSTR lpName
     );
+
 #ifdef UNICODE
 #define OpenEvent  OpenEventW
 #else
@@ -572,6 +581,7 @@ CreateMutexExW(
     _In_ DWORD dwFlags,
     _In_ DWORD dwDesiredAccess
     );
+
 #ifdef UNICODE
 #define CreateMutexEx  CreateMutexExW
 #else
@@ -602,6 +612,7 @@ CreateEventExW(
     _In_ DWORD dwFlags,
     _In_ DWORD dwDesiredAccess
     );
+
 #ifdef UNICODE
 #define CreateEventEx  CreateEventExW
 #else

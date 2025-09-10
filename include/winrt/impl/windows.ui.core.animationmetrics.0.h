@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,12 +8,7 @@
 #define WINRT_Windows_UI_Core_AnimationMetrics_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename T> struct __declspec(empty_bases) IReference;
     struct Point;
-}
-WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
-{
-    template <typename T> struct __declspec(empty_bases) IVectorView;
 }
 WINRT_EXPORT namespace winrt::Windows::UI::Core::AnimationMetrics
 {
@@ -95,6 +90,7 @@ WINRT_EXPORT namespace winrt::Windows::UI::Core::AnimationMetrics
     struct PropertyAnimation;
     struct ScaleAnimation;
     struct TranslationAnimation;
+    struct AnimationMetricsContract;
 }
 namespace winrt::impl
 {
@@ -124,6 +120,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Core::AnimationMetrics::IOpacityAnimation> = L"Windows.UI.Core.AnimationMetrics.IOpacityAnimation";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Core::AnimationMetrics::IPropertyAnimation> = L"Windows.UI.Core.AnimationMetrics.IPropertyAnimation";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Core::AnimationMetrics::IScaleAnimation> = L"Windows.UI.Core.AnimationMetrics.IScaleAnimation";
+    template <> inline constexpr auto& name_v<winrt::Windows::UI::Core::AnimationMetrics::AnimationMetricsContract> = L"Windows.UI.Core.AnimationMetrics.AnimationMetricsContract";
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Core::AnimationMetrics::IAnimationDescription>{ 0x7D11A549,0xBE3D,0x41DE,{ 0xB0,0x81,0x05,0xC1,0x49,0x96,0x2F,0x9B } }; // 7D11A549-BE3D-41DE-B081-05C149962F9B
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Core::AnimationMetrics::IAnimationDescriptionFactory>{ 0xC6E27ABE,0xC1FB,0x48B5,{ 0x92,0x71,0xEC,0xC7,0x0A,0xC8,0x6E,0xF0 } }; // C6E27ABE-C1FB-48B5-9271-ECC70AC86EF0
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Core::AnimationMetrics::IOpacityAnimation>{ 0x803AABE5,0xEE7E,0x455F,{ 0x84,0xE9,0x25,0x06,0xAF,0xB8,0xD2,0xB4 } }; // 803AABE5-EE7E-455F-84E9-2506AFB8D2B4
@@ -136,7 +133,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Core::AnimationMetrics::TranslationAnimation>{ using type = winrt::Windows::UI::Core::AnimationMetrics::IPropertyAnimation; };
     template <> struct abi<winrt::Windows::UI::Core::AnimationMetrics::IAnimationDescription>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Animations(void**) noexcept = 0;
             virtual int32_t __stdcall get_StaggerDelay(int64_t*) noexcept = 0;
@@ -147,14 +144,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::AnimationMetrics::IAnimationDescriptionFactory>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(int32_t, int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Core::AnimationMetrics::IOpacityAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InitialOpacity(void**) noexcept = 0;
             virtual int32_t __stdcall get_FinalOpacity(float*) noexcept = 0;
@@ -162,7 +159,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::AnimationMetrics::IPropertyAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Delay(int64_t*) noexcept = 0;
@@ -173,7 +170,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::UI::Core::AnimationMetrics::IScaleAnimation>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_InitialScaleX(void**) noexcept = 0;
             virtual int32_t __stdcall get_InitialScaleY(void**) noexcept = 0;
@@ -185,11 +182,11 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_UI_Core_AnimationMetrics_IAnimationDescription
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::UI::Core::AnimationMetrics::IPropertyAnimation>) Animations() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::TimeSpan) StaggerDelay() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(float) StaggerDelayFactor() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::TimeSpan) DelayLimit() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(int32_t) ZOrder() const;
+        [[nodiscard]] auto Animations() const;
+        [[nodiscard]] auto StaggerDelay() const;
+        [[nodiscard]] auto StaggerDelayFactor() const;
+        [[nodiscard]] auto DelayLimit() const;
+        [[nodiscard]] auto ZOrder() const;
     };
     template <> struct consume<winrt::Windows::UI::Core::AnimationMetrics::IAnimationDescription>
     {
@@ -198,7 +195,7 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_UI_Core_AnimationMetrics_IAnimationDescriptionFactory
     {
-        WINRT_IMPL_AUTO(winrt::Windows::UI::Core::AnimationMetrics::AnimationDescription) CreateInstance(winrt::Windows::UI::Core::AnimationMetrics::AnimationEffect const& effect, winrt::Windows::UI::Core::AnimationMetrics::AnimationEffectTarget const& target) const;
+        auto CreateInstance(winrt::Windows::UI::Core::AnimationMetrics::AnimationEffect const& effect, winrt::Windows::UI::Core::AnimationMetrics::AnimationEffectTarget const& target) const;
     };
     template <> struct consume<winrt::Windows::UI::Core::AnimationMetrics::IAnimationDescriptionFactory>
     {
@@ -207,8 +204,8 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_UI_Core_AnimationMetrics_IOpacityAnimation
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::IReference<float>) InitialOpacity() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(float) FinalOpacity() const;
+        [[nodiscard]] auto InitialOpacity() const;
+        [[nodiscard]] auto FinalOpacity() const;
     };
     template <> struct consume<winrt::Windows::UI::Core::AnimationMetrics::IOpacityAnimation>
     {
@@ -217,11 +214,11 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_UI_Core_AnimationMetrics_IPropertyAnimation
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::UI::Core::AnimationMetrics::PropertyAnimationType) Type() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::TimeSpan) Delay() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::TimeSpan) Duration() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Point) Control1() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Point) Control2() const;
+        [[nodiscard]] auto Type() const;
+        [[nodiscard]] auto Delay() const;
+        [[nodiscard]] auto Duration() const;
+        [[nodiscard]] auto Control1() const;
+        [[nodiscard]] auto Control2() const;
     };
     template <> struct consume<winrt::Windows::UI::Core::AnimationMetrics::IPropertyAnimation>
     {
@@ -230,11 +227,11 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_UI_Core_AnimationMetrics_IScaleAnimation
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::IReference<float>) InitialScaleX() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::IReference<float>) InitialScaleY() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(float) FinalScaleX() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(float) FinalScaleY() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Point) NormalizedOrigin() const;
+        [[nodiscard]] auto InitialScaleX() const;
+        [[nodiscard]] auto InitialScaleY() const;
+        [[nodiscard]] auto FinalScaleX() const;
+        [[nodiscard]] auto FinalScaleY() const;
+        [[nodiscard]] auto NormalizedOrigin() const;
     };
     template <> struct consume<winrt::Windows::UI::Core::AnimationMetrics::IScaleAnimation>
     {

@@ -32,6 +32,12 @@ typedef void(SANITIZER_CDECL *dfsan_write_callback_t)(int fd, const void *buf,
 typedef void(SANITIZER_CDECL *dfsan_conditional_callback_t)(
     dfsan_label label, dfsan_origin origin);
 
+/// Signature of the callback argument to dfsan_set_reaches_function_callback().
+/// The description is intended to hold the name of the variable.
+typedef void(SANITIZER_CDECL *dfsan_reaches_function_callback_t)(
+    dfsan_label label, dfsan_origin origin, const char *file, unsigned int line,
+    const char *function);
+
 /// Computes the union of \c l1 and \c l2, resulting in a union label.
 dfsan_label SANITIZER_CDECL dfsan_union(dfsan_label l1, dfsan_label l2);
 

@@ -31,16 +31,16 @@
 #define _YIELD_PROCESSOR() _mm_pause()
 #endif // ^^^ !_M_CEE_PURE ^^^
 
-#elif defined(_M_ARM) || defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
+#elif defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
 #define _INTRIN_RELAXED(x) _CONCAT(x, _nf)
 #define _INTRIN_ACQUIRE(x) _CONCAT(x, _acq)
 #define _INTRIN_RELEASE(x) _CONCAT(x, _rel)
 // We don't have interlocked intrinsics for acquire-release ordering, even on
-// ARM32/ARM64, so fall back to sequentially consistent.
+// ARM64, so fall back to sequentially consistent.
 #define _INTRIN_ACQ_REL(x) x
 #define _YIELD_PROCESSOR() __yield()
 
-#else // ^^^ ARM32/ARM64/ARM64EC/HYBRID_X86_ARM64 / unsupported hardware vvv
+#else // ^^^ ARM64/ARM64EC/HYBRID_X86_ARM64 / unsupported hardware vvv
 #error Unsupported hardware
 #endif // hardware
 // end code from xatomic.h
@@ -73,14 +73,28 @@
 // vcruntime_c11_atomic_support.h header. Any updates should be mirrored.
 // Also: if any macros are added they should be #undefed in both headers
 
-// Controls whether ARM64 ldar/ldapr/stlr should be used
-#ifndef _STD_ATOMIC_USE_ARM64_LDAR_STLR
 #if defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
 #define _STD_ATOMIC_USE_ARM64_LDAR_STLR 1
+#ifdef __clang__
+#define __LOAD_ACQUIRE_ARM64(_Width, _Ptr) \
+    (__int##_Width)(__atomic_load_n((const volatile unsigned __int##_Width*)(_Ptr), 2))
+#define __STORE_RELEASE(_Width, _Ptr, _Desired) \
+    _Compiler_barrier();                        \
+    __atomic_store_n((volatile unsigned __int##_Width*)(_Ptr), (unsigned __int##_Width)(_Desired), 3)
+#else // ^^^ Clang / MSVC vvv
+#define __LOAD_ACQUIRE_ARM64(_Width, _Ptr) \
+    (__int##_Width)(__load_acquire##_Width((const volatile unsigned __int##_Width*)(_Ptr)))
+#define __STORE_RELEASE(_Width, _Ptr, _Desired) \
+    _Compiler_barrier();                        \
+    __stlr##_Width(                             \
+        (volatile unsigned __int##_Width*)(_Ptr), (unsigned __int##_Width)(_Desired))
+#endif // ^^^ MSVC ^^^
 #else // ^^^ ARM64/ARM64EC/HYBRID_X86_ARM64 / Other architectures vvv
 #define _STD_ATOMIC_USE_ARM64_LDAR_STLR 0
-#endif // defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
-#endif // _STD_ATOMIC_USE_ARM64_LDAR_STLR
+#define __STORE_RELEASE(_Width, _Ptr, _Desired) \
+    _Compiler_or_memory_barrier();              \
+    __iso_volatile_store##_Width((_Ptr), (_Desired))
+#endif // ^^^ Other architectures ^^^
 
 enum {
     _Atomic_memory_order_relaxed,
@@ -103,9 +117,10 @@ enum {
 #endif // _DEBUG
 #endif // _INVALID_MEMORY_ORDER
 
-#if defined(_M_ARM) || defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
-#define _Memory_barrier()             __dmb(0xB) // inner shared data memory barrier
-#define _Compiler_or_memory_barrier() _Memory_barrier()
+#if defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
+#define _Memory_barrier()              __dmb(0xB) // inner shared data memory barrier
+#define _Compiler_or_memory_barrier()  _Memory_barrier()
+#define _Memory_load_acquire_barrier() __dmb(0x9) // inner shared data memory load barrier
 #elif defined(_M_IX86) || defined(_M_X64)
 // x86/x64 hardware only emits memory barriers inside _Interlocked intrinsics
 #define _Compiler_or_memory_barrier() _Compiler_barrier()
@@ -133,7 +148,7 @@ inline void _Check_memory_order(const unsigned int _Order) {
 #define _ATOMIC_CHOOSE_INTRINSIC(_Order, _Result, _Intrinsic, ...) \
     _Check_memory_order(_Order);                                   \
     _Result = _Intrinsic(__VA_ARGS__)
-#elif defined(_M_ARM) || defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
+#elif defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
 #define _ATOMIC_CHOOSE_INTRINSIC(_Order, _Result, _Intrinsic, ...) \
     switch (_Order) {                                              \
     case _Atomic_memory_order_relaxed:                             \
@@ -157,9 +172,6 @@ inline void _Check_memory_order(const unsigned int _Order) {
 #endif // hardware
 
 #if _STD_ATOMIC_USE_ARM64_LDAR_STLR == 1
-
-#define __LOAD_ACQUIRE_ARM64(_Width, _Ptr) \
-    __load_acquire##_Width((const volatile unsigned __int##_Width*)(_Ptr))
 
 #define _ATOMIC_LOAD_ARM64(_Result, _Width, _Ptr, _Order_var) \
     switch (_Order_var) {                                     \
@@ -198,26 +210,12 @@ inline void _Check_memory_order(const unsigned int _Order) {
         break;                                          \
     }
 
-#if _STD_ATOMIC_USE_ARM64_LDAR_STLR == 1
-
-#define __STORE_RELEASE(_Width, _Ptr, _Desired) \
-    _Compiler_barrier();                        \
-    __stlr##_Width((volatile unsigned __int##_Width*)(_Ptr), (_Desired));
-
-#else // ^^^ _STD_ATOMIC_USE_ARM64_LDAR_STLR == 1 ^^^ / vvv _STD_ATOMIC_USE_ARM64_LDAR_STLR == 0 vvv
-
-#define __STORE_RELEASE(_Width, _Ptr, _Desired) \
-    _Compiler_or_memory_barrier();              \
-    __iso_volatile_store##_Width((_Ptr), (_Desired));
-
-#endif // ^^^ _STD_ATOMIC_USE_ARM64_LDAR_STLR == 0 ^^^
-
 #define _ATOMIC_STORE_PREFIX(_Width, _Ptr, _Desired)      \
     case _Atomic_memory_order_relaxed:                    \
         __iso_volatile_store##_Width((_Ptr), (_Desired)); \
         return;                                           \
     case _Atomic_memory_order_release:                    \
-        __STORE_RELEASE(_Width, _Ptr, _Desired)           \
+        __STORE_RELEASE(_Width, _Ptr, _Desired);          \
         return;                                           \
     default:                                              \
     case _Atomic_memory_order_consume:                    \
@@ -226,19 +224,9 @@ inline void _Check_memory_order(const unsigned int _Order) {
         _INVALID_MEMORY_ORDER;                            \
         /* [[fallthrough]]; */
 
-#define _ATOMIC_STORE_SEQ_CST_ARM(_Width, _Ptr, _Desired) \
-    _Memory_barrier();                                    \
-    __iso_volatile_store##_Width((_Ptr), (_Desired));     \
+#define _ATOMIC_STORE_SEQ_CST_ARM64(_Width, _Ptr, _Desired) \
+    __STORE_RELEASE(_Width, _Ptr, _Desired);                \
     _Memory_barrier();
-
-#if _STD_ATOMIC_USE_ARM64_LDAR_STLR == 1
-#define _ATOMIC_STORE_SEQ_CST_ARM64(_Width, _Ptr, _Desired)                               \
-    _Compiler_barrier();                                                                  \
-    __stlr##_Width((volatile unsigned __int##_Width*)(_Ptr), (_Desired)); \
-    _Memory_barrier();
-#else
-#define _ATOMIC_STORE_SEQ_CST_ARM64 _ATOMIC_STORE_SEQ_CST_ARM
-#endif
 
 #define _ATOMIC_STORE_SEQ_CST_X86_X64(_Width, _Ptr, _Desired) (void) _InterlockedExchange##_Width((_Ptr), (_Desired));
 #define _ATOMIC_STORE_32_SEQ_CST_X86_X64(_Ptr, _Desired) \
@@ -249,11 +237,7 @@ inline void _Check_memory_order(const unsigned int _Order) {
     __iso_volatile_store64((_Ptr), (_Desired));       \
     _Atomic_thread_fence(_Atomic_memory_order_seq_cst);
 
-#if defined(_M_ARM)
-#define _ATOMIC_STORE_SEQ_CST(_Width, _Ptr, _Desired) _ATOMIC_STORE_SEQ_CST_ARM(_Width, (_Ptr), (_Desired))
-#define _ATOMIC_STORE_32_SEQ_CST(_Ptr, _Desired)      _ATOMIC_STORE_SEQ_CST_ARM(32, (_Ptr), (_Desired))
-#define _ATOMIC_STORE_64_SEQ_CST(_Ptr, _Desired)      _ATOMIC_STORE_SEQ_CST_ARM(64, (_Ptr), (_Desired))
-#elif defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64) // ^^^ ARM32 / ARM64/ARM64EC/HYBRID_X86_ARM64 vvv
+#if defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
 #define _ATOMIC_STORE_SEQ_CST(_Width, _Ptr, _Desired) _ATOMIC_STORE_SEQ_CST_ARM64(_Width, (_Ptr), (_Desired))
 #define _ATOMIC_STORE_32_SEQ_CST(_Ptr, _Desired)      _ATOMIC_STORE_SEQ_CST_ARM64(32, (_Ptr), (_Desired))
 #define _ATOMIC_STORE_64_SEQ_CST(_Ptr, _Desired)      _ATOMIC_STORE_SEQ_CST_ARM64(64, (_Ptr), (_Desired))
@@ -289,9 +273,13 @@ inline void _Atomic_thread_fence(const unsigned int _Order) {
         (void) _InterlockedIncrement(&_Guard);
         _Compiler_barrier();
     }
-#elif defined(_M_ARM) || defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
-    _Memory_barrier();
-#else // ^^^ ARM32/ARM64/ARM64EC/HYBRID_X86_ARM64 / unsupported hardware vvv
+#elif defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
+    if (_Order == _Atomic_memory_order_acquire || _Order == _Atomic_memory_order_consume) {
+        _Memory_load_acquire_barrier();
+    } else {
+        _Memory_barrier();
+    }
+#else // ^^^ ARM64/ARM64EC/HYBRID_X86_ARM64 / unsupported hardware vvv
 #error Unsupported hardware
 #endif // unsupported hardware
 }
@@ -314,27 +302,21 @@ inline void _Atomic_lock_acquire(volatile long* _Spinlock) {
             _Current_backoff = _Current_backoff < _Max_backoff ? _Current_backoff << 1 : _Max_backoff;
         }
     }
-#elif defined(_M_ARM) || defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
-    while (_InterlockedExchange(_Spinlock, 1) != 0) { // TRANSITION, GH-1133: _InterlockedExchange_acq
+#elif defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
+    while (_InterlockedExchange_acq(_Spinlock, 1) != 0) {
         while (__iso_volatile_load32((int*) _Spinlock) != 0) {
             __yield();
         }
     }
-#else // ^^^ defined(_M_ARM) || defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64) ^^^
+#else // ^^^ defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64) ^^^
 #error Unsupported hardware
 #endif
 }
 
 inline void _Atomic_lock_release(volatile long* _Spinlock) {
-#if (defined(_M_IX86) && !defined(_M_HYBRID_X86_ARM64)) || (defined(_M_X64) && !defined(_M_ARM64EC))
-    _InterlockedExchange(_Spinlock, 0); // TRANSITION, GH-1133: same as ARM
-#elif defined(_M_ARM) || defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64)
     __STORE_RELEASE(32, (int*) _Spinlock, 0);
-    _Memory_barrier(); // TRANSITION, GH-1133: remove
-#else // ^^^ defined(_M_ARM) || defined(_M_ARM64) || defined(_M_ARM64EC) || defined(_M_HYBRID_X86_ARM64) ^^^
-#error Unsupported hardware
-#endif
 }
+
 // End of code shared with vcruntime
 
 inline void _Atomic_signal_fence(int _Order) {
@@ -426,12 +408,7 @@ inline long long _Atomic_load64(const volatile long long* _Ptr, int _Order) {
 #if _STD_ATOMIC_USE_ARM64_LDAR_STLR == 1
     _ATOMIC_LOAD_ARM64(_As_bytes, 64, _Ptr, _Order)
 #else // ^^^ _STD_ATOMIC_USE_ARM64_LDAR_STLR == 1 / _STD_ATOMIC_USE_ARM64_LDAR_STLR != 1 vvv
-
-#ifdef _M_ARM
-    _As_bytes = __ldrexd(_Ptr);
-#else
     _As_bytes = __iso_volatile_load64(_Ptr);
-#endif
     _ATOMIC_POST_LOAD_BARRIER_AS_NEEDED(_Order);
 #endif // _STD_ATOMIC_USE_ARM64_LDAR_STLR == 1
     return _As_bytes;
@@ -597,6 +574,102 @@ inline long long _Atomic_add_fetch64(volatile long long* _Ptr, long long _Val, i
     return _Result + _Val;
 #endif // defined(_M_IX86) && !defined(_M_HYBRID_X86_ARM64)
 }
+inline signed char _Atomic_add_fetchs8f(volatile signed char* _Ptr, float _Val, int _Order) {
+    signed char _Result = (signed char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (signed char) (_Result + _Val), _Order)) {
+    }
+    return (signed char) (_Result + _Val);
+}
+inline short _Atomic_add_fetchs16f(volatile short* _Ptr, float _Val, int _Order) {
+    short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result + _Val), _Order)) {
+    }
+    return (short) (_Result + _Val);
+}
+inline int _Atomic_add_fetchs32f(volatile int* _Ptr, float _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result + _Val), _Order)) {
+    }
+    return (int) (_Result + _Val);
+}
+inline long long _Atomic_add_fetchs64f(volatile long long* _Ptr, float _Val, int _Order) {
+    long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, (long long) (_Result + _Val), _Order)) {
+    }
+    return (long long) (_Result + _Val);
+}
+inline unsigned char _Atomic_add_fetchu8f(volatile unsigned char* _Ptr, float _Val, int _Order) {
+    unsigned char _Result = (unsigned char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (unsigned char) (_Result + _Val), _Order)) {
+    }
+    return (unsigned char) (_Result + _Val);
+}
+inline unsigned short _Atomic_add_fetchu16f(volatile unsigned short* _Ptr, float _Val, int _Order) {
+    unsigned short _Result = (unsigned short)_Atomic_load16((volatile short*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16((volatile short*)_Ptr, (short*)&_Result, (unsigned short) (_Result + _Val), _Order)) {
+    }
+    return (unsigned short) (_Result + _Val);
+}
+inline unsigned int _Atomic_add_fetchu32f(volatile unsigned int* _Ptr, float _Val, int _Order) {
+    unsigned int _Result = (unsigned int)_Atomic_load32((volatile int*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*)_Ptr, (int*)&_Result, (unsigned int) (_Result + _Val), _Order)) {
+    }
+    return (unsigned int) (_Result + _Val);
+}
+inline unsigned long long _Atomic_add_fetchu64f(volatile unsigned long long* _Ptr, float _Val, int _Order) {
+    unsigned long long _Result = (unsigned long long)_Atomic_load64((volatile long long*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64((volatile long long*)_Ptr, (long long*)&_Result, (unsigned long long) (_Result + _Val), _Order)) {
+    }
+    return (unsigned long long) (_Result + _Val);
+}
+inline signed char _Atomic_add_fetchs8d(volatile signed char* _Ptr, double _Val, int _Order) {
+    signed char _Result = (signed char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (signed char) (_Result + _Val), _Order)) {
+    }
+    return (signed char) (_Result + _Val);
+}
+inline short _Atomic_add_fetchs16d(volatile short* _Ptr, double _Val, int _Order) {
+    short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result + _Val), _Order)) {
+    }
+    return (short) (_Result + _Val);
+}
+inline int _Atomic_add_fetchs32d(volatile int* _Ptr, double _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result + _Val), _Order)) {
+    }
+    return (int) (_Result + _Val);
+}
+inline long long _Atomic_add_fetchs64d(volatile long long* _Ptr, double _Val, int _Order) {
+    long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, (long long) (_Result + _Val), _Order)) {
+    }
+    return (long long) (_Result + _Val);
+}
+inline unsigned char _Atomic_add_fetchu8d(volatile unsigned char* _Ptr, double _Val, int _Order) {
+    unsigned char _Result = (unsigned char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (unsigned char) (_Result + _Val), _Order)) {
+    }
+    return (unsigned char) (_Result + _Val);
+}
+inline unsigned short _Atomic_add_fetchu16d(volatile unsigned short* _Ptr, double _Val, int _Order) {
+    unsigned short _Result = (unsigned short)_Atomic_load16((volatile short*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16((volatile short*)_Ptr, (short*)&_Result, (unsigned short) (_Result + _Val), _Order)) {
+    }
+    return (unsigned short) (_Result + _Val);
+}
+inline unsigned int _Atomic_add_fetchu32d(volatile unsigned int* _Ptr, double _Val, int _Order) {
+    unsigned int _Result = (unsigned int)_Atomic_load32((volatile int*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*)_Ptr, (int*)&_Result, (unsigned int) (_Result + _Val), _Order)) {
+    }
+    return (unsigned int) (_Result + _Val);
+}
+inline unsigned long long _Atomic_add_fetchu64d(volatile unsigned long long* _Ptr, double _Val, int _Order) {
+    unsigned long long _Result = (unsigned long long)_Atomic_load64((volatile long long*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64((volatile long long*)_Ptr, (long long*)&_Result, (unsigned long long) (_Result + _Val), _Order)) {
+    }
+    return (unsigned long long) (_Result + _Val);
+}
 inline float _Atomic_add_fetchf(volatile float* _Ptr, float _Val, int _Order) {
     float _Result = _Atomic_loadf(_Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strongf(_Ptr, &_Result, _Result + _Val, _Order)) {
@@ -608,6 +681,12 @@ inline double _Atomic_add_fetchd(volatile double* _Ptr, double _Val, int _Order)
     while (!_Atomic_compare_exchange_strongd(_Ptr, &_Result, _Result + _Val, _Order)) {
     }
     return _Result + _Val;
+}
+inline float _Atomic_add_fetchfd(volatile float* _Ptr, double _Val, int _Order) {
+    float _Result = _Atomic_loadf(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strongf(_Ptr, &_Result, (float) (_Result + _Val), _Order)) {
+    }
+    return (float) (_Result + _Val);
 }
 
 inline char _Atomic_fetch_sub8(volatile char* _Ptr, int _Val, int _Order) {
@@ -677,6 +756,102 @@ inline long long _Atomic_sub_fetch64(volatile long long* _Ptr, long long _Val, i
     return _Result - _Val;
 #endif // defined(_M_IX86) && !defined(_M_HYBRID_X86_ARM64)
 }
+inline signed char _Atomic_sub_fetchs8f(volatile signed char* _Ptr, float _Val, int _Order) {
+    signed char _Result = (signed char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (signed char) (_Result - _Val), _Order)) {
+    }
+    return (signed char) (_Result - _Val);
+}
+inline short _Atomic_sub_fetchs16f(volatile short* _Ptr, float _Val, int _Order) {
+    short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result - _Val), _Order)) {
+    }
+    return (short) (_Result - _Val);
+}
+inline int _Atomic_sub_fetchs32f(volatile int* _Ptr, float _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result - _Val), _Order)) {
+    }
+    return (int) (_Result - _Val);
+}
+inline long long _Atomic_sub_fetchs64f(volatile long long* _Ptr, float _Val, int _Order) {
+    long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, (long long) (_Result - _Val), _Order)) {
+    }
+    return (long long) (_Result - _Val);
+}
+inline unsigned char _Atomic_sub_fetchu8f(volatile unsigned char* _Ptr, float _Val, int _Order) {
+    unsigned char _Result = (unsigned char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (unsigned char) (_Result - _Val), _Order)) {
+    }
+    return (unsigned char) (_Result - _Val);
+}
+inline unsigned short _Atomic_sub_fetchu16f(volatile unsigned short* _Ptr, float _Val, int _Order) {
+    unsigned short _Result = (unsigned short)_Atomic_load16((volatile short*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16((volatile short*)_Ptr, (short*)&_Result, (unsigned short) (_Result - _Val), _Order)) {
+    }
+    return (unsigned short) (_Result - _Val);
+}
+inline unsigned int _Atomic_sub_fetchu32f(volatile unsigned int* _Ptr, float _Val, int _Order) {
+    unsigned int _Result = (unsigned int)_Atomic_load32((volatile int*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*)_Ptr, (int*)&_Result, (unsigned int) (_Result - _Val), _Order)) {
+    }
+    return (unsigned int) (_Result - _Val);
+}
+inline unsigned long long _Atomic_sub_fetchu64f(volatile unsigned long long* _Ptr, float _Val, int _Order) {
+    unsigned long long _Result = (unsigned long long)_Atomic_load64((volatile long long*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64((volatile long long*)_Ptr, (long long*)&_Result, (unsigned long long) (_Result - _Val), _Order)) {
+    }
+    return (unsigned long long) (_Result - _Val);
+}
+inline signed char _Atomic_sub_fetchs8d(volatile signed char* _Ptr, double _Val, int _Order) {
+    signed char _Result = (signed char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (signed char) (_Result - _Val), _Order)) {
+    }
+    return (signed char) (_Result - _Val);
+}
+inline short _Atomic_sub_fetchs16d(volatile short* _Ptr, double _Val, int _Order) {
+    short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result - _Val), _Order)) {
+    }
+    return (short) (_Result - _Val);
+}
+inline int _Atomic_sub_fetchs32d(volatile int* _Ptr, double _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result - _Val), _Order)) {
+    }
+    return (int) (_Result - _Val);
+}
+inline long long _Atomic_sub_fetchs64d(volatile long long* _Ptr, double _Val, int _Order) {
+    long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, (long long) (_Result - _Val), _Order)) {
+    }
+    return (long long) (_Result - _Val);
+}
+inline unsigned char _Atomic_sub_fetchu8d(volatile unsigned char* _Ptr, double _Val, int _Order) {
+    unsigned char _Result = (unsigned char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (unsigned char) (_Result - _Val), _Order)) {
+    }
+    return (unsigned char) (_Result - _Val);
+}
+inline unsigned short _Atomic_sub_fetchu16d(volatile unsigned short* _Ptr, double _Val, int _Order) {
+    unsigned short _Result = (unsigned short)_Atomic_load16((volatile short*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16((volatile short*)_Ptr, (short*)&_Result, (unsigned short) (_Result - _Val), _Order)) {
+    }
+    return (unsigned short) (_Result - _Val);
+}
+inline unsigned int _Atomic_sub_fetchu32d(volatile unsigned int* _Ptr, double _Val, int _Order) {
+    unsigned int _Result = (unsigned int)_Atomic_load32((volatile int*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*)_Ptr, (int*)&_Result, (unsigned int) (_Result - _Val), _Order)) {
+    }
+    return (unsigned int) (_Result - _Val);
+}
+inline unsigned long long _Atomic_sub_fetchu64d(volatile unsigned long long* _Ptr, double _Val, int _Order) {
+    unsigned long long _Result = (unsigned long long)_Atomic_load64((volatile long long*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64((volatile long long*)_Ptr, (long long*)&_Result, (unsigned long long) (_Result - _Val), _Order)) {
+    }
+    return (unsigned long long) (_Result - _Val);
+}
 inline float _Atomic_sub_fetchf(volatile float* _Ptr, float _Val, int _Order) {
     float _Result = _Atomic_loadf(_Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strongf(_Ptr, &_Result, _Result - _Val, _Order)) {
@@ -688,6 +863,12 @@ inline double _Atomic_sub_fetchd(volatile double* _Ptr, double _Val, int _Order)
     while (!_Atomic_compare_exchange_strongd(_Ptr, &_Result, _Result - _Val, _Order)) {
     }
     return _Result - _Val;
+}
+inline float _Atomic_sub_fetchfd(volatile float* _Ptr, double _Val, int _Order) {
+    float _Result = _Atomic_loadf(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strongf(_Ptr, &_Result, (float) (_Result - _Val), _Order)) {
+    }
+    return (float) (_Result - _Val);
 }
 
 inline char _Atomic_fetch_and8(volatile char* _Ptr, int _Val, int _Order) {
@@ -731,18 +912,18 @@ inline short _Atomic_and_fetch16(volatile short* _Ptr, int _Val, int _Order) {
 inline int _Atomic_and_fetch32(volatile int* _Ptr, int _Val, int _Order) {
     int _Result;
     _ATOMIC_CHOOSE_INTRINSIC(_Order, _Result, _InterlockedAnd, (volatile long*) _Ptr, _Val);
-    return _Result & _Val;
+    return (int) (_Result & _Val);
 }
 inline long long _Atomic_and_fetch64(volatile long long* _Ptr, long long _Val, int _Order) {
 #if defined(_M_IX86) && !defined(_M_HYBRID_X86_ARM64)
     long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, _Result & _Val, _Order)) {
     }
-    return _Result & _Val;
+    return (long long) (_Result & _Val);
 #else // ^^^ defined(_M_IX86) && !defined(_M_HYBRID_X86_ARM64) / !defined(_M_IX86) || defined(_M_HYBRID_X86_ARM64) vvvv
     long long _Result;
     _ATOMIC_CHOOSE_INTRINSIC(_Order, _Result, _InterlockedAnd64, _Ptr, _Val);
-    return _Result & _Val;
+    return (long long) (_Result & _Val);
 #endif // defined(_M_IX86) && !defined(_M_HYBRID_X86_ARM64)
 }
 
@@ -787,18 +968,18 @@ inline short _Atomic_or_fetch16(volatile short* _Ptr, int _Val, int _Order) {
 inline int _Atomic_or_fetch32(volatile int* _Ptr, int _Val, int _Order) {
     int _Result;
     _ATOMIC_CHOOSE_INTRINSIC(_Order, _Result, _InterlockedOr, (volatile long*) _Ptr, _Val);
-    return _Result | _Val;
+    return (int) (_Result | _Val);
 }
 inline long long _Atomic_or_fetch64(volatile long long* _Ptr, long long _Val, int _Order) {
 #if defined(_M_IX86) && !defined(_M_HYBRID_X86_ARM64)
     long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, _Result | _Val, _Order)) {
     }
-    return _Result | _Val;
+    return (long long) (_Result | _Val);
 #else // ^^^ defined(_M_IX86) && !defined(_M_HYBRID_X86_ARM64) / !defined(_M_IX86) || defined(_M_HYBRID_X86_ARM64) vvvv
     long long _Result;
     _ATOMIC_CHOOSE_INTRINSIC(_Order, _Result, _InterlockedOr64, _Ptr, _Val);
-    return _Result | _Val;
+    return (long long) (_Result | _Val);
 #endif // defined(_M_IX86) && !defined(_M_HYBRID_X86_ARM64)
 }
 
@@ -843,18 +1024,18 @@ inline short _Atomic_xor_fetch16(volatile short* _Ptr, int _Val, int _Order) {
 inline int _Atomic_xor_fetch32(volatile int* _Ptr, int _Val, int _Order) {
     int _Result;
     _ATOMIC_CHOOSE_INTRINSIC(_Order, _Result, _InterlockedXor, (volatile long*) _Ptr, _Val);
-    return _Result ^ _Val;
+    return (int) (_Result ^ _Val);
 }
 inline long long _Atomic_xor_fetch64(volatile long long* _Ptr, long long _Val, int _Order) {
 #if defined(_M_IX86) && !defined(_M_HYBRID_X86_ARM64)
     long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, _Result ^ _Val, _Order)) {
     }
-    return _Result ^ _Val;
+    return (long long) (_Result ^ _Val);
 #else // ^^^ defined(_M_IX86) && !defined(_M_HYBRID_X86_ARM64) / !defined(_M_IX86) || defined(_M_HYBRID_X86_ARM64) vvvv
     long long _Result;
     _ATOMIC_CHOOSE_INTRINSIC(_Order, _Result, _InterlockedXor64, _Ptr, _Val);
-    return _Result ^ _Val;
+    return (long long) (_Result ^ _Val);
 #endif // defined(_M_IX86) && !defined(_M_HYBRID_X86_ARM64)
 }
 
@@ -874,13 +1055,109 @@ inline int _Atomic_mult_fetch32(volatile int* _Ptr, int _Val, int _Order) {
     int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, _Result * _Val, _Order)) {
     }
-    return _Result * _Val;
+    return (int) (_Result * _Val);
 }
 inline long long _Atomic_mult_fetch64(volatile long long* _Ptr, long long _Val, int _Order) {
     long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, _Result * _Val, _Order)) {
     }
-    return _Result * _Val;
+    return (long long) (_Result * _Val);
+}
+inline signed char _Atomic_mult_fetchs8f(volatile signed char* _Ptr, float _Val, int _Order) {
+    signed char _Result = (signed char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (signed char) (_Result * _Val), _Order)) {
+    }
+    return (signed char) (_Result * _Val);
+}
+inline short _Atomic_mult_fetchs16f(volatile short* _Ptr, float _Val, int _Order) {
+    short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result * _Val), _Order)) {
+    }
+    return (short) (_Result * _Val);
+}
+inline int _Atomic_mult_fetchs32f(volatile int* _Ptr, float _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result * _Val), _Order)) {
+    }
+    return (int) (_Result * _Val);
+}
+inline long long _Atomic_mult_fetchs64f(volatile long long* _Ptr, float _Val, int _Order) {
+    long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, (long long) (_Result * _Val), _Order)) {
+    }
+    return (long long) (_Result * _Val);
+}
+inline unsigned char _Atomic_mult_fetchu8f(volatile unsigned char* _Ptr, float _Val, int _Order) {
+    unsigned char _Result = (unsigned char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (unsigned char) (_Result * _Val), _Order)) {
+    }
+    return (unsigned char) (_Result * _Val);
+}
+inline unsigned short _Atomic_mult_fetchu16f(volatile unsigned short* _Ptr, float _Val, int _Order) {
+    unsigned short _Result = (unsigned short)_Atomic_load16((volatile short*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16((volatile short*)_Ptr, (short*)&_Result, (unsigned short) (_Result * _Val), _Order)) {
+    }
+    return (unsigned short) (_Result * _Val);
+}
+inline unsigned int _Atomic_mult_fetchu32f(volatile unsigned int* _Ptr, float _Val, int _Order) {
+    unsigned int _Result = (unsigned int)_Atomic_load32((volatile int*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*)_Ptr, (int*)&_Result, (unsigned int) (_Result * _Val), _Order)) {
+    }
+    return (unsigned int) (_Result * _Val);
+}
+inline unsigned long long _Atomic_mult_fetchu64f(volatile unsigned long long* _Ptr, float _Val, int _Order) {
+    unsigned long long _Result = (unsigned long long)_Atomic_load64((volatile long long*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64((volatile long long*)_Ptr, (long long*)&_Result, (unsigned long long) (_Result * _Val), _Order)) {
+    }
+    return (unsigned long long) (_Result * _Val);
+}
+inline signed char _Atomic_mult_fetchs8d(volatile signed char* _Ptr, double _Val, int _Order) {
+    signed char _Result = (signed char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (signed char) (_Result * _Val), _Order)) {
+    }
+    return (signed char) (_Result * _Val);
+}
+inline short _Atomic_mult_fetchs16d(volatile short* _Ptr, double _Val, int _Order) {
+    short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result * _Val), _Order)) {
+    }
+    return (short) (_Result * _Val);
+}
+inline int _Atomic_mult_fetchs32d(volatile int* _Ptr, double _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result * _Val), _Order)) {
+    }
+    return (int) (_Result * _Val);
+}
+inline long long _Atomic_mult_fetchs64d(volatile long long* _Ptr, double _Val, int _Order) {
+    long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, (long long) (_Result * _Val), _Order)) {
+    }
+    return (long long) (_Result * _Val);
+}
+inline unsigned char _Atomic_mult_fetchu8d(volatile unsigned char* _Ptr, double _Val, int _Order) {
+    unsigned char _Result = (unsigned char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (unsigned char) (_Result * _Val), _Order)) {
+    }
+    return (unsigned char) (_Result * _Val);
+}
+inline unsigned short _Atomic_mult_fetchu16d(volatile unsigned short* _Ptr, double _Val, int _Order) {
+    unsigned short _Result = (unsigned short)_Atomic_load16((volatile short*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16((volatile short*)_Ptr, (short*)&_Result, (unsigned short) (_Result * _Val), _Order)) {
+    }
+    return (unsigned short) (_Result * _Val);
+}
+inline unsigned int _Atomic_mult_fetchu32d(volatile unsigned int* _Ptr, double _Val, int _Order) {
+    unsigned int _Result = (unsigned int)_Atomic_load32((volatile int*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*)_Ptr, (int*)&_Result, (unsigned int) (_Result * _Val), _Order)) {
+    }
+    return (unsigned int) (_Result * _Val);
+}
+inline unsigned long long _Atomic_mult_fetchu64d(volatile unsigned long long* _Ptr, double _Val, int _Order) {
+    unsigned long long _Result = (unsigned long long)_Atomic_load64((volatile long long*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64((volatile long long*)_Ptr, (long long*)&_Result, (unsigned long long) (_Result * _Val), _Order)) {
+    }
+    return (unsigned long long) (_Result * _Val);
 }
 inline float _Atomic_mult_fetchf(volatile float* _Ptr, float _Val, int _Order) {
     float _Result = _Atomic_loadf(_Ptr, _Atomic_memory_order_seq_cst);
@@ -894,34 +1171,156 @@ inline double _Atomic_mult_fetchd(volatile double* _Ptr, double _Val, int _Order
     }
     return _Result * _Val;
 }
+inline float _Atomic_mult_fetchfd(volatile float* _Ptr, double _Val, int _Order) {
+    float _Result = _Atomic_loadf(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strongf(_Ptr, &_Result, (float) (_Result * _Val), _Order)) {
+    }
+    return (float) (_Result * _Val);
+}
 
 inline unsigned char _Atomic_div_fetch8(volatile unsigned char* _Ptr, unsigned int _Val, int _Order) {
     unsigned char _Result = (unsigned char) _Atomic_load8((volatile char*) _Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strong8(
-        (volatile char*) _Ptr, (char*) &_Result, (char) (_Result / (unsigned char) _Val), _Order)) {
+        (volatile char*) _Ptr, (char*) &_Result, (unsigned char) (_Result / _Val), _Order)) {
     }
-    return (unsigned char) (_Result / (unsigned char) _Val);
+    return (unsigned char) (_Result / _Val);
 }
 inline unsigned short _Atomic_div_fetch16(volatile unsigned short* _Ptr, unsigned int _Val, int _Order) {
     unsigned short _Result = (unsigned short) _Atomic_load16((volatile short*) _Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strong16(
-        (volatile short*) _Ptr, (short*) &_Result, (short) (_Result / (unsigned short) _Val), _Order)) {
+        (volatile short*) _Ptr, (short*) &_Result, (unsigned short) (_Result / _Val), _Order)) {
     }
-    return (unsigned short) (_Result / (unsigned short) _Val);
+    return (unsigned short) (_Result / _Val);
 }
 inline unsigned int _Atomic_div_fetch32(volatile unsigned int* _Ptr, unsigned int _Val, int _Order) {
     unsigned int _Result = (unsigned int) _Atomic_load32((volatile int*) _Ptr, _Atomic_memory_order_seq_cst);
-    while (!_Atomic_compare_exchange_strong32((volatile int*) _Ptr, (int*) &_Result, (int) (_Result / _Val), _Order)) {
+    while (!_Atomic_compare_exchange_strong32((volatile int*) _Ptr, (int*) &_Result, (unsigned int) (_Result / _Val), _Order)) {
     }
-    return _Result / _Val;
+    return (unsigned int) (_Result / _Val);
 }
 inline unsigned long long _Atomic_div_fetch64(volatile unsigned long long* _Ptr, unsigned long long _Val, int _Order) {
     unsigned long long _Result =
         (unsigned long long) _Atomic_load64((volatile long long*) _Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strong64(
-        (volatile long long*) _Ptr, (long long*) &_Result, (long long) (_Result / _Val), _Order)) {
+        (volatile long long*) _Ptr, (long long*) &_Result, (unsigned long long) (_Result / _Val), _Order)) {
     }
-    return _Result / _Val;
+    return (unsigned long long) (_Result / _Val);
+}
+inline unsigned char _Atomic_div_fetch8_64(volatile unsigned char* _Ptr, unsigned long long _Val, int _Order) {
+    unsigned char _Result = (unsigned char) _Atomic_load8((volatile char*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8(
+        (volatile char*) _Ptr, (char*) &_Result, (unsigned char) (_Result / _Val), _Order)) {
+    }
+    return (unsigned char) (_Result / _Val);
+}
+inline unsigned short _Atomic_div_fetch16_64(volatile unsigned short* _Ptr, unsigned long long _Val, int _Order) {
+    unsigned short _Result = (unsigned short) _Atomic_load16((volatile short*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(
+        (volatile short*) _Ptr, (short*) &_Result, (unsigned short) (_Result / _Val), _Order)) {
+    }
+    return (unsigned short) (_Result / _Val);
+}
+inline unsigned int _Atomic_div_fetch32_64(volatile unsigned int* _Ptr, unsigned long long _Val, int _Order) {
+    unsigned int _Result = (unsigned int) _Atomic_load32((volatile int*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*) _Ptr, (int*) &_Result, (unsigned int) (_Result / _Val), _Order)) {
+    }
+    return (unsigned int) (_Result / _Val);
+}
+inline signed char _Atomic_div_fetchs8f(volatile signed char* _Ptr, float _Val, int _Order) {
+    signed char _Result = (signed char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (signed char) (_Result / _Val), _Order)) {
+    }
+    return (signed char) (_Result / _Val);
+}
+inline short _Atomic_div_fetchs16f(volatile short* _Ptr, float _Val, int _Order) {
+    short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result / _Val), _Order)) {
+    }
+    return (short) (_Result / _Val);
+}
+inline int _Atomic_div_fetchs32f(volatile int* _Ptr, float _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result / _Val), _Order)) {
+    }
+    return (int) (_Result / _Val);
+}
+inline long long _Atomic_div_fetchs64f(volatile long long* _Ptr, float _Val, int _Order) {
+    long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, (long long) (_Result / _Val), _Order)) {
+    }
+    return (long long) (_Result / _Val);
+}
+inline unsigned char _Atomic_div_fetchu8f(volatile unsigned char* _Ptr, float _Val, int _Order) {
+    unsigned char _Result = (unsigned char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (unsigned char) (_Result / _Val), _Order)) {
+    }
+    return (unsigned char) (_Result / _Val);
+}
+inline unsigned short _Atomic_div_fetchu16f(volatile unsigned short* _Ptr, float _Val, int _Order) {
+    unsigned short _Result = (unsigned short)_Atomic_load16((volatile short*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16((volatile short*)_Ptr, (short*)&_Result, (unsigned short) (_Result / _Val), _Order)) {
+    }
+    return (unsigned short) (_Result / _Val);
+}
+inline unsigned int _Atomic_div_fetchu32f(volatile unsigned int* _Ptr, float _Val, int _Order) {
+    unsigned int _Result = (unsigned int)_Atomic_load32((volatile int*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*)_Ptr, (int*)&_Result, (unsigned int) (_Result / _Val), _Order)) {
+    }
+    return (unsigned int) (_Result / _Val);
+}
+inline unsigned long long _Atomic_div_fetchu64f(volatile unsigned long long* _Ptr, float _Val, int _Order) {
+    unsigned long long _Result = (unsigned long long)_Atomic_load64((volatile long long*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64((volatile long long*)_Ptr, (long long*)&_Result, (unsigned long long) (_Result / _Val), _Order)) {
+    }
+    return (unsigned long long) (_Result / _Val);
+}
+inline signed char _Atomic_div_fetchs8d(volatile signed char* _Ptr, double _Val, int _Order) {
+    signed char _Result = (signed char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (signed char) (_Result / _Val), _Order)) {
+    }
+    return (signed char) (_Result / _Val);
+}
+inline short _Atomic_div_fetchs16d(volatile short* _Ptr, double _Val, int _Order) {
+    short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result / _Val), _Order)) {
+    }
+    return (short) (_Result / _Val);
+}
+inline int _Atomic_div_fetchs32d(volatile int* _Ptr, double _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result / _Val), _Order)) {
+    }
+    return (int) (_Result / _Val);
+}
+inline long long _Atomic_div_fetchs64d(volatile long long* _Ptr, double _Val, int _Order) {
+    long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, (long long) (_Result / _Val), _Order)) {
+    }
+    return (long long) (_Result / _Val);
+}
+inline unsigned char _Atomic_div_fetchu8d(volatile unsigned char* _Ptr, double _Val, int _Order) {
+    unsigned char _Result = (unsigned char)_Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (unsigned char) (_Result / _Val), _Order)) {
+    }
+    return (unsigned char) (_Result / _Val);
+}
+inline unsigned short _Atomic_div_fetchu16d(volatile unsigned short* _Ptr, double _Val, int _Order) {
+    unsigned short _Result = (unsigned short)_Atomic_load16((volatile short*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16((volatile short*)_Ptr, (short*)&_Result, (unsigned short) (_Result / _Val), _Order)) {
+    }
+    return (unsigned short) (_Result / _Val);
+}
+inline unsigned int _Atomic_div_fetchu32d(volatile unsigned int* _Ptr, double _Val, int _Order) {
+    unsigned int _Result = (unsigned int)_Atomic_load32((volatile int*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*)_Ptr, (int*)&_Result, (unsigned int) (_Result / _Val), _Order)) {
+    }
+    return (unsigned int) (_Result / _Val);
+}
+inline unsigned long long _Atomic_div_fetchu64d(volatile unsigned long long* _Ptr, double _Val, int _Order) {
+    unsigned long long _Result = (unsigned long long)_Atomic_load64((volatile long long*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64((volatile long long*)_Ptr, (long long*)&_Result, (unsigned long long) (_Result / _Val), _Order)) {
+    }
+    return (unsigned long long) (_Result / _Val);
 }
 inline float _Atomic_div_fetchf(volatile float* _Ptr, float _Val, int _Order) {
     float _Result = _Atomic_loadf(_Ptr, _Atomic_memory_order_seq_cst);
@@ -935,18 +1334,69 @@ inline double _Atomic_div_fetchd(volatile double* _Ptr, double _Val, int _Order)
     }
     return _Result / _Val;
 }
-
-inline signed char _Atomic_idiv_fetch8(volatile char* _Ptr, int _Val, int _Order) {
-    signed char _Result = (signed char) _Atomic_load8(_Ptr, _Atomic_memory_order_seq_cst);
-    while (!_Atomic_compare_exchange_strong8(_Ptr, (char*) &_Result, (char) (_Result / (signed char) _Val), _Order)) {
+inline float _Atomic_div_fetchfd(volatile float* _Ptr, double _Val, int _Order) {
+    float _Result = _Atomic_loadf(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strongf(_Ptr, &_Result, (float) (_Result / _Val), _Order)) {
     }
-    return (signed char) (_Result / (signed char) _Val);
+    return (float) (_Result / _Val);
+}
+
+inline signed char _Atomic_divs_fetch8(volatile signed char* _Ptr, unsigned int _Val, int _Order) {
+    signed char _Result = (signed char) _Atomic_load8((volatile char*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8(
+        (volatile char*) _Ptr, (char*) &_Result, (signed char) (_Result / _Val), _Order)) {
+    }
+    return (signed char) (_Result / _Val);
+}
+inline short _Atomic_divs_fetch16(volatile short* _Ptr, unsigned int _Val, int _Order) {
+    short _Result = _Atomic_load16( _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result / _Val), _Order)) {
+    }
+    return (short) (_Result / _Val);
+}
+inline int _Atomic_divs_fetch32(volatile int* _Ptr, unsigned int _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result / _Val), _Order)) {
+    }
+    return (int) (_Result / _Val);
+}
+inline long long _Atomic_divs_fetch64(volatile long long* _Ptr, unsigned long long _Val, int _Order) {
+    long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, (long long) (_Result / _Val), _Order)) {
+    }
+    return (long long) (_Result / _Val);
+}
+inline signed char _Atomic_divs_fetch8_64(volatile signed char* _Ptr, unsigned long long _Val, int _Order) {
+    signed char _Result = (signed char) _Atomic_load8((volatile char*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8(
+        (volatile char*) _Ptr, (char*) &_Result, (signed char) (_Result / _Val), _Order)) {
+    }
+    return (signed char) (_Result / _Val);
+}
+inline short _Atomic_divs_fetch16_64(volatile short* _Ptr, unsigned long long _Val, int _Order) {
+    short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result / _Val), _Order)) {
+    }
+    return (short) (_Result / _Val);
+}
+inline int _Atomic_divs_fetch32_64(volatile int* _Ptr, unsigned long long _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result / _Val), _Order)) {
+    }
+    return (int) (_Result / _Val);
+}
+
+inline signed char _Atomic_idiv_fetch8(volatile signed char* _Ptr, int _Val, int _Order) {
+    signed char _Result = (signed char) _Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*) &_Result, (signed char) (_Result / _Val), _Order)) {
+    }
+    return (signed char) (_Result / _Val);
 }
 inline short _Atomic_idiv_fetch16(volatile short* _Ptr, int _Val, int _Order) {
     short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
-    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result / (short) _Val), _Order)) {
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result / _Val), _Order)) {
     }
-    return (short) (_Result / (short) _Val);
+    return (short) (_Result / _Val);
 }
 inline int _Atomic_idiv_fetch32(volatile int* _Ptr, int _Val, int _Order) {
     int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
@@ -960,18 +1410,79 @@ inline long long _Atomic_idiv_fetch64(volatile long long* _Ptr, long long _Val, 
     }
     return _Result / _Val;
 }
+inline signed char _Atomic_idiv_fetch8_64(volatile signed char* _Ptr, long long _Val, int _Order) {
+    signed char _Result = (signed char) _Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*) &_Result, (signed char) (_Result / _Val), _Order)) {
+    }
+    return (signed char) (_Result / _Val);
+}
+inline short _Atomic_idiv_fetch16_64(volatile short* _Ptr, long long _Val, int _Order) {
+    short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result / _Val), _Order)) {
+    }
+    return (short) (_Result / _Val);
+}
+inline int _Atomic_idiv_fetch32_64(volatile int* _Ptr, long long _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result / _Val), _Order)) {
+    }
+    return (int) (_Result / _Val);
+}
+
+inline unsigned char _Atomic_idivu_fetch8(volatile unsigned char* _Ptr, int _Val, int _Order) {
+    unsigned char _Result = (unsigned char) _Atomic_load8((volatile char*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*) _Ptr, (char*) &_Result, (unsigned char) (_Result / _Val), _Order)) {
+    }
+    return (unsigned char) (_Result / _Val);
+}
+inline unsigned short _Atomic_idivu_fetch16(volatile unsigned short* _Ptr, int _Val, int _Order) {
+    unsigned short _Result = _Atomic_load16((volatile short*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16((volatile short*) _Ptr, (short*) &_Result, (unsigned short) (_Result / _Val), _Order)) {
+    }
+    return (unsigned short) (_Result / _Val);
+}
+inline unsigned int _Atomic_idivu_fetch32(volatile unsigned int* _Ptr, int _Val, int _Order) {
+    unsigned int _Result = _Atomic_load32((volatile int*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*) _Ptr, (int*)&_Result, (unsigned int) (_Result / _Val), _Order)) {
+    }
+    return (unsigned int) (_Result / _Val);
+}
+inline unsigned long long _Atomic_idivu_fetch64(volatile unsigned long long* _Ptr, long long _Val, int _Order) {
+    unsigned long long _Result = _Atomic_load64((volatile long long*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64((volatile long long*) _Ptr, (long long*)&_Result, (unsigned long long) (_Result / _Val), _Order)) {
+    }
+    return (unsigned long long) (_Result / _Val);
+}
+inline unsigned char _Atomic_idivu_fetch8_64(volatile unsigned char* _Ptr, long long _Val, int _Order) {
+    unsigned char _Result = (unsigned char) _Atomic_load8((volatile char*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*) _Ptr, (char*) &_Result, (unsigned char) (_Result / _Val), _Order)) {
+    }
+    return (unsigned char) (_Result / _Val);
+}
+inline unsigned short _Atomic_idivu_fetch16_64(volatile unsigned short* _Ptr, long long _Val, int _Order) {
+    unsigned short _Result = _Atomic_load16((volatile short*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16((volatile short*) _Ptr, (short*)&_Result, (unsigned short) (_Result / _Val), _Order)) {
+    }
+    return (unsigned short) (_Result / _Val);
+}
+inline unsigned int _Atomic_idivu_fetch32_64(volatile unsigned int* _Ptr, long long _Val, int _Order) {
+    unsigned int _Result = _Atomic_load32((volatile int*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*) _Ptr, (int*)&_Result, (unsigned int) (_Result / _Val), _Order)) {
+    }
+    return (unsigned int) (_Result / _Val);
+}
 
 inline char _Atomic_shl_fetch8(volatile char* _Ptr, int _Val, int _Order) {
     char _Result = _Atomic_load8(_Ptr, _Atomic_memory_order_seq_cst);
-    while (!_Atomic_compare_exchange_strong8(_Ptr, &_Result, (char) (_Result << (char) _Val), _Order)) {
+    while (!_Atomic_compare_exchange_strong8(_Ptr, &_Result, (char) (_Result << _Val), _Order)) {
     }
-    return (char) (_Result << (char) _Val);
+    return (char) (_Result << _Val);
 }
 inline short _Atomic_shl_fetch16(volatile short* _Ptr, int _Val, int _Order) {
     short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
-    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result << (short) _Val), _Order)) {
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result << _Val), _Order)) {
     }
-    return (short) (_Result << (short) _Val);
+    return (short) (_Result << _Val);
 }
 inline int _Atomic_shl_fetch32(volatile int* _Ptr, int _Val, int _Order) {
     int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
@@ -986,42 +1497,67 @@ inline long long _Atomic_shl_fetch64(volatile long long* _Ptr, long long _Val, i
     return _Result << _Val;
 }
 
-inline char _Atomic_shr_fetch8(volatile char* _Ptr, int _Val, int _Order) {
-    char _Result = _Atomic_load8(_Ptr, _Atomic_memory_order_seq_cst);
-    while (!_Atomic_compare_exchange_strong8(_Ptr, &_Result, (char) (_Result >> (char) _Val), _Order)) {
+inline signed char _Atomic_sar_fetch8(volatile signed char* _Ptr, int _Val, int _Order) {
+    signed char _Result = _Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*)&_Result, (signed char) (_Result >> _Val), _Order)) {
     }
-    return (char) (_Result >> (char) _Val);
+    return (signed char) (_Result >> _Val);
 }
-inline short _Atomic_shr_fetch16(volatile short* _Ptr, int _Val, int _Order) {
+inline short _Atomic_sar_fetch16(volatile short* _Ptr, int _Val, int _Order) {
     short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
-    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result >> (short) _Val), _Order)) {
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result >> _Val), _Order)) {
     }
-    return (short) (_Result >> (short) _Val);
+    return (short) (_Result >> _Val);
 }
-inline int _Atomic_shr_fetch32(volatile int* _Ptr, int _Val, int _Order) {
+inline int _Atomic_sar_fetch32(volatile int* _Ptr, int _Val, int _Order) {
     int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, _Result >> _Val, _Order)) {
     }
     return _Result >> _Val;
 }
-inline long long _Atomic_shr_fetch64(volatile long long* _Ptr, long long _Val, int _Order) {
+inline long long _Atomic_sar_fetch64(volatile long long* _Ptr, int _Val, int _Order) {
     long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
-    while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, _Result >> _Val, _Order)) {
+    while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, (long long) (_Result >> _Val), _Order)) {
     }
-    return _Result >> _Val;
+    return (long long) (_Result >> _Val);
 }
 
-inline signed char _Atomic_imod_fetch8(volatile char* _Ptr, int _Val, int _Order) {
-    signed char _Result = (signed char) _Atomic_load8(_Ptr, _Atomic_memory_order_seq_cst);
-    while (!_Atomic_compare_exchange_strong8(_Ptr, (char*) &_Result, (char) (_Result % (signed char) _Val), _Order)) {
+inline unsigned char _Atomic_shr2_fetch8(volatile unsigned char* _Ptr, int _Val, int _Order) {
+    unsigned char _Result = _Atomic_load8((volatile char*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*) _Ptr, (char*)&_Result, (unsigned char) (_Result >> _Val), _Order)) {
     }
-    return (signed char) (_Result % (signed char) _Val);
+    return (unsigned char) (_Result >> _Val);
+}
+inline unsigned short _Atomic_shr2_fetch16(volatile unsigned short* _Ptr, int _Val, int _Order) {
+    unsigned short _Result = _Atomic_load16((volatile short*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16((volatile short*) _Ptr, (short*)&_Result, (unsigned short) (_Result >> _Val), _Order)) {
+    }
+    return (unsigned short) (_Result >> _Val);
+}
+inline unsigned int _Atomic_shr2_fetch32(volatile unsigned int* _Ptr, int _Val, int _Order) {
+    unsigned int _Result = _Atomic_load32((volatile int*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*) _Ptr, (int*)&_Result, (unsigned int) (_Result >> _Val), _Order)) {
+    }
+    return (unsigned int) (_Result >> _Val);
+}
+inline unsigned long long _Atomic_shr2_fetch64(volatile unsigned long long* _Ptr, int _Val, int _Order) {
+    unsigned long long _Result = _Atomic_load64((volatile long long*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64((volatile long long*) _Ptr, (long long*)&_Result, (unsigned long long) (_Result >> _Val), _Order)) {
+    }
+    return (unsigned long long) (_Result >> _Val);
+}
+
+inline signed char _Atomic_imod_fetch8(volatile signed char* _Ptr, int _Val, int _Order) {
+    signed char _Result = (signed char) _Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*) &_Result, (signed char) (_Result % _Val), _Order)) {
+    }
+    return (signed char) (_Result % _Val);
 }
 inline short _Atomic_imod_fetch16(volatile short* _Ptr, int _Val, int _Order) {
     short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
-    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result % (short) _Val), _Order)) {
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result % _Val), _Order)) {
     }
-    return (short) (_Result % (short) _Val);
+    return (short) (_Result % _Val);
 }
 inline int _Atomic_imod_fetch32(volatile int* _Ptr, int _Val, int _Order) {
     int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
@@ -1036,33 +1572,161 @@ inline long long _Atomic_imod_fetch64(volatile long long* _Ptr, long long _Val, 
     return _Result % _Val;
 }
 
+inline signed char _Atomic_imod_fetch8_64(volatile signed char* _Ptr, long long _Val, int _Order) {
+    signed char _Result = (signed char) _Atomic_load8((volatile char*)_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*)_Ptr, (char*) &_Result, (signed char) (_Result % _Val), _Order)) {
+    }
+    return (signed char) (_Result % _Val);
+}
+inline short _Atomic_imod_fetch16_64(volatile short* _Ptr, long long _Val, int _Order) {
+    short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result % _Val), _Order)) {
+    }
+    return (short) (_Result % _Val);
+}
+inline int _Atomic_imod_fetch32_64(volatile int* _Ptr, long long _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result % _Val), _Order)) {
+    }
+    return (int) (_Result % _Val);
+}
+
+inline unsigned char _Atomic_imodu_fetch8(volatile unsigned char* _Ptr, int _Val, int _Order) {
+    unsigned char _Result = (unsigned char) _Atomic_load8((volatile char*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*) _Ptr, (char*) &_Result, (unsigned char) (_Result % _Val), _Order)) {
+    }
+    return (unsigned char) (_Result % _Val);
+}
+inline unsigned short _Atomic_imodu_fetch16(volatile unsigned short* _Ptr, int _Val, int _Order) {
+    unsigned short _Result = _Atomic_load16((volatile short*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16((volatile short*) _Ptr, (short*)&_Result, (unsigned short) (_Result % _Val), _Order)) {
+    }
+    return (unsigned short) (_Result % _Val);
+}
+inline unsigned int _Atomic_imodu_fetch32(volatile unsigned int* _Ptr, int _Val, int _Order) {
+    unsigned int _Result = _Atomic_load32((volatile int*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*) _Ptr, (int*)&_Result, (unsigned int) (_Result % _Val), _Order)) {
+    }
+    return (unsigned int) (_Result % _Val);
+}
+inline unsigned long long _Atomic_imodu_fetch64(volatile unsigned long long* _Ptr, long long _Val, int _Order) {
+    unsigned long long _Result = _Atomic_load64((volatile long long*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64((volatile long long*) _Ptr, (long long*)&_Result, (unsigned long long) (_Result % _Val), _Order)) {
+    }
+    return (unsigned long long) (_Result % _Val);
+}
+
+inline unsigned char _Atomic_imodu_fetch8_64(volatile unsigned char* _Ptr, long long _Val, int _Order) {
+    unsigned char _Result = (unsigned char) _Atomic_load8((volatile char*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8((volatile char*) _Ptr, (char*) &_Result, (unsigned char) (_Result % _Val), _Order)) {
+    }
+    return (unsigned char) (_Result % _Val);
+}
+inline unsigned short _Atomic_imodu_fetch16_64(volatile unsigned short* _Ptr, long long _Val, int _Order) {
+    unsigned short _Result = _Atomic_load16((volatile short*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16((volatile short*) _Ptr, (short*)&_Result, (unsigned short) (_Result % _Val), _Order)) {
+    }
+    return (unsigned short) (_Result % _Val);
+}
+inline unsigned int _Atomic_imodu_fetch32_64(volatile unsigned int* _Ptr, long long _Val, int _Order) {
+    unsigned int _Result = _Atomic_load32((volatile int*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*) _Ptr, (int*)&_Result, (unsigned int) (_Result % _Val), _Order)) {
+    }
+    return (unsigned int) (_Result % _Val);
+}
+
 inline unsigned char _Atomic_mod_fetch8(volatile unsigned char* _Ptr, unsigned int _Val, int _Order) {
     unsigned char _Result = (unsigned char) _Atomic_load8((volatile char*) _Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strong8(
-        (volatile char*) _Ptr, (char*) &_Result, (char) (_Result % (unsigned char) _Val), _Order)) {
+        (volatile char*) _Ptr, (char*) &_Result, (unsigned char) (_Result % _Val), _Order)) {
     }
-    return (unsigned char) (_Result % (unsigned char) _Val);
+    return (unsigned char) (_Result % _Val);
 }
 inline unsigned short _Atomic_mod_fetch16(volatile unsigned short* _Ptr, unsigned int _Val, int _Order) {
     unsigned short _Result = (unsigned short) _Atomic_load16((volatile short*) _Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strong16(
-        (volatile short*) _Ptr, (short*) &_Result, (short) (_Result % (unsigned short) _Val), _Order)) {
+        (volatile short*) _Ptr, (short*) &_Result, (unsigned short) (_Result % _Val), _Order)) {
     }
-    return (unsigned short) (_Result % (unsigned short) _Val);
+    return (unsigned short) (_Result % _Val);
 }
 inline unsigned int _Atomic_mod_fetch32(volatile unsigned int* _Ptr, unsigned int _Val, int _Order) {
     unsigned int _Result = (unsigned int) _Atomic_load32((volatile int*) _Ptr, _Atomic_memory_order_seq_cst);
-    while (!_Atomic_compare_exchange_strong32((volatile int*) _Ptr, (int*) &_Result, (int) (_Result % _Val), _Order)) {
+    while (!_Atomic_compare_exchange_strong32((volatile int*) _Ptr, (int*) &_Result, (unsigned int) (_Result % _Val), _Order)) {
     }
-    return _Result % _Val;
+    return (unsigned int) (_Result % _Val);
 }
 inline unsigned long long _Atomic_mod_fetch64(volatile unsigned long long* _Ptr, unsigned long long _Val, int _Order) {
     unsigned long long _Result =
         (unsigned long long) _Atomic_load64((volatile long long*) _Ptr, _Atomic_memory_order_seq_cst);
     while (!_Atomic_compare_exchange_strong64(
-        (volatile long long*) _Ptr, (long long*) &_Result, (long long) (_Result % _Val), _Order)) {
+        (volatile long long*) _Ptr, (long long*) &_Result, (unsigned long long) (_Result % _Val), _Order)) {
     }
-    return _Result % _Val;
+    return (unsigned long long) (_Result % _Val);
+}
+inline unsigned char _Atomic_mod_fetch8_64(volatile unsigned char* _Ptr, unsigned long long _Val, int _Order) {
+    unsigned char _Result = (unsigned char) _Atomic_load8((volatile char*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8(
+        (volatile char*) _Ptr, (char*) &_Result, (unsigned char) (_Result % _Val), _Order)) {
+    }
+    return (unsigned char) (_Result % _Val);
+}
+inline unsigned short _Atomic_mod_fetch16_64(volatile unsigned short* _Ptr, unsigned long long _Val, int _Order) {
+    unsigned short _Result = (unsigned short) _Atomic_load16((volatile short*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(
+        (volatile short*) _Ptr, (short*) &_Result, (unsigned short) (_Result % _Val), _Order)) {
+    }
+    return (unsigned short) (_Result % _Val);
+}
+inline unsigned int _Atomic_mod_fetch32_64(volatile unsigned int* _Ptr, unsigned long long _Val, int _Order) {
+    unsigned int _Result = (unsigned int) _Atomic_load32((volatile int*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32((volatile int*) _Ptr, (int*) &_Result, (unsigned int) (_Result % _Val), _Order)) {
+    }
+    return (unsigned int) (_Result % _Val);
+}
+
+inline signed char _Atomic_mods_fetch8(volatile signed char* _Ptr, unsigned int _Val, int _Order) {
+    signed char _Result = (signed char) _Atomic_load8((volatile char*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8(
+        (volatile char*) _Ptr, (char*) &_Result, (signed char) (_Result % _Val), _Order)) {
+    }
+    return (signed char) (_Result % _Val);
+}
+inline short _Atomic_mods_fetch16(volatile short* _Ptr, unsigned int _Val, int _Order) {
+    short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result % _Val), _Order)) {
+    }
+    return (short) (_Result % _Val);
+}
+inline int _Atomic_mods_fetch32(volatile int* _Ptr, unsigned int _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result % _Val), _Order)) {
+    }
+    return (int) (_Result % _Val);
+}
+inline long long _Atomic_mods_fetch64(volatile long long* _Ptr, unsigned long long _Val, int _Order) {
+    long long _Result = _Atomic_load64(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong64(_Ptr, &_Result, (long long) (_Result % _Val), _Order)) {
+    }
+    return (long long) (_Result % _Val);
+}
+inline signed char _Atomic_mods_fetch8_64(volatile signed char* _Ptr, unsigned long long _Val, int _Order) {
+    signed char _Result = (signed char) _Atomic_load8((volatile char*) _Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong8(
+        (volatile char*) _Ptr, (char*) &_Result, (signed char) (_Result % _Val), _Order)) {
+    }
+    return (signed char) (_Result % _Val);
+}
+inline short _Atomic_mods_fetch16_64(volatile short* _Ptr, unsigned long long _Val, int _Order) {
+    short _Result = _Atomic_load16(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong16(_Ptr, &_Result, (short) (_Result % _Val), _Order)) {
+    }
+    return (short) (_Result % _Val);
+}
+inline int _Atomic_mods_fetch32_64(volatile int* _Ptr, unsigned long long _Val, int _Order) {
+    int _Result = _Atomic_load32(_Ptr, _Atomic_memory_order_seq_cst);
+    while (!_Atomic_compare_exchange_strong32(_Ptr, &_Result, (int) (_Result % _Val), _Order)) {
+    }
+    return (int) (_Result % _Val);
 }
 
 inline void _Atomic_lock_and_store(volatile void* _Obj, const void* _Desired, int _Offset, size_t _Size) {
@@ -1102,7 +1766,6 @@ inline _Bool _Atomic_lock_and_compare_exchange_strong(
 #undef _ATOMIC_CHOOSE_INTRINSIC
 #undef _ATOMIC_POST_LOAD_BARRIER_AS_NEEDED
 #undef _ATOMIC_STORE_PREFIX
-#undef _ATOMIC_STORE_SEQ_CST_ARM
 #undef _ATOMIC_STORE_SEQ_CST_X86_X64
 #undef _ATOMIC_STORE_32_SEQ_CST_X86_X64
 #undef _ATOMIC_STORE_SEQ_CST
@@ -1120,6 +1783,7 @@ inline _Bool _Atomic_lock_and_compare_exchange_strong(
 #undef _INVALID_MEMORY_ORDER
 #undef _Compiler_or_memory_barrier
 #undef _Memory_barrier
+#undef _Memory_load_acquire_barrier
 #undef _Compiler_barrier
 
 #undef _CONCATX

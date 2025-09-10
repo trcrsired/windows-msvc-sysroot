@@ -13,7 +13,7 @@
 #pragma region Desktop Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
-#include <imessagedispatcher.h>
+#include <IMessageDispatcher.h>
 
 typedef IMessageDispatcher *PMessageDispatcher;
 

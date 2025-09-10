@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,13 +100,13 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.applicationmodel.contacts.h"
-#include "windows.applicationmodel.datatransfer.h"
-#include "windows.storage.streams.h"
+#include "Windows.Foundation.h"
+#include "Windows.ApplicationModel.Contacts.h"
+#include "Windows.ApplicationModel.DataTransfer.h"
+#include "Windows.Storage.Streams.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -499,7 +499,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IQuickLink = _uuidof(IQuickLink);
+                    MIDL_CONST_ID IID& IID_IQuickLink = __uuidof(IQuickLink);
                 } /* ShareTarget */
             } /* DataTransfer */
         } /* ApplicationModel */
@@ -551,7 +551,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IShareOperation = _uuidof(IShareOperation);
+                    MIDL_CONST_ID IID& IID_IShareOperation = __uuidof(IShareOperation);
                 } /* ShareTarget */
             } /* DataTransfer */
         } /* ApplicationModel */
@@ -587,7 +587,7 @@ namespace ABI {
                         virtual HRESULT STDMETHODCALLTYPE DismissUI(void) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IShareOperation2 = _uuidof(IShareOperation2);
+                    MIDL_CONST_ID IID& IID_IShareOperation2 = __uuidof(IShareOperation2);
                 } /* ShareTarget */
             } /* DataTransfer */
         } /* ApplicationModel */
@@ -625,7 +625,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IShareOperation3 = _uuidof(IShareOperation3);
+                    MIDL_CONST_ID IID& IID_IShareOperation3 = __uuidof(IShareOperation3);
                 } /* ShareTarget */
             } /* DataTransfer */
         } /* ApplicationModel */

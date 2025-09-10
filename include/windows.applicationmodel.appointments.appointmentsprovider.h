@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,11 +100,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.applicationmodel.appointments.h"
+#include "Windows.Foundation.h"
+#include "Windows.ApplicationModel.Appointments.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -307,7 +307,7 @@ namespace ABI {
                         virtual HRESULT STDMETHODCALLTYPE DismissUI(void) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IAddAppointmentOperation = _uuidof(IAddAppointmentOperation);
+                    MIDL_CONST_ID IID& IID_IAddAppointmentOperation = __uuidof(IAddAppointmentOperation);
                 } /* AppointmentsProvider */
             } /* Appointments */
         } /* ApplicationModel */
@@ -354,7 +354,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IAppointmentsProviderLaunchActionVerbsStatics = _uuidof(IAppointmentsProviderLaunchActionVerbsStatics);
+                    MIDL_CONST_ID IID& IID_IAppointmentsProviderLaunchActionVerbsStatics = __uuidof(IAppointmentsProviderLaunchActionVerbsStatics);
                 } /* AppointmentsProvider */
             } /* Appointments */
         } /* ApplicationModel */
@@ -392,7 +392,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IAppointmentsProviderLaunchActionVerbsStatics2 = _uuidof(IAppointmentsProviderLaunchActionVerbsStatics2);
+                    MIDL_CONST_ID IID& IID_IAppointmentsProviderLaunchActionVerbsStatics2 = __uuidof(IAppointmentsProviderLaunchActionVerbsStatics2);
                 } /* AppointmentsProvider */
             } /* Appointments */
         } /* ApplicationModel */
@@ -442,7 +442,7 @@ namespace ABI {
                         virtual HRESULT STDMETHODCALLTYPE DismissUI(void) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IRemoveAppointmentOperation = _uuidof(IRemoveAppointmentOperation);
+                    MIDL_CONST_ID IID& IID_IRemoveAppointmentOperation = __uuidof(IRemoveAppointmentOperation);
                 } /* AppointmentsProvider */
             } /* Appointments */
         } /* ApplicationModel */
@@ -497,7 +497,7 @@ namespace ABI {
                         virtual HRESULT STDMETHODCALLTYPE DismissUI(void) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IReplaceAppointmentOperation = _uuidof(IReplaceAppointmentOperation);
+                    MIDL_CONST_ID IID& IID_IReplaceAppointmentOperation = __uuidof(IReplaceAppointmentOperation);
                 } /* AppointmentsProvider */
             } /* Appointments */
         } /* ApplicationModel */
@@ -534,8 +534,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.ApplicationModel.Appointments.AppointmentsProvider.IAppointmentsProviderLaunchActionVerbsStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.ApplicationModel.Appointments.AppointmentsProvider.IAppointmentsProviderLaunchActionVerbsStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.ApplicationModel.Appointments.AppointmentsProvider.IAppointmentsProviderLaunchActionVerbsStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
@@ -1168,8 +1168,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.ApplicationModel.Appointments.AppointmentsProvider.IAppointmentsProviderLaunchActionVerbsStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.ApplicationModel.Appointments.AppointmentsProvider.IAppointmentsProviderLaunchActionVerbsStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.ApplicationModel.Appointments.AppointmentsProvider.IAppointmentsProviderLaunchActionVerbsStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *

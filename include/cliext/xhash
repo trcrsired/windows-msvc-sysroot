@@ -113,7 +113,7 @@ public:
 
 	hash% operator=(hash% _Right)
 		{	// assign
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, do it
 			clear();
 			_Mylist->insert_node(_Mylist->head_node(),
@@ -322,7 +322,7 @@ public:
 		if (_Iter_container(_First) != _Mylist)
 			for (; _First != _Last; ++_First)
 				insert_node(*_First, nullptr);
-		else if (_Multi)
+		else if (this->_Multi)
 			{	// worth assigning to self
 			for (; _First != _Last; ++_First)
 				_Mylist->insert_node(_Mylist->front_node(), 1, *_First);
@@ -340,7 +340,7 @@ public:
 		if (_First->container() != _Mylist)
 			for (; !_First->equal_to(_Last); _First->next())
 				insert_node((value_type%)_First->get_cref(), nullptr);
-		else if (_Multi)
+		else if (this->_Multi)
 			{	// worth assigning to self
 			for (; !_First->equal_to(_Last); _First->next())
 				_Mylist->insert_node(front_node(), 1,
@@ -381,7 +381,7 @@ public:
 			if (!this->comp(this->get_key(_Val),
 				this->get_key((_Node = _Node->prev_node())->_Myval)))
 				;	// still too high in bucket list
-			else if (_Multi
+			else if (this->_Multi
 				|| !this->comp(this->get_key(_Node->_Myval),
 					this->get_key(_Val)))
 				{	// found insertion point, back up to it
@@ -473,7 +473,7 @@ public:
 
 	void swap(_Mytype_t% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, swap
 			_Mylist_t^ _Tlist = _Mylist;
 			_Myvector_t^ _Tvector = _Myvector;
@@ -818,12 +818,12 @@ private:
 	virtual generic_iterator begin_virtual() sealed
 		= _Mycont_it::begin
 		{	// return iterator for beginning of mutable sequence
-		return (begin());
+		return (begin().operator generic_iterator());
 		}
 	virtual generic_iterator end_virtual() sealed
 		= _Mycont_it::end
 		{	// return iterator for end of mutable sequence
-		return (end());
+		return (end().operator generic_iterator());
 		}
 
 	virtual generic_reverse_iterator rbegin_virtual() sealed
@@ -917,7 +917,7 @@ private:
 		value_type _Val) sealed
 		= _Mycont_it::insert
 		{	// insert _Val at _Where
-		return (insert(iterator(_Where), _Val));
+		return (insert(iterator(_Where), _Val).operator generic_iterator());
 		}
 
 //	virtual void insert_virtual(generic_iterator _Where,
@@ -946,14 +946,14 @@ private:
 	virtual generic_iterator erase_virtual(generic_iterator _Where) sealed
 		= _Mycont_it::erase
 		{	// erase element at _Where
-		return (erase(iterator(_Where)));
+		return (erase(iterator(_Where)).operator generic_iterator());
 		}
 
 	virtual generic_iterator erase_virtual(generic_iterator _First,
 		generic_iterator _Last) sealed
 		= _Mycont_it::erase
 		{	// erase [_First, _Last)
-		return (erase(iterator(_First), iterator(_Last)));
+		return (erase(iterator(_First), iterator(_Last)).operator generic_iterator());
 		}
 
 	virtual size_type erase_virtual(key_type _Keyval) sealed
@@ -978,7 +978,7 @@ private:
 	virtual generic_iterator find_virtual(key_type _Keyval) sealed
 		= _Mycont_it::find
 		{	// find an element that matches _Keyval, return iterator
-		return (find(_Keyval));
+		return (find(_Keyval).operator generic_iterator());
 		}
 
 	virtual size_type count_virtual(key_type _Keyval) sealed
@@ -990,13 +990,13 @@ private:
 	virtual generic_iterator lower_bound_virtual(key_type _Keyval) sealed
 		= _Mycont_it::lower_bound
 		{	// find leftmost node not less than _Keyval
-		return (lower_bound(_Keyval));
+		return (lower_bound(_Keyval).operator generic_iterator());
 		}
 
 	virtual generic_iterator upper_bound_virtual(key_type _Keyval) sealed
 		= _Mycont_it::upper_bound
 		{	// find leftmost node greater than _Keyval
-		return (upper_bound(_Keyval));
+		return (upper_bound(_Keyval).operator generic_iterator());
 		}
 
 	virtual generic_pair_iter_iter equal_range_virtual(

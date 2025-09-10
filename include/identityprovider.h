@@ -121,7 +121,7 @@ typedef interface AsyncIIdentityAuthentication AsyncIIdentityAuthentication;
 #include "oaidl.h"
 #include "ocidl.h"
 #include "propsys.h"
-#include "identitycommon.h"
+#include "IdentityCommon.h"
 
 #ifdef __cplusplus
 extern "C"{

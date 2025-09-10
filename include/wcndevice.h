@@ -75,7 +75,7 @@ typedef struct WCNDeviceObject WCNDeviceObject;
 
 /* header files for imported files */
 #include "objidl.h"
-#include "wcntypes.h"
+#include "WcnTypes.h"
 
 #ifdef __cplusplus
 extern "C"{

@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,13 +100,13 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.storage.h"
-#include "windows.storage.streams.h"
-#include "windows.ui.h"
+#include "Windows.Foundation.h"
+#include "Windows.Storage.h"
+#include "Windows.Storage.Streams.h"
+#include "Windows.UI.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -1649,7 +1649,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_INamedResource = _uuidof(INamedResource);
+                    MIDL_CONST_ID IID& IID_INamedResource = __uuidof(INamedResource);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -1706,7 +1706,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IResourceCandidate = _uuidof(IResourceCandidate);
+                    MIDL_CONST_ID IID& IID_IResourceCandidate = __uuidof(IResourceCandidate);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -1744,7 +1744,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IResourceCandidate2 = _uuidof(IResourceCandidate2);
+                    MIDL_CONST_ID IID& IID_IResourceCandidate2 = __uuidof(IResourceCandidate2);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -1782,7 +1782,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IResourceCandidate3 = _uuidof(IResourceCandidate3);
+                    MIDL_CONST_ID IID& IID_IResourceCandidate3 = __uuidof(IResourceCandidate3);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -1836,7 +1836,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IResourceContext = _uuidof(IResourceContext);
+                    MIDL_CONST_ID IID& IID_IResourceContext = __uuidof(IResourceContext);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -1875,7 +1875,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IResourceContextStatics = _uuidof(IResourceContextStatics);
+                    MIDL_CONST_ID IID& IID_IResourceContextStatics = __uuidof(IResourceContextStatics);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -1924,7 +1924,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IResourceContextStatics2 = _uuidof(IResourceContextStatics2);
+                    MIDL_CONST_ID IID& IID_IResourceContextStatics2 = __uuidof(IResourceContextStatics2);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -1964,7 +1964,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IResourceContextStatics3 = _uuidof(IResourceContextStatics3);
+                    MIDL_CONST_ID IID& IID_IResourceContextStatics3 = __uuidof(IResourceContextStatics3);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -2003,7 +2003,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IResourceContextStatics4 = _uuidof(IResourceContextStatics4);
+                    MIDL_CONST_ID IID& IID_IResourceContextStatics4 = __uuidof(IResourceContextStatics4);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -2053,7 +2053,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IResourceManager = _uuidof(IResourceManager);
+                    MIDL_CONST_ID IID& IID_IResourceManager = __uuidof(IResourceManager);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -2098,7 +2098,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IResourceManager2 = _uuidof(IResourceManager2);
+                    MIDL_CONST_ID IID& IID_IResourceManager2 = __uuidof(IResourceManager2);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -2140,7 +2140,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IResourceManagerStatics = _uuidof(IResourceManagerStatics);
+                    MIDL_CONST_ID IID& IID_IResourceManagerStatics = __uuidof(IResourceManagerStatics);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -2195,7 +2195,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IResourceMap = _uuidof(IResourceMap);
+                    MIDL_CONST_ID IID& IID_IResourceMap = __uuidof(IResourceMap);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -2245,7 +2245,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IResourceQualifier = _uuidof(IResourceQualifier);
+                    MIDL_CONST_ID IID& IID_IResourceQualifier = __uuidof(IResourceQualifier);
                 } /* Core */
             } /* Resources */
         } /* ApplicationModel */
@@ -2327,9 +2327,9 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * RuntimeClass contains static methods.
  *   Static Methods exist on the Windows.ApplicationModel.Resources.Core.IResourceContextStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.ApplicationModel.Resources.Core.IResourceContextStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.ApplicationModel.Resources.Core.IResourceContextStatics3 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.ApplicationModel.Resources.Core.IResourceContextStatics4 interface starting with version 8.0 of the Windows.Foundation.UniversalApiContract API contract
- *   Static Methods exist on the Windows.ApplicationModel.Resources.Core.IResourceContextStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.ApplicationModel.Resources.Core.IResourceContext ** Default Interface **
@@ -6651,9 +6651,9 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * RuntimeClass contains static methods.
  *   Static Methods exist on the Windows.ApplicationModel.Resources.Core.IResourceContextStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.ApplicationModel.Resources.Core.IResourceContextStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.ApplicationModel.Resources.Core.IResourceContextStatics3 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.ApplicationModel.Resources.Core.IResourceContextStatics4 interface starting with version 8.0 of the Windows.Foundation.UniversalApiContract API contract
- *   Static Methods exist on the Windows.ApplicationModel.Resources.Core.IResourceContextStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.ApplicationModel.Resources.Core.IResourceContext ** Default Interface **

@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -9,7 +9,7 @@
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
-    template <typename TSender, typename TResult> struct __declspec(empty_bases) TypedEventHandler;
+    template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
 }
 WINRT_EXPORT namespace winrt::Windows::Phone::UI::Core
 {
@@ -58,7 +58,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Phone::UI::Core::KeyboardInputBuffer>{ using type = winrt::Windows::Phone::UI::Core::IKeyboardInputBuffer; };
     template <> struct abi<winrt::Windows::Phone::UI::Core::ICoreSelectionChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Start(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Length(uint32_t*) noexcept = 0;
@@ -66,7 +66,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Phone::UI::Core::ICoreTextChangedEventArgs>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Start(uint32_t*) noexcept = 0;
             virtual int32_t __stdcall get_OldLength(uint32_t*) noexcept = 0;
@@ -75,7 +75,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Phone::UI::Core::ICoreWindowKeyboardInput>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsKeyboardInputEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsKeyboardInputEnabled(bool) noexcept = 0;
@@ -85,7 +85,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Phone::UI::Core::IKeyboardInputBuffer>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Text(void**) noexcept = 0;
             virtual int32_t __stdcall put_Text(void*) noexcept = 0;
@@ -104,8 +104,8 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Phone_UI_Core_ICoreSelectionChangedEventArgs
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(uint32_t) Start() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(uint32_t) Length() const;
+        [[nodiscard]] auto Start() const;
+        [[nodiscard]] auto Length() const;
     };
     template <> struct consume<winrt::Windows::Phone::UI::Core::ICoreSelectionChangedEventArgs>
     {
@@ -114,9 +114,9 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Phone_UI_Core_ICoreTextChangedEventArgs
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(uint32_t) Start() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(uint32_t) OldLength() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(hstring) NewText() const;
+        [[nodiscard]] auto Start() const;
+        [[nodiscard]] auto OldLength() const;
+        [[nodiscard]] auto NewText() const;
     };
     template <> struct consume<winrt::Windows::Phone::UI::Core::ICoreTextChangedEventArgs>
     {
@@ -125,10 +125,10 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Phone_UI_Core_ICoreWindowKeyboardInput
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsKeyboardInputEnabled() const;
-        WINRT_IMPL_AUTO(void) IsKeyboardInputEnabled(bool value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Phone::UI::Core::KeyboardInputBuffer) KeyboardInputBuffer() const;
-        WINRT_IMPL_AUTO(void) KeyboardInputBuffer(winrt::Windows::Phone::UI::Core::KeyboardInputBuffer const& value) const;
+        [[nodiscard]] auto IsKeyboardInputEnabled() const;
+        auto IsKeyboardInputEnabled(bool value) const;
+        [[nodiscard]] auto KeyboardInputBuffer() const;
+        auto KeyboardInputBuffer(winrt::Windows::Phone::UI::Core::KeyboardInputBuffer const& value) const;
     };
     template <> struct consume<winrt::Windows::Phone::UI::Core::ICoreWindowKeyboardInput>
     {
@@ -137,22 +137,22 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Phone_UI_Core_IKeyboardInputBuffer
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(hstring) Text() const;
-        WINRT_IMPL_AUTO(void) Text(param::hstring const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(uint32_t) SelectionStart() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(uint32_t) SelectionLength() const;
-        WINRT_IMPL_AUTO(void) Select(uint32_t start, uint32_t length) const;
-        WINRT_IMPL_AUTO(void) SelectFromTap(uint32_t characterIndex) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Phone::UI::Core::CoreInputScope) InputScope() const;
-        WINRT_IMPL_AUTO(void) InputScope(winrt::Windows::Phone::UI::Core::CoreInputScope const& value) const;
-        WINRT_IMPL_AUTO(winrt::event_token) TextChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::UI::Core::KeyboardInputBuffer, winrt::Windows::Phone::UI::Core::CoreTextChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto Text() const;
+        auto Text(param::hstring const& value) const;
+        [[nodiscard]] auto SelectionStart() const;
+        [[nodiscard]] auto SelectionLength() const;
+        auto Select(uint32_t start, uint32_t length) const;
+        auto SelectFromTap(uint32_t characterIndex) const;
+        [[nodiscard]] auto InputScope() const;
+        auto InputScope(winrt::Windows::Phone::UI::Core::CoreInputScope const& value) const;
+        auto TextChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::UI::Core::KeyboardInputBuffer, winrt::Windows::Phone::UI::Core::CoreTextChangedEventArgs> const& handler) const;
         using TextChanged_revoker = impl::event_revoker<winrt::Windows::Phone::UI::Core::IKeyboardInputBuffer, &impl::abi_t<winrt::Windows::Phone::UI::Core::IKeyboardInputBuffer>::remove_TextChanged>;
-        [[nodiscard]] TextChanged_revoker TextChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::UI::Core::KeyboardInputBuffer, winrt::Windows::Phone::UI::Core::CoreTextChangedEventArgs> const& handler) const;
-        WINRT_IMPL_AUTO(void) TextChanged(winrt::event_token const& cookie) const noexcept;
-        WINRT_IMPL_AUTO(winrt::event_token) SelectionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::UI::Core::KeyboardInputBuffer, winrt::Windows::Phone::UI::Core::CoreSelectionChangedEventArgs> const& handler) const;
+        [[nodiscard]] auto TextChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::UI::Core::KeyboardInputBuffer, winrt::Windows::Phone::UI::Core::CoreTextChangedEventArgs> const& handler) const;
+        auto TextChanged(winrt::event_token const& cookie) const noexcept;
+        auto SelectionChanged(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::UI::Core::KeyboardInputBuffer, winrt::Windows::Phone::UI::Core::CoreSelectionChangedEventArgs> const& handler) const;
         using SelectionChanged_revoker = impl::event_revoker<winrt::Windows::Phone::UI::Core::IKeyboardInputBuffer, &impl::abi_t<winrt::Windows::Phone::UI::Core::IKeyboardInputBuffer>::remove_SelectionChanged>;
-        [[nodiscard]] SelectionChanged_revoker SelectionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::UI::Core::KeyboardInputBuffer, winrt::Windows::Phone::UI::Core::CoreSelectionChangedEventArgs> const& handler) const;
-        WINRT_IMPL_AUTO(void) SelectionChanged(winrt::event_token const& cookie) const noexcept;
+        [[nodiscard]] auto SelectionChanged(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::Phone::UI::Core::KeyboardInputBuffer, winrt::Windows::Phone::UI::Core::CoreSelectionChangedEventArgs> const& handler) const;
+        auto SelectionChanged(winrt::event_token const& cookie) const noexcept;
     };
     template <> struct consume<winrt::Windows::Phone::UI::Core::IKeyboardInputBuffer>
     {

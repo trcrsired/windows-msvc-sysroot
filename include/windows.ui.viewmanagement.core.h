@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,11 +100,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.ui.h"
+#include "Windows.Foundation.h"
+#include "Windows.UI.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -1034,6 +1034,9 @@ namespace ABI {
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
                         CoreInputViewKind_Dictation = 6,
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xf0000
+                        CoreInputViewKind_Gamepad = 7,
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xf0000
                     };
                 } /* Core */
             } /* ViewManagement */
@@ -1133,7 +1136,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreFrameworkInputView = _uuidof(ICoreFrameworkInputView);
+                    MIDL_CONST_ID IID& IID_ICoreFrameworkInputView = __uuidof(ICoreFrameworkInputView);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1177,7 +1180,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreFrameworkInputViewAnimationStartingEventArgs = _uuidof(ICoreFrameworkInputViewAnimationStartingEventArgs);
+                    MIDL_CONST_ID IID& IID_ICoreFrameworkInputViewAnimationStartingEventArgs = __uuidof(ICoreFrameworkInputViewAnimationStartingEventArgs);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1218,7 +1221,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreFrameworkInputViewOcclusionsChangedEventArgs = _uuidof(ICoreFrameworkInputViewOcclusionsChangedEventArgs);
+                    MIDL_CONST_ID IID& IID_ICoreFrameworkInputViewOcclusionsChangedEventArgs = __uuidof(ICoreFrameworkInputViewOcclusionsChangedEventArgs);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1260,7 +1263,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreFrameworkInputViewStatics = _uuidof(ICoreFrameworkInputViewStatics);
+                    MIDL_CONST_ID IID& IID_ICoreFrameworkInputViewStatics = __uuidof(ICoreFrameworkInputViewStatics);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1311,7 +1314,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreInputView = _uuidof(ICoreInputView);
+                    MIDL_CONST_ID IID& IID_ICoreInputView = __uuidof(ICoreInputView);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1365,7 +1368,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreInputView2 = _uuidof(ICoreInputView2);
+                    MIDL_CONST_ID IID& IID_ICoreInputView2 = __uuidof(ICoreInputView2);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1410,7 +1413,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreInputView3 = _uuidof(ICoreInputView3);
+                    MIDL_CONST_ID IID& IID_ICoreInputView3 = __uuidof(ICoreInputView3);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1459,7 +1462,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreInputView4 = _uuidof(ICoreInputView4);
+                    MIDL_CONST_ID IID& IID_ICoreInputView4 = __uuidof(ICoreInputView4);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1512,7 +1515,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreInputView5 = _uuidof(ICoreInputView5);
+                    MIDL_CONST_ID IID& IID_ICoreInputView5 = __uuidof(ICoreInputView5);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1559,7 +1562,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreInputViewAnimationStartingEventArgs = _uuidof(ICoreInputViewAnimationStartingEventArgs);
+                    MIDL_CONST_ID IID& IID_ICoreInputViewAnimationStartingEventArgs = __uuidof(ICoreInputViewAnimationStartingEventArgs);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1597,7 +1600,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreInputViewHidingEventArgs = _uuidof(ICoreInputViewHidingEventArgs);
+                    MIDL_CONST_ID IID& IID_ICoreInputViewHidingEventArgs = __uuidof(ICoreInputViewHidingEventArgs);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1638,7 +1641,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreInputViewOcclusion = _uuidof(ICoreInputViewOcclusion);
+                    MIDL_CONST_ID IID& IID_ICoreInputViewOcclusion = __uuidof(ICoreInputViewOcclusion);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1682,7 +1685,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreInputViewOcclusionsChangedEventArgs = _uuidof(ICoreInputViewOcclusionsChangedEventArgs);
+                    MIDL_CONST_ID IID& IID_ICoreInputViewOcclusionsChangedEventArgs = __uuidof(ICoreInputViewOcclusionsChangedEventArgs);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1720,7 +1723,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreInputViewShowingEventArgs = _uuidof(ICoreInputViewShowingEventArgs);
+                    MIDL_CONST_ID IID& IID_ICoreInputViewShowingEventArgs = __uuidof(ICoreInputViewShowingEventArgs);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1758,7 +1761,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreInputViewStatics = _uuidof(ICoreInputViewStatics);
+                    MIDL_CONST_ID IID& IID_ICoreInputViewStatics = __uuidof(ICoreInputViewStatics);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1797,7 +1800,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreInputViewStatics2 = _uuidof(ICoreInputViewStatics2);
+                    MIDL_CONST_ID IID& IID_ICoreInputViewStatics2 = __uuidof(ICoreInputViewStatics2);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1850,7 +1853,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICoreInputViewTransferringXYFocusEventArgs = _uuidof(ICoreInputViewTransferringXYFocusEventArgs);
+                    MIDL_CONST_ID IID& IID_ICoreInputViewTransferringXYFocusEventArgs = __uuidof(ICoreInputViewTransferringXYFocusEventArgs);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1900,7 +1903,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IUISettingsController = _uuidof(IUISettingsController);
+                    MIDL_CONST_ID IID& IID_IUISettingsController = __uuidof(IUISettingsController);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -1938,7 +1941,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IUISettingsControllerStatics = _uuidof(IUISettingsControllerStatics);
+                    MIDL_CONST_ID IID& IID_IUISettingsControllerStatics = __uuidof(IUISettingsControllerStatics);
                 } /* Core */
             } /* ViewManagement */
         } /* UI */
@@ -3098,6 +3101,9 @@ enum __x_ABI_CWindows_CUI_CViewManagement_CCore_CCoreInputViewKind
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
     CoreInputViewKind_Dictation = 6,
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xf0000
+    CoreInputViewKind_Gamepad = 7,
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xf0000
 };
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x70000
 

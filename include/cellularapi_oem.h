@@ -587,7 +587,7 @@ typedef struct OemCellular OemCellular;
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
-#include "rilapitypes.h"
+#include "RilAPITypes.h"
 
 #ifdef __cplusplus
 extern "C"{

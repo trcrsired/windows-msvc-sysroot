@@ -11,9 +11,9 @@
 #ifndef _FULLENUMSYNCSERVICE_H_
 #define _FULLENUMSYNCSERVICE_H_
 
-#include <deviceservices.h>
+#include <DeviceServices.h>
 
-#include <syncdeviceservice.h>
+#include <SyncDeviceService.h>
 
 
 /*****************************************************************************

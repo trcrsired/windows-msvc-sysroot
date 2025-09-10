@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,12 +100,12 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.foundation.numerics.h"
-#include "windows.perception.spatial.h"
+#include "Windows.Foundation.h"
+#include "Windows.Foundation.Numerics.h"
+#include "Windows.Perception.Spatial.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -288,7 +288,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ISpatialGraphInteropFrameOfReferencePreview = _uuidof(ISpatialGraphInteropFrameOfReferencePreview);
+                    MIDL_CONST_ID IID& IID_ISpatialGraphInteropFrameOfReferencePreview = __uuidof(ISpatialGraphInteropFrameOfReferencePreview);
                 } /* Preview */
             } /* Spatial */
         } /* Perception */
@@ -342,7 +342,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ISpatialGraphInteropPreviewStatics = _uuidof(ISpatialGraphInteropPreviewStatics);
+                    MIDL_CONST_ID IID& IID_ISpatialGraphInteropPreviewStatics = __uuidof(ISpatialGraphInteropPreviewStatics);
                 } /* Preview */
             } /* Spatial */
         } /* Perception */
@@ -392,7 +392,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ISpatialGraphInteropPreviewStatics2 = _uuidof(ISpatialGraphInteropPreviewStatics2);
+                    MIDL_CONST_ID IID& IID_ISpatialGraphInteropPreviewStatics2 = __uuidof(ISpatialGraphInteropPreviewStatics2);
                 } /* Preview */
             } /* Spatial */
         } /* Perception */

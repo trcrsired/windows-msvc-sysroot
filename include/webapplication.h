@@ -99,7 +99,7 @@ typedef interface IWebApplicationAuthoringMode IWebApplicationAuthoringMode;
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
-#include "mshtml.h"
+#include "Mshtml.h"
 #include "activscp.h"
 
 #ifdef __cplusplus

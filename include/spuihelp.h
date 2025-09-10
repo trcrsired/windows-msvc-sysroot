@@ -21,19 +21,19 @@
 #endif
 
 #ifndef SPError_h
-#include <sperror.h>
+#include <SPError.h>
 #endif
 
 #ifndef SPHelper_h
-#include <sphelper.h>
+#include <SPHelper.h>
 #endif
 
 #ifndef __ATLBASE_H__
-#include <atlbase.h>
+#include <ATLBASE.h>
 #endif
 
 #ifndef __ATLCONV_H__
-#include <atlconv.h>
+#include <ATLCONV.H>
 #endif
 
 /****************************************************************************

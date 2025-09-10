@@ -37,7 +37,6 @@
 #if _STL_COMPILER_PREPROCESSOR
 
 #include <stddef.h>
-#include <utility>
 
 
 #ifdef __cplusplus_cli
@@ -110,8 +109,9 @@ template <class T> struct gcroot {
 
         void swap( gcroot<T> & _right )
         {
-                using std::swap;
-                swap( _handle, _right._handle );
+                void* t = _handle;
+                _handle = _right._handle;
+                _right._handle = t;
         }
 
         // The managed object is not a secret or protected resource, so it's okay to expose to anyone who has access to the gcroot object

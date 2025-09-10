@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -6,17 +6,17 @@
 #pragma once
 #ifndef WINRT_Windows_UI_WebUI_Core_1_H
 #define WINRT_Windows_UI_WebUI_Core_1_H
-#include "winrt/impl/windows.ui.webui.core.0.h"
+#include "winrt/impl/Windows.UI.WebUI.Core.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::WebUI::Core
 {
-    struct __declspec(empty_bases) IWebUICommandBar :
+    struct WINRT_IMPL_EMPTY_BASES IWebUICommandBar :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebUICommandBar>
     {
         IWebUICommandBar(std::nullptr_t = nullptr) noexcept {}
         IWebUICommandBar(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebUICommandBarBitmapIcon :
+    struct WINRT_IMPL_EMPTY_BASES IWebUICommandBarBitmapIcon :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebUICommandBarBitmapIcon>,
         impl::require<winrt::Windows::UI::WebUI::Core::IWebUICommandBarBitmapIcon, winrt::Windows::UI::WebUI::Core::IWebUICommandBarIcon>
@@ -24,14 +24,14 @@ WINRT_EXPORT namespace winrt::Windows::UI::WebUI::Core
         IWebUICommandBarBitmapIcon(std::nullptr_t = nullptr) noexcept {}
         IWebUICommandBarBitmapIcon(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebUICommandBarBitmapIconFactory :
+    struct WINRT_IMPL_EMPTY_BASES IWebUICommandBarBitmapIconFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebUICommandBarBitmapIconFactory>
     {
         IWebUICommandBarBitmapIconFactory(std::nullptr_t = nullptr) noexcept {}
         IWebUICommandBarBitmapIconFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebUICommandBarConfirmationButton :
+    struct WINRT_IMPL_EMPTY_BASES IWebUICommandBarConfirmationButton :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebUICommandBarConfirmationButton>,
         impl::require<winrt::Windows::UI::WebUI::Core::IWebUICommandBarConfirmationButton, winrt::Windows::UI::WebUI::Core::IWebUICommandBarElement>
@@ -39,21 +39,21 @@ WINRT_EXPORT namespace winrt::Windows::UI::WebUI::Core
         IWebUICommandBarConfirmationButton(std::nullptr_t = nullptr) noexcept {}
         IWebUICommandBarConfirmationButton(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebUICommandBarElement :
+    struct WINRT_IMPL_EMPTY_BASES IWebUICommandBarElement :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebUICommandBarElement>
     {
         IWebUICommandBarElement(std::nullptr_t = nullptr) noexcept {}
         IWebUICommandBarElement(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebUICommandBarIcon :
+    struct WINRT_IMPL_EMPTY_BASES IWebUICommandBarIcon :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebUICommandBarIcon>
     {
         IWebUICommandBarIcon(std::nullptr_t = nullptr) noexcept {}
         IWebUICommandBarIcon(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebUICommandBarIconButton :
+    struct WINRT_IMPL_EMPTY_BASES IWebUICommandBarIconButton :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebUICommandBarIconButton>,
         impl::require<winrt::Windows::UI::WebUI::Core::IWebUICommandBarIconButton, winrt::Windows::UI::WebUI::Core::IWebUICommandBarElement>
@@ -61,28 +61,28 @@ WINRT_EXPORT namespace winrt::Windows::UI::WebUI::Core
         IWebUICommandBarIconButton(std::nullptr_t = nullptr) noexcept {}
         IWebUICommandBarIconButton(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebUICommandBarItemInvokedEventArgs :
+    struct WINRT_IMPL_EMPTY_BASES IWebUICommandBarItemInvokedEventArgs :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebUICommandBarItemInvokedEventArgs>
     {
         IWebUICommandBarItemInvokedEventArgs(std::nullptr_t = nullptr) noexcept {}
         IWebUICommandBarItemInvokedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebUICommandBarSizeChangedEventArgs :
+    struct WINRT_IMPL_EMPTY_BASES IWebUICommandBarSizeChangedEventArgs :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebUICommandBarSizeChangedEventArgs>
     {
         IWebUICommandBarSizeChangedEventArgs(std::nullptr_t = nullptr) noexcept {}
         IWebUICommandBarSizeChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebUICommandBarStatics :
+    struct WINRT_IMPL_EMPTY_BASES IWebUICommandBarStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebUICommandBarStatics>
     {
         IWebUICommandBarStatics(std::nullptr_t = nullptr) noexcept {}
         IWebUICommandBarStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebUICommandBarSymbolIcon :
+    struct WINRT_IMPL_EMPTY_BASES IWebUICommandBarSymbolIcon :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebUICommandBarSymbolIcon>,
         impl::require<winrt::Windows::UI::WebUI::Core::IWebUICommandBarSymbolIcon, winrt::Windows::UI::WebUI::Core::IWebUICommandBarIcon>
@@ -90,7 +90,7 @@ WINRT_EXPORT namespace winrt::Windows::UI::WebUI::Core
         IWebUICommandBarSymbolIcon(std::nullptr_t = nullptr) noexcept {}
         IWebUICommandBarSymbolIcon(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IWebUICommandBarSymbolIconFactory :
+    struct WINRT_IMPL_EMPTY_BASES IWebUICommandBarSymbolIconFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWebUICommandBarSymbolIconFactory>
     {

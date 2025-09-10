@@ -27,7 +27,7 @@
 #if !defined(NTDDI_VERSION) || (NTDDI_VERSION < NTDDI_WIN8)
 
 // Application is targetting below Windows 8
-#include "adogpool_backcompat.h"
+#include "adogpool_Backcompat.h"
 
 #else
 

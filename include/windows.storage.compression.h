@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,11 +100,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.storage.streams.h"
+#include "Windows.Foundation.h"
+#include "Windows.Storage.Streams.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -354,7 +354,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ICompressor = _uuidof(ICompressor);
+                MIDL_CONST_ID IID& IID_ICompressor = __uuidof(ICompressor);
             } /* Compression */
         } /* Storage */
     } /* Windows */
@@ -397,7 +397,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ICompressorFactory = _uuidof(ICompressorFactory);
+                MIDL_CONST_ID IID& IID_ICompressorFactory = __uuidof(ICompressorFactory);
             } /* Compression */
         } /* Storage */
     } /* Windows */
@@ -437,7 +437,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IDecompressor = _uuidof(IDecompressor);
+                MIDL_CONST_ID IID& IID_IDecompressor = __uuidof(IDecompressor);
             } /* Compression */
         } /* Storage */
     } /* Windows */
@@ -474,7 +474,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IDecompressorFactory = _uuidof(IDecompressorFactory);
+                MIDL_CONST_ID IID& IID_IDecompressorFactory = __uuidof(IDecompressorFactory);
             } /* Compression */
         } /* Storage */
     } /* Windows */

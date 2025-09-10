@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #if !defined(WINDOWS_SYSTEM_SYSTEMMANAGEMENTCONTRACT_VERSION)
@@ -104,11 +104,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.system.h"
+#include "Windows.Foundation.h"
+#include "Windows.System.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -608,7 +608,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IAppCapability = _uuidof(IAppCapability);
+                    MIDL_CONST_ID IID& IID_IAppCapability = __uuidof(IAppCapability);
                 } /* AppCapabilityAccess */
             } /* Authorization */
         } /* Security */
@@ -649,7 +649,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IAppCapability2 = _uuidof(IAppCapability2);
+                    MIDL_CONST_ID IID& IID_IAppCapability2 = __uuidof(IAppCapability2);
                 } /* AppCapabilityAccess */
             } /* Authorization */
         } /* Security */
@@ -684,7 +684,7 @@ namespace ABI {
                     public:
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IAppCapabilityAccessChangedEventArgs = _uuidof(IAppCapabilityAccessChangedEventArgs);
+                    MIDL_CONST_ID IID& IID_IAppCapabilityAccessChangedEventArgs = __uuidof(IAppCapabilityAccessChangedEventArgs);
                 } /* AppCapabilityAccess */
             } /* Authorization */
         } /* Security */
@@ -738,7 +738,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IAppCapabilityStatics = _uuidof(IAppCapabilityStatics);
+                    MIDL_CONST_ID IID& IID_IAppCapabilityStatics = __uuidof(IAppCapabilityStatics);
                 } /* AppCapabilityAccess */
             } /* Authorization */
         } /* Security */

@@ -12,7 +12,7 @@
 
 #pragma once
 
-#include "dwrite_1.h"
+#include <DWrite_1.h>
 
 
 interface IDWriteFontFallback;
@@ -80,7 +80,7 @@ struct DWRITE_TEXT_METRICS1 : DWRITE_TEXT_METRICS
 /// callbacks that perform rendering of text, inline objects, and decorations
 /// such as underlines.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteTextRenderer1, "D3E0E934-22A0-427E-AAE4-7D9574B59DB1") : IDWriteTextRenderer
+interface DWRITE_DECLARE_INTERFACE("D3E0E934-22A0-427E-AAE4-7D9574B59DB1") IDWriteTextRenderer1 : public IDWriteTextRenderer
 {
     /// <summary>
     /// IDWriteTextLayout::Draw calls this function to instruct the client to
@@ -250,7 +250,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextRenderer1, "D3E0E934-22A0-427E-AAE4-7D9574B59D
 /// <remarks>
 /// This object may not be thread-safe and it may carry the state of text format change.
 /// </remarks>
-DWRITE_BEGIN_INTERFACE(IDWriteTextFormat1, "5F174B49-0D8B-4CFB-8BCA-F1CCE9D06C67") : IDWriteTextFormat
+interface DWRITE_DECLARE_INTERFACE("5F174B49-0D8B-4CFB-8BCA-F1CCE9D06C67") IDWriteTextFormat1 : public IDWriteTextFormat
 {
     /// <summary>
     /// Set the preferred orientation of glyphs when using a vertical reading direction.
@@ -321,7 +321,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextFormat1, "5F174B49-0D8B-4CFB-8BCA-F1CCE9D06C67
     /// Get the current font fallback object.
     /// </summary>
     STDMETHOD(GetFontFallback)(
-        _COM_Outptr_ IDWriteFontFallback** fontFallback
+        __out IDWriteFontFallback** fontFallback
         ) PURE;
 };
 
@@ -332,7 +332,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextFormat1, "5F174B49-0D8B-4CFB-8BCA-F1CCE9D06C67
 ///
 /// All coordinates are in device independent pixels (DIPs).
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteTextLayout2, "1093C18F-8D5E-43F0-B064-0917311B525E") : IDWriteTextLayout1
+interface DWRITE_DECLARE_INTERFACE("1093C18F-8D5E-43F0-B064-0917311B525E") IDWriteTextLayout2 : public IDWriteTextLayout1
 {
     /// <summary>
     /// GetMetrics retrieves overall metrics for the formatted string.
@@ -422,7 +422,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextLayout2, "1093C18F-8D5E-43F0-B064-0917311B525E
     /// Get the current font fallback object.
     /// </summary>
     STDMETHOD(GetFontFallback)(
-        _COM_Outptr_ IDWriteFontFallback** fontFallback
+        __out IDWriteFontFallback** fontFallback
         ) PURE;
 };
 
@@ -432,7 +432,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextLayout2, "1093C18F-8D5E-43F0-B064-0917311B525E
 /// callbacks that perform rendering of text, inline objects, and decorations
 /// such as underlines.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteTextAnalyzer2, "553A9FF3-5693-4DF7-B52B-74806F7F2EB9") : IDWriteTextAnalyzer1
+interface DWRITE_DECLARE_INTERFACE("553A9FF3-5693-4DF7-B52B-74806F7F2EB9") IDWriteTextAnalyzer2 : public IDWriteTextAnalyzer1
 {
     /// <summary>
     /// Returns 2x3 transform matrix for the respective angle to draw the
@@ -522,7 +522,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextAnalyzer2, "553A9FF3-5693-4DF7-B52B-74806F7F2E
 /// A font fallback definition used for mapping characters to fonts capable of
 /// supporting them.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFontFallback, "EFA008F9-F7A1-48BF-B05C-F224713CC0FF") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("EFA008F9-F7A1-48BF-B05C-F224713CC0FF") IDWriteFontFallback : public IUnknown
 {
     /// <summary>
     /// Determines an appropriate font to use to render the range of text.
@@ -554,7 +554,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteFontFallback, "EFA008F9-F7A1-48BF-B05C-F224713CC0F
         UINT32 textPosition,
         UINT32 textLength,
         _In_opt_ IDWriteFontCollection* baseFontCollection,
-        _In_opt_z_ WCHAR const* baseFamilyName,
+        _In_opt_z_ wchar_t const* baseFamilyName,
         DWRITE_FONT_WEIGHT baseWeight,
         DWRITE_FONT_STYLE baseStyle,
         DWRITE_FONT_STRETCH baseStretch,
@@ -572,7 +572,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteFontFallback, "EFA008F9-F7A1-48BF-B05C-F224713CC0F
 /// <remarks>
 /// This object may not be thread-safe.
 /// </remarks>
-DWRITE_BEGIN_INTERFACE(IDWriteFontFallbackBuilder, "FD882D06-8ABA-4FB8-B849-8BE8B73E14DE") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("FD882D06-8ABA-4FB8-B849-8BE8B73E14DE") IDWriteFontFallbackBuilder : public IUnknown
 {
     /// <summary>
     /// Appends a single mapping to the list. Call this once for each additional mapping.
@@ -654,7 +654,7 @@ typedef D3DCOLORVALUE DWRITE_COLOR_F;
 /// <summary>
 /// The IDWriteFont interface represents a physical font in a font collection.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFont2, "29748ed6-8c9c-4a6a-be0b-d912e8538944") : IDWriteFont1
+interface DWRITE_DECLARE_INTERFACE("29748ed6-8c9c-4a6a-be0b-d912e8538944") IDWriteFont2 : public IDWriteFont1
 {
     /// <summary>
     /// Returns TRUE if the font contains tables that can provide color information
@@ -670,7 +670,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteFont2, "29748ed6-8c9c-4a6a-be0b-d912e8538944") : I
 /// It contains font face type, appropriate file references and face identification data.
 /// Various font data such as metrics, names and glyph outlines is obtained from IDWriteFontFace.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFontFace2, "d8b768ff-64bc-4e66-982b-ec8e87f693f7") : IDWriteFontFace1
+interface DWRITE_DECLARE_INTERFACE("d8b768ff-64bc-4e66-982b-ec8e87f693f7") IDWriteFontFace2 : public IDWriteFontFace1
 {
     /// <summary>
     /// Returns TRUE if the font contains tables that can provide color information
@@ -809,7 +809,7 @@ struct DWRITE_COLOR_GLYPH_RUN
 /// <summary>
 /// Enumerator for an ordered collection of color glyph runs.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteColorGlyphRunEnumerator, "d31fbe17-f157-41a2-8d24-cb779e0560e8") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("d31fbe17-f157-41a2-8d24-cb779e0560e8") IDWriteColorGlyphRunEnumerator : public IUnknown
 {
     /// <summary>
     /// Advances to the first or next color run. The runs are enumerated
@@ -843,7 +843,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteColorGlyphRunEnumerator, "d31fbe17-f157-41a2-8d24-
 /// <summary>
 /// The interface that represents text rendering settings for glyph rasterization and filtering.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteRenderingParams2, "F9D711C3-9777-40AE-87E8-3E5AF9BF0948") : IDWriteRenderingParams1
+interface DWRITE_DECLARE_INTERFACE("F9D711C3-9777-40AE-87E8-3E5AF9BF0948") IDWriteRenderingParams2 : public IDWriteRenderingParams1
 {
     /// <summary>
     /// Gets the grid fitting mode.
@@ -854,7 +854,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteRenderingParams2, "F9D711C3-9777-40AE-87E8-3E5AF9B
 /// <summary>
 /// The root factory interface for all DWrite objects.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFactory2, "0439fc60-ca44-4994-8dee-3a9af7b732ec") : IDWriteFactory1
+interface DWRITE_DECLARE_INTERFACE("0439fc60-ca44-4994-8dee-3a9af7b732ec") IDWriteFactory2 : public IDWriteFactory1
 {
     /// <summary>
     /// Get the system-appropriate font fallback mapping list.

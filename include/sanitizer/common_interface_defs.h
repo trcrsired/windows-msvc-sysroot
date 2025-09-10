@@ -15,13 +15,13 @@
 #include <stddef.h>
 #include <stdint.h>
 
-// GCC does not understand __has_feature.
-#if !defined(__has_feature)
-#define __has_feature(x) 0
-#endif
-
 // Windows allows a user to set their default calling convention, but we always
-// use __cdecl
+// use __cdecl because it's the standard these days.
+// CONTEXT: Most architectures only support __cdecl, support for alternative
+// calling conventions is there primarily just for Win32 APIs in x86.
+// Generally speaking, the specific calling convention is unimportant so long as
+// it is explicitly defined, so that there's a consistent convention irrespective
+// of how the code is compiled
 #ifdef _WIN32
 #define SANITIZER_CDECL __cdecl
 #else
@@ -139,26 +139,23 @@ int SANITIZER_CDECL __sanitizer_acquire_crash_state();
 /// state <c>mid == end</c>, so that should be the final state when the
 /// container is destroyed or when the container reallocates the storage.
 ///
-/// For ASan, <c><i>beg</i></c> should be 8-aligned and <c><i>end</i></c>
-/// should be either 8-aligned or it should point to the end of a separate
-/// heap-, stack-, or global-allocated buffer. So the following example will
-/// not work:
+/// For ASan, <c><i>beg</i></c> no longer needs to be 8-aligned,
+/// first and last granule may be shared with other objects
+/// and therefore the function can be used for any allocator.
+///
+/// The following example shows how to use the function:
 ///
 /// \code
-///   int64_t x[2]; // 16 bytes, 8-aligned
-///   char *beg = (char *)&x[0];
-///   char *end = beg + 12; // Not 8-aligned, not the end of the buffer
-/// \endcode
-///
-/// The following, however, will work:
-/// \code
-///   int32_t x[3]; // 12 bytes, but 8-aligned under ASan.
+///   int32_t x[3]; // 12 bytes
 ///   char *beg = (char*)&x[0];
-///   char *end = beg + 12; // Not 8-aligned, but is the end of the buffer
+///   char *end = beg + 12;
+///   __sanitizer_annotate_contiguous_container(beg, end, beg, end);
 /// \endcode
 ///
 /// \note  Use this function with caution and do not use for anything other
 /// than vector-like classes.
+/// \note  Unaligned <c><i>beg</i></c> or <c><i>end</i></c> may miss bugs in
+/// these granules.
 ///
 /// \param beg Beginning of memory region.
 /// \param end End of memory region.
@@ -166,6 +163,77 @@ int SANITIZER_CDECL __sanitizer_acquire_crash_state();
 /// \param new_mid New middle of memory region.
 void SANITIZER_CDECL __sanitizer_annotate_contiguous_container(
     const void *beg, const void *end, const void *old_mid, const void *new_mid);
+
+/// Similar to <c>__sanitizer_annotate_contiguous_container</c>.
+///
+/// Annotates the current state of a contiguous container memory,
+/// such as <c>std::deque</c>'s single chunk, when the boundries are moved.
+///
+/// A contiguous chunk is a chunk that keeps all of its elements
+/// in a contiguous region of memory. The container owns the region of memory
+/// <c>[storage_beg, storage_end)</c>; the memory <c>[container_beg,
+/// container_end)</c> is used to store the current elements, and the memory
+/// <c>[storage_beg, container_beg), [container_end, storage_end)</c> is
+/// reserved for future elements (<c>storage_beg <= container_beg <=
+/// container_end <= storage_end</c>). For example, in <c> std::deque </c>:
+/// - chunk with a frist deques element will have container_beg equal to address
+///  of the first element.
+/// - in every next chunk with elements, true is  <c> container_beg ==
+/// storage_beg </c>.
+///
+/// Argument requirements:
+/// During unpoisoning memory of empty container (before first element is
+/// added):
+/// - old_container_beg_p == old_container_end_p
+/// During poisoning after last element was removed:
+/// - new_container_beg_p == new_container_end_p
+/// \param storage_beg Beginning of memory region.
+/// \param storage_end End of memory region.
+/// \param old_container_beg Old beginning of used region.
+/// \param old_container_end End of used region.
+/// \param new_container_beg New beginning of used region.
+/// \param new_container_end New end of used region.
+void SANITIZER_CDECL __sanitizer_annotate_double_ended_contiguous_container(
+    const void *storage_beg, const void *storage_end,
+    const void *old_container_beg, const void *old_container_end,
+    const void *new_container_beg, const void *new_container_end);
+
+/// Copies memory annotations from a source storage region to a destination
+/// storage region. After the operation, the destination region has the same
+/// memory annotations as the source region, as long as sanitizer limitations
+/// allow it (more bytes may be unpoisoned than in the source region, resulting
+/// in more false negatives, but never false positives). If the source and
+/// destination regions overlap, only the minimal required changes are made to
+/// preserve the correct annotations. Old storage bytes that are not in the new
+/// storage should have the same annotations, as long as sanitizer limitations
+/// allow it.
+///
+/// This function is primarily designed to be used when moving trivially
+/// relocatable objects that may have poisoned memory, making direct copying
+/// problematic under sanitizer. However, this function does not move memory
+/// content itself, only annotations.
+///
+/// A contiguous container is a container that keeps all of its elements in a
+/// contiguous region of memory. The container owns the region of memory
+/// <c>[src_begin, src_end)</c> and <c>[dst_begin, dst_end)</c>. The memory
+/// within these regions may be alternately poisoned and non-poisoned, with
+/// possibly smaller poisoned and unpoisoned regions.
+///
+/// If this function fully poisons a granule, it is marked as "container
+/// overflow".
+///
+/// Argument requirements: The destination container must have the same size as
+/// the source container, which is inferred from the beginning and end of the
+/// source region. Addresses may be granule-unaligned, but this may affect
+/// performance.
+///
+/// \param src_begin Begin of the source container region.
+/// \param src_end End of the source container region.
+/// \param dst_begin Begin of the destination container region.
+/// \param dst_end End of the destination container region.
+void SANITIZER_CDECL __sanitizer_copy_contiguous_container_annotations(
+    const void *src_begin, const void *src_end, const void *dst_begin,
+    const void *dst_end);
 
 /// Returns true if the contiguous container <c>[beg, end)</c> is properly
 /// poisoned.
@@ -187,6 +255,31 @@ int SANITIZER_CDECL __sanitizer_verify_contiguous_container(const void *beg,
                                                             const void *mid,
                                                             const void *end);
 
+/// Returns true if the double ended contiguous
+/// container <c>[storage_beg, storage_end)</c> is properly poisoned.
+///
+/// Proper poisoning could occur, for example, with
+/// <c>__sanitizer_annotate_double_ended_contiguous_container</c>), that is, if
+/// <c>[storage_beg, container_beg)</c> is not addressable, <c>[container_beg,
+/// container_end)</c> is addressable and <c>[container_end, end)</c> is
+/// unaddressable. Full verification requires O (<c>storage_end -
+/// storage_beg</c>) time; this function tries to avoid such complexity by
+/// touching only parts of the container around <c><i>storage_beg</i></c>,
+/// <c><i>container_beg</i></c>, <c><i>container_end</i></c>, and
+/// <c><i>storage_end</i></c>.
+///
+/// \param storage_beg Beginning of memory region.
+/// \param container_beg Beginning of used region.
+/// \param container_end End of used region.
+/// \param storage_end End of memory region.
+///
+/// \returns True if the double-ended contiguous container <c>[storage_beg,
+/// container_beg, container_end, end)</c> is properly poisoned - only
+/// [container_beg; container_end) is addressable.
+int SANITIZER_CDECL __sanitizer_verify_double_ended_contiguous_container(
+    const void *storage_beg, const void *container_beg,
+    const void *container_end, const void *storage_end);
+
 /// Similar to <c>__sanitizer_verify_contiguous_container()</c> but also
 /// returns the address of the first improperly poisoned byte.
 ///
@@ -199,6 +292,21 @@ int SANITIZER_CDECL __sanitizer_verify_contiguous_container(const void *beg,
 /// \returns The bad address or NULL.
 const void *SANITIZER_CDECL __sanitizer_contiguous_container_find_bad_address(
     const void *beg, const void *mid, const void *end);
+
+/// returns the address of the first improperly poisoned byte.
+///
+/// Returns NULL if the area is poisoned properly.
+///
+/// \param storage_beg Beginning of memory region.
+/// \param container_beg Beginning of used region.
+/// \param container_end End of used region.
+/// \param storage_end End of memory region.
+///
+/// \returns The bad address or NULL.
+const void *SANITIZER_CDECL
+__sanitizer_double_ended_contiguous_container_find_bad_address(
+    const void *storage_beg, const void *container_beg,
+    const void *container_end, const void *storage_end);
 
 /// Prints the stack trace leading to this call (useful for calling from the
 /// debugger).

@@ -126,7 +126,7 @@ typedef struct PluggableTerminalRegistration PluggableTerminalRegistration;
 
 
 /* header files for imported files */
-#include "objsafe.h"
+#include "Objsafe.h"
 #include "tapi3if.h"
 #include "tapi3ds.h"
 #include "msp.h"

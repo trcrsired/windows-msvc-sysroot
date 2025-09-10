@@ -37,47 +37,47 @@ namespace Gdiplus
 {
     namespace DllExports
     {
-        #include "gdiplusmem.h"
+        #include "GdiplusMem.h"
     };
 
-    #include "gdiplusbase.h"
+    #include "GdiplusBase.h"
 
-    #include "gdiplusenums.h"
-    #include "gdiplustypes.h"
-    #include "gdiplusinit.h"
-    #include "gdipluspixelformats.h"
-    #include "gdipluscolor.h"
-    #include "gdiplusmetaheader.h"
-    #include "gdiplusimaging.h"
-    #include "gdipluscolormatrix.h"
+    #include "GdiplusEnums.h"
+    #include "GdiplusTypes.h"
+    #include "GdiplusInit.h"
+    #include "GdiplusPixelFormats.h"
+    #include "GdiplusColor.h"
+    #include "GdiplusMetaHeader.h"
+    #include "GdiplusImaging.h"
+    #include "GdiplusColorMatrix.h"
 #if (GDIPVER >= 0x0110)    
-    #include "gdipluseffects.h"
+    #include "GdiplusEffects.h"
 #endif
-    #include "gdiplusgpstubs.h"
-    #include "gdiplusheaders.h"
+    #include "GdiplusGpStubs.h"
+    #include "GdiplusHeaders.h"
 
     namespace DllExports
     {
-        #include "gdiplusflat.h"
+        #include "GdiplusFlat.h"
     };
 
 
-    #include "gdiplusimageattributes.h"
-    #include "gdiplusmatrix.h"
-    #include "gdiplusbrush.h"
-    #include "gdipluspen.h"
-    #include "gdiplusstringformat.h"
-    #include "gdipluspath.h"
-    #include "gdipluslinecaps.h"
-    #include "gdiplusgraphics.h"
-    #include "gdiplusmetafile.h"
-    #include "gdipluscachedbitmap.h"
-    #include "gdiplusregion.h"
-    #include "gdiplusfontcollection.h"
-    #include "gdiplusfontfamily.h"
-    #include "gdiplusfont.h"
-    #include "gdiplusbitmap.h"
-    #include "gdiplusimagecodec.h"
+    #include "GdiplusImageAttributes.h"
+    #include "GdiplusMatrix.h"
+    #include "GdiplusBrush.h"
+    #include "GdiplusPen.h"
+    #include "GdiplusStringFormat.h"
+    #include "GdiplusPath.h"
+    #include "GdiplusLineCaps.h"
+    #include "GdiplusGraphics.h"
+    #include "GdiplusMetafile.h"
+    #include "GdiplusCachedBitmap.h"
+    #include "GdiplusRegion.h"
+    #include "GdiplusFontCollection.h"
+    #include "GdiplusFontFamily.h"
+    #include "GdiplusFont.h"
+    #include "GdiplusBitmap.h"
+    #include "GdiplusImageCodec.h"
 
 }; // namespace Gdiplus
 

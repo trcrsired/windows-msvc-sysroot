@@ -27,9 +27,18 @@ size_t SANITIZER_CDECL __sanitizer_get_estimated_allocated_size(size_t size);
    is not yet freed. */
 int SANITIZER_CDECL __sanitizer_get_ownership(const volatile void *p);
 
+/* If a pointer lies within an allocation, it will return the start address
+   of the allocation. Otherwise, it returns nullptr. */
+const void *SANITIZER_CDECL __sanitizer_get_allocated_begin(const void *p);
+
 /* Returns the number of bytes reserved for the pointer p.
    Requires (get_ownership(p) == true) or (p == 0). */
 size_t SANITIZER_CDECL __sanitizer_get_allocated_size(const volatile void *p);
+
+/* Returns the number of bytes reserved for the pointer p.
+   Requires __sanitizer_get_allocated_begin(p) == p. */
+size_t SANITIZER_CDECL
+__sanitizer_get_allocated_size_fast(const volatile void *p);
 
 /* Number of bytes, allocated and not yet freed by the application. */
 size_t SANITIZER_CDECL __sanitizer_get_current_allocated_bytes(void);
@@ -53,13 +62,20 @@ size_t SANITIZER_CDECL __sanitizer_get_free_bytes(void);
 size_t SANITIZER_CDECL __sanitizer_get_unmapped_bytes(void);
 
 /* Malloc hooks that may be optionally provided by user.
-   __sanitizer_malloc_hook(ptr, size) is called immediately after
-     allocation of "size" bytes, which returned "ptr".
-   __sanitizer_free_hook(ptr) is called immediately before
-     deallocation of "ptr". */
+   - __sanitizer_malloc_hook(ptr, size) is called immediately after allocation
+     of "size" bytes, which returned "ptr".
+   - __sanitizer_free_hook(ptr) is called immediately before deallocation of
+     "ptr".
+   - __sanitizer_ignore_free_hook(ptr) is called immediately before deallocation
+     of "ptr", and if it returns a non-zero value, the deallocation of "ptr"
+     will not take place. This allows software to make free a no-op until it
+     calls free() again in the same pointer at a later time. Hint: read this as
+     "ignore the free" rather than "ignore the hook".
+*/
 void SANITIZER_CDECL __sanitizer_malloc_hook(const volatile void *ptr,
                                              size_t size);
 void SANITIZER_CDECL __sanitizer_free_hook(const volatile void *ptr);
+int SANITIZER_CDECL __sanitizer_ignore_free_hook(const volatile void *ptr);
 
 /* Installs a pair of hooks for malloc/free.
    Several (currently, 5) hook pairs may be installed, they are executed

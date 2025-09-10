@@ -100,13 +100,13 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.gaming.input.h"
-#include "windows.gaming.input.custom.h"
-#include "windows.system.h"
+#include "Windows.Foundation.h"
+#include "Windows.Gaming.Input.h"
+#include "Windows.Gaming.Input.Custom.h"
+#include "Windows.System.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -785,7 +785,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IGameControllerProviderInfoStatics = _uuidof(IGameControllerProviderInfoStatics);
+                    MIDL_CONST_ID IID& IID_IGameControllerProviderInfoStatics = __uuidof(IGameControllerProviderInfoStatics);
                 } /* Preview */
             } /* Input */
         } /* Gaming */
@@ -878,7 +878,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ILegacyGipGameControllerProvider = _uuidof(ILegacyGipGameControllerProvider);
+                    MIDL_CONST_ID IID& IID_ILegacyGipGameControllerProvider = __uuidof(ILegacyGipGameControllerProvider);
                 } /* Preview */
             } /* Input */
         } /* Gaming */
@@ -940,7 +940,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ILegacyGipGameControllerProviderStatics = _uuidof(ILegacyGipGameControllerProviderStatics);
+                    MIDL_CONST_ID IID& IID_ILegacyGipGameControllerProviderStatics = __uuidof(ILegacyGipGameControllerProviderStatics);
                 } /* Preview */
             } /* Input */
         } /* Gaming */

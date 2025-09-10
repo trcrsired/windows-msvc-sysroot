@@ -594,7 +594,7 @@ typedef struct CUIAutomation8 CUIAutomation8;
 
 
 /* header files for imported files */
-#include "uiautomationcore.h"
+#include "UIAutomationCore.h"
 
 #ifdef __cplusplus
 extern "C"{

@@ -16,11 +16,11 @@
 #endif
  
 #if !defined(_VC_CRT_MINOR_VERSION)
-#define _VC_CRT_MINOR_VERSION 41
+#define _VC_CRT_MINOR_VERSION 50
 #endif
  
 #if !defined(_VC_CRT_BUILD_VERSION)
-#define _VC_CRT_BUILD_VERSION 33923
+#define _VC_CRT_BUILD_VERSION 35503
 #endif
  
 #if !defined(_VC_CRT_RBUILD_VERSION)

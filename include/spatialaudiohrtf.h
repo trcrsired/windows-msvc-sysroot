@@ -65,7 +65,7 @@ typedef interface ISpatialAudioObjectRenderStreamForHrtf ISpatialAudioObjectRend
 #include "wtypes.h"
 #include "unknwn.h"
 #include "hstring.h"
-#include "spatialaudioclient.h"
+#include "SpatialAudioClient.h"
 
 #ifdef __cplusplus
 extern "C"{

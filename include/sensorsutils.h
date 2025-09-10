@@ -16,7 +16,7 @@ Abstract:
 #pragma once
 #endif
 
-#include <sensorsstructures.h>
+#include <SensorsStructures.h>
 
 #ifdef __cplusplus
 extern "C" {

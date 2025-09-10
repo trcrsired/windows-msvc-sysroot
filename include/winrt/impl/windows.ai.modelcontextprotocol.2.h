@@ -1,0 +1,28 @@
+// C++/WinRT v2.0.250303.1
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#pragma once
+#ifndef WINRT_Windows_AI_ModelContextProtocol_2_H
+#define WINRT_Windows_AI_ModelContextProtocol_2_H
+#include "winrt/impl/Windows.AI.ModelContextProtocol.1.h"
+WINRT_EXPORT namespace winrt::Windows::AI::ModelContextProtocol
+{
+    struct WINRT_IMPL_EMPTY_BASES ModelContextProtocolClientContext : winrt::Windows::AI::ModelContextProtocol::IModelContextProtocolClientContext
+    {
+        ModelContextProtocolClientContext(std::nullptr_t) noexcept {}
+        ModelContextProtocolClientContext(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::ModelContextProtocol::IModelContextProtocolClientContext(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ModelContextProtocolServerCatalog : winrt::Windows::AI::ModelContextProtocol::IModelContextProtocolServerCatalog
+    {
+        ModelContextProtocolServerCatalog(std::nullptr_t) noexcept {}
+        ModelContextProtocolServerCatalog(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::ModelContextProtocol::IModelContextProtocolServerCatalog(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ModelContextProtocolServerInfo : winrt::Windows::AI::ModelContextProtocol::IModelContextProtocolServerInfo
+    {
+        ModelContextProtocolServerInfo(std::nullptr_t) noexcept {}
+        ModelContextProtocolServerInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::ModelContextProtocol::IModelContextProtocolServerInfo(ptr, take_ownership_from_abi) {}
+    };
+}
+#endif

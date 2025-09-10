@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,11 +100,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.storage.streams.h"
+#include "Windows.Foundation.h"
+#include "Windows.Storage.Streams.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -557,7 +557,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ILockApplicationHost = _uuidof(ILockApplicationHost);
+                MIDL_CONST_ID IID& IID_ILockApplicationHost = __uuidof(ILockApplicationHost);
             } /* LockScreen */
         } /* ApplicationModel */
     } /* Windows */
@@ -593,7 +593,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ILockApplicationHostStatics = _uuidof(ILockApplicationHostStatics);
+                MIDL_CONST_ID IID& IID_ILockApplicationHostStatics = __uuidof(ILockApplicationHostStatics);
             } /* LockScreen */
         } /* ApplicationModel */
     } /* Windows */
@@ -639,7 +639,7 @@ namespace ABI {
                     virtual HRESULT STDMETHODCALLTYPE LaunchApp(void) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ILockScreenBadge = _uuidof(ILockScreenBadge);
+                MIDL_CONST_ID IID& IID_ILockScreenBadge = __uuidof(ILockScreenBadge);
             } /* LockScreen */
         } /* ApplicationModel */
     } /* Windows */
@@ -712,7 +712,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ILockScreenInfo = _uuidof(ILockScreenInfo);
+                MIDL_CONST_ID IID& IID_ILockScreenInfo = __uuidof(ILockScreenInfo);
             } /* LockScreen */
         } /* ApplicationModel */
     } /* Windows */
@@ -746,7 +746,7 @@ namespace ABI {
                     virtual HRESULT STDMETHODCALLTYPE Complete(void) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ILockScreenUnlockingDeferral = _uuidof(ILockScreenUnlockingDeferral);
+                MIDL_CONST_ID IID& IID_ILockScreenUnlockingDeferral = __uuidof(ILockScreenUnlockingDeferral);
             } /* LockScreen */
         } /* ApplicationModel */
     } /* Windows */
@@ -785,7 +785,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ILockScreenUnlockingEventArgs = _uuidof(ILockScreenUnlockingEventArgs);
+                MIDL_CONST_ID IID& IID_ILockScreenUnlockingEventArgs = __uuidof(ILockScreenUnlockingEventArgs);
             } /* LockScreen */
         } /* ApplicationModel */
     } /* Windows */

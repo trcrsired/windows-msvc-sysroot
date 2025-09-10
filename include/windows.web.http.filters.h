@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #if !defined(WINDOWS_NETWORKING_SOCKETS_CONTROLCHANNELTRIGGERCONTRACT_VERSION)
@@ -108,15 +108,15 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.networking.sockets.h"
-#include "windows.security.credentials.h"
-#include "windows.security.cryptography.certificates.h"
-#include "windows.system.h"
-#include "windows.web.http.h"
+#include "Windows.Foundation.h"
+#include "Windows.Networking.Sockets.h"
+#include "Windows.Security.Credentials.h"
+#include "Windows.Security.Cryptography.Certificates.h"
+#include "Windows.System.h"
+#include "Windows.Web.Http.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -1041,7 +1041,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IHttpBaseProtocolFilter = _uuidof(IHttpBaseProtocolFilter);
+                    MIDL_CONST_ID IID& IID_IHttpBaseProtocolFilter = __uuidof(IHttpBaseProtocolFilter);
                 } /* Filters */
             } /* Http */
         } /* Web */
@@ -1082,7 +1082,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IHttpBaseProtocolFilter2 = _uuidof(IHttpBaseProtocolFilter2);
+                    MIDL_CONST_ID IID& IID_IHttpBaseProtocolFilter2 = __uuidof(IHttpBaseProtocolFilter2);
                 } /* Filters */
             } /* Http */
         } /* Web */
@@ -1123,7 +1123,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IHttpBaseProtocolFilter3 = _uuidof(IHttpBaseProtocolFilter3);
+                    MIDL_CONST_ID IID& IID_IHttpBaseProtocolFilter3 = __uuidof(IHttpBaseProtocolFilter3);
                 } /* Filters */
             } /* Http */
         } /* Web */
@@ -1166,7 +1166,7 @@ namespace ABI {
                         virtual HRESULT STDMETHODCALLTYPE ClearAuthenticationCache(void) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IHttpBaseProtocolFilter4 = _uuidof(IHttpBaseProtocolFilter4);
+                    MIDL_CONST_ID IID& IID_IHttpBaseProtocolFilter4 = __uuidof(IHttpBaseProtocolFilter4);
                 } /* Filters */
             } /* Http */
         } /* Web */
@@ -1204,7 +1204,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IHttpBaseProtocolFilter5 = _uuidof(IHttpBaseProtocolFilter5);
+                    MIDL_CONST_ID IID& IID_IHttpBaseProtocolFilter5 = __uuidof(IHttpBaseProtocolFilter5);
                 } /* Filters */
             } /* Http */
         } /* Web */
@@ -1243,7 +1243,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IHttpBaseProtocolFilterStatics = _uuidof(IHttpBaseProtocolFilterStatics);
+                    MIDL_CONST_ID IID& IID_IHttpBaseProtocolFilterStatics = __uuidof(IHttpBaseProtocolFilterStatics);
                 } /* Filters */
             } /* Http */
         } /* Web */
@@ -1290,7 +1290,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IHttpCacheControl = _uuidof(IHttpCacheControl);
+                    MIDL_CONST_ID IID& IID_IHttpCacheControl = __uuidof(IHttpCacheControl);
                 } /* Filters */
             } /* Http */
         } /* Web */
@@ -1330,7 +1330,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IHttpFilter = _uuidof(IHttpFilter);
+                    MIDL_CONST_ID IID& IID_IHttpFilter = __uuidof(IHttpFilter);
                 } /* Filters */
             } /* Http */
         } /* Web */
@@ -1384,7 +1384,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IHttpServerCustomValidationRequestedEventArgs = _uuidof(IHttpServerCustomValidationRequestedEventArgs);
+                    MIDL_CONST_ID IID& IID_IHttpServerCustomValidationRequestedEventArgs = __uuidof(IHttpServerCustomValidationRequestedEventArgs);
                 } /* Filters */
             } /* Http */
         } /* Web */

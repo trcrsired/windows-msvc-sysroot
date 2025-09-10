@@ -71,7 +71,7 @@ typedef interface ICastingSourceInfo ICastingSourceInfo;
 /* header files for imported files */
 #include "objidl.h"
 #include "propsys.h"
-#include "eventtoken.h"
+#include "EventToken.h"
 
 #ifdef __cplusplus
 extern "C"{

@@ -21,7 +21,7 @@ Abstract:
 
 
 #if !defined(_WININET_)
-#include <specstrings.h>
+#include <SpecStrings.h>
 #define _WININET_
 
 

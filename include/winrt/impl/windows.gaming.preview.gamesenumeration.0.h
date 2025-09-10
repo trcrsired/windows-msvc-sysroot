@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -14,14 +14,7 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 {
     struct EventRegistrationToken;
     struct IAsyncAction;
-    template <typename TResult> struct __declspec(empty_bases) IAsyncOperation;
-    template <typename T> struct __declspec(empty_bases) IReference;
-}
-WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
-{
-    template <typename K, typename V> struct __declspec(empty_bases) IMapView;
-    template <typename T> struct __declspec(empty_bases) IVectorView;
-    template <typename T> struct __declspec(empty_bases) IVector;
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES IReference;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
@@ -102,7 +95,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Gaming::Preview::GamesEnumeration::GameModeUserConfiguration>{ using type = winrt::Windows::Gaming::Preview::GamesEnumeration::IGameModeUserConfiguration; };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListEntry>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DisplayInfo(void**) noexcept = 0;
             virtual int32_t __stdcall LaunchAsync(void**) noexcept = 0;
@@ -113,7 +106,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListEntry2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_LaunchableState(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_LauncherExecutable(void**) noexcept = 0;
@@ -127,7 +120,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FindAllAsync(void**) noexcept = 0;
             virtual int32_t __stdcall FindAllAsyncPackageFamilyName(void*, void**) noexcept = 0;
@@ -141,7 +134,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics2>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall MergeEntriesAsync(void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall UnmergeEntryAsync(void*, void**) noexcept = 0;
@@ -149,7 +142,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameModeConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_IsEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall put_IsEnabled(bool) noexcept = 0;
@@ -173,7 +166,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameModeUserConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_GamingRelatedProcessNames(void**) noexcept = 0;
             virtual int32_t __stdcall SaveAsync(void**) noexcept = 0;
@@ -181,21 +174,21 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameModeUserConfigurationStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Gaming::Preview::GamesEnumeration::GameListRemovedEventHandler>
     {
-        struct __declspec(novtable) type : unknown_abi
+        struct WINRT_IMPL_NOVTABLE type : unknown_abi
         {
             virtual int32_t __stdcall Invoke(void*) noexcept = 0;
         };
@@ -203,11 +196,11 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Gaming_Preview_GamesEnumeration_IGameListEntry
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::ApplicationModel::AppDisplayInfo) DisplayInfo() const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncOperation<bool>) LaunchAsync() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListCategory) Category() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Collections::IMapView<hstring, winrt::Windows::Foundation::IInspectable>) Properties() const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncAction) SetCategoryAsync(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListCategory const& value) const;
+        [[nodiscard]] auto DisplayInfo() const;
+        auto LaunchAsync() const;
+        [[nodiscard]] auto Category() const;
+        [[nodiscard]] auto Properties() const;
+        auto SetCategoryAsync(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListCategory const& value) const;
     };
     template <> struct consume<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListEntry>
     {
@@ -216,14 +209,14 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Gaming_Preview_GamesEnumeration_IGameListEntry2
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListEntryLaunchableState) LaunchableState() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Storage::IStorageFile) LauncherExecutable() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(hstring) LaunchParameters() const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncAction) SetLauncherExecutableFileAsync(winrt::Windows::Storage::IStorageFile const& executableFile) const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncAction) SetLauncherExecutableFileAsync(winrt::Windows::Storage::IStorageFile const& executableFile, param::hstring const& launchParams) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(hstring) TitleId() const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncAction) SetTitleIdAsync(param::hstring const& id) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Gaming::Preview::GamesEnumeration::GameModeConfiguration) GameModeConfiguration() const;
+        [[nodiscard]] auto LaunchableState() const;
+        [[nodiscard]] auto LauncherExecutable() const;
+        [[nodiscard]] auto LaunchParameters() const;
+        auto SetLauncherExecutableFileAsync(winrt::Windows::Storage::IStorageFile const& executableFile) const;
+        auto SetLauncherExecutableFileAsync(winrt::Windows::Storage::IStorageFile const& executableFile, param::hstring const& launchParams) const;
+        [[nodiscard]] auto TitleId() const;
+        auto SetTitleIdAsync(param::hstring const& id) const;
+        [[nodiscard]] auto GameModeConfiguration() const;
     };
     template <> struct consume<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListEntry2>
     {
@@ -232,20 +225,20 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Gaming_Preview_GamesEnumeration_IGameListStatics
     {
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Gaming::Preview::GamesEnumeration::GameListEntry>>) FindAllAsync() const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Gaming::Preview::GamesEnumeration::GameListEntry>>) FindAllAsync(param::hstring const& packageFamilyName) const;
-        WINRT_IMPL_AUTO(winrt::event_token) GameAdded(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
+        auto FindAllAsync() const;
+        auto FindAllAsync(param::hstring const& packageFamilyName) const;
+        auto GameAdded(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
         using GameAdded_revoker = impl::event_revoker<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics, &impl::abi_t<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics>::remove_GameAdded>;
-        [[nodiscard]] GameAdded_revoker GameAdded(auto_revoke_t, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
-        WINRT_IMPL_AUTO(void) GameAdded(winrt::event_token const& token) const noexcept;
-        WINRT_IMPL_AUTO(winrt::event_token) GameRemoved(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListRemovedEventHandler const& handler) const;
+        [[nodiscard]] auto GameAdded(auto_revoke_t, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
+        auto GameAdded(winrt::event_token const& token) const noexcept;
+        auto GameRemoved(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListRemovedEventHandler const& handler) const;
         using GameRemoved_revoker = impl::event_revoker<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics, &impl::abi_t<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics>::remove_GameRemoved>;
-        [[nodiscard]] GameRemoved_revoker GameRemoved(auto_revoke_t, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListRemovedEventHandler const& handler) const;
-        WINRT_IMPL_AUTO(void) GameRemoved(winrt::event_token const& token) const noexcept;
-        WINRT_IMPL_AUTO(winrt::event_token) GameUpdated(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
+        [[nodiscard]] auto GameRemoved(auto_revoke_t, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListRemovedEventHandler const& handler) const;
+        auto GameRemoved(winrt::event_token const& token) const noexcept;
+        auto GameUpdated(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
         using GameUpdated_revoker = impl::event_revoker<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics, &impl::abi_t<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics>::remove_GameUpdated>;
-        [[nodiscard]] GameUpdated_revoker GameUpdated(auto_revoke_t, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
-        WINRT_IMPL_AUTO(void) GameUpdated(winrt::event_token const& token) const noexcept;
+        [[nodiscard]] auto GameUpdated(auto_revoke_t, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListChangedEventHandler const& handler) const;
+        auto GameUpdated(winrt::event_token const& token) const noexcept;
     };
     template <> struct consume<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics>
     {
@@ -254,8 +247,8 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Gaming_Preview_GamesEnumeration_IGameListStatics2
     {
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Gaming::Preview::GamesEnumeration::GameListEntry>) MergeEntriesAsync(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListEntry const& left, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListEntry const& right) const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Gaming::Preview::GamesEnumeration::GameListEntry>>) UnmergeEntryAsync(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListEntry const& mergedEntry) const;
+        auto MergeEntriesAsync(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListEntry const& left, winrt::Windows::Gaming::Preview::GamesEnumeration::GameListEntry const& right) const;
+        auto UnmergeEntryAsync(winrt::Windows::Gaming::Preview::GamesEnumeration::GameListEntry const& mergedEntry) const;
     };
     template <> struct consume<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameListStatics2>
     {
@@ -264,24 +257,24 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Gaming_Preview_GamesEnumeration_IGameModeConfiguration
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) IsEnabled() const;
-        WINRT_IMPL_AUTO(void) IsEnabled(bool value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Collections::IVector<hstring>) RelatedProcessNames() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::IReference<int32_t>) PercentGpuTimeAllocatedToGame() const;
-        WINRT_IMPL_AUTO(void) PercentGpuTimeAllocatedToGame(winrt::Windows::Foundation::IReference<int32_t> const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::IReference<int32_t>) PercentGpuMemoryAllocatedToGame() const;
-        WINRT_IMPL_AUTO(void) PercentGpuMemoryAllocatedToGame(winrt::Windows::Foundation::IReference<int32_t> const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::IReference<int32_t>) PercentGpuMemoryAllocatedToSystemCompositor() const;
-        WINRT_IMPL_AUTO(void) PercentGpuMemoryAllocatedToSystemCompositor(winrt::Windows::Foundation::IReference<int32_t> const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::IReference<int32_t>) MaxCpuCount() const;
-        WINRT_IMPL_AUTO(void) MaxCpuCount(winrt::Windows::Foundation::IReference<int32_t> const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::IReference<int32_t>) CpuExclusivityMaskLow() const;
-        WINRT_IMPL_AUTO(void) CpuExclusivityMaskLow(winrt::Windows::Foundation::IReference<int32_t> const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::IReference<int32_t>) CpuExclusivityMaskHigh() const;
-        WINRT_IMPL_AUTO(void) CpuExclusivityMaskHigh(winrt::Windows::Foundation::IReference<int32_t> const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) AffinitizeToExclusiveCpus() const;
-        WINRT_IMPL_AUTO(void) AffinitizeToExclusiveCpus(bool value) const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncAction) SaveAsync() const;
+        [[nodiscard]] auto IsEnabled() const;
+        auto IsEnabled(bool value) const;
+        [[nodiscard]] auto RelatedProcessNames() const;
+        [[nodiscard]] auto PercentGpuTimeAllocatedToGame() const;
+        auto PercentGpuTimeAllocatedToGame(winrt::Windows::Foundation::IReference<int32_t> const& value) const;
+        [[nodiscard]] auto PercentGpuMemoryAllocatedToGame() const;
+        auto PercentGpuMemoryAllocatedToGame(winrt::Windows::Foundation::IReference<int32_t> const& value) const;
+        [[nodiscard]] auto PercentGpuMemoryAllocatedToSystemCompositor() const;
+        auto PercentGpuMemoryAllocatedToSystemCompositor(winrt::Windows::Foundation::IReference<int32_t> const& value) const;
+        [[nodiscard]] auto MaxCpuCount() const;
+        auto MaxCpuCount(winrt::Windows::Foundation::IReference<int32_t> const& value) const;
+        [[nodiscard]] auto CpuExclusivityMaskLow() const;
+        auto CpuExclusivityMaskLow(winrt::Windows::Foundation::IReference<int32_t> const& value) const;
+        [[nodiscard]] auto CpuExclusivityMaskHigh() const;
+        auto CpuExclusivityMaskHigh(winrt::Windows::Foundation::IReference<int32_t> const& value) const;
+        [[nodiscard]] auto AffinitizeToExclusiveCpus() const;
+        auto AffinitizeToExclusiveCpus(bool value) const;
+        auto SaveAsync() const;
     };
     template <> struct consume<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameModeConfiguration>
     {
@@ -290,8 +283,8 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Gaming_Preview_GamesEnumeration_IGameModeUserConfiguration
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Collections::IVector<hstring>) GamingRelatedProcessNames() const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncAction) SaveAsync() const;
+        [[nodiscard]] auto GamingRelatedProcessNames() const;
+        auto SaveAsync() const;
     };
     template <> struct consume<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameModeUserConfiguration>
     {
@@ -300,7 +293,7 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Gaming_Preview_GamesEnumeration_IGameModeUserConfigurationStatics
     {
-        WINRT_IMPL_AUTO(winrt::Windows::Gaming::Preview::GamesEnumeration::GameModeUserConfiguration) GetDefault() const;
+        auto GetDefault() const;
     };
     template <> struct consume<winrt::Windows::Gaming::Preview::GamesEnumeration::IGameModeUserConfigurationStatics>
     {

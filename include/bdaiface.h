@@ -400,7 +400,7 @@ typedef interface IBroadcastEventEx IBroadcastEventEx;
 /* header files for imported files */
 #include "unknwn.h"
 #include "strmif.h"
-#include "bdatypes.h"
+#include "BdaTypes.h"
 
 #ifdef __cplusplus
 extern "C"{

@@ -148,7 +148,7 @@ typedef struct SensorDataReport SensorDataReport;
 #include "oaidl.h"
 #include "ocidl.h"
 #include "propsys.h"
-#include "portabledevicetypes.h"
+#include "PortableDeviceTypes.h"
 
 #ifdef __cplusplus
 extern "C"{

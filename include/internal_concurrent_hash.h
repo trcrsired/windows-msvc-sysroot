@@ -72,11 +72,11 @@ inline unsigned char _Get_msb(size_t _Mask)
 {
     unsigned long _Index = 0;
 
-#if (defined (_M_IX86) || defined (_M_ARM))
+#if defined (_M_IX86)
     _BitScanReverse(&_Index, _Mask);
-#else  /* (defined (_M_IX86) || defined (_M_ARM)) */
+#else  /* defined (_M_IX86) */
     _BitScanReverse64(&_Index, _Mask);
-#endif  /* (defined (_M_IX86) || defined (_M_ARM)) */
+#endif  /* defined (_M_IX86) */
 
     return (unsigned char) _Index;
 }

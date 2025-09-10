@@ -133,6 +133,34 @@ template<class _Ty> inline
 		_STLCLRDB_REPORT(L"invalid null pointer", _File, _Line);
 	}
 
+		// TEMPLATE FUNCTION _Stlclrdb_range
+template<class _InIt> inline
+	void _Stlclrdb_range2(_InIt, _InIt,
+		const wchar_t *, unsigned int, input_iterator_tag)
+	{	// test iterator pair for valid range, arbitrary iterators
+	}
+
+template<class _RanIt> inline
+	void _Stlclrdb_range2(_RanIt _First, _RanIt _Last,
+		const wchar_t *_Filew, unsigned int _Line,
+		random_access_iterator_tag)
+	{	// test iterator pair for valid range, random-access iterators
+	if (_First != _Last)
+		{	// check for non-null pointers, valid range
+		_STLCLRDB_POINTER2(_First, _Filew, _Line);
+		_STLCLRDB_POINTER2(_Last, _Filew, _Line);
+		if (_Last < _First)
+			_STLCLRDB_REPORT(L"invalid iterator range", _Filew, _Line);
+		}
+	}
+
+template<class _InIt> inline
+	void _Stlclrdb_range(_InIt _First, _InIt _Last,
+		const wchar_t *_Filew, unsigned int _Line)
+	{	// test iterator pair for valid range
+	_Stlclrdb_range2(_First, _Last, _Filew, _Line, _Iter_category(_First));
+	}
+
 		// TEMPLATE FUNCTION _Stlclrdb_order
 template<class _InIt> inline
 	void _Stlclrdb_order2(_InIt _First, _InIt _Last,
@@ -184,34 +212,6 @@ template<class _InIt,
 	_STLCLRDB_POINTER2(_Pred, _File, _Line);
 	_Stlclrdb_order2(_First, _Last, _Pred, _File, _Line,
 		_Iter_category(_First));
-	}
-
-		// TEMPLATE FUNCTION _Stlclrdb_range
-template<class _InIt> inline
-	void _Stlclrdb_range2(_InIt, _InIt,
-		const wchar_t *, unsigned int, input_iterator_tag)
-	{	// test iterator pair for valid range, arbitrary iterators
-	}
-
-template<class _RanIt> inline
-	void _Stlclrdb_range2(_RanIt _First, _RanIt _Last,
-		const wchar_t *_Filew, unsigned int _Line,
-		random_access_iterator_tag)
-	{	// test iterator pair for valid range, random-access iterators
-	if (_First != _Last)
-		{	// check for non-null pointers, valid range
-		_STLCLRDB_POINTER2(_First, _Filew, _Line);
-		_STLCLRDB_POINTER2(_Last, _Filew, _Line);
-		if (_Last < _First)
-			_STLCLRDB_REPORT(L"invalid iterator range", _Filew, _Line);
-		}
-	}
-
-template<class _InIt> inline
-	void _Stlclrdb_range(_InIt _First, _InIt _Last,
-		const wchar_t *_Filew, unsigned int _Line)
-	{	// test iterator pair for valid range
-	_Stlclrdb_range2(_First, _Last, _Filew, _Line, _Iter_category(_First));
 	}
 } // namespace cliext
 

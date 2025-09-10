@@ -11,7 +11,7 @@
 #ifndef _METADATADEVICESERVICE_H_
 #define _METADATADEVICESERVICE_H_
 
-#include <deviceservices.h>
+#include <DeviceServices.h>
 
 
 /*****************************************************************************

@@ -13,7 +13,7 @@
 
 #include <winapifamily.h>
 #include <basetyps.h>
-#include "audiosessiontypes.h"
+#include "AudioSessionTypes.h"
 
 #pragma region Desktop and Games Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_GAMES)

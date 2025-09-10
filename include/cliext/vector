@@ -55,7 +55,7 @@ public:
 
 	vector_impl% operator=(vector_impl% _Right)
 		{	// assign
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, do it
 			clear();
 			reserve(_Right.size());
@@ -497,7 +497,7 @@ public:
 
 	void swap(_Mytype_t% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, swap
 			_Myarray_t^ _Tarray = _Myarray;
 			size_type _Tsize = _Mysize;
@@ -676,12 +676,12 @@ private:
 	virtual generic_iterator begin_virtual() sealed
 		= _Mycont_it::begin
 		{	// return iterator for beginning of mutable sequence
-		return (begin());
+		return (begin().operator generic_iterator());
 		}
 	virtual generic_iterator end_virtual() sealed
 		= _Mycont_it::end
 		{	// return iterator for end of mutable sequence
-		return (end());
+		return (end().operator generic_iterator());
 		}
 
 	virtual generic_reverse_iterator rbegin_virtual() sealed
@@ -774,7 +774,7 @@ private:
 		value_type _Val) sealed
 		= _Mycont_it::insert
 		{	// insert _Val at _Where
-		return (insert(iterator(_Where), _Val));
+		return (insert(iterator(_Where), _Val).operator generic_iterator());
 		}
 
 	virtual void insert_virtual(generic_iterator _Where,
@@ -802,14 +802,14 @@ private:
 	virtual generic_iterator erase_virtual(generic_iterator _Where) sealed
 		= _Mycont_it::erase
 		{	// erase element at _Where
-		return (erase(iterator(_Where)));
+		return (erase(iterator(_Where)).operator generic_iterator());
 		}
 
 	virtual generic_iterator erase_virtual(generic_iterator _First,
 		generic_iterator _Last) sealed
 		= _Mycont_it::erase
 		{	// erase [_First, _Last)
-		return (erase(iterator(_First), iterator(_Last)));
+		return (erase(iterator(_First), iterator(_Last)).operator generic_iterator());
 		}
 
 	virtual void clear_virtual() sealed
@@ -840,17 +840,14 @@ public:
 	// types
 	typedef vector_base<_Value_t, _Is_ref> _Mytype_t;
 	typedef vector_impl<_Value_t, _Is_ref> _Mybase_t;
-//	typedef _STLCLR IVector<_Value_t> _Mycont_it;
 	typedef _Cont_make_value<_Value_t, _Is_ref> _Mymake_t;
 
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
+	typedef typename _Mybase_t::_Myarray_t _Myarray_t;
+	typedef typename _Mybase_t::_Mycont_it _Mycont_it;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::size_type size_type;
+	typedef typename _Mybase_t::value_type value_type;
 
 	// basics
 	vector_base()
@@ -907,8 +904,8 @@ public:
 		void _Assign(_InIt_t _Count, _InIt_t _Val,
 			_Int_iterator_tag%)
 		{	// assign _Count * _Val
-		clear();
-		insert_n(0, (size_type)_Count, (value_type)_Val);
+		this->clear();
+		this->insert_n(0, (size_type)_Count, (value_type)_Val);
 		}
 
 	template<typename _InIt_t>
@@ -916,13 +913,13 @@ public:
 			input_iterator_tag%)
 		{	// initialize with [_First, _Last), input iterators
 		if (_Iter_container(_First) != this)
-			clear();
+			this->clear();
 
-		size_type _Oldsize = size();
+		size_type _Oldsize = this->size();
 
 		for (; _First != _Last; ++_First)
-			insert_n(size(), 1, (value_type)*_First);	// append new stuff
-		erase_n(0, _Oldsize);	// erase any leftover old stuff
+			this->insert_n(this->size(), 1, (value_type)*_First);	// append new stuff
+		this->erase_n(0, _Oldsize);	// erase any leftover old stuff
 		}
 
 	template<typename _InIt_t>
@@ -933,19 +930,19 @@ public:
 			throw gcnew System::ArgumentOutOfRangeException();
 
 		if (_Iter_container(_First) != this)
-			clear();
+			this->clear();
 
-		size_type _Oldsize = size();
+		size_type _Oldsize = this->size();
 
 		for (; _First != _Last; ++_First)
-			insert_n(size(), 1, (value_type)*_First);	// append new stuff
-		erase_n(0, _Oldsize);	// erase any leftover old stuff
+			this->insert_n(this->size(), 1, (value_type)*_First);	// append new stuff
+		this->erase_n(0, _Oldsize);	// erase any leftover old stuff
 		}
 
 	template<typename _InIt_t>
 		void insert(iterator _Where, _InIt_t _First, _InIt_t _Last)
 		{	// insert [_First, _Last) at _Where
-		_Insert(get_bias(_Where), _First, _Last,
+		_Insert(this->get_bias(_Where), _First, _Last,
 			_Iter_category(_First));
 		}
 
@@ -953,7 +950,7 @@ public:
 		void _Insert(size_type _Where, _InIt_t _First, _InIt_t _Last,
 			_Int_iterator_tag%)
 		{	// insert _Count * _Val at _Where
-		insert_n(_Where, (size_type)_First, (value_type)_Last);
+		this->insert_n(_Where, (size_type)_First, (value_type)_Last);
 		}
 
 	template<typename _InIt_t>
@@ -961,10 +958,10 @@ public:
 			input_iterator_tag%)
 		{	// insert [_First, _Last) at _Where, input iterators
 		if (_Iter_container(_First) == this)
-			_Insert_self(_Where, _First, _Last);
+			this->_Insert_self(_Where, _First, _Last);
 		else
 			for (; _First != _Last; ++_First, ++_Where)
-				_Where = insert_n(_Where, 1, (value_type)*_First);
+				_Where = this->insert_n(_Where, 1, (value_type)*_First);
 		}
 
 	template<typename _InIt_t>
@@ -972,16 +969,16 @@ public:
 			forward_iterator_tag%)
 		{	// insert [_First, _Last) at _Where, forward iterators
 		if (_Iter_container(_First) == this)
-			_Insert_self(_Where, _First, _Last);
+			this->_Insert_self(_Where, _First, _Last);
 		else
 			{	// not inserting from this container, dig a hole and fill it
 			size_type _Size = cliext::distance(_First, _Last);
 
 			if (_Size < 0)
 				throw gcnew System::ArgumentOutOfRangeException();
-			_Insert_space(_Where, _Size);
+			this->_Insert_space(_Where, _Size);
 			for (size_type _Idx = 0; _Idx < _Size; ++_Idx, ++_First)
-				_Myarray[_Where + _Idx] =
+				this->_Myarray[_Where + _Idx] =
 					_Mymake_t::make_value(value_type(*_First));
 			}
 		}
@@ -993,7 +990,7 @@ private:
 		virtual size_type get() sealed
 			= System::Collections::Generic::ICollection<_Value_t>::Count::get
 			{	// get element count
-			return (size());
+			return (this->size());
 			}
 		};
 
@@ -1010,9 +1007,9 @@ private:
 	virtual void CopyTo(_Myarray_t^ _Dest, int _First) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::CopyTo
 		{	// copy to _Dest, beginning at _First
-		for (int _Idx = size(); 0 <= --_Idx; )
+		for (int _Idx = this->size(); 0 <= --_Idx; )
 			{	// copy back to front
-			_Dest[_First + _Idx] = _Mymake_t::make_value(at(_Idx));
+			_Dest[_First + _Idx] = _Mymake_t::make_value(this->at(_Idx));
 			}
 		}
 
@@ -1026,21 +1023,21 @@ private:
 	virtual void Add(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Add
 		{	// add element with value _Val
-		insert_n(size(), 1, _Val);
+		this->insert_n(this->size(), 1, _Val);
 		}
 
 	virtual void Clear() sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Clear
 		{	// erase all elements
-		clear();
+		this->clear();
 		}
 
 	virtual bool Contains(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Contains
 		{	// search for element matching value _Val
-		for (size_type _Idx = 0; _Idx != size(); ++_Idx)
+		for (size_type _Idx = 0; _Idx != this->size(); ++_Idx)
 			if (((System::Object^)_Val)->Equals(
-				(System::Object^)at(_Idx)))
+				(System::Object^)this->at(_Idx)))
 				return (true);
 		return (false);
 		}
@@ -1048,11 +1045,11 @@ private:
 	virtual bool Remove(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Remove
 		{	// remove first element matching value _Val
-		for (size_type _Idx = 0; _Idx != size(); ++_Idx)
+		for (size_type _Idx = 0; _Idx != this->size(); ++_Idx)
 			if (((System::Object^)_Val)->Equals(
-				(System::Object^)at(_Idx)))
+				(System::Object^)this->at(_Idx)))
 				{	// found a match, remove it
-				erase_n(_Idx, _Idx + 1);
+				this->erase_n(_Idx, _Idx + 1);
 				return (true);
 				}
 		return (false);
@@ -1063,8 +1060,8 @@ private:
 		{	// find index of element that matches _Val
 		int _Idx = 0;
 
-		for (; _Idx < size(); ++_Idx)
-			if (at(_Idx) == _Val)
+		for (; _Idx < this->size(); ++_Idx)
+			if (this->at(_Idx) == _Val)
 				return (_Idx);
 		return (-1);
 		}
@@ -1072,13 +1069,13 @@ private:
 	virtual void Insert(int _Idx, value_type _Val) sealed
 		= System::Collections::Generic::IList<_Value_t>::Insert
 		{	// insert _Val before _Idx
-		insert_n(_Idx, 1, _Val);
+		this->insert_n(_Idx, 1, _Val);
 		}
 
 	virtual void RemoveAt(int _Idx) sealed
 		= System::Collections::Generic::IList<_Value_t>::RemoveAt
 		{	// erase element at _Idx
-		erase_n(_Idx, _Idx + 1);
+		this->erase_n(_Idx, _Idx + 1);
 		}
 	};
 
@@ -1096,17 +1093,13 @@ public:
 
 	typedef vector_select<_Value_t, _Is_ref> _Mytype_t;
 	typedef vector_base<_Gvalue_t, _Is_ref> _Mybase_t;
-//	typedef _STLCLR IVector<_Gvalue_t> _Mycont_it;
-//	typedef System::Collections::Generic::IEnumerable<_Gvalue_t> _Myenum_it;
 
-//	typedef int size_type;
-//	typedef int difference_type;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::size_type size_type;
+
 	typedef _Value_t value_type;
 	typedef value_type% reference;
 	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
 
 	// basics
 	vector_select()
@@ -1161,17 +1154,14 @@ public:
 
 	typedef vector_select<_Value_t, true> _Mytype_t;
 	typedef vector_base<_Gvalue_t, true> _Mybase_t;
-//	typedef _STLCLR IVector<_Gvalue_t> _Mycont_it;
-//	typedef System::Collections::Generic::IEnumerable<_Gvalue_t> _Myenum_it;
 
-//	typedef int size_type;
-//	typedef int difference_type;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::size_type size_type;
+
 	typedef _Value_t value_type;
 	typedef value_type% reference;
 	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
 
 	// basics
 	vector_select()
@@ -1322,14 +1312,9 @@ public:
 		__is_ref_class(typename _Dehandle<_Value_t>::type)
 			&& !is_handle<_Value_t>::value> _Mybase_t;
 
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::size_type size_type;
+	typedef typename _Mybase_t::value_type value_type;
 
 	// basics
 	vector()
@@ -1401,7 +1386,7 @@ template<typename _Value_t> inline
 	bool operator==(vector<_Value_t>% _Left,
 		vector<_Value_t>% _Right)
 	{	// test if _Left == _Right
-	vector<_Value_t>::size_type _Size = _Left.size();
+	typename vector<_Value_t>::size_type _Size = _Left.size();
 
 	if (_Size != _Right.size())
 		return (false);
@@ -1425,7 +1410,7 @@ template<typename _Value_t> inline
 	bool operator<(vector<_Value_t>% _Left,
 		vector<_Value_t>% _Right)
 	{	// test if _Left < _Right
-	vector<_Value_t>::size_type _Idx = 0;
+	typename vector<_Value_t>::size_type _Idx = 0;
 
 	for (; _Idx != _Left.size() && _Idx != _Right.size(); ++_Idx)
 		if (_Left.at(_Idx) < _Right.at(_Idx))

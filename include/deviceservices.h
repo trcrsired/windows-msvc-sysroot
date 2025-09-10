@@ -11,7 +11,7 @@
 #ifndef _DEVICESERVICES_H_
 #define _DEVICESERVICES_H_
 
-#include <bridgedeviceservice.h>
+#include <BridgeDeviceService.h>
 
 
 /*****************************************************************************

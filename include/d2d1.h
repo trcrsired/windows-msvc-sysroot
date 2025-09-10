@@ -17,8 +17,8 @@
 #endif // #ifndef COM_NO_WINDOWS_H
 #include <unknwn.h>
 #include <dcommon.h>
-#include <d2derr.h>
-#include <d2dbasetypes.h>
+#include <D2DErr.h>
+#include <D2DBaseTypes.h>
 #include <dxgiformat.h>
 #pragma region Desktop Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)

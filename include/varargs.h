@@ -31,7 +31,7 @@ _CRT_BEGIN_C_HEADER
     #define va_arg __crt_va_arg
     #define va_end __crt_va_end
 
-    #if defined _M_IX86 || defined _M_ARM
+    #if defined _M_IX86
         #define va_start(ap) ((void)(ap = (va_list)&va_alist))
     #elif defined _M_X64 && !defined(_M_ARM64EC)
         #define va_start(ap) ((void)(__va_start(&ap, 0)))

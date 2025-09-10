@@ -13,7 +13,7 @@
 #if !defined(_INC_COMIP)
 #define _INC_COMIP
 
-#include <ole2.h>
+#include <Ole2.h>
 #include <comutil.h>
 #include <malloc.h>
 #include <type_traits>
@@ -314,6 +314,9 @@ public:
         _com_issue_error(E_POINTER);
     }
 
+#ifndef _COM_DISABLE_EXPLICIT_OPERATOR_BOOL
+    explicit
+#endif
     operator bool() const noexcept
     {
         return m_pInterface != nullptr;

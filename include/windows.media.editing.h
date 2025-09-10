@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,18 +100,18 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.graphics.directx.direct3d11.h"
-#include "windows.media.core.h"
-#include "windows.media.effects.h"
-#include "windows.media.mediaproperties.h"
-#include "windows.media.transcoding.h"
-#include "windows.storage.h"
-#include "windows.storage.streams.h"
-#include "windows.ui.h"
+#include "Windows.Foundation.h"
+#include "Windows.Graphics.DirectX.Direct3D11.h"
+#include "Windows.Media.Core.h"
+#include "Windows.Media.Effects.h"
+#include "Windows.Media.MediaProperties.h"
+#include "Windows.Media.Transcoding.h"
+#include "Windows.Storage.h"
+#include "Windows.Storage.Streams.h"
+#include "Windows.UI.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -2101,7 +2101,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IBackgroundAudioTrack = _uuidof(IBackgroundAudioTrack);
+                MIDL_CONST_ID IID& IID_IBackgroundAudioTrack = __uuidof(IBackgroundAudioTrack);
             } /* Editing */
         } /* Media */
     } /* Windows */
@@ -2142,7 +2142,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IBackgroundAudioTrackStatics = _uuidof(IBackgroundAudioTrackStatics);
+                MIDL_CONST_ID IID& IID_IBackgroundAudioTrackStatics = __uuidof(IBackgroundAudioTrackStatics);
             } /* Editing */
         } /* Media */
     } /* Windows */
@@ -2178,7 +2178,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IEmbeddedAudioTrack = _uuidof(IEmbeddedAudioTrack);
+                MIDL_CONST_ID IID& IID_IEmbeddedAudioTrack = __uuidof(IEmbeddedAudioTrack);
             } /* Editing */
         } /* Media */
     } /* Windows */
@@ -2265,7 +2265,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IMediaClip = _uuidof(IMediaClip);
+                MIDL_CONST_ID IID& IID_IMediaClip = __uuidof(IMediaClip);
             } /* Editing */
         } /* Media */
     } /* Windows */
@@ -2312,7 +2312,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IMediaClipStatics = _uuidof(IMediaClipStatics);
+                MIDL_CONST_ID IID& IID_IMediaClipStatics = __uuidof(IMediaClipStatics);
             } /* Editing */
         } /* Media */
     } /* Windows */
@@ -2350,7 +2350,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IMediaClipStatics2 = _uuidof(IMediaClipStatics2);
+                MIDL_CONST_ID IID& IID_IMediaClipStatics2 = __uuidof(IMediaClipStatics2);
             } /* Editing */
         } /* Media */
     } /* Windows */
@@ -2446,7 +2446,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IMediaComposition = _uuidof(IMediaComposition);
+                MIDL_CONST_ID IID& IID_IMediaComposition = __uuidof(IMediaComposition);
             } /* Editing */
         } /* Media */
     } /* Windows */
@@ -2482,7 +2482,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IMediaComposition2 = _uuidof(IMediaComposition2);
+                MIDL_CONST_ID IID& IID_IMediaComposition2 = __uuidof(IMediaComposition2);
             } /* Editing */
         } /* Media */
     } /* Windows */
@@ -2519,7 +2519,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IMediaCompositionStatics = _uuidof(IMediaCompositionStatics);
+                MIDL_CONST_ID IID& IID_IMediaCompositionStatics = __uuidof(IMediaCompositionStatics);
             } /* Editing */
         } /* Media */
     } /* Windows */
@@ -2582,7 +2582,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IMediaOverlay = _uuidof(IMediaOverlay);
+                MIDL_CONST_ID IID& IID_IMediaOverlay = __uuidof(IMediaOverlay);
             } /* Editing */
         } /* Media */
     } /* Windows */
@@ -2625,7 +2625,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IMediaOverlayFactory = _uuidof(IMediaOverlayFactory);
+                MIDL_CONST_ID IID& IID_IMediaOverlayFactory = __uuidof(IMediaOverlayFactory);
             } /* Editing */
         } /* Media */
     } /* Windows */
@@ -2667,7 +2667,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IMediaOverlayLayer = _uuidof(IMediaOverlayLayer);
+                MIDL_CONST_ID IID& IID_IMediaOverlayLayer = __uuidof(IMediaOverlayLayer);
             } /* Editing */
         } /* Media */
     } /* Windows */
@@ -2704,7 +2704,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IMediaOverlayLayerFactory = _uuidof(IMediaOverlayLayerFactory);
+                MIDL_CONST_ID IID& IID_IMediaOverlayLayerFactory = __uuidof(IMediaOverlayLayerFactory);
             } /* Editing */
         } /* Media */
     } /* Windows */
@@ -2766,8 +2766,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Media.Editing.IMediaClipStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Media.Editing.IMediaClipStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Media.Editing.IMediaClipStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Media.Editing.IMediaClip ** Default Interface **
@@ -8267,8 +8267,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Media.Editing.IMediaClipStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Media.Editing.IMediaClipStatics2 interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Media.Editing.IMediaClipStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Media.Editing.IMediaClip ** Default Interface **

@@ -31,7 +31,7 @@ Notes:
 #include <winioctl.h>
 #include "winsmcrd.h"
 #ifndef SCARD_S_SUCCESS
-#include "scarderr.h"
+#include "SCardErr.h"
 #endif
 #include <winapifamily.h>
 

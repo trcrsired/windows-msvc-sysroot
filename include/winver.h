@@ -15,7 +15,7 @@
 #ifndef VER_H
 #define VER_H
 
-#include <specstrings.h>
+#include <SpecStrings.h>
 #include <verrsrc.h>
 
 

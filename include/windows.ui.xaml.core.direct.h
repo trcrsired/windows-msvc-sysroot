@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #if !defined(WINDOWS_UI_XAML_CORE_DIRECT_XAMLDIRECTCONTRACT_VERSION)
@@ -104,14 +104,14 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.ui.h"
-#include "windows.ui.xaml.h"
-#include "windows.ui.xaml.media.h"
-#include "windows.ui.xaml.media.media3d.h"
+#include "Windows.Foundation.h"
+#include "Windows.UI.h"
+#include "Windows.UI.Xaml.h"
+#include "Windows.UI.Xaml.Media.h"
+#include "Windows.UI.Xaml.Media.Media3D.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -2898,7 +2898,7 @@ namespace ABI {
                                 ) = 0;
                         };
 
-                        extern MIDL_CONST_ID IID& IID_IXamlDirect = _uuidof(IXamlDirect);
+                        MIDL_CONST_ID IID& IID_IXamlDirect = __uuidof(IXamlDirect);
                     } /* Direct */
                 } /* Core */
             } /* Xaml */
@@ -2933,7 +2933,7 @@ namespace ABI {
                         public:
                         };
 
-                        extern MIDL_CONST_ID IID& IID_IXamlDirectObject = _uuidof(IXamlDirectObject);
+                        MIDL_CONST_ID IID& IID_IXamlDirectObject = __uuidof(IXamlDirectObject);
                     } /* Direct */
                 } /* Core */
             } /* Xaml */
@@ -2973,7 +2973,7 @@ namespace ABI {
                                 ) = 0;
                         };
 
-                        extern MIDL_CONST_ID IID& IID_IXamlDirectStatics = _uuidof(IXamlDirectStatics);
+                        MIDL_CONST_ID IID& IID_IXamlDirectStatics = __uuidof(IXamlDirectStatics);
                     } /* Direct */
                 } /* Core */
             } /* Xaml */

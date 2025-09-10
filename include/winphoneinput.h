@@ -9,7 +9,7 @@
 #ifndef _WINPHONEINPUT_H_
 #define _WINPHONEINPUT_H_
 
-#include <inputeventflags.h>
+#include <InputEventFlags.h>
 
 //
 // Define a device interface unique GUID for touch 
@@ -353,17 +353,6 @@ typedef struct _TOUCH_MAX_INPUTS
 #define IOCTL_TCHHID_GET_DEVICE_USAGE_COUNT CTL_CODE(FILE_DEVICE_UNKNOWN, 0x8001, METHOD_BUFFERED, FILE_ANY_ACCESS)
 #define IOCTL_TCHHID_GET_DEVICE_USAGES CTL_CODE(FILE_DEVICE_UNKNOWN, 0x8002, METHOD_BUFFERED, FILE_ANY_ACCESS)
 #define IOCTL_TCHHID_GET_DEVICE_MAX_INPUTS CTL_CODE(FILE_DEVICE_UNKNOWN, 0x8003, METHOD_BUFFERED, FILE_ANY_ACCESS)
-
-
-//
-// Device usages that are defined in Hid.h (available in windows source tree),
-// but not in HidUsage.h (variable in phone source tree).
-//
-
-#define HID_USAGE_DIGITIZER_XTILT              0x3d
-#define HID_USAGE_DIGITIZER_YTILT              0x3e
-#define HID_USAGE_DIGITIZER_WIDTH              0x48
-#define HID_USAGE_DIGITIZER_HEIGHT             0x49
 
 
 //

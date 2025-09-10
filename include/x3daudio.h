@@ -42,9 +42,7 @@
         float parameters -- NAN and infinite values are not accepted.
         All computation occurs in 32-bit precision mode.                    */
 
-#ifdef _MSC_VER
 #pragma once
-#endif
 
 #include <sdkddkver.h>
 
@@ -59,7 +57,7 @@
 
 //--------------<D-E-F-I-N-I-T-I-O-N-S>-------------------------------------//
 #include <windef.h>    // general windows types
-#include <directxmath.h>
+#include <DirectXMath.h>
 
 // speaker geometry configuration flags, specifies assignment of channels to speaker positions, defined as per WAVEFORMATEXTENSIBLE.dwChannelMask
 #if !defined(_SPEAKER_POSITIONS_)

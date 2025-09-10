@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -6,24 +6,24 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Core_AnimationMetrics_1_H
 #define WINRT_Windows_UI_Core_AnimationMetrics_1_H
-#include "winrt/impl/windows.ui.core.animationmetrics.0.h"
+#include "winrt/impl/Windows.UI.Core.AnimationMetrics.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Core::AnimationMetrics
 {
-    struct __declspec(empty_bases) IAnimationDescription :
+    struct WINRT_IMPL_EMPTY_BASES IAnimationDescription :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IAnimationDescription>
     {
         IAnimationDescription(std::nullptr_t = nullptr) noexcept {}
         IAnimationDescription(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IAnimationDescriptionFactory :
+    struct WINRT_IMPL_EMPTY_BASES IAnimationDescriptionFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IAnimationDescriptionFactory>
     {
         IAnimationDescriptionFactory(std::nullptr_t = nullptr) noexcept {}
         IAnimationDescriptionFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IOpacityAnimation :
+    struct WINRT_IMPL_EMPTY_BASES IOpacityAnimation :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IOpacityAnimation>,
         impl::require<winrt::Windows::UI::Core::AnimationMetrics::IOpacityAnimation, winrt::Windows::UI::Core::AnimationMetrics::IPropertyAnimation>
@@ -31,14 +31,14 @@ WINRT_EXPORT namespace winrt::Windows::UI::Core::AnimationMetrics
         IOpacityAnimation(std::nullptr_t = nullptr) noexcept {}
         IOpacityAnimation(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IPropertyAnimation :
+    struct WINRT_IMPL_EMPTY_BASES IPropertyAnimation :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IPropertyAnimation>
     {
         IPropertyAnimation(std::nullptr_t = nullptr) noexcept {}
         IPropertyAnimation(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
-    struct __declspec(empty_bases) IScaleAnimation :
+    struct WINRT_IMPL_EMPTY_BASES IScaleAnimation :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IScaleAnimation>,
         impl::require<winrt::Windows::UI::Core::AnimationMetrics::IScaleAnimation, winrt::Windows::UI::Core::AnimationMetrics::IPropertyAnimation>
