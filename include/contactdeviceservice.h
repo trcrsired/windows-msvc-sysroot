@@ -11,9 +11,9 @@
 #ifndef _CONTACTDEVICESERVICE_H_
 #define _CONTACTDEVICESERVICE_H_
 
-#include <deviceservices.h>
+#include <DeviceServices.h>
 
-#include <syncdeviceservice.h>
+#include <SyncDeviceService.h>
 
 
 /*****************************************************************************

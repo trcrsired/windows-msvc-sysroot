@@ -12,16 +12,17 @@
 
 #pragma once
 
+#ifndef DWRITE_NO_WINDOWS_H
+
 #include <specstrings.h>
 #include <unknwn.h>
+
+#endif // DWRITE_NO_WINDOWS_H
+
 #include <dcommon.h>
 
 #ifndef DWRITE_DECLARE_INTERFACE
 #define DWRITE_DECLARE_INTERFACE(iid) DECLSPEC_UUID(iid) DECLSPEC_NOVTABLE
-#endif
-
-#ifndef DWRITE_DECLARE_UUID
-#define DWRITE_DECLARE_UUID(classKeyword, name, iid) classKeyword DECLSPEC_UUID(iid) name
 #endif
 
 #ifndef DWRITE_BEGIN_INTERFACE
@@ -160,7 +161,7 @@ enum DWRITE_FONT_SIMULATIONS
 };
 
 #ifdef DEFINE_ENUM_FLAG_OPERATORS
-DEFINE_ENUM_FLAG_OPERATORS(DWRITE_FONT_SIMULATIONS)
+DEFINE_ENUM_FLAG_OPERATORS(DWRITE_FONT_SIMULATIONS);
 #endif
 
 /// <summary>
@@ -628,29 +629,15 @@ struct DWRITE_GLYPH_OFFSET
 enum DWRITE_FACTORY_TYPE
 {
     /// <summary>
-    /// This is the recommended value in most cases. The shared factory is a singleton, so mulitiple
-    /// components in a process that create a shared factory share a single instance. This enables
-    /// reuse of cached font data and other state across multiple components. In addition, objects
-    /// created from a shared factory can read from and/or modify a cross-process or persistent cache.
+    /// Shared factory allow for re-use of cached font data across multiple in process components.
+    /// Such factories also take advantage of cross process font caching components for better performance.
     /// </summary>
     DWRITE_FACTORY_TYPE_SHARED,
 
     /// <summary>
-    /// Objects created from an isolated factory do not modify internal state or cached data used by
-    /// objects from other factories. However, they may still read from a cross-process or persistent
-    /// cache.
+    /// Objects created from the isolated factory do not interact with internal DirectWrite state from other components.
     /// </summary>
-    DWRITE_FACTORY_TYPE_ISOLATED,
-
-#if DWRITE_CORE
-    /// <summary>
-    /// Objects created from an "isolated2" factory do not use or modify internal state or cached data
-    /// used by other factories. In addition, the system font collection contains only well-known fonts.
-    /// </summary>
-    // Warning: Make sure any additional new enum values are consistent between different versions of
-    // this header in DWriteCore and the Windows SDK.
-    DWRITE_FACTORY_TYPE_ISOLATED2
-#endif
+    DWRITE_FACTORY_TYPE_ISOLATED
 };
 
 /// <summary>
@@ -685,7 +672,7 @@ interface IDWriteFontFileStream;
 /// Instead, registration and unregistration of font file loaders with DirectWrite factory should be performed
 /// outside of the font file loader implementation as a separate step.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFontFileLoader, "727cad4e-d6af-4c9e-8a08-d695b11caa49") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("727cad4e-d6af-4c9e-8a08-d695b11caa49") IDWriteFontFileLoader : public IUnknown
 {
     /// <summary>
     /// Creates a font file stream object that encapsulates an open file resource.
@@ -710,7 +697,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteFontFileLoader, "727cad4e-d6af-4c9e-8a08-d695b11ca
 /// and exposes local font file information from the font file reference key.
 /// Font file references created using CreateFontFileReference use this font file loader.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteLocalFontFileLoader, "b2d9f3ec-c9fe-4a11-a2ec-d86208f7c0a2") : IDWriteFontFileLoader
+interface DWRITE_DECLARE_INTERFACE("b2d9f3ec-c9fe-4a11-a2ec-d86208f7c0a2") IDWriteLocalFontFileLoader : public IDWriteFontFileLoader
 {
     /// <summary>
     /// Obtains the length of the absolute file path from the font file reference key.
@@ -766,7 +753,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteLocalFontFileLoader, "b2d9f3ec-c9fe-4a11-a2ec-d862
 /// <summary>
 /// The interface for loading font file data.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFontFileStream, "6d4865fe-0ab8-4d91-8f62-5dd6be34a3e0") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("6d4865fe-0ab8-4d91-8f62-5dd6be34a3e0") IDWriteFontFileStream : public IUnknown
 {
     /// <summary>
     /// Reads a fragment from a file.
@@ -832,7 +819,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteFontFileStream, "6d4865fe-0ab8-4d91-8f62-5dd6be34a
 /// <summary>
 /// The interface that represents a reference to a font file.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFontFile, "739d886a-cef5-47dc-8769-1a8b41bebbb0") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("739d886a-cef5-47dc-8769-1a8b41bebbb0") IDWriteFontFile : public IUnknown
 {
     /// <summary>
     /// This method obtains the pointer to the reference key of a font file. The pointer is only valid until the object that refers to it is released.
@@ -1017,7 +1004,7 @@ struct DWRITE_MATRIX
 /// <summary>
 /// The interface that represents text rendering settings for glyph rasterization and filtering.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteRenderingParams, "2f0da53a-2add-47cd-82ee-d9ec34688e75") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("2f0da53a-2add-47cd-82ee-d9ec34688e75") IDWriteRenderingParams : public IUnknown
 {
     /// <summary>
     /// Gets the gamma value used for gamma correction. Valid values must be
@@ -1057,7 +1044,7 @@ typedef ID2D1SimplifiedGeometrySink IDWriteGeometrySink;
 /// This interface exposes various font data such as metrics, names, and glyph outlines.
 /// It contains font face type, appropriate file references and face identification data.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFontFace, "5f49804d-7024-4d43-bfa9-d25984f53849") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("5f49804d-7024-4d43-bfa9-d25984f53849") IDWriteFontFace : public IUnknown
 {
     /// <summary>
     /// Obtains the file format type of a font face.
@@ -1325,7 +1312,7 @@ interface IDWriteFontFileEnumerator;
 /// Instead, registration and unregistration of font file loaders with DirectWrite factory should be performed
 /// outside of the font file loader implementation as a separate step.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFontCollectionLoader, "cca920e4-52f0-492b-bfa8-29c72ee0a468") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("cca920e4-52f0-492b-bfa8-29c72ee0a468") IDWriteFontCollectionLoader : public IUnknown
 {
     /// <summary>
     /// Creates a font file enumerator object that encapsulates a collection of font files.
@@ -1351,7 +1338,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteFontCollectionLoader, "cca920e4-52f0-492b-bfa8-29c
 /// The font file enumerator interface encapsulates a collection of font files. The font system uses this interface
 /// to enumerate font files when building a font collection.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFontFileEnumerator, "72755049-5ff7-435d-8348-4be97cfa6c7c") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("72755049-5ff7-435d-8348-4be97cfa6c7c") IDWriteFontFileEnumerator : public IUnknown
 {
     /// <summary>
     /// Advances to the next font file in the collection. When it is first created, the enumerator is positioned
@@ -1381,7 +1368,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteFontFileEnumerator, "72755049-5ff7-435d-8348-4be97
 /// <summary>
 /// Represents a collection of strings indexed by locale name.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteLocalizedStrings, "08256209-099a-4b34-b86d-c22b110e7771") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("08256209-099a-4b34-b86d-c22b110e7771") IDWriteLocalizedStrings : public IUnknown
 {
     /// <summary>
     /// Gets the number of language/string pairs.
@@ -1396,7 +1383,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteLocalizedStrings, "08256209-099a-4b34-b86d-c22b110
     /// <param name="exists">Receives TRUE if the locale name exists or FALSE if not.</param>
     /// <returns>
     /// Standard HRESULT error code. If the specified locale name does not exist, the return value is S_OK, 
-    /// but *index is UINT32_MAX and *exists is FALSE.
+    /// but *index is UINT_MAX and *exists is FALSE.
     /// </returns>
     STDMETHOD(FindLocaleName)(
         _In_z_ WCHAR const* localeName,
@@ -1469,7 +1456,7 @@ interface IDWriteFont;
 /// <summary>
 /// The IDWriteFontCollection encapsulates a collection of font families.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFontCollection, "a84cee02-3eea-4eee-a827-87c1a02a0fcc") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("a84cee02-3eea-4eee-a827-87c1a02a0fcc") IDWriteFontCollection : public IUnknown
 {
     /// <summary>
     /// Gets the number of font families in the collection.
@@ -1493,10 +1480,10 @@ DWRITE_BEGIN_INTERFACE(IDWriteFontCollection, "a84cee02-3eea-4eee-a827-87c1a02a0
     /// Finds the font family with the specified family name.
     /// </summary>
     /// <param name="familyName">Name of the font family. The name is not case-sensitive but must otherwise exactly match a family name in the collection.</param>
-    /// <param name="index">Receives the zero-based index of the matching font family if the family name was found or UINT32_MAX otherwise.</param>
+    /// <param name="index">Receives the zero-based index of the matching font family if the family name was found or UINT_MAX otherwise.</param>
     /// <param name="exists">Receives TRUE if the family name exists or FALSE otherwise.</param>
     /// <returns>
-    /// Standard HRESULT error code. If the specified family name does not exist, the return value is S_OK, but *index is UINT32_MAX and *exists is FALSE.
+    /// Standard HRESULT error code. If the specified family name does not exist, the return value is S_OK, but *index is UINT_MAX and *exists is FALSE.
     /// </returns>
     STDMETHOD(FindFamilyName)(
         _In_z_ WCHAR const* familyName,
@@ -1522,7 +1509,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteFontCollection, "a84cee02-3eea-4eee-a827-87c1a02a0
 /// <summary>
 /// The IDWriteFontList interface represents an ordered set of fonts that are part of an IDWriteFontCollection.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFontList, "1a0d8438-1d97-4ec1-aef9-a2fb86ed6acb") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("1a0d8438-1d97-4ec1-aef9-a2fb86ed6acb") IDWriteFontList : public IUnknown
 {
     /// <summary>
     /// Gets the font collection that contains the fonts.
@@ -1558,7 +1545,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteFontList, "1a0d8438-1d97-4ec1-aef9-a2fb86ed6acb") 
 /// The IDWriteFontFamily interface represents a set of fonts that share the same design but are differentiated
 /// by weight, stretch, and style.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFontFamily, "da20d8ef-812a-4c43-9802-62ec4abd7add") : IDWriteFontList
+interface DWRITE_DECLARE_INTERFACE("da20d8ef-812a-4c43-9802-62ec4abd7add") IDWriteFontFamily : public IDWriteFontList
 {
     /// <summary>
     /// Creates a localized strings object that contains the family names for the font family, indexed by locale name.
@@ -1609,7 +1596,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteFontFamily, "da20d8ef-812a-4c43-9802-62ec4abd7add"
 /// <summary>
 /// The IDWriteFont interface represents a physical font in a font collection.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFont, "acd16696-8c14-4f5d-877e-fe3fc1d32737") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("acd16696-8c14-4f5d-877e-fe3fc1d32737") IDWriteFont : public IUnknown
 {
     /// <summary>
     /// Gets the font family to which the specified font belongs.
@@ -2063,7 +2050,7 @@ interface IDWriteInlineObject;
 /// <remarks>
 /// This object may not be thread-safe and it may carry the state of text format change.
 /// </remarks>
-DWRITE_BEGIN_INTERFACE(IDWriteTextFormat, "9c906818-31d7-4fd3-a151-7c5e225db55a") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("9c906818-31d7-4fd3-a151-7c5e225db55a") IDWriteTextFormat : public IUnknown
 {
     /// <summary>
     /// Set alignment option of text relative to layout box's leading and trailing edge.
@@ -2245,7 +2232,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextFormat, "9c906818-31d7-4fd3-a151-7c5e225db55a"
     /// Standard HRESULT error code.
     /// </returns>
     STDMETHOD(GetFontCollection)(
-        _COM_Outptr_result_maybenull_ IDWriteFontCollection** fontCollection
+        _COM_Outptr_ IDWriteFontCollection** fontCollection
         ) PURE;
 
     /// <summary>
@@ -2309,7 +2296,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextFormat, "9c906818-31d7-4fd3-a151-7c5e225db55a"
 /// <summary>
 /// Font typography setting.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteTypography, "55f1112b-1dc2-4b3c-9541-f46894ed85b6") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("55f1112b-1dc2-4b3c-9541-f46894ed85b6") IDWriteTypography : public IUnknown
 {
     /// <summary>
     /// Add font feature.
@@ -2355,7 +2342,7 @@ enum DWRITE_SCRIPT_SHAPES
 };
 
 #ifdef DEFINE_ENUM_FLAG_OPERATORS
-DEFINE_ENUM_FLAG_OPERATORS(DWRITE_SCRIPT_SHAPES)
+DEFINE_ENUM_FLAG_OPERATORS(DWRITE_SCRIPT_SHAPES);
 #endif
 
 /// <summary>
@@ -2448,8 +2435,8 @@ enum DWRITE_NUMBER_SUBSTITUTION_METHOD
     DWRITE_NUMBER_SUBSTITUTION_METHOD_FROM_CULTURE,
 
     /// <summary>
-    /// If the culture is Arabic, Dari, or Persian, specifies that the number
-    /// shape depend on the context. Either traditional or nominal number shape
+    /// If the culture is Arabic or Farsi, specifies that the number shape
+    /// depend on the context. Either traditional or nominal number shape
     /// are used depending on the nearest preceding strong character or (if
     /// there is none) the reading direction of the paragraph.
     /// </summary>
@@ -2480,7 +2467,7 @@ enum DWRITE_NUMBER_SUBSTITUTION_METHOD
 /// <summary>
 /// Holds the appropriate digits and numeric punctuation for a given locale.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteNumberSubstitution, "14885CC9-BAB0-4f90-B6ED-5C366A2CD03D") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("14885CC9-BAB0-4f90-B6ED-5C366A2CD03D") IDWriteNumberSubstitution : public IUnknown
 {
 };
 
@@ -2558,7 +2545,7 @@ struct DWRITE_SHAPING_GLYPH_PROPERTIES
 /// stop prematurely and return a callback error. Rather than return E_NOTIMPL,
 /// an application should stub the method and return a constant/null and S_OK.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteTextAnalysisSource, "688e1a58-5094-47c8-adc8-fbcea60ae92b") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("688e1a58-5094-47c8-adc8-fbcea60ae92b") IDWriteTextAnalysisSource : public IUnknown
 {
     /// <summary>
     /// Get a block of text starting at the specified text position.
@@ -2657,7 +2644,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextAnalysisSource, "688e1a58-5094-47c8-adc8-fbcea
     STDMETHOD(GetNumberSubstitution)(
         UINT32 textPosition,
         _Out_ UINT32* textLength,
-        _COM_Outptr_result_maybenull_ IDWriteNumberSubstitution** numberSubstitution
+        _COM_Outptr_ IDWriteNumberSubstitution** numberSubstitution
         ) PURE;
 };
 
@@ -2667,7 +2654,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextAnalysisSource, "688e1a58-5094-47c8-adc8-fbcea
 /// state of the analysis sink, therefore a Set method call on a range
 /// overwrites the previously set analysis result of the same range. 
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteTextAnalysisSink, "5810cd44-0ca0-4701-b3fa-bec5182ae4f6") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("5810cd44-0ca0-4701-b3fa-bec5182ae4f6") IDWriteTextAnalysisSink : public IUnknown
 {
     /// <summary>
     /// Report script analysis for the text range.
@@ -2748,7 +2735,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextAnalysisSink, "5810cd44-0ca0-4701-b3fa-bec5182
 /// <summary>
 /// Analyzes various text properties for complex script processing.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteTextAnalyzer, "b7e6163e-7f46-43b4-84b3-e4e6249c365d") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("b7e6163e-7f46-43b4-84b3-e4e6249c365d") IDWriteTextAnalyzer : public IUnknown
 {
     /// <summary>
     /// Analyzes a text range for script boundaries, reading text attributes
@@ -3520,7 +3507,7 @@ interface IDWriteTextRenderer;
 /// The IDWriteInlineObject interface wraps an application defined inline graphic,
 /// allowing DWrite to query metrics as if it was a glyph inline with the text.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteInlineObject, "8339FDE3-106F-47ab-8373-1C6295EB10B3") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("8339FDE3-106F-47ab-8373-1C6295EB10B3") IDWriteInlineObject : public IUnknown
 {
     /// <summary>
     /// The application implemented rendering callback (IDWriteTextRenderer::DrawInlineObject)
@@ -3596,7 +3583,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteInlineObject, "8339FDE3-106F-47ab-8373-1C6295EB10B
 /// <summary>
 /// The IDWritePixelSnapping interface defines the pixel snapping properties of a text renderer.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWritePixelSnapping, "eaf3a2da-ecf4-4d24-b644-b34f6842024b") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("eaf3a2da-ecf4-4d24-b644-b34f6842024b") IDWritePixelSnapping : public IUnknown
 {
     /// <summary>
     /// Determines whether pixel snapping is disabled. The recommended default is FALSE,
@@ -3647,7 +3634,7 @@ DWRITE_BEGIN_INTERFACE(IDWritePixelSnapping, "eaf3a2da-ecf4-4d24-b644-b34f684202
 /// callbacks that perform rendering of text, inline objects, and decorations
 /// such as underlines.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteTextRenderer, "ef8a8135-5cc6-45fe-8825-c5a0724eb819") : IDWritePixelSnapping
+interface DWRITE_DECLARE_INTERFACE("ef8a8135-5cc6-45fe-8825-c5a0724eb819") IDWriteTextRenderer : public IDWritePixelSnapping
 {
     /// <summary>
     /// IDWriteTextLayout::Draw calls this function to instruct the client to
@@ -3785,7 +3772,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextRenderer, "ef8a8135-5cc6-45fe-8825-c5a0724eb81
 ///
 /// All coordinates are in device independent pixels (DIPs).
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteTextLayout, "53737037-6d14-410b-9bfe-0b182bb70961") : IDWriteTextFormat
+interface DWRITE_DECLARE_INTERFACE("53737037-6d14-410b-9bfe-0b182bb70961") IDWriteTextLayout : public IDWriteTextFormat
 {
     /// <summary>
     /// Set layout maximum width
@@ -3818,7 +3805,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextLayout, "53737037-6d14-410b-9bfe-0b182bb70961"
     /// Standard HRESULT error code.
     /// </returns>
     STDMETHOD(SetFontCollection)(
-        _In_opt_ IDWriteFontCollection* fontCollection,
+        _In_ IDWriteFontCollection* fontCollection,
         DWRITE_TEXT_RANGE textRange
         ) PURE;
 
@@ -4434,7 +4421,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteTextLayout, "53737037-6d14-410b-9bfe-0b182bb70961"
 /// <summary>
 /// Encapsulates a 32-bit device independent bitmap and device context, which can be used for rendering glyphs.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteBitmapRenderTarget, "5e5a32a3-8dff-4773-9ff6-0696eab77267") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("5e5a32a3-8dff-4773-9ff6-0696eab77267") IDWriteBitmapRenderTarget : public IUnknown
 {
     /// <summary>
     /// Draws a run of glyphs to the bitmap.
@@ -4554,7 +4541,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteBitmapRenderTarget, "5e5a32a3-8dff-4773-9ff6-0696e
 /// <summary>
 /// The GDI interop interface provides interoperability with GDI.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteGdiInterop, "1edd9491-9853-4299-898f-6432983b6f3a") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("1edd9491-9853-4299-898f-6432983b6f3a") IDWriteGdiInterop : public IUnknown
 {
     /// <summary>
     /// Creates a font object that matches the properties specified by the LOGFONT structure
@@ -4656,7 +4643,7 @@ enum DWRITE_TEXTURE_TYPE
 /// <summary>
 /// Interface that encapsulates information used to render a glyph run.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteGlyphRunAnalysis, "7d97dbf7-e085-42d4-81e3-6a883bded118") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("7d97dbf7-e085-42d4-81e3-6a883bded118") IDWriteGlyphRunAnalysis : public IUnknown
 {
     /// <summary>
     /// Gets the bounding rectangle of the physical pixels affected by the glyph run.
@@ -4714,7 +4701,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteGlyphRunAnalysis, "7d97dbf7-e085-42d4-81e3-6a883bd
 /// <summary>
 /// The root factory interface for all DWrite objects.
 /// </summary>
-DWRITE_BEGIN_INTERFACE(IDWriteFactory, "b859ee5a-d838-4b5b-a2e8-1adc7d93db48") : IUnknown
+interface DWRITE_DECLARE_INTERFACE("b859ee5a-d838-4b5b-a2e8-1adc7d93db48") IDWriteFactory : public IUnknown
 {
     /// <summary>
     /// Gets a font collection representing the set of installed fonts.
@@ -5118,7 +5105,7 @@ DWRITE_BEGIN_INTERFACE(IDWriteFactory, "b859ee5a-d838-4b5b-a2e8-1adc7d93db48") :
 /// Creates a DirectWrite factory object that is used for subsequent creation of individual DirectWrite objects.
 /// </summary>
 /// <param name="factoryType">Identifies whether the factory object will be shared or isolated.</param>
-/// <param name="iid">Identifies the DirectWrite factory interface, such as UUIDOF(IDWriteFactory).</param>
+/// <param name="iid">Identifies the DirectWrite factory interface, such as __uuidof(IDWriteFactory).</param>
 /// <param name="factory">Receives the DirectWrite factory object.</param>
 /// <returns>
 /// Standard HRESULT error code.
@@ -5137,7 +5124,7 @@ EXTERN_C HRESULT DWRITE_EXPORT DWriteCreateFactory(
     _In_ DWRITE_FACTORY_TYPE factoryType,
     _In_ REFIID iid,
     _COM_Outptr_ IUnknown **factory
-    );
+    ) WIN_NOEXCEPT;
 
 // Macros used to define DirectWrite error codes.
 #define FACILITY_DWRITE 0x898

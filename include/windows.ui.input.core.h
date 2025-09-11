@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #if !defined(WINDOWS_SYSTEM_SYSTEMMANAGEMENTCONTRACT_VERSION)
@@ -108,14 +108,14 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.applicationmodel.core.h"
-#include "windows.system.h"
-#include "windows.ui.core.h"
-#include "windows.ui.input.h"
+#include "Windows.Foundation.h"
+#include "Windows.ApplicationModel.Core.h"
+#include "Windows.System.h"
+#include "Windows.UI.Core.h"
+#include "Windows.UI.Input.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -311,7 +311,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IRadialControllerIndependentInputSource = _uuidof(IRadialControllerIndependentInputSource);
+                    MIDL_CONST_ID IID& IID_IRadialControllerIndependentInputSource = __uuidof(IRadialControllerIndependentInputSource);
                 } /* Core */
             } /* Input */
         } /* UI */
@@ -349,7 +349,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IRadialControllerIndependentInputSource2 = _uuidof(IRadialControllerIndependentInputSource2);
+                    MIDL_CONST_ID IID& IID_IRadialControllerIndependentInputSource2 = __uuidof(IRadialControllerIndependentInputSource2);
                 } /* Core */
             } /* Input */
         } /* UI */
@@ -388,7 +388,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IRadialControllerIndependentInputSourceStatics = _uuidof(IRadialControllerIndependentInputSourceStatics);
+                    MIDL_CONST_ID IID& IID_IRadialControllerIndependentInputSourceStatics = __uuidof(IRadialControllerIndependentInputSourceStatics);
                 } /* Core */
             } /* Input */
         } /* UI */

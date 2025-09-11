@@ -20,14 +20,14 @@ Environment:
 #pragma once
 #ifndef RC_INVOKED
 
-#include "traceloggingprovider.h"
+#include "TraceLoggingProvider.h"
 
 /*
 Quick start:
 
 #include <windows.h>
-#include <traceloggingprovider.h>
-#include <traceloggingactivity.h>
+#include <TraceLoggingProvider.h>
+#include <TraceLoggingActivity.h>
 #include <winmeta.h> // optional, used here for WINEVENT_LEVEL_ERROR
 
 TRACELOGGING_DEFINE_PROVIDER(

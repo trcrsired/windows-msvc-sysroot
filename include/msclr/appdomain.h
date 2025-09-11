@@ -27,11 +27,11 @@
 #define _MSCLR_STDCALL_DISTINCT 1
 #elif defined (_M_X64)
 #define _MSCLR_STDCALL_DISTINCT 0
-#elif defined (_M_ARM) || defined (_M_ARM64)
+#elif defined (_M_ARM64)
 #define _MSCLR_STDCALL_DISTINCT 0
-#else  /* defined (_M_ARM) */
+#else  /* defined (_M_ARM64) */
 #error Need to add setting for different CPU
-#endif  /* defined (_M_ARM) */
+#endif  /* defined (_M_ARM64) */
 
 namespace msclr
 {

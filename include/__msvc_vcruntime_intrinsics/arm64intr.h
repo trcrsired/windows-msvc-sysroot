@@ -26,6 +26,10 @@
 #define ARM64_FPCR              ARM64_SYSREG(3, 3, 4, 4, 0)   // Floating point control register (EL0)
 #define ARM64_FPSR              ARM64_SYSREG(3, 3, 4, 4, 1)   // Floating point status register (EL0)
 
+typedef struct {
+    unsigned __int64 _val[8];
+} data512_t;
+
 #if defined(__cplusplus)
 extern "C" {
 #endif
@@ -53,6 +57,33 @@ void __dmb(unsigned int _Type);
 void __dsb(unsigned int _Type);
 void __isb(unsigned int _Type);
 void __sb(void);
+
+void __ld64b(const void *_addr, unsigned __int64 _value[8]);
+void __st64b(void *_addr, unsigned __int64 _value[8]);
+unsigned __int64 __st64bv(void *_addr, unsigned __int64 _value[8]);
+unsigned __int64 __st64bv0(void *_addr, unsigned __int64 _value[8]);
+
+static __forceinline data512_t __arm_ld64b(const void *_addr) 
+{ 
+    data512_t _value;
+    __ld64b(_addr, _value._val);
+    return _value;
+}
+
+static __forceinline void __arm_st64b(void *_addr, data512_t _value)  
+{
+    __st64b(_addr, _value._val);
+}
+
+static __forceinline unsigned __int64 __arm_st64bv(void *_addr, data512_t _value)  
+{
+    return __st64bv(_addr, _value._val);
+}
+
+static __forceinline unsigned __int64 __arm_st64bv0(void *_addr, data512_t _value) 
+{
+    return __st64bv0(_addr, _value._val);
+}
 
 unsigned __int8 __ldar8(const volatile unsigned __int8 * _Target);
 unsigned __int16 __ldar16(const volatile unsigned __int16 * _Target);
@@ -144,6 +175,15 @@ unsigned __int32 __casal32(unsigned __int32 volatile * _Target, unsigned __int32
 unsigned __int64 __casal64(unsigned __int64 volatile * _Target, unsigned __int64 _Comp, unsigned __int64 _Value);
 
 void * __xpaci(void * _Pointer);
+
+// Reverses the bits in _Value.
+unsigned __int32 __rbit(unsigned __int32 _Value);
+unsigned long __rbitl(unsigned long _Value);
+unsigned __int64 __rbitll(unsigned __int64 _Value);
+
+// Random Number Generation - rndr and rndrrs
+int __rndr(unsigned __int64 * _adr);
+int __rndrrs(unsigned __int64 * _adr);
 
 #ifdef __cplusplus
 }

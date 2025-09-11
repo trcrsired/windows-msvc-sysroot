@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,148 +7,436 @@
 #ifndef WINRT_Windows_Gaming_Input_Preview_H
 #define WINRT_Windows_Gaming_Input_Preview_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.3.4.5"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.3.4.5"
-#include "winrt/windows.gaming.input.h"
-#include "winrt/impl/windows.foundation.collections.2.h"
-#include "winrt/impl/windows.gaming.input.2.h"
-#include "winrt/impl/windows.gaming.input.custom.2.h"
-#include "winrt/impl/windows.system.2.h"
-#include "winrt/impl/windows.gaming.input.preview.2.h"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.1"
+#include "winrt/Windows.Gaming.Input.h"
+#include "winrt/impl/Windows.Foundation.Collections.2.h"
+#include "winrt/impl/Windows.Gaming.Input.2.h"
+#include "winrt/impl/Windows.Gaming.Input.Custom.2.h"
+#include "winrt/impl/Windows.System.2.h"
+#include "winrt/impl/Windows.Gaming.Input.Preview.2.h"
 namespace winrt::impl
 {
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_Gaming_Input_Preview_IGameControllerProviderInfoStatics<D>::GetParentProviderId(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_IGameControllerProviderInfoStatics<D>::GetParentProviderId(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider) const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::IGameControllerProviderInfoStatics)->GetParentProviderId(*(void**)(&provider), &value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::IGameControllerProviderInfoStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::IGameControllerProviderInfoStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::IGameControllerProviderInfoStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetParentProviderId(*(void**)(&provider), &value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::IGameControllerProviderInfoStatics>**)this;
+            check_hresult(_winrt_abi_type->GetParentProviderId(*(void**)(&provider), &value));
+        }
         return hstring{ value, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_Gaming_Input_Preview_IGameControllerProviderInfoStatics<D>::GetProviderId(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_IGameControllerProviderInfoStatics<D>::GetProviderId(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider) const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::IGameControllerProviderInfoStatics)->GetProviderId(*(void**)(&provider), &value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::IGameControllerProviderInfoStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::IGameControllerProviderInfoStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::IGameControllerProviderInfoStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetProviderId(*(void**)(&provider), &value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::IGameControllerProviderInfoStatics>**)this;
+            check_hresult(_winrt_abi_type->GetProviderId(*(void**)(&provider), &value));
+        }
         return hstring{ value, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Gaming::Input::Preview::GameControllerBatteryChargingState) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::BatteryChargingState() const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::BatteryChargingState() const
     {
         winrt::Windows::Gaming::Input::Preview::GameControllerBatteryChargingState value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->get_BatteryChargingState(reinterpret_cast<int32_t*>(&value)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_BatteryChargingState(reinterpret_cast<int32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->get_BatteryChargingState(reinterpret_cast<int32_t*>(&value)));
+        }
         return value;
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Gaming::Input::Preview::GameControllerBatteryKind) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::BatteryKind() const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::BatteryKind() const
     {
         winrt::Windows::Gaming::Input::Preview::GameControllerBatteryKind value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->get_BatteryKind(reinterpret_cast<int32_t*>(&value)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_BatteryKind(reinterpret_cast<int32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->get_BatteryKind(reinterpret_cast<int32_t*>(&value)));
+        }
         return value;
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Gaming::Input::Preview::GameControllerBatteryLevel) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::BatteryLevel() const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::BatteryLevel() const
     {
         winrt::Windows::Gaming::Input::Preview::GameControllerBatteryLevel value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->get_BatteryLevel(reinterpret_cast<int32_t*>(&value)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_BatteryLevel(reinterpret_cast<int32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->get_BatteryLevel(reinterpret_cast<int32_t*>(&value)));
+        }
         return value;
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Gaming::Input::Preview::GameControllerFirmwareCorruptReason) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::GetDeviceFirmwareCorruptionState() const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::GetDeviceFirmwareCorruptionState() const
     {
         winrt::Windows::Gaming::Input::Preview::GameControllerFirmwareCorruptReason value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->GetDeviceFirmwareCorruptionState(reinterpret_cast<int32_t*>(&value)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetDeviceFirmwareCorruptionState(reinterpret_cast<int32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->GetDeviceFirmwareCorruptionState(reinterpret_cast<int32_t*>(&value)));
+        }
         return value;
     }
-    template <typename D> WINRT_IMPL_AUTO(bool) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::IsFirmwareCorrupted() const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::IsFirmwareCorrupted() const
     {
         bool value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->get_IsFirmwareCorrupted(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_IsFirmwareCorrupted(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->get_IsFirmwareCorrupted(&value));
+        }
         return value;
     }
-    template <typename D> WINRT_IMPL_AUTO(bool) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::IsInterfaceSupported(winrt::guid const& interfaceId) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::IsInterfaceSupported(winrt::guid const& interfaceId) const
     {
         bool value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->IsInterfaceSupported(impl::bind_in(interfaceId), &value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->IsInterfaceSupported(impl::bind_in(interfaceId), &value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->IsInterfaceSupported(impl::bind_in(interfaceId), &value));
+        }
         return value;
     }
-    template <typename D> WINRT_IMPL_AUTO(bool) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::IsSyntheticDevice() const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::IsSyntheticDevice() const
     {
         bool value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->get_IsSyntheticDevice(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_IsSyntheticDevice(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->get_IsSyntheticDevice(&value));
+        }
         return value;
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Foundation::Collections::IVectorView<hstring>) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::PreferredTypes() const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::PreferredTypes() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->get_PreferredTypes(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_PreferredTypes(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->get_PreferredTypes(&value));
+        }
         return winrt::Windows::Foundation::Collections::IVectorView<hstring>{ value, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::ExecuteCommand(winrt::Windows::Gaming::Input::Preview::DeviceCommand const& command) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::ExecuteCommand(winrt::Windows::Gaming::Input::Preview::DeviceCommand const& command) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->ExecuteCommand(static_cast<int32_t>(command)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->ExecuteCommand(static_cast<int32_t>(command)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->ExecuteCommand(static_cast<int32_t>(command)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::SetHomeLedIntensity(uint8_t intensity) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::SetHomeLedIntensity(uint8_t intensity) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->SetHomeLedIntensity(intensity));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->SetHomeLedIntensity(intensity));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->SetHomeLedIntensity(intensity));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(com_array<uint8_t>) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::GetExtendedDeviceInfo() const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::GetExtendedDeviceInfo() const
     {
         uint32_t buffer_impl_size{};
         uint8_t* buffer{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->GetExtendedDeviceInfo(&buffer_impl_size, &buffer));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetExtendedDeviceInfo(&buffer_impl_size, &buffer));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->GetExtendedDeviceInfo(&buffer_impl_size, &buffer));
+        }
         return com_array<uint8_t>{ buffer, buffer_impl_size, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::SetHeadsetOperation(winrt::Windows::Gaming::Input::Preview::HeadsetOperation const& operation, array_view<uint8_t const> buffer) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::SetHeadsetOperation(winrt::Windows::Gaming::Input::Preview::HeadsetOperation const& operation, array_view<uint8_t const> buffer) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->SetHeadsetOperation(static_cast<int32_t>(operation), buffer.size(), get_abi(buffer)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->SetHeadsetOperation(static_cast<int32_t>(operation), buffer.size(), get_abi(buffer)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->SetHeadsetOperation(static_cast<int32_t>(operation), buffer.size(), get_abi(buffer)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(com_array<uint8_t>) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::GetHeadsetOperation(winrt::Windows::Gaming::Input::Preview::HeadsetOperation const& operation) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::GetHeadsetOperation(winrt::Windows::Gaming::Input::Preview::HeadsetOperation const& operation) const
     {
         uint32_t buffer_impl_size{};
         uint8_t* buffer{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->GetHeadsetOperation(static_cast<int32_t>(operation), &buffer_impl_size, &buffer));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetHeadsetOperation(static_cast<int32_t>(operation), &buffer_impl_size, &buffer));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->GetHeadsetOperation(static_cast<int32_t>(operation), &buffer_impl_size, &buffer));
+        }
         return com_array<uint8_t>{ buffer, buffer_impl_size, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(uint32_t) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::AppCompatVersion() const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::AppCompatVersion() const
     {
         uint32_t value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->get_AppCompatVersion(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_AppCompatVersion(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->get_AppCompatVersion(&value));
+        }
         return value;
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::SetStandardControllerButtonRemapping(winrt::Windows::System::User const& user, bool previous, param::map_view<winrt::Windows::Gaming::Input::Preview::RemappingButtonCategory, winrt::Windows::Foundation::IInspectable> const& remapping) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::SetStandardControllerButtonRemapping(winrt::Windows::System::User const& user, bool previous, param::map_view<winrt::Windows::Gaming::Input::Preview::RemappingButtonCategory, winrt::Windows::Foundation::IInspectable> const& remapping) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->SetStandardControllerButtonRemapping(*(void**)(&user), previous, *(void**)(&remapping)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->SetStandardControllerButtonRemapping(*(void**)(&user), previous, *(void**)(&remapping)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->SetStandardControllerButtonRemapping(*(void**)(&user), previous, *(void**)(&remapping)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Foundation::Collections::IMapView<winrt::Windows::Gaming::Input::Preview::RemappingButtonCategory, winrt::Windows::Foundation::IInspectable>) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::GetStandardControllerButtonRemapping(winrt::Windows::System::User const& user, bool previous) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProvider<D>::GetStandardControllerButtonRemapping(winrt::Windows::System::User const& user, bool previous) const
     {
         void* remapping{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider)->GetStandardControllerButtonRemapping(*(void**)(&user), previous, &remapping));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetStandardControllerButtonRemapping(*(void**)(&user), previous, &remapping));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider>**)this;
+            check_hresult(_winrt_abi_type->GetStandardControllerButtonRemapping(*(void**)(&user), previous, &remapping));
+        }
         return winrt::Windows::Foundation::Collections::IMapView<winrt::Windows::Gaming::Input::Preview::RemappingButtonCategory, winrt::Windows::Foundation::IInspectable>{ remapping, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Gaming::Input::Preview::LegacyGipGameControllerProvider) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProviderStatics<D>::FromGameController(winrt::Windows::Gaming::Input::IGameController const& controller) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProviderStatics<D>::FromGameController(winrt::Windows::Gaming::Input::IGameController const& controller) const
     {
         void* legacyGipGameControllerProvider{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics)->FromGameController(*(void**)(&controller), &legacyGipGameControllerProvider));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->FromGameController(*(void**)(&controller), &legacyGipGameControllerProvider));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>**)this;
+            check_hresult(_winrt_abi_type->FromGameController(*(void**)(&controller), &legacyGipGameControllerProvider));
+        }
         return winrt::Windows::Gaming::Input::Preview::LegacyGipGameControllerProvider{ legacyGipGameControllerProvider, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Gaming::Input::Preview::LegacyGipGameControllerProvider) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProviderStatics<D>::FromGameControllerProvider(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProviderStatics<D>::FromGameControllerProvider(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider) const
     {
         void* legacyGipGameControllerProvider{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics)->FromGameControllerProvider(*(void**)(&provider), &legacyGipGameControllerProvider));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->FromGameControllerProvider(*(void**)(&provider), &legacyGipGameControllerProvider));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>**)this;
+            check_hresult(_winrt_abi_type->FromGameControllerProvider(*(void**)(&provider), &legacyGipGameControllerProvider));
+        }
         return winrt::Windows::Gaming::Input::Preview::LegacyGipGameControllerProvider{ legacyGipGameControllerProvider, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProviderStatics<D>::PairPilotToCopilot(winrt::Windows::System::User const& user, param::hstring const& pilotControllerProviderId, param::hstring const& copilotControllerProviderId) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProviderStatics<D>::PairPilotToCopilot(winrt::Windows::System::User const& user, param::hstring const& pilotControllerProviderId, param::hstring const& copilotControllerProviderId) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics)->PairPilotToCopilot(*(void**)(&user), *(void**)(&pilotControllerProviderId), *(void**)(&copilotControllerProviderId)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->PairPilotToCopilot(*(void**)(&user), *(void**)(&pilotControllerProviderId), *(void**)(&copilotControllerProviderId)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>**)this;
+            check_hresult(_winrt_abi_type->PairPilotToCopilot(*(void**)(&user), *(void**)(&pilotControllerProviderId), *(void**)(&copilotControllerProviderId)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(void) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProviderStatics<D>::ClearPairing(winrt::Windows::System::User const& user, param::hstring const& controllerProviderId) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProviderStatics<D>::ClearPairing(winrt::Windows::System::User const& user, param::hstring const& controllerProviderId) const
     {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics)->ClearPairing(*(void**)(&user), *(void**)(&controllerProviderId)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->ClearPairing(*(void**)(&user), *(void**)(&controllerProviderId)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>**)this;
+            check_hresult(_winrt_abi_type->ClearPairing(*(void**)(&user), *(void**)(&controllerProviderId)));
+        }
     }
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProviderStatics<D>::IsPilot(winrt::Windows::System::User const& user, param::hstring const& controllerProviderId) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProviderStatics<D>::IsPilot(winrt::Windows::System::User const& user, param::hstring const& controllerProviderId) const
     {
         void* copilotControllerProviderId{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics)->IsPilot(*(void**)(&user), *(void**)(&controllerProviderId), &copilotControllerProviderId));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->IsPilot(*(void**)(&user), *(void**)(&controllerProviderId), &copilotControllerProviderId));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>**)this;
+            check_hresult(_winrt_abi_type->IsPilot(*(void**)(&user), *(void**)(&controllerProviderId), &copilotControllerProviderId));
+        }
         return hstring{ copilotControllerProviderId, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProviderStatics<D>::IsCopilot(winrt::Windows::System::User const& user, param::hstring const& controllerProviderId) const
+    template <typename D> auto consume_Windows_Gaming_Input_Preview_ILegacyGipGameControllerProviderStatics<D>::IsCopilot(winrt::Windows::System::User const& user, param::hstring const& controllerProviderId) const
     {
         void* pilotControllerProviderId{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics)->IsCopilot(*(void**)(&user), *(void**)(&controllerProviderId), &pilotControllerProviderId));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->IsCopilot(*(void**)(&user), *(void**)(&controllerProviderId), &pilotControllerProviderId));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProviderStatics>**)this;
+            check_hresult(_winrt_abi_type->IsCopilot(*(void**)(&user), *(void**)(&controllerProviderId), &pilotControllerProviderId));
+        }
         return hstring{ pilotControllerProviderId, take_ownership_from_abi };
     }
 #ifndef WINRT_LEAN_AND_MEAN

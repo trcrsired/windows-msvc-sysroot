@@ -14,8 +14,8 @@
 #pragma region Desktop Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
-#include <wpcapi.h>
-#include <wpcevent.h>
+#include <WpcApi.h>
+#include <WpcEvent.h>
 
 #ifndef E_FILE_NOT_FOUND
 #define E_FILE_NOT_FOUND  MAKE_SCODE(SEVERITY_ERROR, FACILITY_WIN32, ERROR_FILE_NOT_FOUND)

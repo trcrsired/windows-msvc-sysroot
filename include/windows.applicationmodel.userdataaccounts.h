@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #if !defined(WINDOWS_SYSTEM_SYSTEMMANAGEMENTCONTRACT_VERSION)
@@ -104,16 +104,16 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.applicationmodel.appointments.h"
-#include "windows.applicationmodel.contacts.h"
-#include "windows.applicationmodel.email.h"
-#include "windows.applicationmodel.userdatatasks.h"
-#include "windows.storage.streams.h"
-#include "windows.system.h"
+#include "Windows.Foundation.h"
+#include "Windows.ApplicationModel.Appointments.h"
+#include "Windows.ApplicationModel.Contacts.h"
+#include "Windows.ApplicationModel.Email.h"
+#include "Windows.ApplicationModel.UserDataTasks.h"
+#include "Windows.Storage.Streams.h"
+#include "Windows.System.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -1964,7 +1964,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IUserDataAccount = _uuidof(IUserDataAccount);
+                MIDL_CONST_ID IID& IID_IUserDataAccount = __uuidof(IUserDataAccount);
             } /* UserDataAccounts */
         } /* ApplicationModel */
     } /* Windows */
@@ -2006,7 +2006,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IUserDataAccount2 = _uuidof(IUserDataAccount2);
+                MIDL_CONST_ID IID& IID_IUserDataAccount2 = __uuidof(IUserDataAccount2);
             } /* UserDataAccounts */
         } /* ApplicationModel */
     } /* Windows */
@@ -2048,7 +2048,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IUserDataAccount3 = _uuidof(IUserDataAccount3);
+                MIDL_CONST_ID IID& IID_IUserDataAccount3 = __uuidof(IUserDataAccount3);
             } /* UserDataAccounts */
         } /* ApplicationModel */
     } /* Windows */
@@ -2105,7 +2105,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IUserDataAccount4 = _uuidof(IUserDataAccount4);
+                MIDL_CONST_ID IID& IID_IUserDataAccount4 = __uuidof(IUserDataAccount4);
             } /* UserDataAccounts */
         } /* ApplicationModel */
     } /* Windows */
@@ -2145,7 +2145,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IUserDataAccountManagerForUser = _uuidof(IUserDataAccountManagerForUser);
+                MIDL_CONST_ID IID& IID_IUserDataAccountManagerForUser = __uuidof(IUserDataAccountManagerForUser);
             } /* UserDataAccounts */
         } /* ApplicationModel */
     } /* Windows */
@@ -2194,7 +2194,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IUserDataAccountManagerStatics = _uuidof(IUserDataAccountManagerStatics);
+                MIDL_CONST_ID IID& IID_IUserDataAccountManagerStatics = __uuidof(IUserDataAccountManagerStatics);
             } /* UserDataAccounts */
         } /* ApplicationModel */
     } /* Windows */
@@ -2231,7 +2231,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IUserDataAccountManagerStatics2 = _uuidof(IUserDataAccountManagerStatics2);
+                MIDL_CONST_ID IID& IID_IUserDataAccountManagerStatics2 = __uuidof(IUserDataAccountManagerStatics2);
             } /* UserDataAccounts */
         } /* ApplicationModel */
     } /* Windows */
@@ -2275,7 +2275,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IUserDataAccountStore = _uuidof(IUserDataAccountStore);
+                MIDL_CONST_ID IID& IID_IUserDataAccountStore = __uuidof(IUserDataAccountStore);
             } /* UserDataAccounts */
         } /* ApplicationModel */
     } /* Windows */
@@ -2323,7 +2323,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IUserDataAccountStore2 = _uuidof(IUserDataAccountStore2);
+                MIDL_CONST_ID IID& IID_IUserDataAccountStore2 = __uuidof(IUserDataAccountStore2);
             } /* UserDataAccounts */
         } /* ApplicationModel */
     } /* Windows */
@@ -2365,7 +2365,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IUserDataAccountStore3 = _uuidof(IUserDataAccountStore3);
+                MIDL_CONST_ID IID& IID_IUserDataAccountStore3 = __uuidof(IUserDataAccountStore3);
             } /* UserDataAccounts */
         } /* ApplicationModel */
     } /* Windows */
@@ -2401,7 +2401,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IUserDataAccountStoreChangedEventArgs = _uuidof(IUserDataAccountStoreChangedEventArgs);
+                MIDL_CONST_ID IID& IID_IUserDataAccountStoreChangedEventArgs = __uuidof(IUserDataAccountStoreChangedEventArgs);
             } /* UserDataAccounts */
         } /* ApplicationModel */
     } /* Windows */

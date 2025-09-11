@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_APPLICATIONMODEL_CALLS_CALLSPHONECONTRACT_VERSION)
 
 #if !defined(WINDOWS_APPLICATIONMODEL_CALLS_CALLSVOIPCONTRACT_VERSION)
-#define WINDOWS_APPLICATIONMODEL_CALLS_CALLSVOIPCONTRACT_VERSION 0x40000
+#define WINDOWS_APPLICATIONMODEL_CALLS_CALLSVOIPCONTRACT_VERSION 0x50000
 #endif // defined(WINDOWS_APPLICATIONMODEL_CALLS_CALLSVOIPCONTRACT_VERSION)
 
 #if !defined(WINDOWS_APPLICATIONMODEL_CALLS_LOCKSCREENCALLCONTRACT_VERSION)
@@ -108,7 +108,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -116,11 +116,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.applicationmodel.calls.h"
+#include "Windows.Foundation.h"
+#include "Windows.ApplicationModel.Calls.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -488,7 +488,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IPhoneCallBlockedTriggerDetails = _uuidof(IPhoneCallBlockedTriggerDetails);
+                    MIDL_CONST_ID IID& IID_IPhoneCallBlockedTriggerDetails = __uuidof(IPhoneCallBlockedTriggerDetails);
                 } /* Background */
             } /* Calls */
         } /* ApplicationModel */
@@ -540,7 +540,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IPhoneCallOriginDataRequestTriggerDetails = _uuidof(IPhoneCallOriginDataRequestTriggerDetails);
+                    MIDL_CONST_ID IID& IID_IPhoneCallOriginDataRequestTriggerDetails = __uuidof(IPhoneCallOriginDataRequestTriggerDetails);
                 } /* Background */
             } /* Calls */
         } /* ApplicationModel */
@@ -615,7 +615,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IPhoneIncomingCallDismissedTriggerDetails = _uuidof(IPhoneIncomingCallDismissedTriggerDetails);
+                    MIDL_CONST_ID IID& IID_IPhoneIncomingCallDismissedTriggerDetails = __uuidof(IPhoneIncomingCallDismissedTriggerDetails);
                 } /* Background */
             } /* Calls */
         } /* ApplicationModel */
@@ -656,7 +656,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IPhoneIncomingCallNotificationTriggerDetails = _uuidof(IPhoneIncomingCallNotificationTriggerDetails);
+                    MIDL_CONST_ID IID& IID_IPhoneIncomingCallNotificationTriggerDetails = __uuidof(IPhoneIncomingCallNotificationTriggerDetails);
                 } /* Background */
             } /* Calls */
         } /* ApplicationModel */
@@ -702,7 +702,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IPhoneLineChangedTriggerDetails = _uuidof(IPhoneLineChangedTriggerDetails);
+                    MIDL_CONST_ID IID& IID_IPhoneLineChangedTriggerDetails = __uuidof(IPhoneLineChangedTriggerDetails);
                 } /* Background */
             } /* Calls */
         } /* ApplicationModel */
@@ -748,7 +748,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IPhoneNewVoicemailMessageTriggerDetails = _uuidof(IPhoneNewVoicemailMessageTriggerDetails);
+                    MIDL_CONST_ID IID& IID_IPhoneNewVoicemailMessageTriggerDetails = __uuidof(IPhoneNewVoicemailMessageTriggerDetails);
                 } /* Background */
             } /* Calls */
         } /* ApplicationModel */

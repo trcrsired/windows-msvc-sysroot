@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,10 +100,10 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
+#include "Windows.Foundation.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -370,7 +370,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IExtendedExecutionRevokedEventArgs = _uuidof(IExtendedExecutionRevokedEventArgs);
+                MIDL_CONST_ID IID& IID_IExtendedExecutionRevokedEventArgs = __uuidof(IExtendedExecutionRevokedEventArgs);
             } /* ExtendedExecution */
         } /* ApplicationModel */
     } /* Windows */
@@ -434,7 +434,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IExtendedExecutionSession = _uuidof(IExtendedExecutionSession);
+                MIDL_CONST_ID IID& IID_IExtendedExecutionSession = __uuidof(IExtendedExecutionSession);
             } /* ExtendedExecution */
         } /* ApplicationModel */
     } /* Windows */

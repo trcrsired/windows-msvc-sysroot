@@ -13,7 +13,7 @@
 #include <propkey.h>
 #endif
 
-#include <functiondiscoverykeys_devpkey.h>
+#include <FunctionDiscoveryKeys_devpkey.h>
 
 /* 08c0c253-a154-4746-9005-82de5317148b */
 DEFINE_PROPERTYKEY(PKEY_FunctionInstance, 0x08c0c253, 0xa154, 0x4746, 0x90, 0x05, 0x82, 0xde, 0x53, 0x17, 0x14, 0x8b, 0x00000001);  // VT_UNKNOWN

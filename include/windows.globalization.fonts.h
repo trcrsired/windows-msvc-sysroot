@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,11 +100,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.ui.text.h"
+#include "Windows.Foundation.h"
+#include "Windows.UI.Text.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -244,7 +244,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ILanguageFont = _uuidof(ILanguageFont);
+                MIDL_CONST_ID IID& IID_ILanguageFont = __uuidof(ILanguageFont);
             } /* Fonts */
         } /* Globalization */
     } /* Windows */
@@ -310,7 +310,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ILanguageFontGroup = _uuidof(ILanguageFontGroup);
+                MIDL_CONST_ID IID& IID_ILanguageFontGroup = __uuidof(ILanguageFontGroup);
             } /* Fonts */
         } /* Globalization */
     } /* Windows */
@@ -347,7 +347,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ILanguageFontGroupFactory = _uuidof(ILanguageFontGroupFactory);
+                MIDL_CONST_ID IID& IID_ILanguageFontGroupFactory = __uuidof(ILanguageFontGroupFactory);
             } /* Fonts */
         } /* Globalization */
     } /* Windows */

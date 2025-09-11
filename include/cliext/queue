@@ -217,19 +217,12 @@ public:
 	// types
 	typedef queue_select<_Value_t, _Cont_t, _Is_ref> _Mytype_t;
 	typedef queue_base<_Value_t, _Cont_t^> _Mybase_t;
-//	typedef _STLCLR IQueue<_Value_t, _Cont_t> _Mycont_it;
-//	typedef cli::array<_Value_t> _Myarray_t;
 
-//	typedef int size_type;
-//	typedef int difference_type;
+	typedef typename _Mybase_t::container_type container_type;
+
 	typedef _Value_t value_type;
 	typedef value_type% reference;
 	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _Cont_t container_type;
 
 	// basics
 	queue_select()
@@ -261,19 +254,12 @@ public:
 	// types
 	typedef queue_select<_Value_t, _Cont_t, true> _Mytype_t;
 	typedef queue_base<_Value_t^, _Cont_t^> _Mybase_t;
-//	typedef _STLCLR IQueue<_Value_t, _Cont_t> _Mycont_it;
-//	typedef cli::array<_Value_t> _Myarray_t;
 
-//	typedef int size_type;
-//	typedef int difference_type;
+	typedef typename _Mybase_t::container_type container_type;
+
 	typedef _Value_t value_type;
 	typedef value_type% reference;
 	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _Cont_t container_type;
 
 	// basics
 	queue_select()
@@ -321,18 +307,18 @@ public:
 
 	virtual reference front() new
 		{	// get top element
-		return (c->front());
+		return (this->c->front());
 		}
 
 	virtual reference back() new
 		{	// get top element
-		return (c->back());
+		return (this->c->back());
 		}
 
 	// mutators
 	void push(value_type _Val)
 		{	// insert element at end
-		c->push_back(_Val);
+		this->c->push_back(_Val);
 		}
 	};
 	}	// namespace cliext::impl
@@ -357,18 +343,8 @@ public:
 		typename _Dehandle<_Cont_t>::type,
 		__is_ref_class(typename _Dehandle<_Value_t>::type)
 			&& !is_handle<_Value_t>::value> _Mybase_t;
-//	typedef cli::array<_Value_t> _Myarray_t;
 
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _Cont_t container_type;
+	typedef typename _Mybase_t::container_type container_type;
 
 	// basics
 	queue()
@@ -683,21 +659,13 @@ public:
 	// types
 	typedef priority_queue_select<_Value_t, _Cont_t, _Is_ref> _Mytype_t;
 	typedef priority_queue_base<_Value_t, _Cont_t^> _Mybase_t;
-//	typedef _STLCLR IPriorityQueue<_Value_t, _Cont_t> _Mycont_it;
-//	typedef cli::array<_Value_t> _Myarray_t;
 
-//	typedef int size_type;
-//	typedef int difference_type;
+	typedef typename _Mybase_t::container_type container_type;
+	typedef typename _Mybase_t::value_compare value_compare;
+
 	typedef _Value_t value_type;
 	typedef value_type% reference;
 	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _Cont_t container_type;
-//	typedef _STLCLR BinaryDelegate<_Value_t, _Value_t, bool>
-//		value_compare;
 
 	// basics
 	priority_queue_select()
@@ -734,21 +702,13 @@ public:
 	// types
 	typedef priority_queue_select<_Value_t, _Cont_t, true> _Mytype_t;
 	typedef priority_queue_base<_Value_t^, _Cont_t^> _Mybase_t;
-//	typedef _STLCLR IPriorityQueue<_Value_t, _Cont_t> _Mycont_it;
-//	typedef cli::array<_Value_t> _Myarray_t;
 
-//	typedef int size_type;
-//	typedef int difference_type;
+	typedef typename _Mybase_t::container_type container_type;
+	typedef typename _Mybase_t::value_compare value_compare;
+
 	typedef _Value_t value_type;
 	typedef value_type% reference;
 	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _Cont_t container_type;
-//	typedef _STLCLR BinaryDelegate<_Value_t, _Value_t, bool>
-//		value_compare;
 
 	// basics
 	priority_queue_select()
@@ -788,14 +748,14 @@ public:
 
 	virtual reference top() new
 		{	// get top element
-		return (c->front());
+		return (this->c->front());
 		}
 
 	// mutators
 	void push(value_type _Val)
 		{	// insert element at end
-		c->push_back(_Val);
-		cliext::push_heap(c->begin(), c->end(), comp);
+		this->c->push_back(_Val);
+		cliext::push_heap(this->c->begin(), this->c->end(), this->comp);
 		}
 	};
 	}	// namespace cliext::impl
@@ -820,20 +780,9 @@ public:
 		typename _Dehandle<_Cont_t>::type,
 		__is_ref_class(typename _Dehandle<_Value_t>::type)
 			&& !is_handle<_Value_t>::value> _Mybase_t;
-//	typedef cli::array<_Value_t> _Myarray_t;
 
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _Cont_t container_type;
-//	typedef _STLCLR BinaryDelegate<_Value_t, _Value_t, bool>
-//		value_compare;
+	typedef typename _Mybase_t::container_type container_type;
+	typedef typename _Mybase_t::value_compare value_compare;
 
 	// basics
 	priority_queue()
@@ -871,22 +820,22 @@ public:
 	priority_queue(value_compare^ _Pred, container_type% _Cont)
 		:	_Mybase_t(_Pred, _Cont)
 		{	// construct with specified predicate and container
-		cliext::make_heap(c->begin(), c->end(), comp);
+		cliext::make_heap(this->c->begin(), this->c->end(), this->comp);
 		}
 
 	template<typename _Iter>
 		priority_queue(_Iter _First, _Iter _Last)
 		{	// construct by copying [_First, _Last), default comparator
-		c->insert(c->end(), _First, _Last);
-		cliext::make_heap(c->begin(), c->end(), comp);
+		this->c->insert(this->c->end(), _First, _Last);
+		cliext::make_heap(this->c->begin(), this->c->end(), this->comp);
 		}
 
 	template<typename _Iter>
 		priority_queue(_Iter _First, _Iter _Last, value_compare^ _Pred)
 		:	_Mybase_t(_Pred)
 		{	// construct by copying [_First, _Last), specified comparator
-		c->insert(c->end(), _First, _Last);
-		cliext::make_heap(c->begin(), c->end(), comp);
+		this->c->insert(this->c->end(), _First, _Last);
+		cliext::make_heap(this->c->begin(), this->c->end(), this->comp);
 		}
 
 	template<typename _Iter>
@@ -894,8 +843,8 @@ public:
 			container_type% _Cont)
 		:	_Mybase_t(_Pred, _Cont)
 		{	// construct by copying [_First, _Last), container, and comparator
-		c->insert(c->end(), _First, _Last);
-		cliext::make_heap(c->begin(), c->end(), comp);
+		this->c->insert(this->c->end(), _First, _Last);
+		cliext::make_heap(this->c->begin(), this->c->end(), this->comp);
 		}
 
 	// interfaces

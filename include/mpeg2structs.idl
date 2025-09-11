@@ -25,7 +25,7 @@ cpp_quote("#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)")
 
 import "wtypes.idl";
 // Include Files
-#include "mpeg2bits.h"
+#include "Mpeg2Bits.h"
 
 #pragma pack(push)
 #pragma pack(1)

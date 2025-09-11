@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,11 +100,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.devices.geolocation.h"
+#include "Windows.Foundation.h"
+#include "Windows.Devices.Geolocation.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -711,7 +711,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IGeofence = _uuidof(IGeofence);
+                    MIDL_CONST_ID IID& IID_IGeofence = __uuidof(IGeofence);
                 } /* Geofencing */
             } /* Geolocation */
         } /* Devices */
@@ -776,7 +776,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IGeofenceFactory = _uuidof(IGeofenceFactory);
+                    MIDL_CONST_ID IID& IID_IGeofenceFactory = __uuidof(IGeofenceFactory);
                 } /* Geofencing */
             } /* Geolocation */
         } /* Devices */
@@ -837,7 +837,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IGeofenceMonitor = _uuidof(IGeofenceMonitor);
+                    MIDL_CONST_ID IID& IID_IGeofenceMonitor = __uuidof(IGeofenceMonitor);
                 } /* Geofencing */
             } /* Geolocation */
         } /* Devices */
@@ -875,7 +875,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IGeofenceMonitorStatics = _uuidof(IGeofenceMonitorStatics);
+                    MIDL_CONST_ID IID& IID_IGeofenceMonitorStatics = __uuidof(IGeofenceMonitorStatics);
                 } /* Geofencing */
             } /* Geolocation */
         } /* Devices */
@@ -922,7 +922,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IGeofenceStateChangeReport = _uuidof(IGeofenceStateChangeReport);
+                    MIDL_CONST_ID IID& IID_IGeofenceStateChangeReport = __uuidof(IGeofenceStateChangeReport);
                 } /* Geofencing */
             } /* Geolocation */
         } /* Devices */

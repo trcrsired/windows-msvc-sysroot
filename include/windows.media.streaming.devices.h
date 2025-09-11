@@ -3,4 +3,4 @@
 
 
 // Empty file because the types reflected in this file are actually located in another file.
-#include <windows.media.streaming.h>
+#include <Windows.Media.Streaming.h>

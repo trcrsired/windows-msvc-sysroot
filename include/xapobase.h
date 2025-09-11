@@ -12,12 +12,10 @@
   NOTES:
     1.  See XAPO.h for the rules governing XAPO interface behaviour.        */
 
-#ifdef _MSC_VER
 #pragma once
-#endif
 
 //--------------<D-E-F-I-N-I-T-I-O-N-S>-------------------------------------//
-#include "xapo.h"
+#include "XAPO.h"
 
 // default audio format ranges supported, applies to XAPO_LOCKFORPROCESS_BUFFER_PARAMETERS.pFormat
 #define XAPOBASE_DEFAULT_FORMAT_TAG           WAVE_FORMAT_IEEE_FLOAT // 32-bit float only, applies to WAVEFORMATEX.wFormatTag or WAVEFORMATEXTENSIBLE.SubFormat when used

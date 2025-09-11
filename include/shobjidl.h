@@ -771,7 +771,7 @@ typedef interface IStorageProviderCopyHook IStorageProviderCopyHook;
 #include "propidl.h"
 #include "prsht.h"
 #include "propsys.h"
-#include "objectarray.h"
+#include "ObjectArray.h"
 #include "shobjidl_core.h"
 
 #ifdef __cplusplus

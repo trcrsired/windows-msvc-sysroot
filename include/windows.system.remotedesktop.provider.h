@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,11 +100,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.ui.h"
+#include "Windows.Foundation.h"
+#include "Windows.UI.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -626,7 +626,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IPerformLocalActionRequestedEventArgs = _uuidof(IPerformLocalActionRequestedEventArgs);
+                    MIDL_CONST_ID IID& IID_IPerformLocalActionRequestedEventArgs = __uuidof(IPerformLocalActionRequestedEventArgs);
                 } /* Provider */
             } /* RemoteDesktop */
         } /* System */
@@ -665,7 +665,7 @@ namespace ABI {
                         virtual HRESULT STDMETHODCALLTYPE SwitchToLocalSession(void) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IRemoteDesktopConnectionInfo = _uuidof(IRemoteDesktopConnectionInfo);
+                    MIDL_CONST_ID IID& IID_IRemoteDesktopConnectionInfo = __uuidof(IRemoteDesktopConnectionInfo);
                 } /* Provider */
             } /* RemoteDesktop */
         } /* System */
@@ -703,7 +703,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IRemoteDesktopConnectionInfo2 = _uuidof(IRemoteDesktopConnectionInfo2);
+                    MIDL_CONST_ID IID& IID_IRemoteDesktopConnectionInfo2 = __uuidof(IRemoteDesktopConnectionInfo2);
                 } /* Provider */
             } /* RemoteDesktop */
         } /* System */
@@ -743,7 +743,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IRemoteDesktopConnectionInfoStatics = _uuidof(IRemoteDesktopConnectionInfoStatics);
+                    MIDL_CONST_ID IID& IID_IRemoteDesktopConnectionInfoStatics = __uuidof(IRemoteDesktopConnectionInfoStatics);
                 } /* Provider */
             } /* RemoteDesktop */
         } /* System */
@@ -793,7 +793,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IRemoteDesktopConnectionRemoteInfo = _uuidof(IRemoteDesktopConnectionRemoteInfo);
+                    MIDL_CONST_ID IID& IID_IRemoteDesktopConnectionRemoteInfo = __uuidof(IRemoteDesktopConnectionRemoteInfo);
                 } /* Provider */
             } /* RemoteDesktop */
         } /* System */
@@ -835,7 +835,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IRemoteDesktopConnectionRemoteInfoStatics = _uuidof(IRemoteDesktopConnectionRemoteInfoStatics);
+                    MIDL_CONST_ID IID& IID_IRemoteDesktopConnectionRemoteInfoStatics = __uuidof(IRemoteDesktopConnectionRemoteInfoStatics);
                 } /* Provider */
             } /* RemoteDesktop */
         } /* System */
@@ -876,7 +876,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IRemoteDesktopInfo = _uuidof(IRemoteDesktopInfo);
+                    MIDL_CONST_ID IID& IID_IRemoteDesktopInfo = __uuidof(IRemoteDesktopInfo);
                 } /* Provider */
             } /* RemoteDesktop */
         } /* System */
@@ -916,7 +916,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IRemoteDesktopInfoFactory = _uuidof(IRemoteDesktopInfoFactory);
+                    MIDL_CONST_ID IID& IID_IRemoteDesktopInfoFactory = __uuidof(IRemoteDesktopInfoFactory);
                 } /* Provider */
             } /* RemoteDesktop */
         } /* System */
@@ -957,7 +957,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IRemoteDesktopRegistrarStatics = _uuidof(IRemoteDesktopRegistrarStatics);
+                    MIDL_CONST_ID IID& IID_IRemoteDesktopRegistrarStatics = __uuidof(IRemoteDesktopRegistrarStatics);
                 } /* Provider */
             } /* RemoteDesktop */
         } /* System */

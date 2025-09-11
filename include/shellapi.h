@@ -19,7 +19,7 @@
 #ifndef _INC_SHELLAPI
 #define _INC_SHELLAPI
 
-#include <specstrings.h>
+#include <SpecStrings.h>
 
 //
 // Define API decoration for direct importing of DLL references.
@@ -194,6 +194,7 @@ typedef LPDRAGINFOA LPDRAGINFO;
 #define ABN_POSCHANGED     0x0000001
 #define ABN_FULLSCREENAPP  0x0000002
 #define ABN_WINDOWARRANGE  0x0000003 // lParam == TRUE means hide
+
 
 // flags for get state
 #define ABS_AUTOHIDE    0x0000001

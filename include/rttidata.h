@@ -24,11 +24,11 @@
 #define _RTTIClassHierarchyDescriptor	__RTTIClassHierarchyDescriptor
 #define _s_RTTIClassHierarchyDescriptor _s__RTTIClassHierarchyDescriptor
 #define _RTTICompleteObjectLocator		__RTTICompleteObjectLocator
-#if VERSP_WIN64
+#if MSVC_TARGET_WIN64
  #define _s_RTTICompleteObjectLocator	_s__RTTICompleteObjectLocator2
 #else
  #define _s_RTTICompleteObjectLocator	_s__RTTICompleteObjectLocator
-#endif // VERSP_WIN64
+#endif // MSVC_TARGET_WIN64
 #endif // BUILDING_C1XX_FORCEINCLUDE
 
 struct _s_RTTIClassHierarchyDescriptor;
@@ -119,9 +119,9 @@ typedef const struct	_s_RTTICompleteObjectLocator	{
 #else
 	TypeDescriptor*							pTypeDescriptor;
 	_RTTIClassHierarchyDescriptor*			pClassDescriptor;
- #if VERSP_WIN64	// TRANSITION, VSO#515783
+ #if MSVC_TARGET_WIN64	// TRANSITION, VSO#515783
 	const _s_RTTICompleteObjectLocator* 	pSelf;
- #endif // VERSP_WIN64
+ #endif // MSVC_TARGET_WIN64
 #endif
 	} _RTTICompleteObjectLocator;
 

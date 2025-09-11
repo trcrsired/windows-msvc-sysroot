@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,11 +100,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.ui.composition.h"
+#include "Windows.Foundation.h"
+#include "Windows.UI.Composition.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -234,7 +234,7 @@ namespace ABI {
                         public:
                         };
 
-                        extern MIDL_CONST_ID IID& IID_IPalmRejectionDelayZonePreview = _uuidof(IPalmRejectionDelayZonePreview);
+                        MIDL_CONST_ID IID& IID_IPalmRejectionDelayZonePreview = __uuidof(IPalmRejectionDelayZonePreview);
                     } /* Preview */
                 } /* Inking */
             } /* Input */
@@ -283,7 +283,7 @@ namespace ABI {
                                 ) = 0;
                         };
 
-                        extern MIDL_CONST_ID IID& IID_IPalmRejectionDelayZonePreviewStatics = _uuidof(IPalmRejectionDelayZonePreviewStatics);
+                        MIDL_CONST_ID IID& IID_IPalmRejectionDelayZonePreviewStatics = __uuidof(IPalmRejectionDelayZonePreviewStatics);
                     } /* Preview */
                 } /* Inking */
             } /* Input */

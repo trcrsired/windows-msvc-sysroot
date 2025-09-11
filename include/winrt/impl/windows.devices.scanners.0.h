@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -8,14 +8,8 @@
 #define WINRT_Windows_Devices_Scanners_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
-    template <typename TResult, typename TProgress> struct __declspec(empty_bases) IAsyncOperationWithProgress;
-    template <typename TResult> struct __declspec(empty_bases) IAsyncOperation;
     struct Rect;
     struct Size;
-}
-WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
-{
-    template <typename T> struct __declspec(empty_bases) IVectorView;
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing
 {
@@ -24,7 +18,6 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing
 }
 WINRT_EXPORT namespace winrt::Windows::Storage
 {
-    struct StorageFile;
     struct StorageFolder;
 }
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
@@ -77,6 +70,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Scanners
     struct ImageScannerPreviewResult;
     struct ImageScannerScanResult;
     struct ImageScannerResolution;
+    struct ScannerDeviceContract;
 }
 namespace winrt::impl
 {
@@ -116,6 +110,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Scanners::IImageScannerScanResult> = L"Windows.Devices.Scanners.IImageScannerScanResult";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Scanners::IImageScannerSourceConfiguration> = L"Windows.Devices.Scanners.IImageScannerSourceConfiguration";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Scanners::IImageScannerStatics> = L"Windows.Devices.Scanners.IImageScannerStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::Devices::Scanners::ScannerDeviceContract> = L"Windows.Devices.Scanners.ScannerDeviceContract";
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Scanners::IImageScanner>{ 0x53A88F78,0x5298,0x48A0,{ 0x8D,0xA3,0x80,0x87,0x51,0x96,0x65,0xE0 } }; // 53A88F78-5298-48A0-8DA3-8087519665E0
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Scanners::IImageScannerFeederConfiguration>{ 0x74BDACEE,0xFA97,0x4C17,{ 0x82,0x80,0x40,0xE3,0x9C,0x6D,0xCC,0x67 } }; // 74BDACEE-FA97-4C17-8280-40E39C6DCC67
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Scanners::IImageScannerFormatConfiguration>{ 0xAE275D11,0xDADF,0x4010,{ 0xBF,0x10,0xCC,0xA5,0xC8,0x3D,0xCB,0xB0 } }; // AE275D11-DADF-4010-BF10-CCA5C83DCBB0
@@ -131,7 +126,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Devices::Scanners::ImageScannerScanResult>{ using type = winrt::Windows::Devices::Scanners::IImageScannerScanResult; };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScanner>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DeviceId(void**) noexcept = 0;
             virtual int32_t __stdcall get_DefaultScanSource(int32_t*) noexcept = 0;
@@ -146,7 +141,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScannerFeederConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_CanAutoDetectPageSize(bool*) noexcept = 0;
             virtual int32_t __stdcall get_AutoDetectPageSize(bool*) noexcept = 0;
@@ -169,7 +164,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScannerFormatConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_DefaultFormat(int32_t*) noexcept = 0;
             virtual int32_t __stdcall get_Format(int32_t*) noexcept = 0;
@@ -179,7 +174,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScannerPreviewResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_Succeeded(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Format(int32_t*) noexcept = 0;
@@ -187,14 +182,14 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScannerScanResult>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_ScannedFiles(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScannerSourceConfiguration>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall get_MinScanArea(winrt::Windows::Foundation::Size*) noexcept = 0;
             virtual int32_t __stdcall get_MaxScanArea(winrt::Windows::Foundation::Size*) noexcept = 0;
@@ -229,7 +224,7 @@ namespace winrt::impl
     };
     template <> struct abi<winrt::Windows::Devices::Scanners::IImageScannerStatics>
     {
-        struct __declspec(novtable) type : inspectable_abi
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall FromIdAsync(void*, void**) noexcept = 0;
             virtual int32_t __stdcall GetDeviceSelector(void**) noexcept = 0;
@@ -238,15 +233,15 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Devices_Scanners_IImageScanner
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(hstring) DeviceId() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerScanSource) DefaultScanSource() const;
-        WINRT_IMPL_AUTO(bool) IsScanSourceSupported(winrt::Windows::Devices::Scanners::ImageScannerScanSource const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerFlatbedConfiguration) FlatbedConfiguration() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerFeederConfiguration) FeederConfiguration() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerAutoConfiguration) AutoConfiguration() const;
-        WINRT_IMPL_AUTO(bool) IsPreviewSupported(winrt::Windows::Devices::Scanners::ImageScannerScanSource const& scanSource) const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Devices::Scanners::ImageScannerPreviewResult>) ScanPreviewToStreamAsync(winrt::Windows::Devices::Scanners::ImageScannerScanSource const& scanSource, winrt::Windows::Storage::Streams::IRandomAccessStream const& targetStream) const;
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncOperationWithProgress<winrt::Windows::Devices::Scanners::ImageScannerScanResult, uint32_t>) ScanFilesToFolderAsync(winrt::Windows::Devices::Scanners::ImageScannerScanSource const& scanSource, winrt::Windows::Storage::StorageFolder const& storageFolder) const;
+        [[nodiscard]] auto DeviceId() const;
+        [[nodiscard]] auto DefaultScanSource() const;
+        auto IsScanSourceSupported(winrt::Windows::Devices::Scanners::ImageScannerScanSource const& value) const;
+        [[nodiscard]] auto FlatbedConfiguration() const;
+        [[nodiscard]] auto FeederConfiguration() const;
+        [[nodiscard]] auto AutoConfiguration() const;
+        auto IsPreviewSupported(winrt::Windows::Devices::Scanners::ImageScannerScanSource const& scanSource) const;
+        auto ScanPreviewToStreamAsync(winrt::Windows::Devices::Scanners::ImageScannerScanSource const& scanSource, winrt::Windows::Storage::Streams::IRandomAccessStream const& targetStream) const;
+        auto ScanFilesToFolderAsync(winrt::Windows::Devices::Scanners::ImageScannerScanSource const& scanSource, winrt::Windows::Storage::StorageFolder const& storageFolder) const;
     };
     template <> struct consume<winrt::Windows::Devices::Scanners::IImageScanner>
     {
@@ -255,23 +250,23 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Devices_Scanners_IImageScannerFeederConfiguration
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) CanAutoDetectPageSize() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) AutoDetectPageSize() const;
-        WINRT_IMPL_AUTO(void) AutoDetectPageSize(bool value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Graphics::Printing::PrintMediaSize) PageSize() const;
-        WINRT_IMPL_AUTO(void) PageSize(winrt::Windows::Graphics::Printing::PrintMediaSize const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Graphics::Printing::PrintOrientation) PageOrientation() const;
-        WINRT_IMPL_AUTO(void) PageOrientation(winrt::Windows::Graphics::Printing::PrintOrientation const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Size) PageSizeDimensions() const;
-        WINRT_IMPL_AUTO(bool) IsPageSizeSupported(winrt::Windows::Graphics::Printing::PrintMediaSize const& pageSize, winrt::Windows::Graphics::Printing::PrintOrientation const& pageOrientation) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(uint32_t) MaxNumberOfPages() const;
-        WINRT_IMPL_AUTO(void) MaxNumberOfPages(uint32_t value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) CanScanDuplex() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) Duplex() const;
-        WINRT_IMPL_AUTO(void) Duplex(bool value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) CanScanAhead() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) ScanAhead() const;
-        WINRT_IMPL_AUTO(void) ScanAhead(bool value) const;
+        [[nodiscard]] auto CanAutoDetectPageSize() const;
+        [[nodiscard]] auto AutoDetectPageSize() const;
+        auto AutoDetectPageSize(bool value) const;
+        [[nodiscard]] auto PageSize() const;
+        auto PageSize(winrt::Windows::Graphics::Printing::PrintMediaSize const& value) const;
+        [[nodiscard]] auto PageOrientation() const;
+        auto PageOrientation(winrt::Windows::Graphics::Printing::PrintOrientation const& value) const;
+        [[nodiscard]] auto PageSizeDimensions() const;
+        auto IsPageSizeSupported(winrt::Windows::Graphics::Printing::PrintMediaSize const& pageSize, winrt::Windows::Graphics::Printing::PrintOrientation const& pageOrientation) const;
+        [[nodiscard]] auto MaxNumberOfPages() const;
+        auto MaxNumberOfPages(uint32_t value) const;
+        [[nodiscard]] auto CanScanDuplex() const;
+        [[nodiscard]] auto Duplex() const;
+        auto Duplex(bool value) const;
+        [[nodiscard]] auto CanScanAhead() const;
+        [[nodiscard]] auto ScanAhead() const;
+        auto ScanAhead(bool value) const;
     };
     template <> struct consume<winrt::Windows::Devices::Scanners::IImageScannerFeederConfiguration>
     {
@@ -280,10 +275,10 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Devices_Scanners_IImageScannerFormatConfiguration
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerFormat) DefaultFormat() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerFormat) Format() const;
-        WINRT_IMPL_AUTO(void) Format(winrt::Windows::Devices::Scanners::ImageScannerFormat const& value) const;
-        WINRT_IMPL_AUTO(bool) IsFormatSupported(winrt::Windows::Devices::Scanners::ImageScannerFormat const& value) const;
+        [[nodiscard]] auto DefaultFormat() const;
+        [[nodiscard]] auto Format() const;
+        auto Format(winrt::Windows::Devices::Scanners::ImageScannerFormat const& value) const;
+        auto IsFormatSupported(winrt::Windows::Devices::Scanners::ImageScannerFormat const& value) const;
     };
     template <> struct consume<winrt::Windows::Devices::Scanners::IImageScannerFormatConfiguration>
     {
@@ -292,8 +287,8 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Devices_Scanners_IImageScannerPreviewResult
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(bool) Succeeded() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerFormat) Format() const;
+        [[nodiscard]] auto Succeeded() const;
+        [[nodiscard]] auto Format() const;
     };
     template <> struct consume<winrt::Windows::Devices::Scanners::IImageScannerPreviewResult>
     {
@@ -302,7 +297,7 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Devices_Scanners_IImageScannerScanResult
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Storage::StorageFile>) ScannedFiles() const;
+        [[nodiscard]] auto ScannedFiles() const;
     };
     template <> struct consume<winrt::Windows::Devices::Scanners::IImageScannerScanResult>
     {
@@ -311,35 +306,35 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Devices_Scanners_IImageScannerSourceConfiguration
     {
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Size) MinScanArea() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Size) MaxScanArea() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Foundation::Rect) SelectedScanRegion() const;
-        WINRT_IMPL_AUTO(void) SelectedScanRegion(winrt::Windows::Foundation::Rect const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerAutoCroppingMode) AutoCroppingMode() const;
-        WINRT_IMPL_AUTO(void) AutoCroppingMode(winrt::Windows::Devices::Scanners::ImageScannerAutoCroppingMode const& value) const;
-        WINRT_IMPL_AUTO(bool) IsAutoCroppingModeSupported(winrt::Windows::Devices::Scanners::ImageScannerAutoCroppingMode const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerResolution) MinResolution() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerResolution) MaxResolution() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerResolution) OpticalResolution() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerResolution) DesiredResolution() const;
-        WINRT_IMPL_AUTO(void) DesiredResolution(winrt::Windows::Devices::Scanners::ImageScannerResolution const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerResolution) ActualResolution() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerColorMode) DefaultColorMode() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(winrt::Windows::Devices::Scanners::ImageScannerColorMode) ColorMode() const;
-        WINRT_IMPL_AUTO(void) ColorMode(winrt::Windows::Devices::Scanners::ImageScannerColorMode const& value) const;
-        WINRT_IMPL_AUTO(bool) IsColorModeSupported(winrt::Windows::Devices::Scanners::ImageScannerColorMode const& value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(int32_t) MinBrightness() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(int32_t) MaxBrightness() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(uint32_t) BrightnessStep() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(int32_t) DefaultBrightness() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(int32_t) Brightness() const;
-        WINRT_IMPL_AUTO(void) Brightness(int32_t value) const;
-        [[nodiscard]] WINRT_IMPL_AUTO(int32_t) MinContrast() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(int32_t) MaxContrast() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(uint32_t) ContrastStep() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(int32_t) DefaultContrast() const;
-        [[nodiscard]] WINRT_IMPL_AUTO(int32_t) Contrast() const;
-        WINRT_IMPL_AUTO(void) Contrast(int32_t value) const;
+        [[nodiscard]] auto MinScanArea() const;
+        [[nodiscard]] auto MaxScanArea() const;
+        [[nodiscard]] auto SelectedScanRegion() const;
+        auto SelectedScanRegion(winrt::Windows::Foundation::Rect const& value) const;
+        [[nodiscard]] auto AutoCroppingMode() const;
+        auto AutoCroppingMode(winrt::Windows::Devices::Scanners::ImageScannerAutoCroppingMode const& value) const;
+        auto IsAutoCroppingModeSupported(winrt::Windows::Devices::Scanners::ImageScannerAutoCroppingMode const& value) const;
+        [[nodiscard]] auto MinResolution() const;
+        [[nodiscard]] auto MaxResolution() const;
+        [[nodiscard]] auto OpticalResolution() const;
+        [[nodiscard]] auto DesiredResolution() const;
+        auto DesiredResolution(winrt::Windows::Devices::Scanners::ImageScannerResolution const& value) const;
+        [[nodiscard]] auto ActualResolution() const;
+        [[nodiscard]] auto DefaultColorMode() const;
+        [[nodiscard]] auto ColorMode() const;
+        auto ColorMode(winrt::Windows::Devices::Scanners::ImageScannerColorMode const& value) const;
+        auto IsColorModeSupported(winrt::Windows::Devices::Scanners::ImageScannerColorMode const& value) const;
+        [[nodiscard]] auto MinBrightness() const;
+        [[nodiscard]] auto MaxBrightness() const;
+        [[nodiscard]] auto BrightnessStep() const;
+        [[nodiscard]] auto DefaultBrightness() const;
+        [[nodiscard]] auto Brightness() const;
+        auto Brightness(int32_t value) const;
+        [[nodiscard]] auto MinContrast() const;
+        [[nodiscard]] auto MaxContrast() const;
+        [[nodiscard]] auto ContrastStep() const;
+        [[nodiscard]] auto DefaultContrast() const;
+        [[nodiscard]] auto Contrast() const;
+        auto Contrast(int32_t value) const;
     };
     template <> struct consume<winrt::Windows::Devices::Scanners::IImageScannerSourceConfiguration>
     {
@@ -348,8 +343,8 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Devices_Scanners_IImageScannerStatics
     {
-        WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Devices::Scanners::ImageScanner>) FromIdAsync(param::hstring const& deviceId) const;
-        WINRT_IMPL_AUTO(hstring) GetDeviceSelector() const;
+        auto FromIdAsync(param::hstring const& deviceId) const;
+        auto GetDeviceSelector() const;
     };
     template <> struct consume<winrt::Windows::Devices::Scanners::IImageScannerStatics>
     {

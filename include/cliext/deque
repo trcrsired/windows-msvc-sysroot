@@ -665,7 +665,7 @@ public:
 
 	void swap(_Mytype_t% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, swap
 			_Mymap_t^ _Tmap = _Mymap;
 			size_type _Tbias = _Mybias;
@@ -688,7 +688,7 @@ public:
 	// operators
 	deque_impl% operator=(deque_impl% _Right)
 		{	// assign
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth assigning, do it
 			clear();
 			for (size_type _Idx = 0; _Idx < _Right.size(); ++_Idx)
@@ -853,12 +853,12 @@ private:
 	virtual generic_iterator begin_virtual() sealed
 		= _Mycont_it::begin
 		{	// return iterator for beginning of mutable sequence
-		return (begin());
+		return (begin().operator generic_iterator());
 		}
 	virtual generic_iterator end_virtual() sealed
 		= _Mycont_it::end
 		{	// return iterator for end of mutable sequence
-		return (end());
+		return (end().operator generic_iterator());
 		}
 
 	virtual generic_reverse_iterator rbegin_virtual() sealed
@@ -951,7 +951,7 @@ private:
 		value_type _Val) sealed
 		= _Mycont_it::insert
 		{	// insert _Val at _Where
-		return (insert(iterator(_Where), _Val));
+		return (insert(iterator(_Where), _Val).operator generic_iterator());
 		}
 
 	virtual void insert_virtual(generic_iterator _Where,
@@ -979,14 +979,14 @@ private:
 	virtual generic_iterator erase_virtual(generic_iterator _Where) sealed
 		= _Mycont_it::erase
 		{	// erase element at _Where
-		return (erase(iterator(_Where)));
+		return (erase(iterator(_Where)).operator generic_iterator());
 		}
 
 	virtual generic_iterator erase_virtual(generic_iterator _First,
 		generic_iterator _Last) sealed
 		= _Mycont_it::erase
 		{	// erase [_First, _Last)
-		return (erase(iterator(_First), iterator(_Last)));
+		return (erase(iterator(_First), iterator(_Last)).operator generic_iterator());
 		}
 
 	virtual void clear_virtual() sealed
@@ -1017,17 +1017,14 @@ public:
 	// types
 	typedef deque_base<_Value_t, _Is_ref> _Mytype_t;
 	typedef deque_impl<_Value_t, _Is_ref> _Mybase_t;
-//	typedef _STLCLR IDeque<_Value_t> _Mycont_it;
 	typedef _Cont_make_value<_Value_t, _Is_ref> _Mymake_t;
 
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
+	typedef typename _Mybase_t::_Myarray_t _Myarray_t;
+	typedef typename _Mybase_t::_Mycont_it _Mycont_it;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::size_type size_type;
+	typedef typename _Mybase_t::value_type value_type;
 
 	// basics
 	deque_base()
@@ -1088,9 +1085,9 @@ public:
 
 		if (_Count < 0)
 			throw gcnew System::ArgumentOutOfRangeException();
-		clear();
+		this->clear();
 		for (; 0 < _Count; --_Count)
-			push_back((value_type)_Val);
+			this->push_back((value_type)_Val);
 		}
 
 	template<typename _InIt_t>
@@ -1098,14 +1095,14 @@ public:
 			input_iterator_tag%)
 		{	// initialize with [_First, _Last), input iterators
 		if (_Iter_container(_First) != this)
-			clear();
+			this->clear();
 
-		size_type _Oldsize = size();
+		size_type _Oldsize = this->size();
 
 		for (; _First != _Last; ++_First)
-			push_back((value_type)*_First);	// append new stuff
+			this->push_back((value_type)*_First);	// append new stuff
 		for (; 0 < _Oldsize; --_Oldsize)
-			pop_front();	// erase any leftover old stuff
+			this->pop_front();	// erase any leftover old stuff
 		}
 
 	template<typename _InIt_t>
@@ -1116,20 +1113,20 @@ public:
 			throw gcnew System::ArgumentOutOfRangeException();
 
 		if (_Iter_container(_First) != this)
-			clear();
+			this->clear();
 
-		size_type _Oldsize = size();
+		size_type _Oldsize = this->size();
 
 		for (; _First != _Last; ++_First)
-			push_back((value_type)*_First);	// append new stuff
+			this->push_back((value_type)*_First);	// append new stuff
 		for (; 0 < _Oldsize; --_Oldsize)
-			pop_front();	// erase any leftover old stuff
+			this->pop_front();	// erase any leftover old stuff
 		}
 
 	template<typename _InIt_t>
 		void insert(iterator _Where, _InIt_t _First, _InIt_t _Last)
 		{	// insert [_First, _Last) at _Where
-		_Insert(get_bias(_Where), _First, _Last,
+		_Insert(this->get_bias(_Where), _First, _Last,
 			_Iter_category(_First));
 		}
 
@@ -1137,43 +1134,43 @@ public:
 		void _Insert(size_type _Where, _InIt_t _First, _InIt_t _Last,
 			_Int_iterator_tag%)
 		{	// insert _Count * _Val at _Where
-		insert_n(_Where, (size_type)_First, (value_type)_Last);
+		this->insert_n(_Where, (size_type)_First, (value_type)_Last);
 		}
 
 	template<typename _InIt_t>
 		void _Insert(size_type _Where, _InIt_t _First, _InIt_t _Last,
 			input_iterator_tag%)
 		{	// insert [_First, _Last) at _Where, input iterators
-		if (!valid_bias(_Where))
+		if (!this->valid_bias(_Where))
 			throw gcnew System::InvalidOperationException();
 
 		if (_First == _Last)
 			;
-		else if (_Where - begin_bias() < end_bias() - _Where)
+		else if (_Where - this->begin_bias() < this->end_bias() - _Where)
 			{	// add elements near beginning
-			size_type _Oldfirst = begin_bias();
+			size_type _Oldfirst = this->begin_bias();
 
 			for (; _First != _Last; ++_First)
-				push_front((value_type)*_First);	// prepend flipped
+				this->push_front((value_type)*_First);	// prepend flipped
 			if (_Oldfirst != _Where)
 				{	// insert not at beginning, flip new stuff into place
-				reverse_n(_Oldfirst, _Where);
-				reverse_n(begin_bias(), _Where);
+				this->reverse_n(_Oldfirst, _Where);
+				this->reverse_n(this->begin_bias(), _Where);
 				}
 			else
-				reverse_n(begin_bias(), _Oldfirst);	// flip new stuff in place
+				this->reverse_n(this->begin_bias(), _Oldfirst);	// flip new stuff in place
 			}
 		else
 			{	// add elements near end
-			size_type _Oldlast = end_bias();
+			size_type _Oldlast = this->end_bias();
 
 			for (; _First != _Last; ++_First)
-				push_back((value_type)*_First);	// append
+				this->push_back((value_type)*_First);	// append
 			if (_Oldlast != _Where)
 				{	// insert not at end, flip new stuff into place
-				reverse_n(_Where, _Oldlast);
-				reverse_n(_Oldlast, end_bias());
-				reverse_n(_Where, end_bias());
+				this->reverse_n(_Where, _Oldlast);
+				this->reverse_n(_Oldlast, this->end_bias());
+				this->reverse_n(_Where, this->end_bias());
 				}
 			}
 		}
@@ -1185,7 +1182,7 @@ private:
 		virtual size_type get() sealed
 			= System::Collections::Generic::ICollection<_Value_t>::Count::get
 			{	// get element count
-			return (size());
+			return (this->size());
 			}
 		};
 
@@ -1202,9 +1199,9 @@ private:
 	virtual void CopyTo(_Myarray_t^ _Dest, int _First) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::CopyTo
 		{	// copy to _Dest, beginning at _First
-		for (int _Idx = size(); 0 <= --_Idx; )
+		for (int _Idx = this->size(); 0 <= --_Idx; )
 			{	// copy back to front
-			_Dest[_First + _Idx] = _Mymake_t::make_value(at(_Idx));
+			_Dest[_First + _Idx] = _Mymake_t::make_value(this->at(_Idx));
 			}
 		}
 
@@ -1212,27 +1209,27 @@ private:
 		GetEnumerator() sealed
 		= System::Collections::Generic::IEnumerable<_Value_t>::GetEnumerator
 		{	// get enumerator for the container
-		return (gcnew _STLCLR DequeEnumerator<_Value_t>(this, begin_bias()));
+		return (gcnew _STLCLR DequeEnumerator<_Value_t>(this, this->begin_bias()));
 		}
 
 	virtual void Add(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Add
 		{	// add element with value _Val
-		insert_n(begin_bias() + size(), 1, _Val);
+		this->insert_n(this->begin_bias() + this->size(), 1, _Val);
 		}
 
 	virtual void Clear() sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Clear
 		{	// erase all elements
-		clear();
+		this->clear();
 		}
 
 	virtual bool Contains(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Contains
 		{	// search for element matching value _Val
-		for (size_type _Idx = 0; _Idx != size(); ++_Idx)
+		for (size_type _Idx = 0; _Idx != this->size(); ++_Idx)
 			if (((System::Object^)_Val)->Equals(
-				(System::Object^)at(_Idx)))
+				(System::Object^)this->at(_Idx)))
 				return (true);
 		return (false);
 		}
@@ -1240,13 +1237,13 @@ private:
 	virtual bool Remove(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Remove
 		{	// remove first element matching value _Val
-		for (size_type _Idx = 0; _Idx != size(); ++_Idx)
+		for (size_type _Idx = 0; _Idx != this->size(); ++_Idx)
 			if (((System::Object^)_Val)->Equals(
-				(System::Object^)at(_Idx)))
+				(System::Object^)this->at(_Idx)))
 				{	// found a match, remove it
-				size_type _Bias = begin_bias() + _Idx;
+				size_type _Bias = this->begin_bias() + _Idx;
 
-				erase_n(_Bias, _Bias + 1);
+				this->erase_n(_Bias, _Bias + 1);
 				return (true);
 				}
 		return (false);
@@ -1257,8 +1254,8 @@ private:
 		{	// find index of element that matches _Val
 		int _Idx = 0;
 
-		for (; _Idx < size(); ++_Idx)
-			if (at(_Idx) == _Val)
+		for (; _Idx < this->size(); ++_Idx)
+			if (this->at(_Idx) == _Val)
 				return (_Idx);
 		return (-1);
 		}
@@ -1266,13 +1263,13 @@ private:
 	virtual void Insert(int _Idx, value_type _Val) sealed
 		= System::Collections::Generic::IList<_Value_t>::Insert
 		{	// insert _Val before _Idx
-		insert_n(begin_bias() + _Idx, 1, _Val);
+		this->insert_n(this->begin_bias() + _Idx, 1, _Val);
 		}
 
 	virtual void RemoveAt(int _Idx) sealed
 		= System::Collections::Generic::IList<_Value_t>::RemoveAt
 		{	// erase element at _Idx
-		erase_n(begin_bias() + _Idx, begin_bias() + _Idx + 1);
+		this->erase_n(this->begin_bias() + _Idx, this->begin_bias() + _Idx + 1);
 		}
 	};
 
@@ -1290,17 +1287,13 @@ public:
 
 	typedef deque_select<_Value_t, _Is_ref> _Mytype_t;
 	typedef deque_base<_Gvalue_t, _Is_ref> _Mybase_t;
-//	typedef _STLCLR IDeque<_Gvalue_t> _Mycont_it;
-//	typedef System::Collections::Generic::IEnumerable<_Gvalue_t> _Myenum_it;
 
-//	typedef int size_type;
-//	typedef int difference_type;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::size_type size_type;
+
 	typedef _Value_t value_type;
 	typedef value_type% reference;
 	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef typename _Mybase_t::value_type generic_value;
 
 	// basics
 	deque_select()
@@ -1355,17 +1348,14 @@ public:
 
 	typedef deque_select<_Value_t, true> _Mytype_t;
 	typedef deque_base<_Gvalue_t, true> _Mybase_t;
-//	typedef _STLCLR IDeque<_Gvalue_t> _Mycont_it;
-//	typedef System::Collections::Generic::IEnumerable<_Gvalue_t> _Myenum_it;
 
-//	typedef int size_type;
-//	typedef int difference_type;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::size_type size_type;
+
 	typedef _Value_t value_type;
 	typedef value_type% reference;
 	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef typename _Mybase_t::value_type generic_value;
 
 	// basics
 	deque_select()
@@ -1518,16 +1508,10 @@ public:
 	typedef impl::deque_select<_Value_t,
 		__is_ref_class(typename _Dehandle<_Value_t>::type)
 			&& !is_handle<_Value_t>::value> _Mybase_t;
-//	typedef _STLCLR IDeque<_Value_t> _Mycont_it;
 
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::size_type size_type;
+	typedef typename _Mybase_t::value_type value_type;
 
 	// basics
 	deque()
@@ -1599,7 +1583,7 @@ template<typename _Value_t> inline
 	bool operator==(deque<_Value_t>% _Left,
 		deque<_Value_t>% _Right)
 	{	// test if _Left == _Right
-	deque<_Value_t>::size_type _Size = _Left.size();
+	typename deque<_Value_t>::size_type _Size = _Left.size();
 
 	if (_Size != _Right.size())
 		return (false);
@@ -1623,7 +1607,7 @@ template<typename _Value_t> inline
 	bool operator<(deque<_Value_t>% _Left,
 		deque<_Value_t>% _Right)
 	{	// test if _Left < _Right
-	deque<_Value_t>::size_type _Idx = 0;
+	typename deque<_Value_t>::size_type _Idx = 0;
 
 	for (; _Idx != _Left.size() && _Idx != _Right.size(); ++_Idx)
 		if (_Left.at(_Idx) < _Right.at(_Idx))

@@ -100,7 +100,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -108,12 +108,12 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.applicationmodel.search.h"
-#include "windows.storage.streams.h"
+#include "Windows.Foundation.h"
+#include "Windows.ApplicationModel.Search.h"
+#include "Windows.Storage.Streams.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -625,7 +625,7 @@ namespace ABI {
                     public:
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IRequestingFocusOnKeyboardInputEventArgs = _uuidof(IRequestingFocusOnKeyboardInputEventArgs);
+                    MIDL_CONST_ID IID& IID_IRequestingFocusOnKeyboardInputEventArgs = __uuidof(IRequestingFocusOnKeyboardInputEventArgs);
                 } /* Core */
             } /* Search */
         } /* ApplicationModel */
@@ -678,7 +678,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ISearchSuggestion = _uuidof(ISearchSuggestion);
+                    MIDL_CONST_ID IID& IID_ISearchSuggestion = __uuidof(ISearchSuggestion);
                 } /* Core */
             } /* Search */
         } /* ApplicationModel */
@@ -765,7 +765,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ISearchSuggestionManager = _uuidof(ISearchSuggestionManager);
+                    MIDL_CONST_ID IID& IID_ISearchSuggestionManager = __uuidof(ISearchSuggestionManager);
                 } /* Core */
             } /* Search */
         } /* ApplicationModel */
@@ -812,7 +812,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ISearchSuggestionsRequestedEventArgs = _uuidof(ISearchSuggestionsRequestedEventArgs);
+                    MIDL_CONST_ID IID& IID_ISearchSuggestionsRequestedEventArgs = __uuidof(ISearchSuggestionsRequestedEventArgs);
                 } /* Core */
             } /* Search */
         } /* ApplicationModel */

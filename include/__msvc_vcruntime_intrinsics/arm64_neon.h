@@ -150,6 +150,11 @@ typedef union __declspec(intrin_type) _ADVSIMD_ALIGN(16) __n128
 
 } __n128;
 
+typedef struct __n32x2
+{
+    __n32 val[2];
+} __n32x2;
+
 typedef struct __n64x2
 {
     __n64 val[2];
@@ -291,6 +296,8 @@ __inline unsigned __int64 _CopyUInt64FromDouble(double f)   { return (unsigned _
 
 #if !defined(_ARM64_DISTINCT_NEON_TYPES)
 
+typedef __n32    float32x1_t;
+typedef __n32x2  float32x1x2_t;
 typedef __n64    float32x2_t;
 typedef __n64x2  float32x2x2_t;
 typedef __n64x3  float32x2x3_t;
@@ -633,6 +640,31 @@ typedef __n128x4 float16x8x4_t;
 #else
 
 ////////////////////////////////////////////////////////////////////////////////
+// 32-bits neon short vector extended types
+typedef union __declspec(intrin_type) _ADVSIMD_ALIGN(4) __Float32x1_t
+{
+    float n32_f32[1];
+
+#ifdef __cplusplus
+    __forceinline       float& operator[](size_t idx) noexcept       { return n32_f32[idx]; }
+    __forceinline const float& operator[](size_t idx) const noexcept { return n32_f32[idx]; }
+#endif
+} __Float32x1_t, float32x1_t;
+
+#ifdef __cplusplus
+static_assert(alignof(float32x1_t) == alignof(__n32), "alignof(float32x1_t) != alignof(__n32)");
+static_assert(sizeof(float32x1_t) == sizeof(__n32), "sizeof(float32x1_t) != sizeof(__n32)");
+#endif
+
+typedef struct float32x1x2_t
+{
+    float32x1_t val[2];
+} float32x1x2_t;
+
+#ifdef __cplusplus
+static_assert(sizeof(float32x1x2_t) == (sizeof(float32x1_t) * 2), "sizeof(float32x1x2_t) != (sizeof(float32x1_t) * 2)");
+#endif
+
 // 64-bits neon short vector extended types
 typedef union __declspec(intrin_type) _ADVSIMD_ALIGN(8) __Float32x2_t
 {
@@ -9357,6 +9389,17 @@ __forceinline float64x2_t vreinterpretq_f64_p64(poly64x2_t a) { return *(float64
 __forceinline float32x2_t vreinterpret_f32_f64(float64x1_t a) { return *(float32x2_t *)(&a); }
 __forceinline float32x4_t vreinterpretq_f32_f64(float64x2_t a) { return *(float32x4_t *)(&a); }
 #endif  /* !_ARM64_DISTINCT_NEON_TYPES */
+
+uint8x16_t __iso_volatile_neon_load128(const volatile uint8x16_t *);
+uint8x16x2_t __iso_volatile_neon_load128_p(const volatile uint8x16x2_t *);
+float32x1x2_t __iso_volatile_neon_load32_np(const volatile float32x1x2_t *);
+uint8x8x2_t __iso_volatile_neon_load64_np(const volatile uint8x8x2_t *);
+uint8x16x2_t __iso_volatile_neon_load128_np(const volatile uint8x16x2_t *);
+void __iso_volatile_neon_store128(volatile uint8x16_t *, uint8x16_t);
+void __iso_volatile_neon_store128_p(volatile uint8x16x2_t *, uint8x16x2_t);
+void __iso_volatile_neon_store32_np(volatile float32x1x2_t *, float32x1x2_t);
+void __iso_volatile_neon_store64_np(volatile uint8x8x2_t *, uint8x8x2_t);
+void __iso_volatile_neon_store128_np(volatile uint8x16x2_t *, uint8x16x2_t);
 
 #if defined (__cplusplus)
 }

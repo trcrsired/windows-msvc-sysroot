@@ -42,6 +42,7 @@
 #define FI_EHS_FLAG             0x00000001
 #define FI_DYNSTKALIGN_FLAG     0x00000002
 #define FI_EHNOEXCEPT_FLAG      0x00000004
+#define FI_FRAME_HAS_SVE        0x00000008
 
 #if (EH_MAGIC_NUMBER2 <= EH_MAGIC_NUMBER1) || (EH_MAGIC_NUMBER3 <= EH_MAGIC_NUMBER2)
 #error new magic number must be greater than the old one
@@ -58,7 +59,7 @@
 #define EH_MAGIC_HAS_ES EH_MAGIC_NUMBER2 // Magic number is greater or equal than that
                                          // indicates presence of exception specification
 
-#if (defined(_M_X64) || defined(_M_ARM) || defined(_M_ARM64)) && !defined(_CHPE_X86_ARM64_EH_)
+#if (defined(_M_X64) || defined(_M_ARM64)) && !defined(_CHPE_X86_ARM64_EH_)
 #define EH_EXCEPTION_PARAMETERS 4 // Number of parameters in exception record
 #else
 #define EH_EXCEPTION_PARAMETERS 3 // Number of parameters in exception record

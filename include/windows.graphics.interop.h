@@ -10,7 +10,7 @@
 #ifndef __Windows_GRAPHICS_INTEROP_H
 #define __Windows_GRAPHICS_INTEROP_H
 
-#include <windows.graphics.h>
+#include <Windows.graphics.h>
 #include <sdkddkver.h>
 
 // Forward declarations

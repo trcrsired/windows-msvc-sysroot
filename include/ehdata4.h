@@ -152,6 +152,7 @@ public:
 
     static void SetState(
         EHRegistrationNode  *pRN,
+        DispatcherContext   *pDC,
         FuncInfo            *pFuncInfo,
         __ehstate_t          newState
     );

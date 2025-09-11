@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #if !defined(WINDOWS_MEDIA_MEDIACONTROLCONTRACT_VERSION)
@@ -104,12 +104,12 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.graphics.imaging.h"
-#include "windows.media.h"
+#include "Windows.Foundation.h"
+#include "Windows.Graphics.Imaging.h"
+#include "Windows.Media.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -676,7 +676,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IDetectedFace = _uuidof(IDetectedFace);
+                MIDL_CONST_ID IID& IID_IDetectedFace = __uuidof(IDetectedFace);
             } /* FaceAnalysis */
         } /* Media */
     } /* Windows */
@@ -730,7 +730,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IFaceDetector = _uuidof(IFaceDetector);
+                MIDL_CONST_ID IID& IID_IFaceDetector = __uuidof(IFaceDetector);
             } /* FaceAnalysis */
         } /* Media */
     } /* Windows */
@@ -776,7 +776,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IFaceDetectorStatics = _uuidof(IFaceDetectorStatics);
+                MIDL_CONST_ID IID& IID_IFaceDetectorStatics = __uuidof(IFaceDetectorStatics);
             } /* FaceAnalysis */
         } /* Media */
     } /* Windows */
@@ -825,7 +825,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IFaceTracker = _uuidof(IFaceTracker);
+                MIDL_CONST_ID IID& IID_IFaceTracker = __uuidof(IFaceTracker);
             } /* FaceAnalysis */
         } /* Media */
     } /* Windows */
@@ -871,7 +871,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IFaceTrackerStatics = _uuidof(IFaceTrackerStatics);
+                MIDL_CONST_ID IID& IID_IFaceTrackerStatics = __uuidof(IFaceTrackerStatics);
             } /* FaceAnalysis */
         } /* Media */
     } /* Windows */

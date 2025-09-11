@@ -20,7 +20,7 @@
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 
-#include <scsiscan.h>
+#include <SCSISCAN.H>
 
 #define WIAMICRO_API __declspec(dllexport)
 

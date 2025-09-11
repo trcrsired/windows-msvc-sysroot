@@ -22,9 +22,9 @@
 #error Must not be included during CRT build with _CRT_WINDOWS flag enabled
 #endif
 
-#if !(defined (_M_X64) || defined (_M_IX86) || defined (_M_ARM) || defined (_M_ARM64))
-    #error ERROR: Concurrency Runtime is supported only on X64, X86, ARM, and ARM64 architectures.
-#endif  /* !(defined (_M_X64) || defined (_M_IX86) || defined (_M_ARM) || defined (_M_ARM64)) */
+#if !(defined (_M_X64) || defined (_M_IX86) || defined (_M_ARM64))
+    #error ERROR: Concurrency Runtime is supported only on X64, X86, and ARM64 architectures.
+#endif  /* !(defined (_M_X64) || defined (_M_IX86) || defined (_M_ARM64)) */
 
 #if defined (_M_CEE)
     #error ERROR: Concurrency Runtime is not supported when compiling /clr.
@@ -84,7 +84,7 @@ typedef void * HANDLE;
 inline void _YieldProcessor() {}
 #endif
 
-#if (defined (_M_IX86) || defined (_M_ARM))
+#if defined (_M_IX86)
 
 #define _InterlockedIncrementSizeT(_Target) static_cast<size_t>(_InterlockedIncrement(reinterpret_cast<long volatile *>(_Target)))
 #define _InterlockedDecrementSizeT(_Target) static_cast<size_t>(_InterlockedDecrement(reinterpret_cast<long volatile *>(_Target)))
@@ -95,7 +95,7 @@ inline void _YieldProcessor() {}
 
 typedef unsigned long DWORD_PTR, *PDWORD_PTR;
 
-#else  /* (defined (_M_IX86) || defined (_M_ARM)) */
+#else  /* defined (_M_IX86) */
 
 #define _InterlockedIncrementSizeT(_Target) static_cast<size_t>(_InterlockedIncrement64(reinterpret_cast<__int64 volatile *>(_Target)))
 #define _InterlockedDecrementSizeT(_Target) static_cast<size_t>(_InterlockedDecrement64(reinterpret_cast<__int64 volatile *>(_Target)))
@@ -106,7 +106,7 @@ typedef unsigned long DWORD_PTR, *PDWORD_PTR;
 
 typedef unsigned __int64 DWORD_PTR, *PDWORD_PTR;
 
-#endif  /* (defined (_M_IX86) || defined (_M_ARM)) */
+#endif  /* defined (_M_IX86) */
 
 #ifdef _DEBUG
 #ifdef _MSC_VER
@@ -412,14 +412,14 @@ namespace details
     struct _Subatomic_impl<4> {
         template <typename _Ty>
         static void _StoreWithRelease(volatile _Ty& _Location, _Ty _Rhs) {
-            // For the compiler, a volatile write has release semantics. In addition, on ARM,
+            // For the compiler, a volatile write has release semantics. In addition, on ARM64,
             // the volatile write will emit a data memory barrier before the write.
             _Location = _Rhs;
         }
 
         template <typename _Ty>
         static _Ty _LoadWithAquire(volatile _Ty& _Location) {
-            // For the compiler, a volatile read has acquire semantics. In addition, on ARM,
+            // For the compiler, a volatile read has acquire semantics. In addition, on ARM64,
             // the volatile read will emit a data memory barrier after the read.
             return _Location;
         }

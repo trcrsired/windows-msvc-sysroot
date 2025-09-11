@@ -3308,6 +3308,9 @@ template<typename _Cont_t,
 public:
 	typedef BCL_reference<_Cont_t> _Mytype_t;
 
+	typedef BCL_reference_base<_Cont_t, _Is_ref> _Mybase_t;
+	typedef typename _Mybase_t::value_type value_type;
+
 	BCL_reference(_Cont_t^ _Cont, int _Offset)
 		:	_Mycont(_Cont), _Myoffset(_Offset)
 		{	// construct from container and offset

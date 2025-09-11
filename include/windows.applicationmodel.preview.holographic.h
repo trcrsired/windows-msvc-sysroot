@@ -108,7 +108,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -116,13 +116,13 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.applicationmodel.activation.h"
-#include "windows.foundation.numerics.h"
-#include "windows.perception.spatial.h"
+#include "Windows.Foundation.h"
+#include "Windows.ApplicationModel.Activation.h"
+#include "Windows.Foundation.Numerics.h"
+#include "Windows.Perception.Spatial.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -283,7 +283,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IHolographicApplicationPreviewStatics = _uuidof(IHolographicApplicationPreviewStatics);
+                    MIDL_CONST_ID IID& IID_IHolographicApplicationPreviewStatics = __uuidof(IHolographicApplicationPreviewStatics);
                 } /* Holographic */
             } /* Preview */
         } /* ApplicationModel */
@@ -342,7 +342,7 @@ namespace ABI {
                         virtual HRESULT STDMETHODCALLTYPE ResetPlacementOverride(void) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IHolographicKeyboardPlacementOverridePreview = _uuidof(IHolographicKeyboardPlacementOverridePreview);
+                    MIDL_CONST_ID IID& IID_IHolographicKeyboardPlacementOverridePreview = __uuidof(IHolographicKeyboardPlacementOverridePreview);
                 } /* Holographic */
             } /* Preview */
         } /* ApplicationModel */
@@ -386,7 +386,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IHolographicKeyboardPlacementOverridePreviewStatics = _uuidof(IHolographicKeyboardPlacementOverridePreviewStatics);
+                    MIDL_CONST_ID IID& IID_IHolographicKeyboardPlacementOverridePreviewStatics = __uuidof(IHolographicKeyboardPlacementOverridePreviewStatics);
                 } /* Holographic */
             } /* Preview */
         } /* ApplicationModel */

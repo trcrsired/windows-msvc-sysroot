@@ -20,8 +20,8 @@ Abstract:
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 
-#include <eaptypes.h>
-#include <wlantypes.h>
+#include <EapTypes.h>
+#include <WlanTypes.h>
 
 // Select MS Security settings 
 // as may be needed by the IHVs

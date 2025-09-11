@@ -11,9 +11,9 @@
 #ifndef _RINGTONEDEVICESERVICE_H_
 #define _RINGTONEDEVICESERVICE_H_
 
-#include <deviceservices.h>
+#include <DeviceServices.h>
 
-#include <messagedeviceservice.h>
+#include <MessageDeviceService.h>
 
 
 /*****************************************************************************

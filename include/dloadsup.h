@@ -154,6 +154,8 @@ extern "C" IMAGE_LOAD_CONFIG_DIRECTORY _load_config_used;
 
 extern "C" const IMAGE_DOS_HEADER __ImageBase;
 
+extern "C" const BOOL __bChangeProtectionOfWholeDloadSection;
+
 #else
 
 #define DLOAD_UNSUPPORTED ((HMODULE)0x1)
@@ -698,8 +700,7 @@ Return Value:
 DLOAD_INLINE
 VOID
 DloadAcquireSectionWriteAccess (
-    _In_opt_ PVOID RangeStart,
-    _In_ SIZE_T RangeSize
+    VOID
     )
 
 /*++
@@ -712,13 +713,11 @@ Routine Description:
 
 Arguments:
 
-    RangeStart - supplies a pointer to the beginning address of the range. If
-                 it is nullptr, then the entire delayload section is specified.
+    This function obtains write access to the delay load section.  Until a
+    matched call to DloadReleaseSectionAccess is made the section is still
+    considered writable.
 
-    RangeSize - supplies the size of the range, in bytes.  It must be 0 if
-                RangeStart is nullptr.
-
-Return Value:
+Arguments:
 
     None.
 
@@ -734,6 +733,10 @@ Return Value:
         return;
     }
 
+    if (__bChangeProtectionOfWholeDloadSection == FALSE) {
+        return;
+    }
+
     //
     // Acquire the Dload protection lock for this module and change protection.
     //
@@ -742,8 +745,8 @@ Return Value:
 
     DloadSectionLockCount += 1;
     if (DloadSectionLockCount == 1) {
-        DloadProtectSection(RangeStart,
-                            RangeSize,
+        DloadProtectSection(nullptr,
+                            0,
                             PAGE_READWRITE,
                             &DloadSectionOldProtection);
     }
@@ -756,8 +759,7 @@ Return Value:
 DLOAD_INLINE
 VOID
 DloadReleaseSectionWriteAccess (
-    _In_opt_ PVOID RangeStart,
-    _In_ SIZE_T RangeSize
+    VOID
     )
 
 /*++
@@ -769,12 +771,9 @@ Routine Description:
 
 Arguments:
 
-    RangeStart - supplies a pointer to the beginning address of the range. If
-                 it is nullptr, then the entire delayload section is specified.
+    This function relinquishes write access to the delay load section.
 
-    RangeSize - supplies the size of the range, in bytes.
-
-Return Value:
+Arguments:
 
     None.
 
@@ -792,6 +791,10 @@ Return Value:
        return;
     }
 
+    if (__bChangeProtectionOfWholeDloadSection == FALSE) {
+        return;
+    }
+
     //
     // Acquire the Dload protection lock for this module and change protection.
     //
@@ -800,8 +803,8 @@ Return Value:
 
     DloadSectionLockCount -= 1;
     if (DloadSectionLockCount == 0) {
-        DloadProtectSection(RangeStart,
-                            RangeSize,
+        DloadProtectSection(nullptr,
+                            0,
                             DloadSectionOldProtection,
                             &OldProtect);
     }

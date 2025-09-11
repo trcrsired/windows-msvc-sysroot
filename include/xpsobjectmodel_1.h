@@ -85,7 +85,7 @@ typedef interface IXpsOMRemoteDictionaryResource1 IXpsOMRemoteDictionaryResource
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
-#include "xpsobjectmodel.h"
+#include "XpsObjectModel.h"
 
 #ifdef __cplusplus
 extern "C"{

@@ -69,7 +69,7 @@ typedef interface IDiagnosticsScriptEngineProvider IDiagnosticsScriptEngineProvi
 
 
 /* header files for imported files */
-#include "activscp.h"
+#include "ActivScp.h"
 
 #ifdef __cplusplus
 extern "C"{

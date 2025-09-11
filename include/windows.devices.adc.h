@@ -96,7 +96,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -104,12 +104,12 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.devices.h"
-#include "windows.devices.adc.provider.h"
+#include "Windows.Foundation.h"
+#include "Windows.Devices.h"
+#include "Windows.Devices.Adc.Provider.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -485,7 +485,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IAdcChannel = _uuidof(IAdcChannel);
+                MIDL_CONST_ID IID& IID_IAdcChannel = __uuidof(IAdcChannel);
             } /* Adc */
         } /* Devices */
     } /* Windows */
@@ -544,7 +544,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IAdcController = _uuidof(IAdcController);
+                MIDL_CONST_ID IID& IID_IAdcController = __uuidof(IAdcController);
             } /* Adc */
         } /* Devices */
     } /* Windows */
@@ -581,7 +581,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IAdcControllerStatics = _uuidof(IAdcControllerStatics);
+                MIDL_CONST_ID IID& IID_IAdcControllerStatics = __uuidof(IAdcControllerStatics);
             } /* Adc */
         } /* Devices */
     } /* Windows */
@@ -617,7 +617,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IAdcControllerStatics2 = _uuidof(IAdcControllerStatics2);
+                MIDL_CONST_ID IID& IID_IAdcControllerStatics2 = __uuidof(IAdcControllerStatics2);
             } /* Adc */
         } /* Devices */
     } /* Windows */

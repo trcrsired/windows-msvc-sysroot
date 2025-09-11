@@ -56,10 +56,7 @@ _ACRTIMP extern unsigned long  __cdecl __threadid(void);
 #define _threadid (__threadid())
 _ACRTIMP extern uintptr_t __cdecl __threadhandle(void);
 
-#ifndef _CRT_MAX_ALIGN_T_DEFINED
-typedef double max_align_t;
-#define _CRT_MAX_ALIGN_T_DEFINED
-#endif
+
 
 _CRT_END_C_HEADER
 _UCRT_RESTORE_CLANG_WARNINGS

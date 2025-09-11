@@ -22,10 +22,10 @@ enum ISA_AVAILABILITY
     __ISA_AVAILABLE_AVX2 = 5,
     __ISA_AVAILABLE_AVX512 = 6,
 
-    __ISA_AVAILABLE_ARMNT   = 0,   // minimum Win8 ARM support (but w/o NEON)
-    __ISA_AVAILABLE_NEON    = 1,   // support for 128-bit NEON instructions
-    __ISA_AVAILABLE_NEON_ARM64 = 2,// support for 128-bit NEON instructions for ARM64. The distinction between ARM32 and
-                                   // ARM64 NEON is temporary. They may eventually be merged.
+    __ISA_AVAILABLE_ARMNT   = 0,    // Unused; was for ARM32 without support for 128-bit NEON instructions.
+    __ISA_AVAILABLE_NEON    = 1,    // Unused; was for ARM32 with support for 128-bit NEON instructions.
+    __ISA_AVAILABLE_NEON_ARM64 = 2, // UNUSED! ARM64 has mandatory support for 128-bit NEON instructions.
+                                    // VCRuntime does NOT set this value.
 };
 
 #if defined(_M_IX86) || defined(_M_X64)

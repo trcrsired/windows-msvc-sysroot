@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,12 +100,12 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.ui.input.h"
-#include "windows.ui.windowmanagement.h"
+#include "Windows.Foundation.h"
+#include "Windows.UI.Input.h"
+#include "Windows.UI.WindowManagement.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -207,7 +207,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IInputActivationListenerPreviewStatics = _uuidof(IInputActivationListenerPreviewStatics);
+                    MIDL_CONST_ID IID& IID_IInputActivationListenerPreviewStatics = __uuidof(IInputActivationListenerPreviewStatics);
                 } /* Preview */
             } /* Input */
         } /* UI */

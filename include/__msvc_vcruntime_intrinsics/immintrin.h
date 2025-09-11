@@ -97,8 +97,11 @@ typedef union  __declspec(intrin_type) __declspec(align(32)) __m256i {
 #define _CMP_GT_OQ     0x1E  /* Greater-than (ordered, nonsignaling)        */
 #define _CMP_TRUE_US   0x1F  /* True (unordered, signaling)                 */
 
+#if !defined(_M_ARM64) && !defined(_M_ARM64EC)
 // The feature bits for these functions are defined in isa_availability.h
 // __isa_inverted has cleared bits to signal ISA support
+// These intrinsics (__isa_inverted, __avx10_version, __arch_inverted, __arch_avx10ver)
+// are not defined for ARM64 and ARM64EC.
 extern unsigned long long __isa_inverted;
 extern unsigned __avx10_version;
 #ifdef __cplusplus
@@ -127,6 +130,30 @@ inline bool __check_arch_support(unsigned __x, unsigned __v = 0)
 __inline _Bool __check_arch_support(unsigned __x, unsigned __v)
 #endif
 { return ((__x & __arch_inverted()) == 0) && (__arch_avx10ver() >= __v); }
+
+#if !defined(__IA_SUPPORT_VECTOR128)
+#define __IA_SUPPORT_VECTOR128 0x00000001
+#define __IA_SUPPORT_VECTOR256 0x00000002
+#define __IA_SUPPORT_VECTOR512 0x00000004
+#endif
+
+#ifdef __cplusplus
+inline unsigned _get_vlen(void)
+#else
+__inline unsigned _get_vlen(void)
+#endif
+{
+    unsigned arch_inverted = __arch_inverted();
+    if ((arch_inverted & __IA_SUPPORT_VECTOR512) == 0)
+        return 512;
+    else if ((arch_inverted & __IA_SUPPORT_VECTOR256) == 0)
+        return 256;
+    else if ((arch_inverted & __IA_SUPPORT_VECTOR128) == 0)
+        return 128;
+    else
+        return 0;
+}
+#endif // !defined(_M_ARM64) && !defined(_M_ARM64EC)
 
 // The consolidated Intel Architecture ISA feature bits
 
@@ -1436,7 +1463,7 @@ extern __m256  __cdecl _mm256_fmsubadd_ps(__m256, __m256, __m256);
 extern __m256d __cdecl _mm256_fmsubadd_pd(__m256d, __m256d, __m256d);
 
 /*
- * Scalar FP intrinsics (with double/float arguments) 
+ * Scalar FP intrinsics (with double/float arguments)
  */
 extern float  __cdecl __fmadd_ss(float, float, float);
 extern double __cdecl __fmadd_sd(double, double, double);
@@ -2645,6 +2672,30 @@ extern __m256i __cdecl _mm256_sm4rnds4_epi32(__m256i, __m256i);
 #if defined (_M_X64)
 extern unsigned __int64 __cdecl _urdmsr(unsigned __int64);
 extern void __cdecl _uwrmsr(unsigned __int64, unsigned __int64);
+#endif /* defined (_M_X64) */
+
+__m128i __iso_volatile_ia_load128(const volatile __m128i*);
+__m256i __iso_volatile_ia_load256(const volatile __m256i*);
+__m512i __iso_volatile_ia_load512(const volatile __m512i*);
+void __iso_volatile_ia_store128(volatile __m128i*, __m128i);
+void __iso_volatile_ia_store256(volatile __m256i*, __m256i);
+void __iso_volatile_ia_store512(volatile __m512i*, __m512i);
+__m128i __iso_volatile_ia_nt_load128(const volatile __m128i*);
+__m256i __iso_volatile_ia_nt_load256(const volatile __m256i*);
+__m512i __iso_volatile_ia_nt_load512(const volatile __m512i*);
+void __iso_volatile_ia_nt_store128(volatile __m128i*, __m128i);
+void __iso_volatile_ia_nt_store256(volatile __m256i*, __m256i);
+void __iso_volatile_ia_nt_store512(volatile __m512i*, __m512i);
+
+// MOVRS scalar instructions.
+// Prefetch supported for both x32 and x64
+extern void _m_prefetchrs(const void *);
+
+#if defined (_M_X64)
+extern char  __cdecl _movrs_i8(const void *);
+extern short __cdecl _movrs_i16(const void *);
+extern int   __cdecl _movrs_i32(const void *);
+extern long long __cdecl _movrs_i64(const void *);
 #endif /* defined (_M_X64) */
 
 #if defined __cplusplus

@@ -29,9 +29,9 @@
 #include <crtdbg.h>
 #include <concrt.h>
 
-#if !(defined (_M_X64) || defined (_M_IX86) || defined (_M_ARM) || defined (_M_ARM64))
-    #error ERROR: Concurrency Runtime is supported only on X64, X86, ARM, and ARM64 architectures.
-#endif  /* !(defined (_M_X64) || defined (_M_IX86) || defined (_M_ARM) || defined (_M_ARM64)) */
+#if !(defined (_M_X64) || defined (_M_IX86) || defined (_M_ARM64))
+    #error ERROR: Concurrency Runtime is supported only on X64, X86, and ARM64 architectures.
+#endif  /* !(defined (_M_X64) || defined (_M_IX86) || defined (_M_ARM64)) */
 
 #if defined (_M_CEE)
     #error ERROR: Concurrency Runtime is not supported when compiling /clr.

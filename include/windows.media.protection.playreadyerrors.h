@@ -14,7 +14,7 @@
 typedef HRESULT DRM_RESULT;
 #endif /*DRM_RESULT_DEFINED*/
 
-#include <windows.media.protection.playreadyresults.h>
+#include <Windows.Media.Protection.PlayReadyResults.h>
 
 /*
 *  !!!!!!  VERY IMPORTANT, PLEASE READ !!!!!

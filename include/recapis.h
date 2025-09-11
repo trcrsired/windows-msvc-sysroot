@@ -19,7 +19,7 @@ extern "C" {
 #endif
 
 #include "tpcshrd.h"
-#include "rectypes.h"
+#include "RecTypes.h"
 
 #ifndef __HRECOALT__
 #define __HRECOALT__
@@ -129,7 +129,7 @@ extern "C" {
 #endif
 
 #include "tpcshrd.h"
-#include "rectypes.h"
+#include "RecTypes.h"
 
 #ifndef __HRECOALT__
 #define __HRECOALT__

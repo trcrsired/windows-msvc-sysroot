@@ -64,7 +64,7 @@ typedef interface IDisplayPathInterop IDisplayPathInterop;
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
-#include "inspectable.h"
+#include "Inspectable.h"
 
 #ifdef __cplusplus
 extern "C"{

@@ -11,7 +11,7 @@
 #ifndef _STATUSDEVICESERVICE_H_
 #define _STATUSDEVICESERVICE_H_
 
-#include <deviceservices.h>
+#include <DeviceServices.h>
 
 
 /*****************************************************************************

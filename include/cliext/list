@@ -156,7 +156,7 @@ public:
 
 	list_impl% operator=(list_impl% _Right)
 		{	// assign
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, do it
 			clear();
 			insert_node(head_node(),
@@ -676,7 +676,7 @@ public:
 
 	void swap(_Mytype_t% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth doing, swap
 			node_type^ _Oldfirst = front_node();
 
@@ -721,7 +721,7 @@ public:
 
 		if (_First == _Last)
 			;	// nothing to do
-		else if ((Object^)this != _Right)
+		else if ((System::Object^)this != _Right)
 			{	// get sublist from another list
 			node_type^ _Nlast = _Last->_Prev;
 
@@ -857,7 +857,7 @@ public:
 	template<typename _Pr3_t>
 		void _Merge(_Mytype_t% _Right, _Pr3_t _Pred)
 		{	// merge in elements from _Right, both ordered by _Pred
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// safe to merge, do it
 			node_type^ _First1 = front_node();
 			node_type^ _First2 = _Right.front_node();
@@ -1056,12 +1056,12 @@ private:
 	virtual generic_iterator begin_virtual() sealed
 		= _Mycont_it::begin
 		{	// return iterator for beginning of mutable sequence
-		return (begin());
+		return (begin().operator generic_iterator());
 		}
 	virtual generic_iterator end_virtual() sealed
 		= _Mycont_it::end
 		{	// return iterator for end of mutable sequence
-		return (end());
+		return (end().operator generic_iterator());
 		}
 
 	virtual generic_reverse_iterator rbegin_virtual() sealed
@@ -1154,7 +1154,7 @@ private:
 		value_type _Val) sealed
 		= _Mycont_it::insert
 		{	// insert _Val at _Where
-		return (insert(iterator(_Where), _Val));
+		return (insert(iterator(_Where), _Val).operator generic_iterator());
 		}
 
 	virtual void insert_virtual(generic_iterator _Where,
@@ -1182,14 +1182,14 @@ private:
 	virtual generic_iterator erase_virtual(generic_iterator _Where) sealed
 		= _Mycont_it::erase
 		{	// erase element at _Where
-		return (erase(iterator(_Where)));
+		return (erase(iterator(_Where)).operator generic_iterator());
 		}
 
 	virtual generic_iterator erase_virtual(generic_iterator _First,
 		generic_iterator _Last) sealed
 		= _Mycont_it::erase
 		{	// erase [_First, _Last)
-		return (erase(iterator(_First), iterator(_Last)));
+		return (erase(iterator(_First), iterator(_Last)).operator generic_iterator());
 		}
 
 	virtual void clear_virtual() sealed
@@ -1278,17 +1278,15 @@ public:
 	// types
 	typedef list_base<_Value_t, _Is_ref> _Mytype_t;
 	typedef list_impl<_Value_t, _Is_ref> _Mybase_t;
-//	typedef _STLCLR IList<_Value_t> _Mycont_it;
 	typedef _Cont_make_value<_Value_t, _Is_ref> _Mymake_t;
 
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
+	typedef typename _Mybase_t::_Myarray_t _Myarray_t;
+	typedef typename _Mybase_t::_Mycont_it _Mycont_it;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::node_type node_type;
+	typedef typename _Mybase_t::size_type size_type;
+	typedef typename _Mybase_t::value_type value_type;
 
 	// basics
 	list_base()
@@ -1345,8 +1343,8 @@ public:
 		void _Assign(_InIt_t _Count, _InIt_t _Val,
 			_Int_iterator_tag%)
 		{	// assign _Count * _Val
-		clear();
-		insert_node(head_node(), (size_type)_Count, (value_type)_Val);
+		this->clear();
+		this->insert_node(this->head_node(), (size_type)_Count, (value_type)_Val);
 		}
 
 	template<typename _InIt_t>
@@ -1354,19 +1352,19 @@ public:
 			input_iterator_tag%)
 		{	// initialize with [_First, _Last), input iterators
 		if (_Iter_container(_First) != this)
-			clear();
+			this->clear();
 
-		size_type _Oldsize = size();
+		size_type _Oldsize = this->size();
 
-		_Insert_safe(front_node(), _First, _Last);
+		this->_Insert_safe(this->front_node(), _First, _Last);
 		for (; 0 < _Oldsize; --_Oldsize)
-			pop_back();	// discard old stuff
+			this->pop_back();	// discard old stuff
 		}
 
 	template<typename _InIt_t>
 		void insert(iterator _Where, _InIt_t _First, _InIt_t _Last)
 		{	// insert [_First, _Last) at _Where
-		_Insert(get_node(_Where), _First, _Last,
+		_Insert(this->get_node(_Where), _First, _Last,
 			_Iter_category(_First));
 		}
 
@@ -1374,7 +1372,7 @@ public:
 		void _Insert(node_type^ _Where, _InIt_t _First, _InIt_t _Last,
 			_Int_iterator_tag%)
 		{	// insert _Count * _Val at _Where
-		insert_node(_Where, (size_type)_First, (value_type)_Last);
+		this->insert_node(_Where, (size_type)_First, (value_type)_Last);
 		}
 
 	template<typename _InIt_t>
@@ -1382,10 +1380,10 @@ public:
 			input_iterator_tag%)
 		{	// insert [_First, _Last) at _Where, input iterators
 		if (_Iter_container(_First) == this)
-			_Insert_safe(_Where, _First, _Last);
+			this->_Insert_safe(_Where, _First, _Last);
 		else
 			for (; _First != _Last; ++_First)
-				insert_node(_Where, 1, (value_type)*_First);
+				this->insert_node(_Where, 1, (value_type)*_First);
 		}
 
 	// interfaces
@@ -1395,7 +1393,7 @@ private:
 		virtual size_type get() sealed
 			= System::Collections::Generic::ICollection<_Value_t>::Count::get
 			{	// get element count
-			return (size());
+			return (this->size());
 			}
 		};
 
@@ -1412,9 +1410,9 @@ private:
 	virtual void CopyTo(_Myarray_t^ _Dest, int _First) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::CopyTo
 		{	// copy to _Dest, beginning at _First
-		node_type^ _Node = head_node();
+		node_type^ _Node = this->head_node();
 
-		for (int _Idx = size(); 0 <= --_Idx; )
+		for (int _Idx = this->size(); 0 <= --_Idx; )
 			{	// copy back to front
 			_Node = _Node->prev_node();
 			_Dest[_First + _Idx] = _Mymake_t::make_value(_Node->_Myval);
@@ -1425,25 +1423,25 @@ private:
 		GetEnumerator() sealed
 		= System::Collections::Generic::IEnumerable<_Value_t>::GetEnumerator
 		{	// get enumerator for the container
-		return (gcnew _STLCLR ListEnumerator<_Value_t>(front_node()));
+		return (gcnew _STLCLR ListEnumerator<_Value_t>(this->front_node()));
 		}
 
 	virtual void Add(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Add
 		{	// add element with value _Val
-		insert_node(head_node(), 1, _Val);
+		this->insert_node(this->head_node(), 1, _Val);
 		}
 
 	virtual void Clear() sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Clear
 		{	// erase all elements
-		clear();
+		this->clear();
 		}
 
 	virtual bool Contains(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Contains
 		{	// search for element matching value _Val
-		for (node_type^ _Node = front_node(); _Node != head_node();
+		for (node_type^ _Node = this->front_node(); _Node != this->head_node();
 			_Node = _Node->next_node())
 			if (((System::Object^)_Val)->Equals(
 				(System::Object^)_Node->_Myval))
@@ -1454,12 +1452,12 @@ private:
 	virtual bool Remove(value_type _Val) sealed
 		= System::Collections::Generic::ICollection<_Value_t>::Remove
 		{	// remove first element matching value _Val
-		for (node_type^ _Node = front_node(); _Node != head_node();
+		for (node_type^ _Node = this->front_node(); _Node != this->head_node();
 			_Node = _Node->next_node())
 			if (((System::Object^)_Val)->Equals(
 				(System::Object^)_Node->_Myval))
 				{	// found a match, remove it
-				erase_node(_Node);
+				this->erase_node(_Node);
 				return (true);
 				}
 		return (false);
@@ -1480,17 +1478,13 @@ public:
 
 	typedef list_select<_Value_t, _Is_ref> _Mytype_t;
 	typedef list_base<_Gvalue_t, _Is_ref> _Mybase_t;
-//	typedef _STLCLR IList<_Gvalue_t> _Mycont_it;
-//	typedef System::Collections::Generic::IEnumerable<_Gvalue_t> _Myenum_it;
 
-//	typedef int size_type;
-//	typedef int difference_type;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::size_type size_type;
+
 	typedef _Value_t value_type;
 	typedef value_type% reference;
 	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef typename _Mybase_t::value_type generic_value;
 
 	// basics
 	list_select()
@@ -1545,17 +1539,14 @@ public:
 
 	typedef list_select<_Value_t, true> _Mytype_t;
 	typedef list_base<_Gvalue_t, true> _Mybase_t;
-//	typedef _STLCLR IList<_Gvalue_t> _Mycont_it;
-//	typedef System::Collections::Generic::IEnumerable<_Gvalue_t> _Myenum_it;
 
-//	typedef int size_type;
-//	typedef int difference_type;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::iterator iterator;
+	typedef typename _Mybase_t::size_type size_type;
+
 	typedef _Value_t value_type;
 	typedef value_type% reference;
 	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef typename _Mybase_t::value_type generic_value;
 
 	// basics
 	list_select()
@@ -1697,16 +1688,10 @@ public:
 	typedef impl::list_select<_Value_t,
 		__is_ref_class(typename _Dehandle<_Value_t>::type)
 		&& !is_handle<_Value_t>::value> _Mybase_t;
-//	typedef impl::_STLCLR IList<_Value_t> _Mycont_it;
 
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
+	typedef typename _Mybase_t::_Myenum_it _Myenum_it;
+	typedef typename _Mybase_t::size_type size_type;
+	typedef typename _Mybase_t::value_type value_type;
 
 	// basics
 	list()
@@ -1780,14 +1765,14 @@ template<typename _Value_t> inline
 	{	// test if _Left == _Right
 	typedef list<_Value_t> _Mytype_t;
 
-	_Mytype_t::size_type _Size = _Left.size();
+	typename _Mytype_t::size_type _Size = _Left.size();
 
 	if (_Size != _Right.size())
 		return (false);
 	else
 		{	// same length, compare elements
-		_Mytype_t::node_type^ _Pleft = _Left.front_node();
-		_Mytype_t::node_type^ _Pright = _Right.front_node();
+		typename _Mytype_t::node_type^ _Pleft = _Left.front_node();
+		typename _Mytype_t::node_type^ _Pright = _Right.front_node();
 
 		for (; 0 < _Size; --_Size)
 			{	// compare next two elements
@@ -1813,9 +1798,9 @@ template<typename _Value_t> inline
 	{	// test if _Left < _Right
 	typedef list<_Value_t> _Mytype_t;
 
-	_Mytype_t::size_type _Idx = 0;
-	_Mytype_t::node_type^ _Pleft = _Left.front_node();
-	_Mytype_t::node_type^ _Pright = _Right.front_node();
+	typename _Mytype_t::size_type _Idx = 0;
+	typename _Mytype_t::node_type^ _Pleft = _Left.front_node();
+	typename _Mytype_t::node_type^ _Pright = _Right.front_node();
 
 	for (; _Idx != _Left.size() && _Idx != _Right.size(); ++_Idx)
 		{	// compare next two elements

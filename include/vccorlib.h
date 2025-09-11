@@ -2151,7 +2151,7 @@ namespace Platform
 		ArrayReference& operator=(ArrayReference&& __otherArg)
 		{
 			Array<__TArg>^* __pOther = reinterpret_cast<Array<__TArg>^*>(&__otherArg);
-			Init((*pOther)->__data, (*pOther)->__size);
+			Init((*__pOther)->__data, (*__pOther)->__size);
 		}
 
 		__declspec(no_refcount) __declspec(no_release_return)
@@ -2548,7 +2548,7 @@ namespace Platform
 		// __TInvokeMethod is a functor that performs the appropriate invoke, depending on the
 		// number of arguments specified.
 		template <typename __TDelegate, typename __TReturnType, typename __TInvokeMethod>
-		typename __TReturnType DoInvoke(Details::EventLock* __lockArg, __TInvokeMethod __invokeOneArg)
+		__TReturnType DoInvoke(Details::EventLock* __lockArg, __TInvokeMethod __invokeOneArg)
 		{
 			// lock pointer exhange
 			//        targets = _targets
@@ -2576,7 +2576,7 @@ namespace Platform
 			__Platform_ReleaseSRWLockShared(&__lockArg->__targetsLock);
 			*reinterpret_cast<void**>(&__targetsLoc) = __EvSrcGTA_ret;
 
-			typename __TReturnType __returnVal = typename __TReturnType();
+			__TReturnType __returnVal{};
 			// The list may not exist if nobody has registered
 			if (__targetsLoc != nullptr)
 			{

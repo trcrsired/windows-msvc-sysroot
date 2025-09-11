@@ -73,6 +73,10 @@ template<typename _Arg_t>
 	:	public unary_function<_Arg_t, bool>
 	{	// generic functor for logical_not
 public:
+	typedef unary_function<_Arg_t, bool> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::argument_type argument_type;
+
 	static result_type function(argument_type _Left)
 		{	// do the operation
 		return (!_Left);
@@ -87,6 +91,10 @@ template<typename _Arg_t>
 	:	public unary_function<_Arg_t, _Arg_t>
 	{	// generic functor for negate
 public:
+	typedef unary_function<_Arg_t, _Arg_t> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::argument_type argument_type;
+
 	static result_type function(argument_type _Left)
 		{	// do the operation
 		return (-_Left);
@@ -101,6 +109,11 @@ template<typename _Arg_t>
 	:	public binary_function<_Arg_t, _Arg_t, _Arg_t>
 	{	// generic functor for plus
 public:
+	typedef binary_function<_Arg_t, _Arg_t, _Arg_t> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::first_argument_type first_argument_type;
+	typedef typename _Mybase_t::second_argument_type second_argument_type;
+
 	static result_type function(first_argument_type _Left,
 		second_argument_type _Right)
 		{	// do the operation
@@ -116,6 +129,11 @@ template<typename _Arg_t>
 	:	public binary_function<_Arg_t, _Arg_t, _Arg_t>
 	{	// generic functor for minus
 public:
+	typedef binary_function<_Arg_t, _Arg_t, _Arg_t> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::first_argument_type first_argument_type;
+	typedef typename _Mybase_t::second_argument_type second_argument_type;
+
 	static result_type function(first_argument_type _Left,
 		second_argument_type _Right)
 		{	// do the operation
@@ -131,6 +149,11 @@ template<typename _Arg_t>
 	:	public binary_function<_Arg_t, _Arg_t, _Arg_t>
 	{	// generic functor for multiplies
 public:
+	typedef binary_function<_Arg_t, _Arg_t, _Arg_t> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::first_argument_type first_argument_type;
+	typedef typename _Mybase_t::second_argument_type second_argument_type;
+
 	static result_type function(first_argument_type _Left,
 		second_argument_type _Right)
 		{	// do the operation
@@ -146,6 +169,11 @@ template<typename _Arg_t>
 	:	public binary_function<_Arg_t, _Arg_t, _Arg_t>
 	{	// generic functor for divides
 public:
+	typedef binary_function<_Arg_t, _Arg_t, _Arg_t> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::first_argument_type first_argument_type;
+	typedef typename _Mybase_t::second_argument_type second_argument_type;
+
 	static result_type function(first_argument_type _Left,
 		second_argument_type _Right)
 		{	// do the operation
@@ -161,6 +189,11 @@ template<typename _Arg_t>
 	:	public binary_function<_Arg_t, _Arg_t, _Arg_t>
 	{	// generic functor for modulus
 public:
+	typedef binary_function<_Arg_t, _Arg_t, _Arg_t> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::first_argument_type first_argument_type;
+	typedef typename _Mybase_t::second_argument_type second_argument_type;
+
 	static result_type function(first_argument_type _Left,
 		second_argument_type _Right)
 		{	// do the operation
@@ -176,6 +209,11 @@ template<typename _Arg_t>
 	:	public binary_function<_Arg_t, _Arg_t, bool>
 	{	// generic functor for equal_to
 public:
+	typedef binary_function<_Arg_t, _Arg_t, bool> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::first_argument_type first_argument_type;
+	typedef typename _Mybase_t::second_argument_type second_argument_type;
+
 	static result_type function(first_argument_type _Left,
 		second_argument_type _Right)
 		{	// do the operation
@@ -191,6 +229,11 @@ template<typename _Arg_t>
 	:	public binary_function<_Arg_t, _Arg_t, bool>
 	{	// generic functor for not_equal_to
 public:
+	typedef binary_function<_Arg_t, _Arg_t, bool> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::first_argument_type first_argument_type;
+	typedef typename _Mybase_t::second_argument_type second_argument_type;
+
 	static result_type function(first_argument_type _Left,
 		second_argument_type _Right)
 		{	// do the operation
@@ -206,6 +249,11 @@ template<typename _Arg_t>
 	:	public binary_function<_Arg_t, _Arg_t, bool>
 	{	// generic functor for less
 public:
+	typedef binary_function<_Arg_t, _Arg_t, bool> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::first_argument_type first_argument_type;
+	typedef typename _Mybase_t::second_argument_type second_argument_type;
+
 	static result_type function(first_argument_type _Left,
 		second_argument_type _Right)
 		{	// do the operation
@@ -221,6 +269,11 @@ template<typename _Arg_t>
 	:	public binary_function<_Arg_t, _Arg_t, bool>
 	{	// generic functor for greater_equal
 public:
+	typedef binary_function<_Arg_t, _Arg_t, bool> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::first_argument_type first_argument_type;
+	typedef typename _Mybase_t::second_argument_type second_argument_type;
+
 	static result_type function(first_argument_type _Left,
 		second_argument_type _Right)
 		{	// do the operation
@@ -236,6 +289,11 @@ template<typename _Arg_t>
 	:	public binary_function<_Arg_t, _Arg_t, bool>
 	{	// generic functor for greater
 public:
+	typedef binary_function<_Arg_t, _Arg_t, bool> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::first_argument_type first_argument_type;
+	typedef typename _Mybase_t::second_argument_type second_argument_type;
+
 	static result_type function(first_argument_type _Left,
 		second_argument_type _Right)
 		{	// do the operation
@@ -251,6 +309,11 @@ template<typename _Arg_t>
 	:	public binary_function<_Arg_t, _Arg_t, bool>
 	{	// generic functor for less_equal
 public:
+	typedef binary_function<_Arg_t, _Arg_t, bool> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::first_argument_type first_argument_type;
+	typedef typename _Mybase_t::second_argument_type second_argument_type;
+
 	static result_type function(first_argument_type _Left,
 		second_argument_type _Right)
 		{	// do the operation
@@ -266,6 +329,11 @@ template<typename _Arg_t>
 	:	public binary_function<_Arg_t, _Arg_t, bool>
 	{	// generic functor for logical_and
 public:
+	typedef binary_function<_Arg_t, _Arg_t, bool> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::first_argument_type first_argument_type;
+	typedef typename _Mybase_t::second_argument_type second_argument_type;
+
 	static result_type function(first_argument_type _Left,
 		second_argument_type _Right)
 		{	// do the operation
@@ -281,6 +349,11 @@ template<typename _Arg_t>
 	:	public binary_function<_Arg_t, _Arg_t, bool>
 	{	// generic functor for logical_or
 public:
+	typedef binary_function<_Arg_t, _Arg_t, bool> _Mybase_t;
+	typedef typename _Mybase_t::result_type result_type;
+	typedef typename _Mybase_t::first_argument_type first_argument_type;
+	typedef typename _Mybase_t::second_argument_type second_argument_type;
+
 	static result_type function(first_argument_type _Left,
 		second_argument_type _Right)
 		{	// do the operation

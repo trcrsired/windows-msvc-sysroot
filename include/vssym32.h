@@ -5,7 +5,7 @@
 #ifndef __VSSYM32_H__
 #define __VSSYM32_H__
 
-#include "vsstyle.h"
+#include "VSStyle.h"
 
 //
 //  enumerated property values

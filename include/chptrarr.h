@@ -25,7 +25,7 @@
 #include <assert.h>
 #include <tchar.h>
 #include <polarity.h>
-#include <provexce.h>
+#include <ProvExce.h>
 
 class POLARITY CHPtrArray
 {

@@ -107,7 +107,7 @@ typedef interface ISpatialAudioClient2 ISpatialAudioClient2;
 #include "wtypes.h"
 #include "unknwn.h"
 #include "hstring.h"
-#include "audioclient.h"
+#include "AudioClient.h"
 #include "propsys.h"
 
 #ifdef __cplusplus
@@ -142,7 +142,9 @@ enum AudioObjectType
         AudioObjectType_BottomFrontRight	= ( 1 << 14 ) ,
         AudioObjectType_BottomBackLeft	= ( 1 << 15 ) ,
         AudioObjectType_BottomBackRight	= ( 1 << 16 ) ,
-        AudioObjectType_BackCenter	= ( 1 << 17 ) 
+        AudioObjectType_BackCenter	= ( 1 << 17 ) ,
+        AudioObjectType_StereoLeft	= ( 1 << 18 ) ,
+        AudioObjectType_StereoRight	= ( 1 << 19 ) 
     } 	AudioObjectType;
 
 DEFINE_ENUM_FLAG_OPERATORS(AudioObjectType);

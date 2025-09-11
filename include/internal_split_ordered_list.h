@@ -566,8 +566,7 @@ public:
 
         if (_Inserted_node == _List_node)
         {
-            // If the insert succeeded, check that the order is correct and increment the element count
-            _Check_range();
+            // If the insert succeeded, increment the element count
             *_New_count = _InterlockedIncrement(&_M_element_count);
             return _Pairib(iterator(_List_node, this), true);
         }
@@ -605,8 +604,7 @@ public:
 
                 if (_Inserted_node == _Dummy_node)
                 {
-                    // Insertion succeeded, check the list for order violations
-                    _Check_range();
+                    // Insertion succeeded
                     return _Full_iterator(_Dummy_node, this);
                 }
                 else
@@ -691,21 +689,6 @@ public:
     }
 
 private:
-
-    // Check the list for order violations
-    void _Check_range()
-    {
-#if defined (_DEBUG)
-        for (_Full_iterator _Iterator = _Begin(); _Iterator != _End(); ++_Iterator)
-        {
-            _Full_iterator _Next_iterator = _Iterator;
-            ++_Next_iterator;
-
-            _ASSERT_EXPR(_Next_iterator == end() || _Next_iterator._Ptr->_Get_order_key() >= _Iterator._Ptr->_Get_order_key(), L"!!! List order inconsistency !!!");
-        }
-#endif  /* defined (_DEBUG) */
-    }
-
 #if _ITERATOR_DEBUG_LEVEL == 2
     void _Orphan_ptr(_Mytype& _Cont, _Nodeptr _Ptr) const
     {

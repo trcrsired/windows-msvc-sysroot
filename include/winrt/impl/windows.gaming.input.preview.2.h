@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -6,19 +6,19 @@
 #pragma once
 #ifndef WINRT_Windows_Gaming_Input_Preview_2_H
 #define WINRT_Windows_Gaming_Input_Preview_2_H
-#include "winrt/impl/windows.gaming.input.1.h"
-#include "winrt/impl/windows.gaming.input.custom.1.h"
-#include "winrt/impl/windows.system.1.h"
-#include "winrt/impl/windows.gaming.input.preview.1.h"
+#include "winrt/impl/Windows.Gaming.Input.1.h"
+#include "winrt/impl/Windows.Gaming.Input.Custom.1.h"
+#include "winrt/impl/Windows.System.1.h"
+#include "winrt/impl/Windows.Gaming.Input.Preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::Gaming::Input::Preview
 {
     struct HeadsetGeqGains
     {
-        int32_t band1Gain;
-        int32_t band2Gain;
-        int32_t band3Gain;
-        int32_t band4Gain;
-        int32_t band5Gain;
+        int32_t band1Gain {};
+        int32_t band2Gain {};
+        int32_t band3Gain {};
+        int32_t band4Gain {};
+        int32_t band5Gain {};
     };
     inline bool operator==(HeadsetGeqGains const& left, HeadsetGeqGains const& right) noexcept
     {
@@ -34,7 +34,7 @@ WINRT_EXPORT namespace winrt::Windows::Gaming::Input::Preview
         static auto GetParentProviderId(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider);
         static auto GetProviderId(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider);
     };
-    struct __declspec(empty_bases) LegacyGipGameControllerProvider : winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider
+    struct WINRT_IMPL_EMPTY_BASES LegacyGipGameControllerProvider : winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider
     {
         LegacyGipGameControllerProvider(std::nullptr_t) noexcept {}
         LegacyGipGameControllerProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Gaming::Input::Preview::ILegacyGipGameControllerProvider(ptr, take_ownership_from_abi) {}

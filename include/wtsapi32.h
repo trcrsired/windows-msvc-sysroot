@@ -349,7 +349,8 @@ typedef enum _WTS_INFO_CLASS {
     WTSConfigInfo,
     WTSValidationInfo,   // Info Class value used to fetch Validation Information through the WTSQuerySessionInformation
     WTSSessionAddressV4,
-    WTSIsRemoteSession
+    WTSIsRemoteSession,
+    WTSSessionActivityId
 } WTS_INFO_CLASS;
 
 /*=====================================================================

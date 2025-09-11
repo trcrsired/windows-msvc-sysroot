@@ -110,7 +110,7 @@ template<class _InIt,
 	_OutIt partial_sum_unchecked(_InIt _First, _InIt _Last,
 		_OutIt _Dest)
 	{	// compute partial sums into _Dest
-	typedef iterator_traits<_InIt>::value_type _Ty;
+	typedef typename iterator_traits<_InIt>::value_type _Ty;
 
 	if (_First == _Last)
 		return (_Dest);
@@ -143,7 +143,7 @@ template<class _InIt,
 	_OutIt partial_sum_unchecked(_InIt _First, _InIt _Last,
 		_OutIt _Dest, _Fn2 _Func)
 	{	// compute partial sums into _Dest, using _Func
-	typedef iterator_traits<_InIt>::value_type _Ty;
+	typedef typename iterator_traits<_InIt>::value_type _Ty;
 
 	if (_First == _Last)
 		return (_Dest);
@@ -177,7 +177,7 @@ template<class _InIt,
 	_OutIt adjacent_difference_unchecked(_InIt _First, _InIt _Last,
 		_OutIt _Dest)
 	{	// compute adjacent differences into _Dest
-	typedef iterator_traits<_InIt>::value_type _Ty;
+	typedef typename iterator_traits<_InIt>::value_type _Ty;
 
 	if (_First == _Last)
 		return (_Dest);
@@ -215,7 +215,7 @@ template<class _InIt,
 	_OutIt adjacent_difference_unchecked(_InIt _First, _InIt _Last,
 		_OutIt _Dest, _Fn2 _Func)
 	{	// compute adjacent differences into _Dest, using _Func
-	typedef iterator_traits<_InIt>::value_type _Ty;
+	typedef typename iterator_traits<_InIt>::value_type _Ty;
 
 	if (_First == _Last)
 		return (_Dest);

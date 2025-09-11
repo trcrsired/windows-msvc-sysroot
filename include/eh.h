@@ -53,7 +53,7 @@ struct _EXCEPTION_POINTERS;
     #endif // _M_CEE_PURE
 
     extern "C++" { // attach declarations to the global module, see N4910 [module.unit]/7
-        class type_info;
+        _VCRT_EXPORT_STD class type_info;
     } // extern "C++"
 
     _VCRTIMP int __cdecl _is_exception_typeof(

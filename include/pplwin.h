@@ -119,7 +119,7 @@ inline void set_ambient_scheduler(const ::std::shared_ptr<scheduler_interface>& 
 namespace details
 {
     // Used to report unobserved task exceptions in ppltasks.h
-    _CRTIMP2 void __cdecl _ReportUnobservedException();
+    [[noreturn]] _CRTIMP2 void __cdecl _ReportUnobservedException();
 
     namespace platform
     {

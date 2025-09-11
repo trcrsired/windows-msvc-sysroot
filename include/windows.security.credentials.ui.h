@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,11 +100,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.storage.streams.h"
+#include "Windows.Foundation.h"
+#include "Windows.Storage.Streams.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -626,7 +626,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICredentialPickerOptions = _uuidof(ICredentialPickerOptions);
+                    MIDL_CONST_ID IID& IID_ICredentialPickerOptions = __uuidof(ICredentialPickerOptions);
                 } /* UI */
             } /* Credentials */
         } /* Security */
@@ -682,7 +682,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICredentialPickerResults = _uuidof(ICredentialPickerResults);
+                    MIDL_CONST_ID IID& IID_ICredentialPickerResults = __uuidof(ICredentialPickerResults);
                 } /* UI */
             } /* Credentials */
         } /* Security */
@@ -732,7 +732,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ICredentialPickerStatics = _uuidof(ICredentialPickerStatics);
+                    MIDL_CONST_ID IID& IID_ICredentialPickerStatics = __uuidof(ICredentialPickerStatics);
                 } /* UI */
             } /* Credentials */
         } /* Security */
@@ -774,7 +774,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IUserConsentVerifierStatics = _uuidof(IUserConsentVerifierStatics);
+                    MIDL_CONST_ID IID& IID_IUserConsentVerifierStatics = __uuidof(IUserConsentVerifierStatics);
                 } /* UI */
             } /* Credentials */
         } /* Security */

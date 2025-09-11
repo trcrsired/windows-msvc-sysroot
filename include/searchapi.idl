@@ -63,7 +63,7 @@ import "filtereg.idl";
 // Interface to crawl scope manager
 //
 
-#include "searchcrawlscopemanager.idl"
+#include "SearchCrawlScopeManager.idl"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -71,7 +71,7 @@ import "filtereg.idl";
 // Notifications API and callback interfaces
 //
 
-#include "searchnotifications.idl"
+#include "SearchNotifications.idl"
 #include "srchntfyinlinesite.idl"
 
 
@@ -80,7 +80,7 @@ import "filtereg.idl";
 // Administer an individual catalog
 //
 
-#include "searchcatalog.idl"
+#include "SearchCatalog.idl"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -88,7 +88,7 @@ import "filtereg.idl";
 // Query manager API
 //
 
-#include "searchquery.idl"
+#include "SearchQuery.idl"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -96,7 +96,7 @@ import "filtereg.idl";
 // Administer service
 //
 
-#include "searchadmin.idl"
+#include "SearchAdmin.idl"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -105,7 +105,7 @@ import "filtereg.idl";
 // Note that these are implemented by tquery.dll.
 //
 
-#include "searchlanguagesupport.idl"
+#include "SearchLanguageSupport.idl"
 
 
 //
@@ -133,6 +133,8 @@ library SearchAPILib
    [public] interface ISearchCatalogManager;
 
    [public] interface ISearchCatalogManager2;
+
+   [public] interface ISearchCatalogManager3;
 
    [public] interface ISearchQueryHelper;
 

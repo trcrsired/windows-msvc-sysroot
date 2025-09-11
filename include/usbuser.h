@@ -35,7 +35,7 @@ Revision History:
 
 #include "usbiodef.h"
 
-#include <pshpack1.h>
+#include <PSHPACK1.H>
 
 #define USBUSER_VERSION     0x00000004
 
@@ -672,7 +672,7 @@ typedef struct _USBUSER_REFRESH_HCT_REG {
 } USBUSER_REFRESH_HCT_REG, *PUSBUSER_REFRESH_HCT_REG;
 
 
-#include <poppack.h>
+#include <POPPACK.H>
 
 #endif
 

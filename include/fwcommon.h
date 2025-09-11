@@ -55,7 +55,7 @@
 // we don't use.
 #define atoi64 _atoi64
 
-#include <polarity.h>
+#include <Polarity.h>
 
 
 #ifndef EXPORT_LOCKIT
@@ -96,10 +96,10 @@ public:
 	CHString &GetErrorText() { return m_sErrorText; }
 } ;
 
-#include "thrdbase.h"
-#include "refptrco.h"
-#include "methodco.h"
-#include "frquery.h"
+#include "ThrdBase.h"
+#include "RefPtrCo.h"
+#include "MethodCo.h"
+#include "FRQuery.h"
 #include "wbemglue.h"
 #include "instance.h"
 

@@ -189,19 +189,12 @@ public:
 	// types
 	typedef stack_select<_Value_t, _Cont_t, _Is_ref> _Mytype_t;
 	typedef stack_base<_Value_t, _Cont_t^> _Mybase_t;
-//	typedef _STLCLR IStack<_Value_t, _Cont_t> _Mycont_it;
-//	typedef cli::array<_Value_t> _Myarray_t;
 
-//	typedef int size_type;
-//	typedef int difference_type;
+	typedef typename _Mybase_t::container_type container_type;
+
 	typedef _Value_t value_type;
 	typedef value_type% reference;
 	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _Cont_t container_type;
 
 	// basics
 	stack_select()
@@ -233,19 +226,12 @@ public:
 	// types
 	typedef stack_select<_Value_t, _Cont_t, true> _Mytype_t;
 	typedef stack_base<_Value_t^, _Cont_t^> _Mybase_t;
-//	typedef _STLCLR IStack<_Value_t, _Cont_t> _Mycont_it;
-//	typedef cli::array<_Value_t> _Myarray_t;
 
-//	typedef int size_type;
-//	typedef int difference_type;
+	typedef typename _Mybase_t::container_type container_type;
+
 	typedef _Value_t value_type;
 	typedef value_type% reference;
 	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _Cont_t container_type;
 
 	// basics
 	stack_select()
@@ -280,13 +266,13 @@ public:
 
 	reference top() new
 		{	// get top element
-		return (c->back());
+		return (this->c->back());
 		}
 
 	// mutators
 	void push(value_type _Val)
 		{	// insert element at end
-		c->push_back(_Val);
+		this->c->push_back(_Val);
 		}
 	};
 	}	// namespace cliext::impl
@@ -312,18 +298,8 @@ public:
 		typename _Dehandle<_Cont_t>::type,
 		__is_ref_class(typename _Dehandle<_Value_t>::type)
 			&& !is_handle<_Value_t>::value> _Mybase_t;
-//	typedef cli::array<_Value_t> _Myarray_t;
 
-//	typedef int size_type;
-//	typedef int difference_type;
-//	typedef _Value_t value_type;
-//	typedef value_type% reference;
-//	typedef value_type% const_reference;
-
-//	typedef _Mycont_it generic_container;
-//	typedef value_type generic_value;
-
-//	typedef _Cont_t container_type;
+	typedef typename _Mybase_t::container_type container_type;
 
 	// basics
 	stack()

@@ -195,8 +195,8 @@ template<class _FwdIt1,
 	_FwdIt1 search_unchecked(_FwdIt1 _First1, _FwdIt1 _Last1,
 		_FwdIt2 _First2, _FwdIt2 _Last2)
 	{	// find first [_First2, _Last2) match
-	typedef iterator_traits<_FwdIt1>::difference_type _Diff1;
-	typedef iterator_traits<_FwdIt2>::difference_type _Diff2;
+	typedef typename iterator_traits<_FwdIt1>::difference_type _Diff1;
+	typedef typename iterator_traits<_FwdIt2>::difference_type _Diff2;
 
 	_Diff1 _Count1 = 0;
 	_Iter_distance(_First1, _Last1, _Count1);
@@ -233,8 +233,8 @@ template<class _FwdIt1,
 	_FwdIt1 search_unchecked(_FwdIt1 _First1, _FwdIt1 _Last1,
 		_FwdIt2 _First2, _FwdIt2 _Last2, _Pr _Pred)
 	{	// find first [_First2, _Last2) satisfying _Pred
-	typedef iterator_traits<_FwdIt1>::difference_type _Diff1;
-	typedef iterator_traits<_FwdIt2>::difference_type _Diff2;
+	typedef typename iterator_traits<_FwdIt1>::difference_type _Diff1;
+	typedef typename iterator_traits<_FwdIt2>::difference_type _Diff2;
 
 	_Diff1 _Count1 = 0;
 	_Iter_distance(_First1, _Last1, _Count1);
@@ -432,8 +432,8 @@ template<class _FwdIt1,
 	_FwdIt1 find_end_unchecked(_FwdIt1 _First1, _FwdIt1 _Last1,
 		_FwdIt2 _First2, _FwdIt2 _Last2)
 	{	// find last [_First2, _Last2) match
-	typedef iterator_traits<_FwdIt1>::difference_type _Diff1;
-	typedef iterator_traits<_FwdIt2>::difference_type _Diff2;
+	typedef typename iterator_traits<_FwdIt1>::difference_type _Diff1;
+	typedef typename iterator_traits<_FwdIt2>::difference_type _Diff2;
 
 	_Diff1 _Count1 = 0;
 	_Iter_distance(_First1, _Last1, _Count1);
@@ -476,8 +476,8 @@ template<class _FwdIt1,
 	_FwdIt1 find_end_unchecked(_FwdIt1 _First1, _FwdIt1 _Last1,
 		_FwdIt2 _First2, _FwdIt2 _Last2, _Pr _Pred)
 	{	// find last [_First2, _Last2) satisfying _Pred
-	typedef iterator_traits<_FwdIt1>::difference_type _Diff1;
-	typedef iterator_traits<_FwdIt2>::difference_type _Diff2;
+	typedef typename iterator_traits<_FwdIt1>::difference_type _Diff1;
+	typedef typename iterator_traits<_FwdIt2>::difference_type _Diff2;
 
 	_Diff1 _Count1 = 0;
 	_Iter_distance(_First1, _Last1, _Count1);
@@ -948,7 +948,7 @@ template<class _InIt,
 	_OutIt _Unique_copy(_InIt _First, _InIt _Last, _OutIt _Dest,
 		input_iterator_tag)
 	{	// copy compressing pairs that match, input iterators
-	typedef iterator_traits<_InIt>::value_type _Ty;
+	typedef typename iterator_traits<_InIt>::value_type _Ty;
 
 	_Ty _Val = *_First;
 
@@ -1012,7 +1012,7 @@ template<class _InIt,
 	_OutIt _Unique_copy(_InIt _First, _InIt _Last, _OutIt _Dest, _Pr _Pred,
 		input_iterator_tag)
 	{	// copy compressing pairs satisfying _Pred, input iterators
-	typedef iterator_traits<_InIt>::value_type _Ty;
+	typedef typename iterator_traits<_InIt>::value_type _Ty;
 
 	_Ty _Val = *_First;
 
@@ -1160,8 +1160,8 @@ template<class _RanIt> inline
 	void _Rotate(_RanIt _First, _RanIt _Mid, _RanIt _Last,
 			random_access_iterator_tag)
 	{	// rotate [_First, _Last), random-access iterators
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
-	typedef iterator_traits<_RanIt>::value_type _Ty;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_RanIt>::value_type _Ty;
 
 	_Diff _Shift = _Mid - _First;
 	_Diff _Count = _Last - _First;
@@ -1242,7 +1242,7 @@ inline int _Rand(void)
 template<class _RanIt> inline
 	void random_shuffle_unchecked(_RanIt _First, _RanIt _Last)
 	{	// shuffle [_First, _Last)
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
 
 	if (_First != _Last)
 		{	// shuffle nontrivial [_First, _Last)
@@ -1278,7 +1278,7 @@ template<class _RanIt,
 	class _Fn1> inline
 	void random_shuffle_unchecked(_RanIt _First, _RanIt _Last, _Fn1% _Func)
 	{	// shuffle [_First, _Last) using random function _Func
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
 
 	if (_First != _Last)
 		{	// shuffle nonempty [_First, _Last) using random function _Func
@@ -1331,6 +1331,64 @@ template<class _BidIt,
 	}
 
 		// TEMPLATE FUNCTION stable_partition
+template<class _BidIt,
+	class _Diff,
+	class _Ty> inline
+	_BidIt _XBuffered_rotate(_BidIt _First, _BidIt _Mid, _BidIt _Last,
+		_Diff _Count1, _Diff _Count2, _Temp_iterator<_Ty> _Tempbuf)
+	{	// rotate [_First, _Last) using temp buffer
+	if (_Count1 <= _Count2 && _Count1 <= _Tempbuf._Maxlen())
+		{	// buffer left partition, then copy parts
+		cliext::copy_unchecked(_First, _Mid, _Tempbuf._Init());
+		cliext::copy_unchecked(_Mid, _Last, _First);
+		return (cliext::copy_backward_unchecked(
+			_Tempbuf._First(), _Tempbuf._Last(), _Last));
+		}
+	else if (_Count2 <= _Tempbuf._Maxlen())
+		{	// buffer right partition, then copy parts
+		cliext::copy_unchecked(_Mid, _Last, _Tempbuf._Init());
+		cliext::copy_backward_unchecked(_First, _Mid, _Last);
+		return (cliext::copy_unchecked(
+			_Tempbuf._First(), _Tempbuf._Last(), _First));
+		}
+	else
+		{	// buffer too small, rotate in place
+		cliext::rotate_unchecked(_First, _Mid, _Last);
+		cliext::advance(_First, _Count2);
+		return (_First);
+		}
+	}
+
+#if  __cplusplus_cli
+template<class _BidIt,
+	class _Diff,
+	class _Ty> inline
+	_BidIt _XBuffered_rotate(_BidIt _First, _BidIt _Mid, _BidIt _Last,
+		_Diff _Count1, _Diff _Count2, _Temp_gc_iterator<_Ty> _Tempbuf)
+	{	// rotate [_First, _Last) using temp buffer
+	if (_Count1 <= _Count2 && _Count1 <= _Tempbuf._Maxlen())
+		{	// buffer left partition, then copy parts
+		cliext::copy_unchecked(_First, _Mid, _Tempbuf._Init());
+		cliext::copy_unchecked(_Mid, _Last, _First);
+		return (cliext::copy_backward_unchecked(
+			_Tempbuf._First(), _Tempbuf._Last(), _Last));
+		}
+	else if (_Count2 <= _Tempbuf._Maxlen())
+		{	// buffer right partition, then copy parts
+		cliext::copy_unchecked(_Mid, _Last, _Tempbuf._Init());
+		cliext::copy_backward_unchecked(_First, _Mid, _Last);
+		return (cliext::copy_unchecked(
+			_Tempbuf._First(), _Tempbuf._Last(), _First));
+		}
+	else
+		{	// buffer too small, rotate in place
+		cliext::rotate_unchecked(_First, _Mid, _Last);
+		cliext::advance(_First, _Count2);
+		return (_First);
+		}
+	}
+#endif	// __cplusplus_cli
+
 template<class _BidIt,
 	class _Pr,
 	class _Diff,
@@ -1424,8 +1482,8 @@ template<class _BidIt,
 	_BidIt stable_partition_unchecked(_BidIt _First, _BidIt _Last,
 		_Pr _Pred)
 	{	// partition preserving order of equivalents, using _Pred
-	typedef iterator_traits<_BidIt>::difference_type _Diff;
-	typedef iterator_traits<_BidIt>::value_type _Ty;
+	typedef typename iterator_traits<_BidIt>::difference_type _Diff;
+	typedef typename iterator_traits<_BidIt>::value_type _Ty;
 
 	if (_First == _Last)
 		return (_First);
@@ -1457,7 +1515,7 @@ template<class _BidIt,
 template<class _RanIt> inline
 	void _XDebug_heap(_RanIt _First, _RanIt _Last)
 	{	// test if range is a heap ordered by operator<
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
 
 	_Diff _Size = _Last - _First;
 	if (2 <= _Size)
@@ -1471,7 +1529,7 @@ template<class _RanIt,
 	class _Pr> inline
 	void _XDebug_heap(_RanIt _First, _RanIt _Last, _Pr _Pred)
 	{	// test if range is a heap ordered by _Pred
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
 
 	_Diff _Size = _Last - _First;
 	if (2 <= _Size)
@@ -1512,8 +1570,8 @@ template<class _RanIt,
 template<class _RanIt> inline
 	void push_heap_unchecked(_RanIt _First, _RanIt _Last)
 	{	// push *(_Last - 1) onto heap at [_First, _Last - 1), using operator<
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
-	typedef iterator_traits<_RanIt>::value_type _Ty;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_RanIt>::value_type _Ty;
 
 	--_Last;
 	_Diff _Count = _Last - _First;
@@ -1524,8 +1582,8 @@ template<class _RanIt> inline
 template<class _RanIt> inline
 	void push_heap(_RanIt _First, _RanIt _Last)
 	{	// push *(_Last - 1) onto heap at [_First, _Last - 1), using operator<
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
-	typedef iterator_traits<_RanIt>::value_type _Ty;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_RanIt>::value_type _Ty;
 
 	_STLCLRDB_RANGE(_First, _Last);
 	if (_First != _Last)
@@ -1558,8 +1616,8 @@ template<class _RanIt,
 	class _Pr> inline
 	void push_heap_unchecked(_RanIt _First, _RanIt _Last, _Pr _Pred)
 	{	// push *(_Last - 1) onto heap at [_First, _Last - 1), using _Pred
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
-	typedef iterator_traits<_RanIt>::value_type _Ty;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_RanIt>::value_type _Ty;
 
 	--_Last;
 	_Diff _Count = _Last - _First;
@@ -1571,8 +1629,8 @@ template<class _RanIt,
 	class _Pr> inline
 	void push_heap(_RanIt _First, _RanIt _Last, _Pr _Pred)
 	{	// push *(_Last - 1) onto heap at [_First, _Last - 1), using _Pred
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
-	typedef iterator_traits<_RanIt>::value_type _Ty;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_RanIt>::value_type _Ty;
 
 	_STLCLRDB_RANGE(_First, _Last);
 	_STLCLRDB_POINTER(_Pred);
@@ -1613,7 +1671,7 @@ template<class _RanIt,
 	void _XPop_heap(_RanIt _First, _RanIt _Last, _RanIt _Dest,
 		_Ty _Val)
 	{	// pop *_First to *_Dest and reheap, using operator<
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
 
 	*_Dest = *_First;
 	cliext::_XAdjust_heap(_First, _Diff(0), _Diff(_Last - _First), _Val);
@@ -1622,7 +1680,7 @@ template<class _RanIt,
 template<class _RanIt> inline
 	void pop_heap_unchecked(_RanIt _First, _RanIt _Last)
 	{	// pop *_First to *(_Last - 1) and reheap, using operator<
-	typedef iterator_traits<_RanIt>::value_type _Ty;
+	typedef typename iterator_traits<_RanIt>::value_type _Ty;
 
 	_XPop_heap(_First, _Last - 1, _Last - 1, _Ty(*(_Last - 1)));
 	}
@@ -1670,7 +1728,7 @@ template<class _RanIt,
 	void _XPop_heap(_RanIt _First, _RanIt _Last, _RanIt _Dest,
 		_Ty _Val, _Pr _Pred)
 	{	// pop *_First to *_Dest and reheap, using _Pred
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
 
 	*_Dest = *_First;
 	cliext::_XAdjust_heap(_First, _Diff(0), _Diff(_Last - _First),
@@ -1681,7 +1739,7 @@ template<class _RanIt,
 	class _Pr> inline
 	void pop_heap_unchecked(_RanIt _First, _RanIt _Last, _Pr _Pred)
 	{	// pop *_First to *(_Last - 1) and reheap, using _Pred
-	typedef iterator_traits<_RanIt>::value_type _Ty;
+	typedef typename iterator_traits<_RanIt>::value_type _Ty;
 
 	if (1 < _Last - _First)
 		_XPop_heap(_First, _Last - 1, _Last - 1, _Ty(*(_Last - 1)), _Pred);
@@ -1702,8 +1760,8 @@ template<class _RanIt,
 template<class _RanIt> inline
 	void make_heap_unchecked(_RanIt _First, _RanIt _Last)
 	{	// make [_First, _Last) into a heap, using operator<
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
-	typedef iterator_traits<_RanIt>::value_type _Ty;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_RanIt>::value_type _Ty;
 
 	if (1 < _Last - _First)
 		{	// make nontrivial heap
@@ -1730,8 +1788,8 @@ template<class _RanIt,
 	class _Pr> inline
 	void make_heap_unchecked(_RanIt _First, _RanIt _Last, _Pr _Pred)
 	{	// make [_First, _Last) into a heap, using _Pred
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
-	typedef iterator_traits<_RanIt>::value_type _Ty;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_RanIt>::value_type _Ty;
 
 	if (1 < _Last - _First)
 		{	// make nontrivial heap
@@ -1798,7 +1856,7 @@ template<class _FwdIt,
 	_FwdIt lower_bound_unchecked(_FwdIt _First, _FwdIt _Last,
 		/*const */ _Ty% _Val)
 	{	// find first element not before _Val, using operator<
-	typedef iterator_traits<_FwdIt>::difference_type _Diff;
+	typedef typename iterator_traits<_FwdIt>::difference_type _Diff;
 
 	_Diff _Count = 0;
 	_Iter_distance(_First, _Last, _Count);
@@ -1833,7 +1891,7 @@ template<class _FwdIt,
 	_FwdIt lower_bound_unchecked(_FwdIt _First, _FwdIt _Last,
 		const _Ty% _Val, _Pr _Pred)
 	{	// find first element not before _Val, using _Pred
-	typedef iterator_traits<_FwdIt>::difference_type _Diff;
+	typedef typename iterator_traits<_FwdIt>::difference_type _Diff;
 
 	_Diff _Count = 0;
 	_Iter_distance(_First, _Last, _Count);
@@ -1868,7 +1926,7 @@ template<class _FwdIt,
 	_FwdIt upper_bound_unchecked(_FwdIt _First, _FwdIt _Last,
 		const _Ty% _Val)
 	{	// find first element that _Val is before, using operator<
-	typedef iterator_traits<_FwdIt>::difference_type _Diff;
+	typedef typename iterator_traits<_FwdIt>::difference_type _Diff;
 
 	_Diff _Count = 0;
 	_Iter_distance(_First, _Last, _Count);
@@ -1902,7 +1960,7 @@ template<class _FwdIt,
 	_FwdIt upper_bound_unchecked(_FwdIt _First, _FwdIt _Last,
 		const _Ty% _Val, _Pr _Pred)
 	{	// find first element that _Val is before, using _Pred
-	typedef iterator_traits<_FwdIt>::difference_type _Diff;
+	typedef typename iterator_traits<_FwdIt>::difference_type _Diff;
 
 	_Diff _Count = 0;
 	_Iter_distance(_First, _Last, _Count);
@@ -1937,7 +1995,7 @@ template<class _FwdIt,
 	_PAIR_TYPE(_FwdIt) equal_range_unchecked(_FwdIt _First, _FwdIt _Last,
 		const _Ty% _Val)
 	{	// find range equivalent to _Val, using operator<
-	typedef iterator_traits<_FwdIt>::difference_type _Diff;
+	typedef typename iterator_traits<_FwdIt>::difference_type _Diff;
 
 	_Diff _Count = 0;
 	_Iter_distance(_First, _Last, _Count);
@@ -1984,7 +2042,7 @@ template<class _FwdIt,
 	_PAIR_TYPE(_FwdIt) equal_range_unchecked(_FwdIt _First, _FwdIt _Last,
 		const _Ty% _Val, _Pr _Pred)
 	{	// find range equivalent to _Val, using _Pred
-	typedef iterator_traits<_FwdIt>::difference_type _Diff;
+	typedef typename iterator_traits<_FwdIt>::difference_type _Diff;
 
 	_Diff _Count = 0;
 	_Iter_distance(_First, _Last, _Count);
@@ -2134,64 +2192,6 @@ template<class _InIt1,
 	}
 
 		// TEMPLATE FUNCTION inplace_merge
-template<class _BidIt,
-	class _Diff,
-	class _Ty> inline
-	_BidIt _XBuffered_rotate(_BidIt _First, _BidIt _Mid, _BidIt _Last,
-		_Diff _Count1, _Diff _Count2, _Temp_iterator<_Ty> _Tempbuf)
-	{	// rotate [_First, _Last) using temp buffer
-	if (_Count1 <= _Count2 && _Count1 <= _Tempbuf._Maxlen())
-		{	// buffer left partition, then copy parts
-		cliext::copy_unchecked(_First, _Mid, _Tempbuf._Init());
-		cliext::copy_unchecked(_Mid, _Last, _First);
-		return (cliext::copy_backward_unchecked(
-			_Tempbuf._First(), _Tempbuf._Last(), _Last));
-		}
-	else if (_Count2 <= _Tempbuf._Maxlen())
-		{	// buffer right partition, then copy parts
-		cliext::copy_unchecked(_Mid, _Last, _Tempbuf._Init());
-		cliext::copy_backward_unchecked(_First, _Mid, _Last);
-		return (cliext::copy_unchecked(
-			_Tempbuf._First(), _Tempbuf._Last(), _First));
-		}
-	else
-		{	// buffer too small, rotate in place
-		cliext::rotate_unchecked(_First, _Mid, _Last);
-		cliext::advance(_First, _Count2);
-		return (_First);
-		}
-	}
-
-#if  __cplusplus_cli
-template<class _BidIt,
-	class _Diff,
-	class _Ty> inline
-	_BidIt _XBuffered_rotate(_BidIt _First, _BidIt _Mid, _BidIt _Last,
-		_Diff _Count1, _Diff _Count2, _Temp_gc_iterator<_Ty> _Tempbuf)
-	{	// rotate [_First, _Last) using temp buffer
-	if (_Count1 <= _Count2 && _Count1 <= _Tempbuf._Maxlen())
-		{	// buffer left partition, then copy parts
-		cliext::copy_unchecked(_First, _Mid, _Tempbuf._Init());
-		cliext::copy_unchecked(_Mid, _Last, _First);
-		return (cliext::copy_backward_unchecked(
-			_Tempbuf._First(), _Tempbuf._Last(), _Last));
-		}
-	else if (_Count2 <= _Tempbuf._Maxlen())
-		{	// buffer right partition, then copy parts
-		cliext::copy_unchecked(_Mid, _Last, _Tempbuf._Init());
-		cliext::copy_backward_unchecked(_First, _Mid, _Last);
-		return (cliext::copy_unchecked(
-			_Tempbuf._First(), _Tempbuf._Last(), _First));
-		}
-	else
-		{	// buffer too small, rotate in place
-		cliext::rotate_unchecked(_First, _Mid, _Last);
-		cliext::advance(_First, _Count2);
-		return (_First);
-		}
-	}
-#endif	// __cplusplus_cli
-
 template<class _BidIt1,
 	class _BidIt2,
 	class _BidIt3> inline
@@ -2324,8 +2324,8 @@ template<class _BidIt,
 template<class _BidIt> inline
 	void inplace_merge_unchecked(_BidIt _First, _BidIt _Mid, _BidIt _Last)
 	{	// merge [_First, _Mid) with [_Mid, _Last), using operator<
-	typedef iterator_traits<_BidIt>::difference_type _Diff;
-	typedef iterator_traits<_BidIt>::value_type _Ty;
+	typedef typename iterator_traits<_BidIt>::difference_type _Diff;
+	typedef typename iterator_traits<_BidIt>::value_type _Ty;
 
 	if (_First != _Mid && _Mid != _Last)
 		{	// merge nontrivial sequence
@@ -2488,8 +2488,8 @@ template<class _BidIt,
 	void inplace_merge_unchecked(_BidIt _First, _BidIt _Mid, _BidIt _Last,
 		_Pr _Pred)
 	{	// merge [_First, _Mid) with [_Mid, _Last), using _Pred
-	typedef iterator_traits<_BidIt>::difference_type _Diff;
-	typedef iterator_traits<_BidIt>::value_type _Ty;
+	typedef typename iterator_traits<_BidIt>::difference_type _Diff;
+	typedef typename iterator_traits<_BidIt>::value_type _Ty;
 
 	if (_First != _Mid && _Mid != _Last)
 		{	// merge nontrivial sequence
@@ -2519,7 +2519,7 @@ template<class _BidIt,
 template<class _BidIt> inline
 	void _XInsertion_sort(_BidIt _First, _BidIt _Last)
 	{	// insertion sort [_First, _Last), using operator<
-	typedef iterator_traits<_BidIt>::value_type _Ty;
+	typedef typename iterator_traits<_BidIt>::value_type _Ty;
 
 	if (_First != _Last)
 		for (_BidIt _Next = _First; ++_Next != _Last; )
@@ -2676,7 +2676,7 @@ template<class _BidIt,
 	class _Pr> inline
 	void _XInsertion_sort(_BidIt _First, _BidIt _Last, _Pr _Pred)
 	{	// insertion sort [_First, _Last), using _Pred
-	typedef iterator_traits<_BidIt>::value_type _Ty;
+	typedef typename iterator_traits<_BidIt>::value_type _Ty;
 
 	if (_First != _Last)
 		for (_BidIt _Next = _First; ++_Next != _Last; )
@@ -2990,8 +2990,8 @@ template<class _BidIt,
 template<class _BidIt> inline
 	void stable_sort_unchecked(_BidIt _First, _BidIt _Last)
 	{	// sort preserving order of equivalents, using operator<
-	typedef iterator_traits<_BidIt>::difference_type _Diff;
-	typedef iterator_traits<_BidIt>::value_type _Ty;
+	typedef typename iterator_traits<_BidIt>::difference_type _Diff;
+	typedef typename iterator_traits<_BidIt>::value_type _Ty;
 
 	if (_First != _Last)
 		{	// sort nontrivial sequence
@@ -3175,8 +3175,8 @@ template<class _BidIt,
 	class _Pr> inline
 	void stable_sort_unchecked(_BidIt _First, _BidIt _Last, _Pr _Pred)
 	{	// sort preserving order of equivalents, using _Pred
-	typedef iterator_traits<_BidIt>::difference_type _Diff;
-	typedef iterator_traits<_BidIt>::value_type _Ty;
+	typedef typename iterator_traits<_BidIt>::difference_type _Diff;
+	typedef typename iterator_traits<_BidIt>::value_type _Ty;
 
 	if (_First != _Last)
 		{	// sort nontrivial sequence
@@ -3201,7 +3201,7 @@ template<class _BidIt,
 template<class _RanIt> inline
 	void partial_sort_unchecked(_RanIt _First, _RanIt _Mid, _RanIt _Last)
 	{	// order [First, _Last) up to _Mid, using operator<
-	typedef iterator_traits<_RanIt>::value_type _Ty;
+	typedef typename iterator_traits<_RanIt>::value_type _Ty;
 
 	cliext::make_heap_unchecked(_First, _Mid);
 
@@ -3227,7 +3227,7 @@ template<class _RanIt,
 	void partial_sort_unchecked(_RanIt _First, _RanIt _Mid, _RanIt _Last,
 		_Pr _Pred)
 	{	// order [First, _Last) up to _Mid, using _Pred
-	typedef iterator_traits<_RanIt>::value_type _Ty;
+	typedef typename iterator_traits<_RanIt>::value_type _Ty;
 
 	cliext::make_heap_unchecked(_First, _Mid, _Pred);
 
@@ -3255,8 +3255,8 @@ template<class _InIt,
 	_RanIt partial_sort_copy_unchecked(_InIt _First1, _InIt _Last1,
 		_RanIt _First2, _RanIt _Last2)
 	{	// copy [First1, _Last1) into [_First2, _Last2), using operator<
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
-	typedef iterator_traits<_InIt>::value_type _Ty;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_InIt>::value_type _Ty;
 
 	if (_First1 == _Last1 || _First2 == _Last2)
 		return (_First2);
@@ -3298,8 +3298,8 @@ template<class _InIt,
 	_RanIt partial_sort_copy_unchecked(_InIt _First1, _InIt _Last1,
 		_RanIt _First2, _RanIt _Last2, _Pr _Pred)
 	{	// copy [First1, _Last1) into [_First2, _Last2) using _Pred
-	typedef iterator_traits<_RanIt>::difference_type _Diff;
-	typedef iterator_traits<_InIt>::value_type _Ty;
+	typedef typename iterator_traits<_RanIt>::difference_type _Diff;
+	typedef typename iterator_traits<_InIt>::value_type _Ty;
 
 	if (_First1 == _Last1 || _First2 == _Last2)
 		return (_First2);

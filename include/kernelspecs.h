@@ -33,7 +33,7 @@
 #ifndef KERNELSPECS_H
 #define KERNELSPECS_H
 
-#include "driverspecs.h"
+#include "DriverSpecs.h"
 
 #if _MSC_VER > 1000 // [
 #pragma once

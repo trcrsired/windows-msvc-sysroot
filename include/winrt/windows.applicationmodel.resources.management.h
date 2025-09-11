@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,84 +7,228 @@
 #ifndef WINRT_Windows_ApplicationModel_Resources_Management_H
 #define WINRT_Windows_ApplicationModel_Resources_Management_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.3.4.5"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.3.4.5"
-#include "winrt/windows.applicationmodel.resources.h"
-#include "winrt/impl/windows.foundation.2.h"
-#include "winrt/impl/windows.foundation.collections.2.h"
-#include "winrt/impl/windows.applicationmodel.resources.management.2.h"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.1"
+#include "winrt/Windows.ApplicationModel.Resources.h"
+#include "winrt/impl/Windows.Foundation.2.h"
+#include "winrt/impl/Windows.Foundation.Collections.2.h"
+#include "winrt/impl/Windows.ApplicationModel.Resources.Management.2.h"
 namespace winrt::impl
 {
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::ApplicationModel::Resources::Management::IndexedResourceType) consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceCandidate<D>::Type() const
+    template <typename D> auto consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceCandidate<D>::Type() const
     {
         winrt::Windows::ApplicationModel::Resources::Management::IndexedResourceType value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate)->get_Type(reinterpret_cast<int32_t*>(&value)));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Type(reinterpret_cast<int32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>**)this;
+            check_hresult(_winrt_abi_type->get_Type(reinterpret_cast<int32_t*>(&value)));
+        }
         return value;
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Foundation::Uri) consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceCandidate<D>::Uri() const
+    template <typename D> auto consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceCandidate<D>::Uri() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate)->get_Uri(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Uri(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>**)this;
+            check_hresult(_winrt_abi_type->get_Uri(&value));
+        }
         return winrt::Windows::Foundation::Uri{ value, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Foundation::Collections::IMapView<hstring, hstring>) consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceCandidate<D>::Metadata() const
+    template <typename D> auto consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceCandidate<D>::Metadata() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate)->get_Metadata(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Metadata(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>**)this;
+            check_hresult(_winrt_abi_type->get_Metadata(&value));
+        }
         return winrt::Windows::Foundation::Collections::IMapView<hstring, hstring>{ value, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::ApplicationModel::Resources::Management::IndexedResourceQualifier>) consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceCandidate<D>::Qualifiers() const
+    template <typename D> auto consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceCandidate<D>::Qualifiers() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate)->get_Qualifiers(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Qualifiers(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>**)this;
+            check_hresult(_winrt_abi_type->get_Qualifiers(&value));
+        }
         return winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::ApplicationModel::Resources::Management::IndexedResourceQualifier>{ value, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceCandidate<D>::ValueAsString() const
+    template <typename D> auto consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceCandidate<D>::ValueAsString() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate)->get_ValueAsString(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_ValueAsString(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>**)this;
+            check_hresult(_winrt_abi_type->get_ValueAsString(&value));
+        }
         return hstring{ value, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceCandidate<D>::GetQualifierValue(param::hstring const& qualifierName) const
+    template <typename D> auto consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceCandidate<D>::GetQualifierValue(param::hstring const& qualifierName) const
     {
         void* qualifierValue{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate)->GetQualifierValue(*(void**)(&qualifierName), &qualifierValue));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetQualifierValue(*(void**)(&qualifierName), &qualifierValue));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate>**)this;
+            check_hresult(_winrt_abi_type->GetQualifierValue(*(void**)(&qualifierName), &qualifierValue));
+        }
         return hstring{ qualifierValue, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceQualifier<D>::QualifierName() const
+    template <typename D> auto consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceQualifier<D>::QualifierName() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceQualifier)->get_QualifierName(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceQualifier>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceQualifier, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceQualifier>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_QualifierName(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceQualifier>**)this;
+            check_hresult(_winrt_abi_type->get_QualifierName(&value));
+        }
         return hstring{ value, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceQualifier<D>::QualifierValue() const
+    template <typename D> auto consume_Windows_ApplicationModel_Resources_Management_IIndexedResourceQualifier<D>::QualifierValue() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceQualifier)->get_QualifierValue(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceQualifier>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceQualifier, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceQualifier>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_QualifierValue(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceQualifier>**)this;
+            check_hresult(_winrt_abi_type->get_QualifierValue(&value));
+        }
         return hstring{ value, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::ApplicationModel::Resources::Management::IndexedResourceCandidate) consume_Windows_ApplicationModel_Resources_Management_IResourceIndexer<D>::IndexFilePath(winrt::Windows::Foundation::Uri const& filePath) const
+    template <typename D> auto consume_Windows_ApplicationModel_Resources_Management_IResourceIndexer<D>::IndexFilePath(winrt::Windows::Foundation::Uri const& filePath) const
     {
         void* candidate{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexer)->IndexFilePath(*(void**)(&filePath), &candidate));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexer>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexer, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexer>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->IndexFilePath(*(void**)(&filePath), &candidate));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexer>**)this;
+            check_hresult(_winrt_abi_type->IndexFilePath(*(void**)(&filePath), &candidate));
+        }
         return winrt::Windows::ApplicationModel::Resources::Management::IndexedResourceCandidate{ candidate, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::ApplicationModel::Resources::Management::IndexedResourceCandidate>>) consume_Windows_ApplicationModel_Resources_Management_IResourceIndexer<D>::IndexFileContentsAsync(winrt::Windows::Foundation::Uri const& file) const
+    template <typename D> auto consume_Windows_ApplicationModel_Resources_Management_IResourceIndexer<D>::IndexFileContentsAsync(winrt::Windows::Foundation::Uri const& file) const
     {
         void* operation{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexer)->IndexFileContentsAsync(*(void**)(&file), &operation));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexer>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexer, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexer>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->IndexFileContentsAsync(*(void**)(&file), &operation));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexer>**)this;
+            check_hresult(_winrt_abi_type->IndexFileContentsAsync(*(void**)(&file), &operation));
+        }
         return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::ApplicationModel::Resources::Management::IndexedResourceCandidate>>{ operation, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::ApplicationModel::Resources::Management::ResourceIndexer) consume_Windows_ApplicationModel_Resources_Management_IResourceIndexerFactory<D>::CreateResourceIndexer(winrt::Windows::Foundation::Uri const& projectRoot) const
+    template <typename D> auto consume_Windows_ApplicationModel_Resources_Management_IResourceIndexerFactory<D>::CreateResourceIndexer(winrt::Windows::Foundation::Uri const& projectRoot) const
     {
         void* indexer{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexerFactory)->CreateResourceIndexer(*(void**)(&projectRoot), &indexer));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexerFactory>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexerFactory, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexerFactory>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->CreateResourceIndexer(*(void**)(&projectRoot), &indexer));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexerFactory>**)this;
+            check_hresult(_winrt_abi_type->CreateResourceIndexer(*(void**)(&projectRoot), &indexer));
+        }
         return winrt::Windows::ApplicationModel::Resources::Management::ResourceIndexer{ indexer, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::ApplicationModel::Resources::Management::ResourceIndexer) consume_Windows_ApplicationModel_Resources_Management_IResourceIndexerFactory2<D>::CreateResourceIndexerWithExtension(winrt::Windows::Foundation::Uri const& projectRoot, winrt::Windows::Foundation::Uri const& extensionDllPath) const
+    template <typename D> auto consume_Windows_ApplicationModel_Resources_Management_IResourceIndexerFactory2<D>::CreateResourceIndexerWithExtension(winrt::Windows::Foundation::Uri const& projectRoot, winrt::Windows::Foundation::Uri const& extensionDllPath) const
     {
         void* indexer{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexerFactory2)->CreateResourceIndexerWithExtension(*(void**)(&projectRoot), *(void**)(&extensionDllPath), &indexer));
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexerFactory2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexerFactory2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexerFactory2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->CreateResourceIndexerWithExtension(*(void**)(&projectRoot), *(void**)(&extensionDllPath), &indexer));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Resources::Management::IResourceIndexerFactory2>**)this;
+            check_hresult(_winrt_abi_type->CreateResourceIndexerWithExtension(*(void**)(&projectRoot), *(void**)(&extensionDllPath), &indexer));
+        }
         return winrt::Windows::ApplicationModel::Resources::Management::ResourceIndexer{ indexer, take_ownership_from_abi };
     }
 #ifndef WINRT_LEAN_AND_MEAN

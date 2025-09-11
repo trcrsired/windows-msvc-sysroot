@@ -11,11 +11,11 @@
 #ifndef _CALENDARDEVICESERVICE_H_
 #define _CALENDARDEVICESERVICE_H_
 
-#include <deviceservices.h>
+#include <DeviceServices.h>
 
-#include <messagedeviceservice.h>
+#include <MessageDeviceService.h>
 
-#include <syncdeviceservice.h>
+#include <SyncDeviceService.h>
 
 
 /*****************************************************************************

@@ -94,7 +94,7 @@ typedef interface IPrintWorkflowConfigurationNative IPrintWorkflowConfigurationN
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
-#include "printerextension.h"
+#include "PrinterExtension.h"
 #include "xpsobjectmodel_1.h"
 
 #ifdef __cplusplus

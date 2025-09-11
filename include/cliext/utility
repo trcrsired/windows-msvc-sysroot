@@ -81,7 +81,7 @@ public:
 	// mutators
 	void swap(pair% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth swapping, do it
 			_Value1_t _Tfirst = first;
 			_Value2_t _Tsecond = second;
@@ -204,7 +204,7 @@ public:
 	// mutators
 	void swap(light_pair% _Right)
 		{	// exchange contents with _Right
-		if ((Object^)this != %_Right)
+		if ((System::Object^)this != %_Right)
 			{	// worth swapping, do it
 			_Value1_t _Tfirst = first;
 			_Value2_t _Tsecond = second;

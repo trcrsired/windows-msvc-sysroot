@@ -23,7 +23,7 @@ Abstract:
 
 #if NTDDI_VERSION >= NTDDI_WIN7
 
-#include <propkeydef.h>
+#include <PropKeyDef.h>
 
 // C100BECA-D33A-4a4b-BF23-BBEF4663D017
 DEFINE_GUID( SID_WcnProvider, 0xC100BECA,0xD33A,0x4A4B,0xBF,0x23,0xBB,0xEF,0x46,0x63,0xD0,0x17);

@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,11 +100,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.graphics.effects.h"
+#include "Windows.Foundation.h"
+#include "Windows.Graphics.Effects.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */
@@ -266,7 +266,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ISceneLightingEffect = _uuidof(ISceneLightingEffect);
+                    MIDL_CONST_ID IID& IID_ISceneLightingEffect = __uuidof(ISceneLightingEffect);
                 } /* Effects */
             } /* Composition */
         } /* UI */
@@ -307,7 +307,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_ISceneLightingEffect2 = _uuidof(ISceneLightingEffect2);
+                    MIDL_CONST_ID IID& IID_ISceneLightingEffect2 = __uuidof(ISceneLightingEffect2);
                 } /* Effects */
             } /* Composition */
         } /* UI */

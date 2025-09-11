@@ -16,7 +16,7 @@
 #pragma region Desktop Family or OneCore Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM)
 
-#include <computedefs.h>
+#include <ComputeDefs.h>
 
 #ifdef __cplusplus
 extern "C" {

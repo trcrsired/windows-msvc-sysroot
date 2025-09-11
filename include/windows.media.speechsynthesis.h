@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #if !defined(WINDOWS_MEDIA_MEDIACONTROLCONTRACT_VERSION)
@@ -104,13 +104,13 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.media.h"
-#include "windows.media.core.h"
-#include "windows.storage.streams.h"
+#include "Windows.Foundation.h"
+#include "Windows.Media.h"
+#include "Windows.Media.Core.h"
+#include "Windows.Storage.Streams.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -794,7 +794,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IInstalledVoicesStatic = _uuidof(IInstalledVoicesStatic);
+                MIDL_CONST_ID IID& IID_IInstalledVoicesStatic = __uuidof(IInstalledVoicesStatic);
             } /* SpeechSynthesis */
         } /* Media */
     } /* Windows */
@@ -831,7 +831,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IInstalledVoicesStatic2 = _uuidof(IInstalledVoicesStatic2);
+                MIDL_CONST_ID IID& IID_IInstalledVoicesStatic2 = __uuidof(IInstalledVoicesStatic2);
             } /* SpeechSynthesis */
         } /* Media */
     } /* Windows */
@@ -875,7 +875,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ISpeechSynthesisStream = _uuidof(ISpeechSynthesisStream);
+                MIDL_CONST_ID IID& IID_ISpeechSynthesisStream = __uuidof(ISpeechSynthesisStream);
             } /* SpeechSynthesis */
         } /* Media */
     } /* Windows */
@@ -922,7 +922,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ISpeechSynthesizer = _uuidof(ISpeechSynthesizer);
+                MIDL_CONST_ID IID& IID_ISpeechSynthesizer = __uuidof(ISpeechSynthesizer);
             } /* SpeechSynthesis */
         } /* Media */
     } /* Windows */
@@ -958,7 +958,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ISpeechSynthesizer2 = _uuidof(ISpeechSynthesizer2);
+                MIDL_CONST_ID IID& IID_ISpeechSynthesizer2 = __uuidof(ISpeechSynthesizer2);
             } /* SpeechSynthesis */
         } /* Media */
     } /* Windows */
@@ -1003,7 +1003,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ISpeechSynthesizerOptions = _uuidof(ISpeechSynthesizerOptions);
+                MIDL_CONST_ID IID& IID_ISpeechSynthesizerOptions = __uuidof(ISpeechSynthesizerOptions);
             } /* SpeechSynthesis */
         } /* Media */
     } /* Windows */
@@ -1054,7 +1054,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ISpeechSynthesizerOptions2 = _uuidof(ISpeechSynthesizerOptions2);
+                MIDL_CONST_ID IID& IID_ISpeechSynthesizerOptions2 = __uuidof(ISpeechSynthesizerOptions2);
             } /* SpeechSynthesis */
         } /* Media */
     } /* Windows */
@@ -1099,7 +1099,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_ISpeechSynthesizerOptions3 = _uuidof(ISpeechSynthesizerOptions3);
+                MIDL_CONST_ID IID& IID_ISpeechSynthesizerOptions3 = __uuidof(ISpeechSynthesizerOptions3);
             } /* SpeechSynthesis */
         } /* Media */
     } /* Windows */
@@ -1147,7 +1147,7 @@ namespace ABI {
                         ) = 0;
                 };
 
-                extern MIDL_CONST_ID IID& IID_IVoiceInformation = _uuidof(IVoiceInformation);
+                MIDL_CONST_ID IID& IID_IVoiceInformation = __uuidof(IVoiceInformation);
             } /* SpeechSynthesis */
         } /* Media */
     } /* Windows */
@@ -1193,8 +1193,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *   Type can be activated via RoActivateInstance starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Media.SpeechSynthesis.IInstalledVoicesStatic interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Media.SpeechSynthesis.IInstalledVoicesStatic2 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Media.SpeechSynthesis.IInstalledVoicesStatic interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Media.SpeechSynthesis.ISpeechSynthesizer ** Default Interface **
@@ -2879,8 +2879,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *   Type can be activated via RoActivateInstance starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Media.SpeechSynthesis.IInstalledVoicesStatic interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Media.SpeechSynthesis.IInstalledVoicesStatic2 interface starting with version 5.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Media.SpeechSynthesis.IInstalledVoicesStatic interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Media.SpeechSynthesis.ISpeechSynthesizer ** Default Interface **

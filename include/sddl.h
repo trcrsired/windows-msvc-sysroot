@@ -206,6 +206,8 @@ extern "C" {
 #define SDDL_PROTECTED_USERS                TEXT("AP")      // Members of this group are afforded additional protections against authentication security threats.
 #define SDDL_KEY_ADMINS                     TEXT("KA")      // Members of this group have full control over all key credential objects in the domain
 #define SDDL_ENTERPRISE_KEY_ADMINS          TEXT("EK")      // Members of this group have full control over all key credential objects in the forest
+#define SDDL_USER_MODE_HARDWARE_OPERATORS   TEXT("HO")      // Members of this group may operate hardware from user mode
+#define SDDL_OPENSSH_USERS                  TEXT("SH")      // Members of this group may connect to this computer using SSH
 
 //
 // Note !! While making the above changes check if ScepReplaceNewAcronymsInSDDL
@@ -276,6 +278,7 @@ ConvertSidToStringSidW(
     _In_ PSID Sid,
     _Outptr_ LPWSTR* StringSid
     );
+
 #ifdef UNICODE
 #define ConvertSidToStringSid  ConvertSidToStringSidW
 #else
@@ -297,6 +300,7 @@ ConvertStringSidToSidW(
     _In_ LPCWSTR StringSid,
     _Outptr_ PSID* Sid
     );
+
 #ifdef UNICODE
 #define ConvertStringSidToSid  ConvertStringSidToSidW
 #else
@@ -322,6 +326,7 @@ ConvertStringSecurityDescriptorToSecurityDescriptorW(
     _Outptr_ PSECURITY_DESCRIPTOR* SecurityDescriptor,
     _Out_opt_ PULONG SecurityDescriptorSize
     );
+
 #ifdef UNICODE
 #define ConvertStringSecurityDescriptorToSecurityDescriptor  ConvertStringSecurityDescriptorToSecurityDescriptorW
 #else
@@ -349,6 +354,7 @@ ConvertSecurityDescriptorToStringSecurityDescriptorW(
     _Outptr_ LPWSTR* StringSecurityDescriptor,
     _Out_opt_ PULONG StringSecurityDescriptorLen
     );
+
 #ifdef UNICODE
 #define ConvertSecurityDescriptorToStringSecurityDescriptor  ConvertSecurityDescriptorToStringSecurityDescriptorW
 #else

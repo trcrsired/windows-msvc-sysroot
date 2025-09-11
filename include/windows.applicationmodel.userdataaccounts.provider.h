@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0xf0000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #endif // defined(SPECIFIC_API_CONTRACT_DEFINITIONS)
@@ -100,11 +100,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.applicationmodel.userdataaccounts.h"
+#include "Windows.Foundation.h"
+#include "Windows.ApplicationModel.UserDataAccounts.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -409,7 +409,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IUserDataAccountPartnerAccountInfo = _uuidof(IUserDataAccountPartnerAccountInfo);
+                    MIDL_CONST_ID IID& IID_IUserDataAccountPartnerAccountInfo = __uuidof(IUserDataAccountPartnerAccountInfo);
                 } /* Provider */
             } /* UserDataAccounts */
         } /* ApplicationModel */
@@ -456,7 +456,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IUserDataAccountProviderAddAccountOperation = _uuidof(IUserDataAccountProviderAddAccountOperation);
+                    MIDL_CONST_ID IID& IID_IUserDataAccountProviderAddAccountOperation = __uuidof(IUserDataAccountProviderAddAccountOperation);
                 } /* Provider */
             } /* UserDataAccounts */
         } /* ApplicationModel */
@@ -492,7 +492,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IUserDataAccountProviderOperation = _uuidof(IUserDataAccountProviderOperation);
+                    MIDL_CONST_ID IID& IID_IUserDataAccountProviderOperation = __uuidof(IUserDataAccountProviderOperation);
                 } /* Provider */
             } /* UserDataAccounts */
         } /* ApplicationModel */
@@ -534,7 +534,7 @@ namespace ABI {
                         virtual HRESULT STDMETHODCALLTYPE ReportCompleted(void) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IUserDataAccountProviderResolveErrorsOperation = _uuidof(IUserDataAccountProviderResolveErrorsOperation);
+                    MIDL_CONST_ID IID& IID_IUserDataAccountProviderResolveErrorsOperation = __uuidof(IUserDataAccountProviderResolveErrorsOperation);
                 } /* Provider */
             } /* UserDataAccounts */
         } /* ApplicationModel */
@@ -576,7 +576,7 @@ namespace ABI {
                         virtual HRESULT STDMETHODCALLTYPE ReportCompleted(void) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IUserDataAccountProviderSettingsOperation = _uuidof(IUserDataAccountProviderSettingsOperation);
+                    MIDL_CONST_ID IID& IID_IUserDataAccountProviderSettingsOperation = __uuidof(IUserDataAccountProviderSettingsOperation);
                 } /* Provider */
             } /* UserDataAccounts */
         } /* ApplicationModel */

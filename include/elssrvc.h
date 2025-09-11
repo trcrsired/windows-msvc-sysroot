@@ -15,7 +15,7 @@ Abstract:
 #ifndef __ELS_SRVC__
 #define __ELS_SRVC__
 
-#include <windef.h>
+#include <WinDef.h>
 
 // {CF7E00B1-909B-4d95-A8F4-611F7C377702}
 static const GUID ELS_GUID_LANGUAGE_DETECTION =

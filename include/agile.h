@@ -50,15 +50,15 @@ namespace Platform
 			}
 			AgileHelper(AgileHelper && other) : _p(other._p), _release(other._release)
 			{
-				_other._p = nullptr;
-				_other._release = true;
+				other._p = nullptr;
+				other._release = true;
 			}
-			AgileHelper operator=(AgileHelper && other)
+			AgileHelper& operator=(AgileHelper && other)
 			{
 				_p = other._p;
 				_release = other._release;
-				_other._p = nullptr;
-				_other._release = true;
+				other._p = nullptr;
+				other._release = true;
 				return *this;
 			}
 
@@ -83,7 +83,7 @@ namespace Platform
 			}
 		private:
 			AgileHelper(const AgileHelper&);
-			AgileHelper operator=(const AgileHelper&) ;
+			AgileHelper& operator=(const AgileHelper&) ;
 		};
 		template <typename T>
 		struct __remove_hat

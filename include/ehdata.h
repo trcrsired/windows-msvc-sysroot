@@ -196,7 +196,7 @@ typedef const struct _s_UnwindMapEntry {
 #define UWE_ACTION(uwe)			((uwe).action)
 #endif
 
-#if defined(_M_X64) || defined(_M_ARM) || defined(_M_ARM64) || defined(_CHPE_X86_ARM64_EH_)
+#if defined(_M_X64) || defined(_M_ARM64) || defined(_CHPE_X86_ARM64_EH_)
 typedef struct IptoStateMapEntry {
 	unsigned int	Ip;		// Image relative offset of IP
 	__ehstate_t		State;
@@ -249,7 +249,16 @@ typedef const struct _s_FuncInfo
 	int					dispTryBlockMap;	// Image relative offset of the handler map
 	unsigned int		nIPMapEntries;		// # entries in the IP-to-state map. NYI (reserved)
 	int					dispIPtoStateMap;	// Image relative offset of the IP to state map
-	int					dispUwindHelp;		// Displacement of unwind helpers from base
+	union
+	{
+		int				dispUwindHelp;		// Displacement of unwind helpers from base
+		struct
+		{
+			short dispUwindHelpFixed;	    // Displacement of unwind helpers from base (fixed part without SVE)
+			unsigned short dispUwindHelpSVE;// Number of SVE slots used for the frame
+		} s;								// 's' layout is used if the frame has SVE, indicated by
+											// FI_FRAME_HAS_SVE bit in EHFlags
+	} u;
 	int					dispESTypeList;		// Image relative list of types for exception specifications
 #else
 	UnwindMapEntry*		pUnwindMap;			// Where the unwind map is
@@ -291,7 +300,9 @@ typedef const struct _s_FuncInfo
 #if _EH_RELATIVE_FUNCINFO
 #define FUNC_IPTOSTATE(fi,n,ib)	(FUNC_IPMAP(fi,ib)[n])
 #define FUNC_PIPTOSTATE(fi,n,ib)(&FUNC_IPTOSTATE(fi,n,ib))
-#define FUNC_DISPUNWINDHELP(fi)	((fi).dispUwindHelp)
+#define FUNC_DISPUNWINDHELP(fi)	((fi).u.dispUwindHelp)
+#define FUNC_DISPUNWINDHELPFIXED(fi) ((fi).u.s.dispUwindHelpFixed)
+#define FUNC_DISPUNWINDHELPSVE(fi)   ((fi).u.s.dispUwindHelpSVE)
 #else
 #define FUNC_IPTOSTATE(fi,n) 	__ERROR_NYI__
 #endif
@@ -329,43 +340,6 @@ struct EHRegistrationNode {
 # define PRN_FRAME(prn)		((void*)(((char*)prn) + FRAME_OFFSET))
 
 typedef void DispatcherContext;		// Meaningless on x86
-
-#elif defined(_M_ARM)
-
-#define PRN_NEXT(prn)		__ERROR__
-#define PRN_HANDLER(prn)	__ERROR__
-#define PRN_STATE(prn)		__ERROR__
-#define PRN_STACK(prn)		__ERROR__
-#define PRN_FRAME(prn)		__ERROR__
-
-#define FRAME_OFFSET		0
-
-typedef struct _UNWIND_INFO {
-	unsigned short Version;
-	unsigned short Flags;
-	unsigned int DataLength;
-} UNWIND_INFO, * PUNWIND_INFO;
-
-typedef struct _xDISPATCHER_CONTEXT {
-    ULONG ControlPc;
-    ULONG ImageBase;
-    PRUNTIME_FUNCTION FunctionEntry;
-    ULONG EstablisherFrame;
-    ULONG TargetPc;
-    PCONTEXT ContextRecord;
-    PVOID LanguageHandler;
-    PVOID HandlerData;
-    PVOID HistoryTable;
-    ULONG ScopeIndex;
-    BOOLEAN ControlPcIsUnwound;
-    PUCHAR NonVolatileRegisters;
-} DispatcherContext;					// changed the case of the name to conform to EH conventions
-
-//
-// On ARM we don't have a registration node, just a pointer to the stack frame base
-//
-
-typedef ULONG EHRegistrationNode;
 
 #elif defined(_M_X64)
 
@@ -534,7 +508,10 @@ typedef struct EHExceptionRecord {
 #define PER_MAGICNUM(per)	((per)->params.magicNumber)
 #define PER_PEXCEPTOBJ(per)	((per)->params.pExceptionObject)
 #define PER_PTHROW(per)		((per)->params.pThrowInfo)
-#define PER_EXCEPTINFO(per)	((PULONG_PTR)&(PER_MAGICNUM(per)))
+// EHExceptionRecord is a view of EXCEPTION_RECORD.
+// PER_EXCEPTINFO is used to access the full ExceptionInformation field of EXCEPTION_RECORD
+// which is only partially covered by EHExceptionRecord->params.
+#define PER_EXCEPTINFO(per)	(*(ULONG_PTR(*)[EXCEPTION_MAXIMUM_PARAMETERS])&(PER_MAGICNUM(per)))
 #if _EH_RELATIVE_TYPEINFO
 #define PER_PTHROWIB(per)	((per)->params.pThrowImageBase)
 #endif

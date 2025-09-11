@@ -96,11 +96,11 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "asyncinfo.h"
-#include "eventtoken.h"
+#include "AsyncInfo.h"
+#include "EventToken.h"
 #include "windowscontracts.h"
-#include "windows.foundation.h"
-#include "windows.devices.h"
+#include "Windows.Foundation.h"
+#include "Windows.Devices.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 
@@ -315,7 +315,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IAdcControllerProvider = _uuidof(IAdcControllerProvider);
+                    MIDL_CONST_ID IID& IID_IAdcControllerProvider = __uuidof(IAdcControllerProvider);
                 } /* Provider */
             } /* Adc */
         } /* Devices */
@@ -351,7 +351,7 @@ namespace ABI {
                             ) = 0;
                     };
 
-                    extern MIDL_CONST_ID IID& IID_IAdcProvider = _uuidof(IAdcProvider);
+                    MIDL_CONST_ID IID& IID_IAdcProvider = __uuidof(IAdcProvider);
                 } /* Provider */
             } /* Adc */
         } /* Devices */

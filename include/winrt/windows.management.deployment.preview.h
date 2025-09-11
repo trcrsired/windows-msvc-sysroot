@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.220110.5
+// C++/WinRT v2.0.250303.1
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,28 +7,64 @@
 #ifndef WINRT_Windows_Management_Deployment_Preview_H
 #define WINRT_Windows_Management_Deployment_Preview_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.3.4.5"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.3.4.5"
-#include "winrt/windows.management.deployment.h"
-#include "winrt/impl/windows.management.deployment.preview.2.h"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.1"
+#include "winrt/Windows.Management.Deployment.h"
+#include "winrt/impl/Windows.Management.Deployment.Preview.2.h"
 namespace winrt::impl
 {
-    template <typename D> WINRT_IMPL_AUTO(winrt::Windows::Management::Deployment::Preview::InstalledClassicAppInfo) consume_Windows_Management_Deployment_Preview_IClassicAppManagerStatics<D>::FindInstalledApp(param::hstring const& appUninstallKey) const
+    template <typename D> auto consume_Windows_Management_Deployment_Preview_IClassicAppManagerStatics<D>::FindInstalledApp(param::hstring const& appUninstallKey) const
     {
         void* result{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Management::Deployment::Preview::IClassicAppManagerStatics)->FindInstalledApp(*(void**)(&appUninstallKey), &result));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Management::Deployment::Preview::IClassicAppManagerStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Management::Deployment::Preview::IClassicAppManagerStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::Preview::IClassicAppManagerStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->FindInstalledApp(*(void**)(&appUninstallKey), &result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::Preview::IClassicAppManagerStatics>**)this;
+            check_hresult(_winrt_abi_type->FindInstalledApp(*(void**)(&appUninstallKey), &result));
+        }
         return winrt::Windows::Management::Deployment::Preview::InstalledClassicAppInfo{ result, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_Management_Deployment_Preview_IInstalledClassicAppInfo<D>::DisplayName() const
+    template <typename D> auto consume_Windows_Management_Deployment_Preview_IInstalledClassicAppInfo<D>::DisplayName() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Management::Deployment::Preview::IInstalledClassicAppInfo)->get_DisplayName(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Management::Deployment::Preview::IInstalledClassicAppInfo>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Management::Deployment::Preview::IInstalledClassicAppInfo, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::Preview::IInstalledClassicAppInfo>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_DisplayName(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::Preview::IInstalledClassicAppInfo>**)this;
+            check_hresult(_winrt_abi_type->get_DisplayName(&value));
+        }
         return hstring{ value, take_ownership_from_abi };
     }
-    template <typename D> WINRT_IMPL_AUTO(hstring) consume_Windows_Management_Deployment_Preview_IInstalledClassicAppInfo<D>::DisplayVersion() const
+    template <typename D> auto consume_Windows_Management_Deployment_Preview_IInstalledClassicAppInfo<D>::DisplayVersion() const
     {
         void* value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::Management::Deployment::Preview::IInstalledClassicAppInfo)->get_DisplayVersion(&value));
+        if constexpr (!std::is_same_v<D, winrt::Windows::Management::Deployment::Preview::IInstalledClassicAppInfo>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Management::Deployment::Preview::IInstalledClassicAppInfo, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::Preview::IInstalledClassicAppInfo>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_DisplayVersion(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::Preview::IInstalledClassicAppInfo>**)this;
+            check_hresult(_winrt_abi_type->get_DisplayVersion(&value));
+        }
         return hstring{ value, take_ownership_from_abi };
     }
 #ifndef WINRT_LEAN_AND_MEAN

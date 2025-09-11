@@ -85,30 +85,6 @@ _CRT_BEGIN_C_HEADER
         SETJMP_FLOAT128 Xmm15;
     } _JUMP_BUFFER;
 
-#elif defined _M_ARM
-
-    #define _JBLEN  28
-    #define _JBTYPE int
-
-    typedef struct _JUMP_BUFFER
-    {
-        unsigned long Frame;
-
-        unsigned long R4;
-        unsigned long R5;
-        unsigned long R6;
-        unsigned long R7;
-        unsigned long R8;
-        unsigned long R9;
-        unsigned long R10;
-        unsigned long R11;
-
-        unsigned long Sp;
-        unsigned long Pc;
-        unsigned long Fpscr;
-        unsigned long long D[8]; // D8-D15 VFP/NEON regs
-    } _JUMP_BUFFER;
-
 #elif defined _M_ARM64
 
     #define _JBLEN  24
