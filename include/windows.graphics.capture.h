@@ -104,17 +104,17 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "AsyncInfo.h"
-#include "EventToken.h"
+#include "asyncinfo.h"
+#include "eventtoken.h"
 #include "windowscontracts.h"
-#include "Windows.Foundation.h"
-#include "Windows.Graphics.h"
-#include "Windows.Graphics.DirectX.h"
-#include "Windows.Graphics.DirectX.Direct3D11.h"
-#include "Windows.Security.Authorization.AppCapabilityAccess.h"
-#include "Windows.System.h"
-#include "Windows.UI.h"
-#include "Windows.UI.Composition.h"
+#include "windows.foundation.h"
+#include "windows.graphics.h"
+#include "windows.graphics.directx.h"
+#include "windows.graphics.directx.direct3d11.h"
+#include "windows.security.authorization.appcapabilityaccess.h"
+#include "windows.system.h"
+#include "windows.ui.h"
+#include "windows.ui.composition.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 

@@ -6,13 +6,13 @@
 #pragma once
 #ifndef WINRT_Windows_System_RemoteSystems_2_H
 #define WINRT_Windows_System_RemoteSystems_2_H
-#include "winrt/impl/Windows.ApplicationModel.AppService.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Networking.1.h"
-#include "winrt/impl/Windows.Security.Credentials.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.System.RemoteSystems.1.h"
+#include "winrt/impl/windows.applicationmodel.appservice.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.networking.1.h"
+#include "winrt/impl/windows.security.credentials.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.system.remotesystems.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::RemoteSystems
 {
     struct KnownRemoteSystemCapabilities

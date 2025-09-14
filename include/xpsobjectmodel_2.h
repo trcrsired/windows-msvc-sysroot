@@ -64,7 +64,7 @@ typedef interface IXpsDocumentPackageTarget3D IXpsDocumentPackageTarget3D;
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
-#include "XpsObjectModel_1.h"
+#include "xpsobjectmodel_1.h"
 
 #ifdef __cplusplus
 extern "C"{

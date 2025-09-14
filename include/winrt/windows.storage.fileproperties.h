@@ -9,13 +9,13 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Storage.h"
-#include "winrt/impl/Windows.Devices.Geolocation.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Storage.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.Storage.FileProperties.2.h"
+#include "winrt/windows.storage.h"
+#include "winrt/impl/windows.devices.geolocation.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.storage.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.storage.fileproperties.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Storage_FileProperties_IBasicProperties<D>::Size() const

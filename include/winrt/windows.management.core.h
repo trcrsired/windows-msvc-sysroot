@@ -9,9 +9,9 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Management.h"
-#include "winrt/impl/Windows.Storage.2.h"
-#include "winrt/impl/Windows.Management.Core.2.h"
+#include "winrt/windows.management.h"
+#include "winrt/impl/windows.storage.2.h"
+#include "winrt/impl/windows.management.core.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Management_Core_IApplicationDataManagerStatics<D>::CreateForPackageFamily(param::hstring const& packageFamilyName) const

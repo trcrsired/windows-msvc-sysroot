@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Composition_1_H
 #define WINRT_Windows_UI_Composition_1_H
-#include "winrt/impl/Windows.UI.Composition.0.h"
+#include "winrt/impl/windows.ui.composition.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Composition
 {
     struct WINRT_IMPL_EMPTY_BASES IAmbientLight :

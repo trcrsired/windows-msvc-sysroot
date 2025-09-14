@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Media_ContentRestrictions_2_H
 #define WINRT_Windows_Media_ContentRestrictions_2_H
-#include "winrt/impl/Windows.Media.ContentRestrictions.1.h"
+#include "winrt/impl/windows.media.contentrestrictions.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::ContentRestrictions
 {
     struct WINRT_IMPL_EMPTY_BASES ContentRestrictionsBrowsePolicy : winrt::Windows::Media::ContentRestrictions::IContentRestrictionsBrowsePolicy

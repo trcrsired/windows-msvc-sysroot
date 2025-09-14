@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Cryptography_Certificates_2_H
 #define WINRT_Windows_Security_Cryptography_Certificates_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Security.Cryptography.Certificates.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.security.cryptography.certificates.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Cryptography::Certificates
 {
     struct WINRT_IMPL_EMPTY_BASES Certificate : winrt::Windows::Security::Cryptography::Certificates::ICertificate,

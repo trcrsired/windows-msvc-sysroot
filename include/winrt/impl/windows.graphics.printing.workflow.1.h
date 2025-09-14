@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Printing_Workflow_1_H
 #define WINRT_Windows_Graphics_Printing_Workflow_1_H
-#include "winrt/impl/Windows.ApplicationModel.Activation.0.h"
-#include "winrt/impl/Windows.Graphics.Printing.Workflow.0.h"
+#include "winrt/impl/windows.applicationmodel.activation.0.h"
+#include "winrt/impl/windows.graphics.printing.workflow.0.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::Workflow
 {
     struct WINRT_IMPL_EMPTY_BASES IPrintWorkflowBackgroundSession :

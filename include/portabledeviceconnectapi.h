@@ -83,7 +83,7 @@ typedef struct EnumBthMtpConnectors EnumBthMtpConnectors;
 /* header files for imported files */
 #include "wtypes.h"
 #include "propsys.h"
-#include "PortableDeviceConnectImports.h"
+#include "portabledeviceconnectimports.h"
 
 #ifdef __cplusplus
 extern "C"{

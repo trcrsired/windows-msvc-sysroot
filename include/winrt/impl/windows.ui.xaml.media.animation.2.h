@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Media_Animation_2_H
 #define WINRT_Windows_UI_Xaml_Media_Animation_2_H
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.UI.Xaml.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Controls.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Media.Animation.1.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.ui.xaml.2.h"
+#include "winrt/impl/windows.ui.xaml.controls.2.h"
+#include "winrt/impl/windows.ui.xaml.media.animation.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Media::Animation
 {
     struct KeyTime

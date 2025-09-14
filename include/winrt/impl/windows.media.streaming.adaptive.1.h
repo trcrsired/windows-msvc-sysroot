@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Streaming_Adaptive_1_H
 #define WINRT_Windows_Media_Streaming_Adaptive_1_H
-#include "winrt/impl/Windows.Media.Core.0.h"
-#include "winrt/impl/Windows.Media.Streaming.Adaptive.0.h"
+#include "winrt/impl/windows.media.core.0.h"
+#include "winrt/impl/windows.media.streaming.adaptive.0.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Streaming::Adaptive
 {
     struct WINRT_IMPL_EMPTY_BASES IAdaptiveMediaSource :

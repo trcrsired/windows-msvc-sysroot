@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_PackageExtensions_2_H
 #define WINRT_Windows_ApplicationModel_PackageExtensions_2_H
-#include "winrt/impl/Windows.ApplicationModel.PackageExtensions.1.h"
+#include "winrt/impl/windows.applicationmodel.packageextensions.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::PackageExtensions
 {
     struct WINRT_IMPL_EMPTY_BASES PackageExtension : winrt::Windows::ApplicationModel::PackageExtensions::IPackageExtension

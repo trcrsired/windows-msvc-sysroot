@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Core_AnimationMetrics_1_H
 #define WINRT_Windows_UI_Core_AnimationMetrics_1_H
-#include "winrt/impl/Windows.UI.Core.AnimationMetrics.0.h"
+#include "winrt/impl/windows.ui.core.animationmetrics.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Core::AnimationMetrics
 {
     struct WINRT_IMPL_EMPTY_BASES IAnimationDescription :

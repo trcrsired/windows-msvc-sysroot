@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Data_Json_1_H
 #define WINRT_Windows_Data_Json_1_H
-#include "winrt/impl/Windows.Data.Json.0.h"
+#include "winrt/impl/windows.data.json.0.h"
 WINRT_EXPORT namespace winrt::Windows::Data::Json
 {
     struct WINRT_IMPL_EMPTY_BASES IJsonArray :

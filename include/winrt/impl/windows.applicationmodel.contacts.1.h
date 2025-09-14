@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Contacts_1_H
 #define WINRT_Windows_ApplicationModel_Contacts_1_H
-#include "winrt/impl/Windows.Foundation.0.h"
-#include "winrt/impl/Windows.ApplicationModel.Contacts.0.h"
+#include "winrt/impl/windows.foundation.0.h"
+#include "winrt/impl/windows.applicationmodel.contacts.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Contacts
 {
     struct WINRT_IMPL_EMPTY_BASES IAggregateContactManager :

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Devices_1_H
 #define WINRT_Windows_Media_Devices_1_H
-#include "winrt/impl/Windows.Media.Devices.0.h"
+#include "winrt/impl/windows.media.devices.0.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Devices
 {
     struct WINRT_IMPL_EMPTY_BASES IAdvancedPhotoCaptureSettings :

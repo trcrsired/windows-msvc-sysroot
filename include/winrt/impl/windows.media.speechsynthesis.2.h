@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_Media_SpeechSynthesis_2_H
 #define WINRT_Windows_Media_SpeechSynthesis_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Media.Core.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Media.SpeechSynthesis.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.media.core.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.media.speechsynthesis.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::SpeechSynthesis
 {
     struct WINRT_IMPL_EMPTY_BASES SpeechSynthesisStream : winrt::Windows::Media::SpeechSynthesis::ISpeechSynthesisStream,

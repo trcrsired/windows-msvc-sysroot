@@ -9,13 +9,13 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Media.Devices.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Foundation.Numerics.2.h"
-#include "winrt/impl/Windows.Media.MediaProperties.2.h"
-#include "winrt/impl/Windows.Perception.Spatial.2.h"
-#include "winrt/impl/Windows.Media.Devices.Core.2.h"
+#include "winrt/windows.media.devices.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.foundation.numerics.2.h"
+#include "winrt/impl/windows.media.mediaproperties.2.h"
+#include "winrt/impl/windows.perception.spatial.2.h"
+#include "winrt/impl/windows.media.devices.core.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Media_Devices_Core_ICameraIntrinsics<D>::FocalLength() const

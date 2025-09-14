@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Capture_Frames_2_H
 #define WINRT_Windows_Media_Capture_Frames_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Media.Capture.Frames.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.media.capture.frames.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Capture::Frames
 {
     struct WINRT_IMPL_EMPTY_BASES AudioMediaFrame : winrt::Windows::Media::Capture::Frames::IAudioMediaFrame

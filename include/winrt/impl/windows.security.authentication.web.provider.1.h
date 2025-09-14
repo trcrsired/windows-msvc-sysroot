@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Authentication_Web_Provider_1_H
 #define WINRT_Windows_Security_Authentication_Web_Provider_1_H
-#include "winrt/impl/Windows.Security.Authentication.Web.Provider.0.h"
+#include "winrt/impl/windows.security.authentication.web.provider.0.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Web::Provider
 {
     struct WINRT_IMPL_EMPTY_BASES IWebAccountClientView :

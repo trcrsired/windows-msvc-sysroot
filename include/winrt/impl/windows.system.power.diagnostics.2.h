@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_System_Power_Diagnostics_2_H
 #define WINRT_Windows_System_Power_Diagnostics_2_H
-#include "winrt/impl/Windows.System.Power.Diagnostics.1.h"
+#include "winrt/impl/windows.system.power.diagnostics.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::Power::Diagnostics
 {
     struct BackgroundEnergyDiagnostics

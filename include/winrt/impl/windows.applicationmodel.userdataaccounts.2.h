@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_UserDataAccounts_2_H
 #define WINRT_Windows_ApplicationModel_UserDataAccounts_2_H
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.ApplicationModel.UserDataAccounts.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.applicationmodel.userdataaccounts.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserDataAccounts
 {
     struct WINRT_IMPL_EMPTY_BASES UserDataAccount : winrt::Windows::ApplicationModel::UserDataAccounts::IUserDataAccount,

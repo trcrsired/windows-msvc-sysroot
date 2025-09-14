@@ -107,7 +107,7 @@ typedef interface IFunctionDiscoveryServiceProvider IFunctionDiscoveryServicePro
 #include "oaidl.h"
 #include "ocidl.h"
 #include "propsys.h"
-#include "FunctionDiscoveryAPI.h"
+#include "functiondiscoveryapi.h"
 
 #ifdef __cplusplus
 extern "C"{

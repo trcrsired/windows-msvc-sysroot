@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_AppService_2_H
 #define WINRT_Windows_ApplicationModel_AppService_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.System.RemoteSystems.1.h"
-#include "winrt/impl/Windows.ApplicationModel.AppService.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.system.remotesystems.1.h"
+#include "winrt/impl/windows.applicationmodel.appservice.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::AppService
 {
     struct AppServiceCatalog

@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Input_Preview_Text_2_H
 #define WINRT_Windows_UI_Input_Preview_Text_2_H
-#include "winrt/impl/Windows.UI.2.h"
-#include "winrt/impl/Windows.UI.Text.2.h"
-#include "winrt/impl/Windows.UI.Input.Preview.Text.1.h"
+#include "winrt/impl/windows.ui.2.h"
+#include "winrt/impl/windows.ui.text.2.h"
+#include "winrt/impl/windows.ui.input.preview.text.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input::Preview::Text
 {
     struct TextBoxId

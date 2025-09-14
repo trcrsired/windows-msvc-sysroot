@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_UserDataAccounts_SystemAccess_1_H
 #define WINRT_Windows_ApplicationModel_UserDataAccounts_SystemAccess_1_H
-#include "winrt/impl/Windows.ApplicationModel.UserDataAccounts.SystemAccess.0.h"
+#include "winrt/impl/windows.applicationmodel.userdataaccounts.systemaccess.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::UserDataAccounts::SystemAccess
 {
     struct WINRT_IMPL_EMPTY_BASES IDeviceAccountConfiguration :

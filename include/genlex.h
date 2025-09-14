@@ -22,7 +22,7 @@ History:
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 
-#include <Polarity.h>
+#include <polarity.h>
 
 class CGenLexSource
 {

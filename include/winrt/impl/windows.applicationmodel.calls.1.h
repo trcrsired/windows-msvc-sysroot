@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Calls_1_H
 #define WINRT_Windows_ApplicationModel_Calls_1_H
-#include "winrt/impl/Windows.ApplicationModel.Calls.0.h"
+#include "winrt/impl/windows.applicationmodel.calls.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Calls
 {
     struct WINRT_IMPL_EMPTY_BASES IAcceptedVoipPhoneCallOptions :

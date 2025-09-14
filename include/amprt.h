@@ -59,7 +59,7 @@ You can define _SILENCE_AMP_DEPRECATION_WARNINGS to acknowledge that you have re
 
 #endif // _CXXAMP
 
-#include <Unknwn.h>
+#include <unknwn.h>
 #include <crtdbg.h>
 #include <string>
 #include <vector>

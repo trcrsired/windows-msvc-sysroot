@@ -9,17 +9,17 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.UI.Input.h"
-#include "winrt/impl/Windows.Devices.Haptics.2.h"
-#include "winrt/impl/Windows.Devices.Power.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Foundation.Numerics.2.h"
-#include "winrt/impl/Windows.Perception.2.h"
-#include "winrt/impl/Windows.Perception.People.2.h"
-#include "winrt/impl/Windows.Perception.Spatial.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.UI.Input.Spatial.2.h"
+#include "winrt/windows.ui.input.h"
+#include "winrt/impl/windows.devices.haptics.2.h"
+#include "winrt/impl/windows.devices.power.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.foundation.numerics.2.h"
+#include "winrt/impl/windows.perception.2.h"
+#include "winrt/impl/windows.perception.people.2.h"
+#include "winrt/impl/windows.perception.spatial.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.ui.input.spatial.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_UI_Input_Spatial_ISpatialGestureRecognizer<D>::RecognitionStarted(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::UI::Input::Spatial::SpatialGestureRecognizer, winrt::Windows::UI::Input::Spatial::SpatialRecognitionStartedEventArgs> const& handler) const

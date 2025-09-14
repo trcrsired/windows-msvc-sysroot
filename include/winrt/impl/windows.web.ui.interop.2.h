@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Web_UI_Interop_2_H
 #define WINRT_Windows_Web_UI_Interop_2_H
-#include "winrt/impl/Windows.Web.UI.1.h"
-#include "winrt/impl/Windows.Web.UI.Interop.1.h"
+#include "winrt/impl/windows.web.ui.1.h"
+#include "winrt/impl/windows.web.ui.interop.1.h"
 WINRT_EXPORT namespace winrt::Windows::Web::UI::Interop
 {
     struct WINRT_IMPL_EMPTY_BASES WebViewControl : winrt::Windows::Web::UI::IWebViewControl,

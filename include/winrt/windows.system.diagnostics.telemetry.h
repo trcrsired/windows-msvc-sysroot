@@ -9,8 +9,8 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.System.Diagnostics.h"
-#include "winrt/impl/Windows.System.Diagnostics.Telemetry.2.h"
+#include "winrt/windows.system.diagnostics.h"
+#include "winrt/impl/windows.system.diagnostics.telemetry.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_System_Diagnostics_Telemetry_IPlatformTelemetryClientStatics<D>::Register(param::hstring const& id) const

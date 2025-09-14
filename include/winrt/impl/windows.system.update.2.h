@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_System_Update_2_H
 #define WINRT_Windows_System_Update_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.System.Update.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.system.update.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::Update
 {
     struct WINRT_IMPL_EMPTY_BASES SystemUpdateItem : winrt::Windows::System::Update::ISystemUpdateItem

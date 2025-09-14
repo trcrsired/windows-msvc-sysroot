@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_AI_Actions_Provider_2_H
 #define WINRT_Windows_AI_Actions_Provider_2_H
-#include "winrt/impl/Windows.AI.Actions.Provider.1.h"
+#include "winrt/impl/windows.ai.actions.provider.1.h"
 WINRT_EXPORT namespace winrt::Windows::AI::Actions::Provider
 {
 }

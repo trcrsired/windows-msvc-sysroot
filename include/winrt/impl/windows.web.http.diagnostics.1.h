@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Web_Http_Diagnostics_1_H
 #define WINRT_Windows_Web_Http_Diagnostics_1_H
-#include "winrt/impl/Windows.Web.Http.Diagnostics.0.h"
+#include "winrt/impl/windows.web.http.diagnostics.0.h"
 WINRT_EXPORT namespace winrt::Windows::Web::Http::Diagnostics
 {
     struct WINRT_IMPL_EMPTY_BASES IHttpDiagnosticProvider :

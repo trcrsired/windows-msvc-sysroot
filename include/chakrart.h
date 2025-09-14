@@ -30,7 +30,7 @@
 #if NTDDI_VERSION >= NTDDI_WIN7
 
 #include <oaidl.h>
-#include <Inspectable.h>
+#include <inspectable.h>
 
 #pragma region Application Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)

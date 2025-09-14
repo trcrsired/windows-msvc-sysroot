@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Navigation_2_H
 #define WINRT_Windows_UI_Xaml_Navigation_2_H
-#include "winrt/impl/Windows.UI.Xaml.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Interop.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Media.Animation.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Navigation.1.h"
+#include "winrt/impl/windows.ui.xaml.1.h"
+#include "winrt/impl/windows.ui.xaml.interop.1.h"
+#include "winrt/impl/windows.ui.xaml.media.animation.1.h"
+#include "winrt/impl/windows.ui.xaml.navigation.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Navigation
 {
     struct LoadCompletedEventHandler : winrt::Windows::Foundation::IUnknown

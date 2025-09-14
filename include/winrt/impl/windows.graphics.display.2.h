@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Display_2_H
 #define WINRT_Windows_Graphics_Display_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Graphics.Display.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.graphics.display.1.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Display
 {
     struct DisplayPropertiesEventHandler : winrt::Windows::Foundation::IUnknown

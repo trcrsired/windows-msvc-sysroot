@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Spi_1_H
 #define WINRT_Windows_Devices_Spi_1_H
-#include "winrt/impl/Windows.Foundation.0.h"
-#include "winrt/impl/Windows.Devices.Spi.0.h"
+#include "winrt/impl/windows.foundation.0.h"
+#include "winrt/impl/windows.devices.spi.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Spi
 {
     struct WINRT_IMPL_EMPTY_BASES ISpiBusInfo :

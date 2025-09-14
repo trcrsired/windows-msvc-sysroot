@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Input_Preview_Injection_1_H
 #define WINRT_Windows_UI_Input_Preview_Injection_1_H
-#include "winrt/impl/Windows.UI.Input.Preview.Injection.0.h"
+#include "winrt/impl/windows.ui.input.preview.injection.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input::Preview::Injection
 {
     struct WINRT_IMPL_EMPTY_BASES IInjectedInputGamepadInfo :

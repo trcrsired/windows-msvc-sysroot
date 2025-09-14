@@ -263,7 +263,7 @@ typedef struct PropertySystem PropertySystem;
 #include "oleidl.h"
 #include "ocidl.h"
 #include "shtypes.h"
-#include "StructuredQueryCondition.h"
+#include "structuredquerycondition.h"
 
 #ifdef __cplusplus
 extern "C"{

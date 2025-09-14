@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.AI.Actions.h"
-#include "winrt/impl/Windows.AI.Actions.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.AI.Actions.Provider.2.h"
+#include "winrt/windows.ai.actions.h"
+#include "winrt/impl/windows.ai.actions.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.ai.actions.provider.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_AI_Actions_Provider_IActionFeedbackHandler<D>::ProcessFeedbackAsync(winrt::Windows::AI::Actions::ActionInvocationContext const& context, winrt::Windows::AI::Actions::ActionFeedback const& feedback) const

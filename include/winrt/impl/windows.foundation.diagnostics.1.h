@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Foundation_Diagnostics_1_H
 #define WINRT_Windows_Foundation_Diagnostics_1_H
-#include "winrt/impl/Windows.Foundation.0.h"
-#include "winrt/impl/Windows.Foundation.Diagnostics.0.h"
+#include "winrt/impl/windows.foundation.0.h"
+#include "winrt/impl/windows.foundation.diagnostics.0.h"
 WINRT_EXPORT namespace winrt::Windows::Foundation::Diagnostics
 {
     struct WINRT_IMPL_EMPTY_BASES IAsyncCausalityTracerStatics :

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Phone_UI_Core_1_H
 #define WINRT_Windows_Phone_UI_Core_1_H
-#include "winrt/impl/Windows.Phone.UI.Core.0.h"
+#include "winrt/impl/windows.phone.ui.core.0.h"
 WINRT_EXPORT namespace winrt::Windows::Phone::UI::Core
 {
     struct WINRT_IMPL_EMPTY_BASES ICoreSelectionChangedEventArgs :

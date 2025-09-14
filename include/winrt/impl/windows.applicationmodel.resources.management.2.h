@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Resources_Management_2_H
 #define WINRT_Windows_ApplicationModel_Resources_Management_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Resources.Management.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.applicationmodel.resources.management.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Resources::Management
 {
     struct WINRT_IMPL_EMPTY_BASES IndexedResourceCandidate : winrt::Windows::ApplicationModel::Resources::Management::IIndexedResourceCandidate

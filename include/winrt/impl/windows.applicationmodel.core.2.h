@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Core_2_H
 #define WINRT_Windows_ApplicationModel_Core_2_H
-#include "winrt/impl/Windows.ApplicationModel.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Activation.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Core.1.h"
+#include "winrt/impl/windows.applicationmodel.1.h"
+#include "winrt/impl/windows.applicationmodel.activation.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.applicationmodel.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Core
 {
     struct WINRT_IMPL_EMPTY_BASES AppListEntry : winrt::Windows::ApplicationModel::Core::IAppListEntry,

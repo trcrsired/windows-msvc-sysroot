@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Web_UI_Interop_1_H
 #define WINRT_Windows_Web_UI_Interop_1_H
-#include "winrt/impl/Windows.Web.UI.Interop.0.h"
+#include "winrt/impl/windows.web.ui.interop.0.h"
 WINRT_EXPORT namespace winrt::Windows::Web::UI::Interop
 {
     struct WINRT_IMPL_EMPTY_BASES IWebViewControlAcceleratorKeyPressedEventArgs :

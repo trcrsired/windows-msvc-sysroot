@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Management_Deployment_2_H
 #define WINRT_Windows_Management_Deployment_2_H
-#include "winrt/impl/Windows.ApplicationModel.2.h"
-#include "winrt/impl/Windows.Management.Deployment.1.h"
+#include "winrt/impl/windows.applicationmodel.2.h"
+#include "winrt/impl/windows.management.deployment.1.h"
 WINRT_EXPORT namespace winrt::Windows::Management::Deployment
 {
     struct DeploymentProgress

@@ -9,14 +9,14 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.System.h"
-#include "winrt/impl/Windows.ApplicationModel.AppService.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Networking.2.h"
-#include "winrt/impl/Windows.Security.Credentials.2.h"
-#include "winrt/impl/Windows.System.2.h"
-#include "winrt/impl/Windows.System.RemoteSystems.2.h"
+#include "winrt/windows.system.h"
+#include "winrt/impl/windows.applicationmodel.appservice.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.networking.2.h"
+#include "winrt/impl/windows.security.credentials.2.h"
+#include "winrt/impl/windows.system.2.h"
+#include "winrt/impl/windows.system.remotesystems.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_System_RemoteSystems_IKnownRemoteSystemCapabilitiesStatics<D>::AppService() const

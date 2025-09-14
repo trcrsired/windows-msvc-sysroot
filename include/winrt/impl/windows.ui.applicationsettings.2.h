@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_UI_ApplicationSettings_2_H
 #define WINRT_Windows_UI_ApplicationSettings_2_H
-#include "winrt/impl/Windows.Security.Credentials.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.UI.Popups.1.h"
-#include "winrt/impl/Windows.UI.ApplicationSettings.1.h"
+#include "winrt/impl/windows.security.credentials.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.ui.popups.1.h"
+#include "winrt/impl/windows.ui.applicationsettings.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::ApplicationSettings
 {
     struct CredentialCommandCredentialDeletedHandler : winrt::Windows::Foundation::IUnknown

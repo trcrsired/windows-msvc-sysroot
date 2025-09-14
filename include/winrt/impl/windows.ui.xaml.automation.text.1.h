@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Automation_Text_1_H
 #define WINRT_Windows_UI_Xaml_Automation_Text_1_H
-#include "winrt/impl/Windows.UI.Xaml.Automation.Text.0.h"
+#include "winrt/impl/windows.ui.xaml.automation.text.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Automation::Text
 {
 }

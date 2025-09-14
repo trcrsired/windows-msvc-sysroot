@@ -15,7 +15,7 @@
 #pragma region Application Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
-#include <D2D1EffectAuthor.h>
+#include <d2d1effectauthor.h>
 
 //+-----------------------------------------------------------------------------
 //

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_DataTransfer_ShareTarget_2_H
 #define WINRT_Windows_ApplicationModel_DataTransfer_ShareTarget_2_H
-#include "winrt/impl/Windows.ApplicationModel.DataTransfer.ShareTarget.1.h"
+#include "winrt/impl/windows.applicationmodel.datatransfer.sharetarget.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::DataTransfer::ShareTarget
 {
     struct WINRT_IMPL_EMPTY_BASES QuickLink : winrt::Windows::ApplicationModel::DataTransfer::ShareTarget::IQuickLink

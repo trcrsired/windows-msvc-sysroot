@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Printing_PrintSupport_2_H
 #define WINRT_Windows_Graphics_Printing_PrintSupport_2_H
-#include "winrt/impl/Windows.ApplicationModel.Activation.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Graphics.Printing.PrintSupport.1.h"
+#include "winrt/impl/windows.applicationmodel.activation.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.graphics.printing.printsupport.1.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintSupport
 {
     struct WINRT_IMPL_EMPTY_BASES PrintSupportCommunicationErrorDetectedEventArgs : winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportCommunicationErrorDetectedEventArgs

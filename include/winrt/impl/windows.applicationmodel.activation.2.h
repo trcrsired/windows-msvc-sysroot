@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Activation_2_H
 #define WINRT_Windows_ApplicationModel_Activation_2_H
-#include "winrt/impl/Windows.ApplicationModel.Activation.1.h"
+#include "winrt/impl/windows.applicationmodel.activation.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Activation
 {
     struct WINRT_IMPL_EMPTY_BASES AppointmentsProviderAddAppointmentActivatedEventArgs : winrt::Windows::ApplicationModel::Activation::IAppointmentsProviderAddAppointmentActivatedEventArgs,

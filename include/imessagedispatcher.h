@@ -55,7 +55,7 @@ typedef interface IMessageDispatcher IMessageDispatcher;
 
 
 /* header files for imported files */
-#include "Inspectable.h"
+#include "inspectable.h"
 
 #ifdef __cplusplus
 extern "C"{

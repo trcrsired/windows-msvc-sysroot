@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_Gaming_Input_Preview_2_H
 #define WINRT_Windows_Gaming_Input_Preview_2_H
-#include "winrt/impl/Windows.Gaming.Input.1.h"
-#include "winrt/impl/Windows.Gaming.Input.Custom.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.Gaming.Input.Preview.1.h"
+#include "winrt/impl/windows.gaming.input.1.h"
+#include "winrt/impl/windows.gaming.input.custom.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.gaming.input.preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::Gaming::Input::Preview
 {
     struct HeadsetGeqGains

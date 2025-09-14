@@ -20,7 +20,7 @@
 #include <winrt.h>
 #endif
 #include <activation.h>
-#include <WinString.h>
+#include <winstring.h>
 
 #include <new.h>
 #include <weakreference.h>

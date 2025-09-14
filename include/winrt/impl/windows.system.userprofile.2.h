@@ -6,12 +6,12 @@
 #pragma once
 #ifndef WINRT_Windows_System_UserProfile_2_H
 #define WINRT_Windows_System_UserProfile_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.System.UserProfile.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.system.userprofile.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::UserProfile
 {
     struct AdvertisingManager

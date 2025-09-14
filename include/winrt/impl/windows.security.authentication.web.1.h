@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Authentication_Web_1_H
 #define WINRT_Windows_Security_Authentication_Web_1_H
-#include "winrt/impl/Windows.Security.Authentication.Web.0.h"
+#include "winrt/impl/windows.security.authentication.web.0.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Web
 {
     struct WINRT_IMPL_EMPTY_BASES IWebAuthenticationBrokerStatics :

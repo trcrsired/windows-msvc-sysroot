@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_AI_ModelContextProtocol_2_H
 #define WINRT_Windows_AI_ModelContextProtocol_2_H
-#include "winrt/impl/Windows.AI.ModelContextProtocol.1.h"
+#include "winrt/impl/windows.ai.modelcontextprotocol.1.h"
 WINRT_EXPORT namespace winrt::Windows::AI::ModelContextProtocol
 {
     struct WINRT_IMPL_EMPTY_BASES ModelContextProtocolClientContext : winrt::Windows::AI::ModelContextProtocol::IModelContextProtocolClientContext

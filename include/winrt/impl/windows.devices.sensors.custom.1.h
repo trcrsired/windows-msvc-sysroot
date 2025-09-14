@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Sensors_Custom_1_H
 #define WINRT_Windows_Devices_Sensors_Custom_1_H
-#include "winrt/impl/Windows.Devices.Sensors.Custom.0.h"
+#include "winrt/impl/windows.devices.sensors.custom.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Sensors::Custom
 {
     struct WINRT_IMPL_EMPTY_BASES ICustomSensor :

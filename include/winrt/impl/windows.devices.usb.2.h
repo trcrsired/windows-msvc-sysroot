@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Usb_2_H
 #define WINRT_Windows_Devices_Usb_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Devices.Usb.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.devices.usb.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Usb
 {
     struct WINRT_IMPL_EMPTY_BASES UsbBulkInEndpointDescriptor : winrt::Windows::Devices::Usb::IUsbBulkInEndpointDescriptor

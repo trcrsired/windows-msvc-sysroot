@@ -90,7 +90,7 @@ typedef struct ProofOfPossessionCookieInfoManager ProofOfPossessionCookieInfoMan
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
-#include "Inspectable.h"
+#include "inspectable.h"
 
 #ifdef __cplusplus
 extern "C"{

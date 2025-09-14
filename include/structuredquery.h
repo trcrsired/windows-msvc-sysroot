@@ -237,8 +237,8 @@ typedef struct QueryParserManager QueryParserManager;
 
 
 /* header files for imported files */
-#include "StructuredQueryCondition.h"
-#include "ObjectArray.h"
+#include "structuredquerycondition.h"
+#include "objectarray.h"
 
 #ifdef __cplusplus
 extern "C"{

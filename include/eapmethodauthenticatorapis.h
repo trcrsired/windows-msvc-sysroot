@@ -17,11 +17,11 @@
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 #ifndef __eapauthenticatortypes_h__
-#include "EapAuthenticatorTypes.h"
+#include "eapauthenticatortypes.h"
 #endif
 
 #ifndef EAPAUTHENTICATORACTIONDEFINE_H
-#include "EapAuthenticatorActionDefine.h"
+#include "eapauthenticatoractiondefine.h"
 #endif
 
 #ifdef __cplusplus

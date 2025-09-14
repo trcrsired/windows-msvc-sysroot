@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Miracast_1_H
 #define WINRT_Windows_Media_Miracast_1_H
-#include "winrt/impl/Windows.Media.Miracast.0.h"
+#include "winrt/impl/windows.media.miracast.0.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Miracast
 {
     struct WINRT_IMPL_EMPTY_BASES IMiracastReceiver :

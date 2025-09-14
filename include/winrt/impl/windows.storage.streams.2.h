@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_Storage_Streams_2_H
 #define WINRT_Windows_Storage_Streams_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
 WINRT_EXPORT namespace winrt::Windows::Storage::Streams
 {
     struct WINRT_IMPL_EMPTY_BASES Buffer : winrt::Windows::Storage::Streams::IBuffer

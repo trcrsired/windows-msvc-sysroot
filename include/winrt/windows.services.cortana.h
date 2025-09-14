@@ -9,12 +9,12 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/impl/Windows.ApplicationModel.DataTransfer.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.System.2.h"
-#include "winrt/impl/Windows.Services.Cortana.2.h"
+#include "winrt/impl/windows.applicationmodel.datatransfer.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.system.2.h"
+#include "winrt/impl/windows.services.cortana.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Services_Cortana_ICortanaActionableInsights<D>::User() const

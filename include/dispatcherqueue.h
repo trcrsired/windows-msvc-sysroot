@@ -14,7 +14,7 @@
 #pragma once
 
 
-#include <Windows.System.h>
+#include <windows.system.h>
 typedef ABI::Windows::System::IDispatcherQueue * PDISPATCHERQUEUE;
 typedef ABI::Windows::System::IDispatcherQueueController * PDISPATCHERQUEUECONTROLLER;
 

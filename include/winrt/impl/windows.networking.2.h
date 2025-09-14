@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Networking_2_H
 #define WINRT_Windows_Networking_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Networking.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.networking.1.h"
 WINRT_EXPORT namespace winrt::Windows::Networking
 {
     struct WINRT_IMPL_EMPTY_BASES EndpointPair : winrt::Windows::Networking::IEndpointPair

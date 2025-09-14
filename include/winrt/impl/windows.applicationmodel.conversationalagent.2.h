@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_ConversationalAgent_2_H
 #define WINRT_Windows_ApplicationModel_ConversationalAgent_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.ApplicationModel.ConversationalAgent.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.applicationmodel.conversationalagent.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::ConversationalAgent
 {
     struct WINRT_IMPL_EMPTY_BASES ActivationSignalDetectionConfiguration : winrt::Windows::ApplicationModel::ConversationalAgent::IActivationSignalDetectionConfiguration,

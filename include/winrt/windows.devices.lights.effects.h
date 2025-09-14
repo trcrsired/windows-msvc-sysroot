@@ -9,13 +9,13 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Devices.Lights.h"
-#include "winrt/impl/Windows.Devices.Lights.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Graphics.Imaging.2.h"
-#include "winrt/impl/Windows.UI.2.h"
-#include "winrt/impl/Windows.Devices.Lights.Effects.2.h"
+#include "winrt/windows.devices.lights.h"
+#include "winrt/impl/windows.devices.lights.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.graphics.imaging.2.h"
+#include "winrt/impl/windows.ui.2.h"
+#include "winrt/impl/windows.devices.lights.effects.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Devices_Lights_Effects_ILampArrayBitmapEffect<D>::Duration() const

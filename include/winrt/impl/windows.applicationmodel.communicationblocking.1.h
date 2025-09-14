@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_CommunicationBlocking_1_H
 #define WINRT_Windows_ApplicationModel_CommunicationBlocking_1_H
-#include "winrt/impl/Windows.ApplicationModel.CommunicationBlocking.0.h"
+#include "winrt/impl/windows.applicationmodel.communicationblocking.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::CommunicationBlocking
 {
     struct WINRT_IMPL_EMPTY_BASES ICommunicationBlockingAccessManagerStatics :

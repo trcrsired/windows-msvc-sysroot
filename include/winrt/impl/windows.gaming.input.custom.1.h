@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Gaming_Input_Custom_1_H
 #define WINRT_Windows_Gaming_Input_Custom_1_H
-#include "winrt/impl/Windows.Gaming.Input.Custom.0.h"
+#include "winrt/impl/windows.gaming.input.custom.0.h"
 WINRT_EXPORT namespace winrt::Windows::Gaming::Input::Custom
 {
     struct WINRT_IMPL_EMPTY_BASES ICustomGameControllerFactory :

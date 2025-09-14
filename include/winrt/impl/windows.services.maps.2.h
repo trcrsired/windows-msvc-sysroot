@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Services_Maps_2_H
 #define WINRT_Windows_Services_Maps_2_H
-#include "winrt/impl/Windows.Devices.Geolocation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Services.Maps.1.h"
+#include "winrt/impl/windows.devices.geolocation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.services.maps.1.h"
 WINRT_EXPORT namespace winrt::Windows::Services::Maps
 {
     struct WINRT_IMPL_EMPTY_BASES EnhancedWaypoint : winrt::Windows::Services::Maps::IEnhancedWaypoint

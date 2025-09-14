@@ -15,7 +15,7 @@
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 #include <commctrl.h>
-#include <SpecStrings.h>
+#include <specstrings.h>
 
 #ifndef THEMEAPI
 #if !defined(_UXTHEME_)

@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Authentication_Identity_Provider_2_H
 #define WINRT_Windows_Security_Authentication_Identity_Provider_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Security.Authentication.Identity.Provider.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.security.authentication.identity.provider.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Identity::Provider
 {
     struct WINRT_IMPL_EMPTY_BASES SecondaryAuthenticationFactorAuthentication : winrt::Windows::Security::Authentication::Identity::Provider::ISecondaryAuthenticationFactorAuthentication

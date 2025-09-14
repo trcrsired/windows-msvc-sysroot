@@ -119,7 +119,7 @@ typedef interface IMFSinkWriterCallback2 IMFSinkWriterCallback2;
 
 /* header files for imported files */
 #include "mfobjects.h"
-#include "MFTransform.h"
+#include "mftransform.h"
 
 #ifdef __cplusplus
 extern "C"{

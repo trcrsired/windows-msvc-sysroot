@@ -44,7 +44,7 @@
 /* Forward Declarations */ 
 
 /* header files for imported files */
-#include "MFSharingEngine.h"
+#include "mfsharingengine.h"
 
 #ifdef __cplusplus
 extern "C"{

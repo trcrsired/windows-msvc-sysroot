@@ -9,8 +9,8 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/impl/Windows.Data.Xml.Dom.2.h"
-#include "winrt/impl/Windows.Data.Xml.Xsl.2.h"
+#include "winrt/impl/windows.data.xml.dom.2.h"
+#include "winrt/impl/windows.data.xml.xsl.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Data_Xml_Xsl_IXsltProcessor<D>::TransformToString(winrt::Windows::Data::Xml::Dom::IXmlNode const& inputNode) const

@@ -9,11 +9,11 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Graphics.Printing.h"
-#include "winrt/impl/Windows.Data.Xml.Dom.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Graphics.Printing.PrintTicket.2.h"
+#include "winrt/windows.graphics.printing.h"
+#include "winrt/impl/windows.data.xml.dom.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.graphics.printing.printticket.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Graphics_Printing_PrintTicket_IPrintTicketCapabilities<D>::Name() const

@@ -13,7 +13,7 @@
 #if !defined(_INC_COMIP)
 #define _INC_COMIP
 
-#include <Ole2.h>
+#include <ole2.h>
 #include <comutil.h>
 #include <malloc.h>
 #include <type_traits>

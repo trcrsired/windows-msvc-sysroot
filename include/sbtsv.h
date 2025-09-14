@@ -281,7 +281,7 @@ typedef interface ITsSbGenericNotifySink ITsSbGenericNotifySink;
 /* header files for imported files */
 #include "unknwn.h"
 #include "oaidl.h"
-#include "SessdirPublicTypes.h"
+#include "sessdirpublictypes.h"
 
 #ifdef __cplusplus
 extern "C"{

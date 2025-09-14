@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Shapes_1_H
 #define WINRT_Windows_UI_Xaml_Shapes_1_H
-#include "winrt/impl/Windows.UI.Xaml.Shapes.0.h"
+#include "winrt/impl/windows.ui.xaml.shapes.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Shapes
 {
     struct WINRT_IMPL_EMPTY_BASES IEllipse :

@@ -63,8 +63,8 @@ typedef interface IMFSpatialAudioSample IMFSpatialAudioSample;
 
 /* header files for imported files */
 #include "mfobjects.h"
-#include "SpatialAudioClient.h"
-#include "SpatialAudioMetadata.h"
+#include "spatialaudioclient.h"
+#include "spatialaudiometadata.h"
 
 #ifdef __cplusplus
 extern "C"{

@@ -550,7 +550,7 @@ template <class T> ULONG MSPReleaseHelper (T * pMyThis)
 //  interfaces
 //
 
-#include <Objsafe.h>
+#include <objsafe.h>
 
 
 class CMSPObjectSafetyImpl : public IObjectSafety

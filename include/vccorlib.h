@@ -31,7 +31,7 @@
 
 #if defined(VCWINRT_DLL)
 #include <stdio.h>
-#include <Windows.h>
+#include <windows.h>
 #include <inspectable.h>
 #include <winstring.h>
 #endif

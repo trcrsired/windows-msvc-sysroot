@@ -125,7 +125,7 @@ typedef interface IIndependentFlipFramePresentStatistics IIndependentFlipFramePr
 
 
 /* header files for imported files */
-#include "PresentationTypes.h"
+#include "presentationtypes.h"
 
 #ifdef __cplusplus
 extern "C"{

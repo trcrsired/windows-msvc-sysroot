@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Storage_Search_1_H
 #define WINRT_Windows_Storage_Search_1_H
-#include "winrt/impl/Windows.Storage.Search.0.h"
+#include "winrt/impl/windows.storage.search.0.h"
 WINRT_EXPORT namespace winrt::Windows::Storage::Search
 {
     struct WINRT_IMPL_EMPTY_BASES IContentIndexer :

@@ -7,7 +7,7 @@
 #pragma once
 #endif
 
-#include <Windows.ui.composition.h>
+#include <windows.ui.composition.h>
 #include <sdkddkver.h>
 
 #ifndef BUILD_WINDOWS

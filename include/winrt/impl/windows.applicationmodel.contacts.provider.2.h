@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Contacts_Provider_2_H
 #define WINRT_Windows_ApplicationModel_Contacts_Provider_2_H
-#include "winrt/impl/Windows.ApplicationModel.Contacts.Provider.1.h"
+#include "winrt/impl/windows.applicationmodel.contacts.provider.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Contacts::Provider
 {
     struct WINRT_IMPL_EMPTY_BASES ContactPickerUI : winrt::Windows::ApplicationModel::Contacts::Provider::IContactPickerUI,

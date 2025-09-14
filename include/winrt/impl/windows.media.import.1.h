@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Import_1_H
 #define WINRT_Windows_Media_Import_1_H
-#include "winrt/impl/Windows.Foundation.0.h"
-#include "winrt/impl/Windows.Media.Import.0.h"
+#include "winrt/impl/windows.foundation.0.h"
+#include "winrt/impl/windows.media.import.0.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Import
 {
     struct WINRT_IMPL_EMPTY_BASES IPhotoImportDeleteImportedItemsFromSourceResult :

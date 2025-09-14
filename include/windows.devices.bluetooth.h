@@ -100,16 +100,16 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "AsyncInfo.h"
-#include "EventToken.h"
+#include "asyncinfo.h"
+#include "eventtoken.h"
 #include "windowscontracts.h"
-#include "Windows.Foundation.h"
-#include "Windows.Devices.Bluetooth.GenericAttributeProfile.h"
-#include "Windows.Devices.Bluetooth.Rfcomm.h"
-#include "Windows.Devices.Enumeration.h"
-#include "Windows.Devices.Radios.h"
-#include "Windows.Networking.h"
-#include "Windows.Storage.Streams.h"
+#include "windows.foundation.h"
+#include "windows.devices.bluetooth.genericattributeprofile.h"
+#include "windows.devices.bluetooth.rfcomm.h"
+#include "windows.devices.enumeration.h"
+#include "windows.devices.radios.h"
+#include "windows.networking.h"
+#include "windows.storage.streams.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 

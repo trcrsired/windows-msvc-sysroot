@@ -107,8 +107,8 @@ typedef interface IAudioSessionManager2 IAudioSessionManager2;
 #include "oaidl.h"
 #include "ocidl.h"
 #include "propidl.h"
-#include "AudioSessionTypes.h"
-#include "AudioClient.h"
+#include "audiosessiontypes.h"
+#include "audioclient.h"
 
 #ifdef __cplusplus
 extern "C"{

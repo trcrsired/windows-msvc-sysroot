@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_System_Diagnostics_1_H
 #define WINRT_Windows_System_Diagnostics_1_H
-#include "winrt/impl/Windows.System.Diagnostics.0.h"
+#include "winrt/impl/windows.system.diagnostics.0.h"
 WINRT_EXPORT namespace winrt::Windows::System::Diagnostics
 {
     struct WINRT_IMPL_EMPTY_BASES IDiagnosticActionResult :

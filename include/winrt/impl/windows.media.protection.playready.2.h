@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Protection_PlayReady_2_H
 #define WINRT_Windows_Media_Protection_PlayReady_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Media.Protection.1.h"
-#include "winrt/impl/Windows.Media.Protection.PlayReady.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.media.protection.1.h"
+#include "winrt/impl/windows.media.protection.playready.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Protection::PlayReady
 {
     struct WINRT_IMPL_EMPTY_BASES NDClient : winrt::Windows::Media::Protection::PlayReady::INDClient

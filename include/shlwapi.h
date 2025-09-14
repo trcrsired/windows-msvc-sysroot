@@ -21,7 +21,7 @@
 #pragma region Desktop Family or OneCore Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM)
 
-#include <SpecStrings.h>
+#include <specstrings.h>
 #include <objbase.h>
 #include <shtypes.h>
 

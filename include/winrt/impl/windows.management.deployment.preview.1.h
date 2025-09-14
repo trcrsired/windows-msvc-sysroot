@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Management_Deployment_Preview_1_H
 #define WINRT_Windows_Management_Deployment_Preview_1_H
-#include "winrt/impl/Windows.Management.Deployment.Preview.0.h"
+#include "winrt/impl/windows.management.deployment.preview.0.h"
 WINRT_EXPORT namespace winrt::Windows::Management::Deployment::Preview
 {
     struct WINRT_IMPL_EMPTY_BASES IClassicAppManagerStatics :

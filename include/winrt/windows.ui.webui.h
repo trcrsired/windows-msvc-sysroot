@@ -9,16 +9,16 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.UI.h"
-#include "winrt/impl/Windows.ApplicationModel.2.h"
-#include "winrt/impl/Windows.ApplicationModel.Activation.2.h"
-#include "winrt/impl/Windows.ApplicationModel.Background.2.h"
-#include "winrt/impl/Windows.ApplicationModel.Core.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Graphics.Printing.2.h"
-#include "winrt/impl/Windows.System.2.h"
-#include "winrt/impl/Windows.Web.UI.2.h"
-#include "winrt/impl/Windows.UI.WebUI.2.h"
+#include "winrt/windows.ui.h"
+#include "winrt/impl/windows.applicationmodel.2.h"
+#include "winrt/impl/windows.applicationmodel.activation.2.h"
+#include "winrt/impl/windows.applicationmodel.background.2.h"
+#include "winrt/impl/windows.applicationmodel.core.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.graphics.printing.2.h"
+#include "winrt/impl/windows.system.2.h"
+#include "winrt/impl/windows.web.ui.2.h"
+#include "winrt/impl/windows.ui.webui.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_UI_WebUI_IActivatedDeferral<D>::Complete() const

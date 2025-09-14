@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.UI.WindowManagement.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.UI.WindowManagement.2.h"
-#include "winrt/impl/Windows.UI.WindowManagement.Preview.2.h"
+#include "winrt/windows.ui.windowmanagement.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.ui.windowmanagement.2.h"
+#include "winrt/impl/windows.ui.windowmanagement.preview.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_UI_WindowManagement_Preview_IWindowManagementPreviewStatics<D>::SetPreferredMinSize(winrt::Windows::UI::WindowManagement::AppWindow const& window, winrt::Windows::Foundation::Size const& preferredFrameMinSize) const

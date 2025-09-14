@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Media_Imaging_2_H
 #define WINRT_Windows_UI_Xaml_Media_Imaging_2_H
-#include "winrt/impl/Windows.ApplicationModel.Background.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.UI.Xaml.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Media.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Media.Imaging.1.h"
+#include "winrt/impl/windows.applicationmodel.background.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.ui.xaml.1.h"
+#include "winrt/impl/windows.ui.xaml.media.1.h"
+#include "winrt/impl/windows.ui.xaml.media.imaging.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Media::Imaging
 {
     struct DownloadProgressEventHandler : winrt::Windows::Foundation::IUnknown

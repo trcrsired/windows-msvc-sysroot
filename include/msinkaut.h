@@ -547,7 +547,7 @@ extern "C"{
 #include <winapifamily.h>
 #pragma region Desktop Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
-#include <TPCError.h> // for Tablet PC Error codes
+#include <tpcerror.h> // for Tablet PC Error codes
 typedef 
 enum enumINKMETRIC_FLAGS
     {

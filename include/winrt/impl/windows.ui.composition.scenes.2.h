@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Composition_Scenes_2_H
 #define WINRT_Windows_UI_Composition_Scenes_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.UI.Composition.1.h"
-#include "winrt/impl/Windows.UI.Composition.Scenes.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.ui.composition.1.h"
+#include "winrt/impl/windows.ui.composition.scenes.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Composition::Scenes
 {
     struct WINRT_IMPL_EMPTY_BASES SceneBoundingBox : winrt::Windows::UI::Composition::Scenes::ISceneBoundingBox,

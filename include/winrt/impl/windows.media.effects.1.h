@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Effects_1_H
 #define WINRT_Windows_Media_Effects_1_H
-#include "winrt/impl/Windows.Media.0.h"
-#include "winrt/impl/Windows.Media.Effects.0.h"
+#include "winrt/impl/windows.media.0.h"
+#include "winrt/impl/windows.media.effects.0.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Effects
 {
     struct WINRT_IMPL_EMPTY_BASES IAcousticEchoCancellationConfiguration :

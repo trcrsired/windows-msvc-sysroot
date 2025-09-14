@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Scanners_2_H
 #define WINRT_Windows_Devices_Scanners_2_H
-#include "winrt/impl/Windows.Devices.Scanners.1.h"
+#include "winrt/impl/windows.devices.scanners.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Scanners
 {
     struct ImageScannerResolution

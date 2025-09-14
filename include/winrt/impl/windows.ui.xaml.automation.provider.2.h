@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Automation_Provider_2_H
 #define WINRT_Windows_UI_Xaml_Automation_Provider_2_H
-#include "winrt/impl/Windows.UI.Xaml.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Automation.Provider.1.h"
+#include "winrt/impl/windows.ui.xaml.1.h"
+#include "winrt/impl/windows.ui.xaml.automation.provider.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Automation::Provider
 {
     struct WINRT_IMPL_EMPTY_BASES IRawElementProviderSimple : winrt::Windows::UI::Xaml::Automation::Provider::IIRawElementProviderSimple,

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Accessibility_2_H
 #define WINRT_Windows_UI_Accessibility_2_H
-#include "winrt/impl/Windows.UI.Accessibility.1.h"
+#include "winrt/impl/windows.ui.accessibility.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Accessibility
 {
     struct WINRT_IMPL_EMPTY_BASES ScreenReaderPositionChangedEventArgs : winrt::Windows::UI::Accessibility::IScreenReaderPositionChangedEventArgs

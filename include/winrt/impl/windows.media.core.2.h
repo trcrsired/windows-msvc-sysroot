@@ -6,21 +6,21 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Core_2_H
 #define WINRT_Windows_Media_Core_2_H
-#include "winrt/impl/Windows.ApplicationModel.AppService.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Graphics.DirectX.Direct3D11.2.h"
-#include "winrt/impl/Windows.Graphics.Imaging.2.h"
-#include "winrt/impl/Windows.Media.2.h"
-#include "winrt/impl/Windows.Media.Capture.Frames.2.h"
-#include "winrt/impl/Windows.Media.Effects.2.h"
-#include "winrt/impl/Windows.Media.MediaProperties.2.h"
-#include "winrt/impl/Windows.Media.Playback.2.h"
-#include "winrt/impl/Windows.Media.Streaming.Adaptive.2.h"
-#include "winrt/impl/Windows.Networking.BackgroundTransfer.2.h"
-#include "winrt/impl/Windows.Storage.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.Media.Core.1.h"
+#include "winrt/impl/windows.applicationmodel.appservice.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.graphics.directx.direct3d11.2.h"
+#include "winrt/impl/windows.graphics.imaging.2.h"
+#include "winrt/impl/windows.media.2.h"
+#include "winrt/impl/windows.media.capture.frames.2.h"
+#include "winrt/impl/windows.media.effects.2.h"
+#include "winrt/impl/windows.media.mediaproperties.2.h"
+#include "winrt/impl/windows.media.playback.2.h"
+#include "winrt/impl/windows.media.streaming.adaptive.2.h"
+#include "winrt/impl/windows.networking.backgroundtransfer.2.h"
+#include "winrt/impl/windows.storage.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.media.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Core
 {
     struct MseTimeRange

@@ -6,12 +6,12 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Controls_Primitives_2_H
 #define WINRT_Windows_UI_Xaml_Controls_Primitives_2_H
-#include "winrt/impl/Windows.UI.Composition.1.h"
-#include "winrt/impl/Windows.UI.Xaml.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Controls.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Data.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Input.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Controls.Primitives.1.h"
+#include "winrt/impl/windows.ui.composition.1.h"
+#include "winrt/impl/windows.ui.xaml.1.h"
+#include "winrt/impl/windows.ui.xaml.controls.1.h"
+#include "winrt/impl/windows.ui.xaml.data.1.h"
+#include "winrt/impl/windows.ui.xaml.input.1.h"
+#include "winrt/impl/windows.ui.xaml.controls.primitives.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Controls::Primitives
 {
     struct DragCompletedEventHandler : winrt::Windows::Foundation::IUnknown

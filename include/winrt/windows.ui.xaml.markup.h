@@ -9,13 +9,13 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.UI.Xaml.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.UI.Xaml.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Interop.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Markup.2.h"
+#include "winrt/windows.ui.xaml.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.ui.xaml.2.h"
+#include "winrt/impl/windows.ui.xaml.interop.2.h"
+#include "winrt/impl/windows.ui.xaml.markup.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_UI_Xaml_Markup_IComponentConnector<D>::Connect(int32_t connectionId, winrt::Windows::Foundation::IInspectable const& target) const

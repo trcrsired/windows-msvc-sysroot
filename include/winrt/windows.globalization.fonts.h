@@ -9,9 +9,9 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Globalization.h"
-#include "winrt/impl/Windows.UI.Text.2.h"
-#include "winrt/impl/Windows.Globalization.Fonts.2.h"
+#include "winrt/windows.globalization.h"
+#include "winrt/impl/windows.ui.text.2.h"
+#include "winrt/impl/windows.globalization.fonts.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Globalization_Fonts_ILanguageFont<D>::FontFamily() const

@@ -116,16 +116,16 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "AsyncInfo.h"
-#include "EventToken.h"
+#include "asyncinfo.h"
+#include "eventtoken.h"
 #include "windowscontracts.h"
-#include "Windows.Foundation.h"
-#include "Windows.Devices.Enumeration.h"
-#include "Windows.Phone.h"
-#include "Windows.UI.h"
-#include "Windows.UI.Core.h"
-#include "Windows.UI.Popups.h"
-#include "Windows.UI.WindowManagement.h"
+#include "windows.foundation.h"
+#include "windows.devices.enumeration.h"
+#include "windows.phone.h"
+#include "windows.ui.h"
+#include "windows.ui.core.h"
+#include "windows.ui.popups.h"
+#include "windows.ui.windowmanagement.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 

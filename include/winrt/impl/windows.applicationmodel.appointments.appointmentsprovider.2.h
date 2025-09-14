@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Appointments_AppointmentsProvider_2_H
 #define WINRT_Windows_ApplicationModel_Appointments_AppointmentsProvider_2_H
-#include "winrt/impl/Windows.ApplicationModel.Appointments.AppointmentsProvider.1.h"
+#include "winrt/impl/windows.applicationmodel.appointments.appointmentsprovider.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Appointments::AppointmentsProvider
 {
     struct WINRT_IMPL_EMPTY_BASES AddAppointmentOperation : winrt::Windows::ApplicationModel::Appointments::AppointmentsProvider::IAddAppointmentOperation

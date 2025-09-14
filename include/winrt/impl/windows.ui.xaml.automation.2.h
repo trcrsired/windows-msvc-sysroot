@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Automation_2_H
 #define WINRT_Windows_UI_Xaml_Automation_2_H
-#include "winrt/impl/Windows.UI.Xaml.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Automation.Peers.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Automation.1.h"
+#include "winrt/impl/windows.ui.xaml.1.h"
+#include "winrt/impl/windows.ui.xaml.automation.peers.1.h"
+#include "winrt/impl/windows.ui.xaml.automation.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Automation
 {
     struct WINRT_IMPL_EMPTY_BASES AnnotationPatternIdentifiers : winrt::Windows::UI::Xaml::Automation::IAnnotationPatternIdentifiers

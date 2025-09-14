@@ -11,7 +11,7 @@
 #ifndef _MESSAGEDEVICESERVICE_H_
 #define _MESSAGEDEVICESERVICE_H_
 
-#include <DeviceServices.h>
+#include <deviceservices.h>
 
 
 /*****************************************************************************

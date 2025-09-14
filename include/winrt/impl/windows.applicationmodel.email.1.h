@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Email_1_H
 #define WINRT_Windows_ApplicationModel_Email_1_H
-#include "winrt/impl/Windows.ApplicationModel.Email.0.h"
+#include "winrt/impl/windows.applicationmodel.email.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Email
 {
     struct WINRT_IMPL_EMPTY_BASES IEmailAttachment :

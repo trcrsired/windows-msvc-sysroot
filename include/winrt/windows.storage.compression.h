@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Storage.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.Storage.Compression.2.h"
+#include "winrt/windows.storage.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.storage.compression.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Storage_Compression_ICompressor<D>::FinishAsync() const

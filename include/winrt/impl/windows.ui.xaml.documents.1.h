@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Documents_1_H
 #define WINRT_Windows_UI_Xaml_Documents_1_H
-#include "winrt/impl/Windows.UI.Xaml.Documents.0.h"
+#include "winrt/impl/windows.ui.xaml.documents.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Documents
 {
     struct WINRT_IMPL_EMPTY_BASES IBlock :

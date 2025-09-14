@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_DirectX_Direct3D11_1_H
 #define WINRT_Windows_Graphics_DirectX_Direct3D11_1_H
-#include "winrt/impl/Windows.Foundation.0.h"
-#include "winrt/impl/Windows.Graphics.DirectX.Direct3D11.0.h"
+#include "winrt/impl/windows.foundation.0.h"
+#include "winrt/impl/windows.graphics.directx.direct3d11.0.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::DirectX::Direct3D11
 {
     struct WINRT_IMPL_EMPTY_BASES IDirect3DDevice :

@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Gpio_2_H
 #define WINRT_Windows_Devices_Gpio_2_H
-#include "winrt/impl/Windows.Devices.Gpio.Provider.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Devices.Gpio.1.h"
+#include "winrt/impl/windows.devices.gpio.provider.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.devices.gpio.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Gpio
 {
     struct GpioChangeCount

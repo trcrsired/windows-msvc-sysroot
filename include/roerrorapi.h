@@ -16,7 +16,7 @@
 #include <apiset.h>
 #include <apisetcconv.h>
 #include <hstring.h>
-#include <restrictedErrorInfo.h>
+#include <restrictederrorinfo.h>
 #include <rpc.h>
 
 #include <sdkddkver.h>

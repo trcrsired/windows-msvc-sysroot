@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Gaming_Input_2_H
 #define WINRT_Windows_Gaming_Input_2_H
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Gaming.Input.1.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.gaming.input.1.h"
 WINRT_EXPORT namespace winrt::Windows::Gaming::Input
 {
     struct ArcadeStickReading

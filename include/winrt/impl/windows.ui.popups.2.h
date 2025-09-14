@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Popups_2_H
 #define WINRT_Windows_UI_Popups_2_H
-#include "winrt/impl/Windows.UI.Popups.1.h"
+#include "winrt/impl/windows.ui.popups.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Popups
 {
     struct UICommandInvokedHandler : winrt::Windows::Foundation::IUnknown

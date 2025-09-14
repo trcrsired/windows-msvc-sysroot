@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Security.Cryptography.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.Security.Cryptography.DataProtection.2.h"
+#include "winrt/windows.security.cryptography.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.security.cryptography.dataprotection.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Security_Cryptography_DataProtection_IDataProtectionProvider<D>::ProtectAsync(winrt::Windows::Storage::Streams::IBuffer const& data) const

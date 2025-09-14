@@ -8,7 +8,7 @@
 
 #ifndef _WINDOWS_UI_INTEROP_H_
 #define _WINDOWS_UI_INTEROP_H_
-#include <Windows.UI.h>
+#include <windows.ui.h>
 
 #if !defined(____x_ABI_CWindows_CFoundation_CIClosable_FWD_DEFINED__) && !defined(MIDL_NS_PREFIX)
 #pragma push_macro("ABI")

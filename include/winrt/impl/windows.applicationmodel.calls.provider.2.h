@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Calls_Provider_2_H
 #define WINRT_Windows_ApplicationModel_Calls_Provider_2_H
-#include "winrt/impl/Windows.ApplicationModel.Calls.Provider.1.h"
+#include "winrt/impl/windows.applicationmodel.calls.provider.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Calls::Provider
 {
     struct WINRT_IMPL_EMPTY_BASES PhoneCallOrigin : winrt::Windows::ApplicationModel::Calls::Provider::IPhoneCallOrigin,

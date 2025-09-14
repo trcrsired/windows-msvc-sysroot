@@ -6,12 +6,12 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Editing_2_H
 #define WINRT_Windows_Media_Editing_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Graphics.DirectX.Direct3D11.1.h"
-#include "winrt/impl/Windows.Media.Effects.1.h"
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.UI.1.h"
-#include "winrt/impl/Windows.Media.Editing.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.graphics.directx.direct3d11.1.h"
+#include "winrt/impl/windows.media.effects.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.ui.1.h"
+#include "winrt/impl/windows.media.editing.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Editing
 {
     struct WINRT_IMPL_EMPTY_BASES BackgroundAudioTrack : winrt::Windows::Media::Editing::IBackgroundAudioTrack

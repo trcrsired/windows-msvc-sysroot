@@ -9,11 +9,11 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Devices.h"
-#include "winrt/impl/Windows.Devices.Gpio.Provider.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Devices.Gpio.2.h"
+#include "winrt/windows.devices.h"
+#include "winrt/impl/windows.devices.gpio.provider.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.devices.gpio.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Devices_Gpio_IGpioChangeCounter<D>::Polarity(winrt::Windows::Devices::Gpio::GpioChangePolarity const& value) const

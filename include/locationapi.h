@@ -244,7 +244,7 @@ typedef struct DispCivicAddressReport DispCivicAddressReport;
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
-#include "SensorsApi.h"
+#include "sensorsapi.h"
 
 #ifdef __cplusplus
 extern "C"{
@@ -257,7 +257,7 @@ extern "C"{
 #include <winapifamily.h>
 #pragma region Desktop Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
-#include <SensorsApi.h>
+#include <sensorsapi.h>
 #include <initguid.h>
 #include <propkeydef.h>
 #define LOCATION_API_VERSION    1

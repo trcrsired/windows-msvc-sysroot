@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_System_Power_2_H
 #define WINRT_Windows_System_Power_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.System.Power.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.system.power.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::Power
 {
     struct BackgroundEnergyManager

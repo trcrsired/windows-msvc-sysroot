@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Data_Text_2_H
 #define WINRT_Windows_Data_Text_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Data.Text.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.data.text.1.h"
 WINRT_EXPORT namespace winrt::Windows::Data::Text
 {
     struct SelectableWordSegmentsTokenizingHandler : winrt::Windows::Foundation::IUnknown

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_AI_Actions_Provider_1_H
 #define WINRT_Windows_AI_Actions_Provider_1_H
-#include "winrt/impl/Windows.AI.Actions.Provider.0.h"
+#include "winrt/impl/windows.ai.actions.provider.0.h"
 WINRT_EXPORT namespace winrt::Windows::AI::Actions::Provider
 {
     struct WINRT_IMPL_EMPTY_BASES IActionFeedbackHandler :

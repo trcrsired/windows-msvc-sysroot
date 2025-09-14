@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Media_ClosedCaptioning_1_H
 #define WINRT_Windows_Media_ClosedCaptioning_1_H
-#include "winrt/impl/Windows.Media.ClosedCaptioning.0.h"
+#include "winrt/impl/windows.media.closedcaptioning.0.h"
 WINRT_EXPORT namespace winrt::Windows::Media::ClosedCaptioning
 {
     struct WINRT_IMPL_EMPTY_BASES IClosedCaptionPropertiesStatics :

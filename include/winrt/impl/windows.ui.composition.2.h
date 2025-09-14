@@ -6,12 +6,12 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Composition_2_H
 #define WINRT_Windows_UI_Composition_2_H
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Foundation.Numerics.2.h"
-#include "winrt/impl/Windows.Graphics.2.h"
-#include "winrt/impl/Windows.Graphics.Effects.2.h"
-#include "winrt/impl/Windows.UI.Composition.1.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.foundation.numerics.2.h"
+#include "winrt/impl/windows.graphics.2.h"
+#include "winrt/impl/windows.graphics.effects.2.h"
+#include "winrt/impl/windows.ui.composition.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Composition
 {
     struct InkTrailPoint

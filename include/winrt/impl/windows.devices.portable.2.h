@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Portable_2_H
 #define WINRT_Windows_Devices_Portable_2_H
-#include "winrt/impl/Windows.Devices.Portable.1.h"
+#include "winrt/impl/windows.devices.portable.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Portable
 {
     struct ServiceDevice

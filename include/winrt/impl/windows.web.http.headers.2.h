@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_Web_Http_Headers_2_H
 #define WINRT_Windows_Web_Http_Headers_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Globalization.1.h"
-#include "winrt/impl/Windows.Web.Http.1.h"
-#include "winrt/impl/Windows.Web.Http.Headers.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.globalization.1.h"
+#include "winrt/impl/windows.web.http.1.h"
+#include "winrt/impl/windows.web.http.headers.1.h"
 WINRT_EXPORT namespace winrt::Windows::Web::Http::Headers
 {
     struct WINRT_IMPL_EMPTY_BASES HttpCacheDirectiveHeaderValueCollection : winrt::Windows::Web::Http::Headers::IHttpCacheDirectiveHeaderValueCollection,

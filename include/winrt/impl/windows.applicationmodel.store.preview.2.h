@@ -6,13 +6,13 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Store_Preview_2_H
 #define WINRT_Windows_ApplicationModel_Store_Preview_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Security.Authentication.Web.Core.1.h"
-#include "winrt/impl/Windows.Security.Credentials.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.UI.Xaml.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Store.Preview.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.security.authentication.web.core.1.h"
+#include "winrt/impl/windows.security.credentials.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.ui.xaml.1.h"
+#include "winrt/impl/windows.applicationmodel.store.preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Store::Preview
 {
     struct WINRT_IMPL_EMPTY_BASES DeliveryOptimizationSettings : winrt::Windows::ApplicationModel::Store::Preview::IDeliveryOptimizationSettings
