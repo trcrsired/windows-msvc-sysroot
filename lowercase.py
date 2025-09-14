@@ -28,16 +28,18 @@ def lowercase_includes():
                     f.writelines(new_lines)
 
 def lowercase_filenames():
-    for root, dirs, files in os.walk('.', topdown=False):
-        for name in files:
-            lower_name = name.lower()
-            if lower_name != name:
-                os.rename(os.path.join(root, name), os.path.join(root, lower_name))
-
-        for name in dirs:
-            lower_name = name.lower()
-            if lower_name != name:
-                os.rename(os.path.join(root, name), os.path.join(root, lower_name))
+    directories = ['./bin', './lib', './include', './share']
+    for dir_path in directories:
+        for root, dirs, files in os.walk(dir_path, topdown=False):
+            for name in files:
+                lower_name = name.lower()
+                if lower_name != name:
+                    os.rename(os.path.join(root, name), os.path.join(root, lower_name))
+    
+            for name in dirs:
+                lower_name = name.lower()
+                if lower_name != name:
+                    os.rename(os.path.join(root, name), os.path.join(root, lower_name))
 
 lowercase_filenames()
 lowercase_includes()
