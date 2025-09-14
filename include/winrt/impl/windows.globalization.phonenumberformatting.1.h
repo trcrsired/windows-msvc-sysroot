@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Globalization_PhoneNumberFormatting_1_H
 #define WINRT_Windows_Globalization_PhoneNumberFormatting_1_H
-#include "winrt/impl/Windows.Globalization.PhoneNumberFormatting.0.h"
+#include "winrt/impl/windows.globalization.phonenumberformatting.0.h"
 WINRT_EXPORT namespace winrt::Windows::Globalization::PhoneNumberFormatting
 {
     struct WINRT_IMPL_EMPTY_BASES IPhoneNumberFormatter :

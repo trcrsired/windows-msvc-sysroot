@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Core_Preview_2_H
 #define WINRT_Windows_Media_Core_Preview_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Media.Core.Preview.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.media.core.preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Core::Preview
 {
     struct SoundLevelBroker

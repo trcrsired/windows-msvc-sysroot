@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Management_Deployment_Preview_2_H
 #define WINRT_Windows_Management_Deployment_Preview_2_H
-#include "winrt/impl/Windows.Management.Deployment.Preview.1.h"
+#include "winrt/impl/windows.management.deployment.preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::Management::Deployment::Preview
 {
     struct ClassicAppManager

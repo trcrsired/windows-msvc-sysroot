@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_ExtendedExecution_2_H
 #define WINRT_Windows_ApplicationModel_ExtendedExecution_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.ApplicationModel.ExtendedExecution.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.applicationmodel.extendedexecution.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::ExtendedExecution
 {
     struct WINRT_IMPL_EMPTY_BASES ExtendedExecutionRevokedEventArgs : winrt::Windows::ApplicationModel::ExtendedExecution::IExtendedExecutionRevokedEventArgs

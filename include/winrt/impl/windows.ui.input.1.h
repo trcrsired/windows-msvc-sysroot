@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Input_1_H
 #define WINRT_Windows_UI_Input_1_H
-#include "winrt/impl/Windows.UI.Input.0.h"
+#include "winrt/impl/windows.ui.input.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input
 {
     struct WINRT_IMPL_EMPTY_BASES IAttachableInputObject :

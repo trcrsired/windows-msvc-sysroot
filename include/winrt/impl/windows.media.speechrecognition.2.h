@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_Media_SpeechRecognition_2_H
 #define WINRT_Windows_Media_SpeechRecognition_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Globalization.1.h"
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.Media.SpeechRecognition.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.globalization.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.media.speechrecognition.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::SpeechRecognition
 {
     struct WINRT_IMPL_EMPTY_BASES SpeechContinuousRecognitionCompletedEventArgs : winrt::Windows::Media::SpeechRecognition::ISpeechContinuousRecognitionCompletedEventArgs

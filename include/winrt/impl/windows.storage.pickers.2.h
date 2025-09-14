@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_Storage_Pickers_2_H
 #define WINRT_Windows_Storage_Pickers_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.Storage.Pickers.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.storage.pickers.1.h"
 WINRT_EXPORT namespace winrt::Windows::Storage::Pickers
 {
     struct WINRT_IMPL_EMPTY_BASES FileExtensionVector : winrt::Windows::Foundation::Collections::IVector<hstring>

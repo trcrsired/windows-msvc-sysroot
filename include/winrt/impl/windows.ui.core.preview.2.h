@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Core_Preview_2_H
 #define WINRT_Windows_UI_Core_Preview_2_H
-#include "winrt/impl/Windows.UI.WindowManagement.1.h"
-#include "winrt/impl/Windows.UI.Core.Preview.1.h"
+#include "winrt/impl/windows.ui.windowmanagement.1.h"
+#include "winrt/impl/windows.ui.core.preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Core::Preview
 {
     struct WINRT_IMPL_EMPTY_BASES CoreAppWindowPreview : winrt::Windows::UI::Core::Preview::ICoreAppWindowPreview

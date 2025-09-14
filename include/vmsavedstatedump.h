@@ -15,7 +15,7 @@ Abstract:
 #ifndef _VMSAVEDSTATEDUMP_H_
 #define _VMSAVEDSTATEDUMP_H_
 
-#include "VmSavedStateDumpDefs.h"
+#include "vmsavedstatedumpdefs.h"
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1200)
 #pragma once

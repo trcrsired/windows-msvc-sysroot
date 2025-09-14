@@ -6,15 +6,15 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Controls_Maps_2_H
 #define WINRT_Windows_UI_Xaml_Controls_Maps_2_H
-#include "winrt/impl/Windows.Devices.Geolocation.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Services.Maps.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.UI.Composition.1.h"
-#include "winrt/impl/Windows.UI.Xaml.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Controls.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Controls.Maps.1.h"
+#include "winrt/impl/windows.devices.geolocation.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.services.maps.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.ui.composition.1.h"
+#include "winrt/impl/windows.ui.xaml.1.h"
+#include "winrt/impl/windows.ui.xaml.controls.1.h"
+#include "winrt/impl/windows.ui.xaml.controls.maps.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Controls::Maps
 {
     struct MapZoomLevelRange

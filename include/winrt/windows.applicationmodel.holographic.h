@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.ApplicationModel.h"
-#include "winrt/impl/Windows.Foundation.Numerics.2.h"
-#include "winrt/impl/Windows.Perception.Spatial.2.h"
-#include "winrt/impl/Windows.ApplicationModel.Holographic.2.h"
+#include "winrt/windows.applicationmodel.h"
+#include "winrt/impl/windows.foundation.numerics.2.h"
+#include "winrt/impl/windows.perception.spatial.2.h"
+#include "winrt/impl/windows.applicationmodel.holographic.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_ApplicationModel_Holographic_IHolographicKeyboard<D>::SetPlacementOverride(winrt::Windows::Perception::Spatial::SpatialCoordinateSystem const& coordinateSystem, winrt::Windows::Foundation::Numerics::float3 const& topCenterPosition, winrt::Windows::Foundation::Numerics::quaternion const& orientation) const

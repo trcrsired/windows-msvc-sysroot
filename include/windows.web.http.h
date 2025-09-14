@@ -104,15 +104,15 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "AsyncInfo.h"
-#include "EventToken.h"
+#include "asyncinfo.h"
+#include "eventtoken.h"
 #include "windowscontracts.h"
-#include "Windows.Foundation.h"
-#include "Windows.Networking.Sockets.h"
-#include "Windows.Security.Cryptography.Certificates.h"
-#include "Windows.Storage.Streams.h"
-#include "Windows.Web.Http.Filters.h"
-#include "Windows.Web.Http.Headers.h"
+#include "windows.foundation.h"
+#include "windows.networking.sockets.h"
+#include "windows.security.cryptography.certificates.h"
+#include "windows.storage.streams.h"
+#include "windows.web.http.filters.h"
+#include "windows.web.http.headers.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 

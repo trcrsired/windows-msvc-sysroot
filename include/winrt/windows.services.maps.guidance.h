@@ -9,13 +9,13 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Services.Maps.h"
-#include "winrt/impl/Windows.Devices.Geolocation.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Services.Maps.2.h"
-#include "winrt/impl/Windows.UI.2.h"
-#include "winrt/impl/Windows.Services.Maps.Guidance.2.h"
+#include "winrt/windows.services.maps.h"
+#include "winrt/impl/windows.devices.geolocation.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.services.maps.2.h"
+#include "winrt/impl/windows.ui.2.h"
+#include "winrt/impl/windows.services.maps.guidance.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Services_Maps_Guidance_IGuidanceAudioNotificationRequestedEventArgs<D>::AudioNotification() const

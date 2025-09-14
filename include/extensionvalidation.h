@@ -57,7 +57,7 @@ typedef interface IExtensionValidation IExtensionValidation;
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
-#include "Mshtml.h"
+#include "mshtml.h"
 
 #ifdef __cplusplus
 extern "C"{

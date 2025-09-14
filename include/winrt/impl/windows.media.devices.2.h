@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Devices_2_H
 #define WINRT_Windows_Media_Devices_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Media.Devices.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.media.devices.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Devices
 {
     struct CallControlEventHandler : winrt::Windows::Foundation::IUnknown

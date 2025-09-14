@@ -32,7 +32,7 @@ Revision History:
 
 #include <l2cmn.h>
 #include <windot11.h>
-#include <EapTypes.h>
+#include <eaptypes.h>
 
 #ifdef __cplusplus
 extern "C" {

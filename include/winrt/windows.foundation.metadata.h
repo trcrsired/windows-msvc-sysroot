@@ -9,8 +9,8 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Foundation.h"
-#include "winrt/impl/Windows.Foundation.Metadata.2.h"
+#include "winrt/windows.foundation.h"
+#include "winrt/impl/windows.foundation.metadata.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Foundation_Metadata_IApiInformationStatics<D>::IsTypePresent(param::hstring const& typeName) const

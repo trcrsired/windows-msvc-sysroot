@@ -9,13 +9,13 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Web.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Security.Credentials.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.Web.Syndication.2.h"
-#include "winrt/impl/Windows.Web.AtomPub.2.h"
+#include "winrt/windows.web.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.security.credentials.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.web.syndication.2.h"
+#include "winrt/impl/windows.web.atompub.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Web_AtomPub_IAtomPubClient<D>::RetrieveServiceDocumentAsync(winrt::Windows::Foundation::Uri const& uri) const

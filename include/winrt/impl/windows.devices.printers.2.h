@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Printers_2_H
 #define WINRT_Windows_Devices_Printers_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Devices.Printers.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.devices.printers.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Printers
 {
     struct WINRT_IMPL_EMPTY_BASES IppAttributeError : winrt::Windows::Devices::Printers::IIppAttributeError

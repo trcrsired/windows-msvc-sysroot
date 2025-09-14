@@ -363,7 +363,7 @@ typedef struct FilterRegistration FilterRegistration;
 #include "filtereg.h"
 #include "propsys.h"
 #include "oledb.h"
-#include "StructuredQuery.h"
+#include "structuredquery.h"
 
 #ifdef __cplusplus
 extern "C"{

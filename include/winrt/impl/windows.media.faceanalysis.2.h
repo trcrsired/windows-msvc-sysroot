@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Media_FaceAnalysis_2_H
 #define WINRT_Windows_Media_FaceAnalysis_2_H
-#include "winrt/impl/Windows.Graphics.Imaging.1.h"
-#include "winrt/impl/Windows.Media.FaceAnalysis.1.h"
+#include "winrt/impl/windows.graphics.imaging.1.h"
+#include "winrt/impl/windows.media.faceanalysis.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::FaceAnalysis
 {
     struct WINRT_IMPL_EMPTY_BASES DetectedFace : winrt::Windows::Media::FaceAnalysis::IDetectedFace

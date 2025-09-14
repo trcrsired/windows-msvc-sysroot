@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_AI_Actions_Hosting_2_H
 #define WINRT_Windows_AI_Actions_Hosting_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.AI.Actions.Hosting.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.ai.actions.hosting.1.h"
 WINRT_EXPORT namespace winrt::Windows::AI::Actions::Hosting
 {
     struct WINRT_IMPL_EMPTY_BASES ActionCatalog : winrt::Windows::AI::Actions::Hosting::IActionCatalog,

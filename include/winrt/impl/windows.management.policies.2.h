@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Management_Policies_2_H
 #define WINRT_Windows_Management_Policies_2_H
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.Management.Policies.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.management.policies.1.h"
 WINRT_EXPORT namespace winrt::Windows::Management::Policies
 {
     struct NamedPolicy

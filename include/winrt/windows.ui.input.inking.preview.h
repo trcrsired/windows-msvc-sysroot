@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.UI.Input.Inking.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.UI.Composition.2.h"
-#include "winrt/impl/Windows.UI.Input.Inking.Preview.2.h"
+#include "winrt/windows.ui.input.inking.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.ui.composition.2.h"
+#include "winrt/impl/windows.ui.input.inking.preview.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_UI_Input_Inking_Preview_IPalmRejectionDelayZonePreviewStatics<D>::CreateForVisual(winrt::Windows::UI::Composition::Visual const& inputPanelVisual, winrt::Windows::Foundation::Rect const& inputPanelRect) const

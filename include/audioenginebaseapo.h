@@ -136,7 +136,7 @@ typedef interface IApoAcousticEchoCancellation2 IApoAcousticEchoCancellation2;
 #include "ocidl.h"
 #include "mmdeviceapi.h"
 #include "audiomediatype.h"
-#include "AudioAPOTypes.h"
+#include "audioapotypes.h"
 
 #ifdef __cplusplus
 extern "C"{

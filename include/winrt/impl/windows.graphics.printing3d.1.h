@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Printing3D_1_H
 #define WINRT_Windows_Graphics_Printing3D_1_H
-#include "winrt/impl/Windows.Graphics.Printing3D.0.h"
+#include "winrt/impl/windows.graphics.printing3d.0.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing3D
 {
     struct WINRT_IMPL_EMPTY_BASES IPrint3DManager :

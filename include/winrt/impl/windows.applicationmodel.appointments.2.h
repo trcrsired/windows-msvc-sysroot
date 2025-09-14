@@ -6,10 +6,10 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Appointments_2_H
 #define WINRT_Windows_ApplicationModel_Appointments_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.UI.Popups.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Appointments.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.ui.popups.1.h"
+#include "winrt/impl/windows.applicationmodel.appointments.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Appointments
 {
     struct WINRT_IMPL_EMPTY_BASES Appointment : winrt::Windows::ApplicationModel::Appointments::IAppointment,

@@ -259,7 +259,7 @@
 
 
 // Header files for imported files
-#include "Windows.System.h"
+#include "windows.system.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */

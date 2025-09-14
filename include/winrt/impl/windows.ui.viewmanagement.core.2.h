@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_UI_ViewManagement_Core_2_H
 #define WINRT_Windows_UI_ViewManagement_Core_2_H
-#include "winrt/impl/Windows.UI.1.h"
-#include "winrt/impl/Windows.UI.ViewManagement.Core.1.h"
+#include "winrt/impl/windows.ui.1.h"
+#include "winrt/impl/windows.ui.viewmanagement.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::ViewManagement::Core
 {
     struct WINRT_IMPL_EMPTY_BASES CoreFrameworkInputView : winrt::Windows::UI::ViewManagement::Core::ICoreFrameworkInputView

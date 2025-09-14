@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Composition_Effects_2_H
 #define WINRT_Windows_UI_Composition_Effects_2_H
-#include "winrt/impl/Windows.Graphics.Effects.1.h"
-#include "winrt/impl/Windows.UI.Composition.Effects.1.h"
+#include "winrt/impl/windows.graphics.effects.1.h"
+#include "winrt/impl/windows.ui.composition.effects.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Composition::Effects
 {
     struct WINRT_IMPL_EMPTY_BASES SceneLightingEffect : winrt::Windows::UI::Composition::Effects::ISceneLightingEffect,

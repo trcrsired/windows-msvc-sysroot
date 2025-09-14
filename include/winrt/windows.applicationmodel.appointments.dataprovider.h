@@ -9,11 +9,11 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.ApplicationModel.Appointments.h"
-#include "winrt/impl/Windows.ApplicationModel.Appointments.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.ApplicationModel.Appointments.DataProvider.2.h"
+#include "winrt/windows.applicationmodel.appointments.h"
+#include "winrt/impl/windows.applicationmodel.appointments.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.applicationmodel.appointments.dataprovider.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_ApplicationModel_Appointments_DataProvider_IAppointmentCalendarCancelMeetingRequest<D>::AppointmentCalendarLocalId() const

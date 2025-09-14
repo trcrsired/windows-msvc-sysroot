@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_DataTransfer_DragDrop_Core_2_H
 #define WINRT_Windows_ApplicationModel_DataTransfer_DragDrop_Core_2_H
-#include "winrt/impl/Windows.ApplicationModel.DataTransfer.DragDrop.Core.1.h"
+#include "winrt/impl/windows.applicationmodel.datatransfer.dragdrop.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core
 {
     struct WINRT_IMPL_EMPTY_BASES CoreDragDropManager : winrt::Windows::ApplicationModel::DataTransfer::DragDrop::Core::ICoreDragDropManager

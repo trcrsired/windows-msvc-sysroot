@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.UI.UIAutomation.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.UI.UIAutomation.2.h"
-#include "winrt/impl/Windows.UI.UIAutomation.Core.2.h"
+#include "winrt/windows.ui.uiautomation.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.ui.uiautomation.2.h"
+#include "winrt/impl/windows.ui.uiautomation.core.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_UI_UIAutomation_Core_IAutomationRemoteOperationResult<D>::Status() const

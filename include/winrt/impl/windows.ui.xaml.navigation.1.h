@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Navigation_1_H
 #define WINRT_Windows_UI_Xaml_Navigation_1_H
-#include "winrt/impl/Windows.UI.Xaml.Navigation.0.h"
+#include "winrt/impl/windows.ui.xaml.navigation.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Navigation
 {
     struct WINRT_IMPL_EMPTY_BASES IFrameNavigationOptions :

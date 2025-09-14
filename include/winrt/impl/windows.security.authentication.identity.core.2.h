@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Authentication_Identity_Core_2_H
 #define WINRT_Windows_Security_Authentication_Identity_Core_2_H
-#include "winrt/impl/Windows.Security.Authentication.Identity.Core.1.h"
+#include "winrt/impl/windows.security.authentication.identity.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authentication::Identity::Core
 {
     struct WINRT_IMPL_EMPTY_BASES MicrosoftAccountMultiFactorAuthenticationManager : winrt::Windows::Security::Authentication::Identity::Core::IMicrosoftAccountMultiFactorAuthenticationManager

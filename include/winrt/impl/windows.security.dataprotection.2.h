@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Security_DataProtection_2_H
 #define WINRT_Windows_Security_DataProtection_2_H
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.Security.DataProtection.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.security.dataprotection.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::DataProtection
 {
     struct WINRT_IMPL_EMPTY_BASES UserDataAvailabilityStateChangedEventArgs : winrt::Windows::Security::DataProtection::IUserDataAvailabilityStateChangedEventArgs

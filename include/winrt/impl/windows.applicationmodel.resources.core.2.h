@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Resources_Core_2_H
 #define WINRT_Windows_ApplicationModel_Resources_Core_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.UI.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Resources.Core.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.ui.1.h"
+#include "winrt/impl/windows.applicationmodel.resources.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Resources::Core
 {
     struct ResourceLayoutInfo

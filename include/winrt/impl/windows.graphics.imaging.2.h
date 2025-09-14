@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Imaging_2_H
 #define WINRT_Windows_Graphics_Imaging_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Graphics.DirectX.Direct3D11.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Graphics.Imaging.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.graphics.directx.direct3d11.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.graphics.imaging.1.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Imaging
 {
     struct BitmapBounds

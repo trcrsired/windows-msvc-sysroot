@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Wallet_System_2_H
 #define WINRT_Windows_ApplicationModel_Wallet_System_2_H
-#include "winrt/impl/Windows.ApplicationModel.Wallet.System.1.h"
+#include "winrt/impl/windows.applicationmodel.wallet.system.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Wallet::System
 {
     struct WINRT_IMPL_EMPTY_BASES WalletItemSystemStore : winrt::Windows::ApplicationModel::Wallet::System::IWalletItemSystemStore,

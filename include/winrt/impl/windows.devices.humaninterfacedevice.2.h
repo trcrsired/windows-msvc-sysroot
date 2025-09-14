@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_HumanInterfaceDevice_2_H
 #define WINRT_Windows_Devices_HumanInterfaceDevice_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Storage.1.h"
-#include "winrt/impl/Windows.Devices.HumanInterfaceDevice.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.storage.1.h"
+#include "winrt/impl/windows.devices.humaninterfacedevice.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::HumanInterfaceDevice
 {
     struct WINRT_IMPL_EMPTY_BASES HidBooleanControl : winrt::Windows::Devices::HumanInterfaceDevice::IHidBooleanControl

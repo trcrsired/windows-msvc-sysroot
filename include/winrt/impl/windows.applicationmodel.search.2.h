@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Search_2_H
 #define WINRT_Windows_ApplicationModel_Search_2_H
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Search.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.applicationmodel.search.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Search
 {
     struct WINRT_IMPL_EMPTY_BASES LocalContentSuggestionSettings : winrt::Windows::ApplicationModel::Search::ILocalContentSuggestionSettings

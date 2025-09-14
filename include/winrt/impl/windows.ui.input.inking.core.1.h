@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Input_Inking_Core_1_H
 #define WINRT_Windows_UI_Input_Inking_Core_1_H
-#include "winrt/impl/Windows.UI.Input.Inking.Core.0.h"
+#include "winrt/impl/windows.ui.input.inking.core.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input::Inking::Core
 {
     struct WINRT_IMPL_EMPTY_BASES ICoreIncrementalInkStroke :

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Web_Http_Headers_1_H
 #define WINRT_Windows_Web_Http_Headers_1_H
-#include "winrt/impl/Windows.Web.Http.Headers.0.h"
+#include "winrt/impl/windows.web.http.headers.0.h"
 WINRT_EXPORT namespace winrt::Windows::Web::Http::Headers
 {
     struct WINRT_IMPL_EMPTY_BASES IHttpCacheDirectiveHeaderValueCollection :

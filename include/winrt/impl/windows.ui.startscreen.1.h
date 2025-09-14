@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_StartScreen_1_H
 #define WINRT_Windows_UI_StartScreen_1_H
-#include "winrt/impl/Windows.UI.StartScreen.0.h"
+#include "winrt/impl/windows.ui.startscreen.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::StartScreen
 {
     struct WINRT_IMPL_EMPTY_BASES IJumpList :

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Globalization_Fonts_1_H
 #define WINRT_Windows_Globalization_Fonts_1_H
-#include "winrt/impl/Windows.Globalization.Fonts.0.h"
+#include "winrt/impl/windows.globalization.fonts.0.h"
 WINRT_EXPORT namespace winrt::Windows::Globalization::Fonts
 {
     struct WINRT_IMPL_EMPTY_BASES ILanguageFont :

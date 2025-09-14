@@ -12,7 +12,7 @@
 
 #pragma once
 
-#include <DWrite.h>
+#include <dwrite.h>
 
 
 

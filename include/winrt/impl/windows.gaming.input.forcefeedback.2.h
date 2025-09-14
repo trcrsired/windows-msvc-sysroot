@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Gaming_Input_ForceFeedback_2_H
 #define WINRT_Windows_Gaming_Input_ForceFeedback_2_H
-#include "winrt/impl/Windows.Gaming.Input.ForceFeedback.1.h"
+#include "winrt/impl/windows.gaming.input.forcefeedback.1.h"
 WINRT_EXPORT namespace winrt::Windows::Gaming::Input::ForceFeedback
 {
     struct WINRT_IMPL_EMPTY_BASES ConditionForceEffect : winrt::Windows::Gaming::Input::ForceFeedback::IForceFeedbackEffect,

@@ -22,7 +22,7 @@
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM)
 
 
-#include <PSHPACK1.H>
+#include <pshpack1.h>
 
 #if _MSC_VER >= 1200
 #pragma warning(push)
@@ -1264,7 +1264,7 @@ typedef struct _USB_INTERFACE_POWER_DESCRIPTOR {
 #pragma warning(pop)
 #endif
 
-#include <POPPACK.H>
+#include <poppack.h>
 
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM) */

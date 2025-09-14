@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Contacts_DataProvider_2_H
 #define WINRT_Windows_ApplicationModel_Contacts_DataProvider_2_H
-#include "winrt/impl/Windows.ApplicationModel.Contacts.DataProvider.1.h"
+#include "winrt/impl/windows.applicationmodel.contacts.dataprovider.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Contacts::DataProvider
 {
     struct WINRT_IMPL_EMPTY_BASES ContactDataProviderConnection : winrt::Windows::ApplicationModel::Contacts::DataProvider::IContactDataProviderConnection,

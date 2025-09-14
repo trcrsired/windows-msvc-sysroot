@@ -1558,7 +1558,7 @@ enum __SAL_YesNo {_SAL_notpresent, _SAL_no, _SAL_maybe, _SAL_yes, _SAL_default};
 
 // Using attributes for sal
 
-#include "CodeAnalysis/sourceannotations.h"
+#include "codeanalysis/sourceannotations.h"
 
 
 #define _SA_annotes0(n)                [SAL_annotes(Name=#n)]

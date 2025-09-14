@@ -14,7 +14,7 @@
 #pragma once
 #include <new>
 #include <winapifamily.h>
-#include <Shellapi.h>
+#include <shellapi.h>
 
 #pragma region Desktop Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)

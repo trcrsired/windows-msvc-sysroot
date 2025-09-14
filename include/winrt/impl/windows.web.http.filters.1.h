@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Web_Http_Filters_1_H
 #define WINRT_Windows_Web_Http_Filters_1_H
-#include "winrt/impl/Windows.Foundation.0.h"
-#include "winrt/impl/Windows.Web.Http.Filters.0.h"
+#include "winrt/impl/windows.foundation.0.h"
+#include "winrt/impl/windows.web.http.filters.0.h"
 WINRT_EXPORT namespace winrt::Windows::Web::Http::Filters
 {
     struct WINRT_IMPL_EMPTY_BASES IHttpBaseProtocolFilter :

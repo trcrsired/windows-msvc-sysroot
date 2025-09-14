@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_System_RemoteDesktop_2_H
 #define WINRT_Windows_System_RemoteDesktop_2_H
-#include "winrt/impl/Windows.System.RemoteDesktop.1.h"
+#include "winrt/impl/windows.system.remotedesktop.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::RemoteDesktop
 {
     struct InteractiveSession

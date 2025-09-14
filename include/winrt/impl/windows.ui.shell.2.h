@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Shell_2_H
 #define WINRT_Windows_UI_Shell_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.UI.1.h"
-#include "winrt/impl/Windows.UI.Shell.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.ui.1.h"
+#include "winrt/impl/windows.ui.shell.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Shell
 {
     struct AdaptiveCardBuilder

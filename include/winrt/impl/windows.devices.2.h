@@ -6,12 +6,12 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_2_H
 #define WINRT_Windows_Devices_2_H
-#include "winrt/impl/Windows.Devices.Adc.Provider.1.h"
-#include "winrt/impl/Windows.Devices.Gpio.Provider.1.h"
-#include "winrt/impl/Windows.Devices.I2c.Provider.1.h"
-#include "winrt/impl/Windows.Devices.Pwm.Provider.1.h"
-#include "winrt/impl/Windows.Devices.Spi.Provider.1.h"
-#include "winrt/impl/Windows.Devices.1.h"
+#include "winrt/impl/windows.devices.adc.provider.1.h"
+#include "winrt/impl/windows.devices.gpio.provider.1.h"
+#include "winrt/impl/windows.devices.i2c.provider.1.h"
+#include "winrt/impl/windows.devices.pwm.provider.1.h"
+#include "winrt/impl/windows.devices.spi.provider.1.h"
+#include "winrt/impl/windows.devices.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices
 {
     struct WINRT_IMPL_EMPTY_BASES LowLevelDevicesAggregateProvider : winrt::Windows::Devices::ILowLevelDevicesAggregateProvider

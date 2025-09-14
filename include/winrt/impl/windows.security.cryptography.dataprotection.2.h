@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Cryptography_DataProtection_2_H
 #define WINRT_Windows_Security_Cryptography_DataProtection_2_H
-#include "winrt/impl/Windows.Security.Cryptography.DataProtection.1.h"
+#include "winrt/impl/windows.security.cryptography.dataprotection.1.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Cryptography::DataProtection
 {
     struct WINRT_IMPL_EMPTY_BASES DataProtectionProvider : winrt::Windows::Security::Cryptography::DataProtection::IDataProtectionProvider

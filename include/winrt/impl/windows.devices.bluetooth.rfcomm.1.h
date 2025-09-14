@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Bluetooth_Rfcomm_1_H
 #define WINRT_Windows_Devices_Bluetooth_Rfcomm_1_H
-#include "winrt/impl/Windows.Devices.Bluetooth.Rfcomm.0.h"
+#include "winrt/impl/windows.devices.bluetooth.rfcomm.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Bluetooth::Rfcomm
 {
     struct WINRT_IMPL_EMPTY_BASES IRfcommDeviceService :

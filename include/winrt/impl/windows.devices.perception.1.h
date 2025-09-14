@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Perception_1_H
 #define WINRT_Windows_Devices_Perception_1_H
-#include "winrt/impl/Windows.Foundation.0.h"
-#include "winrt/impl/Windows.Devices.Perception.0.h"
+#include "winrt/impl/windows.foundation.0.h"
+#include "winrt/impl/windows.devices.perception.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Perception
 {
     struct WINRT_IMPL_EMPTY_BASES IKnownCameraIntrinsicsPropertiesStatics :

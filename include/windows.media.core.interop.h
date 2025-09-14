@@ -76,7 +76,7 @@ typedef interface IVideoFrameNativeFactory IVideoFrameNativeFactory;
 
 
 /* header files for imported files */
-#include "Inspectable.h"
+#include "inspectable.h"
 #include "mfobjects.h"
 
 #ifdef __cplusplus

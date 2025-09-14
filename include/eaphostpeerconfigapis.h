@@ -19,7 +19,7 @@
 #include "objbase.h" //Required by msxml2.h
 #include "msxml6.h"
 
-#include "EapTypes.h"
+#include "eaptypes.h"
 
 #ifdef __cplusplus
 extern "C"

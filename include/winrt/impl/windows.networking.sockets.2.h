@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_Networking_Sockets_2_H
 #define WINRT_Windows_Networking_Sockets_2_H
-#include "winrt/impl/Windows.ApplicationModel.Background.1.h"
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Networking.1.h"
-#include "winrt/impl/Windows.Storage.Streams.1.h"
-#include "winrt/impl/Windows.Networking.Sockets.1.h"
+#include "winrt/impl/windows.applicationmodel.background.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.networking.1.h"
+#include "winrt/impl/windows.storage.streams.1.h"
+#include "winrt/impl/windows.networking.sockets.1.h"
 WINRT_EXPORT namespace winrt::Windows::Networking::Sockets
 {
     struct BandwidthStatistics

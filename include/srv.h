@@ -8,7 +8,7 @@
 #define _ODS_SRV_H_
 
 #ifndef COMPILE_FOR_CLR
-#include <Windows.h>
+#include <windows.h>
 #endif
 
 // ODS uses pack(4) on all CPU types

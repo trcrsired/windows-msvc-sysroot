@@ -25,7 +25,7 @@ Abstract:
 #include <windot11.h>
 #include <wlclient.h>
 #include <l2cmn.h>
-#include <WlanIhvTypes.h>
+#include <wlanihvtypes.h>
 #include <dot1x.h>
 
 // Forward declaration for the

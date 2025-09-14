@@ -11,7 +11,7 @@
 #include "ehdata_values.h"
 
 #include <excpt.h>
-#include <Windows.h>
+#include <windows.h>
 
 #pragma pack(push, ehdata, 4)
 

@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Services_Store_1_H
 #define WINRT_Windows_Services_Store_1_H
-#include "winrt/impl/Windows.Foundation.0.h"
-#include "winrt/impl/Windows.Services.Store.0.h"
+#include "winrt/impl/windows.foundation.0.h"
+#include "winrt/impl/windows.services.store.0.h"
 WINRT_EXPORT namespace winrt::Windows::Services::Store
 {
     struct WINRT_IMPL_EMPTY_BASES IStoreAcquireLicenseResult :

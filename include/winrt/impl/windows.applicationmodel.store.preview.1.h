@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Store_Preview_1_H
 #define WINRT_Windows_ApplicationModel_Store_Preview_1_H
-#include "winrt/impl/Windows.ApplicationModel.Store.Preview.0.h"
+#include "winrt/impl/windows.applicationmodel.store.preview.0.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Store::Preview
 {
     struct WINRT_IMPL_EMPTY_BASES IDeliveryOptimizationSettings :

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_System_Diagnostics_Telemetry_1_H
 #define WINRT_Windows_System_Diagnostics_Telemetry_1_H
-#include "winrt/impl/Windows.System.Diagnostics.Telemetry.0.h"
+#include "winrt/impl/windows.system.diagnostics.telemetry.0.h"
 WINRT_EXPORT namespace winrt::Windows::System::Diagnostics::Telemetry
 {
     struct WINRT_IMPL_EMPTY_BASES IPlatformTelemetryClientStatics :

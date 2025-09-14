@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Management_Core_2_H
 #define WINRT_Windows_Management_Core_2_H
-#include "winrt/impl/Windows.Management.Core.1.h"
+#include "winrt/impl/windows.management.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::Management::Core
 {
     struct WINRT_IMPL_EMPTY_BASES ApplicationDataManager : winrt::Windows::Management::Core::IApplicationDataManager

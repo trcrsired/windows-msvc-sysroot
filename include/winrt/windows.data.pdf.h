@@ -9,11 +9,11 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Storage.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.UI.2.h"
-#include "winrt/impl/Windows.Data.Pdf.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.storage.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.ui.2.h"
+#include "winrt/impl/windows.data.pdf.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Data_Pdf_IPdfDocument<D>::GetPage(uint32_t pageIndex) const

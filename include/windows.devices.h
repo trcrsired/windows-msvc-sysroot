@@ -96,15 +96,15 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "AsyncInfo.h"
-#include "EventToken.h"
+#include "asyncinfo.h"
+#include "eventtoken.h"
 #include "windowscontracts.h"
-#include "Windows.Foundation.h"
-#include "Windows.Devices.Adc.Provider.h"
-#include "Windows.Devices.Gpio.Provider.h"
-#include "Windows.Devices.I2c.Provider.h"
-#include "Windows.Devices.Pwm.Provider.h"
-#include "Windows.Devices.Spi.Provider.h"
+#include "windows.foundation.h"
+#include "windows.devices.adc.provider.h"
+#include "windows.devices.gpio.provider.h"
+#include "windows.devices.i2c.provider.h"
+#include "windows.devices.pwm.provider.h"
+#include "windows.devices.spi.provider.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Globalization_NumberFormatting_1_H
 #define WINRT_Windows_Globalization_NumberFormatting_1_H
-#include "winrt/impl/Windows.Globalization.NumberFormatting.0.h"
+#include "winrt/impl/windows.globalization.numberformatting.0.h"
 WINRT_EXPORT namespace winrt::Windows::Globalization::NumberFormatting
 {
     struct WINRT_IMPL_EMPTY_BASES ICurrencyFormatter :

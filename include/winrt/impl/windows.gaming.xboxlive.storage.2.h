@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Gaming_XboxLive_Storage_2_H
 #define WINRT_Windows_Gaming_XboxLive_Storage_2_H
-#include "winrt/impl/Windows.System.1.h"
-#include "winrt/impl/Windows.Gaming.XboxLive.Storage.1.h"
+#include "winrt/impl/windows.system.1.h"
+#include "winrt/impl/windows.gaming.xboxlive.storage.1.h"
 WINRT_EXPORT namespace winrt::Windows::Gaming::XboxLive::Storage
 {
     struct WINRT_IMPL_EMPTY_BASES GameSaveBlobGetResult : winrt::Windows::Gaming::XboxLive::Storage::IGameSaveBlobGetResult

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Text_Core_2_H
 #define WINRT_Windows_UI_Text_Core_2_H
-#include "winrt/impl/Windows.UI.Text.Core.1.h"
+#include "winrt/impl/windows.ui.text.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Text::Core
 {
     struct CoreTextRange

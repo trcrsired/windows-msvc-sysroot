@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Input_Preview_2_H
 #define WINRT_Windows_Devices_Input_Preview_2_H
-#include "winrt/impl/Windows.Devices.Input.Preview.1.h"
+#include "winrt/impl/windows.devices.input.preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Input::Preview
 {
     struct WINRT_IMPL_EMPTY_BASES GazeDevicePreview : winrt::Windows::Devices::Input::Preview::IGazeDevicePreview

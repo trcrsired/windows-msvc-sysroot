@@ -81,7 +81,7 @@ Environment:
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <fltUserStructures.h>
+#include <fltuserstructures.h>
 
 #ifdef __cplusplus
 extern "C" {

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Input_Spatial_1_H
 #define WINRT_Windows_UI_Input_Spatial_1_H
-#include "winrt/impl/Windows.UI.Input.Spatial.0.h"
+#include "winrt/impl/windows.ui.input.spatial.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input::Spatial
 {
     struct WINRT_IMPL_EMPTY_BASES ISpatialGestureRecognizer :

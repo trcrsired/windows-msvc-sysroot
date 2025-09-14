@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Input_Inking_Preview_2_H
 #define WINRT_Windows_UI_Input_Inking_Preview_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.UI.Composition.1.h"
-#include "winrt/impl/Windows.UI.Input.Inking.Preview.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.ui.composition.1.h"
+#include "winrt/impl/windows.ui.input.inking.preview.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input::Inking::Preview
 {
     struct WINRT_IMPL_EMPTY_BASES PalmRejectionDelayZonePreview : winrt::Windows::UI::Input::Inking::Preview::IPalmRejectionDelayZonePreview,

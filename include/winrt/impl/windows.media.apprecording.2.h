@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Media_AppRecording_2_H
 #define WINRT_Windows_Media_AppRecording_2_H
-#include "winrt/impl/Windows.Media.AppRecording.1.h"
+#include "winrt/impl/windows.media.apprecording.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::AppRecording
 {
     struct WINRT_IMPL_EMPTY_BASES AppRecordingManager : winrt::Windows::Media::AppRecording::IAppRecordingManager

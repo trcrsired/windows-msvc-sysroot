@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "DirectXMath.h"
+#include "directxmath.h"
 
 namespace DirectX
 {
@@ -1216,7 +1216,7 @@ namespace DirectX
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #endif
 
-#include "DirectXPackedVector.inl"
+#include "directxpackedvector.inl"
 
 #ifdef __clang__
 #pragma clang diagnostic pop

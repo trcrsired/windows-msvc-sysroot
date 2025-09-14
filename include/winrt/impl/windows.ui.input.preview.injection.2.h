@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Input_Preview_Injection_2_H
 #define WINRT_Windows_UI_Input_Preview_Injection_2_H
-#include "winrt/impl/Windows.Gaming.Input.2.h"
-#include "winrt/impl/Windows.UI.Input.Preview.Injection.1.h"
+#include "winrt/impl/windows.gaming.input.2.h"
+#include "winrt/impl/windows.ui.input.preview.injection.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Input::Preview::Injection
 {
     struct InjectedInputPoint

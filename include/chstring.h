@@ -26,7 +26,7 @@
 #include <tchar.h>
 #include <polarity.h>
 #pragma warning( disable : 4290 ) // Ignore 'C++ Exception Specification ignored'
-#include <ProvExce.h>
+#include <provexce.h>
 
 /////////////////////////////////////////////////////////////////////////////
 

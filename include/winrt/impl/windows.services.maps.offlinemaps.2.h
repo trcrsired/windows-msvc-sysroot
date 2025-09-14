@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Services_Maps_OfflineMaps_2_H
 #define WINRT_Windows_Services_Maps_OfflineMaps_2_H
-#include "winrt/impl/Windows.Devices.Geolocation.1.h"
-#include "winrt/impl/Windows.Services.Maps.OfflineMaps.1.h"
+#include "winrt/impl/windows.devices.geolocation.1.h"
+#include "winrt/impl/windows.services.maps.offlinemaps.1.h"
 WINRT_EXPORT namespace winrt::Windows::Services::Maps::OfflineMaps
 {
     struct WINRT_IMPL_EMPTY_BASES OfflineMapPackage : winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackage

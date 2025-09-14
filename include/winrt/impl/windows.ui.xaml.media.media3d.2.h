@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Media_Media3D_2_H
 #define WINRT_Windows_UI_Xaml_Media_Media3D_2_H
-#include "winrt/impl/Windows.UI.Xaml.1.h"
-#include "winrt/impl/Windows.UI.Xaml.Media.Media3D.1.h"
+#include "winrt/impl/windows.ui.xaml.1.h"
+#include "winrt/impl/windows.ui.xaml.media.media3d.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Media::Media3D
 {
     struct Matrix3D

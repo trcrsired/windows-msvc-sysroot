@@ -9,14 +9,14 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.UI.Xaml.Media.h"
-#include "winrt/impl/Windows.ApplicationModel.Background.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Graphics.Imaging.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.UI.Xaml.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Media.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Media.Imaging.2.h"
+#include "winrt/windows.ui.xaml.media.h"
+#include "winrt/impl/windows.applicationmodel.background.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.graphics.imaging.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.ui.xaml.2.h"
+#include "winrt/impl/windows.ui.xaml.media.2.h"
+#include "winrt/impl/windows.ui.xaml.media.imaging.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_UI_Xaml_Media_Imaging_IBitmapImage<D>::CreateOptions() const

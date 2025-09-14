@@ -57,7 +57,7 @@
 
 //--------------<D-E-F-I-N-I-T-I-O-N-S>-------------------------------------//
 #include <windef.h>    // general windows types
-#include <DirectXMath.h>
+#include <directxmath.h>
 
 // speaker geometry configuration flags, specifies assignment of channels to speaker positions, defined as per WAVEFORMATEXTENSIBLE.dwChannelMask
 #if !defined(_SPEAKER_POSITIONS_)

@@ -19,7 +19,7 @@
     #using <system.dll>
 #endif
 
-#include <Windows.h>
+#include <windows.h>
 #include <errno.h>
 #include <memory>
 #include <sal.h>

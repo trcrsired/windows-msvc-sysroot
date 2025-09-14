@@ -9,11 +9,11 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Gaming.Input.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Gaming.Input.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.Gaming.Input.Custom.2.h"
+#include "winrt/windows.gaming.input.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.gaming.input.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.gaming.input.custom.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Gaming_Input_Custom_ICustomGameControllerFactory<D>::CreateGameController(winrt::Windows::Gaming::Input::Custom::IGameControllerProvider const& provider) const

@@ -28,7 +28,7 @@
 #endif
 
 #ifndef SPError_h
-#include <SPError.h>
+#include <sperror.h>
 #endif
 
 #ifndef _INC_LIMITS

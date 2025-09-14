@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Holographic_2_H
 #define WINRT_Windows_Graphics_Holographic_2_H
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Numerics.2.h"
-#include "winrt/impl/Windows.Graphics.DirectX.2.h"
-#include "winrt/impl/Windows.UI.Core.2.h"
-#include "winrt/impl/Windows.Graphics.Holographic.1.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.numerics.2.h"
+#include "winrt/impl/windows.graphics.directx.2.h"
+#include "winrt/impl/windows.ui.core.2.h"
+#include "winrt/impl/windows.graphics.holographic.1.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Holographic
 {
     struct HolographicAdapterId

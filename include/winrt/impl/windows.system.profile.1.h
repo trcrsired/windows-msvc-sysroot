@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_System_Profile_1_H
 #define WINRT_Windows_System_Profile_1_H
-#include "winrt/impl/Windows.System.Profile.0.h"
+#include "winrt/impl/windows.system.profile.0.h"
 WINRT_EXPORT namespace winrt::Windows::System::Profile
 {
     struct WINRT_IMPL_EMPTY_BASES IAnalyticsInfoStatics :

@@ -9,9 +9,9 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/impl/Windows.ApplicationModel.2.h"
-#include "winrt/impl/Windows.UI.2.h"
-#include "winrt/impl/Windows.AI.ModelContextProtocol.2.h"
+#include "winrt/impl/windows.applicationmodel.2.h"
+#include "winrt/impl/windows.ui.2.h"
+#include "winrt/impl/windows.ai.modelcontextprotocol.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_AI_ModelContextProtocol_IModelContextProtocolClientContext<D>::OwnerWindowId(winrt::Windows::UI::WindowId const& value) const

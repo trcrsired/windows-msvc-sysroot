@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_System_Display_2_H
 #define WINRT_Windows_System_Display_2_H
-#include "winrt/impl/Windows.System.Display.1.h"
+#include "winrt/impl/windows.system.display.1.h"
 WINRT_EXPORT namespace winrt::Windows::System::Display
 {
     struct WINRT_IMPL_EMPTY_BASES DisplayRequest : winrt::Windows::System::Display::IDisplayRequest

@@ -115,7 +115,7 @@ typedef interface ISpatialAudioObjectRenderStreamForMetadata ISpatialAudioObject
 #include "unknwn.h"
 #include "hstring.h"
 #include "propidl.h"
-#include "SpatialAudioClient.h"
+#include "spatialaudioclient.h"
 
 #ifdef __cplusplus
 extern "C"{

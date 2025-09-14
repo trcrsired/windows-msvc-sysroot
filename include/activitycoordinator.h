@@ -11,7 +11,7 @@
 #include <apiset.h>
 #include <apisetcconv.h>
 #include <minwindef.h>
-#include <ActivityCoordinatorTypes.h>
+#include <activitycoordinatortypes.h>
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 

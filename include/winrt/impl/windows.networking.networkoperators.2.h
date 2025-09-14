@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Networking_NetworkOperators_2_H
 #define WINRT_Windows_Networking_NetworkOperators_2_H
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Networking.Connectivity.2.h"
-#include "winrt/impl/Windows.Networking.NetworkOperators.1.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.networking.connectivity.2.h"
+#include "winrt/impl/windows.networking.networkoperators.1.h"
 WINRT_EXPORT namespace winrt::Windows::Networking::NetworkOperators
 {
     struct ESimProfileInstallProgress

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_UIAutomation_2_H
 #define WINRT_Windows_UI_UIAutomation_2_H
-#include "winrt/impl/Windows.UI.UIAutomation.1.h"
+#include "winrt/impl/windows.ui.uiautomation.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::UIAutomation
 {
     struct WINRT_IMPL_EMPTY_BASES AutomationConnection : winrt::Windows::UI::UIAutomation::IAutomationConnection

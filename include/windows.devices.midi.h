@@ -100,12 +100,12 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "AsyncInfo.h"
-#include "EventToken.h"
+#include "asyncinfo.h"
+#include "eventtoken.h"
 #include "windowscontracts.h"
-#include "Windows.Foundation.h"
-#include "Windows.Devices.Enumeration.h"
-#include "Windows.Storage.Streams.h"
+#include "windows.foundation.h"
+#include "windows.devices.enumeration.h"
+#include "windows.storage.streams.h"
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 /* Forward Declarations */

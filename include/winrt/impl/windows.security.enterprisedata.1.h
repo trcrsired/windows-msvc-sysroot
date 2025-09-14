@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Security_EnterpriseData_1_H
 #define WINRT_Windows_Security_EnterpriseData_1_H
-#include "winrt/impl/Windows.Security.EnterpriseData.0.h"
+#include "winrt/impl/windows.security.enterprisedata.0.h"
 WINRT_EXPORT namespace winrt::Windows::Security::EnterpriseData
 {
     struct WINRT_IMPL_EMPTY_BASES IBufferProtectUnprotectResult :

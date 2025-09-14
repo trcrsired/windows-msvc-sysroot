@@ -6,13 +6,13 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Display_Core_2_H
 #define WINRT_Windows_Devices_Display_Core_2_H
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Foundation.Numerics.2.h"
-#include "winrt/impl/Windows.Graphics.2.h"
-#include "winrt/impl/Windows.Graphics.DirectX.2.h"
-#include "winrt/impl/Windows.Graphics.DirectX.Direct3D11.2.h"
-#include "winrt/impl/Windows.Devices.Display.Core.1.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.foundation.numerics.2.h"
+#include "winrt/impl/windows.graphics.2.h"
+#include "winrt/impl/windows.graphics.directx.2.h"
+#include "winrt/impl/windows.graphics.directx.direct3d11.2.h"
+#include "winrt/impl/windows.devices.display.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Display::Core
 {
     struct DisplayPresentationRate

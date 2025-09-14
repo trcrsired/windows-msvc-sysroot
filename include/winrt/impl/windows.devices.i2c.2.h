@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_I2c_2_H
 #define WINRT_Windows_Devices_I2c_2_H
-#include "winrt/impl/Windows.Devices.I2c.Provider.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Devices.I2c.1.h"
+#include "winrt/impl/windows.devices.i2c.provider.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.devices.i2c.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::I2c
 {
     struct I2cTransferResult

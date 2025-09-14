@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Payments_2_H
 #define WINRT_Windows_ApplicationModel_Payments_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.ApplicationModel.Payments.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.applicationmodel.payments.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Payments
 {
     struct PaymentRequestChangedHandler : winrt::Windows::Foundation::IUnknown

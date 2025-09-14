@@ -31,7 +31,7 @@ PerceptionDeviceSetCreateFactoryOverride(
 
 #endif // NTDDI_VERSION >= NTDDI_WIN10_VB
 
-#include <PerceptionDeviceCore.h>
+#include <perceptiondevicecore.h>
 #include <unknwn.h>
 
 enum class PerceptionDeviceOptions

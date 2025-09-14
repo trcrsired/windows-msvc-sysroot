@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.UI.Core.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.UI.WindowManagement.2.h"
-#include "winrt/impl/Windows.UI.Core.Preview.2.h"
+#include "winrt/windows.ui.core.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.ui.windowmanagement.2.h"
+#include "winrt/impl/windows.ui.core.preview.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_UI_Core_Preview_ICoreAppWindowPreviewStatics<D>::GetIdFromWindow(winrt::Windows::UI::WindowManagement::AppWindow const& window) const

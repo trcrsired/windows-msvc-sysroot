@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Haptics_1_H
 #define WINRT_Windows_Devices_Haptics_1_H
-#include "winrt/impl/Windows.Devices.Haptics.0.h"
+#include "winrt/impl/windows.devices.haptics.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Haptics
 {
     struct WINRT_IMPL_EMPTY_BASES IKnownSimpleHapticsControllerWaveformsStatics :

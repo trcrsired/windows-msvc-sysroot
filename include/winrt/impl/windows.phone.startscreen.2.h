@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Phone_StartScreen_2_H
 #define WINRT_Windows_Phone_StartScreen_2_H
-#include "winrt/impl/Windows.Phone.StartScreen.1.h"
+#include "winrt/impl/windows.phone.startscreen.1.h"
 WINRT_EXPORT namespace winrt::Windows::Phone::StartScreen
 {
     struct WINRT_IMPL_EMPTY_BASES DualSimTile : winrt::Windows::Phone::StartScreen::IDualSimTile

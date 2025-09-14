@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.ApplicationModel.UserDataTasks.h"
-#include "winrt/impl/Windows.ApplicationModel.UserDataTasks.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.ApplicationModel.UserDataTasks.DataProvider.2.h"
+#include "winrt/windows.applicationmodel.userdatatasks.h"
+#include "winrt/impl/windows.applicationmodel.userdatatasks.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.applicationmodel.userdatatasks.dataprovider.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_ApplicationModel_UserDataTasks_DataProvider_IUserDataTaskDataProviderConnection<D>::CreateOrUpdateTaskRequested(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::ApplicationModel::UserDataTasks::DataProvider::UserDataTaskDataProviderConnection, winrt::Windows::ApplicationModel::UserDataTasks::DataProvider::UserDataTaskListCreateOrUpdateTaskRequestEventArgs> const& handler) const

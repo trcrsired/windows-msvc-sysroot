@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Spi_Provider_2_H
 #define WINRT_Windows_Devices_Spi_Provider_2_H
-#include "winrt/impl/Windows.Devices.Spi.Provider.1.h"
+#include "winrt/impl/windows.devices.spi.provider.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Spi::Provider
 {
     struct WINRT_IMPL_EMPTY_BASES ProviderSpiConnectionSettings : winrt::Windows::Devices::Spi::Provider::IProviderSpiConnectionSettings

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //
 
-#include <DirectXMath.h>
+#include <directxmath.h>
 
 
 #ifdef _WINDOWS_NUMERICS_INTEROP_NAMESPACE_
@@ -481,7 +481,7 @@ namespace DirectX
 }
 
 
-#include "WindowsNumerics.inl"
+#include "windowsnumerics.inl"
 
 
 #undef _DEFINE_WINDOWS_NUMERICS_INTEROP_

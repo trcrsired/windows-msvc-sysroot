@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Networking_BackgroundTransfer_1_H
 #define WINRT_Windows_Networking_BackgroundTransfer_1_H
-#include "winrt/impl/Windows.Networking.BackgroundTransfer.0.h"
+#include "winrt/impl/windows.networking.backgroundtransfer.0.h"
 WINRT_EXPORT namespace winrt::Windows::Networking::BackgroundTransfer
 {
     struct WINRT_IMPL_EMPTY_BASES IBackgroundDownloader :

@@ -11,9 +11,9 @@
 #ifndef _ANCHORSYNCSERVICE_H_
 #define _ANCHORSYNCSERVICE_H_
 
-#include <DeviceServices.h>
+#include <deviceservices.h>
 
-#include <SyncDeviceService.h>
+#include <syncdeviceservice.h>
 
 
 /*****************************************************************************

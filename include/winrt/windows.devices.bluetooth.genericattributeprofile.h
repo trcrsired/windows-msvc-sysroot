@@ -9,13 +9,13 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Devices.Bluetooth.h"
-#include "winrt/impl/Windows.Devices.Bluetooth.2.h"
-#include "winrt/impl/Windows.Devices.Enumeration.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Storage.Streams.2.h"
-#include "winrt/impl/Windows.Devices.Bluetooth.GenericAttributeProfile.2.h"
+#include "winrt/windows.devices.bluetooth.h"
+#include "winrt/impl/windows.devices.bluetooth.2.h"
+#include "winrt/impl/windows.devices.enumeration.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.storage.streams.2.h"
+#include "winrt/impl/windows.devices.bluetooth.genericattributeprofile.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Devices_Bluetooth_GenericAttributeProfile_IGattCharacteristic<D>::GetDescriptors(winrt::guid const& descriptorUuid) const

@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Authorization_AppCapabilityAccess_1_H
 #define WINRT_Windows_Security_Authorization_AppCapabilityAccess_1_H
-#include "winrt/impl/Windows.Security.Authorization.AppCapabilityAccess.0.h"
+#include "winrt/impl/windows.security.authorization.appcapabilityaccess.0.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Authorization::AppCapabilityAccess
 {
     struct WINRT_IMPL_EMPTY_BASES IAppCapability :

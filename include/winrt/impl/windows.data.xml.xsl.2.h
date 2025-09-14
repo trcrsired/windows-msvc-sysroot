@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Data_Xml_Xsl_2_H
 #define WINRT_Windows_Data_Xml_Xsl_2_H
-#include "winrt/impl/Windows.Data.Xml.Dom.1.h"
-#include "winrt/impl/Windows.Data.Xml.Xsl.1.h"
+#include "winrt/impl/windows.data.xml.dom.1.h"
+#include "winrt/impl/windows.data.xml.xsl.1.h"
 WINRT_EXPORT namespace winrt::Windows::Data::Xml::Xsl
 {
     struct WINRT_IMPL_EMPTY_BASES XsltProcessor : winrt::Windows::Data::Xml::Xsl::IXsltProcessor,

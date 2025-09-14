@@ -100,17 +100,17 @@
 
 // Header files for imported files
 #include "inspectable.h"
-#include "AsyncInfo.h"
-#include "EventToken.h"
+#include "asyncinfo.h"
+#include "eventtoken.h"
 #include "windowscontracts.h"
-#include "Windows.Foundation.h"
-#include "Windows.Foundation.Numerics.h"
-#include "Windows.UI.h"
-#include "Windows.UI.Xaml.h"
-#include "Windows.UI.Xaml.Controls.h"
-#include "Windows.UI.Xaml.Data.h"
-#include "Windows.UI.Xaml.Input.h"
-#include "Windows.UI.Xaml.Media.h"
+#include "windows.foundation.h"
+#include "windows.foundation.numerics.h"
+#include "windows.ui.h"
+#include "windows.ui.xaml.h"
+#include "windows.ui.xaml.controls.h"
+#include "windows.ui.xaml.data.h"
+#include "windows.ui.xaml.input.h"
+#include "windows.ui.xaml.media.h"
 // Importing Collections header
 #include <windows.foundation.collections.h>
 

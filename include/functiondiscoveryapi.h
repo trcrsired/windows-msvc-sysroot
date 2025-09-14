@@ -173,11 +173,11 @@ enum tagPropertyConstraint
 #ifndef FDPropertyConstraint
 #define FDPropertyConstraint
 #endif
-#include "FunctionDiscoveryCategories.h"
-#include "FunctionDiscoveryError.h"
-#include "FunctionDiscoveryKeys.h"
-#include "FunctionDiscoveryServiceIDs.h"
-#include "FunctionDiscoveryConstraints.h"
+#include "functiondiscoverycategories.h"
+#include "functiondiscoveryerror.h"
+#include "functiondiscoverykeys.h"
+#include "functiondiscoveryserviceids.h"
+#include "functiondiscoveryconstraints.h"
 
 
 
@@ -1155,7 +1155,7 @@ EXTERN_C const IID IID_IFunctionInstanceCollectionQuery;
 /* interface __MIDL_itf_functiondiscoveryapi_0000_0007 */
 /* [local] */ 
 
-#include "FunctionDiscoveryNotification.h"
+#include "functiondiscoverynotification.h"
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
 #pragma endregion
 

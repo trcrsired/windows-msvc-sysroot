@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Printers_Extensions_2_H
 #define WINRT_Windows_Devices_Printers_Extensions_2_H
-#include "winrt/impl/Windows.Devices.Printers.Extensions.1.h"
+#include "winrt/impl/windows.devices.printers.extensions.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Printers::Extensions
 {
     struct WINRT_IMPL_EMPTY_BASES Print3DWorkflow : winrt::Windows::Devices::Printers::Extensions::IPrint3DWorkflow,

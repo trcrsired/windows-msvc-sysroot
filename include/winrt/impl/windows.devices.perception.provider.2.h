@@ -6,11 +6,11 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Perception_Provider_2_H
 #define WINRT_Windows_Devices_Perception_Provider_2_H
-#include "winrt/impl/Windows.Foundation.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Foundation.Numerics.1.h"
-#include "winrt/impl/Windows.Graphics.Imaging.1.h"
-#include "winrt/impl/Windows.Devices.Perception.Provider.1.h"
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.foundation.numerics.1.h"
+#include "winrt/impl/windows.graphics.imaging.1.h"
+#include "winrt/impl/windows.devices.perception.provider.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Perception::Provider
 {
     struct PerceptionStartFaceAuthenticationHandler : winrt::Windows::Foundation::IUnknown

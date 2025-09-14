@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Xaml_Media_Animation_1_H
 #define WINRT_Windows_UI_Xaml_Media_Animation_1_H
-#include "winrt/impl/Windows.UI.Xaml.Media.Animation.0.h"
+#include "winrt/impl/windows.ui.xaml.media.animation.0.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Xaml::Media::Animation
 {
     struct WINRT_IMPL_EMPTY_BASES IAddDeleteThemeTransition :

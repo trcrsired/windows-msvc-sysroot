@@ -9,11 +9,11 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/impl/Windows.AI.Actions.Hosting.2.h"
-#include "winrt/impl/Windows.ApplicationModel.Contacts.2.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.UI.2.h"
-#include "winrt/impl/Windows.AI.Actions.2.h"
+#include "winrt/impl/windows.ai.actions.hosting.2.h"
+#include "winrt/impl/windows.applicationmodel.contacts.2.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.ui.2.h"
+#include "winrt/impl/windows.ai.actions.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_AI_Actions_IActionEntity<D>::Kind() const

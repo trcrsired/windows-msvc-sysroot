@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Web_AtomPub_2_H
 #define WINRT_Windows_Web_AtomPub_2_H
-#include "winrt/impl/Windows.Security.Credentials.1.h"
-#include "winrt/impl/Windows.Web.Syndication.1.h"
-#include "winrt/impl/Windows.Web.AtomPub.1.h"
+#include "winrt/impl/windows.security.credentials.1.h"
+#include "winrt/impl/windows.web.syndication.1.h"
+#include "winrt/impl/windows.web.atompub.1.h"
 WINRT_EXPORT namespace winrt::Windows::Web::AtomPub
 {
     struct WINRT_IMPL_EMPTY_BASES AtomPubClient : winrt::Windows::Web::AtomPub::IAtomPubClient

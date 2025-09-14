@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_UI_Core_2_H
 #define WINRT_Windows_UI_Core_2_H
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.UI.Composition.2.h"
-#include "winrt/impl/Windows.UI.Core.1.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.ui.composition.2.h"
+#include "winrt/impl/windows.ui.core.1.h"
 WINRT_EXPORT namespace winrt::Windows::UI::Core
 {
     struct DispatchedHandler : winrt::Windows::Foundation::IUnknown

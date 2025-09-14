@@ -112,7 +112,7 @@
 #endif // >= NTDDI_WIN8
 
 
-#include <PSHPACK1.H>
+#include <pshpack1.h>
 
 typedef struct _BTH_DEVICE_INFO_LIST
 {
@@ -404,7 +404,7 @@ typedef struct _BTH_HOST_FEATURE_MASK
 
 #endif //NTDDI_WIN8
 
-#include <POPPACK.H>
+#include <poppack.h>
 
 #endif // (NTDDI_VERSION >= NTDDI_VISTA)
 

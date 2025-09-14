@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Data_Xml_Dom_1_H
 #define WINRT_Windows_Data_Xml_Dom_1_H
-#include "winrt/impl/Windows.Foundation.Collections.0.h"
-#include "winrt/impl/Windows.Data.Xml.Dom.0.h"
+#include "winrt/impl/windows.foundation.collections.0.h"
+#include "winrt/impl/windows.data.xml.dom.0.h"
 WINRT_EXPORT namespace winrt::Windows::Data::Xml::Dom
 {
     struct WINRT_IMPL_EMPTY_BASES IDtdEntity :

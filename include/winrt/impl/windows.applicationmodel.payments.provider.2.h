@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_ApplicationModel_Payments_Provider_2_H
 #define WINRT_Windows_ApplicationModel_Payments_Provider_2_H
-#include "winrt/impl/Windows.ApplicationModel.Payments.Provider.1.h"
+#include "winrt/impl/windows.applicationmodel.payments.provider.1.h"
 WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Payments::Provider
 {
     struct WINRT_IMPL_EMPTY_BASES PaymentAppCanMakePaymentTriggerDetails : winrt::Windows::ApplicationModel::Payments::Provider::IPaymentAppCanMakePaymentTriggerDetails

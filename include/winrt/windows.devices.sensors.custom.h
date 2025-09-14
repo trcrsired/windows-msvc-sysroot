@@ -9,10 +9,10 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Devices.Sensors.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.Devices.Sensors.Custom.2.h"
+#include "winrt/windows.devices.sensors.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.devices.sensors.custom.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Devices_Sensors_Custom_ICustomSensor<D>::GetCurrentReading() const

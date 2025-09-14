@@ -15,7 +15,7 @@
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 #ifndef SPHelper_h
-#include <SPHelper.h>
+#include <sphelper.h>
 #endif
 
 #ifdef ETW_TRACE_HEADER

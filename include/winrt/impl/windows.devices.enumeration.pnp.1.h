@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Enumeration_Pnp_1_H
 #define WINRT_Windows_Devices_Enumeration_Pnp_1_H
-#include "winrt/impl/Windows.Devices.Enumeration.Pnp.0.h"
+#include "winrt/impl/windows.devices.enumeration.pnp.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Enumeration::Pnp
 {
     struct WINRT_IMPL_EMPTY_BASES IPnpObject :

@@ -169,7 +169,7 @@ extern "C"{
 #include <winapifamily.h>
 #pragma region Desktop Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
-#include <SpecStrings.h>
+#include <specstrings.h>
 typedef unsigned int ALG_ID;
 
 

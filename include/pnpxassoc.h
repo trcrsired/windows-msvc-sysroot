@@ -88,7 +88,7 @@ typedef struct PNPXPairingHandler PNPXPairingHandler;
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
-#include "FunctionDiscoveryProvider.h"
+#include "functiondiscoveryprovider.h"
 
 #ifdef __cplusplus
 extern "C"{

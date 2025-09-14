@@ -1157,7 +1157,7 @@ namespace Windows { namespace Foundation
 
 //  Definitions of the CollectionChange enum and IVectorChangedEventArgs
 //  interface.
-#include <IVectorChangedEventArgs.h>
+#include <ivectorchangedeventargs.h>
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 namespace ABI {

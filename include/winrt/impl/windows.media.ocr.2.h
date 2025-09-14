@@ -6,8 +6,8 @@
 #pragma once
 #ifndef WINRT_Windows_Media_Ocr_2_H
 #define WINRT_Windows_Media_Ocr_2_H
-#include "winrt/impl/Windows.Globalization.1.h"
-#include "winrt/impl/Windows.Media.Ocr.1.h"
+#include "winrt/impl/windows.globalization.1.h"
+#include "winrt/impl/windows.media.ocr.1.h"
 WINRT_EXPORT namespace winrt::Windows::Media::Ocr
 {
     struct WINRT_IMPL_EMPTY_BASES OcrEngine : winrt::Windows::Media::Ocr::IOcrEngine

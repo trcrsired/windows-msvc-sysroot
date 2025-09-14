@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Isolation_1_H
 #define WINRT_Windows_Security_Isolation_1_H
-#include "winrt/impl/Windows.Security.Isolation.0.h"
+#include "winrt/impl/windows.security.isolation.0.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Isolation
 {
     struct WINRT_IMPL_EMPTY_BASES IIsolatedWindowsEnvironment :

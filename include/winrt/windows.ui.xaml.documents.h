@@ -9,16 +9,16 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.UI.Xaml.h"
-#include "winrt/impl/Windows.Foundation.2.h"
-#include "winrt/impl/Windows.Foundation.Collections.2.h"
-#include "winrt/impl/Windows.UI.Composition.2.h"
-#include "winrt/impl/Windows.UI.Core.2.h"
-#include "winrt/impl/Windows.UI.Text.2.h"
-#include "winrt/impl/Windows.UI.Xaml.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Input.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Media.2.h"
-#include "winrt/impl/Windows.UI.Xaml.Documents.2.h"
+#include "winrt/windows.ui.xaml.h"
+#include "winrt/impl/windows.foundation.2.h"
+#include "winrt/impl/windows.foundation.collections.2.h"
+#include "winrt/impl/windows.ui.composition.2.h"
+#include "winrt/impl/windows.ui.core.2.h"
+#include "winrt/impl/windows.ui.text.2.h"
+#include "winrt/impl/windows.ui.xaml.2.h"
+#include "winrt/impl/windows.ui.xaml.input.2.h"
+#include "winrt/impl/windows.ui.xaml.media.2.h"
+#include "winrt/impl/windows.ui.xaml.documents.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_UI_Xaml_Documents_IBlock<D>::TextAlignment() const

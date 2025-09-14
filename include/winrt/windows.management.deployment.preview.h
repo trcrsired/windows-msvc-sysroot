@@ -9,8 +9,8 @@
 #include "winrt/base.h"
 static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
 #define CPPWINRT_VERSION "2.0.250303.1"
-#include "winrt/Windows.Management.Deployment.h"
-#include "winrt/impl/Windows.Management.Deployment.Preview.2.h"
+#include "winrt/windows.management.deployment.h"
+#include "winrt/impl/windows.management.deployment.preview.2.h"
 namespace winrt::impl
 {
     template <typename D> auto consume_Windows_Management_Deployment_Preview_IClassicAppManagerStatics<D>::FindInstalledApp(param::hstring const& appUninstallKey) const

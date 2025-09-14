@@ -6,7 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Security_Credentials_1_H
 #define WINRT_Windows_Security_Credentials_1_H
-#include "winrt/impl/Windows.Security.Credentials.0.h"
+#include "winrt/impl/windows.security.credentials.0.h"
 WINRT_EXPORT namespace winrt::Windows::Security::Credentials
 {
     struct WINRT_IMPL_EMPTY_BASES ICredentialFactory :

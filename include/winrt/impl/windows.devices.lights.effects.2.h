@@ -6,9 +6,9 @@
 #pragma once
 #ifndef WINRT_Windows_Devices_Lights_Effects_2_H
 #define WINRT_Windows_Devices_Lights_Effects_2_H
-#include "winrt/impl/Windows.Devices.Lights.1.h"
-#include "winrt/impl/Windows.Foundation.Collections.1.h"
-#include "winrt/impl/Windows.Devices.Lights.Effects.1.h"
+#include "winrt/impl/windows.devices.lights.1.h"
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.devices.lights.effects.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Lights::Effects
 {
     struct WINRT_IMPL_EMPTY_BASES LampArrayBitmapEffect : winrt::Windows::Devices::Lights::Effects::ILampArrayBitmapEffect,

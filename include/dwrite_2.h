@@ -12,7 +12,7 @@
 
 #pragma once
 
-#include <DWrite_1.h>
+#include <dwrite_1.h>
 
 
 interface IDWriteFontFallback;
