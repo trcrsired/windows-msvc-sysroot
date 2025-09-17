@@ -1,11 +1,11 @@
 import os
 import re
 
-def lowercase_includes():
+def lowercase_includes(sysinc):
     pattern_angle = re.compile(r'^\s*#\s*include\s*<([^>]+)>')
     pattern_quote = re.compile(r'^\s*#\s*include\s*"([^"]+)"')
     
-    for root, _, files in os.walk('./include'):
+    for root, _, files in os.walk(sysinc):
         for file in files:
             # avoid strange idl files
             if file.endswith(('.h', '.c', '.hpp', '.cpp')):
@@ -27,10 +27,12 @@ def lowercase_includes():
                 with open(path, 'w', encoding='utf-8') as f:
                     f.writelines(new_lines)
 
-def lowercase_filenames():
-    directories = ['./bin', './lib', './include', './share']
+def lowercase_filenames(sysroot):
+    directories = ['lib', 'include']
+
     for dir_path in directories:
-        for root, dirs, files in os.walk(dir_path, topdown=False):
+        full_path = os.path.join(sysroot, dir_path)
+        for root, dirs, files in os.walk(full_path, topdown=False):
             for name in files:
                 lower_name = name.lower()
                 if lower_name != name:
@@ -41,5 +43,6 @@ def lowercase_filenames():
                 if lower_name != name:
                     os.rename(os.path.join(root, name), os.path.join(root, lower_name))
 
-lowercase_filenames()
-lowercase_includes()
+if __name__ == "__main__":
+    lowercase_filenames('./')
+    lowercase_includes('./include')
