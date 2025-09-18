@@ -6,7 +6,7 @@ import lowercase
 def copy_files(src, dst, symbolic = False):
     if not os.path.isdir(src):
         return
-    
+
     for root, _, files in os.walk(src):
         target_dir = os.path.join(dst, os.path.relpath(root, src).lower())
 
@@ -14,10 +14,13 @@ def copy_files(src, dst, symbolic = False):
             os.makedirs(target_dir, exist_ok=True)
 
         for file in files:
+            full_src = os.path.join(root, file)
+            full_dst = os.path.join(target_dir, file.lower())
             if symbolic == False:
-                shutil.copy2(os.path.join(root, file), os.path.join(target_dir, file.lower()))
+                if not os.path.exists(full_dst):
+                    shutil.copyfile(full_src, full_dst)
             else:
-                os.symlink(os.path.join(root, file), os.path.join(target_dir, file.lower()))
+                os.symlink(full_src, full_dst)
 
 def remove_if_exist(path):
     if os.path.exists(path):
