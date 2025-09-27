@@ -3,7 +3,7 @@ import shutil
 import sys
 import lowercase
 
-def copy_files(src, dst, symbolic = False):
+def copy_files(src, dst, symbolic = False, header = False):
     if not os.path.isdir(src):
         return
 
@@ -18,9 +18,18 @@ def copy_files(src, dst, symbolic = False):
             full_dst = os.path.join(target_dir, file.lower())
             if symbolic == False:
                 if not os.path.exists(full_dst):
-                    shutil.copyfile(full_src, full_dst)
+                    if header and file.endswith(('.h', '.c', '.hpp', '.cpp')):
+                        lowercase.lowercase_headerfile(full_src, full_dst)
+                    else:
+                        shutil.copyfile(full_src, full_dst)
             else:
                 os.symlink(full_src, full_dst)
+
+def copy_libs(src, dst, symbolic):
+    copy_files(src, dst, symbolic)
+
+def copy_headers(src, dst):
+    copy_files(src, dst, False, True)
 
 def remove_if_exist(path):
     if os.path.exists(path):
@@ -127,30 +136,29 @@ if __name__ == '__main__':
 
     for src, dest in [('arm64', 'aarch64'), ('arm', 'arm'), ('x64', 'x86_64'), ('x86', 'i686')]:
         full_dest = os.path.join(outlib, dest + postfix)
-        copy_files(os.path.join(msvclib, src), full_dest, symlink)
-        copy_files(os.path.join(ucrtlib, src), full_dest, symlink)
-        copy_files(os.path.join(umlib, src), full_dest, symlink)
+        copy_libs(os.path.join(msvclib, src), full_dest, symlink)
+        copy_libs(os.path.join(ucrtlib, src), full_dest, symlink)
+        copy_libs(os.path.join(umlib, src), full_dest, symlink)
         onecoredest = os.path.join(full_dest, 'onecore')
 
         if os.path.exists(full_dest) and not os.path.exists(onecoredest):
             os.mkdir(onecoredest)
 
-        copy_files(os.path.join(msvconecorelib, src), onecoredest, symlink)
+        copy_libs(os.path.join(msvconecorelib, src), onecoredest, symlink)
         enclavedest = os.path.join(full_dest, 'enclave')
 
         if os.path.exists(full_dest) and not os.path.exists(enclavedest):
             os.mkdir(enclavedest)
 
-        copy_files(os.path.join(ucrtenclavelib, src), enclavedest, symlink)
+        copy_libs(os.path.join(ucrtenclavelib, src), enclavedest, symlink)
 
     copy_files(os.path.join(msvc, 'modules'), os.path.join(out, 'share/stl'))
     
-    copy_files(msvcinc, outinc)
-    copy_files(ucrtinc, outinc)
-    copy_files(uminc, outinc)
-    copy_files(cppwinrt, outinc)
-    copy_files(shared, outinc)
-    copy_files(winrt, outinc)
+    copy_headers(msvcinc, outinc)
+    copy_headers(ucrtinc, outinc)
+    copy_headers(uminc, outinc)
+    copy_headers(cppwinrt, outinc)
+    copy_headers(shared, outinc)
+    copy_headers(winrt, outinc)
     adjuct_stl_headers(os.path.join(stl, 'stl/inc'), outinc)
     adjust_intrin_headers(outinc)
-    lowercase.lowercase_includes(outinc)
