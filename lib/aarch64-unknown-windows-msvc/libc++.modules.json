@@ -4,21 +4,21 @@
   "modules": [
     {
       "logical-name": "std",
-      "source-path": "../../share/aarch64-unknown-windows-msvc/libc++/v1/std.cppm",
+      "source-path": "../../share/libc++/v1/std.cppm",
       "is-std-library": true,
       "local-arguments": {
         "system-include-directories": [
-          "../../share/aarch64-unknown-windows-msvc/libc++/v1"
+          "../../share/libc++/v1"
         ]
       }
     },
     {
       "logical-name": "std.compat",
-      "source-path": "../../share/aarch64-unknown-windows-msvc/libc++/v1/std.compat.cppm",
+      "source-path": "../../share/libc++/v1/std.compat.cppm",
       "is-std-library": true,
       "local-arguments": {
         "system-include-directories": [
-          "../../share/aarch64-unknown-windows-msvc/libc++/v1"
+          "../../share/libc++/v1"
         ]
       }
     }
