@@ -36,7 +36,7 @@ def remove_if_exist(path):
         shutil.rmtree(path)
 
 def adjuct_stl_headers(stlinc, sysinc):
-    cxxinc = os.path.join(sysinc, 'c++/stl')
+    cxxinc = os.path.join(sysinc, 'c++/msstl')
 
     for root, _, files in os.walk(stlinc):
         rel_path = os.path.relpath(root, stlinc)
@@ -152,7 +152,7 @@ if __name__ == '__main__':
 
         copy_libs(os.path.join(ucrtenclavelib, src), enclavedest, symlink)
 
-    copy_files(os.path.join(msvc, 'modules'), os.path.join(out, 'share/stl'))
+    copy_files(os.path.join(msvc, 'modules'), os.path.join(out, 'share/msstl'))
     
     copy_headers(msvcinc, outinc)
     copy_headers(ucrtinc, outinc)

@@ -1,6 +1,6 @@
 # Windows MSVC Sysroot
 
-This repository provides Windows MSVC headers and libraries with a standardized sysroot rule as what GCC and Clang do, similar to other triplets, to facilitate cross-compilation and canadian-compilation. Some people prefer to use ```${ARCH}-windows-msvc``` triplet over ```${ARCH}-windows-gnu``` triplet, so I decide to provide one by myself.
+This repository provides Windows MSVC headers and libraries with a standardized sysroot rule as what GCC and Clang do, similar to other triplets, to facilitate cross-compilation and canadian-compilation. Some people prefer to use ```${cpu}-windows-msvc``` triplet over ```${cpu}-windows-gnu``` triplet, so I decide to provide one by myself.
 
 ## Why not /winsysroot?
 Clang's winsysroot is pretty useless since it does not follow the rule of other targets are doing. That is a massive burden for libraries to maintain. Plus the file structures are overcomplicated to the point of useless.
@@ -15,15 +15,13 @@ i686-windows-msvc
 
 x86_64-windows-msvc
 
-arm-windows-msvc
-
 aarch64-windows-msvc
 
 ## Headers
 Windows + CRT Headers Include Directory: ```include```.
 
 ### C++ standard library headers:
-With ```-stdlib=stl```, headers should be located in ```include/c++/stl```.
+With ```-stdlib=msstl```, headers should be located in ```include/c++/msstl```.
 
 With ```-stdlib=libc++```, headers should be located in ```include/c++/v1```.
 
@@ -47,7 +45,7 @@ int main()
 ```
 ```
 # Suppose the repository is cloned in $HOME on Linux
-$ clang++ -o hello.exe hello.cc -O3 -fuse-ld=lld --target=x86_64-windows-msvc -I$HOME/windows-msvc-sysroot/include -I$HOME/windows-msvc-sysroot/include/c++/stl -L$HOME/windows-msvc-sysroot/lib/x86_64-unknown-windows-msvc
+$ clang++ -o hello.exe hello.cc -O3 -fuse-ld=lld --target=x86_64-windows-msvc -I$HOME/windows-msvc-sysroot/include -I$HOME/windows-msvc-sysroot/include/c++/msstl -L$HOME/windows-msvc-sysroot/lib/x86_64-unknown-windows-msvc
 $ wine ./hello.exe
 Hello World
 ```
