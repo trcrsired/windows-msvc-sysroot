@@ -7,16 +7,19 @@ on:
 jobs:
   test-msvc-sysroot:
     runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
 
     steps:
+    - name: Install Clang and LLD
+      run: |
+        pacman -Syu --noconfirm
+        pacman -S --noconfirm clang lld git
+
     - name: Checkout project
       uses: actions/checkout@v3
       with:
         fetch-depth: 1
-    - name: Install Clang and LLD
-      run: |
-        sudo apt update
-        sudo apt install -y clang lld
 
     - name: Show Clang version
       run: clang++ --version
@@ -40,7 +43,7 @@ jobs:
 
     - name: Compile all triplet + stdlib combinations
       run: |
-        SYSROOT="${{ github.workspace }}"
+        SYSROOT="${PWD}"
         TRIPLETS=("i686-unknown-windows-msvc" "x86_64-unknown-windows-msvc" "aarch64-unknown-windows-msvc")
         STDLIBS=("msstl" "libc++")
 
@@ -62,7 +65,7 @@ jobs:
               -lmsvcrt \
               -std=c++20 \
               -luser32 \
-              -Wno-pragma-pack -Wno-character-conversion -Wno-ignored-pragma-intrinsic  -Wno-defaulted-function-deleted \
+              -Wno-pragma-pack -Wno-character-conversion -Wno-ignored-pragma-intrinsic -Wno-defaulted-function-deleted \
               -o build/hello_${triplet}_${stdlib}.exe
 
             file build/hello_${triplet}_${stdlib}.exe
