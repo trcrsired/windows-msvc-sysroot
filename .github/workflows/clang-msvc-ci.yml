@@ -69,7 +69,7 @@ jobs:
               -lmsvcrt \
               -std=c++23 \
               -luser32 \
-              -Wno-ignored-attributes \
+              -Wno-ignored-attributes -Wno-unknown-warning-option \
               -Wno-pragma-pack -Wno-character-conversion -Wno-ignored-pragma-intrinsic -Wno-defaulted-function-deleted \
               -o build/hello_${triplet}_${stdlib}.exe
 
