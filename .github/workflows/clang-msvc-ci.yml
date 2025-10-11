@@ -7,15 +7,12 @@ on:
 jobs:
   test-msvc-sysroot:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        triplet: [i686-windows-msvc, x86_64-windows-msvc, aarch64-windows-msvc]
-        stdlib: [msstl, libc++]
 
     steps:
     - name: Checkout project
       uses: actions/checkout@v3
-
+      with:
+        fetch-depth: 1
     - name: Install Clang and LLD
       run: |
         sudo apt update
@@ -41,24 +38,32 @@ jobs:
         }
         EOF
 
-    - name: Compile with Clang (MSVC target)
+    - name: Compile all triplet + stdlib combinations
       run: |
         SYSROOT="${{ github.workspace }}"
-        STDINCLUDE="$SYSROOT/include"
-        CPPINCLUDE="$SYSROOT/include/c++/${{ matrix.stdlib }}"
-        LIBDIR="$SYSROOT/lib/${{ matrix.triplet }}"
+        TRIPLETS=("i686-unknown-windows-msvc" "x86_64-unknown-windows-msvc" "aarch64-unknown-windows-msvc")
+        STDLIBS=("msstl" "libc++")
 
-        clang++ build/hello.cpp \
-          --target=${{ matrix.triplet }} \
-          -I"$STDINCLUDE" -I"$CPPINCLUDE" \
-          -L"$LIBDIR" \
-          -fuse-ld=lld \
-          -O2 \
-          -D_DLL=1 \
-          -lmsvcrt \
-          -std=c++20 \
-          -o build/hello_${{ matrix.triplet }}_${{ matrix.stdlib }}.exe
+        for triplet in "${TRIPLETS[@]}"; do
+          for stdlib in "${STDLIBS[@]}"; do
+            echo "Compiling for $triplet with $stdlib..."
 
-    - name: Inspect binary
-      run: file build/hello_${{ matrix.triplet }}_${{ matrix.stdlib }}.exe
+            STDINCLUDE="$SYSROOT/include"
+            CPPINCLUDE="$SYSROOT/include/c++/$stdlib"
+            LIBDIR="$SYSROOT/lib/${triplet}"
+
+            clang++ build/hello.cpp \
+              --target=$triplet \
+              -I"$STDINCLUDE" -I"$CPPINCLUDE" \
+              -L"$LIBDIR" \
+              -fuse-ld=lld \
+              -O2 \
+              -D_DLL=1 \
+              -lmsvcrt \
+              -std=c++20 \
+              -o build/hello_${triplet}_${stdlib}.exe
+
+            file build/hello_${triplet}_${stdlib}.exe
+          done
+        done
 
