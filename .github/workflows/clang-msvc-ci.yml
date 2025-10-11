@@ -28,9 +28,13 @@ jobs:
       run: |
         mkdir -p build
         cat > build/hello.cpp <<EOF
+        #define NOMINMAX 1
+        #define WIN32_LEAN_AND_MEAN 1
         #include <windows.h>
         #include <iostream>
         #include <winrt/base.h>
+        #include <kernelspecs.h>
+        #include <driverspecs.h>
 
         int main() {
           MessageBoxW(NULL, L"Hello from MSVC sysroot!", L"CI Test", MB_OK);
@@ -45,7 +49,7 @@ jobs:
       run: |
         SYSROOT="${PWD}"
         TRIPLETS=("i686-unknown-windows-msvc" "x86_64-unknown-windows-msvc" "aarch64-unknown-windows-msvc")
-        STDLIBS=("msstl" "libc++")
+        STDLIBS=("msstl" "v1")
 
         for triplet in "${TRIPLETS[@]}"; do
           for stdlib in "${STDLIBS[@]}"; do
@@ -63,8 +67,9 @@ jobs:
               -O2 \
               -D_DLL=1 \
               -lmsvcrt \
-              -std=c++20 \
+              -std=c++23 \
               -luser32 \
+              -Wno-ignored-attributes \
               -Wno-pragma-pack -Wno-character-conversion -Wno-ignored-pragma-intrinsic -Wno-defaulted-function-deleted \
               -o build/hello_${triplet}_${stdlib}.exe
 
