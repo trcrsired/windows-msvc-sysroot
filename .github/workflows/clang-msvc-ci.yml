@@ -67,7 +67,7 @@ jobs:
               -O2 \
               -D_DLL=1 \
               -lmsvcrt \
-              -std=c++23 \
+              -std=c++26 \
               -luser32 \
               -Wno-ignored-attributes -Wno-unknown-warning-option \
               -Wno-pragma-pack -Wno-character-conversion -Wno-ignored-pragma-intrinsic -Wno-defaulted-function-deleted \
