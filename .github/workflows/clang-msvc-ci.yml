@@ -1,0 +1,64 @@
+name: Clang MSVC Sysroot CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-msvc-sysroot:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        triplet: [i686-windows-msvc, x86_64-windows-msvc, aarch64-windows-msvc]
+        stdlib: [msstl, libc++]
+
+    steps:
+    - name: Checkout project
+      uses: actions/checkout@v3
+
+    - name: Install Clang and LLD
+      run: |
+        sudo apt update
+        sudo apt install -y clang lld
+
+    - name: Show Clang version
+      run: clang++ --version
+
+    - name: Prepare test source
+      run: |
+        mkdir -p build
+        cat > build/hello.cpp <<EOF
+        #include <windows.h>
+        #include <iostream>
+        #include <winrt/base.h>
+
+        int main() {
+          MessageBoxW(NULL, L"Hello from MSVC sysroot!", L"CI Test", MB_OK);
+          std::wcout << L"Hello World from C++ and Windows headers!\n";
+
+          winrt::hstring msg = L"Hello from winrt::hstring!\n";
+          std::wcout << msg.c_str();
+        }
+        EOF
+
+    - name: Compile with Clang (MSVC target)
+      run: |
+        SYSROOT="${{ github.workspace }}"
+        STDINCLUDE="$SYSROOT/include"
+        CPPINCLUDE="$SYSROOT/include/c++/${{ matrix.stdlib }}"
+        LIBDIR="$SYSROOT/lib/${{ matrix.triplet }}"
+
+        clang++ build/hello.cpp \
+          --target=${{ matrix.triplet }} \
+          -I"$STDINCLUDE" -I"$CPPINCLUDE" \
+          -L"$LIBDIR" \
+          -fuse-ld=lld \
+          -O2 \
+          -D_DLL=1 \
+          -lmsvcrt \
+          -std=c++20 \
+          -o build/hello_${{ matrix.triplet }}_${{ matrix.stdlib }}.exe
+
+    - name: Inspect binary
+      run: file build/hello_${{ matrix.triplet }}_${{ matrix.stdlib }}.exe
+
