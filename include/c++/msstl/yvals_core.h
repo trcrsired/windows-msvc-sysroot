@@ -83,6 +83,7 @@
 // P3223R2 Making istream::ignore() Less Surprising
 // P3323R1 Forbid atomic<cv T>, Specify atomic_ref<cv T>
 //     (for atomic<cv T>)
+// P3503R3 Make Type-Erased Allocator Use In promise And packaged_task Consistent
 
 // _HAS_CXX17 directly controls:
 // P0005R4 not_fn()
@@ -153,8 +154,6 @@
 // P0298R3 std::byte
 // P0302R1 Removing Allocator Support In std::function
 // LWG-2385 function::assign allocator argument doesn't make sense
-// LWG-2921 packaged_task and type-erased allocators
-// LWG-2976 Dangling uses_allocator specialization for packaged_task
 // Enforcement of matching allocator value_types
 
 // _HAS_CXX17 and _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS control:
@@ -320,6 +319,7 @@
 // P3136R1 Retiring Niebloids
 // P3323R1 Forbid atomic<cv T>, Specify atomic_ref<cv T>
 //     (for atomic_ref<cv T>)
+// P3349R1 Converting Contiguous Iterators To Pointers
 
 // _HAS_CXX20 indirectly controls:
 // P0619R4 Removing C++17-Deprecated Features
@@ -935,7 +935,7 @@
 
 #define _CPPLIB_VER       650
 #define _MSVC_STL_VERSION 145
-#define _MSVC_STL_UPDATE  202510L
+#define _MSVC_STL_UPDATE  202511L
 
 #ifndef _ALLOW_COMPILER_AND_STL_VERSION_MISMATCH
 #if defined(__CUDACC__) && defined(__CUDACC_VER_MAJOR__)
@@ -1032,8 +1032,6 @@ _EMIT_STL_ERROR(STL1004, "C++98 unexpected() is incompatible with C++23 unexpect
 
 // P0302R1 Removing Allocator Support In std::function
 // LWG-2385 function::assign allocator argument doesn't make sense
-// LWG-2921 packaged_task and type-erased allocators
-// LWG-2976 Dangling uses_allocator specialization for packaged_task
 #ifndef _HAS_FUNCTION_ALLOCATOR_SUPPORT
 #define _HAS_FUNCTION_ALLOCATOR_SUPPORT (!_HAS_CXX17)
 #endif // !defined(_HAS_FUNCTION_ALLOCATOR_SUPPORT)
@@ -1474,16 +1472,8 @@ _EMIT_STL_ERROR(STL1004, "C++98 unexpected() is incompatible with C++23 unexpect
 #define _CXX23_DEPRECATE_DENORM
 #endif // ^^^ warning disabled ^^^
 
-#if !defined(_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING) && !defined(_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS)
-#define _DEPRECATE_STDEXT_ARR_ITERS                                                                               \
-    [[deprecated(                                                                                                 \
-        "warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory " \
-        "functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and "   \
-        "gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or "         \
-        "_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.")]]
-#else // ^^^ warning enabled / warning disabled vvv
-#define _DEPRECATE_STDEXT_ARR_ITERS
-#endif // ^^^ warning disabled ^^^
+// STL4043 was "stdext::checked_array_iterator, stdext::unchecked_array_iterator,
+// and related factory functions are non-Standard extensions and will be removed"
 
 // STL4044 was "The contents of the stdext::cvt namespace are non-Standard extensions and will be removed"
 
@@ -1524,7 +1514,7 @@ _EMIT_STL_ERROR(STL1004, "C++98 unexpected() is incompatible with C++23 unexpect
 
 // next warning number: STL4049
 
-// next error number: STL1009
+// next error number: STL1013
 
 // P0619R4 Removing C++17-Deprecated Features
 #ifndef _HAS_FEATURES_REMOVED_IN_CXX20
@@ -1995,9 +1985,11 @@ compiler option, or define _ALLOW_RTCc_IN_STL to suppress this error.
 #endif // !defined(_STL_WIN32_WINNT)
 
 #ifdef __cpp_noexcept_function_type
-#define _NOEXCEPT_FNPTR noexcept
+#define _NOEXCEPT_FNPTR           noexcept
+#define _NOEXCEPT_FNPTR_COND(...) noexcept(__VA_ARGS__)
 #else // ^^^ defined(__cpp_noexcept_function_type) / !defined(__cpp_noexcept_function_type) vvv
 #define _NOEXCEPT_FNPTR
+#define _NOEXCEPT_FNPTR_COND(...)
 #endif // ^^^ !defined(__cpp_noexcept_function_type) ^^^
 
 #ifdef __clang__

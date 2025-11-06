@@ -258,6 +258,62 @@ struct bit_not<void> {
     using is_transparent = int;
 };
 
+struct _Bit_xnor {
+    template <class _Ty1, class _Ty2>
+    _NODISCARD constexpr auto operator()(_Ty1&& _Left, _Ty2&& _Right) const //
+        -> decltype(~(_STD forward<_Ty1>(_Left) ^ _STD forward<_Ty2>(_Right))) {
+        return ~(_STD forward<_Ty1>(_Left) ^ _STD forward<_Ty2>(_Right));
+    }
+
+    using is_transparent = int;
+};
+
+template <class _Ty>
+constexpr bool _Is_vbool_functor_arg = is_same_v<_Ty, void> || is_integral_v<_Ty>;
+
+template <class _Ty>
+struct _Map_vb_functor<logical_and<_Ty>> {
+    using type = conditional_t<_Is_vbool_functor_arg<_Ty>, bit_and<>, void>;
+};
+
+template <class _Ty>
+struct _Map_vb_functor<bit_and<_Ty>> {
+    using type = conditional_t<_Is_vbool_functor_arg<_Ty>, bit_and<>, void>;
+};
+
+template <class _Ty>
+struct _Map_vb_functor<logical_or<_Ty>> {
+    using type = conditional_t<_Is_vbool_functor_arg<_Ty>, bit_or<>, void>;
+};
+
+template <class _Ty>
+struct _Map_vb_functor<bit_or<_Ty>> {
+    using type = conditional_t<_Is_vbool_functor_arg<_Ty>, bit_or<>, void>;
+};
+
+template <class _Ty>
+struct _Map_vb_functor<not_equal_to<_Ty>> {
+    using type = conditional_t<_Is_vbool_functor_arg<_Ty>, bit_xor<>, void>;
+};
+
+template <class _Ty>
+struct _Map_vb_functor<bit_xor<_Ty>> {
+    using type = conditional_t<_Is_vbool_functor_arg<_Ty>, bit_xor<>, void>;
+};
+
+template <class _Ty>
+struct _Map_vb_functor<equal_to<_Ty>> {
+    using type = conditional_t<_Is_vbool_functor_arg<_Ty>, _Bit_xnor, void>;
+};
+
+template <class _Ty>
+struct _Map_vb_functor<logical_not<_Ty>> {
+    using type = conditional_t<_Is_vbool_functor_arg<_Ty>, bit_not<>, void>;
+};
+
+// bit_not isn't mapped to itself because it emits MSVC warning C4804 "'~': unsafe use of type 'bool' in operation"
+// and Clang -Wbool-operation "bitwise negation of a boolean expression; did you mean logical negation?".
+
 #if _HAS_DEPRECATED_NEGATORS
 _STL_DISABLE_DEPRECATED_WARNING
 _EXPORT_STD template <class _Fn>
@@ -719,7 +775,7 @@ constexpr bool _Testable_callable_v =
 template <class _Ty>
 bool _Test_callable(const _Ty& _Arg) noexcept { // determine whether std::function must store _Arg
     if constexpr (_Testable_callable_v<_Ty>) {
-        return !!_Arg;
+        return static_cast<bool>(_Arg);
     } else {
         return true;
     }
@@ -755,7 +811,6 @@ template <class _Impl> // determine whether _Impl must be dynamically allocated
 constexpr bool _Is_large = sizeof(_Impl) > _Space_size || alignof(_Impl) > alignof(max_align_t)
                         || !_Impl::_Nothrow_move::value;
 
-#if _HAS_FUNCTION_ALLOCATOR_SUPPORT
 template <class _Callable, class _Alloc, class _Rx, class... _Types>
 class _Func_impl final : public _Func_base<_Rx, _Types...> {
     // derived class for specific implementation types that use allocators
@@ -834,7 +889,6 @@ private:
 
     _Compressed_pair<_Alloc, _Callable> _Mypair;
 };
-#endif // _HAS_FUNCTION_ALLOCATOR_SUPPORT
 
 template <class _Ty, class... _Types>
 _Ty* _Global_new(_Types&&... _Args) { // acts as "new" while disallowing user overload selection
@@ -989,7 +1043,6 @@ protected:
         }
     }
 
-#if _HAS_FUNCTION_ALLOCATOR_SUPPORT
     template <class _Fx, class _Alloc>
     void _Reset_alloc(_Fx&& _Val, const _Alloc& _Ax) { // store copy of _Val with allocator
         if (!_STD _Test_callable(_Val)) { // null member pointer/function pointer/std::function
@@ -1012,7 +1065,6 @@ protected:
             _Set(_Ptr);
         }
     }
-#endif // _HAS_FUNCTION_ALLOCATOR_SUPPORT
 
     void _Tidy() noexcept {
         if (!_Empty()) { // destroy callable object and maybe delete it
@@ -1141,6 +1193,7 @@ public:
             "The target function object type must be copy constructible (N4140 [func.wrap.func.con]/7).");
         this->_Reset_alloc(_STD forward<_Fx>(_Func), _Ax);
     }
+#endif // _HAS_FUNCTION_ALLOCATOR_SUPPORT
 
     template <class _SecretTag, class _Fx, class _Alloc,
         enable_if_t<is_same_v<_SecretTag, _Secret_copyability_ignoring_tag>, int> = 0,
@@ -1149,7 +1202,6 @@ public:
         // used exclusively for packaged_task
         this->_Reset_alloc(_STD forward<_Fx>(_Func), _Ax);
     }
-#endif // _HAS_FUNCTION_ALLOCATOR_SUPPORT
 
     function& operator=(const function& _Right) {
         function(_Right).swap(*this);
@@ -1160,11 +1212,16 @@ public:
         this->_Reset_move(_STD move(_Right));
     }
 
-#if _HAS_FUNCTION_ALLOCATOR_SUPPORT
-    template <class _Alloc>
-    function(allocator_arg_t, const _Alloc& _Al, function&& _Right) {
+    template <class _SecretTag, class _Alloc,
+        enable_if_t<is_same_v<_SecretTag, _Secret_copyability_ignoring_tag>, int> = 0>
+    explicit function(_SecretTag, allocator_arg_t, const _Alloc& _Al, function&& _Right) {
         this->_Reset_alloc(_STD move(_Right), _Al);
     }
+
+#if _HAS_FUNCTION_ALLOCATOR_SUPPORT
+    template <class _Alloc>
+    function(allocator_arg_t, const _Alloc& _Al, function&& _Right)
+        : function(_Secret_copyability_ignoring_tag{}, allocator_arg, _Al, _STD move(_Right)) {}
 #endif // _HAS_FUNCTION_ALLOCATOR_SUPPORT
 
     function& operator=(function&& _Right) noexcept /* strengthened */ {
@@ -1478,16 +1535,7 @@ _NODISCARD void* _Function_new_large(_CTypes&&... _Args) {
 template <class _Rx, bool _Noexcept, class... _Types>
 class _Move_only_function_base {
 public:
-    // TRANSITION, DevCom-1208330: use noexcept(_Noexcept) instead
-    template <bool>
-    struct _Invoke_t {
-        using _Call = _Rx(__stdcall*)(const _Move_only_function_data&, _Types&&...);
-    };
-
-    template <>
-    struct _Invoke_t<true> {
-        using _Call = _Rx(__stdcall*)(const _Move_only_function_data&, _Types&&...) _NOEXCEPT_FNPTR;
-    };
+    using result_type = _Rx;
 
     struct _Impl_t { // A per-callable-type structure acting as a virtual function table.
         // Using vtable emulations gives more flexibility for optimizations and reduces the amount of RTTI data.
@@ -1498,7 +1546,7 @@ public:
         // empty function from a DLL that is unloaded later, and then safely moving/destroying that empty function.
 
         // Calls target
-        _Invoke_t<_Noexcept>::_Call _Invoke;
+        _Rx(__stdcall* _Invoke)(const _Move_only_function_data&, _Types&&...) _NOEXCEPT_FNPTR_COND(_Noexcept);
         // Moves the data, including pointer to "vtable", AND destroys old data (not resetting its "vtable").
         // nullptr if we can trivially move two pointers.
         void(__stdcall* _Move)(_Move_only_function_data&, _Move_only_function_data&) _NOEXCEPT_FNPTR;
@@ -1673,8 +1721,6 @@ class _Move_only_function_call {
 template <class _Rx, class... _Types>
 class _Move_only_function_call<_Rx(_Types...)> : public _Move_only_function_base<_Rx, false, _Types...> {
 public:
-    using result_type = _Rx;
-
     template <class _Vt>
     using _VtInvQuals = _Vt&;
 
@@ -1690,8 +1736,6 @@ public:
 template <class _Rx, class... _Types>
 class _Move_only_function_call<_Rx(_Types...) &> : public _Move_only_function_base<_Rx, false, _Types...> {
 public:
-    using result_type = _Rx;
-
     template <class _Vt>
     using _VtInvQuals = _Vt&;
 
@@ -1706,8 +1750,6 @@ public:
 template <class _Rx, class... _Types>
 class _Move_only_function_call<_Rx(_Types...) &&> : public _Move_only_function_base<_Rx, false, _Types...> {
 public:
-    using result_type = _Rx;
-
     template <class _Vt>
     using _VtInvQuals = _Vt&&;
 
@@ -1722,8 +1764,6 @@ public:
 template <class _Rx, class... _Types>
 class _Move_only_function_call<_Rx(_Types...) const> : public _Move_only_function_base<_Rx, false, _Types...> {
 public:
-    using result_type = _Rx;
-
     template <class _Vt>
     using _VtInvQuals = const _Vt&;
 
@@ -1739,8 +1779,6 @@ public:
 template <class _Rx, class... _Types>
 class _Move_only_function_call<_Rx(_Types...) const&> : public _Move_only_function_base<_Rx, false, _Types...> {
 public:
-    using result_type = _Rx;
-
     template <class _Vt>
     using _VtInvQuals = const _Vt&;
 
@@ -1755,8 +1793,6 @@ public:
 template <class _Rx, class... _Types>
 class _Move_only_function_call<_Rx(_Types...) const&&> : public _Move_only_function_base<_Rx, false, _Types...> {
 public:
-    using result_type = _Rx;
-
     template <class _Vt>
     using _VtInvQuals = const _Vt&&;
 
@@ -1772,8 +1808,6 @@ public:
 template <class _Rx, class... _Types>
 class _Move_only_function_call<_Rx(_Types...) noexcept> : public _Move_only_function_base<_Rx, true, _Types...> {
 public:
-    using result_type = _Rx;
-
     template <class _Vt>
     using _VtInvQuals = _Vt&;
 
@@ -1789,8 +1823,6 @@ public:
 template <class _Rx, class... _Types>
 class _Move_only_function_call<_Rx(_Types...) & noexcept> : public _Move_only_function_base<_Rx, true, _Types...> {
 public:
-    using result_type = _Rx;
-
     template <class _Vt>
     using _VtInvQuals = _Vt&;
 
@@ -1805,8 +1837,6 @@ public:
 template <class _Rx, class... _Types>
 class _Move_only_function_call<_Rx(_Types...) && noexcept> : public _Move_only_function_base<_Rx, true, _Types...> {
 public:
-    using result_type = _Rx;
-
     template <class _Vt>
     using _VtInvQuals = _Vt&&;
 
@@ -1821,8 +1851,6 @@ public:
 template <class _Rx, class... _Types>
 class _Move_only_function_call<_Rx(_Types...) const noexcept> : public _Move_only_function_base<_Rx, true, _Types...> {
 public:
-    using result_type = _Rx;
-
     template <class _Vt>
     using _VtInvQuals = const _Vt&;
 
@@ -1839,8 +1867,6 @@ template <class _Rx, class... _Types>
 class _Move_only_function_call<_Rx(_Types...) const & noexcept>
     : public _Move_only_function_base<_Rx, true, _Types...> {
 public:
-    using result_type = _Rx;
-
     template <class _Vt>
     using _VtInvQuals = const _Vt&;
 
@@ -1856,8 +1882,6 @@ template <class _Rx, class... _Types>
 class _Move_only_function_call<_Rx(_Types...) const && noexcept>
     : public _Move_only_function_base<_Rx, true, _Types...> {
 public:
-    using result_type = _Rx;
-
     template <class _Vt>
     using _VtInvQuals = const _Vt&&;
 
@@ -2499,10 +2523,11 @@ _CONSTEXPR20 pair<_FwdItHaystack, _FwdItHaystack> _Search_pair_unchecked(
         _Iter_diff_t<_FwdItHaystack> _Count1 = _Last1 - _First1;
         _Iter_diff_t<_FwdItPat> _Count2      = _Last2 - _First2;
 
-#if _USE_STD_VECTOR_ALGORITHMS
+#if _VECTORIZED_SEARCH
         if constexpr (_Vector_alg_in_search_is_safe<_FwdItHaystack, _FwdItPat, _Pred_eq>) {
             if (!_STD _Is_constant_evaluated()) {
                 const auto _Ptr1 = _STD _To_address(_First1);
+                (void) _STD _To_address(_Last2);
 
                 const auto _Ptr_res1 = _STD _Search_vectorized(
                     _Ptr1, _STD _To_address(_Last1), _STD _To_address(_First2), static_cast<size_t>(_Count2));
@@ -2520,7 +2545,7 @@ _CONSTEXPR20 pair<_FwdItHaystack, _FwdItHaystack> _Search_pair_unchecked(
                 }
             }
         }
-#endif // _USE_STD_VECTOR_ALGORITHMS
+#endif // ^^^ _VECTORIZED_SEARCH ^^^
 
         for (; _Count2 <= _Count1; ++_First1, (void) --_Count1) { // room for match, try it
             _FwdItHaystack _Mid1 = _First1;
