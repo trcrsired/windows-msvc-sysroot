@@ -1,0 +1,79 @@
+name: Clang MSVC Sysroot CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-msvc-sysroot:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+
+    steps:
+    - name: Install Clang and LLD
+      run: |
+        pacman -Syu --noconfirm
+        pacman -S --noconfirm clang lld git
+
+    - name: Checkout project
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+
+    - name: Show Clang version
+      run: clang++ --version
+
+    - name: Prepare test source
+      run: |
+        mkdir -p build
+        cat > build/hello.cpp <<EOF
+        #define NOMINMAX 1
+        #define WIN32_LEAN_AND_MEAN 1
+        #include <windows.h>
+        #include <iostream>
+        #include <winrt/base.h>
+        #include <kernelspecs.h>
+        #include <driverspecs.h>
+
+        int main() {
+          MessageBoxW(NULL, L"Hello from MSVC sysroot!", L"CI Test", MB_OK);
+          std::wcout << L"Hello World from C++ and Windows headers!\n";
+
+          winrt::hstring msg = L"Hello from winrt::hstring!\n";
+          std::wcout << msg.c_str();
+        }
+        EOF
+
+    - name: Compile all triplet + stdlib combinations
+      run: |
+        SYSROOT="${PWD}"
+        TRIPLETS=("i686-unknown-windows-msvc" "x86_64-unknown-windows-msvc" "aarch64-unknown-windows-msvc")
+        STDLIBS=("msstl" "v1")
+
+        for triplet in "${TRIPLETS[@]}"; do
+          for stdlib in "${STDLIBS[@]}"; do
+            echo "Compiling for $triplet with $stdlib..."
+
+            STDINCLUDE="$SYSROOT/include"
+            CPPINCLUDE="$SYSROOT/include/c++/$stdlib"
+            LIBDIR="$SYSROOT/lib/${triplet}"
+
+            clang++ build/hello.cpp \
+              --target=$triplet \
+              -I"$CPPINCLUDE" -I"$STDINCLUDE" \
+              -L"$LIBDIR" \
+              -fuse-ld=lld \
+              -O2 \
+              -D_DLL=1 \
+              -lmsvcrt \
+              -std=c++26 \
+              -luser32 \
+              -Wno-ignored-attributes -Wno-unknown-warning-option \
+              -Wno-pragma-pack -Wno-character-conversion -Wno-ignored-pragma-intrinsic -Wno-defaulted-function-deleted \
+              -o build/hello_${triplet}_${stdlib}.exe
+
+            file build/hello_${triplet}_${stdlib}.exe
+          done
+        done
+

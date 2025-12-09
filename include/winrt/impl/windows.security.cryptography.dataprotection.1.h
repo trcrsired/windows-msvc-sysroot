@@ -1,0 +1,27 @@
+// C++/WinRT v2.0.250303.1
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#pragma once
+#ifndef WINRT_Windows_Security_Cryptography_DataProtection_1_H
+#define WINRT_Windows_Security_Cryptography_DataProtection_1_H
+#include "winrt/impl/windows.security.cryptography.dataprotection.0.h"
+WINRT_EXPORT namespace winrt::Windows::Security::Cryptography::DataProtection
+{
+    struct WINRT_IMPL_EMPTY_BASES IDataProtectionProvider :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IDataProtectionProvider>
+    {
+        IDataProtectionProvider(std::nullptr_t = nullptr) noexcept {}
+        IDataProtectionProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IDataProtectionProviderFactory :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IDataProtectionProviderFactory>
+    {
+        IDataProtectionProviderFactory(std::nullptr_t = nullptr) noexcept {}
+        IDataProtectionProviderFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+}
+#endif
