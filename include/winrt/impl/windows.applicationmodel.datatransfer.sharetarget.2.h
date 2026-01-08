@@ -1,0 +1,25 @@
+// C++/WinRT v2.0.250303.1
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#pragma once
+#ifndef WINRT_Windows_ApplicationModel_DataTransfer_ShareTarget_2_H
+#define WINRT_Windows_ApplicationModel_DataTransfer_ShareTarget_2_H
+#include "winrt/impl/windows.applicationmodel.datatransfer.sharetarget.1.h"
+WINRT_EXPORT namespace winrt::Windows::ApplicationModel::DataTransfer::ShareTarget
+{
+    struct WINRT_IMPL_EMPTY_BASES QuickLink : winrt::Windows::ApplicationModel::DataTransfer::ShareTarget::IQuickLink
+    {
+        QuickLink(std::nullptr_t) noexcept {}
+        QuickLink(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::ApplicationModel::DataTransfer::ShareTarget::IQuickLink(ptr, take_ownership_from_abi) {}
+        QuickLink();
+    };
+    struct WINRT_IMPL_EMPTY_BASES ShareOperation : winrt::Windows::ApplicationModel::DataTransfer::ShareTarget::IShareOperation,
+        impl::require<ShareOperation, winrt::Windows::ApplicationModel::DataTransfer::ShareTarget::IShareOperation2, winrt::Windows::ApplicationModel::DataTransfer::ShareTarget::IShareOperation3>
+    {
+        ShareOperation(std::nullptr_t) noexcept {}
+        ShareOperation(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::ApplicationModel::DataTransfer::ShareTarget::IShareOperation(ptr, take_ownership_from_abi) {}
+    };
+}
+#endif

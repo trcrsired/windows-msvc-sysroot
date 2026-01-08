@@ -1,0 +1,32 @@
+// C++/WinRT v2.0.250303.1
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#pragma once
+#ifndef WINRT_Windows_Services_Maps_OfflineMaps_2_H
+#define WINRT_Windows_Services_Maps_OfflineMaps_2_H
+#include "winrt/impl/windows.devices.geolocation.1.h"
+#include "winrt/impl/windows.services.maps.offlinemaps.1.h"
+WINRT_EXPORT namespace winrt::Windows::Services::Maps::OfflineMaps
+{
+    struct WINRT_IMPL_EMPTY_BASES OfflineMapPackage : winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackage
+    {
+        OfflineMapPackage(std::nullptr_t) noexcept {}
+        OfflineMapPackage(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackage(ptr, take_ownership_from_abi) {}
+        static auto FindPackagesAsync(winrt::Windows::Devices::Geolocation::Geopoint const& queryPoint);
+        static auto FindPackagesInBoundingBoxAsync(winrt::Windows::Devices::Geolocation::GeoboundingBox const& queryBoundingBox);
+        static auto FindPackagesInGeocircleAsync(winrt::Windows::Devices::Geolocation::Geocircle const& queryCircle);
+    };
+    struct WINRT_IMPL_EMPTY_BASES OfflineMapPackageQueryResult : winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackageQueryResult
+    {
+        OfflineMapPackageQueryResult(std::nullptr_t) noexcept {}
+        OfflineMapPackageQueryResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackageQueryResult(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES OfflineMapPackageStartDownloadResult : winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackageStartDownloadResult
+    {
+        OfflineMapPackageStartDownloadResult(std::nullptr_t) noexcept {}
+        OfflineMapPackageStartDownloadResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Services::Maps::OfflineMaps::IOfflineMapPackageStartDownloadResult(ptr, take_ownership_from_abi) {}
+    };
+}
+#endif

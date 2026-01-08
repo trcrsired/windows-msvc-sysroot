@@ -1,0 +1,26 @@
+// C++/WinRT v2.0.250303.1
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#pragma once
+#ifndef WINRT_Windows_Globalization_Collation_2_H
+#define WINRT_Windows_Globalization_Collation_2_H
+#include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.globalization.collation.1.h"
+WINRT_EXPORT namespace winrt::Windows::Globalization::Collation
+{
+    struct WINRT_IMPL_EMPTY_BASES CharacterGrouping : winrt::Windows::Globalization::Collation::ICharacterGrouping
+    {
+        CharacterGrouping(std::nullptr_t) noexcept {}
+        CharacterGrouping(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Globalization::Collation::ICharacterGrouping(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES CharacterGroupings : winrt::Windows::Globalization::Collation::ICharacterGroupings
+    {
+        CharacterGroupings(std::nullptr_t) noexcept {}
+        CharacterGroupings(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Globalization::Collation::ICharacterGroupings(ptr, take_ownership_from_abi) {}
+        CharacterGroupings();
+        explicit CharacterGroupings(param::hstring const& language);
+    };
+}
+#endif

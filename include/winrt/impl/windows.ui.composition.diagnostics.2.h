@@ -1,0 +1,25 @@
+// C++/WinRT v2.0.250303.1
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#pragma once
+#ifndef WINRT_Windows_UI_Composition_Diagnostics_2_H
+#define WINRT_Windows_UI_Composition_Diagnostics_2_H
+#include "winrt/impl/windows.ui.composition.1.h"
+#include "winrt/impl/windows.ui.composition.diagnostics.1.h"
+WINRT_EXPORT namespace winrt::Windows::UI::Composition::Diagnostics
+{
+    struct WINRT_IMPL_EMPTY_BASES CompositionDebugHeatMaps : winrt::Windows::UI::Composition::Diagnostics::ICompositionDebugHeatMaps
+    {
+        CompositionDebugHeatMaps(std::nullptr_t) noexcept {}
+        CompositionDebugHeatMaps(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::UI::Composition::Diagnostics::ICompositionDebugHeatMaps(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES CompositionDebugSettings : winrt::Windows::UI::Composition::Diagnostics::ICompositionDebugSettings
+    {
+        CompositionDebugSettings(std::nullptr_t) noexcept {}
+        CompositionDebugSettings(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::UI::Composition::Diagnostics::ICompositionDebugSettings(ptr, take_ownership_from_abi) {}
+        static auto TryGetSettings(winrt::Windows::UI::Composition::Compositor const& compositor);
+    };
+}
+#endif

@@ -1,0 +1,25 @@
+// C++/WinRT v2.0.250303.1
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#pragma once
+#ifndef WINRT_Windows_ApplicationModel_ExtendedExecution_Foreground_2_H
+#define WINRT_Windows_ApplicationModel_ExtendedExecution_Foreground_2_H
+#include "winrt/impl/windows.foundation.1.h"
+#include "winrt/impl/windows.applicationmodel.extendedexecution.foreground.1.h"
+WINRT_EXPORT namespace winrt::Windows::ApplicationModel::ExtendedExecution::Foreground
+{
+    struct WINRT_IMPL_EMPTY_BASES ExtendedExecutionForegroundRevokedEventArgs : winrt::Windows::ApplicationModel::ExtendedExecution::Foreground::IExtendedExecutionForegroundRevokedEventArgs
+    {
+        ExtendedExecutionForegroundRevokedEventArgs(std::nullptr_t) noexcept {}
+        ExtendedExecutionForegroundRevokedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::ApplicationModel::ExtendedExecution::Foreground::IExtendedExecutionForegroundRevokedEventArgs(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ExtendedExecutionForegroundSession : winrt::Windows::ApplicationModel::ExtendedExecution::Foreground::IExtendedExecutionForegroundSession
+    {
+        ExtendedExecutionForegroundSession(std::nullptr_t) noexcept {}
+        ExtendedExecutionForegroundSession(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::ApplicationModel::ExtendedExecution::Foreground::IExtendedExecutionForegroundSession(ptr, take_ownership_from_abi) {}
+        ExtendedExecutionForegroundSession();
+    };
+}
+#endif

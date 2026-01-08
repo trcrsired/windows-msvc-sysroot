@@ -1,0 +1,27 @@
+// C++/WinRT v2.0.250303.1
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#pragma once
+#ifndef WINRT_Windows_Devices_Pwm_Provider_1_H
+#define WINRT_Windows_Devices_Pwm_Provider_1_H
+#include "winrt/impl/windows.devices.pwm.provider.0.h"
+WINRT_EXPORT namespace winrt::Windows::Devices::Pwm::Provider
+{
+    struct WINRT_IMPL_EMPTY_BASES IPwmControllerProvider :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IPwmControllerProvider>
+    {
+        IPwmControllerProvider(std::nullptr_t = nullptr) noexcept {}
+        IPwmControllerProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IPwmProvider :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IPwmProvider>
+    {
+        IPwmProvider(std::nullptr_t = nullptr) noexcept {}
+        IPwmProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+}
+#endif

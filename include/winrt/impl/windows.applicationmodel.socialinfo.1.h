@@ -1,0 +1,55 @@
+// C++/WinRT v2.0.250303.1
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#pragma once
+#ifndef WINRT_Windows_ApplicationModel_SocialInfo_1_H
+#define WINRT_Windows_ApplicationModel_SocialInfo_1_H
+#include "winrt/impl/windows.applicationmodel.socialinfo.0.h"
+WINRT_EXPORT namespace winrt::Windows::ApplicationModel::SocialInfo
+{
+    struct WINRT_IMPL_EMPTY_BASES ISocialFeedChildItem :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ISocialFeedChildItem>
+    {
+        ISocialFeedChildItem(std::nullptr_t = nullptr) noexcept {}
+        ISocialFeedChildItem(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ISocialFeedContent :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ISocialFeedContent>
+    {
+        ISocialFeedContent(std::nullptr_t = nullptr) noexcept {}
+        ISocialFeedContent(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ISocialFeedItem :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ISocialFeedItem>
+    {
+        ISocialFeedItem(std::nullptr_t = nullptr) noexcept {}
+        ISocialFeedItem(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ISocialFeedSharedItem :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ISocialFeedSharedItem>
+    {
+        ISocialFeedSharedItem(std::nullptr_t = nullptr) noexcept {}
+        ISocialFeedSharedItem(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ISocialItemThumbnail :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ISocialItemThumbnail>
+    {
+        ISocialItemThumbnail(std::nullptr_t = nullptr) noexcept {}
+        ISocialItemThumbnail(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ISocialUserInfo :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ISocialUserInfo>
+    {
+        ISocialUserInfo(std::nullptr_t = nullptr) noexcept {}
+        ISocialUserInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+}
+#endif

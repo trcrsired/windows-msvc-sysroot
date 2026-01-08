@@ -1,0 +1,34 @@
+// C++/WinRT v2.0.250303.1
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#pragma once
+#ifndef WINRT_Windows_Management_1_H
+#define WINRT_Windows_Management_1_H
+#include "winrt/impl/windows.management.0.h"
+WINRT_EXPORT namespace winrt::Windows::Management
+{
+    struct WINRT_IMPL_EMPTY_BASES IMdmAlert :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IMdmAlert>
+    {
+        IMdmAlert(std::nullptr_t = nullptr) noexcept {}
+        IMdmAlert(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IMdmSession :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IMdmSession>
+    {
+        IMdmSession(std::nullptr_t = nullptr) noexcept {}
+        IMdmSession(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IMdmSessionManagerStatics :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IMdmSessionManagerStatics>
+    {
+        IMdmSessionManagerStatics(std::nullptr_t = nullptr) noexcept {}
+        IMdmSessionManagerStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+}
+#endif
