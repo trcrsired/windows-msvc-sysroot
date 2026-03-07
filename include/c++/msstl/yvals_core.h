@@ -85,6 +85,8 @@
 // P3323R1 Forbid atomic<cv T>, Specify atomic_ref<cv T>
 //     (for atomic<cv T>)
 // P3503R3 Make Type-Erased Allocator Use In promise And packaged_task Consistent
+// P3612R1 Harmonize Proxy-Reference Operations
+//     (deprecation controlled by _HAS_CXX26)
 
 // _HAS_CXX17 controls:
 // N4190 Removing auto_ptr, random_shuffle(), And Old <functional> Stuff
@@ -360,7 +362,6 @@
 // P2166R1 Prohibiting basic_string And basic_string_view Construction From nullptr
 // P2186R2 Removing Garbage Collection Support
 // P2255R2 Type Traits To Detect References Binding To Temporaries
-//     (for Clang only)
 // P2273R3 constexpr unique_ptr
 // P2278R4 cbegin Should Always Return A Constant Iterator
 // P2286R8 Formatting Ranges
@@ -889,7 +890,7 @@
 
 #define _CPPLIB_VER       650
 #define _MSVC_STL_VERSION 145
-#define _MSVC_STL_UPDATE  202602L
+#define _MSVC_STL_UPDATE  202603L
 
 #ifndef _ALLOW_COMPILER_AND_STL_VERSION_MISMATCH
 #if defined(__CUDACC__) && defined(__CUDACC_VER_MAJOR__)
@@ -1449,7 +1450,19 @@ _EMIT_STL_ERROR(STL1004, "C++98 unexpected() is incompatible with C++23 unexpect
 
 // STL4048 was "locale::empty() is a non-Standard extension and will be removed in the future."
 
-// next warning number: STL4049
+
+#if _HAS_CXX26 && !defined(_SILENCE_VECTOR_BOOL_STATIC_REFERENCE_SWAP_DEPRECATION_WARNING) \
+    && !defined(_SILENCE_ALL_CXX26_DEPRECATION_WARNINGS)
+#define _DEPRECATE_VECTOR_BOOL_STATIC_REFERENCE_SWAP                                                                  \
+    [[deprecated("warning STL4049: Static std::vector<bool>::swap(reference, reference) is deprecated by C++26 (see " \
+                 "LWG-3638 and P3612R1). Use non-member function swap(reference, reference) instead. You can define " \
+                 "_SILENCE_VECTOR_BOOL_STATIC_REFERENCE_SWAP_DEPRECATION_WARNING or "                                 \
+                 "_SILENCE_ALL_CXX26_DEPRECATION_WARNINGS to suppress this warning.")]]
+#else // ^^^ warning enabled / warning disabled vvv
+#define _DEPRECATE_VECTOR_BOOL_STATIC_REFERENCE_SWAP
+#endif // ^^^ warning disabled ^^^
+
+// next warning number: STL4050
 
 // next error number: STL1014
 
@@ -1733,7 +1746,7 @@ _EMIT_STL_ERROR(STL1004, "C++98 unexpected() is incompatible with C++23 unexpect
 #define __cpp_lib_invoke_r                          202106L
 #define __cpp_lib_ios_noreplace                     202207L
 
-#ifdef __clang__ // TRANSITION, GH-5738 tracking VSO-2581622 (MSVC) and VSO-2581623 (EDG)
+#if !defined(__EDG__) && (defined(__clang__) || _MSC_VER >= 1951) // TRANSITION, GH-5738, VSO-2581623, toolset update
 #define __cpp_lib_is_implicit_lifetime 202302L
 #endif // ^^^ no workaround ^^^
 
@@ -1760,8 +1773,7 @@ _EMIT_STL_ERROR(STL1004, "C++98 unexpected() is incompatible with C++23 unexpect
 #define __cpp_lib_ranges_to_container      202202L
 #define __cpp_lib_ranges_zip               202110L
 
-// TRANSITION, MSVC and EDG haven't implemented intrinsics needed for P2255R2.
-#if defined(__clang__) && !defined(__EDG__)
+#if defined(__clang__) || defined(__EDG__) || _MSC_VER >= 1951 // TRANSITION, GH-5755, toolset update
 #define __cpp_lib_reference_from_temporary 202202L
 #endif // ^^^ no workaround ^^^
 
