@@ -401,6 +401,7 @@
   { include: [ "<__format/format_to_n_result.h>", "private", "<format>", "public" ] },
   { include: [ "<__format/formatter.h>", "private", "<format>", "public" ] },
   { include: [ "<__format/formatter_bool.h>", "private", "<format>", "public" ] },
+  { include: [ "<__format/formatter_bool_impl.h>", "private", "<format>", "public" ] },
   { include: [ "<__format/formatter_char.h>", "private", "<format>", "public" ] },
   { include: [ "<__format/formatter_floating_point.h>", "private", "<format>", "public" ] },
   { include: [ "<__format/formatter_integer.h>", "private", "<format>", "public" ] },
