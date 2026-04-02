@@ -439,6 +439,22 @@ public:
     pointer _Myend; // pointer to end of array
 };
 
+template <class _Alloc>
+struct _NODISCARD _Allocation_guard {
+    _Alloc& _Al;
+    _Alloc_ptr_t<_Alloc> _Ptr;
+    _Alloc_size_t<_Alloc> _Size;
+
+    _Allocation_guard& operator=(const _Allocation_guard&) = delete;
+    _Allocation_guard& operator=(_Allocation_guard&&)      = delete;
+
+    _CONSTEXPR20 ~_Allocation_guard() noexcept {
+        if (_Ptr) {
+            _Al.deallocate(_Ptr, _Size);
+        }
+    }
+};
+
 _EXPORT_STD template <class _Ty, class _Alloc = allocator<_Ty>>
 class vector { // varying size array of values
 private:
@@ -621,21 +637,6 @@ private:
         _CONSTEXPR20 ~_Reallocation_guard2() noexcept {
             if (_New_begin != nullptr) {
                 _STD _Destroy_range(_Constructed_first, _Constructed_last, _Al);
-                _Al.deallocate(_New_begin, _New_capacity);
-            }
-        }
-    };
-
-    struct _NODISCARD _Simple_reallocation_guard2 {
-        _Alty& _Al;
-        pointer _New_begin;
-        size_type _New_capacity;
-
-        _Simple_reallocation_guard2& operator=(const _Simple_reallocation_guard2&) = delete;
-        _Simple_reallocation_guard2& operator=(_Simple_reallocation_guard2&&)      = delete;
-
-        _CONSTEXPR20 ~_Simple_reallocation_guard2() noexcept {
-            if (_New_begin != nullptr) {
                 _Al.deallocate(_New_begin, _New_capacity);
             }
         }
@@ -1655,10 +1656,14 @@ private:
             _Newvec = _Allocate_at_least_helper(_Al, _Newcapacity);
         } else {
             _STL_INTERNAL_STATIC_ASSERT(_Policy == _Reallocation_policy::_Exactly);
+#if !defined(__clang__) && !defined(__EDG__) // TRANSITION, DevCom-11060638
+            _Newvec = _Al.allocate(_Newcapacity) + decltype(pointer{} - pointer{}){0};
+#else // ^^^ workaround / no workaround vvv
             _Newvec = _Al.allocate(_Newcapacity);
+#endif // ^^^ no workaround ^^^
         }
 
-        _Simple_reallocation_guard2 _Guard{_Al, _Newvec, _Newcapacity};
+        _Allocation_guard<_Alty> _Guard{_Al, _Newvec, _Newcapacity};
 
         if constexpr (is_nothrow_move_constructible_v<_Ty> || !is_copy_constructible_v<_Ty>) {
             _Uninitialized_move(_Myfirst, _Mylast, _Newvec, _Al);
@@ -1666,7 +1671,7 @@ private:
             _Uninitialized_copy(_Myfirst, _Mylast, _Newvec, _Al);
         }
 
-        _Guard._New_begin = nullptr;
+        _Guard._Ptr = nullptr;
         _Change_array(_Newvec, _Size, _Newcapacity);
     }
 
@@ -2303,8 +2308,7 @@ _NODISCARD bool operator!=(const vector<_Ty, _Alloc>& _Left, const vector<_Ty, _
 
 template <class _Ret>
 struct _Vbase_compare_three_way {
-    _NODISCARD _STATIC_CALL_OPERATOR constexpr _Ret operator()(
-        const _Vbase _Left, const _Vbase _Right) _CONST_CALL_OPERATOR noexcept {
+    _NODISCARD static constexpr _Ret operator()(const _Vbase _Left, const _Vbase _Right) noexcept {
         const _Vbase _Differing_bits = _Left ^ _Right;
 
         if (_Differing_bits == 0) { // improves _Countr_zero codegen below
@@ -3635,8 +3639,7 @@ struct hash<vector<bool, _Alloc>> {
     using _ARGUMENT_TYPE_NAME _CXX17_DEPRECATE_ADAPTOR_TYPEDEFS = vector<bool, _Alloc>;
     using _RESULT_TYPE_NAME _CXX17_DEPRECATE_ADAPTOR_TYPEDEFS   = size_t;
 
-    _NODISCARD _STATIC_CALL_OPERATOR size_t operator()(
-        const vector<bool, _Alloc>& _Keyval) _CONST_CALL_OPERATOR noexcept {
+    _NODISCARD static size_t operator()(const vector<bool, _Alloc>& _Keyval) noexcept {
         return _Hash_array_representation(_Keyval._Myvec.data(), _Keyval._Myvec.size());
     }
 };

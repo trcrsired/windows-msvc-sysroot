@@ -7,6 +7,7 @@
 #define _UTILITY_
 #include <yvals_core.h>
 #if _STL_COMPILER_PREPROCESSOR
+#include <__msvc_doom_core.hpp>
 #include <initializer_list>
 #include <type_traits>
 
@@ -710,7 +711,7 @@ struct tuple_size<tuple<_Types...>> : integral_constant<size_t, sizeof...(_Types
 
 template <size_t _Index>
 struct _MSVC_KNOWN_SEMANTICS tuple_element<_Index, tuple<>> { // enforce bounds checking
-    static_assert(_Always_false<integral_constant<size_t, _Index>>, "tuple index out of bounds");
+    static_assert(false, "tuple index out of bounds");
 };
 
 template <class _This, class... _Rest>
@@ -1013,6 +1014,9 @@ _NODISCARD constexpr underlying_type_t<_Ty> to_underlying(_Ty _Value) noexcept {
 }
 
 _EXPORT_STD [[noreturn]] __forceinline void unreachable() noexcept /* strengthened */ {
+#ifdef _DEBUG
+    _MSVC_STL_DOOM_FUNCTION("std::unreachable() called");
+#endif // defined(_DEBUG)
     _STL_UNREACHABLE;
 }
 
@@ -1060,7 +1064,7 @@ struct hash<monostate> {
     using _ARGUMENT_TYPE_NAME _CXX17_DEPRECATE_ADAPTOR_TYPEDEFS = monostate;
     using _RESULT_TYPE_NAME _CXX17_DEPRECATE_ADAPTOR_TYPEDEFS   = size_t;
 
-    _NODISCARD _STATIC_CALL_OPERATOR size_t operator()(monostate) _CONST_CALL_OPERATOR noexcept {
+    _NODISCARD static size_t operator()(monostate) noexcept {
         return 1729; // Arbitrary value
     }
 };
