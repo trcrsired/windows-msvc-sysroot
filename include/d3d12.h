@@ -136,6 +136,13 @@ typedef interface ID3D12PipelineState ID3D12PipelineState;
 #endif 	/* __ID3D12PipelineState_FWD_DEFINED__ */
 
 
+#ifndef __ID3D12PipelineState1_FWD_DEFINED__
+#define __ID3D12PipelineState1_FWD_DEFINED__
+typedef interface ID3D12PipelineState1 ID3D12PipelineState1;
+
+#endif 	/* __ID3D12PipelineState1_FWD_DEFINED__ */
+
+
 #ifndef __ID3D12DescriptorHeap_FWD_DEFINED__
 #define __ID3D12DescriptorHeap_FWD_DEFINED__
 typedef interface ID3D12DescriptorHeap ID3D12DescriptorHeap;
@@ -295,6 +302,13 @@ typedef interface ID3D12StateObjectProperties ID3D12StateObjectProperties;
 typedef interface ID3D12StateObjectProperties1 ID3D12StateObjectProperties1;
 
 #endif 	/* __ID3D12StateObjectProperties1_FWD_DEFINED__ */
+
+
+#ifndef __ID3D12StateObjectProperties2_FWD_DEFINED__
+#define __ID3D12StateObjectProperties2_FWD_DEFINED__
+typedef interface ID3D12StateObjectProperties2 ID3D12StateObjectProperties2;
+
+#endif 	/* __ID3D12StateObjectProperties2_FWD_DEFINED__ */
 
 
 #ifndef __ID3D12WorkGraphProperties_FWD_DEFINED__
@@ -486,6 +500,41 @@ typedef interface ID3D12Tools ID3D12Tools;
 #endif 	/* __ID3D12Tools_FWD_DEFINED__ */
 
 
+#ifndef __ID3D12Tools1_FWD_DEFINED__
+#define __ID3D12Tools1_FWD_DEFINED__
+typedef interface ID3D12Tools1 ID3D12Tools1;
+
+#endif 	/* __ID3D12Tools1_FWD_DEFINED__ */
+
+
+#ifndef __ID3D12Tools2_FWD_DEFINED__
+#define __ID3D12Tools2_FWD_DEFINED__
+typedef interface ID3D12Tools2 ID3D12Tools2;
+
+#endif 	/* __ID3D12Tools2_FWD_DEFINED__ */
+
+
+#ifndef __ID3D12PageableTools_FWD_DEFINED__
+#define __ID3D12PageableTools_FWD_DEFINED__
+typedef interface ID3D12PageableTools ID3D12PageableTools;
+
+#endif 	/* __ID3D12PageableTools_FWD_DEFINED__ */
+
+
+#ifndef __ID3D12DeviceTools_FWD_DEFINED__
+#define __ID3D12DeviceTools_FWD_DEFINED__
+typedef interface ID3D12DeviceTools ID3D12DeviceTools;
+
+#endif 	/* __ID3D12DeviceTools_FWD_DEFINED__ */
+
+
+#ifndef __ID3D12DeviceTools1_FWD_DEFINED__
+#define __ID3D12DeviceTools1_FWD_DEFINED__
+typedef interface ID3D12DeviceTools1 ID3D12DeviceTools1;
+
+#endif 	/* __ID3D12DeviceTools1_FWD_DEFINED__ */
+
+
 #ifndef __ID3D12SDKConfiguration_FWD_DEFINED__
 #define __ID3D12SDKConfiguration_FWD_DEFINED__
 typedef interface ID3D12SDKConfiguration ID3D12SDKConfiguration;
@@ -561,6 +610,20 @@ typedef interface ID3D12GraphicsCommandList9 ID3D12GraphicsCommandList9;
 typedef interface ID3D12GraphicsCommandList10 ID3D12GraphicsCommandList10;
 
 #endif 	/* __ID3D12GraphicsCommandList10_FWD_DEFINED__ */
+
+
+#ifndef __ID3D12DSRDeviceFactory_FWD_DEFINED__
+#define __ID3D12DSRDeviceFactory_FWD_DEFINED__
+typedef interface ID3D12DSRDeviceFactory ID3D12DSRDeviceFactory;
+
+#endif 	/* __ID3D12DSRDeviceFactory_FWD_DEFINED__ */
+
+
+#ifndef __ID3D12GBVDiagnostics_FWD_DEFINED__
+#define __ID3D12GBVDiagnostics_FWD_DEFINED__
+typedef interface ID3D12GBVDiagnostics ID3D12GBVDiagnostics;
+
+#endif 	/* __ID3D12GBVDiagnostics_FWD_DEFINED__ */
 
 
 /* header files for imported files */
@@ -1095,7 +1158,7 @@ extern "C"{
 
 #define	D3D12_PIXEL_ADDRESS_RANGE_BIT_COUNT	( 15 )
 
-#define	D3D12_PREVIEW_SDK_VERSION	( 713 )
+#define	D3D12_PREVIEW_SDK_VERSION	( 718 )
 
 #define	D3D12_PRE_SCISSOR_PIXEL_ADDRESS_RANGE_BIT_COUNT	( 16 )
 
@@ -1165,6 +1228,10 @@ extern "C"{
 
 #define	D3D12_RAYTRACING_MAX_SHADER_RECORD_STRIDE	( 4096 )
 
+#define	D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_BYTE_ALIGNMENT	( 128 )
+
+#define	D3D12_RAYTRACING_OPACITY_MICROMAP_OC1_MAX_SUBDIVISION_LEVEL	( 12 )
+
 #define	D3D12_RAYTRACING_SHADER_RECORD_BYTE_ALIGNMENT	( 32 )
 
 #define	D3D12_RAYTRACING_SHADER_TABLE_BYTE_ALIGNMENT	( 64 )
@@ -1228,7 +1295,7 @@ extern "C"{
 
 #define	D3D12_RS_SET_SHADING_RATE_COMBINER_COUNT	( 2 )
 
-#define	D3D12_SDK_VERSION	( 612 )
+#define	D3D12_SDK_VERSION	( 617 )
 
 #define	D3D12_SHADER_IDENTIFIER_SIZE_IN_BYTES	( 32 )
 
@@ -1326,6 +1393,10 @@ extern "C"{
 
 #define	D3D12_TEXTURE_DATA_PLACEMENT_ALIGNMENT	( 512 )
 
+#define	D3D12_TIGHT_ALIGNMENT_MIN_COMMITTED_RESOURCE_ALIGNMENT	( 4096 )
+
+#define	D3D12_TIGHT_ALIGNMENT_MIN_PLACED_RESOURCE_ALIGNMENT	( 8 )
+
 #define	D3D12_TILED_RESOURCE_TILE_SIZE_IN_BYTES	( 65536 )
 
 #define	D3D12_TRACKED_WORKLOAD_MAX_INSTANCES	( 32 )
@@ -1390,6 +1461,8 @@ extern "C"{
 
 #define	D3D12_WHQL_DRAW_VERTEX_COUNT_2_TO_EXP	( 25 )
 
+#define	D3D12_WORK_GRAPHS_BACKING_MEMORY_ALIGNMENT_IN_BYTES	( 8 )
+
 #define	D3D12_WORK_GRAPHS_MAX_NODE_DEPTH	( 32 )
 
 #endif
@@ -1416,7 +1489,7 @@ enum D3D12_COMMAND_QUEUE_FLAGS
         D3D12_COMMAND_QUEUE_FLAG_DISABLE_GPU_TIMEOUT	= 0x1
     } 	D3D12_COMMAND_QUEUE_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_COMMAND_QUEUE_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_COMMAND_QUEUE_FLAGS )
 typedef 
 enum D3D12_COMMAND_QUEUE_PRIORITY
     {
@@ -2167,6 +2240,13 @@ enum D3D12_INDEX_BUFFER_STRIP_CUT_VALUE
         D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_0xFFFFFFFF	= 2
     } 	D3D12_INDEX_BUFFER_STRIP_CUT_VALUE;
 
+typedef 
+enum D3D12_STANDARD_MULTISAMPLE_QUALITY_LEVELS
+    {
+        D3D12_STANDARD_MULTISAMPLE_PATTERN	= 0xffffffff,
+        D3D12_CENTER_MULTISAMPLE_PATTERN	= 0xfffffffe
+    } 	D3D12_STANDARD_MULTISAMPLE_QUALITY_LEVELS;
+
 typedef struct D3D12_CACHED_PIPELINE_STATE
     {
     _Field_size_bytes_full_(CachedBlobSizeInBytes)  const void *pCachedBlob;
@@ -2182,7 +2262,7 @@ enum D3D12_PIPELINE_STATE_FLAGS
         D3D12_PIPELINE_STATE_FLAG_DYNAMIC_INDEX_BUFFER_STRIP_CUT	= 0x8
     } 	D3D12_PIPELINE_STATE_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_PIPELINE_STATE_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_PIPELINE_STATE_FLAGS )
 typedef struct D3D12_GRAPHICS_PIPELINE_STATE_DESC
     {
     ID3D12RootSignature *pRootSignature;
@@ -2216,6 +2296,31 @@ typedef struct D3D12_COMPUTE_PIPELINE_STATE_DESC
     D3D12_CACHED_PIPELINE_STATE CachedPSO;
     D3D12_PIPELINE_STATE_FLAGS Flags;
     } 	D3D12_COMPUTE_PIPELINE_STATE_DESC;
+
+typedef 
+enum D3D_ROOT_SIGNATURE_VERSION
+    {
+        D3D_ROOT_SIGNATURE_VERSION_1	= 0x1,
+        D3D_ROOT_SIGNATURE_VERSION_1_0	= 0x1,
+        D3D_ROOT_SIGNATURE_VERSION_1_1	= 0x2,
+        D3D_ROOT_SIGNATURE_VERSION_1_2	= 0x3
+    } 	D3D_ROOT_SIGNATURE_VERSION;
+
+typedef struct D3D12_SERIALIZED_ROOT_SIGNATURE_DESC
+    {
+    _Field_size_bytes_full_(SerializedBlobSizeInBytes)  const void *pSerializedBlob;
+    SIZE_T SerializedBlobSizeInBytes;
+    } 	D3D12_SERIALIZED_ROOT_SIGNATURE_DESC;
+
+typedef struct D3D12_GLOBAL_SERIALIZED_ROOT_SIGNATURE
+    {
+    D3D12_SERIALIZED_ROOT_SIGNATURE_DESC Desc;
+    } 	D3D12_GLOBAL_SERIALIZED_ROOT_SIGNATURE;
+
+typedef struct D3D12_LOCAL_SERIALIZED_ROOT_SIGNATURE
+    {
+    D3D12_SERIALIZED_ROOT_SIGNATURE_DESC Desc;
+    } 	D3D12_LOCAL_SERIALIZED_ROOT_SIGNATURE;
 
 struct D3D12_RT_FORMAT_ARRAY
     {
@@ -2259,7 +2364,8 @@ enum D3D12_PIPELINE_STATE_SUBOBJECT_TYPE
         D3D12_PIPELINE_STATE_SUBOBJECT_TYPE_DEPTH_STENCIL2	= 26,
         D3D12_PIPELINE_STATE_SUBOBJECT_TYPE_RASTERIZER1	= 27,
         D3D12_PIPELINE_STATE_SUBOBJECT_TYPE_RASTERIZER2	= 28,
-        D3D12_PIPELINE_STATE_SUBOBJECT_TYPE_MAX_VALID	= ( D3D12_PIPELINE_STATE_SUBOBJECT_TYPE_RASTERIZER2 + 1 ) 
+        D3D12_PIPELINE_STATE_SUBOBJECT_TYPE_SERIALIZED_ROOT_SIGNATURE	= 29,
+        D3D12_PIPELINE_STATE_SUBOBJECT_TYPE_MAX_VALID	= ( D3D12_PIPELINE_STATE_SUBOBJECT_TYPE_SERIALIZED_ROOT_SIGNATURE + 1 ) 
     } 	D3D12_PIPELINE_STATE_SUBOBJECT_TYPE;
 
 typedef 
@@ -2308,7 +2414,11 @@ enum D3D12_FEATURE
         D3D12_FEATURE_PREDICATION	= 50,
         D3D12_FEATURE_PLACED_RESOURCE_SUPPORT_INFO	= 51,
         D3D12_FEATURE_HARDWARE_COPY	= 52,
-        D3D12_FEATURE_D3D12_OPTIONS21	= 53
+        D3D12_FEATURE_D3D12_OPTIONS21	= 53,
+        D3D12_FEATURE_D3D12_TIGHT_ALIGNMENT	= 54,
+        D3D12_FEATURE_APPLICATION_SPECIFIC_DRIVER_STATE	= 56,
+        D3D12_FEATURE_BYTECODE_BYPASS_HASH_SUPPORTED	= 57,
+        D3D12_FEATURE_SHADER_CACHE_ABI_SUPPORT	= 61
     } 	D3D12_FEATURE;
 
 typedef 
@@ -2319,7 +2429,7 @@ enum D3D12_SHADER_MIN_PRECISION_SUPPORT
         D3D12_SHADER_MIN_PRECISION_SUPPORT_16_BIT	= 0x2
     } 	D3D12_SHADER_MIN_PRECISION_SUPPORT;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_SHADER_MIN_PRECISION_SUPPORT );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_SHADER_MIN_PRECISION_SUPPORT )
 typedef 
 enum D3D12_TILED_RESOURCES_TIER
     {
@@ -2382,7 +2492,7 @@ enum D3D12_FORMAT_SUPPORT1
         D3D12_FORMAT_SUPPORT1_VIDEO_ENCODER	= 0x40000000
     } 	D3D12_FORMAT_SUPPORT1;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_FORMAT_SUPPORT1 );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_FORMAT_SUPPORT1 )
 typedef 
 enum D3D12_FORMAT_SUPPORT2
     {
@@ -2402,7 +2512,7 @@ enum D3D12_FORMAT_SUPPORT2
         D3D12_FORMAT_SUPPORT2_DISPLAYABLE	= 0x10000
     } 	D3D12_FORMAT_SUPPORT2;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_FORMAT_SUPPORT2 );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_FORMAT_SUPPORT2 )
 typedef 
 enum D3D12_MULTISAMPLE_QUALITY_LEVEL_FLAGS
     {
@@ -2410,7 +2520,7 @@ enum D3D12_MULTISAMPLE_QUALITY_LEVEL_FLAGS
         D3D12_MULTISAMPLE_QUALITY_LEVELS_FLAG_TILED_RESOURCE	= 0x1
     } 	D3D12_MULTISAMPLE_QUALITY_LEVEL_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_MULTISAMPLE_QUALITY_LEVEL_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_MULTISAMPLE_QUALITY_LEVEL_FLAGS )
 typedef 
 enum D3D12_CROSS_NODE_SHARING_TIER
     {
@@ -2486,15 +2596,6 @@ typedef struct D3D12_FEATURE_DATA_D3D12_OPTIONS2
     _Out_  BOOL DepthBoundsTestSupported;
     _Out_  D3D12_PROGRAMMABLE_SAMPLE_POSITIONS_TIER ProgrammableSamplePositionsTier;
     } 	D3D12_FEATURE_DATA_D3D12_OPTIONS2;
-
-typedef 
-enum D3D_ROOT_SIGNATURE_VERSION
-    {
-        D3D_ROOT_SIGNATURE_VERSION_1	= 0x1,
-        D3D_ROOT_SIGNATURE_VERSION_1_0	= 0x1,
-        D3D_ROOT_SIGNATURE_VERSION_1_1	= 0x2,
-        D3D_ROOT_SIGNATURE_VERSION_1_2	= 0x3
-    } 	D3D_ROOT_SIGNATURE_VERSION;
 
 typedef struct D3D12_FEATURE_DATA_ROOT_SIGNATURE
     {
@@ -2588,7 +2689,7 @@ enum D3D12_SHADER_CACHE_SUPPORT_FLAGS
         D3D12_SHADER_CACHE_SUPPORT_SHADER_SESSION_DELETE	= 0x40
     } 	D3D12_SHADER_CACHE_SUPPORT_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_SHADER_CACHE_SUPPORT_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_SHADER_CACHE_SUPPORT_FLAGS )
 typedef struct D3D12_FEATURE_DATA_SHADER_CACHE
     {
     _Out_  D3D12_SHADER_CACHE_SUPPORT_FLAGS SupportFlags;
@@ -2614,7 +2715,7 @@ enum D3D12_COMMAND_LIST_SUPPORT_FLAGS
         D3D12_COMMAND_LIST_SUPPORT_FLAG_VIDEO_ENCODE	= ( 1 << D3D12_COMMAND_LIST_TYPE_VIDEO_ENCODE ) 
     } 	D3D12_COMMAND_LIST_SUPPORT_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_COMMAND_LIST_SUPPORT_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_COMMAND_LIST_SUPPORT_FLAGS )
 typedef struct D3D12_FEATURE_DATA_D3D12_OPTIONS3
     {
     _Out_  BOOL CopyQueueTimestampQueriesSupported;
@@ -2682,7 +2783,8 @@ enum D3D12_RAYTRACING_TIER
     {
         D3D12_RAYTRACING_TIER_NOT_SUPPORTED	= 0,
         D3D12_RAYTRACING_TIER_1_0	= 10,
-        D3D12_RAYTRACING_TIER_1_1	= 11
+        D3D12_RAYTRACING_TIER_1_1	= 11,
+        D3D12_RAYTRACING_TIER_1_2	= 12
     } 	D3D12_RAYTRACING_TIER;
 
 typedef struct D3D12_FEATURE_DATA_D3D12_OPTIONS5
@@ -2870,6 +2972,18 @@ typedef struct D3D12_FEATURE_DATA_D3D12_OPTIONS21
     _Out_  BOOL ExtendedCommandInfoSupported;
     } 	D3D12_FEATURE_DATA_D3D12_OPTIONS21;
 
+typedef 
+enum D3D12_TIGHT_ALIGNMENT_TIER
+    {
+        D3D12_TIGHT_ALIGNMENT_TIER_NOT_SUPPORTED	= 0,
+        D3D12_TIGHT_ALIGNMENT_TIER_1	= ( D3D12_TIGHT_ALIGNMENT_TIER_NOT_SUPPORTED + 1 ) 
+    } 	D3D12_TIGHT_ALIGNMENT_TIER;
+
+typedef struct D3D12_FEATURE_DATA_TIGHT_ALIGNMENT
+    {
+    _Out_  D3D12_TIGHT_ALIGNMENT_TIER SupportTier;
+    } 	D3D12_FEATURE_DATA_TIGHT_ALIGNMENT;
+
 typedef struct D3D12_FEATURE_DATA_PREDICATION
     {
     _Out_  BOOL Supported;
@@ -2879,6 +2993,16 @@ typedef struct D3D12_FEATURE_DATA_HARDWARE_COPY
     {
     _Out_  BOOL Supported;
     } 	D3D12_FEATURE_DATA_HARDWARE_COPY;
+
+typedef struct D3D12_FEATURE_DATA_APPLICATION_SPECIFIC_DRIVER_STATE
+    {
+    _Out_  BOOL Supported;
+    } 	D3D12_FEATURE_DATA_APPLICATION_SPECIFIC_DRIVER_STATE;
+
+typedef struct D3D12_FEATURE_DATA_BYTECODE_BYPASS_HASH_SUPPORTED
+    {
+    _Out_  BOOL Supported;
+    } 	D3D12_FEATURE_DATA_BYTECODE_BYPASS_HASH_SUPPORTED;
 
 typedef struct D3D12_RESOURCE_ALLOCATION_INFO
     {
@@ -2951,7 +3075,7 @@ enum D3D12_HEAP_FLAGS
         D3D12_HEAP_FLAG_ALLOW_ONLY_RT_DS_TEXTURES	= 0x84
     } 	D3D12_HEAP_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_HEAP_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_HEAP_FLAGS )
 typedef struct D3D12_HEAP_DESC
     {
     UINT64 SizeInBytes;
@@ -2999,10 +3123,11 @@ enum D3D12_RESOURCE_FLAGS
         D3D12_RESOURCE_FLAG_ALLOW_SIMULTANEOUS_ACCESS	= 0x20,
         D3D12_RESOURCE_FLAG_VIDEO_DECODE_REFERENCE_ONLY	= 0x40,
         D3D12_RESOURCE_FLAG_VIDEO_ENCODE_REFERENCE_ONLY	= 0x80,
-        D3D12_RESOURCE_FLAG_RAYTRACING_ACCELERATION_STRUCTURE	= 0x100
+        D3D12_RESOURCE_FLAG_RAYTRACING_ACCELERATION_STRUCTURE	= 0x100,
+        D3D12_RESOURCE_FLAG_USE_TIGHT_ALIGNMENT	= 0x400
     } 	D3D12_RESOURCE_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_RESOURCE_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_RESOURCE_FLAGS )
 typedef struct D3D12_MIP_REGION
     {
     UINT Width;
@@ -3136,7 +3261,7 @@ enum D3D12_TILE_MAPPING_FLAGS
         D3D12_TILE_MAPPING_FLAG_NO_HAZARD	= 0x1
     } 	D3D12_TILE_MAPPING_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_TILE_MAPPING_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_TILE_MAPPING_FLAGS )
 typedef 
 enum D3D12_TILE_COPY_FLAGS
     {
@@ -3146,7 +3271,7 @@ enum D3D12_TILE_COPY_FLAGS
         D3D12_TILE_COPY_FLAG_SWIZZLED_TILED_RESOURCE_TO_LINEAR_BUFFER	= 0x4
     } 	D3D12_TILE_COPY_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_TILE_COPY_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_TILE_COPY_FLAGS )
 typedef 
 enum D3D12_RESOURCE_STATES
     {
@@ -3184,7 +3309,7 @@ enum D3D12_RESOURCE_STATES
         D3D12_RESOURCE_STATE_VIDEO_ENCODE_WRITE	= 0x800000
     } 	D3D12_RESOURCE_STATES;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_RESOURCE_STATES );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_RESOURCE_STATES )
 typedef 
 enum D3D12_RESOURCE_BARRIER_TYPE
     {
@@ -3221,7 +3346,7 @@ enum D3D12_RESOURCE_BARRIER_FLAGS
         D3D12_RESOURCE_BARRIER_FLAG_END_ONLY	= 0x2
     } 	D3D12_RESOURCE_BARRIER_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_RESOURCE_BARRIER_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_RESOURCE_BARRIER_FLAGS )
 typedef struct D3D12_RESOURCE_BARRIER
     {
     D3D12_RESOURCE_BARRIER_TYPE Type;
@@ -3297,7 +3422,7 @@ enum D3D12_VIEW_INSTANCING_FLAGS
         D3D12_VIEW_INSTANCING_FLAG_ENABLE_VIEW_INSTANCE_MASKING	= 0x1
     } 	D3D12_VIEW_INSTANCING_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_VIEW_INSTANCING_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_VIEW_INSTANCING_FLAGS )
 typedef struct D3D12_VIEW_INSTANCING_DESC
     {
     UINT ViewInstanceCount;
@@ -3333,7 +3458,7 @@ enum D3D12_BUFFER_SRV_FLAGS
         D3D12_BUFFER_SRV_FLAG_RAW	= 0x1
     } 	D3D12_BUFFER_SRV_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_BUFFER_SRV_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_BUFFER_SRV_FLAGS )
 typedef struct D3D12_BUFFER_SRV
     {
     UINT64 FirstElement;
@@ -3604,7 +3729,7 @@ enum D3D12_SAMPLER_FLAGS
         D3D12_SAMPLER_FLAG_NON_NORMALIZED_COORDINATES	= 0x2
     } 	D3D12_SAMPLER_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_SAMPLER_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_SAMPLER_FLAGS )
 typedef struct D3D12_SAMPLER_DESC2
     {
     D3D12_FILTER Filter;
@@ -3631,7 +3756,7 @@ enum D3D12_BUFFER_UAV_FLAGS
         D3D12_BUFFER_UAV_FLAG_RAW	= 0x1
     } 	D3D12_BUFFER_UAV_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_BUFFER_UAV_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_BUFFER_UAV_FLAGS )
 typedef struct D3D12_BUFFER_UAV
     {
     UINT64 FirstElement;
@@ -3840,7 +3965,7 @@ enum D3D12_DSV_FLAGS
         D3D12_DSV_FLAG_READ_ONLY_STENCIL	= 0x2
     } 	D3D12_DSV_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_DSV_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_DSV_FLAGS )
 typedef 
 enum D3D12_DSV_DIMENSION
     {
@@ -3876,7 +4001,7 @@ enum D3D12_CLEAR_FLAGS
         D3D12_CLEAR_FLAG_STENCIL	= 0x2
     } 	D3D12_CLEAR_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_CLEAR_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_CLEAR_FLAGS )
 typedef 
 enum D3D12_FENCE_FLAGS
     {
@@ -3886,7 +4011,7 @@ enum D3D12_FENCE_FLAGS
         D3D12_FENCE_FLAG_NON_MONITORED	= 0x4
     } 	D3D12_FENCE_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_FENCE_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_FENCE_FLAGS )
 typedef 
 enum D3D12_DESCRIPTOR_HEAP_TYPE
     {
@@ -3904,7 +4029,7 @@ enum D3D12_DESCRIPTOR_HEAP_FLAGS
         D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE	= 0x1
     } 	D3D12_DESCRIPTOR_HEAP_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_DESCRIPTOR_HEAP_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_DESCRIPTOR_HEAP_FLAGS )
 typedef struct D3D12_DESCRIPTOR_HEAP_DESC
     {
     D3D12_DESCRIPTOR_HEAP_TYPE Type;
@@ -4003,7 +4128,7 @@ enum D3D12_ROOT_SIGNATURE_FLAGS
         D3D12_ROOT_SIGNATURE_FLAG_SAMPLER_HEAP_DIRECTLY_INDEXED	= 0x800
     } 	D3D12_ROOT_SIGNATURE_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_ROOT_SIGNATURE_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_ROOT_SIGNATURE_FLAGS )
 typedef 
 enum D3D12_STATIC_BORDER_COLOR
     {
@@ -4069,7 +4194,7 @@ enum D3D12_DESCRIPTOR_RANGE_FLAGS
         D3D12_DESCRIPTOR_RANGE_FLAG_DESCRIPTORS_STATIC_KEEPING_BUFFER_BOUNDS_CHECKS	= 0x10000
     } 	D3D12_DESCRIPTOR_RANGE_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_DESCRIPTOR_RANGE_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_DESCRIPTOR_RANGE_FLAGS )
 typedef struct D3D12_DESCRIPTOR_RANGE1
     {
     D3D12_DESCRIPTOR_RANGE_TYPE RangeType;
@@ -4095,7 +4220,7 @@ enum D3D12_ROOT_DESCRIPTOR_FLAGS
         D3D12_ROOT_DESCRIPTOR_FLAG_DATA_STATIC	= 0x8
     } 	D3D12_ROOT_DESCRIPTOR_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_ROOT_DESCRIPTOR_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_ROOT_DESCRIPTOR_FLAGS )
 typedef struct D3D12_ROOT_DESCRIPTOR1
     {
     UINT ShaderRegister;
@@ -4370,6 +4495,20 @@ typedef HRESULT (WINAPI* PFN_D3D12_CREATE_VERSIONED_ROOT_SIGNATURE_DESERIALIZER)
 HRESULT WINAPI D3D12CreateVersionedRootSignatureDeserializer(
                                      _In_reads_bytes_(SrcDataSizeInBytes) LPCVOID pSrcData,
                                      _In_ SIZE_T SrcDataSizeInBytes,
+                                     _In_ REFIID pRootSignatureDeserializerInterface,
+                                     _Out_ void** ppRootSignatureDeserializer);
+
+typedef HRESULT (WINAPI* PFN_D3D12_CREATE_VERSIONED_ROOT_SIGNATURE_DESERIALIZER_FROM_SUBOBJECT_IN_LIBRARY)(
+                                     _In_reads_bytes_(SrcDataSizeInBytes) LPCVOID pSrcData,
+                                     _In_ SIZE_T SrcDataSizeInBytes,
+                                     _In_ LPCWSTR RootSignatureSubobjectName,
+                                     _In_ REFIID pRootSignatureDeserializerInterface,
+                                     _Out_ void** ppRootSignatureDeserializer);
+
+HRESULT WINAPI D3D12CreateVersionedRootSignatureDeserializerFromSubobjectInLibrary(
+                                     _In_reads_bytes_(SrcDataSizeInBytes) LPCVOID pSrcData,
+                                     _In_ SIZE_T SrcDataSizeInBytes,
+                                     _In_opt_ LPCWSTR RootSignatureSubobjectName,
                                      _In_ REFIID pRootSignatureDeserializerInterface,
                                      _Out_ void** ppRootSignatureDeserializer);
 
@@ -5657,6 +5796,149 @@ EXTERN_C const IID IID_ID3D12PipelineState;
 
 
 #endif 	/* __ID3D12PipelineState_INTERFACE_DEFINED__ */
+
+
+#ifndef __ID3D12PipelineState1_INTERFACE_DEFINED__
+#define __ID3D12PipelineState1_INTERFACE_DEFINED__
+
+/* interface ID3D12PipelineState1 */
+/* [unique][local][object][uuid] */ 
+
+
+EXTERN_C const IID IID_ID3D12PipelineState1;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("5646804c-9638-48f7-9182-b3ee5a6b60fb")
+    ID3D12PipelineState1 : public ID3D12PipelineState
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetRootSignature( 
+            REFIID riid,
+            _COM_Outptr_  void **ppvRootSignature) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ID3D12PipelineState1Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ID3D12PipelineState1 * This,
+            REFIID riid,
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ID3D12PipelineState1 * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ID3D12PipelineState1 * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12Object, GetPrivateData)
+        HRESULT ( STDMETHODCALLTYPE *GetPrivateData )( 
+            ID3D12PipelineState1 * This,
+            _In_  REFGUID guid,
+            _Inout_  UINT *pDataSize,
+            _Out_writes_bytes_opt_( *pDataSize )  void *pData);
+        
+        DECLSPEC_XFGVIRT(ID3D12Object, SetPrivateData)
+        HRESULT ( STDMETHODCALLTYPE *SetPrivateData )( 
+            ID3D12PipelineState1 * This,
+            _In_  REFGUID guid,
+            _In_  UINT DataSize,
+            _In_reads_bytes_opt_( DataSize )  const void *pData);
+        
+        DECLSPEC_XFGVIRT(ID3D12Object, SetPrivateDataInterface)
+        HRESULT ( STDMETHODCALLTYPE *SetPrivateDataInterface )( 
+            ID3D12PipelineState1 * This,
+            _In_  REFGUID guid,
+            _In_opt_  const IUnknown *pData);
+        
+        DECLSPEC_XFGVIRT(ID3D12Object, SetName)
+        HRESULT ( STDMETHODCALLTYPE *SetName )( 
+            ID3D12PipelineState1 * This,
+            _In_z_  LPCWSTR Name);
+        
+        DECLSPEC_XFGVIRT(ID3D12DeviceChild, GetDevice)
+        HRESULT ( STDMETHODCALLTYPE *GetDevice )( 
+            ID3D12PipelineState1 * This,
+            REFIID riid,
+            _COM_Outptr_opt_  void **ppvDevice);
+        
+        DECLSPEC_XFGVIRT(ID3D12PipelineState, GetCachedBlob)
+        HRESULT ( STDMETHODCALLTYPE *GetCachedBlob )( 
+            ID3D12PipelineState1 * This,
+            _COM_Outptr_  ID3DBlob **ppBlob);
+        
+        DECLSPEC_XFGVIRT(ID3D12PipelineState1, GetRootSignature)
+        HRESULT ( STDMETHODCALLTYPE *GetRootSignature )( 
+            ID3D12PipelineState1 * This,
+            REFIID riid,
+            _COM_Outptr_  void **ppvRootSignature);
+        
+        END_INTERFACE
+    } ID3D12PipelineState1Vtbl;
+
+    interface ID3D12PipelineState1
+    {
+        CONST_VTBL struct ID3D12PipelineState1Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ID3D12PipelineState1_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ID3D12PipelineState1_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ID3D12PipelineState1_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ID3D12PipelineState1_GetPrivateData(This,guid,pDataSize,pData)	\
+    ( (This)->lpVtbl -> GetPrivateData(This,guid,pDataSize,pData) ) 
+
+#define ID3D12PipelineState1_SetPrivateData(This,guid,DataSize,pData)	\
+    ( (This)->lpVtbl -> SetPrivateData(This,guid,DataSize,pData) ) 
+
+#define ID3D12PipelineState1_SetPrivateDataInterface(This,guid,pData)	\
+    ( (This)->lpVtbl -> SetPrivateDataInterface(This,guid,pData) ) 
+
+#define ID3D12PipelineState1_SetName(This,Name)	\
+    ( (This)->lpVtbl -> SetName(This,Name) ) 
+
+
+#define ID3D12PipelineState1_GetDevice(This,riid,ppvDevice)	\
+    ( (This)->lpVtbl -> GetDevice(This,riid,ppvDevice) ) 
+
+
+
+#define ID3D12PipelineState1_GetCachedBlob(This,ppBlob)	\
+    ( (This)->lpVtbl -> GetCachedBlob(This,ppBlob) ) 
+
+
+#define ID3D12PipelineState1_GetRootSignature(This,riid,ppvRootSignature)	\
+    ( (This)->lpVtbl -> GetRootSignature(This,riid,ppvRootSignature) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ID3D12PipelineState1_INTERFACE_DEFINED__ */
 
 
 #ifndef __ID3D12DescriptorHeap_INTERFACE_DEFINED__
@@ -7855,7 +8137,7 @@ EXTERN_C const IID IID_ID3D12GraphicsCommandList1;
 #endif 	/* __ID3D12GraphicsCommandList1_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0018 */
+/* interface __MIDL_itf_d3d12_0000_0019 */
 /* [local] */ 
 
 typedef struct D3D12_WRITEBUFFERIMMEDIATE_PARAMETER
@@ -7874,8 +8156,8 @@ enum D3D12_WRITEBUFFERIMMEDIATE_MODE
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0018_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0018_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0019_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0019_v0_0_s_ifspec;
 
 #ifndef __ID3D12GraphicsCommandList2_INTERFACE_DEFINED__
 #define __ID3D12GraphicsCommandList2_INTERFACE_DEFINED__
@@ -10033,7 +10315,7 @@ EXTERN_C const IID IID_ID3D12PipelineLibrary1;
 #endif 	/* __ID3D12PipelineLibrary1_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0023 */
+/* interface __MIDL_itf_d3d12_0000_0024 */
 /* [local] */ 
 
 typedef 
@@ -10044,7 +10326,7 @@ enum D3D12_MULTIPLE_FENCE_WAIT_FLAGS
         D3D12_MULTIPLE_FENCE_WAIT_FLAG_ALL	= 0
     } 	D3D12_MULTIPLE_FENCE_WAIT_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_MULTIPLE_FENCE_WAIT_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_MULTIPLE_FENCE_WAIT_FLAGS )
 typedef 
 enum D3D12_RESIDENCY_PRIORITY
     {
@@ -10057,8 +10339,8 @@ enum D3D12_RESIDENCY_PRIORITY
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0023_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0023_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0024_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0024_v0_0_s_ifspec;
 
 #ifndef __ID3D12Device1_INTERFACE_DEFINED__
 #define __ID3D12Device1_INTERFACE_DEFINED__
@@ -11244,7 +11526,7 @@ EXTERN_C const IID IID_ID3D12Device2;
 #endif 	/* __ID3D12Device2_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0025 */
+/* interface __MIDL_itf_d3d12_0000_0026 */
 /* [local] */ 
 
 typedef 
@@ -11254,11 +11536,11 @@ enum D3D12_RESIDENCY_FLAGS
         D3D12_RESIDENCY_FLAG_DENY_OVERBUDGET	= 0x1
     } 	D3D12_RESIDENCY_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_RESIDENCY_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_RESIDENCY_FLAGS )
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0025_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0025_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0026_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0026_v0_0_s_ifspec;
 
 #ifndef __ID3D12Device3_INTERFACE_DEFINED__
 #define __ID3D12Device3_INTERFACE_DEFINED__
@@ -11896,7 +12178,7 @@ EXTERN_C const IID IID_ID3D12Device3;
 #endif 	/* __ID3D12Device3_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0026 */
+/* interface __MIDL_itf_d3d12_0000_0027 */
 /* [local] */ 
 
 typedef 
@@ -11905,21 +12187,21 @@ enum D3D12_COMMAND_LIST_FLAGS
         D3D12_COMMAND_LIST_FLAG_NONE	= 0
     } 	D3D12_COMMAND_LIST_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_COMMAND_LIST_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_COMMAND_LIST_FLAGS )
 typedef 
 enum D3D12_COMMAND_POOL_FLAGS
     {
         D3D12_COMMAND_POOL_FLAG_NONE	= 0
     } 	D3D12_COMMAND_POOL_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_COMMAND_POOL_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_COMMAND_POOL_FLAGS )
 typedef 
 enum D3D12_COMMAND_RECORDER_FLAGS
     {
         D3D12_COMMAND_RECORDER_FLAG_NONE	= 0
     } 	D3D12_COMMAND_RECORDER_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_COMMAND_RECORDER_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_COMMAND_RECORDER_FLAGS )
 typedef 
 enum D3D12_PROTECTED_SESSION_STATUS
     {
@@ -11929,8 +12211,8 @@ enum D3D12_PROTECTED_SESSION_STATUS
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0026_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0026_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0027_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0027_v0_0_s_ifspec;
 
 #ifndef __ID3D12ProtectedSession_INTERFACE_DEFINED__
 #define __ID3D12ProtectedSession_INTERFACE_DEFINED__
@@ -12074,7 +12356,7 @@ EXTERN_C const IID IID_ID3D12ProtectedSession;
 #endif 	/* __ID3D12ProtectedSession_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0027 */
+/* interface __MIDL_itf_d3d12_0000_0028 */
 /* [local] */ 
 
 typedef 
@@ -12084,7 +12366,7 @@ enum D3D12_PROTECTED_RESOURCE_SESSION_SUPPORT_FLAGS
         D3D12_PROTECTED_RESOURCE_SESSION_SUPPORT_FLAG_SUPPORTED	= 0x1
     } 	D3D12_PROTECTED_RESOURCE_SESSION_SUPPORT_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_PROTECTED_RESOURCE_SESSION_SUPPORT_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_PROTECTED_RESOURCE_SESSION_SUPPORT_FLAGS )
 typedef struct D3D12_FEATURE_DATA_PROTECTED_RESOURCE_SESSION_SUPPORT
     {
     UINT NodeIndex;
@@ -12097,7 +12379,7 @@ enum D3D12_PROTECTED_RESOURCE_SESSION_FLAGS
         D3D12_PROTECTED_RESOURCE_SESSION_FLAG_NONE	= 0
     } 	D3D12_PROTECTED_RESOURCE_SESSION_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_PROTECTED_RESOURCE_SESSION_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_PROTECTED_RESOURCE_SESSION_FLAGS )
 typedef struct D3D12_PROTECTED_RESOURCE_SESSION_DESC
     {
     UINT NodeMask;
@@ -12106,8 +12388,8 @@ typedef struct D3D12_PROTECTED_RESOURCE_SESSION_DESC
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0027_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0027_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0028_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0028_v0_0_s_ifspec;
 
 #ifndef __ID3D12ProtectedResourceSession_INTERFACE_DEFINED__
 #define __ID3D12ProtectedResourceSession_INTERFACE_DEFINED__
@@ -13033,7 +13315,7 @@ EXTERN_C const IID IID_ID3D12Device4;
 #endif 	/* __ID3D12Device4_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0029 */
+/* interface __MIDL_itf_d3d12_0000_0030 */
 /* [local] */ 
 
 typedef 
@@ -13046,8 +13328,8 @@ enum D3D12_LIFETIME_STATE
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0029_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0029_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0030_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0030_v0_0_s_ifspec;
 
 #ifndef __ID3D12LifetimeOwner_INTERFACE_DEFINED__
 #define __ID3D12LifetimeOwner_INTERFACE_DEFINED__
@@ -13401,7 +13683,7 @@ EXTERN_C const IID IID_ID3D12LifetimeTracker;
 #endif 	/* __ID3D12LifetimeTracker_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0032 */
+/* interface __MIDL_itf_d3d12_0000_0033 */
 /* [local] */ 
 
 typedef 
@@ -13421,7 +13703,7 @@ enum D3D12_META_COMMAND_PARAMETER_FLAGS
         D3D12_META_COMMAND_PARAMETER_FLAG_OUTPUT	= 0x2
     } 	D3D12_META_COMMAND_PARAMETER_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_META_COMMAND_PARAMETER_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_META_COMMAND_PARAMETER_FLAGS )
 typedef 
 enum D3D12_META_COMMAND_PARAMETER_STAGE
     {
@@ -13462,7 +13744,7 @@ enum D3D12_GRAPHICS_STATES
         D3D12_GRAPHICS_STATE_VIEW_INSTANCE_MASK	= ( 1 << 16 ) 
     } 	D3D12_GRAPHICS_STATES;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_GRAPHICS_STATES );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_GRAPHICS_STATES )
 typedef struct D3D12_META_COMMAND_DESC
     {
     GUID Id;
@@ -13473,8 +13755,8 @@ typedef struct D3D12_META_COMMAND_DESC
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0032_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0032_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0033_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0033_v0_0_s_ifspec;
 
 #ifndef __ID3D12StateObject_INTERFACE_DEFINED__
 #define __ID3D12StateObject_INTERFACE_DEFINED__
@@ -13711,7 +13993,7 @@ EXTERN_C const IID IID_ID3D12StateObjectProperties;
 #endif 	/* __ID3D12StateObjectProperties_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0034 */
+/* interface __MIDL_itf_d3d12_0000_0035 */
 /* [local] */ 
 
 typedef struct D3D12_PROGRAM_IDENTIFIER
@@ -13721,8 +14003,8 @@ typedef struct D3D12_PROGRAM_IDENTIFIER
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0034_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0034_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0035_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0035_v0_0_s_ifspec;
 
 #ifndef __ID3D12StateObjectProperties1_INTERFACE_DEFINED__
 #define __ID3D12StateObjectProperties1_INTERFACE_DEFINED__
@@ -13859,7 +14141,164 @@ EXTERN_C const IID IID_ID3D12StateObjectProperties1;
 #endif 	/* __ID3D12StateObjectProperties1_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0035 */
+#ifndef __ID3D12StateObjectProperties2_INTERFACE_DEFINED__
+#define __ID3D12StateObjectProperties2_INTERFACE_DEFINED__
+
+/* interface ID3D12StateObjectProperties2 */
+/* [unique][local][object][uuid] */ 
+
+
+EXTERN_C const IID IID_ID3D12StateObjectProperties2;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("d5e82917-f0f1-44cf-ae5e-ce222dd0b884")
+    ID3D12StateObjectProperties2 : public ID3D12StateObjectProperties1
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetGlobalRootSignatureForProgram( 
+            LPCWSTR pProgramName,
+            REFIID riid,
+            _COM_Outptr_  void **ppvRootSignature) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetGlobalRootSignatureForShader( 
+            LPCWSTR pExportName,
+            REFIID riid,
+            _COM_Outptr_  void **ppvRootSignature) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ID3D12StateObjectProperties2Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ID3D12StateObjectProperties2 * This,
+            REFIID riid,
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ID3D12StateObjectProperties2 * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ID3D12StateObjectProperties2 * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12StateObjectProperties, GetShaderIdentifier)
+        void *( STDMETHODCALLTYPE *GetShaderIdentifier )( 
+            ID3D12StateObjectProperties2 * This,
+            _In_  LPCWSTR pExportName);
+        
+        DECLSPEC_XFGVIRT(ID3D12StateObjectProperties, GetShaderStackSize)
+        UINT64 ( STDMETHODCALLTYPE *GetShaderStackSize )( 
+            ID3D12StateObjectProperties2 * This,
+            _In_  LPCWSTR pExportName);
+        
+        DECLSPEC_XFGVIRT(ID3D12StateObjectProperties, GetPipelineStackSize)
+        UINT64 ( STDMETHODCALLTYPE *GetPipelineStackSize )( 
+            ID3D12StateObjectProperties2 * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12StateObjectProperties, SetPipelineStackSize)
+        void ( STDMETHODCALLTYPE *SetPipelineStackSize )( 
+            ID3D12StateObjectProperties2 * This,
+            UINT64 PipelineStackSizeInBytes);
+        
+        DECLSPEC_XFGVIRT(ID3D12StateObjectProperties1, GetProgramIdentifier)
+#if !defined(_WIN32)
+        D3D12_PROGRAM_IDENTIFIER ( STDMETHODCALLTYPE *GetProgramIdentifier )( 
+            ID3D12StateObjectProperties2 * This,
+            LPCWSTR pProgramName);
+        
+#else
+        D3D12_PROGRAM_IDENTIFIER *( STDMETHODCALLTYPE *GetProgramIdentifier )( 
+            ID3D12StateObjectProperties2 * This,
+            D3D12_PROGRAM_IDENTIFIER * RetVal,
+            LPCWSTR pProgramName);
+        
+#endif
+        
+        DECLSPEC_XFGVIRT(ID3D12StateObjectProperties2, GetGlobalRootSignatureForProgram)
+        HRESULT ( STDMETHODCALLTYPE *GetGlobalRootSignatureForProgram )( 
+            ID3D12StateObjectProperties2 * This,
+            LPCWSTR pProgramName,
+            REFIID riid,
+            _COM_Outptr_  void **ppvRootSignature);
+        
+        DECLSPEC_XFGVIRT(ID3D12StateObjectProperties2, GetGlobalRootSignatureForShader)
+        HRESULT ( STDMETHODCALLTYPE *GetGlobalRootSignatureForShader )( 
+            ID3D12StateObjectProperties2 * This,
+            LPCWSTR pExportName,
+            REFIID riid,
+            _COM_Outptr_  void **ppvRootSignature);
+        
+        END_INTERFACE
+    } ID3D12StateObjectProperties2Vtbl;
+
+    interface ID3D12StateObjectProperties2
+    {
+        CONST_VTBL struct ID3D12StateObjectProperties2Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ID3D12StateObjectProperties2_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ID3D12StateObjectProperties2_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ID3D12StateObjectProperties2_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ID3D12StateObjectProperties2_GetShaderIdentifier(This,pExportName)	\
+    ( (This)->lpVtbl -> GetShaderIdentifier(This,pExportName) ) 
+
+#define ID3D12StateObjectProperties2_GetShaderStackSize(This,pExportName)	\
+    ( (This)->lpVtbl -> GetShaderStackSize(This,pExportName) ) 
+
+#define ID3D12StateObjectProperties2_GetPipelineStackSize(This)	\
+    ( (This)->lpVtbl -> GetPipelineStackSize(This) ) 
+
+#define ID3D12StateObjectProperties2_SetPipelineStackSize(This,PipelineStackSizeInBytes)	\
+    ( (This)->lpVtbl -> SetPipelineStackSize(This,PipelineStackSizeInBytes) ) 
+
+#if !defined(_WIN32)
+
+#define ID3D12StateObjectProperties2_GetProgramIdentifier(This,pProgramName)	\
+    ( (This)->lpVtbl -> GetProgramIdentifier(This,pProgramName) ) 
+#else
+#define ID3D12StateObjectProperties2_GetProgramIdentifier(This,RetVal,pProgramName)	\
+    ( (This)->lpVtbl -> GetProgramIdentifier(This,RetVal,pProgramName) ) 
+#endif
+
+
+#define ID3D12StateObjectProperties2_GetGlobalRootSignatureForProgram(This,pProgramName,riid,ppvRootSignature)	\
+    ( (This)->lpVtbl -> GetGlobalRootSignatureForProgram(This,pProgramName,riid,ppvRootSignature) ) 
+
+#define ID3D12StateObjectProperties2_GetGlobalRootSignatureForShader(This,pExportName,riid,ppvRootSignature)	\
+    ( (This)->lpVtbl -> GetGlobalRootSignatureForShader(This,pExportName,riid,ppvRootSignature) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ID3D12StateObjectProperties2_INTERFACE_DEFINED__ */
+
+
+/* interface __MIDL_itf_d3d12_0000_0037 */
 /* [local] */ 
 
 typedef struct D3D12_NODE_ID
@@ -13877,8 +14316,8 @@ typedef struct D3D12_WORK_GRAPH_MEMORY_REQUIREMENTS
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0035_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0035_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0037_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0037_v0_0_s_ifspec;
 
 #ifndef __ID3D12WorkGraphProperties_INTERFACE_DEFINED__
 #define __ID3D12WorkGraphProperties_INTERFACE_DEFINED__
@@ -13950,6 +14389,10 @@ EXTERN_C const IID IID_ID3D12WorkGraphProperties;
         virtual void STDMETHODCALLTYPE GetWorkGraphMemoryRequirements( 
             UINT WorkGraphIndex,
             _Out_  D3D12_WORK_GRAPH_MEMORY_REQUIREMENTS *pWorkGraphMemoryRequirements) = 0;
+        
+        virtual UINT STDMETHODCALLTYPE GetEntrypointRecordAlignmentInBytes( 
+            UINT WorkGraphIndex,
+            UINT EntrypointIndex) = 0;
         
     };
     
@@ -14060,6 +14503,12 @@ EXTERN_C const IID IID_ID3D12WorkGraphProperties;
             UINT WorkGraphIndex,
             _Out_  D3D12_WORK_GRAPH_MEMORY_REQUIREMENTS *pWorkGraphMemoryRequirements);
         
+        DECLSPEC_XFGVIRT(ID3D12WorkGraphProperties, GetEntrypointRecordAlignmentInBytes)
+        UINT ( STDMETHODCALLTYPE *GetEntrypointRecordAlignmentInBytes )( 
+            ID3D12WorkGraphProperties * This,
+            UINT WorkGraphIndex,
+            UINT EntrypointIndex);
+        
         END_INTERFACE
     } ID3D12WorkGraphPropertiesVtbl;
 
@@ -14129,6 +14578,9 @@ EXTERN_C const IID IID_ID3D12WorkGraphProperties;
 #define ID3D12WorkGraphProperties_GetWorkGraphMemoryRequirements(This,WorkGraphIndex,pWorkGraphMemoryRequirements)	\
     ( (This)->lpVtbl -> GetWorkGraphMemoryRequirements(This,WorkGraphIndex,pWorkGraphMemoryRequirements) ) 
 
+#define ID3D12WorkGraphProperties_GetEntrypointRecordAlignmentInBytes(This,WorkGraphIndex,EntrypointIndex)	\
+    ( (This)->lpVtbl -> GetEntrypointRecordAlignmentInBytes(This,WorkGraphIndex,EntrypointIndex) ) 
+
 #endif /* COBJMACROS */
 
 
@@ -14140,7 +14592,7 @@ EXTERN_C const IID IID_ID3D12WorkGraphProperties;
 #endif 	/* __ID3D12WorkGraphProperties_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0036 */
+/* interface __MIDL_itf_d3d12_0000_0038 */
 /* [local] */ 
 
 typedef 
@@ -14175,7 +14627,10 @@ enum D3D12_STATE_SUBOBJECT_TYPE
         D3D12_STATE_SUBOBJECT_TYPE_VIEW_INSTANCING	= 28,
         D3D12_STATE_SUBOBJECT_TYPE_GENERIC_PROGRAM	= 29,
         D3D12_STATE_SUBOBJECT_TYPE_DEPTH_STENCIL2	= 30,
-        D3D12_STATE_SUBOBJECT_TYPE_MAX_VALID	= ( D3D12_STATE_SUBOBJECT_TYPE_DEPTH_STENCIL2 + 1 ) 
+        D3D12_STATE_SUBOBJECT_TYPE_GLOBAL_SERIALIZED_ROOT_SIGNATURE	= 31,
+        D3D12_STATE_SUBOBJECT_TYPE_LOCAL_SERIALIZED_ROOT_SIGNATURE	= 32,
+        D3D12_STATE_SUBOBJECT_TYPE_COMPILER_EXISITING_COLLECTION	= 33,
+        D3D12_STATE_SUBOBJECT_TYPE_MAX_VALID	= ( D3D12_STATE_SUBOBJECT_TYPE_COMPILER_EXISITING_COLLECTION + 1 ) 
     } 	D3D12_STATE_SUBOBJECT_TYPE;
 
 typedef struct D3D12_STATE_SUBOBJECT
@@ -14193,7 +14648,7 @@ enum D3D12_STATE_OBJECT_FLAGS
         D3D12_STATE_OBJECT_FLAG_ALLOW_STATE_OBJECT_ADDITIONS	= 0x4
     } 	D3D12_STATE_OBJECT_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_STATE_OBJECT_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_STATE_OBJECT_FLAGS )
 typedef struct D3D12_STATE_OBJECT_CONFIG
     {
     D3D12_STATE_OBJECT_FLAGS Flags;
@@ -14240,7 +14695,7 @@ enum D3D12_EXPORT_FLAGS
         D3D12_EXPORT_FLAG_NONE	= 0
     } 	D3D12_EXPORT_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_EXPORT_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_EXPORT_FLAGS )
 typedef struct D3D12_EXPORT_DESC
     {
     LPCWSTR Name;
@@ -14308,10 +14763,11 @@ enum D3D12_RAYTRACING_PIPELINE_FLAGS
     {
         D3D12_RAYTRACING_PIPELINE_FLAG_NONE	= 0,
         D3D12_RAYTRACING_PIPELINE_FLAG_SKIP_TRIANGLES	= 0x100,
-        D3D12_RAYTRACING_PIPELINE_FLAG_SKIP_PROCEDURAL_PRIMITIVES	= 0x200
+        D3D12_RAYTRACING_PIPELINE_FLAG_SKIP_PROCEDURAL_PRIMITIVES	= 0x200,
+        D3D12_RAYTRACING_PIPELINE_FLAG_ALLOW_OPACITY_MICROMAPS	= 0x400
     } 	D3D12_RAYTRACING_PIPELINE_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_RAYTRACING_PIPELINE_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_RAYTRACING_PIPELINE_FLAGS )
 typedef struct D3D12_RAYTRACING_PIPELINE_CONFIG1
     {
     UINT MaxTraceRecursionDepth;
@@ -14414,7 +14870,7 @@ enum D3D12_WORK_GRAPH_FLAGS
         D3D12_WORK_GRAPH_FLAG_INCLUDE_ALL_AVAILABLE_NODES	= 0x1
     } 	D3D12_WORK_GRAPH_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_WORK_GRAPH_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_WORK_GRAPH_FLAGS )
 typedef struct D3D12_WORK_GRAPH_DESC
     {
     LPCWSTR ProgramName;
@@ -14457,12 +14913,13 @@ enum D3D12_RAYTRACING_GEOMETRY_FLAGS
         D3D12_RAYTRACING_GEOMETRY_FLAG_NO_DUPLICATE_ANYHIT_INVOCATION	= 0x2
     } 	D3D12_RAYTRACING_GEOMETRY_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_RAYTRACING_GEOMETRY_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_RAYTRACING_GEOMETRY_FLAGS )
 typedef 
 enum D3D12_RAYTRACING_GEOMETRY_TYPE
     {
         D3D12_RAYTRACING_GEOMETRY_TYPE_TRIANGLES	= 0,
-        D3D12_RAYTRACING_GEOMETRY_TYPE_PROCEDURAL_PRIMITIVE_AABBS	= ( D3D12_RAYTRACING_GEOMETRY_TYPE_TRIANGLES + 1 ) 
+        D3D12_RAYTRACING_GEOMETRY_TYPE_PROCEDURAL_PRIMITIVE_AABBS	= ( D3D12_RAYTRACING_GEOMETRY_TYPE_TRIANGLES + 1 ) ,
+        D3D12_RAYTRACING_GEOMETRY_TYPE_OMM_TRIANGLES	= ( D3D12_RAYTRACING_GEOMETRY_TYPE_PROCEDURAL_PRIMITIVE_AABBS + 1 ) 
     } 	D3D12_RAYTRACING_GEOMETRY_TYPE;
 
 typedef 
@@ -14472,10 +14929,12 @@ enum D3D12_RAYTRACING_INSTANCE_FLAGS
         D3D12_RAYTRACING_INSTANCE_FLAG_TRIANGLE_CULL_DISABLE	= 0x1,
         D3D12_RAYTRACING_INSTANCE_FLAG_TRIANGLE_FRONT_COUNTERCLOCKWISE	= 0x2,
         D3D12_RAYTRACING_INSTANCE_FLAG_FORCE_OPAQUE	= 0x4,
-        D3D12_RAYTRACING_INSTANCE_FLAG_FORCE_NON_OPAQUE	= 0x8
+        D3D12_RAYTRACING_INSTANCE_FLAG_FORCE_NON_OPAQUE	= 0x8,
+        D3D12_RAYTRACING_INSTANCE_FLAG_FORCE_OMM_2_STATE	= 0x10,
+        D3D12_RAYTRACING_INSTANCE_FLAG_DISABLE_OMMS	= 0x20
     } 	D3D12_RAYTRACING_INSTANCE_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_RAYTRACING_INSTANCE_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_RAYTRACING_INSTANCE_FLAGS )
 typedef struct D3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDE
     {
     D3D12_GPU_VIRTUAL_ADDRESS StartAddress;
@@ -14523,6 +14982,51 @@ typedef struct D3D12_RAYTRACING_GEOMETRY_AABBS_DESC
     } 	D3D12_RAYTRACING_GEOMETRY_AABBS_DESC;
 
 typedef 
+enum D3D12_RAYTRACING_OPACITY_MICROMAP_SPECIAL_INDEX
+    {
+        D3D12_RAYTRACING_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT	= -1,
+        D3D12_RAYTRACING_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE	= -2,
+        D3D12_RAYTRACING_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT	= -3,
+        D3D12_RAYTRACING_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE	= -4
+    } 	D3D12_RAYTRACING_OPACITY_MICROMAP_SPECIAL_INDEX;
+
+typedef 
+enum D3D12_RAYTRACING_OPACITY_MICROMAP_STATE
+    {
+        D3D12_RAYTRACING_OPACITY_MICROMAP_STATE_TRANSPARENT	= 0,
+        D3D12_RAYTRACING_OPACITY_MICROMAP_STATE_OPAQUE	= 1,
+        D3D12_RAYTRACING_OPACITY_MICROMAP_STATE_UNKNOWN_TRANSPARENT	= 2,
+        D3D12_RAYTRACING_OPACITY_MICROMAP_STATE_UNKNOWN_OPAQUE	= 3
+    } 	D3D12_RAYTRACING_OPACITY_MICROMAP_STATE;
+
+typedef 
+enum D3D12_RAYTRACING_OPACITY_MICROMAP_FORMAT
+    {
+        D3D12_RAYTRACING_OPACITY_MICROMAP_FORMAT_OC1_2_STATE	= 0x1,
+        D3D12_RAYTRACING_OPACITY_MICROMAP_FORMAT_OC1_4_STATE	= 0x2
+    } 	D3D12_RAYTRACING_OPACITY_MICROMAP_FORMAT;
+
+typedef struct D3D12_RAYTRACING_OPACITY_MICROMAP_DESC
+{
+    UINT ByteOffset;
+    UINT SubdivisionLevel : 16;
+    D3D12_RAYTRACING_OPACITY_MICROMAP_FORMAT Format : 16;
+} D3D12_RAYTRACING_OPACITY_MICROMAP_DESC;
+typedef struct D3D12_RAYTRACING_GEOMETRY_OMM_LINKAGE_DESC
+    {
+    D3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDE OpacityMicromapIndexBuffer;
+    DXGI_FORMAT OpacityMicromapIndexFormat;
+    UINT OpacityMicromapBaseLocation;
+    D3D12_GPU_VIRTUAL_ADDRESS OpacityMicromapArray;
+    } 	D3D12_RAYTRACING_GEOMETRY_OMM_LINKAGE_DESC;
+
+typedef struct D3D12_RAYTRACING_GEOMETRY_OMM_TRIANGLES_DESC
+    {
+    const D3D12_RAYTRACING_GEOMETRY_TRIANGLES_DESC *pTriangles;
+    const D3D12_RAYTRACING_GEOMETRY_OMM_LINKAGE_DESC *pOmmLinkage;
+    } 	D3D12_RAYTRACING_GEOMETRY_OMM_TRIANGLES_DESC;
+
+typedef 
 enum D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAGS
     {
         D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAG_NONE	= 0,
@@ -14531,10 +15035,12 @@ enum D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAGS
         D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAG_PREFER_FAST_TRACE	= 0x4,
         D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAG_PREFER_FAST_BUILD	= 0x8,
         D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAG_MINIMIZE_MEMORY	= 0x10,
-        D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAG_PERFORM_UPDATE	= 0x20
+        D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAG_PERFORM_UPDATE	= 0x20,
+        D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAG_ALLOW_OMM_UPDATE	= 0x40,
+        D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAG_ALLOW_DISABLE_OMMS	= 0x80
     } 	D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAGS )
 typedef 
 enum D3D12_RAYTRACING_ACCELERATION_STRUCTURE_COPY_MODE
     {
@@ -14549,7 +15055,8 @@ typedef
 enum D3D12_RAYTRACING_ACCELERATION_STRUCTURE_TYPE
     {
         D3D12_RAYTRACING_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL	= 0,
-        D3D12_RAYTRACING_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL	= 0x1
+        D3D12_RAYTRACING_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL	= 0x1,
+        D3D12_RAYTRACING_ACCELERATION_STRUCTURE_TYPE_OPACITY_MICROMAP_ARRAY	= 0x2
     } 	D3D12_RAYTRACING_ACCELERATION_STRUCTURE_TYPE;
 
 typedef 
@@ -14594,12 +15101,20 @@ typedef struct D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_TOOLS_VISUALIZATION
 // depending on Type field, NumDescs above is followed by either:
 //       D3D12_RAY_TRACING_INSTANCE_DESC InstanceDescs[NumDescs]
 //    or D3D12_RAY_TRACING_GEOMETRY_DESC GeometryDescs[NumDescs].
+//    or D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_DESC (NumDescs == 1 in this case).
+//
+// For D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_DESC, the pOmmHistogram pointer becomes a GPUVA instead of CPU pointer
+//
 // There is 4 bytes of padding between GeometryDesc structs in the array so alignment is natural when viewed by CPU.
 
 typedef struct D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_SERIALIZATION_DESC
     {
     UINT64 SerializedSizeInBytes;
-    UINT64 NumBottomLevelAccelerationStructurePointers;
+    union 
+        {
+        UINT64 NumBottomLevelAccelerationStructurePointers;
+        UINT64 NumBottomLevelAccelerationStructureHeaderAndPointerListPairs;
+        } 	;
     } 	D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_SERIALIZATION_DESC;
 
 typedef struct D3D12_SERIALIZED_DATA_DRIVER_MATCHING_IDENTIFIER
@@ -14611,7 +15126,8 @@ typedef struct D3D12_SERIALIZED_DATA_DRIVER_MATCHING_IDENTIFIER
 typedef 
 enum D3D12_SERIALIZED_DATA_TYPE
     {
-        D3D12_SERIALIZED_DATA_RAYTRACING_ACCELERATION_STRUCTURE	= 0
+        D3D12_SERIALIZED_DATA_RAYTRACING_ACCELERATION_STRUCTURE	= 0,
+        D3D12_SERIALIZED_DATA_APPLICATION_SPECIFIC_DRIVER_STATE	= 0x1
     } 	D3D12_SERIALIZED_DATA_TYPE;
 
 typedef 
@@ -14631,6 +15147,39 @@ typedef struct D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER
     UINT64 DeserializedSizeInBytes;
     UINT64 NumBottomLevelAccelerationStructurePointersAfterHeader;
     } 	D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER;
+
+typedef 
+enum D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER_POSTAMBLE_TYPE
+    {
+        D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER_POSTAMBLE_TYPE_NONE	= 0,
+        D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER_POSTAMBLE_TYPE_BOTTOM_LEVEL_POINTERS	= 0,
+        D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER_POSTAMBLE_TYPE_BLOCKS	= 0xffffffff
+    } 	D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER_POSTAMBLE_TYPE;
+
+typedef struct D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER1
+    {
+    D3D12_SERIALIZED_DATA_DRIVER_MATCHING_IDENTIFIER DriverMatchingIdentifier;
+    UINT64 SerializedSizeInBytesIncludingHeader;
+    UINT64 DeserializedSizeInBytes;
+    union 
+        {
+        UINT NumBottomLevelAccelerationStructurePointersAfterHeader;
+        UINT NumBlocks;
+        } 	;
+    D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER_POSTAMBLE_TYPE HeaderPostambleType;
+    } 	D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER1;
+
+typedef 
+enum D3D12_SERIALIZED_BLOCK_TYPE
+    {
+        D3D12_RAYTRACING_SERIALIZED_BLOCK_TYPE_OPACITY_MICROMAPS	= 0
+    } 	D3D12_RAYTRACING_SERIALIZED_BLOCK_TYPE;
+
+typedef struct D3D12_RAYTRACING_SERIALIZED_BLOCK
+    {
+    D3D12_RAYTRACING_SERIALIZED_BLOCK_TYPE Type;
+    UINT64 NumBlockPointersAfterHeader;
+    } 	D3D12_RAYTRACING_SERIALIZED_BLOCK;
 
 typedef struct D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_CURRENT_SIZE_DESC
     {
@@ -14655,8 +15204,24 @@ typedef struct D3D12_RAYTRACING_GEOMETRY_DESC
         {
         D3D12_RAYTRACING_GEOMETRY_TRIANGLES_DESC Triangles;
         D3D12_RAYTRACING_GEOMETRY_AABBS_DESC AABBs;
+        D3D12_RAYTRACING_GEOMETRY_OMM_TRIANGLES_DESC OmmTriangles;
         } 	;
     } 	D3D12_RAYTRACING_GEOMETRY_DESC;
+
+typedef struct D3D12_RAYTRACING_OPACITY_MICROMAP_HISTOGRAM_ENTRY
+    {
+    UINT Count;
+    UINT SubdivisionLevel;
+    D3D12_RAYTRACING_OPACITY_MICROMAP_FORMAT Format;
+    } 	D3D12_RAYTRACING_OPACITY_MICROMAP_HISTOGRAM_ENTRY;
+
+typedef struct D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_DESC
+    {
+    UINT NumOmmHistogramEntries;
+    const D3D12_RAYTRACING_OPACITY_MICROMAP_HISTOGRAM_ENTRY *pOmmHistogram;
+    D3D12_GPU_VIRTUAL_ADDRESS InputBuffer;
+    D3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDE PerOmmDescs;
+    } 	D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_DESC;
 
 typedef struct D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_INPUTS
     {
@@ -14669,6 +15234,7 @@ typedef struct D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_INPUTS
         D3D12_GPU_VIRTUAL_ADDRESS InstanceDescs;
         const D3D12_RAYTRACING_GEOMETRY_DESC *pGeometryDescs;
         const D3D12_RAYTRACING_GEOMETRY_DESC *const *ppGeometryDescs;
+        const D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_DESC *pOpacityMicromapArrayDesc;
         } 	;
     } 	D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_INPUTS;
 
@@ -14688,6 +15254,29 @@ typedef struct D3D12_RAYTRACING_ACCELERATION_STRUCTURE_PREBUILD_INFO
     } 	D3D12_RAYTRACING_ACCELERATION_STRUCTURE_PREBUILD_INFO;
 
 typedef 
+enum D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_POSTBUILD_INFO_TYPE
+    {
+        D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_POSTBUILD_INFO_CURRENT_SIZE	= 0,
+        D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_POSTBUILD_INFO_TOOLS_VISUALIZATION	= 0x1
+    } 	D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_POSTBUILD_INFO_TYPE;
+
+typedef struct D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_POSTBUILD_INFO_DESC
+    {
+    D3D12_GPU_VIRTUAL_ADDRESS DestBuffer;
+    D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_POSTBUILD_INFO_TYPE InfoType;
+    } 	D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_POSTBUILD_INFO_DESC;
+
+typedef struct D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_POSTBUILD_INFO_CURRENT_SIZE_DESC
+    {
+    UINT64 CurrentSizeInBytes;
+    } 	D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_POSTBUILD_INFO_CURRENT_SIZE_DESC;
+
+typedef struct D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_POSTBUILD_INFO_TOOLS_VISUALIZATION_DESC
+    {
+    UINT64 DecodedSizeInBytes;
+    } 	D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_POSTBUILD_INFO_TOOLS_VISUALIZATION_DESC;
+
+typedef 
 enum D3D12_RAY_FLAGS
     {
         D3D12_RAY_FLAG_NONE	= 0,
@@ -14700,10 +15289,11 @@ enum D3D12_RAY_FLAGS
         D3D12_RAY_FLAG_CULL_OPAQUE	= 0x40,
         D3D12_RAY_FLAG_CULL_NON_OPAQUE	= 0x80,
         D3D12_RAY_FLAG_SKIP_TRIANGLES	= 0x100,
-        D3D12_RAY_FLAG_SKIP_PROCEDURAL_PRIMITIVES	= 0x200
+        D3D12_RAY_FLAG_SKIP_PROCEDURAL_PRIMITIVES	= 0x200,
+        D3D12_RAY_FLAG_FORCE_OMM_2_STATE	= 0x400
     } 	D3D12_RAY_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_RAY_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_RAY_FLAGS )
 typedef 
 enum D3D12_HIT_KIND
     {
@@ -14713,8 +15303,8 @@ enum D3D12_HIT_KIND
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0036_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0036_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0038_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0038_v0_0_s_ifspec;
 
 #ifndef __ID3D12Device5_INTERFACE_DEFINED__
 #define __ID3D12Device5_INTERFACE_DEFINED__
@@ -15544,61 +16134,125 @@ EXTERN_C const IID IID_ID3D12Device5;
 #endif 	/* __ID3D12Device5_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0037 */
+/* interface __MIDL_itf_d3d12_0000_0039 */
 /* [local] */ 
+
+typedef 
+enum D3D12_MARKER_API
+    {
+        D3D12_MARKER_API_SETMARKER	= 0,
+        D3D12_MARKER_API_BEGINEVENT	= 1,
+        D3D12_MARKER_API_ENDEVENT	= 2,
+        D3D12_MARKER_API_DRAWINSTANCED	= 3,
+        D3D12_MARKER_API_DRAWINDEXEDINSTANCED	= 4,
+        D3D12_MARKER_API_EXECUTEINDIRECT	= 5,
+        D3D12_MARKER_API_DISPATCH	= 6,
+        D3D12_MARKER_API_COPYBUFFERREGION	= 7,
+        D3D12_MARKER_API_COPYTEXTUREREGION	= 8,
+        D3D12_MARKER_API_COPYRESOURCE	= 9,
+        D3D12_MARKER_API_COPYTILES	= 10,
+        D3D12_MARKER_API_RESOLVESUBRESOURCE	= 11,
+        D3D12_MARKER_API_CLEARRENDERTARGETVIEW	= 12,
+        D3D12_MARKER_API_CLEARUNORDEREDACCESSVIEW	= 13,
+        D3D12_MARKER_API_CLEARDEPTHSTENCILVIEW	= 14,
+        D3D12_MARKER_API_RESOURCEBARRIER	= 15,
+        D3D12_MARKER_API_EXECUTEBUNDLE	= 16,
+        D3D12_MARKER_API_PRESENT	= 17,
+        D3D12_MARKER_API_RESOLVEQUERYDATA	= 18,
+        D3D12_MARKER_API_BEGINSUBMISSION	= 19,
+        D3D12_MARKER_API_ENDSUBMISSION	= 20,
+        D3D12_MARKER_API_DECODEFRAME	= 21,
+        D3D12_MARKER_API_PROCESSFRAMES	= 22,
+        D3D12_MARKER_API_ATOMICCOPYBUFFERUINT	= 23,
+        D3D12_MARKER_API_ATOMICCOPYBUFFERUINT64	= 24,
+        D3D12_MARKER_API_RESOLVESUBRESOURCEREGION	= 25,
+        D3D12_MARKER_API_WRITEBUFFERIMMEDIATE	= 26,
+        D3D12_MARKER_API_DECODEFRAME1	= 27,
+        D3D12_MARKER_API_SETPROTECTEDRESOURCESESSION	= 28,
+        D3D12_MARKER_API_DECODEFRAME2	= 29,
+        D3D12_MARKER_API_PROCESSFRAMES1	= 30,
+        D3D12_MARKER_API_BUILDRAYTRACINGACCELERATIONSTRUCTURE	= 31,
+        D3D12_MARKER_API_EMITRAYTRACINGACCELERATIONSTRUCTUREPOSTBUILDINFO	= 32,
+        D3D12_MARKER_API_COPYRAYTRACINGACCELERATIONSTRUCTURE	= 33,
+        D3D12_MARKER_API_DISPATCHRAYS	= 34,
+        D3D12_MARKER_API_INITIALIZEMETACOMMAND	= 35,
+        D3D12_MARKER_API_EXECUTEMETACOMMAND	= 36,
+        D3D12_MARKER_API_ESTIMATEMOTION	= 37,
+        D3D12_MARKER_API_RESOLVEMOTIONVECTORHEAP	= 38,
+        D3D12_MARKER_API_SETPIPELINESTATE1	= 39,
+        D3D12_MARKER_API_INITIALIZEEXTENSIONCOMMAND	= 40,
+        D3D12_MARKER_API_EXECUTEEXTENSIONCOMMAND	= 41,
+        D3D12_MARKER_API_DISPATCHMESH	= 42,
+        D3D12_MARKER_API_ENCODEFRAME	= 43,
+        D3D12_MARKER_API_RESOLVEENCODEROUTPUTMETADATA	= 44,
+        D3D12_MARKER_API_BARRIER	= 45,
+        D3D12_MARKER_API_BEGIN_COMMAND_LIST	= 46,
+        D3D12_MARKER_API_DISPATCHGRAPH	= 47,
+        D3D12_MARKER_API_SETPROGRAM	= 48,
+        D3D12_MARKER_API_ENCODEFRAME1	= 49,
+        D3D12_MARKER_API_RESOLVEENCODEROUTPUTMETADATA1	= 50,
+        D3D12_MARKER_API_RESOLVEINPUTPARAMLAYOUT	= 51,
+        D3D12_MARKER_API_PROCESSFRAMES2	= 52,
+        D3D12_MARKER_API_SET_WORK_GRAPH_MAXIMUM_GPU_INPUT_RECORDS	= 53
+    } 	D3D12_MARKER_API;
 
 typedef 
 enum D3D12_AUTO_BREADCRUMB_OP
     {
-        D3D12_AUTO_BREADCRUMB_OP_SETMARKER	= 0,
-        D3D12_AUTO_BREADCRUMB_OP_BEGINEVENT	= 1,
-        D3D12_AUTO_BREADCRUMB_OP_ENDEVENT	= 2,
-        D3D12_AUTO_BREADCRUMB_OP_DRAWINSTANCED	= 3,
-        D3D12_AUTO_BREADCRUMB_OP_DRAWINDEXEDINSTANCED	= 4,
-        D3D12_AUTO_BREADCRUMB_OP_EXECUTEINDIRECT	= 5,
-        D3D12_AUTO_BREADCRUMB_OP_DISPATCH	= 6,
-        D3D12_AUTO_BREADCRUMB_OP_COPYBUFFERREGION	= 7,
-        D3D12_AUTO_BREADCRUMB_OP_COPYTEXTUREREGION	= 8,
-        D3D12_AUTO_BREADCRUMB_OP_COPYRESOURCE	= 9,
-        D3D12_AUTO_BREADCRUMB_OP_COPYTILES	= 10,
-        D3D12_AUTO_BREADCRUMB_OP_RESOLVESUBRESOURCE	= 11,
-        D3D12_AUTO_BREADCRUMB_OP_CLEARRENDERTARGETVIEW	= 12,
-        D3D12_AUTO_BREADCRUMB_OP_CLEARUNORDEREDACCESSVIEW	= 13,
-        D3D12_AUTO_BREADCRUMB_OP_CLEARDEPTHSTENCILVIEW	= 14,
-        D3D12_AUTO_BREADCRUMB_OP_RESOURCEBARRIER	= 15,
-        D3D12_AUTO_BREADCRUMB_OP_EXECUTEBUNDLE	= 16,
-        D3D12_AUTO_BREADCRUMB_OP_PRESENT	= 17,
-        D3D12_AUTO_BREADCRUMB_OP_RESOLVEQUERYDATA	= 18,
-        D3D12_AUTO_BREADCRUMB_OP_BEGINSUBMISSION	= 19,
-        D3D12_AUTO_BREADCRUMB_OP_ENDSUBMISSION	= 20,
-        D3D12_AUTO_BREADCRUMB_OP_DECODEFRAME	= 21,
-        D3D12_AUTO_BREADCRUMB_OP_PROCESSFRAMES	= 22,
-        D3D12_AUTO_BREADCRUMB_OP_ATOMICCOPYBUFFERUINT	= 23,
-        D3D12_AUTO_BREADCRUMB_OP_ATOMICCOPYBUFFERUINT64	= 24,
-        D3D12_AUTO_BREADCRUMB_OP_RESOLVESUBRESOURCEREGION	= 25,
-        D3D12_AUTO_BREADCRUMB_OP_WRITEBUFFERIMMEDIATE	= 26,
-        D3D12_AUTO_BREADCRUMB_OP_DECODEFRAME1	= 27,
-        D3D12_AUTO_BREADCRUMB_OP_SETPROTECTEDRESOURCESESSION	= 28,
-        D3D12_AUTO_BREADCRUMB_OP_DECODEFRAME2	= 29,
-        D3D12_AUTO_BREADCRUMB_OP_PROCESSFRAMES1	= 30,
-        D3D12_AUTO_BREADCRUMB_OP_BUILDRAYTRACINGACCELERATIONSTRUCTURE	= 31,
-        D3D12_AUTO_BREADCRUMB_OP_EMITRAYTRACINGACCELERATIONSTRUCTUREPOSTBUILDINFO	= 32,
-        D3D12_AUTO_BREADCRUMB_OP_COPYRAYTRACINGACCELERATIONSTRUCTURE	= 33,
-        D3D12_AUTO_BREADCRUMB_OP_DISPATCHRAYS	= 34,
-        D3D12_AUTO_BREADCRUMB_OP_INITIALIZEMETACOMMAND	= 35,
-        D3D12_AUTO_BREADCRUMB_OP_EXECUTEMETACOMMAND	= 36,
-        D3D12_AUTO_BREADCRUMB_OP_ESTIMATEMOTION	= 37,
-        D3D12_AUTO_BREADCRUMB_OP_RESOLVEMOTIONVECTORHEAP	= 38,
-        D3D12_AUTO_BREADCRUMB_OP_SETPIPELINESTATE1	= 39,
-        D3D12_AUTO_BREADCRUMB_OP_INITIALIZEEXTENSIONCOMMAND	= 40,
-        D3D12_AUTO_BREADCRUMB_OP_EXECUTEEXTENSIONCOMMAND	= 41,
-        D3D12_AUTO_BREADCRUMB_OP_DISPATCHMESH	= 42,
-        D3D12_AUTO_BREADCRUMB_OP_ENCODEFRAME	= 43,
-        D3D12_AUTO_BREADCRUMB_OP_RESOLVEENCODEROUTPUTMETADATA	= 44,
-        D3D12_AUTO_BREADCRUMB_OP_BARRIER	= 45,
-        D3D12_AUTO_BREADCRUMB_OP_BEGIN_COMMAND_LIST	= 46,
-        D3D12_AUTO_BREADCRUMB_OP_DISPATCHGRAPH	= 47,
-        D3D12_AUTO_BREADCRUMB_OP_SETPROGRAM	= 48
+        D3D12_AUTO_BREADCRUMB_OP_SETMARKER	= D3D12_MARKER_API_SETMARKER,
+        D3D12_AUTO_BREADCRUMB_OP_BEGINEVENT	= D3D12_MARKER_API_BEGINEVENT,
+        D3D12_AUTO_BREADCRUMB_OP_ENDEVENT	= D3D12_MARKER_API_ENDEVENT,
+        D3D12_AUTO_BREADCRUMB_OP_DRAWINSTANCED	= D3D12_MARKER_API_DRAWINSTANCED,
+        D3D12_AUTO_BREADCRUMB_OP_DRAWINDEXEDINSTANCED	= D3D12_MARKER_API_DRAWINDEXEDINSTANCED,
+        D3D12_AUTO_BREADCRUMB_OP_EXECUTEINDIRECT	= D3D12_MARKER_API_EXECUTEINDIRECT,
+        D3D12_AUTO_BREADCRUMB_OP_DISPATCH	= D3D12_MARKER_API_DISPATCH,
+        D3D12_AUTO_BREADCRUMB_OP_COPYBUFFERREGION	= D3D12_MARKER_API_COPYBUFFERREGION,
+        D3D12_AUTO_BREADCRUMB_OP_COPYTEXTUREREGION	= D3D12_MARKER_API_COPYTEXTUREREGION,
+        D3D12_AUTO_BREADCRUMB_OP_COPYRESOURCE	= D3D12_MARKER_API_COPYRESOURCE,
+        D3D12_AUTO_BREADCRUMB_OP_COPYTILES	= D3D12_MARKER_API_COPYTILES,
+        D3D12_AUTO_BREADCRUMB_OP_RESOLVESUBRESOURCE	= D3D12_MARKER_API_RESOLVESUBRESOURCE,
+        D3D12_AUTO_BREADCRUMB_OP_CLEARRENDERTARGETVIEW	= D3D12_MARKER_API_CLEARRENDERTARGETVIEW,
+        D3D12_AUTO_BREADCRUMB_OP_CLEARUNORDEREDACCESSVIEW	= D3D12_MARKER_API_CLEARUNORDEREDACCESSVIEW,
+        D3D12_AUTO_BREADCRUMB_OP_CLEARDEPTHSTENCILVIEW	= D3D12_MARKER_API_CLEARDEPTHSTENCILVIEW,
+        D3D12_AUTO_BREADCRUMB_OP_RESOURCEBARRIER	= D3D12_MARKER_API_RESOURCEBARRIER,
+        D3D12_AUTO_BREADCRUMB_OP_EXECUTEBUNDLE	= D3D12_MARKER_API_EXECUTEBUNDLE,
+        D3D12_AUTO_BREADCRUMB_OP_PRESENT	= D3D12_MARKER_API_PRESENT,
+        D3D12_AUTO_BREADCRUMB_OP_RESOLVEQUERYDATA	= D3D12_MARKER_API_RESOLVEQUERYDATA,
+        D3D12_AUTO_BREADCRUMB_OP_BEGINSUBMISSION	= D3D12_MARKER_API_BEGINSUBMISSION,
+        D3D12_AUTO_BREADCRUMB_OP_ENDSUBMISSION	= D3D12_MARKER_API_ENDSUBMISSION,
+        D3D12_AUTO_BREADCRUMB_OP_DECODEFRAME	= D3D12_MARKER_API_DECODEFRAME,
+        D3D12_AUTO_BREADCRUMB_OP_PROCESSFRAMES	= D3D12_MARKER_API_PROCESSFRAMES,
+        D3D12_AUTO_BREADCRUMB_OP_ATOMICCOPYBUFFERUINT	= D3D12_MARKER_API_ATOMICCOPYBUFFERUINT,
+        D3D12_AUTO_BREADCRUMB_OP_ATOMICCOPYBUFFERUINT64	= D3D12_MARKER_API_ATOMICCOPYBUFFERUINT64,
+        D3D12_AUTO_BREADCRUMB_OP_RESOLVESUBRESOURCEREGION	= D3D12_MARKER_API_RESOLVESUBRESOURCEREGION,
+        D3D12_AUTO_BREADCRUMB_OP_WRITEBUFFERIMMEDIATE	= D3D12_MARKER_API_WRITEBUFFERIMMEDIATE,
+        D3D12_AUTO_BREADCRUMB_OP_DECODEFRAME1	= D3D12_MARKER_API_DECODEFRAME1,
+        D3D12_AUTO_BREADCRUMB_OP_SETPROTECTEDRESOURCESESSION	= D3D12_MARKER_API_SETPROTECTEDRESOURCESESSION,
+        D3D12_AUTO_BREADCRUMB_OP_DECODEFRAME2	= D3D12_MARKER_API_DECODEFRAME2,
+        D3D12_AUTO_BREADCRUMB_OP_PROCESSFRAMES1	= D3D12_MARKER_API_PROCESSFRAMES1,
+        D3D12_AUTO_BREADCRUMB_OP_BUILDRAYTRACINGACCELERATIONSTRUCTURE	= D3D12_MARKER_API_BUILDRAYTRACINGACCELERATIONSTRUCTURE,
+        D3D12_AUTO_BREADCRUMB_OP_EMITRAYTRACINGACCELERATIONSTRUCTUREPOSTBUILDINFO	= D3D12_MARKER_API_EMITRAYTRACINGACCELERATIONSTRUCTUREPOSTBUILDINFO,
+        D3D12_AUTO_BREADCRUMB_OP_COPYRAYTRACINGACCELERATIONSTRUCTURE	= D3D12_MARKER_API_COPYRAYTRACINGACCELERATIONSTRUCTURE,
+        D3D12_AUTO_BREADCRUMB_OP_DISPATCHRAYS	= D3D12_MARKER_API_DISPATCHRAYS,
+        D3D12_AUTO_BREADCRUMB_OP_INITIALIZEMETACOMMAND	= D3D12_MARKER_API_INITIALIZEMETACOMMAND,
+        D3D12_AUTO_BREADCRUMB_OP_EXECUTEMETACOMMAND	= D3D12_MARKER_API_EXECUTEMETACOMMAND,
+        D3D12_AUTO_BREADCRUMB_OP_ESTIMATEMOTION	= D3D12_MARKER_API_ESTIMATEMOTION,
+        D3D12_AUTO_BREADCRUMB_OP_RESOLVEMOTIONVECTORHEAP	= D3D12_MARKER_API_RESOLVEMOTIONVECTORHEAP,
+        D3D12_AUTO_BREADCRUMB_OP_SETPIPELINESTATE1	= D3D12_MARKER_API_SETPIPELINESTATE1,
+        D3D12_AUTO_BREADCRUMB_OP_INITIALIZEEXTENSIONCOMMAND	= D3D12_MARKER_API_INITIALIZEEXTENSIONCOMMAND,
+        D3D12_AUTO_BREADCRUMB_OP_EXECUTEEXTENSIONCOMMAND	= D3D12_MARKER_API_EXECUTEEXTENSIONCOMMAND,
+        D3D12_AUTO_BREADCRUMB_OP_DISPATCHMESH	= D3D12_MARKER_API_DISPATCHMESH,
+        D3D12_AUTO_BREADCRUMB_OP_ENCODEFRAME	= D3D12_MARKER_API_ENCODEFRAME,
+        D3D12_AUTO_BREADCRUMB_OP_RESOLVEENCODEROUTPUTMETADATA	= D3D12_MARKER_API_RESOLVEENCODEROUTPUTMETADATA,
+        D3D12_AUTO_BREADCRUMB_OP_BARRIER	= D3D12_MARKER_API_BARRIER,
+        D3D12_AUTO_BREADCRUMB_OP_BEGIN_COMMAND_LIST	= D3D12_MARKER_API_BEGIN_COMMAND_LIST,
+        D3D12_AUTO_BREADCRUMB_OP_DISPATCHGRAPH	= D3D12_MARKER_API_DISPATCHGRAPH,
+        D3D12_AUTO_BREADCRUMB_OP_SETPROGRAM	= D3D12_MARKER_API_SETPROGRAM,
+        D3D12_AUTO_BREADCRUMB_OP_ENCODEFRAME1	= D3D12_MARKER_API_ENCODEFRAME1,
+        D3D12_AUTO_BREADCRUMB_OP_RESOLVEENCODEROUTPUTMETADATA1	= D3D12_MARKER_API_RESOLVEENCODEROUTPUTMETADATA1,
+        D3D12_AUTO_BREADCRUMB_OP_RESOLVEINPUTPARAMLAYOUT	= D3D12_MARKER_API_RESOLVEINPUTPARAMLAYOUT,
+        D3D12_AUTO_BREADCRUMB_OP_PROCESSFRAMES2	= D3D12_MARKER_API_PROCESSFRAMES2,
+        D3D12_AUTO_BREADCRUMB_OP_SET_WORK_GRAPH_MAXIMUM_GPU_INPUT_RECORDS	= D3D12_MARKER_API_SET_WORK_GRAPH_MAXIMUM_GPU_INPUT_RECORDS
     } 	D3D12_AUTO_BREADCRUMB_OP;
 
 typedef struct D3D12_AUTO_BREADCRUMB_NODE
@@ -15654,7 +16308,7 @@ enum D3D12_DRED_FLAGS
         D3D12_DRED_FLAG_DISABLE_AUTOBREADCRUMBS	= 2
     } 	D3D12_DRED_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_DRED_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_DRED_FLAGS )
 typedef 
 enum D3D12_DRED_ENABLEMENT
     {
@@ -15750,7 +16404,7 @@ enum D3D12_DRED_PAGE_FAULT_FLAGS
         D3D12_DRED_PAGE_FAULT_FLAGS_NONE	= 0
     } 	D3D12_DRED_PAGE_FAULT_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_DRED_PAGE_FAULT_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_DRED_PAGE_FAULT_FLAGS )
 typedef 
 enum D3D12_DRED_DEVICE_STATE
     {
@@ -15804,8 +16458,8 @@ typedef struct D3D12_VERSIONED_DEVICE_REMOVED_EXTENDED_DATA
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0037_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0037_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0039_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0039_v0_0_s_ifspec;
 
 #ifndef __ID3D12DeviceRemovedExtendedDataSettings_INTERFACE_DEFINED__
 #define __ID3D12DeviceRemovedExtendedDataSettings_INTERFACE_DEFINED__
@@ -16468,7 +17122,7 @@ EXTERN_C const IID IID_ID3D12DeviceRemovedExtendedData2;
 #endif 	/* __ID3D12DeviceRemovedExtendedData2_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0043 */
+/* interface __MIDL_itf_d3d12_0000_0045 */
 /* [local] */ 
 
 typedef 
@@ -16491,8 +17145,8 @@ enum D3D12_MEASUREMENTS_ACTION
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0043_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0043_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0045_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0045_v0_0_s_ifspec;
 
 #ifndef __ID3D12Device6_INTERFACE_DEFINED__
 #define __ID3D12Device6_INTERFACE_DEFINED__
@@ -17301,7 +17955,7 @@ EXTERN_C const IID IID_ID3D12Device6;
 #endif 	/* __ID3D12Device6_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0044 */
+/* interface __MIDL_itf_d3d12_0000_0046 */
 /* [local] */ 
 
 DEFINE_GUID(D3D12_PROTECTED_RESOURCES_SESSION_HARDWARE_PROTECTED,                           0x62B0084E, 0xC70E, 0x4DAA, 0xA1, 0x09, 0x30, 0xFF, 0x8D, 0x5A, 0x04, 0x82); 
@@ -17327,8 +17981,8 @@ typedef struct D3D12_PROTECTED_RESOURCE_SESSION_DESC1
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0044_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0044_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0046_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0046_v0_0_s_ifspec;
 
 #ifndef __ID3D12ProtectedResourceSession1_INTERFACE_DEFINED__
 #define __ID3D12ProtectedResourceSession1_INTERFACE_DEFINED__
@@ -20637,7 +21291,7 @@ EXTERN_C const IID IID_ID3D12GraphicsCommandList3;
 #endif 	/* __ID3D12GraphicsCommandList3_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0051 */
+/* interface __MIDL_itf_d3d12_0000_0053 */
 /* [local] */ 
 
 typedef 
@@ -20748,11 +21402,11 @@ enum D3D12_RENDER_PASS_FLAGS
         D3D12_RENDER_PASS_FLAG_BIND_READ_ONLY_STENCIL	= 0x10
     } 	D3D12_RENDER_PASS_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_RENDER_PASS_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_RENDER_PASS_FLAGS )
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0051_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0051_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0053_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0053_v0_0_s_ifspec;
 
 #ifndef __ID3D12MetaCommand_INTERFACE_DEFINED__
 #define __ID3D12MetaCommand_INTERFACE_DEFINED__
@@ -20888,7 +21542,7 @@ EXTERN_C const IID IID_ID3D12MetaCommand;
 #endif 	/* __ID3D12MetaCommand_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0052 */
+/* interface __MIDL_itf_d3d12_0000_0054 */
 /* [local] */ 
 
 typedef struct D3D12_DISPATCH_RAYS_DESC
@@ -20909,7 +21563,7 @@ enum D3D12_SET_WORK_GRAPH_FLAGS
         D3D12_SET_WORK_GRAPH_FLAG_INITIALIZE	= 0x1
     } 	D3D12_SET_WORK_GRAPH_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_SET_WORK_GRAPH_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_SET_WORK_GRAPH_FLAGS )
 typedef struct D3D12_SET_WORK_GRAPH_DESC
     {
     D3D12_PROGRAM_IDENTIFIER ProgramIdentifier;
@@ -20960,7 +21614,7 @@ typedef struct D3D12_NODE_CPU_INPUT
     {
     UINT EntrypointIndex;
     UINT NumRecords;
-    void *pRecords;
+    const void *pRecords;
     UINT64 RecordStrideInBytes;
     } 	D3D12_NODE_CPU_INPUT;
 
@@ -20974,7 +21628,7 @@ typedef struct D3D12_NODE_GPU_INPUT
 typedef struct D3D12_MULTI_NODE_CPU_INPUT
     {
     UINT NumNodeInputs;
-    D3D12_NODE_CPU_INPUT *pNodeInputs;
+    const D3D12_NODE_CPU_INPUT *pNodeInputs;
     UINT64 NodeInputStrideInBytes;
     } 	D3D12_MULTI_NODE_CPU_INPUT;
 
@@ -20998,8 +21652,8 @@ typedef struct D3D12_DISPATCH_GRAPH_DESC
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0052_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0052_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0054_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0054_v0_0_s_ifspec;
 
 #ifndef __ID3D12GraphicsCommandList4_INTERFACE_DEFINED__
 #define __ID3D12GraphicsCommandList4_INTERFACE_DEFINED__
@@ -21848,7 +22502,7 @@ EXTERN_C const IID IID_ID3D12GraphicsCommandList4;
 #endif 	/* __ID3D12GraphicsCommandList4_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0053 */
+/* interface __MIDL_itf_d3d12_0000_0055 */
 /* [local] */ 
 
 typedef 
@@ -21866,7 +22520,7 @@ enum D3D12_SHADER_CACHE_FLAGS
         D3D12_SHADER_CACHE_FLAG_USE_WORKING_DIR	= 0x2
     } 	D3D12_SHADER_CACHE_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_SHADER_CACHE_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_SHADER_CACHE_FLAGS )
 typedef struct D3D12_SHADER_CACHE_SESSION_DESC
     {
     GUID Identifier;
@@ -21884,36 +22538,36 @@ enum D3D12_BARRIER_LAYOUT
         D3D12_BARRIER_LAYOUT_UNDEFINED	= 0xffffffff,
         D3D12_BARRIER_LAYOUT_COMMON	= 0,
         D3D12_BARRIER_LAYOUT_PRESENT	= 0,
-        D3D12_BARRIER_LAYOUT_GENERIC_READ	= ( D3D12_BARRIER_LAYOUT_PRESENT + 1 ) ,
-        D3D12_BARRIER_LAYOUT_RENDER_TARGET	= ( D3D12_BARRIER_LAYOUT_GENERIC_READ + 1 ) ,
-        D3D12_BARRIER_LAYOUT_UNORDERED_ACCESS	= ( D3D12_BARRIER_LAYOUT_RENDER_TARGET + 1 ) ,
-        D3D12_BARRIER_LAYOUT_DEPTH_STENCIL_WRITE	= ( D3D12_BARRIER_LAYOUT_UNORDERED_ACCESS + 1 ) ,
-        D3D12_BARRIER_LAYOUT_DEPTH_STENCIL_READ	= ( D3D12_BARRIER_LAYOUT_DEPTH_STENCIL_WRITE + 1 ) ,
-        D3D12_BARRIER_LAYOUT_SHADER_RESOURCE	= ( D3D12_BARRIER_LAYOUT_DEPTH_STENCIL_READ + 1 ) ,
-        D3D12_BARRIER_LAYOUT_COPY_SOURCE	= ( D3D12_BARRIER_LAYOUT_SHADER_RESOURCE + 1 ) ,
-        D3D12_BARRIER_LAYOUT_COPY_DEST	= ( D3D12_BARRIER_LAYOUT_COPY_SOURCE + 1 ) ,
-        D3D12_BARRIER_LAYOUT_RESOLVE_SOURCE	= ( D3D12_BARRIER_LAYOUT_COPY_DEST + 1 ) ,
-        D3D12_BARRIER_LAYOUT_RESOLVE_DEST	= ( D3D12_BARRIER_LAYOUT_RESOLVE_SOURCE + 1 ) ,
-        D3D12_BARRIER_LAYOUT_SHADING_RATE_SOURCE	= ( D3D12_BARRIER_LAYOUT_RESOLVE_DEST + 1 ) ,
-        D3D12_BARRIER_LAYOUT_VIDEO_DECODE_READ	= ( D3D12_BARRIER_LAYOUT_SHADING_RATE_SOURCE + 1 ) ,
-        D3D12_BARRIER_LAYOUT_VIDEO_DECODE_WRITE	= ( D3D12_BARRIER_LAYOUT_VIDEO_DECODE_READ + 1 ) ,
-        D3D12_BARRIER_LAYOUT_VIDEO_PROCESS_READ	= ( D3D12_BARRIER_LAYOUT_VIDEO_DECODE_WRITE + 1 ) ,
-        D3D12_BARRIER_LAYOUT_VIDEO_PROCESS_WRITE	= ( D3D12_BARRIER_LAYOUT_VIDEO_PROCESS_READ + 1 ) ,
-        D3D12_BARRIER_LAYOUT_VIDEO_ENCODE_READ	= ( D3D12_BARRIER_LAYOUT_VIDEO_PROCESS_WRITE + 1 ) ,
-        D3D12_BARRIER_LAYOUT_VIDEO_ENCODE_WRITE	= ( D3D12_BARRIER_LAYOUT_VIDEO_ENCODE_READ + 1 ) ,
-        D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_COMMON	= ( D3D12_BARRIER_LAYOUT_VIDEO_ENCODE_WRITE + 1 ) ,
-        D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_GENERIC_READ	= ( D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_COMMON + 1 ) ,
-        D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_UNORDERED_ACCESS	= ( D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_GENERIC_READ + 1 ) ,
-        D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_SHADER_RESOURCE	= ( D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_UNORDERED_ACCESS + 1 ) ,
-        D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_COPY_SOURCE	= ( D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_SHADER_RESOURCE + 1 ) ,
-        D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_COPY_DEST	= ( D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_COPY_SOURCE + 1 ) ,
-        D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_COMMON	= ( D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_COPY_DEST + 1 ) ,
-        D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_GENERIC_READ	= ( D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_COMMON + 1 ) ,
-        D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_UNORDERED_ACCESS	= ( D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_GENERIC_READ + 1 ) ,
-        D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_SHADER_RESOURCE	= ( D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_UNORDERED_ACCESS + 1 ) ,
-        D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_COPY_SOURCE	= ( D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_SHADER_RESOURCE + 1 ) ,
-        D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_COPY_DEST	= ( D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_COPY_SOURCE + 1 ) ,
-        D3D12_BARRIER_LAYOUT_VIDEO_QUEUE_COMMON	= ( D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_COPY_DEST + 1 ) 
+        D3D12_BARRIER_LAYOUT_GENERIC_READ	= 1,
+        D3D12_BARRIER_LAYOUT_RENDER_TARGET	= 2,
+        D3D12_BARRIER_LAYOUT_UNORDERED_ACCESS	= 3,
+        D3D12_BARRIER_LAYOUT_DEPTH_STENCIL_WRITE	= 4,
+        D3D12_BARRIER_LAYOUT_DEPTH_STENCIL_READ	= 5,
+        D3D12_BARRIER_LAYOUT_SHADER_RESOURCE	= 6,
+        D3D12_BARRIER_LAYOUT_COPY_SOURCE	= 7,
+        D3D12_BARRIER_LAYOUT_COPY_DEST	= 8,
+        D3D12_BARRIER_LAYOUT_RESOLVE_SOURCE	= 9,
+        D3D12_BARRIER_LAYOUT_RESOLVE_DEST	= 10,
+        D3D12_BARRIER_LAYOUT_SHADING_RATE_SOURCE	= 11,
+        D3D12_BARRIER_LAYOUT_VIDEO_DECODE_READ	= 12,
+        D3D12_BARRIER_LAYOUT_VIDEO_DECODE_WRITE	= 13,
+        D3D12_BARRIER_LAYOUT_VIDEO_PROCESS_READ	= 14,
+        D3D12_BARRIER_LAYOUT_VIDEO_PROCESS_WRITE	= 15,
+        D3D12_BARRIER_LAYOUT_VIDEO_ENCODE_READ	= 16,
+        D3D12_BARRIER_LAYOUT_VIDEO_ENCODE_WRITE	= 17,
+        D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_COMMON	= 18,
+        D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_GENERIC_READ	= 19,
+        D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_UNORDERED_ACCESS	= 20,
+        D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_SHADER_RESOURCE	= 21,
+        D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_COPY_SOURCE	= 22,
+        D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_COPY_DEST	= 23,
+        D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_COMMON	= 24,
+        D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_GENERIC_READ	= 25,
+        D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_UNORDERED_ACCESS	= 26,
+        D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_SHADER_RESOURCE	= 27,
+        D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_COPY_SOURCE	= 28,
+        D3D12_BARRIER_LAYOUT_COMPUTE_QUEUE_COPY_DEST	= 29,
+        D3D12_BARRIER_LAYOUT_DIRECT_QUEUE_GENERIC_READ_COMPUTE_QUEUE_ACCESSIBLE	= 31
     } 	D3D12_BARRIER_LAYOUT;
 
 typedef 
@@ -21945,7 +22599,7 @@ enum D3D12_BARRIER_SYNC
         D3D12_BARRIER_SYNC_SPLIT	= 0x80000000
     } 	D3D12_BARRIER_SYNC;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_BARRIER_SYNC );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_BARRIER_SYNC )
 typedef 
 enum D3D12_BARRIER_ACCESS
     {
@@ -21977,7 +22631,7 @@ enum D3D12_BARRIER_ACCESS
         D3D12_BARRIER_ACCESS_NO_ACCESS	= 0x80000000
     } 	D3D12_BARRIER_ACCESS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_BARRIER_ACCESS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_BARRIER_ACCESS )
 typedef 
 enum D3D12_BARRIER_TYPE
     {
@@ -21993,7 +22647,7 @@ enum D3D12_TEXTURE_BARRIER_FLAGS
         D3D12_TEXTURE_BARRIER_FLAG_DISCARD	= 0x1
     } 	D3D12_TEXTURE_BARRIER_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_TEXTURE_BARRIER_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_TEXTURE_BARRIER_FLAGS )
 typedef struct D3D12_BARRIER_SUBRESOURCE_RANGE
     {
     UINT IndexOrFirstMipLevel;
@@ -22050,8 +22704,8 @@ typedef struct D3D12_BARRIER_GROUP
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0053_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0053_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0055_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0055_v0_0_s_ifspec;
 
 #ifndef __ID3D12ShaderCacheSession_INTERFACE_DEFINED__
 #define __ID3D12ShaderCacheSession_INTERFACE_DEFINED__
@@ -22251,7 +22905,7 @@ EXTERN_C const IID IID_ID3D12ShaderCacheSession;
 #endif 	/* __ID3D12ShaderCacheSession_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0054 */
+/* interface __MIDL_itf_d3d12_0000_0056 */
 /* [local] */ 
 
 typedef 
@@ -22263,7 +22917,7 @@ enum D3D12_SHADER_CACHE_KIND_FLAGS
         D3D12_SHADER_CACHE_KIND_FLAG_APPLICATION_MANAGED	= 0x8
     } 	D3D12_SHADER_CACHE_KIND_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_SHADER_CACHE_KIND_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_SHADER_CACHE_KIND_FLAGS )
 typedef 
 enum D3D12_SHADER_CACHE_CONTROL_FLAGS
     {
@@ -22272,11 +22926,11 @@ enum D3D12_SHADER_CACHE_CONTROL_FLAGS
         D3D12_SHADER_CACHE_CONTROL_FLAG_CLEAR	= 0x4
     } 	D3D12_SHADER_CACHE_CONTROL_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_SHADER_CACHE_CONTROL_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_SHADER_CACHE_CONTROL_FLAGS )
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0054_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0054_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0056_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0056_v0_0_s_ifspec;
 
 #ifndef __ID3D12Device9_INTERFACE_DEFINED__
 #define __ID3D12Device9_INTERFACE_DEFINED__
@@ -28407,6 +29061,29 @@ EXTERN_C const IID IID_ID3D12Device14;
 #endif 	/* __ID3D12Device14_INTERFACE_DEFINED__ */
 
 
+/* interface __MIDL_itf_d3d12_0000_0062 */
+/* [local] */ 
+
+typedef union D3D12_VERSION_NUMBER
+    {
+    UINT64 Version;
+    UINT16 VersionParts[ 4 ];
+    } 	D3D12_VERSION_NUMBER;
+
+typedef struct D3D12_FEATURE_DATA_SHADERCACHE_ABI_SUPPORT
+    {
+    WCHAR szAdapterFamily[ 128 ];
+    UINT64 MinimumABISupportVersion;
+    UINT64 MaximumABISupportVersion;
+    D3D12_VERSION_NUMBER CompilerVersion;
+    D3D12_VERSION_NUMBER ApplicationProfileVersion;
+    } 	D3D12_FEATURE_DATA_SHADERCACHE_ABI_SUPPORT;
+
+
+
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0062_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0062_v0_0_s_ifspec;
+
 #ifndef __ID3D12VirtualizationGuestDevice_INTERFACE_DEFINED__
 #define __ID3D12VirtualizationGuestDevice_INTERFACE_DEFINED__
 
@@ -28599,7 +29276,519 @@ EXTERN_C const IID IID_ID3D12Tools;
 #endif 	/* __ID3D12Tools_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0062 */
+#ifndef __ID3D12Tools1_INTERFACE_DEFINED__
+#define __ID3D12Tools1_INTERFACE_DEFINED__
+
+/* interface ID3D12Tools1 */
+/* [unique][local][object][uuid] */ 
+
+
+EXTERN_C const IID IID_ID3D12Tools1;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("e4fbc019-dd3c-43e1-8f32-7f649575f0a0")
+    ID3D12Tools1 : public ID3D12Tools
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE ReserveGPUVARangesAtCreate( 
+            _In_reads_(uiNumRanges)  D3D12_GPU_VIRTUAL_ADDRESS_RANGE *pRanges,
+            _In_  UINT uiNumRanges) = 0;
+        
+        virtual void STDMETHODCALLTYPE ClearReservedGPUVARangesList( void) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ID3D12Tools1Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ID3D12Tools1 * This,
+            REFIID riid,
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ID3D12Tools1 * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ID3D12Tools1 * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12Tools, EnableShaderInstrumentation)
+        void ( STDMETHODCALLTYPE *EnableShaderInstrumentation )( 
+            ID3D12Tools1 * This,
+            BOOL bEnable);
+        
+        DECLSPEC_XFGVIRT(ID3D12Tools, ShaderInstrumentationEnabled)
+        BOOL ( STDMETHODCALLTYPE *ShaderInstrumentationEnabled )( 
+            ID3D12Tools1 * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12Tools1, ReserveGPUVARangesAtCreate)
+        HRESULT ( STDMETHODCALLTYPE *ReserveGPUVARangesAtCreate )( 
+            ID3D12Tools1 * This,
+            _In_reads_(uiNumRanges)  D3D12_GPU_VIRTUAL_ADDRESS_RANGE *pRanges,
+            _In_  UINT uiNumRanges);
+        
+        DECLSPEC_XFGVIRT(ID3D12Tools1, ClearReservedGPUVARangesList)
+        void ( STDMETHODCALLTYPE *ClearReservedGPUVARangesList )( 
+            ID3D12Tools1 * This);
+        
+        END_INTERFACE
+    } ID3D12Tools1Vtbl;
+
+    interface ID3D12Tools1
+    {
+        CONST_VTBL struct ID3D12Tools1Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ID3D12Tools1_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ID3D12Tools1_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ID3D12Tools1_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ID3D12Tools1_EnableShaderInstrumentation(This,bEnable)	\
+    ( (This)->lpVtbl -> EnableShaderInstrumentation(This,bEnable) ) 
+
+#define ID3D12Tools1_ShaderInstrumentationEnabled(This)	\
+    ( (This)->lpVtbl -> ShaderInstrumentationEnabled(This) ) 
+
+
+#define ID3D12Tools1_ReserveGPUVARangesAtCreate(This,pRanges,uiNumRanges)	\
+    ( (This)->lpVtbl -> ReserveGPUVARangesAtCreate(This,pRanges,uiNumRanges) ) 
+
+#define ID3D12Tools1_ClearReservedGPUVARangesList(This)	\
+    ( (This)->lpVtbl -> ClearReservedGPUVARangesList(This) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ID3D12Tools1_INTERFACE_DEFINED__ */
+
+
+#ifndef __ID3D12Tools2_INTERFACE_DEFINED__
+#define __ID3D12Tools2_INTERFACE_DEFINED__
+
+/* interface ID3D12Tools2 */
+/* [unique][local][object][uuid] */ 
+
+
+EXTERN_C const IID IID_ID3D12Tools2;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("01d393c5-c9b0-42a1-958c-c26b02d4d097")
+    ID3D12Tools2 : public ID3D12Tools1
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE SetApplicationSpecificDriverState( 
+            _In_  IUnknown *pAdapter,
+            _In_opt_  ID3DBlob *pBlob) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ID3D12Tools2Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ID3D12Tools2 * This,
+            REFIID riid,
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ID3D12Tools2 * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ID3D12Tools2 * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12Tools, EnableShaderInstrumentation)
+        void ( STDMETHODCALLTYPE *EnableShaderInstrumentation )( 
+            ID3D12Tools2 * This,
+            BOOL bEnable);
+        
+        DECLSPEC_XFGVIRT(ID3D12Tools, ShaderInstrumentationEnabled)
+        BOOL ( STDMETHODCALLTYPE *ShaderInstrumentationEnabled )( 
+            ID3D12Tools2 * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12Tools1, ReserveGPUVARangesAtCreate)
+        HRESULT ( STDMETHODCALLTYPE *ReserveGPUVARangesAtCreate )( 
+            ID3D12Tools2 * This,
+            _In_reads_(uiNumRanges)  D3D12_GPU_VIRTUAL_ADDRESS_RANGE *pRanges,
+            _In_  UINT uiNumRanges);
+        
+        DECLSPEC_XFGVIRT(ID3D12Tools1, ClearReservedGPUVARangesList)
+        void ( STDMETHODCALLTYPE *ClearReservedGPUVARangesList )( 
+            ID3D12Tools2 * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12Tools2, SetApplicationSpecificDriverState)
+        HRESULT ( STDMETHODCALLTYPE *SetApplicationSpecificDriverState )( 
+            ID3D12Tools2 * This,
+            _In_  IUnknown *pAdapter,
+            _In_opt_  ID3DBlob *pBlob);
+        
+        END_INTERFACE
+    } ID3D12Tools2Vtbl;
+
+    interface ID3D12Tools2
+    {
+        CONST_VTBL struct ID3D12Tools2Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ID3D12Tools2_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ID3D12Tools2_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ID3D12Tools2_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ID3D12Tools2_EnableShaderInstrumentation(This,bEnable)	\
+    ( (This)->lpVtbl -> EnableShaderInstrumentation(This,bEnable) ) 
+
+#define ID3D12Tools2_ShaderInstrumentationEnabled(This)	\
+    ( (This)->lpVtbl -> ShaderInstrumentationEnabled(This) ) 
+
+
+#define ID3D12Tools2_ReserveGPUVARangesAtCreate(This,pRanges,uiNumRanges)	\
+    ( (This)->lpVtbl -> ReserveGPUVARangesAtCreate(This,pRanges,uiNumRanges) ) 
+
+#define ID3D12Tools2_ClearReservedGPUVARangesList(This)	\
+    ( (This)->lpVtbl -> ClearReservedGPUVARangesList(This) ) 
+
+
+#define ID3D12Tools2_SetApplicationSpecificDriverState(This,pAdapter,pBlob)	\
+    ( (This)->lpVtbl -> SetApplicationSpecificDriverState(This,pAdapter,pBlob) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ID3D12Tools2_INTERFACE_DEFINED__ */
+
+
+#ifndef __ID3D12PageableTools_INTERFACE_DEFINED__
+#define __ID3D12PageableTools_INTERFACE_DEFINED__
+
+/* interface ID3D12PageableTools */
+/* [unique][local][object][uuid] */ 
+
+
+EXTERN_C const IID IID_ID3D12PageableTools;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("8f1359db-d8d1-42f9-b5cf-79f4cbad0d3d")
+    ID3D12PageableTools : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetAllocation( 
+            _Inout_  D3D12_GPU_VIRTUAL_ADDRESS_RANGE *pAllocation) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ID3D12PageableToolsVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ID3D12PageableTools * This,
+            REFIID riid,
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ID3D12PageableTools * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ID3D12PageableTools * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12PageableTools, GetAllocation)
+        HRESULT ( STDMETHODCALLTYPE *GetAllocation )( 
+            ID3D12PageableTools * This,
+            _Inout_  D3D12_GPU_VIRTUAL_ADDRESS_RANGE *pAllocation);
+        
+        END_INTERFACE
+    } ID3D12PageableToolsVtbl;
+
+    interface ID3D12PageableTools
+    {
+        CONST_VTBL struct ID3D12PageableToolsVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ID3D12PageableTools_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ID3D12PageableTools_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ID3D12PageableTools_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ID3D12PageableTools_GetAllocation(This,pAllocation)	\
+    ( (This)->lpVtbl -> GetAllocation(This,pAllocation) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ID3D12PageableTools_INTERFACE_DEFINED__ */
+
+
+#ifndef __ID3D12DeviceTools_INTERFACE_DEFINED__
+#define __ID3D12DeviceTools_INTERFACE_DEFINED__
+
+/* interface ID3D12DeviceTools */
+/* [unique][local][object][uuid] */ 
+
+
+EXTERN_C const IID IID_ID3D12DeviceTools;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("2ea68e9c-19c3-4e47-a109-6cdadff0aca9")
+    ID3D12DeviceTools : public IUnknown
+    {
+    public:
+        virtual void STDMETHODCALLTYPE SetNextAllocationAddress( 
+            _In_  D3D12_GPU_VIRTUAL_ADDRESS nextAllocationVirtualAddress) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ID3D12DeviceToolsVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ID3D12DeviceTools * This,
+            REFIID riid,
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ID3D12DeviceTools * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ID3D12DeviceTools * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12DeviceTools, SetNextAllocationAddress)
+        void ( STDMETHODCALLTYPE *SetNextAllocationAddress )( 
+            ID3D12DeviceTools * This,
+            _In_  D3D12_GPU_VIRTUAL_ADDRESS nextAllocationVirtualAddress);
+        
+        END_INTERFACE
+    } ID3D12DeviceToolsVtbl;
+
+    interface ID3D12DeviceTools
+    {
+        CONST_VTBL struct ID3D12DeviceToolsVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ID3D12DeviceTools_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ID3D12DeviceTools_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ID3D12DeviceTools_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ID3D12DeviceTools_SetNextAllocationAddress(This,nextAllocationVirtualAddress)	\
+    ( (This)->lpVtbl -> SetNextAllocationAddress(This,nextAllocationVirtualAddress) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ID3D12DeviceTools_INTERFACE_DEFINED__ */
+
+
+/* interface __MIDL_itf_d3d12_0000_0068 */
+/* [local] */ 
+
+typedef 
+enum D3D12_APPLICATION_SPECIFIC_DRIVER_BLOB_STATUS
+    {
+        D3D12_APPLICATION_SPECIFIC_DRIVER_BLOB_UNKNOWN	= 1,
+        D3D12_APPLICATION_SPECIFIC_DRIVER_BLOB_USED	= 2,
+        D3D12_APPLICATION_SPECIFIC_DRIVER_BLOB_IGNORED	= 3,
+        D3D12_APPLICATION_SPECIFIC_DRIVER_BLOB_NOT_SPECIFIED	= 4
+    } 	D3D12_APPLICATION_SPECIFIC_DRIVER_BLOB_STATUS;
+
+
+
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0068_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0068_v0_0_s_ifspec;
+
+#ifndef __ID3D12DeviceTools1_INTERFACE_DEFINED__
+#define __ID3D12DeviceTools1_INTERFACE_DEFINED__
+
+/* interface ID3D12DeviceTools1 */
+/* [unique][local][object][uuid] */ 
+
+
+EXTERN_C const IID IID_ID3D12DeviceTools1;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("e30e9fc7-e641-4d6e-8a81-9dd9206ec47a")
+    ID3D12DeviceTools1 : public ID3D12DeviceTools
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetApplicationSpecificDriverState( 
+            _COM_Outptr_  ID3DBlob **ppBlob) = 0;
+        
+        virtual D3D12_APPLICATION_SPECIFIC_DRIVER_BLOB_STATUS STDMETHODCALLTYPE GetApplicationSpecificDriverBlobStatus( void) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ID3D12DeviceTools1Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ID3D12DeviceTools1 * This,
+            REFIID riid,
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ID3D12DeviceTools1 * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ID3D12DeviceTools1 * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12DeviceTools, SetNextAllocationAddress)
+        void ( STDMETHODCALLTYPE *SetNextAllocationAddress )( 
+            ID3D12DeviceTools1 * This,
+            _In_  D3D12_GPU_VIRTUAL_ADDRESS nextAllocationVirtualAddress);
+        
+        DECLSPEC_XFGVIRT(ID3D12DeviceTools1, GetApplicationSpecificDriverState)
+        HRESULT ( STDMETHODCALLTYPE *GetApplicationSpecificDriverState )( 
+            ID3D12DeviceTools1 * This,
+            _COM_Outptr_  ID3DBlob **ppBlob);
+        
+        DECLSPEC_XFGVIRT(ID3D12DeviceTools1, GetApplicationSpecificDriverBlobStatus)
+        D3D12_APPLICATION_SPECIFIC_DRIVER_BLOB_STATUS ( STDMETHODCALLTYPE *GetApplicationSpecificDriverBlobStatus )( 
+            ID3D12DeviceTools1 * This);
+        
+        END_INTERFACE
+    } ID3D12DeviceTools1Vtbl;
+
+    interface ID3D12DeviceTools1
+    {
+        CONST_VTBL struct ID3D12DeviceTools1Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ID3D12DeviceTools1_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ID3D12DeviceTools1_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ID3D12DeviceTools1_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ID3D12DeviceTools1_SetNextAllocationAddress(This,nextAllocationVirtualAddress)	\
+    ( (This)->lpVtbl -> SetNextAllocationAddress(This,nextAllocationVirtualAddress) ) 
+
+
+#define ID3D12DeviceTools1_GetApplicationSpecificDriverState(This,ppBlob)	\
+    ( (This)->lpVtbl -> GetApplicationSpecificDriverState(This,ppBlob) ) 
+
+#define ID3D12DeviceTools1_GetApplicationSpecificDriverBlobStatus(This)	\
+    ( (This)->lpVtbl -> GetApplicationSpecificDriverBlobStatus(This) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ID3D12DeviceTools1_INTERFACE_DEFINED__ */
+
+
+/* interface __MIDL_itf_d3d12_0000_0069 */
 /* [local] */ 
 
 typedef struct D3D12_SUBRESOURCE_DATA
@@ -28717,6 +29906,21 @@ static const UUID D3D12TiledResourceTier4 = { /* c9c4725f-a81a-4f56-8c5b-c51039d
     { 0x8c, 0x5b, 0xc5, 0x10, 0x39, 0xd6, 0x94, 0xfb }
 };
 // --------------------------------------------------------------------------------------------------------------------------------
+// Experimental Feature: D3D12GPUUploadHeapsOnUnsupportedOS
+//
+// Use with D3D12EnableExperimentalFeatures to enable GPU upload heaps support on an unsupported OS, 
+// driver support is still required for this feature.
+//
+// Enabling D3D12GPUUploadHeapsOnUnsupportedOS needs no configuration struct, pass NULL in the pConfigurationStructs array.
+//
+// --------------------------------------------------------------------------------------------------------------------------------
+static const UUID D3D12GPUUploadHeapsOnUnsupportedOS = { /* 45dc51f3-767f-4588-b206-0baa2b16fbae */
+    0x45dc51f3,
+    0x767f,
+    0x4588,
+    { 0xb2, 0x06, 0x0b, 0xaa, 0x2b, 0x16, 0xfb, 0xae }
+};
+// --------------------------------------------------------------------------------------------------------------------------------
 // D3D12GetInterface
 //
 // Retrieve Global D3D12 Interface.
@@ -28727,6 +29931,7 @@ DEFINE_GUID(CLSID_D3D12Tools,                        0xe38216b1, 0x3c8c, 0x4833,
 DEFINE_GUID(CLSID_D3D12DeviceRemovedExtendedData,    0x4a75bbc4, 0x9ff4, 0x4ad8, 0x9f, 0x18, 0xab, 0xae, 0x84, 0xdc, 0x5f, 0xf2);
 DEFINE_GUID(CLSID_D3D12SDKConfiguration,             0x7cda6aca, 0xa03e, 0x49c8, 0x94, 0x58, 0x03, 0x34, 0xd2, 0x0e, 0x07, 0xce);
 DEFINE_GUID(CLSID_D3D12DeviceFactory,                0x114863bf, 0xc386, 0x4aee, 0xb3, 0x9d, 0x8f, 0x0b, 0xbb, 0x06, 0x29, 0x55);
+DEFINE_GUID(CLSID_D3D12DSRDeviceFactory,             0xbb6dd27e, 0x94a9, 0x41a6, 0x9f, 0x1b, 0x13, 0x37, 0x72, 0x17, 0x24, 0x28);
 
 typedef HRESULT (WINAPI* PFN_D3D12_GET_INTERFACE)( _In_ REFCLSID, _In_ REFIID, _COM_Outptr_opt_ void** );
 
@@ -28734,8 +29939,8 @@ HRESULT WINAPI D3D12GetInterface( _In_ REFCLSID rclsid, _In_ REFIID riid, _COM_O
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0062_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0062_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0069_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0069_v0_0_s_ifspec;
 
 #ifndef __ID3D12SDKConfiguration_INTERFACE_DEFINED__
 #define __ID3D12SDKConfiguration_INTERFACE_DEFINED__
@@ -28930,7 +30135,7 @@ EXTERN_C const IID IID_ID3D12SDKConfiguration1;
 #endif 	/* __ID3D12SDKConfiguration1_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0064 */
+/* interface __MIDL_itf_d3d12_0000_0071 */
 /* [local] */ 
 
 typedef 
@@ -28942,11 +30147,11 @@ enum D3D12_DEVICE_FACTORY_FLAGS
         D3D12_DEVICE_FACTORY_FLAG_DISALLOW_STORING_NEW_DEVICE_AS_SINGLETON	= 0x4
     } 	D3D12_DEVICE_FACTORY_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_DEVICE_FACTORY_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_DEVICE_FACTORY_FLAGS )
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0064_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0064_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0071_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0071_v0_0_s_ifspec;
 
 #ifndef __ID3D12DeviceFactory_INTERFACE_DEFINED__
 #define __ID3D12DeviceFactory_INTERFACE_DEFINED__
@@ -29107,7 +30312,7 @@ EXTERN_C const IID IID_ID3D12DeviceFactory;
 #endif 	/* __ID3D12DeviceFactory_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0065 */
+/* interface __MIDL_itf_d3d12_0000_0072 */
 /* [local] */ 
 
 typedef 
@@ -29127,7 +30332,7 @@ enum D3D12_DEVICE_FLAGS
         D3D12_DEVICE_FLAG_FORCE_LEGACY_STATE_VALIDATION	= 0x400
     } 	D3D12_DEVICE_FLAGS;
 
-DEFINE_ENUM_FLAG_OPERATORS( D3D12_DEVICE_FLAGS );
+DEFINE_ENUM_FLAG_OPERATORS( D3D12_DEVICE_FLAGS )
 typedef struct D3D12_DEVICE_CONFIGURATION_DESC
     {
     D3D12_DEVICE_FLAGS Flags;
@@ -29138,8 +30343,8 @@ typedef struct D3D12_DEVICE_CONFIGURATION_DESC
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0065_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0065_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0072_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0072_v0_0_s_ifspec;
 
 #ifndef __ID3D12DeviceConfiguration_INTERFACE_DEFINED__
 #define __ID3D12DeviceConfiguration_INTERFACE_DEFINED__
@@ -29427,7 +30632,7 @@ EXTERN_C const IID IID_ID3D12DeviceConfiguration1;
 #endif 	/* __ID3D12DeviceConfiguration1_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0067 */
+/* interface __MIDL_itf_d3d12_0000_0074 */
 /* [local] */ 
 
 typedef 
@@ -29467,8 +30672,8 @@ enum D3D12_SHADING_RATE_COMBINER
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0067_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0067_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0074_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0074_v0_0_s_ifspec;
 
 #ifndef __ID3D12GraphicsCommandList5_INTERFACE_DEFINED__
 #define __ID3D12GraphicsCommandList5_INTERFACE_DEFINED__
@@ -30303,7 +31508,7 @@ EXTERN_C const IID IID_ID3D12GraphicsCommandList5;
 #endif 	/* __ID3D12GraphicsCommandList5_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0068 */
+/* interface __MIDL_itf_d3d12_0000_0075 */
 /* [local] */ 
 
 typedef struct D3D12_DISPATCH_MESH_ARGUMENTS
@@ -30315,8 +31520,8 @@ typedef struct D3D12_DISPATCH_MESH_ARGUMENTS
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0068_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0068_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0075_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0075_v0_0_s_ifspec;
 
 #ifndef __ID3D12GraphicsCommandList6_INTERFACE_DEFINED__
 #define __ID3D12GraphicsCommandList6_INTERFACE_DEFINED__
@@ -34655,7 +35860,246 @@ EXTERN_C const IID IID_ID3D12GraphicsCommandList10;
 #endif 	/* __ID3D12GraphicsCommandList10_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_d3d12_0000_0073 */
+#ifndef __ID3D12DSRDeviceFactory_INTERFACE_DEFINED__
+#define __ID3D12DSRDeviceFactory_INTERFACE_DEFINED__
+
+/* interface ID3D12DSRDeviceFactory */
+/* [unique][local][object][uuid] */ 
+
+
+EXTERN_C const IID IID_ID3D12DSRDeviceFactory;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("f343d1a0-afe3-439f-b13d-cd87a43b70ca")
+    ID3D12DSRDeviceFactory : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE CreateDSRDevice( 
+            ID3D12Device *pD3D12Device,
+            UINT NodeMask,
+            REFIID riid,
+            _COM_Outptr_  void **ppvDSRDevice) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ID3D12DSRDeviceFactoryVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ID3D12DSRDeviceFactory * This,
+            REFIID riid,
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ID3D12DSRDeviceFactory * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ID3D12DSRDeviceFactory * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12DSRDeviceFactory, CreateDSRDevice)
+        HRESULT ( STDMETHODCALLTYPE *CreateDSRDevice )( 
+            ID3D12DSRDeviceFactory * This,
+            ID3D12Device *pD3D12Device,
+            UINT NodeMask,
+            REFIID riid,
+            _COM_Outptr_  void **ppvDSRDevice);
+        
+        END_INTERFACE
+    } ID3D12DSRDeviceFactoryVtbl;
+
+    interface ID3D12DSRDeviceFactory
+    {
+        CONST_VTBL struct ID3D12DSRDeviceFactoryVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ID3D12DSRDeviceFactory_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ID3D12DSRDeviceFactory_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ID3D12DSRDeviceFactory_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ID3D12DSRDeviceFactory_CreateDSRDevice(This,pD3D12Device,NodeMask,riid,ppvDSRDevice)	\
+    ( (This)->lpVtbl -> CreateDSRDevice(This,pD3D12Device,NodeMask,riid,ppvDSRDevice) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ID3D12DSRDeviceFactory_INTERFACE_DEFINED__ */
+
+
+#ifndef __ID3D12GBVDiagnostics_INTERFACE_DEFINED__
+#define __ID3D12GBVDiagnostics_INTERFACE_DEFINED__
+
+/* interface ID3D12GBVDiagnostics */
+/* [unique][local][object][uuid] */ 
+
+
+EXTERN_C const IID IID_ID3D12GBVDiagnostics;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("597985ab-9b75-4dbb-be23-0761195bebee")
+    ID3D12GBVDiagnostics : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetGBVEntireSubresourceStatesData( 
+            _In_  ID3D12Resource *pResource,
+            _Out_writes_bytes_(DataSize)  int *pData,
+            UINT DataSize) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetGBVSubresourceState( 
+            _In_  ID3D12Resource *pResource,
+            UINT Subresource,
+            _Out_  int *pData) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetGBVResourceUniformState( 
+            _In_  ID3D12Resource *pResource,
+            _Out_  int *pData) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetGBVResourceInfo( 
+            _In_  ID3D12Resource *pResource,
+            _In_opt_  D3D12_RESOURCE_DESC *pResourceDesc,
+            _In_opt_  UINT32 *pResourceHash,
+            _In_opt_  UINT32 *pSubresourceStatesByteOffset) = 0;
+        
+        virtual void STDMETHODCALLTYPE GBVReserved0( void) = 0;
+        
+        virtual void STDMETHODCALLTYPE GBVReserved1( void) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ID3D12GBVDiagnosticsVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ID3D12GBVDiagnostics * This,
+            REFIID riid,
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ID3D12GBVDiagnostics * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ID3D12GBVDiagnostics * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12GBVDiagnostics, GetGBVEntireSubresourceStatesData)
+        HRESULT ( STDMETHODCALLTYPE *GetGBVEntireSubresourceStatesData )( 
+            ID3D12GBVDiagnostics * This,
+            _In_  ID3D12Resource *pResource,
+            _Out_writes_bytes_(DataSize)  int *pData,
+            UINT DataSize);
+        
+        DECLSPEC_XFGVIRT(ID3D12GBVDiagnostics, GetGBVSubresourceState)
+        HRESULT ( STDMETHODCALLTYPE *GetGBVSubresourceState )( 
+            ID3D12GBVDiagnostics * This,
+            _In_  ID3D12Resource *pResource,
+            UINT Subresource,
+            _Out_  int *pData);
+        
+        DECLSPEC_XFGVIRT(ID3D12GBVDiagnostics, GetGBVResourceUniformState)
+        HRESULT ( STDMETHODCALLTYPE *GetGBVResourceUniformState )( 
+            ID3D12GBVDiagnostics * This,
+            _In_  ID3D12Resource *pResource,
+            _Out_  int *pData);
+        
+        DECLSPEC_XFGVIRT(ID3D12GBVDiagnostics, GetGBVResourceInfo)
+        HRESULT ( STDMETHODCALLTYPE *GetGBVResourceInfo )( 
+            ID3D12GBVDiagnostics * This,
+            _In_  ID3D12Resource *pResource,
+            _In_opt_  D3D12_RESOURCE_DESC *pResourceDesc,
+            _In_opt_  UINT32 *pResourceHash,
+            _In_opt_  UINT32 *pSubresourceStatesByteOffset);
+        
+        DECLSPEC_XFGVIRT(ID3D12GBVDiagnostics, GBVReserved0)
+        void ( STDMETHODCALLTYPE *GBVReserved0 )( 
+            ID3D12GBVDiagnostics * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12GBVDiagnostics, GBVReserved1)
+        void ( STDMETHODCALLTYPE *GBVReserved1 )( 
+            ID3D12GBVDiagnostics * This);
+        
+        END_INTERFACE
+    } ID3D12GBVDiagnosticsVtbl;
+
+    interface ID3D12GBVDiagnostics
+    {
+        CONST_VTBL struct ID3D12GBVDiagnosticsVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ID3D12GBVDiagnostics_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ID3D12GBVDiagnostics_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ID3D12GBVDiagnostics_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ID3D12GBVDiagnostics_GetGBVEntireSubresourceStatesData(This,pResource,pData,DataSize)	\
+    ( (This)->lpVtbl -> GetGBVEntireSubresourceStatesData(This,pResource,pData,DataSize) ) 
+
+#define ID3D12GBVDiagnostics_GetGBVSubresourceState(This,pResource,Subresource,pData)	\
+    ( (This)->lpVtbl -> GetGBVSubresourceState(This,pResource,Subresource,pData) ) 
+
+#define ID3D12GBVDiagnostics_GetGBVResourceUniformState(This,pResource,pData)	\
+    ( (This)->lpVtbl -> GetGBVResourceUniformState(This,pResource,pData) ) 
+
+#define ID3D12GBVDiagnostics_GetGBVResourceInfo(This,pResource,pResourceDesc,pResourceHash,pSubresourceStatesByteOffset)	\
+    ( (This)->lpVtbl -> GetGBVResourceInfo(This,pResource,pResourceDesc,pResourceHash,pSubresourceStatesByteOffset) ) 
+
+#define ID3D12GBVDiagnostics_GBVReserved0(This)	\
+    ( (This)->lpVtbl -> GBVReserved0(This) ) 
+
+#define ID3D12GBVDiagnostics_GBVReserved1(This)	\
+    ( (This)->lpVtbl -> GBVReserved1(This) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ID3D12GBVDiagnostics_INTERFACE_DEFINED__ */
+
+
+/* interface __MIDL_itf_d3d12_0000_0082 */
 /* [local] */ 
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES) */
@@ -34672,6 +36116,7 @@ DEFINE_GUID(IID_ID3D12CommandAllocator,0x6102dee4,0xaf59,0x4b09,0xb9,0x99,0xb4,0
 DEFINE_GUID(IID_ID3D12Fence,0x0a753dcf,0xc4d8,0x4b91,0xad,0xf6,0xbe,0x5a,0x60,0xd9,0x5a,0x76);
 DEFINE_GUID(IID_ID3D12Fence1,0x433685fe,0xe22b,0x4ca0,0xa8,0xdb,0xb5,0xb4,0xf4,0xdd,0x0e,0x4a);
 DEFINE_GUID(IID_ID3D12PipelineState,0x765a30f3,0xf624,0x4c6f,0xa8,0x28,0xac,0xe9,0x48,0x62,0x24,0x45);
+DEFINE_GUID(IID_ID3D12PipelineState1,0x5646804c,0x9638,0x48f7,0x91,0x82,0xb3,0xee,0x5a,0x6b,0x60,0xfb);
 DEFINE_GUID(IID_ID3D12DescriptorHeap,0x8efb471d,0x616c,0x4f49,0x90,0xf7,0x12,0x7b,0xb7,0x63,0xfa,0x51);
 DEFINE_GUID(IID_ID3D12QueryHeap,0x0d9658ae,0xed45,0x469e,0xa6,0x1d,0x97,0x0e,0xc5,0x83,0xca,0xb4);
 DEFINE_GUID(IID_ID3D12CommandSignature,0xc36a797c,0xec80,0x4f0a,0x89,0x85,0xa7,0xb2,0x47,0x50,0x82,0xd1);
@@ -34695,6 +36140,7 @@ DEFINE_GUID(IID_ID3D12LifetimeTracker,0x3fd03d36,0x4eb1,0x424a,0xa5,0x82,0x49,0x
 DEFINE_GUID(IID_ID3D12StateObject,0x47016943,0xfca8,0x4594,0x93,0xea,0xaf,0x25,0x8b,0x55,0x34,0x6d);
 DEFINE_GUID(IID_ID3D12StateObjectProperties,0xde5fa827,0x9bf9,0x4f26,0x89,0xff,0xd7,0xf5,0x6f,0xde,0x38,0x60);
 DEFINE_GUID(IID_ID3D12StateObjectProperties1,0x460caac7,0x1d24,0x446a,0xa1,0x84,0xca,0x67,0xdb,0x49,0x41,0x38);
+DEFINE_GUID(IID_ID3D12StateObjectProperties2,0xd5e82917,0xf0f1,0x44cf,0xae,0x5e,0xce,0x22,0x2d,0xd0,0xb8,0x84);
 DEFINE_GUID(IID_ID3D12WorkGraphProperties,0x065acf71,0xf863,0x4b89,0x82,0xf4,0x02,0xe4,0xd5,0x88,0x67,0x57);
 DEFINE_GUID(IID_ID3D12Device5,0x8b4f173b,0x2fea,0x4b80,0x8f,0x58,0x43,0x07,0x19,0x1a,0xb9,0x5d);
 DEFINE_GUID(IID_ID3D12DeviceRemovedExtendedDataSettings,0x82BC481C,0x6B9B,0x4030,0xAE,0xDB,0x7E,0xE3,0xD1,0xDF,0x1E,0x63);
@@ -34722,6 +36168,11 @@ DEFINE_GUID(IID_ID3D12Device13,0x14eecffc,0x4df8,0x40f7,0xa1,0x18,0x5c,0x81,0x6f
 DEFINE_GUID(IID_ID3D12Device14,0x5f6e592d,0xd895,0x44c2,0x8e,0x4a,0x88,0xad,0x49,0x26,0xd3,0x23);
 DEFINE_GUID(IID_ID3D12VirtualizationGuestDevice,0xbc66d368,0x7373,0x4943,0x87,0x57,0xfc,0x87,0xdc,0x79,0xe4,0x76);
 DEFINE_GUID(IID_ID3D12Tools,0x7071e1f0,0xe84b,0x4b33,0x97,0x4f,0x12,0xfa,0x49,0xde,0x65,0xc5);
+DEFINE_GUID(IID_ID3D12Tools1,0xe4fbc019,0xdd3c,0x43e1,0x8f,0x32,0x7f,0x64,0x95,0x75,0xf0,0xa0);
+DEFINE_GUID(IID_ID3D12Tools2,0x01d393c5,0xc9b0,0x42a1,0x95,0x8c,0xc2,0x6b,0x02,0xd4,0xd0,0x97);
+DEFINE_GUID(IID_ID3D12PageableTools,0x8f1359db,0xd8d1,0x42f9,0xb5,0xcf,0x79,0xf4,0xcb,0xad,0x0d,0x3d);
+DEFINE_GUID(IID_ID3D12DeviceTools,0x2ea68e9c,0x19c3,0x4e47,0xa1,0x09,0x6c,0xda,0xdf,0xf0,0xac,0xa9);
+DEFINE_GUID(IID_ID3D12DeviceTools1,0xe30e9fc7,0xe641,0x4d6e,0x8a,0x81,0x9d,0xd9,0x20,0x6e,0xc4,0x7a);
 DEFINE_GUID(IID_ID3D12SDKConfiguration,0xe9eb5314,0x33aa,0x42b2,0xa7,0x18,0xd7,0x7f,0x58,0xb1,0xf1,0xc7);
 DEFINE_GUID(IID_ID3D12SDKConfiguration1,0x8aaf9303,0xad25,0x48b9,0x9a,0x57,0xd9,0xc3,0x7e,0x00,0x9d,0x9f);
 DEFINE_GUID(IID_ID3D12DeviceFactory,0x61f307d3,0xd34e,0x4e7c,0x83,0x74,0x3b,0xa4,0xde,0x23,0xcc,0xcb);
@@ -34733,10 +36184,12 @@ DEFINE_GUID(IID_ID3D12GraphicsCommandList7,0xdd171223,0x8b61,0x4769,0x90,0xe3,0x
 DEFINE_GUID(IID_ID3D12GraphicsCommandList8,0xee936ef9,0x599d,0x4d28,0x93,0x8e,0x23,0xc4,0xad,0x05,0xce,0x51);
 DEFINE_GUID(IID_ID3D12GraphicsCommandList9,0x34ed2808,0xffe6,0x4c2b,0xb1,0x1a,0xca,0xbd,0x2b,0x0c,0x59,0xe1);
 DEFINE_GUID(IID_ID3D12GraphicsCommandList10,0x7013c015,0xd161,0x4b63,0xa0,0x8c,0x23,0x85,0x52,0xdd,0x8a,0xcc);
+DEFINE_GUID(IID_ID3D12DSRDeviceFactory,0xf343d1a0,0xafe3,0x439f,0xb1,0x3d,0xcd,0x87,0xa4,0x3b,0x70,0xca);
+DEFINE_GUID(IID_ID3D12GBVDiagnostics,0x597985ab,0x9b75,0x4dbb,0xbe,0x23,0x07,0x61,0x19,0x5b,0xeb,0xee);
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0073_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0073_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0082_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0082_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

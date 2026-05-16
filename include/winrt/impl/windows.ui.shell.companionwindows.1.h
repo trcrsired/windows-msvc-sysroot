@@ -1,0 +1,48 @@
+// C++/WinRT v2.0.250303.1
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#pragma once
+#ifndef WINRT_Windows_UI_Shell_CompanionWindows_1_H
+#define WINRT_Windows_UI_Shell_CompanionWindows_1_H
+#include "winrt/impl/windows.ui.shell.companionwindows.0.h"
+WINRT_EXPORT namespace winrt::Windows::UI::Shell::CompanionWindows
+{
+    struct WINRT_IMPL_EMPTY_BASES ICompanionWindowCoordinator :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ICompanionWindowCoordinator>
+    {
+        ICompanionWindowCoordinator(std::nullptr_t = nullptr) noexcept {}
+        ICompanionWindowCoordinator(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ICompanionWindowCoordinatorStatics :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ICompanionWindowCoordinatorStatics>
+    {
+        ICompanionWindowCoordinatorStatics(std::nullptr_t = nullptr) noexcept {}
+        ICompanionWindowCoordinatorStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ICompanionWindowRequest :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ICompanionWindowRequest>
+    {
+        ICompanionWindowRequest(std::nullptr_t = nullptr) noexcept {}
+        ICompanionWindowRequest(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ICompanionWindowRequestResult :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ICompanionWindowRequestResult>
+    {
+        ICompanionWindowRequestResult(std::nullptr_t = nullptr) noexcept {}
+        ICompanionWindowRequestResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ICompanionWindowRequestStatics :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ICompanionWindowRequestStatics>
+    {
+        ICompanionWindowRequestStatics(std::nullptr_t = nullptr) noexcept {}
+        ICompanionWindowRequestStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+}
+#endif

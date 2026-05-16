@@ -154,6 +154,7 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Activation
         PrintSupportSettingsUI = 1024,
         PhoneCallActivation = 1025,
         VpnForeground = 1026,
+        PrintSupportEnterpriseManagementUI = 1027,
     };
     enum class ApplicationExecutionState : int32_t
     {

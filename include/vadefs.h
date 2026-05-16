@@ -124,6 +124,12 @@ extern "C" {
 
     void __cdecl __va_start(va_list*, ...);
 
+    // don't make changes to crt until the intrinsics is updated to the compiler tools
+    // void* __cdecl __va_arg(va_list*, int, int, void *);
+
+    // put size to 0, and get the real size from p1 intrin if not sve type
+    // #define __crt_va_arg(ap, t) (*(t *)__va_arg(&ap, 0, _APALIGN(t,ap), (t*)0))
+
     #define __crt_va_start_a(ap,v) ((void)(__va_start(&ap, _ADDRESSOF(v), _SLOTSIZEOF(v), __alignof(v), _ADDRESSOF(v))))
     #define __crt_va_arg(ap, t)                                                 \
        ((sizeof(t) > (2 * sizeof(__int64)))                                   \

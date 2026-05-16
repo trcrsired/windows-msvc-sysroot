@@ -731,7 +731,6 @@ namespace Windows
             };
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
-            [experimental]
             enum OnlookerDetectionAction
             {
                 Dim          = 0,
@@ -740,7 +739,6 @@ namespace Windows
             };
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
-            [experimental]
             enum OnlookerDetectionBackOnMode
             {
                 Manually  = 0,
@@ -1463,7 +1461,6 @@ namespace Windows
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
             [exclusiveto(Windows.Devices.Sensors.HumanPresenceFeatures)]
-            [experimental]
             [uuid(ED4E03AA-5CA2-5C02-B783-262E91295619)]
             interface IHumanPresenceFeatures3 : IInspectable
             {
@@ -1631,7 +1628,6 @@ namespace Windows
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
             [exclusiveto(Windows.Devices.Sensors.HumanPresenceSettings)]
-            [experimental]
             [uuid(89757226-ACC1-4F58-81DF-47F1D69537F2)]
             interface IHumanPresenceSettings3 : IInspectable
             {
@@ -2023,7 +2019,6 @@ namespace Windows
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
             [exclusiveto(Windows.Devices.Sensors.OnlookerDetectionOptions)]
-            [experimental]
             [uuid(0412B36F-36E6-51E2-876E-65197CC53C12)]
             interface IOnlookerDetectionOptions : IInspectable
             {
@@ -2662,7 +2657,7 @@ namespace Windows
             {
                 [default] interface Windows.Devices.Sensors.IHumanPresenceFeatures;
                 [contract(Windows.Foundation.UniversalApiContract, 15.0)] interface Windows.Devices.Sensors.IHumanPresenceFeatures2;
-                [contract(Windows.Foundation.UniversalApiContract, 19.0)] [experimental] interface Windows.Devices.Sensors.IHumanPresenceFeatures3;
+                [contract(Windows.Foundation.UniversalApiContract, 19.0)] interface Windows.Devices.Sensors.IHumanPresenceFeatures3;
             }
 
             [contract(Windows.Foundation.UniversalApiContract, 15.0)]
@@ -2711,7 +2706,7 @@ namespace Windows
             {
                 [default] interface Windows.Devices.Sensors.IHumanPresenceSettings;
                 [contract(Windows.Foundation.UniversalApiContract, 15.0)] interface Windows.Devices.Sensors.IHumanPresenceSettings2;
-                [contract(Windows.Foundation.UniversalApiContract, 19.0)] [experimental] interface Windows.Devices.Sensors.IHumanPresenceSettings3;
+                [contract(Windows.Foundation.UniversalApiContract, 19.0)] interface Windows.Devices.Sensors.IHumanPresenceSettings3;
             }
 
             [contract(Windows.Foundation.UniversalApiContract, 1.0)]
@@ -2841,11 +2836,10 @@ namespace Windows
             }
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             runtimeclass OnlookerDetectionOptions
             {
-                [default] [experimental] interface Windows.Devices.Sensors.IOnlookerDetectionOptions;
+                [default] interface Windows.Devices.Sensors.IOnlookerDetectionOptions;
             }
 
             [contract(Windows.Foundation.UniversalApiContract, 1.0)]

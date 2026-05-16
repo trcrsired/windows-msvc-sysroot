@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x140000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #if !defined(WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION)
@@ -641,6 +641,51 @@ namespace ABI {
 #define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderStatusUISourceFactory ABI::Windows::Storage::Provider::IStorageProviderStatusUISourceFactory
 
 #endif // ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderStatusUISourceFactory_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_FWD_DEFINED__
+#define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace Storage {
+            namespace Provider {
+                interface IStorageProviderSuggestionsHandler;
+            } /* Provider */
+        } /* Storage */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler ABI::Windows::Storage::Provider::IStorageProviderSuggestionsHandler
+
+#endif // ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_FWD_DEFINED__
+#define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace Storage {
+            namespace Provider {
+                interface IStorageProviderSuggestionsHandlerFactory;
+            } /* Provider */
+        } /* Storage */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory ABI::Windows::Storage::Provider::IStorageProviderSuggestionsHandlerFactory
+
+#endif // ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_FWD_DEFINED__
+#define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_FWD_DEFINED__
+namespace ABI {
+    namespace Windows {
+        namespace Storage {
+            namespace Provider {
+                interface IStorageProviderSuggestionsQueryOptions;
+            } /* Provider */
+        } /* Storage */
+    } /* Windows */
+} /* ABI */
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions ABI::Windows::Storage::Provider::IStorageProviderSuggestionsQueryOptions
+
+#endif // ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_FWD_DEFINED__
 
 #ifndef ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSyncRootInfo_FWD_DEFINED__
 #define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSyncRootInfo_FWD_DEFINED__
@@ -2481,6 +2526,26 @@ namespace ABI {
         namespace Storage {
             namespace Provider {
                 class StorageProviderStatusUI;
+            } /* Provider */
+        } /* Storage */
+    } /* Windows */
+} /* ABI */
+
+namespace ABI {
+    namespace Windows {
+        namespace Storage {
+            namespace Provider {
+                class StorageProviderSuggestionResult;
+            } /* Provider */
+        } /* Storage */
+    } /* Windows */
+} /* ABI */
+
+namespace ABI {
+    namespace Windows {
+        namespace Storage {
+            namespace Provider {
+                class StorageProviderSuggestionsQueryOptions;
             } /* Provider */
         } /* Storage */
     } /* Windows */
@@ -4586,6 +4651,145 @@ EXTERN_C const IID IID___x_ABI_CWindows_CStorage_CProvider_CIStorageProviderStat
 
 /*
  *
+ * Interface Windows.Storage.Provider.IStorageProviderSuggestionsHandler
+ *
+ * Introduced to Windows.Storage.Provider.CloudFilesContract in version 7.0
+ *
+ */
+#if WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Storage_Provider_IStorageProviderSuggestionsHandler[] = L"Windows.Storage.Provider.IStorageProviderSuggestionsHandler";
+namespace ABI {
+    namespace Windows {
+        namespace Storage {
+            namespace Provider {
+                MIDL_INTERFACE("aff493f6-e1fd-5d03-b480-f1849c83ef4a")
+                IStorageProviderSuggestionsHandler : public IInspectable
+                {
+                public:
+                    virtual HRESULT STDMETHODCALLTYPE GetSuggestions(
+                        ABI::Windows::Storage::Provider::IStorageProviderSuggestionsQueryOptions* options,
+                        ABI::Windows::Storage::Provider::IStorageProviderQueryResultSet** result
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE Add(
+                        ABI::Windows::Storage::Provider::StorageProviderResultKind kind,
+                        HSTRING remoteFileId
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE Remove(
+                        ABI::Windows::Storage::Provider::StorageProviderResultKind kind,
+                        HSTRING remoteFileId
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE GetDetails(
+                        HSTRING remoteFileId,
+                        UINT32 propertiesToFetchLength,
+                        HSTRING* propertiesToFetch,
+                        HSTRING queryId,
+                        ABI::Windows::Storage::Provider::IStorageProviderQueryResult** result
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE ReportUsage(
+                        ABI::Windows::Storage::Provider::StorageProviderResultUsageKind resultUsageKind,
+                        HSTRING remoteFileId,
+                        HSTRING resultId,
+                        ABI::Windows::Foundation::TimeSpan latency
+                        ) = 0;
+                };
+
+                MIDL_CONST_ID IID& IID_IStorageProviderSuggestionsHandler = __uuidof(IStorageProviderSuggestionsHandler);
+            } /* Provider */
+        } /* Storage */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler;
+#endif /* !defined(____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_INTERFACE_DEFINED__) */
+#endif // WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+
+/*
+ *
+ * Interface Windows.Storage.Provider.IStorageProviderSuggestionsHandlerFactory
+ *
+ * Introduced to Windows.Storage.Provider.CloudFilesContract in version 7.0
+ *
+ */
+#if WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Storage_Provider_IStorageProviderSuggestionsHandlerFactory[] = L"Windows.Storage.Provider.IStorageProviderSuggestionsHandlerFactory";
+namespace ABI {
+    namespace Windows {
+        namespace Storage {
+            namespace Provider {
+                MIDL_INTERFACE("dc7b35d8-a25b-58a3-ace7-b3543106a2aa")
+                IStorageProviderSuggestionsHandlerFactory : public IInspectable
+                {
+                public:
+                    virtual HRESULT STDMETHODCALLTYPE CreateSuggestionsHandler(
+                        HSTRING cloudProviderId,
+                        ABI::Windows::Storage::Provider::IStorageProviderSuggestionsHandler** result
+                        ) = 0;
+                };
+
+                MIDL_CONST_ID IID& IID_IStorageProviderSuggestionsHandlerFactory = __uuidof(IStorageProviderSuggestionsHandlerFactory);
+            } /* Provider */
+        } /* Storage */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory;
+#endif /* !defined(____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_INTERFACE_DEFINED__) */
+#endif // WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+
+/*
+ *
+ * Interface Windows.Storage.Provider.IStorageProviderSuggestionsQueryOptions
+ *
+ * Introduced to Windows.Storage.Provider.CloudFilesContract in version 7.0
+ *
+ * Interface is a part of the implementation of type Windows.Storage.Provider.StorageProviderSuggestionsQueryOptions
+ *
+ */
+#if WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Storage_Provider_IStorageProviderSuggestionsQueryOptions[] = L"Windows.Storage.Provider.IStorageProviderSuggestionsQueryOptions";
+namespace ABI {
+    namespace Windows {
+        namespace Storage {
+            namespace Provider {
+                MIDL_INTERFACE("efb8b74d-0d84-579c-b137-ea730635d9bb")
+                IStorageProviderSuggestionsQueryOptions : public IInspectable
+                {
+                public:
+                    virtual HRESULT STDMETHODCALLTYPE get_SuggestionsKind(
+                        ABI::Windows::Storage::Provider::StorageProviderResultKind* value
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE get_RemoteFileId(
+                        HSTRING* value
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE get_MaxResults(
+                        UINT32* value
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE get_QueryId(
+                        HSTRING* value
+                        ) = 0;
+                    virtual HRESULT STDMETHODCALLTYPE get_PropertiesToFetch(
+                        __FIVectorView_1_HSTRING** value
+                        ) = 0;
+                };
+
+                MIDL_CONST_ID IID& IID_IStorageProviderSuggestionsQueryOptions = __uuidof(IStorageProviderSuggestionsQueryOptions);
+            } /* Provider */
+        } /* Storage */
+    } /* Windows */
+} /* ABI */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions;
+#endif /* !defined(____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_INTERFACE_DEFINED__) */
+#endif // WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+
+/*
+ *
  * Interface Windows.Storage.Provider.IStorageProviderSyncRootInfo
  *
  * Introduced to Windows.Storage.Provider.CloudFilesContract in version 1.0
@@ -5393,6 +5597,49 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
 
 /*
  *
+ * Class Windows.Storage.Provider.StorageProviderSuggestionResult
+ *
+ * Introduced to Windows.Storage.Provider.CloudFilesContract in version 7.0
+ *
+ * RuntimeClass can be activated.
+ *   Type can be activated via RoActivateInstance starting with version 7.0 of the Windows.Storage.Provider.CloudFilesContract API contract
+ *
+ * Class implements the following interfaces:
+ *    Windows.Storage.Provider.IStorageProviderQueryResult ** Default Interface **
+ *
+ * Class Threading Model:  Both Single and Multi Threaded Apartment
+ *
+ * Class Marshaling Behavior:  Agile - Class is agile
+ *
+ */
+#if WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+#ifndef RUNTIMECLASS_Windows_Storage_Provider_StorageProviderSuggestionResult_DEFINED
+#define RUNTIMECLASS_Windows_Storage_Provider_StorageProviderSuggestionResult_DEFINED
+extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Storage_Provider_StorageProviderSuggestionResult[] = L"Windows.Storage.Provider.StorageProviderSuggestionResult";
+#endif
+#endif // WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+
+/*
+ *
+ * Class Windows.Storage.Provider.StorageProviderSuggestionsQueryOptions
+ *
+ * Introduced to Windows.Storage.Provider.CloudFilesContract in version 7.0
+ *
+ * Class implements the following interfaces:
+ *    Windows.Storage.Provider.IStorageProviderSuggestionsQueryOptions ** Default Interface **
+ *
+ * Class Marshaling Behavior:  Agile - Class is agile
+ *
+ */
+#if WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+#ifndef RUNTIMECLASS_Windows_Storage_Provider_StorageProviderSuggestionsQueryOptions_DEFINED
+#define RUNTIMECLASS_Windows_Storage_Provider_StorageProviderSuggestionsQueryOptions_DEFINED
+extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Storage_Provider_StorageProviderSuggestionsQueryOptions[] = L"Windows.Storage.Provider.StorageProviderSuggestionsQueryOptions";
+#endif
+#endif // WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+
+/*
+ *
  * Class Windows.Storage.Provider.StorageProviderSyncRootInfo
  *
  * Introduced to Windows.Storage.Provider.CloudFilesContract in version 1.0
@@ -5424,8 +5671,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Storage.Provider.CloudFilesContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Storage.Provider.IStorageProviderSyncRootManagerStatics2 interface starting with version 4.0 of the Windows.Storage.Provider.CloudFilesContract API contract
  *   Static Methods exist on the Windows.Storage.Provider.IStorageProviderSyncRootManagerStatics interface starting with version 1.0 of the Windows.Storage.Provider.CloudFilesContract API contract
+ *   Static Methods exist on the Windows.Storage.Provider.IStorageProviderSyncRootManagerStatics2 interface starting with version 4.0 of the Windows.Storage.Provider.CloudFilesContract API contract
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *
@@ -5650,6 +5897,24 @@ typedef interface __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderStatusUIS
 typedef interface __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderStatusUISourceFactory __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderStatusUISourceFactory;
 
 #endif // ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderStatusUISourceFactory_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_FWD_DEFINED__
+#define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler;
+
+#endif // ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_FWD_DEFINED__
+#define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory;
+
+#endif // ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_FWD_DEFINED__
+
+#ifndef ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_FWD_DEFINED__
+#define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_FWD_DEFINED__
+typedef interface __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions;
+
+#endif // ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_FWD_DEFINED__
 
 #ifndef ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSyncRootInfo_FWD_DEFINED__
 #define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSyncRootInfo_FWD_DEFINED__
@@ -12391,6 +12656,260 @@ EXTERN_C const IID IID___x_ABI_CWindows_CStorage_CProvider_CIStorageProviderStat
 
 /*
  *
+ * Interface Windows.Storage.Provider.IStorageProviderSuggestionsHandler
+ *
+ * Introduced to Windows.Storage.Provider.CloudFilesContract in version 7.0
+ *
+ */
+#if WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Storage_Provider_IStorageProviderSuggestionsHandler[] = L"Windows.Storage.Provider.IStorageProviderSuggestionsHandler";
+typedef struct __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerVtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* GetSuggestions)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler* This,
+        __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions* options,
+        __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderQueryResultSet** result);
+    HRESULT (STDMETHODCALLTYPE* Add)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler* This,
+        enum __x_ABI_CWindows_CStorage_CProvider_CStorageProviderResultKind kind,
+        HSTRING remoteFileId);
+    HRESULT (STDMETHODCALLTYPE* Remove)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler* This,
+        enum __x_ABI_CWindows_CStorage_CProvider_CStorageProviderResultKind kind,
+        HSTRING remoteFileId);
+    HRESULT (STDMETHODCALLTYPE* GetDetails)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler* This,
+        HSTRING remoteFileId,
+        UINT32 propertiesToFetchLength,
+        HSTRING* propertiesToFetch,
+        HSTRING queryId,
+        __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderQueryResult** result);
+    HRESULT (STDMETHODCALLTYPE* ReportUsage)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler* This,
+        enum __x_ABI_CWindows_CStorage_CProvider_CStorageProviderResultUsageKind resultUsageKind,
+        HSTRING remoteFileId,
+        HSTRING resultId,
+        struct __x_ABI_CWindows_CFoundation_CTimeSpan latency);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerVtbl;
+
+interface __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler
+{
+    CONST_VTBL struct __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerVtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_GetSuggestions(This, options, result) \
+    ((This)->lpVtbl->GetSuggestions(This, options, result))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_Add(This, kind, remoteFileId) \
+    ((This)->lpVtbl->Add(This, kind, remoteFileId))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_Remove(This, kind, remoteFileId) \
+    ((This)->lpVtbl->Remove(This, kind, remoteFileId))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_GetDetails(This, remoteFileId, propertiesToFetchLength, propertiesToFetch, queryId, result) \
+    ((This)->lpVtbl->GetDetails(This, remoteFileId, propertiesToFetchLength, propertiesToFetch, queryId, result))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_ReportUsage(This, resultUsageKind, remoteFileId, resultId, latency) \
+    ((This)->lpVtbl->ReportUsage(This, resultUsageKind, remoteFileId, resultId, latency))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler;
+#endif /* !defined(____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler_INTERFACE_DEFINED__) */
+#endif // WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+
+/*
+ *
+ * Interface Windows.Storage.Provider.IStorageProviderSuggestionsHandlerFactory
+ *
+ * Introduced to Windows.Storage.Provider.CloudFilesContract in version 7.0
+ *
+ */
+#if WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Storage_Provider_IStorageProviderSuggestionsHandlerFactory[] = L"Windows.Storage.Provider.IStorageProviderSuggestionsHandlerFactory";
+typedef struct __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactoryVtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* CreateSuggestionsHandler)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory* This,
+        HSTRING cloudProviderId,
+        __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandler** result);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactoryVtbl;
+
+interface __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory
+{
+    CONST_VTBL struct __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactoryVtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_CreateSuggestionsHandler(This, cloudProviderId, result) \
+    ((This)->lpVtbl->CreateSuggestionsHandler(This, cloudProviderId, result))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory;
+#endif /* !defined(____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsHandlerFactory_INTERFACE_DEFINED__) */
+#endif // WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+
+/*
+ *
+ * Interface Windows.Storage.Provider.IStorageProviderSuggestionsQueryOptions
+ *
+ * Introduced to Windows.Storage.Provider.CloudFilesContract in version 7.0
+ *
+ * Interface is a part of the implementation of type Windows.Storage.Provider.StorageProviderSuggestionsQueryOptions
+ *
+ */
+#if WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+#if !defined(____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_INTERFACE_DEFINED__)
+#define ____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_INTERFACE_DEFINED__
+extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Storage_Provider_IStorageProviderSuggestionsQueryOptions[] = L"Windows.Storage.Provider.IStorageProviderSuggestionsQueryOptions";
+typedef struct __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptionsVtbl
+{
+    BEGIN_INTERFACE
+
+    HRESULT (STDMETHODCALLTYPE* QueryInterface)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions* This,
+        REFIID riid,
+        void** ppvObject);
+    ULONG (STDMETHODCALLTYPE* AddRef)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions* This);
+    ULONG (STDMETHODCALLTYPE* Release)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions* This);
+    HRESULT (STDMETHODCALLTYPE* GetIids)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions* This,
+        ULONG* iidCount,
+        IID** iids);
+    HRESULT (STDMETHODCALLTYPE* GetRuntimeClassName)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions* This,
+        HSTRING* className);
+    HRESULT (STDMETHODCALLTYPE* GetTrustLevel)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions* This,
+        TrustLevel* trustLevel);
+    HRESULT (STDMETHODCALLTYPE* get_SuggestionsKind)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions* This,
+        enum __x_ABI_CWindows_CStorage_CProvider_CStorageProviderResultKind* value);
+    HRESULT (STDMETHODCALLTYPE* get_RemoteFileId)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions* This,
+        HSTRING* value);
+    HRESULT (STDMETHODCALLTYPE* get_MaxResults)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions* This,
+        UINT32* value);
+    HRESULT (STDMETHODCALLTYPE* get_QueryId)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions* This,
+        HSTRING* value);
+    HRESULT (STDMETHODCALLTYPE* get_PropertiesToFetch)(__x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions* This,
+        __FIVectorView_1_HSTRING** value);
+
+    END_INTERFACE
+} __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptionsVtbl;
+
+interface __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions
+{
+    CONST_VTBL struct __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptionsVtbl* lpVtbl;
+};
+
+#ifdef COBJMACROS
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_QueryInterface(This, riid, ppvObject) \
+    ((This)->lpVtbl->QueryInterface(This, riid, ppvObject))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_AddRef(This) \
+    ((This)->lpVtbl->AddRef(This))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_Release(This) \
+    ((This)->lpVtbl->Release(This))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_GetIids(This, iidCount, iids) \
+    ((This)->lpVtbl->GetIids(This, iidCount, iids))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_GetRuntimeClassName(This, className) \
+    ((This)->lpVtbl->GetRuntimeClassName(This, className))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_GetTrustLevel(This, trustLevel) \
+    ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_get_SuggestionsKind(This, value) \
+    ((This)->lpVtbl->get_SuggestionsKind(This, value))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_get_RemoteFileId(This, value) \
+    ((This)->lpVtbl->get_RemoteFileId(This, value))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_get_MaxResults(This, value) \
+    ((This)->lpVtbl->get_MaxResults(This, value))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_get_QueryId(This, value) \
+    ((This)->lpVtbl->get_QueryId(This, value))
+
+#define __x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_get_PropertiesToFetch(This, value) \
+    ((This)->lpVtbl->get_PropertiesToFetch(This, value))
+
+#endif /* COBJMACROS */
+
+EXTERN_C const IID IID___x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions;
+#endif /* !defined(____x_ABI_CWindows_CStorage_CProvider_CIStorageProviderSuggestionsQueryOptions_INTERFACE_DEFINED__) */
+#endif // WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+
+/*
+ *
  * Interface Windows.Storage.Provider.IStorageProviderSyncRootInfo
  *
  * Introduced to Windows.Storage.Provider.CloudFilesContract in version 1.0
@@ -13510,6 +14029,49 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
 
 /*
  *
+ * Class Windows.Storage.Provider.StorageProviderSuggestionResult
+ *
+ * Introduced to Windows.Storage.Provider.CloudFilesContract in version 7.0
+ *
+ * RuntimeClass can be activated.
+ *   Type can be activated via RoActivateInstance starting with version 7.0 of the Windows.Storage.Provider.CloudFilesContract API contract
+ *
+ * Class implements the following interfaces:
+ *    Windows.Storage.Provider.IStorageProviderQueryResult ** Default Interface **
+ *
+ * Class Threading Model:  Both Single and Multi Threaded Apartment
+ *
+ * Class Marshaling Behavior:  Agile - Class is agile
+ *
+ */
+#if WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+#ifndef RUNTIMECLASS_Windows_Storage_Provider_StorageProviderSuggestionResult_DEFINED
+#define RUNTIMECLASS_Windows_Storage_Provider_StorageProviderSuggestionResult_DEFINED
+extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Storage_Provider_StorageProviderSuggestionResult[] = L"Windows.Storage.Provider.StorageProviderSuggestionResult";
+#endif
+#endif // WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+
+/*
+ *
+ * Class Windows.Storage.Provider.StorageProviderSuggestionsQueryOptions
+ *
+ * Introduced to Windows.Storage.Provider.CloudFilesContract in version 7.0
+ *
+ * Class implements the following interfaces:
+ *    Windows.Storage.Provider.IStorageProviderSuggestionsQueryOptions ** Default Interface **
+ *
+ * Class Marshaling Behavior:  Agile - Class is agile
+ *
+ */
+#if WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+#ifndef RUNTIMECLASS_Windows_Storage_Provider_StorageProviderSuggestionsQueryOptions_DEFINED
+#define RUNTIMECLASS_Windows_Storage_Provider_StorageProviderSuggestionsQueryOptions_DEFINED
+extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Storage_Provider_StorageProviderSuggestionsQueryOptions[] = L"Windows.Storage.Provider.StorageProviderSuggestionsQueryOptions";
+#endif
+#endif // WINDOWS_STORAGE_PROVIDER_CLOUDFILESCONTRACT_VERSION >= 0x70000
+
+/*
+ *
  * Class Windows.Storage.Provider.StorageProviderSyncRootInfo
  *
  * Introduced to Windows.Storage.Provider.CloudFilesContract in version 1.0
@@ -13541,8 +14103,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Storage.Provider.CloudFilesContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Storage.Provider.IStorageProviderSyncRootManagerStatics2 interface starting with version 4.0 of the Windows.Storage.Provider.CloudFilesContract API contract
  *   Static Methods exist on the Windows.Storage.Provider.IStorageProviderSyncRootManagerStatics interface starting with version 1.0 of the Windows.Storage.Provider.CloudFilesContract API contract
+ *   Static Methods exist on the Windows.Storage.Provider.IStorageProviderSyncRootManagerStatics2 interface starting with version 4.0 of the Windows.Storage.Provider.CloudFilesContract API contract
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *

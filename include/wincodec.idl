@@ -1448,6 +1448,32 @@ interface IWICBitmapFlipRotator : IWICBitmapSource
 
 
 /*=========================================================================*\
+    IWICBitmapToneMapper
+\*=========================================================================*/
+
+[
+    object,
+    uuid(44728ded-1edf-4fe9-b50b-c89a264c9439)
+]
+interface IWICBitmapToneMapper : IWICBitmapSource
+{
+    HRESULT InitializeForHdrTarget(
+        [in] IWICBitmapSource *pISource,
+        [in] REFWICPixelFormatGUID guidDstFormat,
+        [in] FLOAT fLuminanceInNits,
+        [in] FLOAT fWhiteLevelInNits,
+        [in] WICBitmapToneMappingMode mode
+        );
+
+    HRESULT InitializeForSdrTarget(
+        [in] IWICBitmapSource *pISource,
+        [in] REFWICPixelFormatGUID guidDstFormat,
+        [in] WICBitmapToneMappingMode mode
+        );
+}
+
+
+/*=========================================================================*\
     IWICBitmapLock - WIC Lock object for bitmaps.
 \*=========================================================================*/
 
@@ -2168,6 +2194,49 @@ interface IWICDisplayAdaptationControl2 : IWICDisplayAdaptationControl
         );
 }
 
+/*=========================================================================*\
+    IWICD3DTextureSource -
+    For decoding a bitmap using a Direct3D Device, such as ID3D11Device.
+    Returns the decoded bitmap as ID3D11Texture2D, or similar (depending on
+    the type of Direct3D device.)
+\*=========================================================================*/
+
+[
+    object,
+    uuid(caf65cc4-8ebe-4718-a21f-8dbf40bb7e25),
+    local
+]
+interface IWICD3DTextureSource : IUnknown
+{
+    HRESULT GetTexture(
+        [annotation("_In_")] IUnknown* pD3DDevice,
+        [annotation("_In_opt_")] IPropertyBag2* pID3DTextureOptions,
+        REFIID riid,
+        [annotation("_Outptr_")] void** ppTexture
+        );
+
+    HRESULT GetTransformedTexture(
+        [annotation("_In_opt_")] const WICRect* prc,
+        UINT uiWidth,
+        UINT uiHeight,
+        [annotation("_In_opt_")] const WICPixelFormatGUID* pguidDstFormat,
+        WICBitmapTransformOptions dstTransform,
+        [annotation("_In_")] IUnknown* pD3DDevice,
+        [annotation("_In_opt_")] IPropertyBag2* pID3DTextureOptions,
+        REFIID riid,
+        [annotation("_Outptr_")] void** ppTexture
+        );
+
+    HRESULT DoesSupportD3DDeviceType(
+        REFIID riid,
+        [annotation("_Out_")] BOOL* pfIsSupported
+        );
+
+    HRESULT GetD3DTextureOptions(
+        [annotation("_COM_Outptr_")] IPropertyBag2** ppID3DTextureOptions
+        );
+}
+
 
 /*=========================================================================*\
     IWICProgressCallback - Cross apartment callback interface
@@ -2642,6 +2711,20 @@ interface IWICImagingFactory2 : IWICImagingFactory
         [out] IWICImageEncoder **ppWICImageEncoder
         );
 };
+
+/*=========================================================================*\
+    IWICImagingFactory3
+\*=========================================================================*/
+[
+    object,
+    uuid(489b3d8b-624a-4258-b678-7eece70f299d)
+]
+interface IWICImagingFactory3 : IWICImagingFactory2
+{
+    HRESULT CreateBitmapToneMapper(
+        [out] IWICBitmapToneMapper **ppToneMapper
+        );
+}
 cpp_quote("#endif")
 
 /*=========================================================================*\

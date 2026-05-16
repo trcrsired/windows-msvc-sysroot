@@ -58,6 +58,16 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintSupport
         UniversalPrint = 3,
         VirtualPrinter = 4,
     };
+    enum class PrintSupportAppContracts : uint32_t
+    {
+        None = 0,
+        JobBackgroundSession = 0x1,
+        SettingsUI = 0x2,
+        Extension = 0x4,
+        JobUI = 0x8,
+        VirtualPrinterBackgroundSession = 0x10,
+        EnterpriseManagementUI = 0x20,
+    };
     enum class SettingsLaunchKind : int32_t
     {
         JobPrintTicket = 0,
@@ -76,7 +86,10 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintSupport
         JpegLowCompression = 2,
         Png = 3,
     };
+    struct IPrintSupportAppInfo;
+    struct IPrintSupportAppInfoStatics;
     struct IPrintSupportCommunicationErrorDetectedEventArgs;
+    struct IPrintSupportEnterpriseManagementUIEventArgs;
     struct IPrintSupportExtensionSession;
     struct IPrintSupportExtensionSession2;
     struct IPrintSupportExtensionSession3;
@@ -88,16 +101,20 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintSupport
     struct IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2;
     struct IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3;
     struct IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4;
+    struct IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5;
     struct IPrintSupportPrintDeviceCapabilitiesUpdatePolicy;
     struct IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics;
     struct IPrintSupportPrintTicketElement;
     struct IPrintSupportPrintTicketValidationRequestedEventArgs;
+    struct IPrintSupportPrintTicketValidationRequestedEventArgs2;
     struct IPrintSupportPrinterSelectedEventArgs;
     struct IPrintSupportSessionInfo;
     struct IPrintSupportSettingsActivatedEventArgs;
     struct IPrintSupportSettingsActivatedEventArgs2;
     struct IPrintSupportSettingsUISession;
+    struct PrintSupportAppInfo;
     struct PrintSupportCommunicationErrorDetectedEventArgs;
+    struct PrintSupportEnterpriseManagementUIEventArgs;
     struct PrintSupportExtensionSession;
     struct PrintSupportExtensionTriggerDetails;
     struct PrintSupportIppCommunicationConfiguration;
@@ -114,7 +131,10 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintSupport
 }
 namespace winrt::impl
 {
+    template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportCommunicationErrorDetectedEventArgs>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession3>{ using type = interface_category; };
@@ -126,16 +146,20 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicy>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketElement>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrinterSelectedEventArgs>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSessionInfo>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsActivatedEventArgs>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsActivatedEventArgs2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsUISession>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportAppInfo>{ using type = class_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportCommunicationErrorDetectedEventArgs>{ using type = class_category; };
+    template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportEnterpriseManagementUIEventArgs>{ using type = class_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession>{ using type = class_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionTriggerDetails>{ using type = class_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportIppCommunicationConfiguration>{ using type = class_category; };
@@ -151,10 +175,13 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportSettingsUISession>{ using type = class_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IppCommunicationErrorKind>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::IppPrinterCommunicationKind>{ using type = enum_category; };
+    template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportAppContracts>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::SettingsLaunchKind>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::WorkflowPrintTicketValidationStatus>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Graphics::Printing::PrintSupport::XpsImageQuality>{ using type = enum_category; };
+    template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportAppInfo> = L"Windows.Graphics.Printing.PrintSupport.PrintSupportAppInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportCommunicationErrorDetectedEventArgs> = L"Windows.Graphics.Printing.PrintSupport.PrintSupportCommunicationErrorDetectedEventArgs";
+    template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportEnterpriseManagementUIEventArgs> = L"Windows.Graphics.Printing.PrintSupport.PrintSupportEnterpriseManagementUIEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession> = L"Windows.Graphics.Printing.PrintSupport.PrintSupportExtensionSession";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionTriggerDetails> = L"Windows.Graphics.Printing.PrintSupport.PrintSupportExtensionTriggerDetails";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportIppCommunicationConfiguration> = L"Windows.Graphics.Printing.PrintSupport.PrintSupportIppCommunicationConfiguration";
@@ -170,10 +197,14 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportSettingsUISession> = L"Windows.Graphics.Printing.PrintSupport.PrintSupportSettingsUISession";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IppCommunicationErrorKind> = L"Windows.Graphics.Printing.PrintSupport.IppCommunicationErrorKind";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IppPrinterCommunicationKind> = L"Windows.Graphics.Printing.PrintSupport.IppPrinterCommunicationKind";
+    template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportAppContracts> = L"Windows.Graphics.Printing.PrintSupport.PrintSupportAppContracts";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::SettingsLaunchKind> = L"Windows.Graphics.Printing.PrintSupport.SettingsLaunchKind";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::WorkflowPrintTicketValidationStatus> = L"Windows.Graphics.Printing.PrintSupport.WorkflowPrintTicketValidationStatus";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::XpsImageQuality> = L"Windows.Graphics.Printing.PrintSupport.XpsImageQuality";
+    template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportAppInfo";
+    template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportAppInfoStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportCommunicationErrorDetectedEventArgs> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportCommunicationErrorDetectedEventArgs";
+    template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportEnterpriseManagementUIEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportExtensionSession";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession2> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportExtensionSession2";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession3> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportExtensionSession3";
@@ -185,16 +216,21 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4";
+    template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicy> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesUpdatePolicy";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketElement> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintTicketElement";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintTicketValidationRequestedEventArgs";
+    template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs2> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrintTicketValidationRequestedEventArgs2";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrinterSelectedEventArgs> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportPrinterSelectedEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSessionInfo> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportSessionInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsActivatedEventArgs> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportSettingsActivatedEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsActivatedEventArgs2> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportSettingsActivatedEventArgs2";
     template <> inline constexpr auto& name_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsUISession> = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportSettingsUISession";
+    template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo>{ 0x913CD9E0,0xCB44,0x5AE4,{ 0xB9,0x84,0xF6,0xE8,0x0E,0x87,0x23,0x20 } }; // 913CD9E0-CB44-5AE4-B984-F6E80E872320
+    template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics>{ 0x3246A41D,0x2757,0x544D,{ 0xAA,0xFA,0xB3,0x84,0x61,0x89,0x62,0x70 } }; // 3246A41D-2757-544D-AAFA-B38461896270
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportCommunicationErrorDetectedEventArgs>{ 0x9C90151E,0xAD1B,0x5081,{ 0xA4,0x91,0x4A,0x2D,0x94,0x24,0x4F,0x2D } }; // 9C90151E-AD1B-5081-A491-4A2D94244F2D
+    template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs>{ 0x6B1C2850,0x4BF7,0x5894,{ 0x89,0xFA,0xE8,0x9D,0x9E,0xA4,0xEB,0x2E } }; // 6B1C2850-4BF7-5894-89FA-E89D9EA4EB2E
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession>{ 0xEEA45F1A,0xF4C6,0x54B3,{ 0xA0,0xB8,0xA5,0x59,0x83,0x9A,0xA4,0xC3 } }; // EEA45F1A-F4C6-54B3-A0B8-A559839AA4C3
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession2>{ 0x10FA8C11,0x6DE8,0x5765,{ 0x8F,0xCF,0xE7,0x16,0xE0,0xF2,0x7E,0xD1 } }; // 10FA8C11-6DE8-5765-8FCF-E716E0F27ED1
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession3>{ 0x0D1B755D,0x1273,0x5E14,{ 0x81,0xD3,0xB6,0xBB,0x58,0x2B,0x9E,0xD8 } }; // 0D1B755D-1273-5E14-81D3-B6BB582B9ED8
@@ -206,16 +242,20 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2>{ 0x469DF9E7,0xFD07,0x5EEB,{ 0xA0,0x7D,0x9F,0xCC,0x67,0xF0,0x89,0xBA } }; // 469DF9E7-FD07-5EEB-A07D-9FCC67F089BA
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3>{ 0xD4E9B3FC,0x8094,0x5CB6,{ 0xA3,0x43,0xCE,0x7A,0x97,0x18,0x7B,0x45 } }; // D4E9B3FC-8094-5CB6-A343-CE7A97187B45
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4>{ 0x31734AD5,0x9BFB,0x5BFB,{ 0xBD,0xEF,0x84,0x76,0x25,0x8E,0x33,0x90 } }; // 31734AD5-9BFB-5BFB-BDEF-8476258E3390
+    template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5>{ 0xBC72F631,0x8177,0x5EF0,{ 0x94,0xC1,0x92,0x90,0x80,0x52,0x5B,0x5A } }; // BC72F631-8177-5EF0-94C1-929080525B5A
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicy>{ 0x5F5FC025,0x8C35,0x5529,{ 0x80,0x38,0x8C,0xDC,0x36,0x34,0xBB,0xCD } }; // 5F5FC025-8C35-5529-8038-8CDC3634BBCD
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics>{ 0x3D9E1A70,0x7C39,0x551F,{ 0xAA,0x1F,0xF8,0xCA,0x35,0xB3,0x11,0x9E } }; // 3D9E1A70-7C39-551F-AA1F-F8CA35B3119E
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketElement>{ 0x4B2A4489,0x730D,0x5BE7,{ 0x80,0xE6,0x83,0x32,0x94,0x1A,0xBF,0x13 } }; // 4B2A4489-730D-5BE7-80E6-8332941ABF13
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs>{ 0x338E4E69,0xDB55,0x55C7,{ 0x83,0x38,0xEF,0x64,0x68,0x0A,0x8F,0x90 } }; // 338E4E69-DB55-55C7-8338-EF64680A8F90
+    template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs2>{ 0x39749075,0xD02D,0x5FD1,{ 0x9C,0x4B,0x46,0xBB,0x8D,0xB7,0x31,0x6B } }; // 39749075-D02D-5FD1-9C4B-46BB8DB7316B
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrinterSelectedEventArgs>{ 0x7B1CB7D9,0xA8A4,0x5C09,{ 0xAD,0xB2,0x66,0x16,0x5F,0x81,0x79,0x77 } }; // 7B1CB7D9-A8A4-5C09-ADB2-66165F817977
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSessionInfo>{ 0x852149AF,0x777D,0x53E9,{ 0x9E,0xE9,0x45,0xD3,0xF4,0xB5,0xBE,0x9C } }; // 852149AF-777D-53E9-9EE9-45D3F4B5BE9C
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsActivatedEventArgs>{ 0x1E1B565E,0xA013,0x55EA,{ 0x9B,0x8C,0xEE,0xA3,0x9D,0x9F,0xB6,0xC1 } }; // 1E1B565E-A013-55EA-9B8C-EEA39D9FB6C1
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsActivatedEventArgs2>{ 0xABE45F6E,0xDC9D,0x5403,{ 0x81,0x07,0xC8,0x64,0xD9,0x27,0x63,0x67 } }; // ABE45F6E-DC9D-5403-8107-C864D9276367
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsUISession>{ 0xC6DA2251,0x83C3,0x55E4,{ 0xA0,0xF8,0x5D,0xE8,0xB0,0x62,0xAD,0xBF } }; // C6DA2251-83C3-55E4-A0F8-5DE8B062ADBF
+    template <> struct default_interface<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportAppInfo>{ using type = winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo; };
     template <> struct default_interface<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportCommunicationErrorDetectedEventArgs>{ using type = winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportCommunicationErrorDetectedEventArgs; };
+    template <> struct default_interface<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportEnterpriseManagementUIEventArgs>{ using type = winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs; };
     template <> struct default_interface<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession>{ using type = winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession; };
     template <> struct default_interface<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionTriggerDetails>{ using type = winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionTriggerDetails; };
     template <> struct default_interface<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportIppCommunicationConfiguration>{ using type = winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportIppCommunicationConfiguration; };
@@ -229,6 +269,22 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportSessionInfo>{ using type = winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSessionInfo; };
     template <> struct default_interface<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportSettingsActivatedEventArgs>{ using type = winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsActivatedEventArgs; };
     template <> struct default_interface<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportSettingsUISession>{ using type = winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsUISession; };
+    template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_AppInfo(void**) noexcept = 0;
+            virtual int32_t __stdcall get_SupportedContracts(uint32_t*) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall GetPrintJobShowsUI(void*, void*, void**) noexcept = 0;
+            virtual int32_t __stdcall FromPrinterName(void*, void**) noexcept = 0;
+        };
+    };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportCommunicationErrorDetectedEventArgs>
     {
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
@@ -237,6 +293,13 @@ namespace winrt::impl
             virtual int32_t __stdcall get_ExtendedError(winrt::hresult*) noexcept = 0;
             virtual int32_t __stdcall get_CommunicationConfiguration(void**) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_Printer(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession>
@@ -350,6 +413,13 @@ namespace winrt::impl
             virtual int32_t __stdcall get_MxdcImageQualityConfiguration(void**) noexcept = 0;
         };
     };
+    template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall SetPdlPassthroughWithJobAttributesSupported(bool) noexcept = 0;
+        };
+    };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicy>
     {
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
@@ -381,6 +451,13 @@ namespace winrt::impl
             virtual int32_t __stdcall get_PrintTicket(void**) noexcept = 0;
             virtual int32_t __stdcall SetPrintTicketValidationStatus(int32_t) noexcept = 0;
             virtual int32_t __stdcall GetDeferral(void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs2>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall SetPrintJobShowsUI(bool) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrinterSelectedEventArgs>
@@ -432,6 +509,26 @@ namespace winrt::impl
         };
     };
     template <typename D>
+    struct consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportAppInfo
+    {
+        [[nodiscard]] auto AppInfo() const;
+        [[nodiscard]] auto SupportedContracts() const;
+    };
+    template <> struct consume<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo>
+    {
+        template <typename D> using type = consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportAppInfo<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportAppInfoStatics
+    {
+        auto GetPrintJobShowsUI(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket) const;
+        auto FromPrinterName(param::hstring const& printerName) const;
+    };
+    template <> struct consume<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics>
+    {
+        template <typename D> using type = consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportAppInfoStatics<D>;
+    };
+    template <typename D>
     struct consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportCommunicationErrorDetectedEventArgs
     {
         [[nodiscard]] auto ErrorKind() const;
@@ -442,6 +539,15 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportCommunicationErrorDetectedEventArgs>
     {
         template <typename D> using type = consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportCommunicationErrorDetectedEventArgs<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportEnterpriseManagementUIEventArgs
+    {
+        [[nodiscard]] auto Printer() const;
+    };
+    template <> struct consume<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs>
+    {
+        template <typename D> using type = consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportEnterpriseManagementUIEventArgs<D>;
     };
     template <typename D>
     struct consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportExtensionSession
@@ -585,6 +691,15 @@ namespace winrt::impl
         template <typename D> using type = consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4<D>;
     };
     template <typename D>
+    struct consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5
+    {
+        auto SetPdlPassthroughWithJobAttributesSupported(bool supported) const;
+    };
+    template <> struct consume<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5>
+    {
+        template <typename D> using type = consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5<D>;
+    };
+    template <typename D>
     struct consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintDeviceCapabilitiesUpdatePolicy
     {
     };
@@ -624,6 +739,15 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs>
     {
         template <typename D> using type = consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintTicketValidationRequestedEventArgs<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintTicketValidationRequestedEventArgs2
+    {
+        auto SetPrintJobShowsUI(bool showsUI) const;
+    };
+    template <> struct consume<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs2>
+    {
+        template <typename D> using type = consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintTicketValidationRequestedEventArgs2<D>;
     };
     template <typename D>
     struct consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrinterSelectedEventArgs

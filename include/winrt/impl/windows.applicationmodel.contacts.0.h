@@ -59,6 +59,7 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::Contacts
         VideoCall = 0x8,
         SocialFeeds = 0x10,
         Share = 0x20,
+        Activity = 0x40,
     };
     enum class ContactAnnotationStoreAccessType : int32_t
     {

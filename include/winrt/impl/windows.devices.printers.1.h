@@ -9,6 +9,13 @@
 #include "winrt/impl/windows.devices.printers.0.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Printers
 {
+    struct WINRT_IMPL_EMPTY_BASES IIppAttributeConverterStatics :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IIppAttributeConverterStatics>
+    {
+        IIppAttributeConverterStatics(std::nullptr_t = nullptr) noexcept {}
+        IIppAttributeConverterStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IIppAttributeError :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IIppAttributeError>
@@ -72,6 +79,27 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         IIppPrintDevice4(std::nullptr_t = nullptr) noexcept {}
         IIppPrintDevice4(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IIppPrintDevice5 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IIppPrintDevice5>
+    {
+        IIppPrintDevice5(std::nullptr_t = nullptr) noexcept {}
+        IIppPrintDevice5(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IIppPrintDeviceInstallationResult :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IIppPrintDeviceInstallationResult>
+    {
+        IIppPrintDeviceInstallationResult(std::nullptr_t = nullptr) noexcept {}
+        IIppPrintDeviceInstallationResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IIppPrintDeviceManagerStatics :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IIppPrintDeviceManagerStatics>
+    {
+        IIppPrintDeviceManagerStatics(std::nullptr_t = nullptr) noexcept {}
+        IIppPrintDeviceManagerStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IIppPrintDeviceStatics :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IIppPrintDeviceStatics>
@@ -128,6 +156,13 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         IPdlPassthroughProvider(std::nullptr_t = nullptr) noexcept {}
         IPdlPassthroughProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IPdlPassthroughProvider2 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IPdlPassthroughProvider2>
+    {
+        IPdlPassthroughProvider2(std::nullptr_t = nullptr) noexcept {}
+        IPdlPassthroughProvider2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IPdlPassthroughTarget :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IPdlPassthroughTarget>
@@ -155,6 +190,13 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
     {
         IPrintSchema(std::nullptr_t = nullptr) noexcept {}
         IPrintSchema(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IReplaceDevicePropertiesResult :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IReplaceDevicePropertiesResult>
+    {
+        IReplaceDevicePropertiesResult(std::nullptr_t = nullptr) noexcept {}
+        IReplaceDevicePropertiesResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES IVirtualPrinterInstallationParameters :
         winrt::Windows::Foundation::IInspectable,

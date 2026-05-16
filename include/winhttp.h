@@ -834,7 +834,10 @@ typedef struct _WINHTTP_HTTP2_RECEIVE_WINDOW
 
 #define WINHTTP_OPTION_HTTP11_DOWNGRADE_TTL             211
 
-#define WINHTTP_LAST_OPTION                             WINHTTP_OPTION_HTTP11_DOWNGRADE_TTL
+#define WINHTTP_OPTION_SESSION_ERROR_LOG_GUID           212
+
+
+#define WINHTTP_LAST_OPTION                             WINHTTP_OPTION_SESSION_ERROR_LOG_GUID
 
 #define WINHTTP_OPTION_USERNAME                         0x1000
 #define WINHTTP_OPTION_PASSWORD                         0x1001
@@ -2329,7 +2332,8 @@ typedef enum _WINHTTP_PROXY_SETTINGS_TYPE
 {
     WinHttpProxySettingsTypeUnknown,
     WinHttpProxySettingsTypeWsl,
-    WinHttpProxySettingsTypeWsa
+    WinHttpProxySettingsTypeWsa,
+    WinHttpProxySettingsTypeXBox
 } WINHTTP_PROXY_SETTINGS_TYPE, *PWINHTTP_PROXY_SETTINGS_TYPE;
 
 
@@ -2499,6 +2503,9 @@ typedef struct _WINHTTP_FAST_FORWARDING_STATUS
 
 #define WINHTTP_FEATURE_DSCP_TAG                                             92
 #define WINHTTP_FEATURE_HTTP11_DOWNGRADE_TTL                                 93
+#define WINHTTP_FEATURE_SESSION_ERROR_LOG_GUID                               94
+
+#define WINHTTP_FEATURE_GET_PROXY_SETTINGS_EX_XBOX                           95
 
 
 

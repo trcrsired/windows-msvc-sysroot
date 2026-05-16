@@ -1,0 +1,238 @@
+// C++/WinRT v2.0.250303.1
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#pragma once
+#ifndef WINRT_Windows_AI_Agents_Mcp_H
+#define WINRT_Windows_AI_Agents_Mcp_H
+#include "winrt/base.h"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.1"
+#include "winrt/impl/windows.ai.agents.mcp.2.h"
+namespace winrt::impl
+{
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterExperimental<D>::Initialize(param::hstring const& clientAppUserModelId, uint32_t clientProcessId, param::hstring const& serverIdentity, param::hstring const& serverName, uint32_t serverProcessId) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->Initialize(*(void**)(&clientAppUserModelId), clientProcessId, *(void**)(&serverIdentity), *(void**)(&serverName), serverProcessId));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental>**)this;
+            check_hresult(_winrt_abi_type->Initialize(*(void**)(&clientAppUserModelId), clientProcessId, *(void**)(&serverIdentity), *(void**)(&serverName), serverProcessId));
+        }
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterExperimental<D>::OnMessage(param::hstring const& message, winrt::Windows::AI::Agents::Mcp::McpMessageDirection const& direction, winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse const& filterResponse) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->OnMessage(*(void**)(&message), static_cast<int32_t>(direction), *(void**)(&filterResponse)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental>**)this;
+            check_hresult(_winrt_abi_type->OnMessage(*(void**)(&message), static_cast<int32_t>(direction), *(void**)(&filterResponse)));
+        }
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponseExperimental<D>::IsAllowed() const
+    {
+        bool value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_IsAllowed(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>**)this;
+            check_hresult(_winrt_abi_type->get_IsAllowed(&value));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponseExperimental<D>::IsAllowed(bool value) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->put_IsAllowed(value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>**)this;
+            check_hresult(_winrt_abi_type->put_IsAllowed(value));
+        }
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponseExperimental<D>::MessageIfNotAllowed() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_MessageIfNotAllowed(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>**)this;
+            check_hresult(_winrt_abi_type->get_MessageIfNotAllowed(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponseExperimental<D>::MessageIfNotAllowed(param::hstring const& value) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->put_MessageIfNotAllowed(*(void**)(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>**)this;
+            check_hresult(_winrt_abi_type->put_MessageIfNotAllowed(*(void**)(&value)));
+        }
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponseExperimental2<D>::Allow() const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->Allow());
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2>**)this;
+            check_hresult(_winrt_abi_type->Allow());
+        }
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponseExperimental2<D>::Reject(param::hstring const& reason) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->Reject(*(void**)(&reason)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2>**)this;
+            check_hresult(_winrt_abi_type->Reject(*(void**)(&reason)));
+        }
+    }
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental>
+    {
+        int32_t __stdcall Initialize(void* clientAppUserModelId, uint32_t clientProcessId, void* serverIdentity, void* serverName, uint32_t serverProcessId) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().Initialize(*reinterpret_cast<hstring const*>(&clientAppUserModelId), clientProcessId, *reinterpret_cast<hstring const*>(&serverIdentity), *reinterpret_cast<hstring const*>(&serverName), serverProcessId);
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall OnMessage(void* message, int32_t direction, void* filterResponse) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().OnMessage(*reinterpret_cast<hstring const*>(&message), *reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpMessageDirection const*>(&direction), *reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse const*>(&filterResponse));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>
+    {
+    };
+#endif
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>
+    {
+        int32_t __stdcall get_IsAllowed(bool* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<bool>(this->shim().IsAllowed());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall put_IsAllowed(bool value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().IsAllowed(value);
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_MessageIfNotAllowed(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().MessageIfNotAllowed());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall put_MessageIfNotAllowed(void* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().MessageIfNotAllowed(*reinterpret_cast<hstring const*>(&value));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2>
+    {
+        int32_t __stdcall Allow() noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().Allow();
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall Reject(void* reason) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().Reject(*reinterpret_cast<hstring const*>(&reason));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+}
+WINRT_EXPORT namespace winrt::Windows::AI::Agents::Mcp
+{
+}
+namespace std
+{
+#ifndef WINRT_LEAN_AND_MEAN
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse> : winrt::impl::hash_base {};
+#endif
+#ifdef __cpp_lib_format
+#endif
+}
+#endif

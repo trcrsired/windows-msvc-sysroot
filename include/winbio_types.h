@@ -2364,6 +2364,7 @@ typedef ULONG32 WINBIO_TELEMETRY_TYPE, *PWINBIO_TELEMETRY_TYPE;
 #define WINBIO_TELEMETRY_AUTH                         ((WINBIO_TELEMETRY_TYPE)1)
 #define WINBIO_TELEMETRY_ENROLLMENT                   ((WINBIO_TELEMETRY_TYPE)2)
 
+
 #endif // (NTDDI_VERSION >= NTDDI_WIN10_RS2)
 
 #if (NTDDI_VERSION >= NTDDI_WIN10_RS3)
@@ -2391,60 +2392,69 @@ const ULONG WINBIO_MAX_PRIVATE_SENSOR_TYPE_INFO_BUFFER_SIZE = 0x1000;
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-typedef ULONG64 EXPERIMENTAL_WINBIO_ESS_STATE, *EXPERIMENTAL_PWINBIO_ESS_STATE;
+typedef ULONG64 WINBIO_ESS_STATE, *PWINBIO_ESS_STATE;
 
-// This flag will be removed.
-#define EXPERIMENTAL_WINBIO_ESS_ENROLLED                                 ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00000000)
- 
-// This PC does not have TPM 2.0
-#define EXPERIMENTAL_WINBIO_ESS_REQUIRES_TPM2                            ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00000001)
+enum WINBIO_ESS_STATE_FLAGS
+{
+    // This PC does not have TPM 2.0
+    WINBIO_ESS_REQUIRES_TPM2                            = 0x00000001,
 
-// This PC is not VBS capable.
-#define EXPERIMENTAL_WINBIO_ESS_REQUIRES_VBS_CAPABLE                     ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00000002)
+    // This PC is not VBS capable.
+    WINBIO_ESS_REQUIRES_VBS_CAPABLE                     = 0x00000002,
 
-// This PC has a Windows Hello container backed by VBS.
-#define EXPERIMENTAL_WINBIO_ESS_REQUIRES_NON_VBS_WINDOWS_HELLO_ABSENCE   ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00000004)
+    // This PC has a Windows Hello container not backed by VBS.
+    WINBIO_ESS_REQUIRES_NON_VBS_WINDOWS_HELLO_ABSENCE   = 0x00000004,
 
-// This PC does not have a Windows Hello container backed by VBS.
-#define EXPERIMENTAL_WINBIO_ESS_REQUIRES_VBS_WINDOWS_HELLO               ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00000008)
+    // This PC does not have a Windows Hello container backed by VBS.
+    WINBIO_ESS_REQUIRES_VBS_WINDOWS_HELLO               = 0x00000008,
 
-// This PC does not have VBS running.
-#define EXPERIMENTAL_WINBIO_ESS_REQUIRES_VBS_RUNNING                     ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00000010)
+    // This PC does not have VBS running.
+    WINBIO_ESS_REQUIRES_VBS_RUNNING                     = 0x00000010,
 
-// This PC is missing VBS encryption keys.
-#define EXPERIMENTAL_WINBIO_ESS_REQUIRES_VBS_ENCRYPTION_KEY              ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00000020)
+    // This PC is missing VBS encryption keys.
+    WINBIO_ESS_REQUIRES_VBS_ENCRYPTION_KEY              = 0x00000020,
 
-// On this PC, ESS is disabled either using a "Enhanced Sign-in Security" toggle in Accounts -> Sign-in options under "Additional settings" or
-// using a policy.
-// By default following flag will not be set.
-#define EXPERIMENTAL_WINBIO_ESS_REQUIRES_ENABLEMENT                      ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00000040)
+    // On this PC, ESS is disabled either using a "Enhanced Sign-in Security" toggle in Accounts -> Sign-in options under "Additional settings" or
+    // using a policy.
+    // By default following flag will not be set.
+    WINBIO_ESS_REQUIRES_ENABLEMENT                      = 0x00000040,
 
-// On this PC, ESS is managed using a policy available through group policy or MDM policy.
-// MDM policy: ./Device/Vendor/MSFT/PassportForWork/Biometrics/EnableESSwithSupportedPeripherals
-// Group policy: Computer Configuration\Administrative Templates\Windows Components\Windows Hello for Business\Enable ESS with Supported Peripherals
-#define EXPERIMENTAL_WINBIO_ESS_MANAGED_BY_POLICY                       ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00000080)
+    // On this PC, ESS is managed using a policy available through group policy or MDM policy.
+    // MDM policy: ./Device/Vendor/MSFT/PassportForWork/Biometrics/EnableESSwithSupportedPeripherals
+    // Group policy: Computer Configuration\Administrative Templates\Windows Components\Windows Hello for Business\Enable ESS with Supported Peripherals
+    WINBIO_ESS_MANAGED_BY_POLICY                        = 0x00000080,
 
-// This PC contains enrollments performed using biometric sensors that are not ESS-capable.
-#define EXPERIMENTAL_WINBIO_ESS_REQUIRES_NON_VBS_BIOMETRIC_ENROLLMENT_ABSENCE  ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00000100)
+    // This PC contains enrollments performed using biometric sensors that are not ESS-capable.
+    WINBIO_ESS_REQUIRES_NON_VBS_BIOMETRIC_ENROLLMENT_ABSENCE = 0x00000100,
 
-// This PC does not have enrollments performed using ESS capable biometric sensors.
-#define EXPERIMENTAL_WINBIO_ESS_REQUIRES_VBS_BIOMETRIC_ENROLLMENT        ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00000200)
+    // This PC does not have enrollments performed using ESS capable biometric sensors.
+    WINBIO_ESS_REQUIRES_VBS_BIOMETRIC_ENROLLMENT        = 0x00000200,
 
-// This PC does not have a ESS capable face camera sensor. 
-#define EXPERIMENTAL_WINBIO_ESS_REQUIRES_FACE_SENSOR                     ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00000400)
+    // This PC does not have a ESS capable face camera sensor. 
+    WINBIO_ESS_REQUIRES_FACE_SENSOR                     = 0x00000400,
 
-// This PC does not have a ESS FPR sensor.
-#define EXPERIMENTAL_WINBIO_ESS_REQUIRES_FPR_SENSOR                      ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00000800)
+    // This PC does not have a ESS FPR sensor.
+    WINBIO_ESS_REQUIRES_FPR_SENSOR                      = 0x00000800,
 
-// This PC could not start biometrics trustlet needed for ESS.
-#define EXPERIMENTAL_WINBIO_ESS_REQUIRES_ISOLATED_PROCESS                ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00001000)
+    // This PC could not start biometrics trustlet needed for ESS.
+    WINBIO_ESS_REQUIRES_ISOLATED_PROCESS                = 0x00001000,
 
-// This PC blocked non-ESS capable fingerprint sensor.
-#define EXPERIMENTAL_WINBIO_ESS_BLOCKED_NON_ESS_FPR                      ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00002000)
+    // This PC blocked non-ESS capable fingerprint sensor.
+    WINBIO_ESS_BLOCKED_NON_ESS_FPR                      = 0x00002000,
 
-// This PC blocked non-ESS capable face camera sensor.
-#define EXPERIMENTAL_WINBIO_ESS_BLOCKED_NON_ESS_CAMERA                   ((EXPERIMENTAL_WINBIO_ESS_STATE) 0x00004000)
+    // This PC blocked non-ESS capable face camera sensor.
+    WINBIO_ESS_BLOCKED_NON_ESS_CAMERA                   = 0x00004000,
 
+    // This PC's ESS state is determined based on if they have non ESS enrollments
+    WINBIO_ESS_SOURCE_DEFAULT                           = 0x00008000
+};
+
+// Returns biometric capable sensor type connected to the PC.
+typedef struct _WINBIO_CONNECTED_SENSOR
+{
+    WINBIO_BIOMETRIC_TYPE biometricType;
+    BOOL isEnhancedSignInSecurityCapable;
+} WINBIO_CONNECTED_SENSOR, *PWINBIO_CONNECTED_SENSOR;
 
 #endif // (NTDDI_VERSION >= NTDDI_WIN11_GE)
 

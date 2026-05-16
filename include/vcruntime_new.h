@@ -174,7 +174,7 @@ _VCRT_EXPORT_STD void __CRTDECL operator delete[](
 
 #ifndef __PLACEMENT_VEC_NEW_INLINE
     #define __PLACEMENT_VEC_NEW_INLINE
-    _VCRT_EXPORT_STD _NODISCARD _Ret_notnull_ _Post_writable_byte_size_(_Size) _Post_satisfies_(return == _Where)
+    _VCRT_EXPORT_STD _NODISCARD _MSVC_CONSTEXPR _Ret_notnull_ _Post_writable_byte_size_(_Size) _Post_satisfies_(return == _Where)
     inline void* __CRTDECL operator new[](size_t _Size,
         _Writable_bytes_(_Size) void* _Where) noexcept
     {

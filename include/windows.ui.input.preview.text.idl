@@ -238,7 +238,6 @@ namespace Windows
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     enum KeyEventDeviceType
                     {
                         Undefined        = 0,
@@ -249,7 +248,6 @@ namespace Windows
                     };
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     enum PayloadResult
                     {
                         InEditing  = 0,
@@ -262,7 +260,6 @@ namespace Windows
                     };
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     enum TextBoxContentAttribute
                     {
                         None      = 0,
@@ -273,7 +270,6 @@ namespace Windows
                     };
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [flags]
                     enum TextBoxFeatures
                     {
@@ -284,7 +280,6 @@ namespace Windows
                     };
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [flags]
                     enum TextBoxSettings
                     {
@@ -295,7 +290,6 @@ namespace Windows
                     };
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     enum TextChangeSource
                     {
                         External             = 0,
@@ -309,7 +303,6 @@ namespace Windows
                     };
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     enum TextConversionMode
                     {
                         Undefined                   = 0,
@@ -327,7 +320,6 @@ namespace Windows
                     };
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [flags]
                     enum TextStyleAttributes
                     {
@@ -339,14 +331,12 @@ namespace Windows
                     };
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     struct TextBoxId
                     {
                         UINT32 Value;
                     };
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     struct TextInputServiceSubscription
                     {
                         Windows.UI.Input.Preview.Text.TextBoxFeatures requiredEnabledFeatures;
@@ -354,7 +344,6 @@ namespace Windows
                     };
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     struct TextStyle
                     {
                         Windows.UI.Input.Preview.Text.TextStyleAttributes mask;
@@ -366,7 +355,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.ConversionModeChangedEventArgs)]
-                    [experimental]
                     [uuid(B49761F9-5B21-513C-B6C0-78F27D26B010)]
                     interface IConversionModeChangedEventArgs : IInspectable
                     {
@@ -375,7 +363,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.FocusEnteredEventArgs)]
-                    [experimental]
                     [uuid(CA4DC200-875F-501D-AF14-413A0AA1ED5F)]
                     interface IFocusEnteredEventArgs : IInspectable
                     {
@@ -384,7 +371,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.InputDelegationModeChangedEventArgs)]
-                    [experimental]
                     [uuid(4BB448B2-67BA-5215-8783-B444BD28EED3)]
                     interface IInputDelegationModeChangedEventArgs : IInspectable
                     {
@@ -393,7 +379,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.KeyEventReceivedEventArgs)]
-                    [experimental]
                     [uuid(0C30F686-A058-5ECC-ABD2-9CC861C1185B)]
                     interface IKeyEventReceivedEventArgs : IInspectable
                     {
@@ -410,7 +395,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.KeyboardInputProcessor)]
-                    [experimental]
                     [uuid(2AFE79B6-5818-50E0-8FA8-81BC96428C46)]
                     interface IKeyboardInputProcessor : IInspectable
                     {
@@ -448,7 +432,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.ReconversionRequestedEventArgs)]
-                    [experimental]
                     [uuid(73852244-D202-55FE-9EDF-BEB7EC19F937)]
                     interface IReconversionRequestedEventArgs : IInspectable
                     {
@@ -457,7 +440,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.TextBoxContentChangedEventArgs)]
-                    [experimental]
                     [uuid(2CB70A41-5AED-58C5-B4C1-8EE4E1492F9E)]
                     interface ITextBoxContentChangedEventArgs : IInspectable
                     {
@@ -469,7 +451,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.TextBoxInfo)]
-                    [experimental]
                     [uuid(B122443D-E8F7-5F8B-813D-AAA0941D5FA0)]
                     interface ITextBoxInfo : IInspectable
                     {
@@ -483,7 +464,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.TextBoxInfoChangedEventArgs)]
-                    [experimental]
                     [uuid(AC1275AF-648C-5BAC-B29F-D1EA17E9E6D6)]
                     interface ITextBoxInfoChangedEventArgs : IInspectable
                     {
@@ -492,7 +472,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.TextComposition)]
-                    [experimental]
                     [uuid(5CEA9AEA-524D-50A4-B08A-C83D8D25EC6E)]
                     interface ITextComposition : IInspectable
                     {
@@ -509,7 +488,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.TextCompositionSegment)]
-                    [experimental]
                     [uuid(0543F6C6-EB98-56D6-8808-2ECA6D02F6A5)]
                     interface ITextCompositionSegment : IInspectable
                     {
@@ -530,7 +508,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.TextEditSession)]
-                    [experimental]
                     [uuid(0BCAD18A-D31B-5787-AFF9-995EE743AEA8)]
                     interface ITextEditSession : IInspectable
                     {
@@ -551,7 +528,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.TextInputProvider)]
-                    [experimental]
                     [uuid(B0885FB7-E9F8-5849-B0EF-F8155ECF60D1)]
                     interface ITextInputProvider : IInspectable
                     {
@@ -583,7 +559,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.TextInputService)]
-                    [experimental]
                     [uuid(8E23F89C-AB1F-551A-8751-7D4F29E34D88)]
                     interface ITextInputService : IInspectable
                     {
@@ -593,7 +568,6 @@ namespace Windows
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [exclusiveto(Windows.UI.Input.Preview.Text.TextInputService)]
-                    [experimental]
                     [uuid(91B68F5E-02ED-4E09-AE89-DFD735CF10BC)]
                     interface ITextInputServiceStatics : IInspectable
                     {
@@ -601,117 +575,103 @@ namespace Windows
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     runtimeclass ConversionModeChangedEventArgs
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.IConversionModeChangedEventArgs;
+                        [default] interface Windows.UI.Input.Preview.Text.IConversionModeChangedEventArgs;
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     runtimeclass FocusEnteredEventArgs
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.IFocusEnteredEventArgs;
+                        [default] interface Windows.UI.Input.Preview.Text.IFocusEnteredEventArgs;
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     runtimeclass InputDelegationModeChangedEventArgs
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.IInputDelegationModeChangedEventArgs;
+                        [default] interface Windows.UI.Input.Preview.Text.IInputDelegationModeChangedEventArgs;
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     runtimeclass KeyEventReceivedEventArgs
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.IKeyEventReceivedEventArgs;
+                        [default] interface Windows.UI.Input.Preview.Text.IKeyEventReceivedEventArgs;
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     runtimeclass KeyboardInputProcessor
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.IKeyboardInputProcessor;
+                        [default] interface Windows.UI.Input.Preview.Text.IKeyboardInputProcessor;
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     runtimeclass ReconversionRequestedEventArgs
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.IReconversionRequestedEventArgs;
+                        [default] interface Windows.UI.Input.Preview.Text.IReconversionRequestedEventArgs;
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     runtimeclass TextBoxContentChangedEventArgs
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.ITextBoxContentChangedEventArgs;
+                        [default] interface Windows.UI.Input.Preview.Text.ITextBoxContentChangedEventArgs;
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     runtimeclass TextBoxInfo
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.ITextBoxInfo;
+                        [default] interface Windows.UI.Input.Preview.Text.ITextBoxInfo;
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     runtimeclass TextBoxInfoChangedEventArgs
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.ITextBoxInfoChangedEventArgs;
+                        [default] interface Windows.UI.Input.Preview.Text.ITextBoxInfoChangedEventArgs;
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     runtimeclass TextComposition
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.ITextComposition;
+                        [default] interface Windows.UI.Input.Preview.Text.ITextComposition;
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     runtimeclass TextCompositionSegment
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.ITextCompositionSegment;
+                        [default] interface Windows.UI.Input.Preview.Text.ITextCompositionSegment;
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     runtimeclass TextEditSession
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.ITextEditSession;
+                        [default] interface Windows.UI.Input.Preview.Text.ITextEditSession;
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     runtimeclass TextInputProvider
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.ITextInputProvider;
+                        [default] interface Windows.UI.Input.Preview.Text.ITextInputProvider;
                     }
 
                     [contract(Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
-                    [experimental]
                     [marshaling_behavior(agile)]
                     [static(Windows.UI.Input.Preview.Text.ITextInputServiceStatics, Windows.UI.Input.Preview.Text.PreviewTextContract, 1.0)]
                     [threading(both)]
                     runtimeclass TextInputService
                     {
-                        [default] [experimental] interface Windows.UI.Input.Preview.Text.ITextInputService;
+                        [default] interface Windows.UI.Input.Preview.Text.ITextInputService;
                     }
                 }
             }

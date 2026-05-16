@@ -553,12 +553,7 @@ EXTERN_C const IID IID_IClipServiceNotificationHelper;
     IClipServiceNotificationHelper : public IUnknown
     {
     public:
-        virtual HRESULT STDMETHODCALLTYPE ShowToast( 
-            /* [string][in] */ __RPC__in_string BSTR titleText,
-            /* [string][in] */ __RPC__in_string BSTR bodyText,
-            /* [string][in] */ __RPC__in_string BSTR packageName,
-            /* [string][in] */ __RPC__in_string BSTR appId,
-            /* [string][in] */ __RPC__in_string BSTR launchCommand) = 0;
+        virtual HRESULT STDMETHODCALLTYPE ShowToast( void) = 0;
         
     };
     
@@ -586,12 +581,7 @@ EXTERN_C const IID IID_IClipServiceNotificationHelper;
         
         DECLSPEC_XFGVIRT(IClipServiceNotificationHelper, ShowToast)
         HRESULT ( STDMETHODCALLTYPE *ShowToast )( 
-            __RPC__in IClipServiceNotificationHelper * This,
-            /* [string][in] */ __RPC__in_string BSTR titleText,
-            /* [string][in] */ __RPC__in_string BSTR bodyText,
-            /* [string][in] */ __RPC__in_string BSTR packageName,
-            /* [string][in] */ __RPC__in_string BSTR appId,
-            /* [string][in] */ __RPC__in_string BSTR launchCommand);
+            __RPC__in IClipServiceNotificationHelper * This);
         
         END_INTERFACE
     } IClipServiceNotificationHelperVtbl;
@@ -616,8 +606,8 @@ EXTERN_C const IID IID_IClipServiceNotificationHelper;
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IClipServiceNotificationHelper_ShowToast(This,titleText,bodyText,packageName,appId,launchCommand)	\
-    ( (This)->lpVtbl -> ShowToast(This,titleText,bodyText,packageName,appId,launchCommand) ) 
+#define IClipServiceNotificationHelper_ShowToast(This)	\
+    ( (This)->lpVtbl -> ShowToast(This) ) 
 
 #endif /* COBJMACROS */
 

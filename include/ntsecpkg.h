@@ -2679,7 +2679,7 @@ KSEC_LOCATE_PKG_BY_ID KSecLocatePackageById;
 #endif // not valid for MIDL_PASS
 
 typedef struct _SECPKG_KERNEL_FUNCTIONS {
-    PLSA_ALLOCATE_LSA_HEAP AllocateHeap;
+    PLSA_ALLOCATE_LSA_HEAP AllocateHeap; // Actually allocates VM - used to pass data back to usermode
     PLSA_FREE_LSA_HEAP FreeHeap;
     PKSEC_CREATE_CONTEXT_LIST CreateContextList;
     PKSEC_INSERT_LIST_ENTRY InsertListEntry;
@@ -2798,6 +2798,10 @@ typedef struct _SECPKG_KERNEL_FUNCTION_TABLE {
     KspSerializeAuthDataFn * SerializeAuthData;
 } SECPKG_KERNEL_FUNCTION_TABLE, *PSECPKG_KERNEL_FUNCTION_TABLE;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 SECURITY_STATUS
 SEC_ENTRY
 KSecRegisterSecurityProvider(
@@ -2812,6 +2816,17 @@ KSecLocatePackage(
     _Outptr_ PSECPKG_KERNEL_FUNCTION_TABLE * Package,
     _Out_ PULONG_PTR PackageId
     );
+
+// Routine for kernel packages to allocate memory that callers will free with ksecdd!FreeContextBuffer
+// The allocated memory will be paged pool using the KSEC_PACKAGE_TAG_DEFAULT pool tag
+PVOID SEC_ENTRY
+KSecAllocateContextBuffer(
+    ULONG cbMemory
+    );
+
+#ifdef __cplusplus
+}
+#endif
 
 extern SECPKG_KERNEL_FUNCTIONS KspKernelFunctions;
 

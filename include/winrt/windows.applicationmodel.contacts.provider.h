@@ -178,6 +178,42 @@ namespace winrt::impl
         }
         return winrt::Windows::Foundation::Collections::IVector<winrt::Windows::ApplicationModel::Contacts::ContactFieldType>{ value, take_ownership_from_abi };
     }
+    template <typename D> auto consume_Windows_ApplicationModel_Contacts_Provider_IContactProvider<D>::GetContactFromRemoteIdAsync(param::hstring const& contactRemoteId) const
+    {
+        void* operation{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Contacts::Provider::IContactProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Contacts::Provider::IContactProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Contacts::Provider::IContactProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetContactFromRemoteIdAsync(*(void**)(&contactRemoteId), &operation));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Contacts::Provider::IContactProvider>**)this;
+            check_hresult(_winrt_abi_type->GetContactFromRemoteIdAsync(*(void**)(&contactRemoteId), &operation));
+        }
+        return winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::ApplicationModel::Contacts::Contact>{ operation, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_ApplicationModel_Contacts_Provider_IContactProvider<D>::ContactListId() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::ApplicationModel::Contacts::Provider::IContactProvider>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::ApplicationModel::Contacts::Provider::IContactProvider, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Contacts::Provider::IContactProvider>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_ContactListId(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::ApplicationModel::Contacts::Provider::IContactProvider>**)this;
+            check_hresult(_winrt_abi_type->get_ContactListId(&value));
+        }
+        return hstring{ value, take_ownership_from_abi };
+    }
     template <typename D> auto consume_Windows_ApplicationModel_Contacts_Provider_IContactRemovedEventArgs<D>::Id() const
     {
         void* value{};
@@ -273,6 +309,26 @@ namespace winrt::impl
         catch (...) { return to_hresult(); }
     };
 #endif
+    template <typename D>
+    struct produce<D, winrt::Windows::ApplicationModel::Contacts::Provider::IContactProvider> : produce_base<D, winrt::Windows::ApplicationModel::Contacts::Provider::IContactProvider>
+    {
+        int32_t __stdcall GetContactFromRemoteIdAsync(void* contactRemoteId, void** operation) noexcept final try
+        {
+            clear_abi(operation);
+            typename D::abi_guard guard(this->shim());
+            *operation = detach_from<winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::ApplicationModel::Contacts::Contact>>(this->shim().GetContactFromRemoteIdAsync(*reinterpret_cast<hstring const*>(&contactRemoteId)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_ContactListId(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().ContactListId());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
     struct produce<D, winrt::Windows::ApplicationModel::Contacts::Provider::IContactRemovedEventArgs> : produce_base<D, winrt::Windows::ApplicationModel::Contacts::Provider::IContactRemovedEventArgs>
@@ -296,6 +352,7 @@ namespace std
 #ifndef WINRT_LEAN_AND_MEAN
     template<> struct hash<winrt::Windows::ApplicationModel::Contacts::Provider::IContactPickerUI> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::ApplicationModel::Contacts::Provider::IContactPickerUI2> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::ApplicationModel::Contacts::Provider::IContactProvider> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::ApplicationModel::Contacts::Provider::IContactRemovedEventArgs> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::ApplicationModel::Contacts::Provider::ContactPickerUI> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::ApplicationModel::Contacts::Provider::ContactRemovedEventArgs> : winrt::impl::hash_base {};

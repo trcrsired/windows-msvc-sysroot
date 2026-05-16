@@ -442,8 +442,8 @@ public:
     friend std::ostream & operator<<(std::ostream & _Os, const F32vec1 &_A)
     {
     /* To use: cout << "Elements of F32vec1 fvec are: " << fvec; */
-      float *_Fp = (float*)&_A;
-	  _Os << "float:" << *_Fp;
+        float *_Fp = (float*)&_A;
+        _Os << "float:" << *_Fp;
         return _Os;
     }
 #endif  /* defined (_ENABLE_VEC_DEBUG) */

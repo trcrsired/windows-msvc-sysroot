@@ -19,6 +19,16 @@ namespace Windows
 {
     namespace Foundation
     {
+        namespace Collections
+        {
+            runtimeclass ValueSet;
+        }
+    }
+}
+namespace Windows
+{
+    namespace Foundation
+    {
         typedef struct DateTime DateTime;
 
         interface IClosable;
@@ -77,7 +87,11 @@ namespace Windows
 
             typedef enum IppAttributeErrorReason IppAttributeErrorReason;
 
+            typedef enum IppAttributeGroupKind IppAttributeGroupKind;
+
             typedef enum IppAttributeValueKind IppAttributeValueKind;
+
+            typedef enum IppPrintDeviceInstallationStatus IppPrintDeviceInstallationStatus;
 
             typedef enum IppPrintDeviceKind IppPrintDeviceKind;
 
@@ -85,9 +99,13 @@ namespace Windows
 
             typedef enum PageConfigurationSource PageConfigurationSource;
 
+            typedef enum ReplaceDevicePropertiesStatus ReplaceDevicePropertiesStatus;
+
             typedef enum VirtualPrinterInstallationStatus VirtualPrinterInstallationStatus;
 
             typedef enum VirtualPrinterPreferredInputFormat VirtualPrinterPreferredInputFormat;
+
+            interface IIppAttributeConverterStatics;
 
             interface IIppAttributeError;
 
@@ -107,6 +125,12 @@ namespace Windows
 
             interface IIppPrintDevice4;
 
+            interface IIppPrintDevice5;
+
+            interface IIppPrintDeviceInstallationResult;
+
+            interface IIppPrintDeviceManagerStatics;
+
             interface IIppPrintDeviceStatics;
 
             interface IIppResolution;
@@ -123,6 +147,8 @@ namespace Windows
 
             interface IPdlPassthroughProvider;
 
+            interface IPdlPassthroughProvider2;
+
             interface IPdlPassthroughTarget;
 
             interface IPrint3DDevice;
@@ -130,6 +156,8 @@ namespace Windows
             interface IPrint3DDeviceStatics;
 
             interface IPrintSchema;
+
+            interface IReplaceDevicePropertiesResult;
 
             interface IVirtualPrinterInstallationParameters;
 
@@ -141,6 +169,8 @@ namespace Windows
 
             interface IVirtualPrinterSupportedFormatFactory;
 
+            runtimeclass IppAttributeConverter;
+
             runtimeclass IppAttributeError;
 
             runtimeclass IppAttributeValue;
@@ -148,6 +178,10 @@ namespace Windows
             runtimeclass IppIntegerRange;
 
             runtimeclass IppPrintDevice;
+
+            runtimeclass IppPrintDeviceInstallationResult;
+
+            runtimeclass IppPrintDeviceManager;
 
             runtimeclass IppResolution;
 
@@ -164,6 +198,8 @@ namespace Windows
             runtimeclass Print3DDevice;
 
             runtimeclass PrintSchema;
+
+            runtimeclass ReplaceDevicePropertiesResult;
 
             runtimeclass VirtualPrinterInstallationParameters;
 
@@ -201,6 +237,8 @@ namespace Windows
 
                 interface Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<HSTRING, Windows.Devices.Printers.IppAttributeValue*>*>;
 
+                interface Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<Windows.Devices.Printers.IppAttributeGroupKind, Windows.Foundation.Collections.IMap<HSTRING, Windows.Devices.Printers.IppAttributeValue*>*>*>;
+
                 interface Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IMapView<HSTRING, Windows.Devices.Printers.IppAttributeValue*>*>;
 
                 interface Windows.Foundation.Collections.IIterator<Windows.Devices.Printers.IppAttributeValue*>;
@@ -219,17 +257,25 @@ namespace Windows
 
                 interface Windows.Foundation.Collections.IIterator<Windows.Foundation.Collections.IKeyValuePair<HSTRING, Windows.Devices.Printers.IppAttributeValue*>*>;
 
+                interface Windows.Foundation.Collections.IIterator<Windows.Foundation.Collections.IKeyValuePair<Windows.Devices.Printers.IppAttributeGroupKind, Windows.Foundation.Collections.IMap<HSTRING, Windows.Devices.Printers.IppAttributeValue*>*>*>;
+
                 interface Windows.Foundation.Collections.IIterator<Windows.Foundation.Collections.IMapView<HSTRING, Windows.Devices.Printers.IppAttributeValue*>*>;
 
                 interface Windows.Foundation.Collections.IKeyValuePair<HSTRING, Windows.Devices.Printers.IppAttributeError*>;
 
                 interface Windows.Foundation.Collections.IKeyValuePair<HSTRING, Windows.Devices.Printers.IppAttributeValue*>;
 
+                interface Windows.Foundation.Collections.IKeyValuePair<Windows.Devices.Printers.IppAttributeGroupKind, Windows.Foundation.Collections.IMap<HSTRING, Windows.Devices.Printers.IppAttributeValue*>*>;
+
                 interface Windows.Foundation.Collections.IMapView<HSTRING, Windows.Devices.Printers.IppAttributeError*>;
 
                 interface Windows.Foundation.Collections.IMapView<HSTRING, Windows.Devices.Printers.IppAttributeValue*>;
 
+                interface Windows.Foundation.Collections.IMapView<Windows.Devices.Printers.IppAttributeGroupKind, Windows.Foundation.Collections.IMap<HSTRING, Windows.Devices.Printers.IppAttributeValue*>*>;
+
                 interface Windows.Foundation.Collections.IMap<HSTRING, Windows.Devices.Printers.IppAttributeValue*>;
+
+                interface Windows.Foundation.Collections.IMap<Windows.Devices.Printers.IppAttributeGroupKind, Windows.Foundation.Collections.IMap<HSTRING, Windows.Devices.Printers.IppAttributeValue*>*>;
 
                 interface Windows.Foundation.Collections.IVectorView<Windows.Devices.Printers.IppAttributeValue*>;
 
@@ -252,6 +298,8 @@ namespace Windows
                 interface Windows.Foundation.Collections.IVector<Windows.Devices.Printers.VirtualPrinterSupportedFormat*>;
 
                 interface Windows.Foundation.Collections.IVector<Windows.Foundation.Collections.IMapView<HSTRING, Windows.Devices.Printers.IppAttributeValue*>*>;
+
+                interface Windows.Foundation.IAsyncOperation<Windows.Devices.Printers.IppPrintDeviceInstallationResult*>;
 
                 interface Windows.Foundation.IAsyncOperation<Windows.Devices.Printers.Print3DDevice*>;
 
@@ -283,6 +331,15 @@ namespace Windows
                 ConflictingAttributes       = 4
             };
 
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [experimental]
+            enum IppAttributeGroupKind
+            {
+                Printer   = 0,
+                Job       = 1,
+                Operation = 2
+            };
+
             [contract(Windows.Foundation.UniversalApiContract, 13.0)]
             enum IppAttributeValueKind
             {
@@ -309,6 +366,16 @@ namespace Windows
                 MimeMediaType       = 20
             };
 
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [experimental]
+            enum IppPrintDeviceInstallationStatus
+            {
+                InstallationSucceeded   = 0,
+                PrinterAlreadyInstalled = 1,
+                CommunicationError      = 2,
+                OtherFailure            = 3
+            };
+
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
             enum IppPrintDeviceKind
             {
@@ -331,8 +398,16 @@ namespace Windows
                 PdlContent            = 1
             };
 
-            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
             [experimental]
+            enum ReplaceDevicePropertiesStatus
+            {
+                Succeeded    = 0,
+                AccessDenied = 1,
+                OtherFailure = 2
+            };
+
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
             enum VirtualPrinterInstallationStatus
             {
                 InstallationSucceeded           = 0,
@@ -341,13 +416,23 @@ namespace Windows
                 PrinterInstallationFailed       = 3
             };
 
-            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
-            [experimental]
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
             enum VirtualPrinterPreferredInputFormat
             {
                 OpenXps    = 0,
                 PostScript = 1
             };
+
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [exclusiveto(Windows.Devices.Printers.IppAttributeConverter)]
+            [experimental]
+            [uuid(F558776E-852A-5B89-BBA8-A5ABC6303D01)]
+            interface IIppAttributeConverterStatics : IInspectable
+            {
+                HRESULT ConvertPrintTicketToIppAttributesForPrinter([in] HSTRING printerName, [in] Windows.Graphics.Printing.PrintTicket.WorkflowPrintTicket* printTicket, [out] [retval] Windows.Foundation.Collections.IMap<Windows.Devices.Printers.IppAttributeGroupKind, Windows.Foundation.Collections.IMap<HSTRING, Windows.Devices.Printers.IppAttributeValue*>*>** result);
+                HRESULT ConvertBufferToIppAttributes([in] Windows.Storage.Streams.IBuffer* attributesBuffer, [out] [retval] Windows.Foundation.Collections.IMap<HSTRING, Windows.Devices.Printers.IppAttributeValue*>** result);
+                HRESULT ConvertIppAttributesToBuffer([in] Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<HSTRING, Windows.Devices.Printers.IppAttributeValue*>*>* attributes, [in] Windows.Devices.Printers.IppAttributeGroupKind attributeGroupKind, [out] [retval] Windows.Storage.Streams.IBuffer** result);
+            }
 
             [contract(Windows.Foundation.UniversalApiContract, 13.0)]
             [exclusiveto(Windows.Devices.Printers.IppAttributeError)]
@@ -493,6 +578,37 @@ namespace Windows
                 HRESULT GetMaxSupportedPdlVersion([in] HSTRING pdlContentType, [out] [retval] HSTRING* result);
             }
 
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [exclusiveto(Windows.Devices.Printers.IppPrintDevice)]
+            [experimental]
+            [uuid(EA927FCA-E073-5DB4-9AEE-13DF714E853A)]
+            interface IIppPrintDevice5 : IInspectable
+            {
+                HRESULT GetDeviceProperties([out] [retval] Windows.Foundation.Collections.ValueSet** result);
+                HRESULT ReplaceDeviceProperties([in] Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<HSTRING, IInspectable*>*>* deviceProperties, [out] [retval] Windows.Devices.Printers.ReplaceDevicePropertiesResult** result);
+            }
+
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [exclusiveto(Windows.Devices.Printers.IppPrintDeviceInstallationResult)]
+            [experimental]
+            [uuid(FB102FCC-87BE-57FF-A086-92272148A256)]
+            interface IIppPrintDeviceInstallationResult : IInspectable
+            {
+                [propget] HRESULT Status([out] [retval] Windows.Devices.Printers.IppPrintDeviceInstallationStatus* value);
+                [propget] HRESULT InstalledPrinterName([out] [retval] HSTRING* value);
+                [propget] HRESULT ExtendedError([out] [retval] HRESULT* value);
+            }
+
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [exclusiveto(Windows.Devices.Printers.IppPrintDeviceManager)]
+            [experimental]
+            [uuid(8F711A45-C1B9-51BB-80C8-38969C81F800)]
+            interface IIppPrintDeviceManagerStatics : IInspectable
+            {
+                HRESULT CanInstallIppPrintDevice([out] [retval] boolean* result);
+                HRESULT InstallIppPrintDeviceAsync([in] Windows.Foundation.Uri* printerUri, [in] HSTRING printerName, [out] [retval] Windows.Foundation.IAsyncOperation<Windows.Devices.Printers.IppPrintDeviceInstallationResult*>** operation);
+            }
+
             [contract(Windows.Foundation.UniversalApiContract, 15.0)]
             [exclusiveto(Windows.Devices.Printers.IppPrintDevice)]
             [uuid(7DC19F08-7F20-52AB-94A7-894B83B2A17E)]
@@ -569,6 +685,16 @@ namespace Windows
                 HRESULT StartPrintJobWithPrintTicket([in] HSTRING jobName, [in] HSTRING pdlContentType, [in] Windows.Storage.Streams.IInputStream* printTicket, [in] Windows.Devices.Printers.PageConfigurationSettings* pageConfigurationSettings, [out] [retval] Windows.Devices.Printers.PdlPassthroughTarget** result);
             }
 
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [exclusiveto(Windows.Devices.Printers.PdlPassthroughProvider)]
+            [experimental]
+            [uuid(7330305C-A17D-52EC-A129-9A4FF9C8F655)]
+            interface IPdlPassthroughProvider2 : IInspectable
+            {
+                [propget] HRESULT IsPassthroughWithJobAttributesSupported([out] [retval] boolean* value);
+                HRESULT StartPrintJobWithIppJobAttributes([in] HSTRING jobName, [in] HSTRING pdlContentType, [in] Windows.Storage.Streams.IBuffer* jobAttributes, [in] Windows.Storage.Streams.IBuffer* operationAttributes, [out] [retval] Windows.Devices.Printers.PdlPassthroughTarget** result);
+            }
+
             [contract(Windows.Foundation.UniversalApiContract, 15.0)]
             [exclusiveto(Windows.Devices.Printers.PdlPassthroughTarget)]
             [uuid(9840BE79-67F8-5385-A5B9-E8C96E0FCA76)]
@@ -606,9 +732,18 @@ namespace Windows
                 HRESULT MergeAndValidateWithDefaultPrintTicketAsync([in] Windows.Storage.Streams.IRandomAccessStreamWithContentType* deltaTicket, [out] [retval] Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IRandomAccessStreamWithContentType*>** operation);
             }
 
-            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
-            [exclusiveto(Windows.Devices.Printers.VirtualPrinterInstallationParameters)]
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [exclusiveto(Windows.Devices.Printers.ReplaceDevicePropertiesResult)]
             [experimental]
+            [uuid(12FECA4B-D973-57E1-826B-F75B9518A9F1)]
+            interface IReplaceDevicePropertiesResult : IInspectable
+            {
+                [propget] HRESULT Status([out] [retval] Windows.Devices.Printers.ReplaceDevicePropertiesStatus* value);
+                [propget] HRESULT ExtendedError([out] [retval] HRESULT* value);
+            }
+
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [exclusiveto(Windows.Devices.Printers.VirtualPrinterInstallationParameters)]
             [uuid(BBC159B3-12F3-584C-8D26-B22C0DC83241)]
             interface IVirtualPrinterInstallationParameters : IInspectable
             {
@@ -628,9 +763,8 @@ namespace Windows
                 [propput] HRESULT EntryPoint([in] HSTRING value);
             }
 
-            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
             [exclusiveto(Windows.Devices.Printers.VirtualPrinterInstallationResult)]
-            [experimental]
             [uuid(82DEFD78-1601-5657-85DF-75EB691604BD)]
             interface IVirtualPrinterInstallationResult : IInspectable
             {
@@ -638,9 +772,8 @@ namespace Windows
                 [propget] HRESULT ExtendedError([out] [retval] HRESULT* value);
             }
 
-            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
             [exclusiveto(Windows.Devices.Printers.VirtualPrinterManager)]
-            [experimental]
             [uuid(141084B6-6702-5B5F-83DA-C75891657554)]
             interface IVirtualPrinterManagerStatics : IInspectable
             {
@@ -654,9 +787,8 @@ namespace Windows
                 HRESULT RemoveVirtualPrinterForAllUsersAsync([in] HSTRING printerName, [out] [retval] Windows.Foundation.IAsyncOperation<boolean>** operation);
             }
 
-            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
             [exclusiveto(Windows.Devices.Printers.VirtualPrinterSupportedFormat)]
-            [experimental]
             [uuid(3801FA17-22B5-5DAB-AD38-39E47D6071AF)]
             interface IVirtualPrinterSupportedFormat : IInspectable
             {
@@ -666,13 +798,21 @@ namespace Windows
                 [propput] HRESULT MaxSupportedVersion([in] HSTRING value);
             }
 
-            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
             [exclusiveto(Windows.Devices.Printers.VirtualPrinterSupportedFormat)]
-            [experimental]
             [uuid(6DAAED44-97A6-57F4-BE8B-9DBABC587F2D)]
             interface IVirtualPrinterSupportedFormatFactory : IInspectable
             {
                 HRESULT CreateInstance([in] HSTRING contentType, [in] HSTRING maxSupportedVersion, [out] [retval] Windows.Devices.Printers.VirtualPrinterSupportedFormat** value);
+            }
+
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [experimental]
+            [marshaling_behavior(agile)]
+            [static(Windows.Devices.Printers.IIppAttributeConverterStatics, Windows.Foundation.UniversalApiContract, 20.0)]
+            [threading(both)]
+            runtimeclass IppAttributeConverter
+            {
             }
 
             [contract(Windows.Foundation.UniversalApiContract, 13.0)]
@@ -710,6 +850,24 @@ namespace Windows
                 [contract(Windows.Foundation.UniversalApiContract, 15.0)] interface Windows.Devices.Printers.IIppPrintDevice2;
                 [contract(Windows.Foundation.UniversalApiContract, 17.0)] interface Windows.Devices.Printers.IIppPrintDevice3;
                 [contract(Windows.Foundation.UniversalApiContract, 19.0)] interface Windows.Devices.Printers.IIppPrintDevice4;
+                [contract(Windows.Foundation.UniversalApiContract, 20.0)] [experimental] interface Windows.Devices.Printers.IIppPrintDevice5;
+            }
+
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [experimental]
+            [marshaling_behavior(agile)]
+            runtimeclass IppPrintDeviceInstallationResult
+            {
+                [default] [experimental] interface Windows.Devices.Printers.IIppPrintDeviceInstallationResult;
+            }
+
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [experimental]
+            [marshaling_behavior(agile)]
+            [static(Windows.Devices.Printers.IIppPrintDeviceManagerStatics, Windows.Foundation.UniversalApiContract, 20.0)]
+            [threading(both)]
+            runtimeclass IppPrintDeviceManager
+            {
             }
 
             [activatable(Windows.Devices.Printers.IIppResolutionFactory, Windows.Foundation.UniversalApiContract, 13.0)]
@@ -751,6 +909,7 @@ namespace Windows
             runtimeclass PdlPassthroughProvider
             {
                 [default] interface Windows.Devices.Printers.IPdlPassthroughProvider;
+                [contract(Windows.Foundation.UniversalApiContract, 20.0)] [experimental] interface Windows.Devices.Printers.IPdlPassthroughProvider2;
             }
 
             [contract(Windows.Foundation.UniversalApiContract, 15.0)]
@@ -778,41 +937,45 @@ namespace Windows
                 [default] interface Windows.Devices.Printers.IPrintSchema;
             }
 
-            [activatable(Windows.Foundation.UniversalApiContract, 19.0)]
-            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
             [experimental]
+            [marshaling_behavior(agile)]
+            runtimeclass ReplaceDevicePropertiesResult
+            {
+                [default] [experimental] interface Windows.Devices.Printers.IReplaceDevicePropertiesResult;
+            }
+
+            [activatable(Windows.Foundation.UniversalApiContract, 20.0)]
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
             [marshaling_behavior(agile)]
             [threading(both)]
             runtimeclass VirtualPrinterInstallationParameters
             {
-                [default] [experimental] interface Windows.Devices.Printers.IVirtualPrinterInstallationParameters;
+                [default] interface Windows.Devices.Printers.IVirtualPrinterInstallationParameters;
             }
 
-            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
-            [experimental]
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
             [marshaling_behavior(agile)]
             runtimeclass VirtualPrinterInstallationResult
             {
-                [default] [experimental] interface Windows.Devices.Printers.IVirtualPrinterInstallationResult;
+                [default] interface Windows.Devices.Printers.IVirtualPrinterInstallationResult;
             }
 
-            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
-            [experimental]
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
             [marshaling_behavior(agile)]
-            [static(Windows.Devices.Printers.IVirtualPrinterManagerStatics, Windows.Foundation.UniversalApiContract, 19.0)]
+            [static(Windows.Devices.Printers.IVirtualPrinterManagerStatics, Windows.Foundation.UniversalApiContract, 20.0)]
             [threading(both)]
             runtimeclass VirtualPrinterManager
             {
             }
 
-            [activatable(Windows.Devices.Printers.IVirtualPrinterSupportedFormatFactory, Windows.Foundation.UniversalApiContract, 19.0)]
-            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
-            [experimental]
+            [activatable(Windows.Devices.Printers.IVirtualPrinterSupportedFormatFactory, Windows.Foundation.UniversalApiContract, 20.0)]
+            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
             [marshaling_behavior(agile)]
             [threading(both)]
             runtimeclass VirtualPrinterSupportedFormat
             {
-                [default] [experimental] interface Windows.Devices.Printers.IVirtualPrinterSupportedFormat;
+                [default] interface Windows.Devices.Printers.IVirtualPrinterSupportedFormat;
             }
         }
     }

@@ -52,7 +52,7 @@ extern "C" {
 
 // Suppress C28251: Inconsistent annotation for prior declaration.
 // Depending on the include order the definition may not exist so
-// _Use_decl_annotations_ can not be used. 
+// _Use_decl_annotations_ can not be used.
 #pragma warning(push)
 #pragma warning(disable: 28251)
 
@@ -949,19 +949,12 @@ __MACHINEX64(unsigned char _mul_full_overflow_u64(unsigned __int64, unsigned __i
 __MACHINEX86_X64(void _mm_monitorx(void const *, unsigned int, unsigned int))
 __MACHINEX86_X64(void _mm_mwaitx(unsigned int, unsigned int, unsigned int))
 __MACHINEX86_X64(unsigned __int64 _rdpru(unsigned int))
-#if _MSC_VER <= 1942 
-__MACHINEX64(unsigned int __rmpupdate(unsigned __int64, rmp_seg*, int))
-__MACHINEX64(unsigned int __psmash(unsigned __int64))
-__MACHINEX64(unsigned int __rmpadjust(unsigned __int64, int, int))
-__MACHINEX64(unsigned int __pvalidate(unsigned __int64, int, int, int*))
-#else
 __MACHINEX64(unsigned int __rmpupdate(unsigned __int64, rmp_entry*))
 __MACHINEX64(unsigned int __psmash(unsigned __int64))
 __MACHINEX64(unsigned int __rmpadjust(unsigned __int64, unsigned __int8, unsigned __int8, unsigned __int8))
 __MACHINEX64(unsigned int __pvalidate(unsigned __int64, unsigned __int8, unsigned __int8, unsigned __int8*))
 __MACHINEX64(unsigned int __rmpquery(unsigned __int64, unsigned __int8, rmpquery_result*))
 __MACHINEX64(unsigned int __rmpread(unsigned __int64, rmp_entry*))
-#endif /* _MSC_VER */
 __MACHINEX86_X64(void __svm_invlpgb(void*, int))
 __MACHINEX86_X64(void __svm_tlbsync(void))
 __MACHINEARM64_X64(void * _AddressOfNextInstruction(void))

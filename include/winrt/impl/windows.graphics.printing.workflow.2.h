@@ -44,7 +44,7 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::Workflow
         PrintWorkflowJobActivatedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobActivatedEventArgs(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES PrintWorkflowJobBackgroundSession : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession,
-        impl::require<PrintWorkflowJobBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession2>
+        impl::require<PrintWorkflowJobBackgroundSession, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession2, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession3>
     {
         PrintWorkflowJobBackgroundSession(std::nullptr_t) noexcept {}
         PrintWorkflowJobBackgroundSession(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowJobBackgroundSession(ptr, take_ownership_from_abi) {}
@@ -88,7 +88,7 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::Workflow
         PrintWorkflowObjectModelTargetPackage(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowObjectModelTargetPackage(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES PrintWorkflowPdlConverter : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlConverter,
-        impl::require<PrintWorkflowPdlConverter, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlConverter2>
+        impl::require<PrintWorkflowPdlConverter, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlConverter2, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlConverter3>
     {
         PrintWorkflowPdlConverter(std::nullptr_t) noexcept {}
         PrintWorkflowPdlConverter(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlConverter(ptr, take_ownership_from_abi) {}
@@ -101,7 +101,7 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::Workflow
         PrintWorkflowPdlDataAvailableEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlDataAvailableEventArgs(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES PrintWorkflowPdlModificationRequestedEventArgs : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlModificationRequestedEventArgs,
-        impl::require<PrintWorkflowPdlModificationRequestedEventArgs, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlModificationRequestedEventArgs2>
+        impl::require<PrintWorkflowPdlModificationRequestedEventArgs, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlModificationRequestedEventArgs2, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlModificationRequestedEventArgs3>
     {
         PrintWorkflowPdlModificationRequestedEventArgs(std::nullptr_t) noexcept {}
         PrintWorkflowPdlModificationRequestedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlModificationRequestedEventArgs(ptr, take_ownership_from_abi) {}
@@ -121,10 +121,15 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::Workflow
         PrintWorkflowPdlTargetStream(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlTargetStream(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES PrintWorkflowPrinterJob : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob,
-        impl::require<PrintWorkflowPrinterJob, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob2>
+        impl::require<PrintWorkflowPrinterJob, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob2, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>
     {
         PrintWorkflowPrinterJob(std::nullptr_t) noexcept {}
         PrintWorkflowPrinterJob(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES PrintWorkflowPrinterJobStatusChangedEventArgs : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJobStatusChangedEventArgs
+    {
+        PrintWorkflowPrinterJobStatusChangedEventArgs(std::nullptr_t) noexcept {}
+        PrintWorkflowPrinterJobStatusChangedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJobStatusChangedEventArgs(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES PrintWorkflowSourceContent : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowSourceContent
     {
@@ -195,6 +200,13 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::Workflow
     {
         PrintWorkflowXpsDataAvailableEventArgs(std::nullptr_t) noexcept {}
         PrintWorkflowXpsDataAvailableEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowXpsDataAvailableEventArgs(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES PrintWorkflowXpsObjectModelProvider : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowObjectModelProvider,
+        impl::require<PrintWorkflowXpsObjectModelProvider, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowXpsObjectModelProvider>
+    {
+        PrintWorkflowXpsObjectModelProvider(std::nullptr_t) noexcept {}
+        PrintWorkflowXpsObjectModelProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowObjectModelProvider(ptr, take_ownership_from_abi) {}
+        PrintWorkflowXpsObjectModelProvider();
     };
 }
 #endif

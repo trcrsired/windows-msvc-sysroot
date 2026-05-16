@@ -404,6 +404,12 @@ Abstract:
     #define STATIC_CODECAPI_AVEncVideoEnableFramePsnrYuv    0x2bbcdd1d, 0xbc47, 0x430e, 0xb2, 0xe8, 0x64, 0x80, 0x1b, 0x47, 0xf5, 0xf0
     #define STATIC_CODECAPI_AVEncVideoOutputQPMapBlockSize  0x97038743, 0x4ae3, 0x44c3, 0xa0, 0xf2, 0x5b, 0xd5, 0x8a, 0x46, 0x34, 0xef
     #define STATIC_CODECAPI_AVEncVideoOutputBitsUsedMapBlockSize        0x6c2cd11a, 0xca3b, 0x44bd, 0x9a, 0x9e, 0x93, 0xb0, 0x36, 0x34, 0xc3, 0x6e
+    #define STATIC_CODECAPI_AVEncVideoSatdMapBlockSize      0x596f1106, 0x8ce0, 0x4302, 0xaf, 0x79, 0xc4, 0xec, 0x67, 0xaa, 0xdc, 0x6
+
+    #define STATIC_CODECAPI_AVEncVideoInputDeltaQPBlockSettings 0x5a4787dc, 0x648, 0x47aa, 0xb9, 0x45, 0x55, 0x2b, 0xfa, 0xd2, 0xa6, 0xd8
+    #define STATIC_CODECAPI_AVEncVideoInputAbsoluteQPBlockSettings 0xef95a145, 0x4f91, 0x4dea, 0x81, 0x73, 0xac, 0xff, 0x11, 0x43, 0x42, 0x10
+
+    #define STATIC_CODECAPI_AVEncVideoD3D12ReconstructedPictureOutputMode 0x4a7b2e8f, 0x1d93, 0x4c6a, 0xb5, 0x48, 0x91, 0xe2, 0xf8, 0xc5, 0xa7, 0xd3
 
 // end of static definitions }
 
@@ -2182,6 +2188,36 @@ DEFINE_CODECAPI_GUID( AVEncVideoOutputQPMapBlockSize,"97038743-4AE3-44C3-A0F2-5B
 // Zero value is used to disable the bits used map reporting.
 DEFINE_CODECAPI_GUID( AVEncVideoOutputBitsUsedMapBlockSize,"6C2CD11A-CA3B-44BD-9A9E-93B03634C36E", 0x6c2cd11a, 0xca3b, 0x44bd, 0x9a, 0x9e, 0x93, 0xb0, 0x36, 0x34, 0xc3, 0x6e )
 
+// AVEncVideoSatdMapBlockSize (VT_UI4)  
+// The block size used in reporting the output SATD map for each block in an encoded video frame. 
+// ulVal should be zero or power of 2, such as 16 or 32. 
+// A zero value disables the SATD map reporting. 
+DEFINE_CODECAPI_GUID( AVEncVideoSatdMapBlockSize, "596F1106-8CE0-4302-AF79-C4EC67AADC6D", 0x596f1106, 0x8ce0, 0x4302, 0xaf, 0x79, 0xc4, 0xec, 0x67, 0xaa, 0xdc, 0x6d )
+
+// AVEncVideoInputDeltaQPSettings (VT_BLOB)
+// Read-only parameter that specifies the settings that the encoder MFT supports with respect to delta QP values as input.
+// Use ICodecAPI::GetValue to determine supported settings for Input Delta QP.
+// See usage of InputQPSettings within mfapi.h to retrieve block size & qp details
+DEFINE_CODECAPI_GUID(AVEncVideoInputDeltaQPBlockSettings, "5A4787DC-0648-47AA-B945-552BFAD2A6D8", 0x5a4787dc, 0x648, 0x47aa, 0xb9, 0x45, 0x55, 0x2b, 0xfa, 0xd2, 0xa6, 0xd8 )
+
+// AVEncVideoInputAbsoluteQPBlockSettings (VT_BLOB)
+// Read-only parameter that specifies the settings that the encoder MFT supports with respect to absolute QP values as input.
+// Use ICodecAPI::GetValue to determine supported settings for Input Absolute QP.
+// See usage of InputQPSettings within mfapi.h to retrieve block size & qp details
+DEFINE_CODECAPI_GUID(AVEncVideoInputAbsoluteQPBlockSettings, "EF95A145-4F91-4DEA-8173-ACFF11434210", 0xef95a145, 0x4f91, 0x4dea, 0x81, 0x73, 0xac, 0xff, 0x11, 0x43, 0x42, 0x10 )
+
+enum eAVEncVideoD3D12ReconstructedPictureOutputMode
+{
+    eAVEncVideoEncodeD3D12ReconstructedPictureMode_None        = 0,  // Does not return a D3D12 reconstructed buffer.
+    eAVEncVideoEncodeD3D12ReconstructedPictureMode_Copy        = 1,  // Returns a copy of the D3D12 reconstructed buffer used by the encoder.
+    eAVEncVideoEncodeD3D12ReconstructedPictureMode_Shared      = 2   // Returns the D3D12 reconstructed buffer written by the encoder without a copy.
+};
+
+// AVEncVideoD3D12ReconstructedPictureOutputMode (VT_UI4)
+// This property controls the output of D3D12 reconstructed picture data from a D3D12-based encoder.
+// ulVal must be a value from the eAVEncVideoD3D12ReconstructedPictureOutputMode enumeration.
+DEFINE_CODECAPI_GUID(AVEncVideoD3D12ReconstructedPictureOutputMode, "4A7B2E8F-1D93-4C6A-B548-91E2F8C5A7D3", 0x4a7b2e8f, 0x1d93, 0x4c6a, 0xb5, 0x48, 0x91, 0xe2, 0xf8, 0xc5, 0xa7, 0xd3)
+
 #ifndef UUID_GEN
 // { GUID refs
     #define CODECAPI_AVEncCommonFormatConstraint DEFINE_CODECAPI_GUIDNAMED( AVEncCommonFormatConstraint )
@@ -2527,6 +2563,10 @@ DEFINE_CODECAPI_GUID( AVEncVideoOutputBitsUsedMapBlockSize,"6C2CD11A-CA3B-44BD-9
     #define CODECAPI_AVEncVideoEnableSpatialAdaptiveQuantization       DEFINE_CODECAPI_GUIDNAMED( AVEncVideoEnableSpatialAdaptiveQuantization )
     #define CODECAPI_AVEncVideoOutputQPMapBlockSize          DEFINE_CODECAPI_GUIDNAMED( AVEncVideoOutputQPMapBlockSize )
     #define CODECAPI_AVEncVideoOutputBitsUsedMapBlockSize    DEFINE_CODECAPI_GUIDNAMED( AVEncVideoOutputBitsUsedMapBlockSize )
+    #define CODECAPI_AVEncVideoSatdMapBlockSize    DEFINE_CODECAPI_GUIDNAMED( AVEncVideoSatdMapBlockSize ) 
+    #define CODECAPI_AVEncVideoInputDeltaQPBlockSettings    DEFINE_CODECAPI_GUIDNAMED( AVEncVideoInputDeltaQPBlockSettings )
+    #define CODECAPI_AVEncVideoInputAbsoluteQPBlockSettings DEFINE_CODECAPI_GUIDNAMED( AVEncVideoInputAbsoluteQPBlockSettings )
+    #define CODECAPI_AVEncVideoD3D12ReconstructedPictureOutputMode    DEFINE_CODECAPI_GUIDNAMED( AVEncVideoD3D12ReconstructedPictureOutputMode )
 #endif
 
 

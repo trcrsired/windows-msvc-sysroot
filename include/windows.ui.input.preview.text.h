@@ -92,7 +92,7 @@
 #endif // defined(WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION)
 
 #if !defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
-#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x130000
+#define WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION 0x140000
 #endif // defined(WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION)
 
 #if !defined(WINDOWS_SYSTEM_SYSTEMMANAGEMENTCONTRACT_VERSION)
@@ -426,7 +426,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
 #ifndef DEF___FIAsyncOperation_1_Windows__CUI__CInput__CPreview__CText__CPayloadResult_USE
@@ -453,9 +452,7 @@ typedef IAsyncOperation<enum ABI::Windows::UI::Input::Preview::Text::PayloadResu
 #endif /* DEF___FIAsyncOperation_1_Windows__CUI__CInput__CPreview__CText__CPayloadResult_USE */
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
 #ifndef DEF___FIAsyncOperationCompletedHandler_1_Windows__CUI__CInput__CPreview__CText__CPayloadResult_USE
@@ -482,7 +479,6 @@ typedef IAsyncOperationCompletedHandler<enum ABI::Windows::UI::Input::Preview::T
 #endif /* DEF___FIAsyncOperationCompletedHandler_1_Windows__CUI__CInput__CPreview__CText__CPayloadResult_USE */
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 namespace ABI {
     namespace Windows {
@@ -533,7 +529,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
 #ifndef DEF___FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_IInspectable_USE
@@ -560,7 +555,6 @@ typedef ITypedEventHandler<ABI::Windows::UI::Input::Preview::Text::KeyboardInput
 #endif /* DEF___FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_IInspectable_USE */
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 namespace ABI {
     namespace Windows {
@@ -576,7 +570,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
@@ -605,7 +598,6 @@ typedef ITypedEventHandler<ABI::Windows::UI::Input::Preview::Text::KeyboardInput
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 namespace ABI {
     namespace Windows {
@@ -621,7 +613,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
@@ -650,7 +641,6 @@ typedef ITypedEventHandler<ABI::Windows::UI::Input::Preview::Text::KeyboardInput
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 namespace ABI {
     namespace Windows {
@@ -666,7 +656,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
@@ -695,7 +684,6 @@ typedef ITypedEventHandler<ABI::Windows::UI::Input::Preview::Text::KeyboardInput
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 namespace ABI {
     namespace Windows {
@@ -711,7 +699,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
@@ -740,7 +727,6 @@ typedef ITypedEventHandler<ABI::Windows::UI::Input::Preview::Text::KeyboardInput
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 namespace ABI {
     namespace Windows {
@@ -756,7 +742,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
@@ -785,7 +770,6 @@ typedef ITypedEventHandler<ABI::Windows::UI::Input::Preview::Text::KeyboardInput
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 namespace ABI {
     namespace Windows {
@@ -801,7 +785,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
@@ -830,7 +813,6 @@ typedef ITypedEventHandler<ABI::Windows::UI::Input::Preview::Text::KeyboardInput
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 namespace ABI {
     namespace Windows {
@@ -846,7 +828,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
 #ifndef DEF___FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_IInspectable_USE
@@ -873,9 +854,7 @@ typedef ITypedEventHandler<ABI::Windows::UI::Input::Preview::Text::TextInputProv
 #endif /* DEF___FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_IInspectable_USE */
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
@@ -904,7 +883,6 @@ typedef ITypedEventHandler<ABI::Windows::UI::Input::Preview::Text::TextInputProv
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 namespace ABI {
     namespace Windows {
@@ -920,7 +898,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
@@ -949,9 +926,7 @@ typedef ITypedEventHandler<ABI::Windows::UI::Input::Preview::Text::TextInputProv
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
@@ -980,9 +955,7 @@ typedef ITypedEventHandler<ABI::Windows::UI::Input::Preview::Text::TextInputProv
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
@@ -1011,9 +984,7 @@ typedef ITypedEventHandler<ABI::Windows::UI::Input::Preview::Text::TextInputProv
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 
@@ -1042,7 +1013,6 @@ typedef ITypedEventHandler<ABI::Windows::UI::Input::Preview::Text::TextInputProv
 
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 #ifndef ____x_ABI_CWindows_CFoundation_CIAsyncAction_FWD_DEFINED__
 #define ____x_ABI_CWindows_CFoundation_CIAsyncAction_FWD_DEFINED__
@@ -1358,10 +1328,7 @@ namespace ABI {
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 namespace ABI {
     namespace Windows {
@@ -1384,7 +1351,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1392,10 +1358,7 @@ namespace ABI {
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 namespace ABI {
     namespace Windows {
@@ -1420,7 +1383,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1428,10 +1390,7 @@ namespace ABI {
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 namespace ABI {
     namespace Windows {
@@ -1454,7 +1413,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1462,10 +1420,7 @@ namespace ABI {
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 namespace ABI {
     namespace Windows {
@@ -1489,7 +1444,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1497,10 +1451,7 @@ namespace ABI {
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 namespace ABI {
     namespace Windows {
@@ -1524,7 +1475,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1532,10 +1482,7 @@ namespace ABI {
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 namespace ABI {
     namespace Windows {
@@ -1561,7 +1508,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1569,10 +1515,7 @@ namespace ABI {
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 namespace ABI {
     namespace Windows {
@@ -1602,7 +1545,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1610,10 +1552,7 @@ namespace ABI {
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 namespace ABI {
     namespace Windows {
@@ -1638,7 +1577,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1646,10 +1584,7 @@ namespace ABI {
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 namespace ABI {
     namespace Windows {
@@ -1668,7 +1603,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1676,10 +1610,7 @@ namespace ABI {
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 namespace ABI {
     namespace Windows {
@@ -1699,7 +1630,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1707,10 +1637,7 @@ namespace ABI {
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 namespace ABI {
     namespace Windows {
@@ -1733,7 +1660,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1741,12 +1667,9 @@ namespace ABI {
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.ConversionModeChangedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIConversionModeChangedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIConversionModeChangedEventArgs_INTERFACE_DEFINED__
@@ -1777,7 +1700,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIConversionModeChangedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIConversionModeChangedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1785,12 +1707,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIConversionMo
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.FocusEnteredEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIFocusEnteredEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIFocusEnteredEventArgs_INTERFACE_DEFINED__
@@ -1821,7 +1740,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIFocusEnteredEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIFocusEnteredEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1829,12 +1747,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIFocusEntered
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.InputDelegationModeChangedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIInputDelegationModeChangedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIInputDelegationModeChangedEventArgs_INTERFACE_DEFINED__
@@ -1865,7 +1780,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIInputDelegationModeChangedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIInputDelegationModeChangedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1873,12 +1787,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIInputDelegat
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.KeyEventReceivedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyEventReceivedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyEventReceivedEventArgs_INTERFACE_DEFINED__
@@ -1935,7 +1846,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyEventReceivedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyEventReceivedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1943,12 +1853,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyEventRece
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.KeyboardInputProcessor
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyboardInputProcessor_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyboardInputProcessor_INTERFACE_DEFINED__
@@ -2076,7 +1983,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyboardInputProcessor;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyboardInputProcessor_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2084,12 +1990,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyboardInpu
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.ReconversionRequestedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIReconversionRequestedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIReconversionRequestedEventArgs_INTERFACE_DEFINED__
@@ -2120,7 +2023,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIReconversionRequestedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIReconversionRequestedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2128,12 +2030,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIReconversion
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextBoxContentChangedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxContentChangedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxContentChangedEventArgs_INTERFACE_DEFINED__
@@ -2174,7 +2073,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxContentChangedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxContentChangedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2182,12 +2080,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxConte
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextBoxInfo
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfo_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfo_INTERFACE_DEFINED__
@@ -2233,7 +2128,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfo;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfo_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2241,12 +2135,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfo;
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextBoxInfoChangedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfoChangedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfoChangedEventArgs_INTERFACE_DEFINED__
@@ -2277,7 +2168,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfoChangedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfoChangedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2285,12 +2175,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfoC
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextComposition
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextComposition_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextComposition_INTERFACE_DEFINED__
@@ -2340,7 +2227,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextComposition;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextComposition_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2348,12 +2234,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextComposit
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextCompositionSegment
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextCompositionSegment_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextCompositionSegment_INTERFACE_DEFINED__
@@ -2420,7 +2303,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextCompositionSegment;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextCompositionSegment_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2428,12 +2310,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextComposit
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextEditSession
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextEditSession_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextEditSession_INTERFACE_DEFINED__
@@ -2505,7 +2384,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextEditSession;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextEditSession_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2513,12 +2391,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextEditSess
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextInputProvider
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputProvider_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputProvider_INTERFACE_DEFINED__
@@ -2623,7 +2498,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputProvider;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputProvider_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2631,12 +2505,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputPro
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextInputService
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputService_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputService_INTERFACE_DEFINED__
@@ -2672,7 +2543,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputService;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputService_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2680,12 +2550,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputSer
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextInputService
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputServiceStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputServiceStatics_INTERFACE_DEFINED__
@@ -2716,7 +2583,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputServiceStatics;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputServiceStatics_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2724,22 +2590,18 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputSer
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.IConversionModeChangedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_ConversionModeChangedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_ConversionModeChangedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_ConversionModeChangedEventArgs[] = L"Windows.UI.Input.Preview.Text.ConversionModeChangedEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2747,22 +2609,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.IFocusEnteredEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_FocusEnteredEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_FocusEnteredEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_FocusEnteredEventArgs[] = L"Windows.UI.Input.Preview.Text.FocusEnteredEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2770,22 +2628,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.IInputDelegationModeChangedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_InputDelegationModeChangedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_InputDelegationModeChangedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_InputDelegationModeChangedEventArgs[] = L"Windows.UI.Input.Preview.Text.InputDelegationModeChangedEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2793,22 +2647,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.IKeyEventReceivedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_KeyEventReceivedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_KeyEventReceivedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_KeyEventReceivedEventArgs[] = L"Windows.UI.Input.Preview.Text.KeyEventReceivedEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2816,22 +2666,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.IKeyboardInputProcessor ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_KeyboardInputProcessor_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_KeyboardInputProcessor_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_KeyboardInputProcessor[] = L"Windows.UI.Input.Preview.Text.KeyboardInputProcessor";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2839,22 +2685,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.IReconversionRequestedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_ReconversionRequestedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_ReconversionRequestedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_ReconversionRequestedEventArgs[] = L"Windows.UI.Input.Preview.Text.ReconversionRequestedEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2862,22 +2704,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextBoxContentChangedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextBoxContentChangedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextBoxContentChangedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextBoxContentChangedEventArgs[] = L"Windows.UI.Input.Preview.Text.TextBoxContentChangedEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2885,22 +2723,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextBoxInfo ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextBoxInfo_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextBoxInfo_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextBoxInfo[] = L"Windows.UI.Input.Preview.Text.TextBoxInfo";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2908,22 +2742,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextBoxInfoChangedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextBoxInfoChangedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextBoxInfoChangedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextBoxInfoChangedEventArgs[] = L"Windows.UI.Input.Preview.Text.TextBoxInfoChangedEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2931,22 +2761,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextComposition ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextComposition_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextComposition_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextComposition[] = L"Windows.UI.Input.Preview.Text.TextComposition";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2954,22 +2780,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextCompositionSegment ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextCompositionSegment_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextCompositionSegment_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextCompositionSegment[] = L"Windows.UI.Input.Preview.Text.TextCompositionSegment";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2977,22 +2799,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextEditSession ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextEditSession_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextEditSession_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextEditSession[] = L"Windows.UI.Input.Preview.Text.TextEditSession";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -3000,30 +2818,24 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextInputProvider ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextInputProvider_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextInputProvider_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextInputProvider[] = L"Windows.UI.Input.Preview.Text.TextInputProvider";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
  * Class Windows.UI.Input.Preview.Text.TextInputService
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
  * RuntimeClass contains static methods.
  *   Static Methods exist on the Windows.UI.Input.Preview.Text.ITextInputServiceStatics interface starting with version 1.0 of the Windows.UI.Input.Preview.Text.PreviewTextContract API contract
@@ -3036,14 +2848,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextInputService_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextInputService_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextInputService[] = L"Windows.UI.Input.Preview.Text.TextInputService";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 #else // !defined(__cplusplus)
 /* Forward Declarations */
@@ -3145,7 +2955,6 @@ typedef enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CPayloadResult __x_ABI_C
 
 typedef interface __FIAsyncOperationCompletedHandler_1_Windows__CUI__CInput__CPreview__CText__CPayloadResult __FIAsyncOperationCompletedHandler_1_Windows__CUI__CInput__CPreview__CText__CPayloadResult;
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FIAsyncOperation_1_Windows__CUI__CInput__CPreview__CText__CPayloadResult_INTERFACE_DEFINED__)
 #define ____FIAsyncOperation_1_Windows__CUI__CInput__CPreview__CText__CPayloadResult_INTERFACE_DEFINED__
@@ -3219,9 +3028,7 @@ interface __FIAsyncOperation_1_Windows__CUI__CInput__CPreview__CText__CPayloadRe
 
 #endif // ____FIAsyncOperation_1_Windows__CUI__CInput__CPreview__CText__CPayloadResult_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FIAsyncOperationCompletedHandler_1_Windows__CUI__CInput__CPreview__CText__CPayloadResult_INTERFACE_DEFINED__)
 #define ____FIAsyncOperationCompletedHandler_1_Windows__CUI__CInput__CPreview__CText__CPayloadResult_INTERFACE_DEFINED__
@@ -3270,7 +3077,6 @@ interface __FIAsyncOperationCompletedHandler_1_Windows__CUI__CInput__CPreview__C
 
 #endif // ____FIAsyncOperationCompletedHandler_1_Windows__CUI__CInput__CPreview__CText__CPayloadResult_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 typedef struct __x_ABI_CWindows_CFoundation_CRect __x_ABI_CWindows_CFoundation_CRect;
 
@@ -3338,7 +3144,6 @@ interface __FIReference_1_Windows__CFoundation__CRect
 #endif // ____FIReference_1_Windows__CFoundation__CRect_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_FOUNDATIONCONTRACT_VERSION >= 0x10000
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_IInspectable_INTERFACE_DEFINED__)
 #define ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_IInspectable_INTERFACE_DEFINED__
@@ -3387,9 +3192,7 @@ interface __FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboa
 
 #endif // ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_IInspectable_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_Windows__CUI__CInput__CPreview__CText__CConversionModeChangedEventArgs_INTERFACE_DEFINED__)
@@ -3440,9 +3243,7 @@ interface __FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboa
 #endif // ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_Windows__CUI__CInput__CPreview__CText__CConversionModeChangedEventArgs_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_Windows__CUI__CInput__CPreview__CText__CFocusEnteredEventArgs_INTERFACE_DEFINED__)
@@ -3493,9 +3294,7 @@ interface __FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboa
 #endif // ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_Windows__CUI__CInput__CPreview__CText__CFocusEnteredEventArgs_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_Windows__CUI__CInput__CPreview__CText__CKeyEventReceivedEventArgs_INTERFACE_DEFINED__)
@@ -3546,9 +3345,7 @@ interface __FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboa
 #endif // ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_Windows__CUI__CInput__CPreview__CText__CKeyEventReceivedEventArgs_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_Windows__CUI__CInput__CPreview__CText__CReconversionRequestedEventArgs_INTERFACE_DEFINED__)
@@ -3599,9 +3396,7 @@ interface __FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboa
 #endif // ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_Windows__CUI__CInput__CPreview__CText__CReconversionRequestedEventArgs_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_Windows__CUI__CInput__CPreview__CText__CTextBoxContentChangedEventArgs_INTERFACE_DEFINED__)
@@ -3652,9 +3447,7 @@ interface __FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboa
 #endif // ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_Windows__CUI__CInput__CPreview__CText__CTextBoxContentChangedEventArgs_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_Windows__CUI__CInput__CPreview__CText__CTextBoxInfoChangedEventArgs_INTERFACE_DEFINED__)
@@ -3705,9 +3498,7 @@ interface __FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboa
 #endif // ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CKeyboardInputProcessor_Windows__CUI__CInput__CPreview__CText__CTextBoxInfoChangedEventArgs_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_IInspectable_INTERFACE_DEFINED__)
 #define ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_IInspectable_INTERFACE_DEFINED__
@@ -3756,9 +3547,7 @@ interface __FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextIn
 
 #endif // ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_IInspectable_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_Windows__CUI__CInput__CPreview__CText__CFocusEnteredEventArgs_INTERFACE_DEFINED__)
@@ -3809,9 +3598,7 @@ interface __FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextIn
 #endif // ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_Windows__CUI__CInput__CPreview__CText__CFocusEnteredEventArgs_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_Windows__CUI__CInput__CPreview__CText__CInputDelegationModeChangedEventArgs_INTERFACE_DEFINED__)
@@ -3862,9 +3649,7 @@ interface __FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextIn
 #endif // ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_Windows__CUI__CInput__CPreview__CText__CInputDelegationModeChangedEventArgs_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_Windows__CUI__CInput__CPreview__CText__CReconversionRequestedEventArgs_INTERFACE_DEFINED__)
@@ -3915,9 +3700,7 @@ interface __FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextIn
 #endif // ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_Windows__CUI__CInput__CPreview__CText__CReconversionRequestedEventArgs_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_Windows__CUI__CInput__CPreview__CText__CTextBoxContentChangedEventArgs_INTERFACE_DEFINED__)
@@ -3968,9 +3751,7 @@ interface __FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextIn
 #endif // ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_Windows__CUI__CInput__CPreview__CText__CTextBoxContentChangedEventArgs_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_Windows__CUI__CInput__CPreview__CText__CTextBoxInfoChangedEventArgs_INTERFACE_DEFINED__)
@@ -4021,7 +3802,6 @@ interface __FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextIn
 #endif // ____FITypedEventHandler_2_Windows__CUI__CInput__CPreview__CText__CTextInputProvider_Windows__CUI__CInput__CPreview__CText__CTextBoxInfoChangedEventArgs_INTERFACE_DEFINED__
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 #ifndef ____x_ABI_CWindows_CFoundation_CIAsyncAction_FWD_DEFINED__
 #define ____x_ABI_CWindows_CFoundation_CIAsyncAction_FWD_DEFINED__
@@ -4075,10 +3855,7 @@ typedef struct __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextStyle __x_ABI_CWi
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CKeyEventDeviceType
 {
@@ -4089,7 +3866,6 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CKeyEventDeviceType
     KeyEventDeviceType_Injection = 4,
 };
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4097,10 +3873,7 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CKeyEventDeviceType
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CPayloadResult
 {
@@ -4113,7 +3886,6 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CPayloadResult
     PayloadResult_Canceled = 6,
 };
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4121,10 +3893,7 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CPayloadResult
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextBoxContentAttribute
 {
@@ -4135,7 +3904,6 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextBoxContentAttribute
     TextBoxContentAttribute_Layout = 4,
 };
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4143,10 +3911,7 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextBoxContentAttribute
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextBoxFeatures
 {
@@ -4156,7 +3921,6 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextBoxFeatures
     TextBoxFeatures_AugmentText = 0x4,
 };
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4164,10 +3928,7 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextBoxFeatures
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextBoxSettings
 {
@@ -4177,7 +3938,6 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextBoxSettings
     TextBoxSettings_VerticalWriting = 0x4,
 };
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4185,10 +3945,7 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextBoxSettings
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextChangeSource
 {
@@ -4202,7 +3959,6 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextChangeSource
     TextChangeSource_Mixed = 7,
 };
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4210,10 +3966,7 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextChangeSource
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextConversionMode
 {
@@ -4231,7 +3984,6 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextConversionMode
     TextConversionMode_NativeEudc = 11,
 };
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4239,10 +3991,7 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextConversionMode
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextStyleAttributes
 {
@@ -4253,7 +4002,6 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextStyleAttributes
     TextStyleAttributes_UnderlineType = 0x8,
 };
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4261,17 +4009,13 @@ enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextStyleAttributes
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 struct __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextBoxId
 {
     UINT32 Value;
 };
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4279,10 +4023,7 @@ struct __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextBoxId
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 struct __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextInputServiceSubscription
 {
@@ -4290,7 +4031,6 @@ struct __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextInputServiceSubscription
     enum __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextBoxFeatures requiredDisabledFeatures;
 };
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4298,10 +4038,7 @@ struct __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextInputServiceSubscription
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 struct __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextStyle
 {
@@ -4312,7 +4049,6 @@ struct __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextStyle
     enum __x_ABI_CWindows_CUI_CText_CUnderlineType underlineType;
 };
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4320,12 +4056,9 @@ struct __x_ABI_CWindows_CUI_CInput_CPreview_CText_CTextStyle
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.ConversionModeChangedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIConversionModeChangedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIConversionModeChangedEventArgs_INTERFACE_DEFINED__
@@ -4385,7 +4118,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CIConversionModeChangedEven
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIConversionModeChangedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIConversionModeChangedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4393,12 +4125,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIConversionMo
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.FocusEnteredEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIFocusEnteredEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIFocusEnteredEventArgs_INTERFACE_DEFINED__
@@ -4458,7 +4187,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CIFocusEnteredEventArgs
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIFocusEnteredEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIFocusEnteredEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4466,12 +4194,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIFocusEntered
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.InputDelegationModeChangedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIInputDelegationModeChangedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIInputDelegationModeChangedEventArgs_INTERFACE_DEFINED__
@@ -4531,7 +4256,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CIInputDelegationModeChange
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIInputDelegationModeChangedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIInputDelegationModeChangedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4539,12 +4263,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIInputDelegat
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.KeyEventReceivedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyEventReceivedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyEventReceivedEventArgs_INTERFACE_DEFINED__
@@ -4646,7 +4367,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyEventReceivedEventArgs
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyEventReceivedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyEventReceivedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4654,12 +4374,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyEventRece
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.KeyboardInputProcessor
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyboardInputProcessor_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyboardInputProcessor_INTERFACE_DEFINED__
@@ -4874,7 +4591,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyboardInputProcessor
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyboardInputProcessor;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyboardInputProcessor_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4882,12 +4598,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIKeyboardInpu
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.ReconversionRequestedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIReconversionRequestedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIReconversionRequestedEventArgs_INTERFACE_DEFINED__
@@ -4947,7 +4660,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CIReconversionRequestedEven
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIReconversionRequestedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CIReconversionRequestedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4955,12 +4667,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CIReconversion
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextBoxContentChangedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxContentChangedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxContentChangedEventArgs_INTERFACE_DEFINED__
@@ -5036,7 +4745,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxContentChangedEven
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxContentChangedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxContentChangedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5044,12 +4752,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxConte
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextBoxInfo
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfo_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfo_INTERFACE_DEFINED__
@@ -5134,7 +4839,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfo
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfo;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfo_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5142,12 +4846,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfo;
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextBoxInfoChangedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfoChangedEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfoChangedEventArgs_INTERFACE_DEFINED__
@@ -5207,7 +4908,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfoChangedEventAr
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfoChangedEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfoChangedEventArgs_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5215,12 +4915,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextBoxInfoC
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextComposition
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextComposition_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextComposition_INTERFACE_DEFINED__
@@ -5318,7 +5015,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextComposition
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextComposition;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextComposition_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5326,12 +5022,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextComposit
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextCompositionSegment
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextCompositionSegment_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextCompositionSegment_INTERFACE_DEFINED__
@@ -5451,7 +5144,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextCompositionSegment
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextCompositionSegment;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextCompositionSegment_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5459,12 +5151,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextComposit
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextEditSession
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextEditSession_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextEditSession_INTERFACE_DEFINED__
@@ -5589,7 +5278,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextEditSession
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextEditSession;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextEditSession_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5597,12 +5285,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextEditSess
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextInputProvider
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputProvider_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputProvider_INTERFACE_DEFINED__
@@ -5783,7 +5468,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputProvider
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputProvider;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputProvider_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5791,12 +5475,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputPro
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextInputService
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputService_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputService_INTERFACE_DEFINED__
@@ -5863,7 +5544,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputService
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputService;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputService_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5871,12 +5551,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputSer
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.UI.Input.Preview.Text.TextInputService
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #if !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputServiceStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputServiceStatics_INTERFACE_DEFINED__
@@ -5936,7 +5613,6 @@ interface __x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputServiceStatics
 EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputServiceStatics;
 #endif /* !defined(____x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputServiceStatics_INTERFACE_DEFINED__) */
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5944,22 +5620,18 @@ EXTERN_C const IID IID___x_ABI_CWindows_CUI_CInput_CPreview_CText_CITextInputSer
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.IConversionModeChangedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_ConversionModeChangedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_ConversionModeChangedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_ConversionModeChangedEventArgs[] = L"Windows.UI.Input.Preview.Text.ConversionModeChangedEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5967,22 +5639,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.IFocusEnteredEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_FocusEnteredEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_FocusEnteredEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_FocusEnteredEventArgs[] = L"Windows.UI.Input.Preview.Text.FocusEnteredEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5990,22 +5658,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.IInputDelegationModeChangedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_InputDelegationModeChangedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_InputDelegationModeChangedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_InputDelegationModeChangedEventArgs[] = L"Windows.UI.Input.Preview.Text.InputDelegationModeChangedEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -6013,22 +5677,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.IKeyEventReceivedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_KeyEventReceivedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_KeyEventReceivedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_KeyEventReceivedEventArgs[] = L"Windows.UI.Input.Preview.Text.KeyEventReceivedEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -6036,22 +5696,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.IKeyboardInputProcessor ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_KeyboardInputProcessor_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_KeyboardInputProcessor_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_KeyboardInputProcessor[] = L"Windows.UI.Input.Preview.Text.KeyboardInputProcessor";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -6059,22 +5715,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.IReconversionRequestedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_ReconversionRequestedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_ReconversionRequestedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_ReconversionRequestedEventArgs[] = L"Windows.UI.Input.Preview.Text.ReconversionRequestedEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -6082,22 +5734,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextBoxContentChangedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextBoxContentChangedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextBoxContentChangedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextBoxContentChangedEventArgs[] = L"Windows.UI.Input.Preview.Text.TextBoxContentChangedEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -6105,22 +5753,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextBoxInfo ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextBoxInfo_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextBoxInfo_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextBoxInfo[] = L"Windows.UI.Input.Preview.Text.TextBoxInfo";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -6128,22 +5772,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextBoxInfoChangedEventArgs ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextBoxInfoChangedEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextBoxInfoChangedEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextBoxInfoChangedEventArgs[] = L"Windows.UI.Input.Preview.Text.TextBoxInfoChangedEventArgs";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -6151,22 +5791,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextComposition ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextComposition_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextComposition_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextComposition[] = L"Windows.UI.Input.Preview.Text.TextComposition";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -6174,22 +5810,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextCompositionSegment ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextCompositionSegment_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextCompositionSegment_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextCompositionSegment[] = L"Windows.UI.Input.Preview.Text.TextCompositionSegment";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -6197,22 +5829,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextEditSession ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextEditSession_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextEditSession_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextEditSession[] = L"Windows.UI.Input.Preview.Text.TextEditSession";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -6220,30 +5848,24 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Class implements the following interfaces:
  *    Windows.UI.Input.Preview.Text.ITextInputProvider ** Default Interface **
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextInputProvider_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextInputProvider_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextInputProvider[] = L"Windows.UI.Input.Preview.Text.TextInputProvider";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
  * Class Windows.UI.Input.Preview.Text.TextInputService
  *
  * Introduced to Windows.UI.Input.Preview.Text.PreviewTextContract in version 1.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
  * RuntimeClass contains static methods.
  *   Static Methods exist on the Windows.UI.Input.Preview.Text.ITextInputServiceStatics interface starting with version 1.0 of the Windows.UI.Input.Preview.Text.PreviewTextContract API contract
@@ -6256,14 +5878,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
 #ifndef RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextInputService_DEFINED
 #define RUNTIMECLASS_Windows_UI_Input_Preview_Text_TextInputService_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_UI_Input_Preview_Text_TextInputService[] = L"Windows.UI.Input.Preview.Text.TextInputService";
 #endif
 #endif // WINDOWS_UI_INPUT_PREVIEW_TEXT_PREVIEWTEXTCONTRACT_VERSION >= 0x10000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 #endif // defined(__cplusplus)
 #pragma pop_macro("MIDL_CONST_ID")

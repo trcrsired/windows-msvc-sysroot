@@ -392,6 +392,8 @@ enum D3D_SRV_DIMENSION
 #define D3D_SHADER_FEATURE_WRITEABLE_MSAA_TEXTURES                                        0x40000000
 #define D3D_SHADER_FEATURE_SAMPLE_CMP_GRADIENT_OR_BIAS                                    0x80000000
 #define D3D_SHADER_FEATURE_EXTENDED_COMMAND_INFO                                          0x100000000ull
+#define D3D_OPT_SHADER_FEATURE_USES_DERIVATIVES                                         0x0000010000000000ull
+#define D3D_OPT_SHADER_FEATURE_REQUIRES_GROUP                                           0x0000020000000000ull
 typedef struct _D3D_SHADER_MACRO
     {
     LPCSTR Name;

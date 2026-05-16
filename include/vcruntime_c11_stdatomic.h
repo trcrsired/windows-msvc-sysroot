@@ -8,7 +8,7 @@
 #error "vcruntime_c11_stdatomic.h is a C-only header"
 #endif
 
-#ifdef __STDC_NO_ATOMICS__ 
+#ifdef __STDC_NO_ATOMICS__
 #error "C atomic support is not enabled"
 #endif
 

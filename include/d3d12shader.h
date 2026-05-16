@@ -37,6 +37,8 @@ typedef enum D3D12_SHADER_VERSION_TYPE
     D3D12_SHVER_MESH_SHADER           = 13,
     D3D12_SHVER_AMPLIFICATION_SHADER  = 14,
 
+    D3D12_SHVER_NODE_SHADER           = 15,
+
     D3D12_SHVER_RESERVED0             = 0xFFF0,
 } D3D12_SHADER_VERSION_TYPE;
 
@@ -489,4 +491,5 @@ extern "C" {
 #endif //__cplusplus
     
 #endif //__D3D12SHADER_H__
+
 

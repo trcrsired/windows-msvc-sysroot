@@ -1477,7 +1477,7 @@ SetFileApisToANSI(
 #pragma region Application Family or OneCore Family or Games Family
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_SYSTEM | WINAPI_PARTITION_GAMES)
 
-#if (NTDDI_VERSION >= NTDDI_WIN10_FE)
+#if (NTDDI_VERSION >= NTDDI_WIN10_RS5)
 WINBASEAPI
 _Success_(return > 0 && return < BufferLength)
 DWORD
@@ -1504,7 +1504,7 @@ GetTempPath2A(
 #define GetTempPath2  GetTempPath2A
 #endif
 
-#endif // (NTDDI_VERSION >= NTDDI_WIN10_FE)
+#endif // (NTDDI_VERSION >= NTDDI_WIN10_RS5)
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_SYSTEM | WINAPI_PARTITION_GAMES) */
 #pragma endregion

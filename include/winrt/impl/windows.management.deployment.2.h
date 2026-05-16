@@ -24,7 +24,7 @@ WINRT_EXPORT namespace winrt::Windows::Management::Deployment
         return !(left == right);
     }
     struct WINRT_IMPL_EMPTY_BASES AddPackageOptions : winrt::Windows::Management::Deployment::IAddPackageOptions,
-        impl::require<AddPackageOptions, winrt::Windows::Management::Deployment::IAddPackageOptions2>
+        impl::require<AddPackageOptions, winrt::Windows::Management::Deployment::IAddPackageOptions2, winrt::Windows::Management::Deployment::IAddPackageOptions3>
     {
         AddPackageOptions(std::nullptr_t) noexcept {}
         AddPackageOptions(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Deployment::IAddPackageOptions(ptr, take_ownership_from_abi) {}
@@ -161,7 +161,7 @@ WINRT_EXPORT namespace winrt::Windows::Management::Deployment
         explicit SharedPackageContainerMember(param::hstring const& packageFamilyName);
     };
     struct WINRT_IMPL_EMPTY_BASES StagePackageOptions : winrt::Windows::Management::Deployment::IStagePackageOptions,
-        impl::require<StagePackageOptions, winrt::Windows::Management::Deployment::IStagePackageOptions2>
+        impl::require<StagePackageOptions, winrt::Windows::Management::Deployment::IStagePackageOptions2, winrt::Windows::Management::Deployment::IStagePackageOptions3>
     {
         StagePackageOptions(std::nullptr_t) noexcept {}
         StagePackageOptions(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Deployment::IStagePackageOptions(ptr, take_ownership_from_abi) {}

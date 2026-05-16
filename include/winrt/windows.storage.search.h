@@ -771,6 +771,74 @@ namespace winrt::impl
             check_hresult(_winrt_abi_type->SetPropertyPrefetch(static_cast<uint32_t>(options), *(void**)(&propertiesToRetrieve)));
         }
     }
+    template <typename D> auto consume_Windows_Storage_Search_IQueryOptionsAdditionalSearchSources<D>::IncludeLocalSemanticIndex() const
+    {
+        bool value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_IncludeLocalSemanticIndex(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources>**)this;
+            check_hresult(_winrt_abi_type->get_IncludeLocalSemanticIndex(&value));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Storage_Search_IQueryOptionsAdditionalSearchSources<D>::IncludeLocalSemanticIndex(bool value) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->put_IncludeLocalSemanticIndex(value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources>**)this;
+            check_hresult(_winrt_abi_type->put_IncludeLocalSemanticIndex(value));
+        }
+    }
+    template <typename D> auto consume_Windows_Storage_Search_IQueryOptionsAdditionalSearchSources<D>::IncludeCloudProviders() const
+    {
+        bool value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_IncludeCloudProviders(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources>**)this;
+            check_hresult(_winrt_abi_type->get_IncludeCloudProviders(&value));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Storage_Search_IQueryOptionsAdditionalSearchSources<D>::IncludeCloudProviders(bool value) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->put_IncludeCloudProviders(value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources>**)this;
+            check_hresult(_winrt_abi_type->put_IncludeCloudProviders(value));
+        }
+    }
     template <typename D> auto consume_Windows_Storage_Search_IQueryOptionsFactory<D>::CreateCommonFileQuery(winrt::Windows::Storage::Search::CommonFileQuery const& query, param::iterable<hstring> const& fileTypeFilter) const
     {
         void* queryOptions{};
@@ -1926,6 +1994,40 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources> : produce_base<D, winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources>
+    {
+        int32_t __stdcall get_IncludeLocalSemanticIndex(bool* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<bool>(this->shim().IncludeLocalSemanticIndex());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall put_IncludeLocalSemanticIndex(bool value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().IncludeLocalSemanticIndex(value);
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_IncludeCloudProviders(bool* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<bool>(this->shim().IncludeCloudProviders());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall put_IncludeCloudProviders(bool value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().IncludeCloudProviders(value);
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::Storage::Search::IQueryOptionsFactory> : produce_base<D, winrt::Windows::Storage::Search::IQueryOptionsFactory>
     {
         int32_t __stdcall CreateCommonFileQuery(int32_t query, void* fileTypeFilter, void** queryOptions) noexcept final try
@@ -2369,6 +2471,7 @@ namespace std
     template<> struct hash<winrt::Windows::Storage::Search::IContentIndexerStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Storage::Search::IIndexableContent> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Storage::Search::IQueryOptions> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Storage::Search::IQueryOptionsAdditionalSearchSources> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Storage::Search::IQueryOptionsFactory> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Storage::Search::IQueryOptionsWithProviderFilter> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Storage::Search::IStorageFileQueryResult> : winrt::impl::hash_base {};

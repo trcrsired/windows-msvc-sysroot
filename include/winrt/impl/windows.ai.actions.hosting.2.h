@@ -11,13 +11,13 @@
 WINRT_EXPORT namespace winrt::Windows::AI::Actions::Hosting
 {
     struct WINRT_IMPL_EMPTY_BASES ActionCatalog : winrt::Windows::AI::Actions::Hosting::IActionCatalog,
-        impl::require<ActionCatalog, winrt::Windows::AI::Actions::Hosting::IActionCatalog2, winrt::Windows::Foundation::IClosable>
+        impl::require<ActionCatalog, winrt::Windows::AI::Actions::Hosting::IActionCatalog2, winrt::Windows::AI::Actions::Hosting::IActionCatalog3, winrt::Windows::Foundation::IClosable>
     {
         ActionCatalog(std::nullptr_t) noexcept {}
         ActionCatalog(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Actions::Hosting::IActionCatalog(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES ActionDefinition : winrt::Windows::AI::Actions::Hosting::IActionDefinition,
-        impl::require<ActionDefinition, winrt::Windows::AI::Actions::Hosting::IActionDefinition2, winrt::Windows::AI::Actions::Hosting::IActionDefinition3, winrt::Windows::Foundation::IClosable>
+        impl::require<ActionDefinition, winrt::Windows::AI::Actions::Hosting::IActionDefinition2, winrt::Windows::AI::Actions::Hosting::IActionDefinition3, winrt::Windows::AI::Actions::Hosting::IActionDefinition4, winrt::Windows::AI::Actions::Hosting::IActionDefinition5, winrt::Windows::Foundation::IClosable>
     {
         ActionDefinition(std::nullptr_t) noexcept {}
         ActionDefinition(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::AI::Actions::Hosting::IActionDefinition(ptr, take_ownership_from_abi) {}

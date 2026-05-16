@@ -322,28 +322,8 @@ void _mm_mwaitx(unsigned int, unsigned int, unsigned int);
 
 void _mm_clzero(void const *);
 unsigned __int64 _rdpru(unsigned int);
-  
+
 #if defined (_M_X64)
-// Secure Nested Paging
-#if _MSC_VER <= 1942
-
-typedef struct rmp_seg {
-    unsigned __int64 rmp_gpa;
-    __int8           rmp_entry;
-    __int8           rmp_pageSize;
-    __int8           rmp_pageMark;
-    __int8           rmp_reserved;
-    __int32          rmp_ASID;
-} rmp_seg;
-
-unsigned int __rmpupdate(unsigned __int64, rmp_seg*, int);
-unsigned int __pvalidate(unsigned __int64, int, int, int*);
-unsigned int __psmash(unsigned __int64);
-unsigned int __rmpadjust(unsigned __int64, int, int);
-unsigned int __rmpquery(unsigned __int64, int, int);
-
-#else
-
 // Secure Nested Paging
 typedef struct rmp_entry {
     unsigned __int64 guest_pa;
@@ -368,8 +348,6 @@ unsigned int __psmash(unsigned __int64);
 unsigned int __rmpadjust(unsigned __int64, unsigned __int8, unsigned __int8, unsigned __int8);
 unsigned int __rmpquery(unsigned __int64, unsigned __int8, rmpquery_result*);
 unsigned int __rmpread(unsigned __int64, rmp_entry*);
-
-#endif /* _MSC_VER */
 #endif  /* defined (_M_X64) */
 
 

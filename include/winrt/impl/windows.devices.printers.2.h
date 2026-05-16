@@ -8,10 +8,18 @@
 #define WINRT_Windows_Devices_Printers_2_H
 #include "winrt/impl/windows.foundation.1.h"
 #include "winrt/impl/windows.foundation.collections.1.h"
+#include "winrt/impl/windows.graphics.printing.printticket.1.h"
 #include "winrt/impl/windows.storage.streams.1.h"
 #include "winrt/impl/windows.devices.printers.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Printers
 {
+    struct IppAttributeConverter
+    {
+        IppAttributeConverter() = delete;
+        static auto ConvertPrintTicketToIppAttributesForPrinter(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket);
+        static auto ConvertBufferToIppAttributes(winrt::Windows::Storage::Streams::IBuffer const& attributesBuffer);
+        static auto ConvertIppAttributesToBuffer(param::iterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>> const& attributes, winrt::Windows::Devices::Printers::IppAttributeGroupKind const& attributeGroupKind);
+    };
     struct WINRT_IMPL_EMPTY_BASES IppAttributeError : winrt::Windows::Devices::Printers::IIppAttributeError
     {
         IppAttributeError(std::nullptr_t) noexcept {}
@@ -68,7 +76,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         IppIntegerRange(int32_t start, int32_t end);
     };
     struct WINRT_IMPL_EMPTY_BASES IppPrintDevice : winrt::Windows::Devices::Printers::IIppPrintDevice,
-        impl::require<IppPrintDevice, winrt::Windows::Devices::Printers::IIppPrintDevice2, winrt::Windows::Devices::Printers::IIppPrintDevice3, winrt::Windows::Devices::Printers::IIppPrintDevice4>
+        impl::require<IppPrintDevice, winrt::Windows::Devices::Printers::IIppPrintDevice2, winrt::Windows::Devices::Printers::IIppPrintDevice3, winrt::Windows::Devices::Printers::IIppPrintDevice4, winrt::Windows::Devices::Printers::IIppPrintDevice5>
     {
         IppPrintDevice(std::nullptr_t) noexcept {}
         IppPrintDevice(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IIppPrintDevice(ptr, take_ownership_from_abi) {}
@@ -76,6 +84,17 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         static auto FromId(param::hstring const& deviceId);
         static auto FromPrinterName(param::hstring const& printerName);
         static auto IsIppPrinter(param::hstring const& printerName);
+    };
+    struct WINRT_IMPL_EMPTY_BASES IppPrintDeviceInstallationResult : winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult
+    {
+        IppPrintDeviceInstallationResult(std::nullptr_t) noexcept {}
+        IppPrintDeviceInstallationResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IIppPrintDeviceInstallationResult(ptr, take_ownership_from_abi) {}
+    };
+    struct IppPrintDeviceManager
+    {
+        IppPrintDeviceManager() = delete;
+        static auto CanInstallIppPrintDevice();
+        static auto InstallIppPrintDeviceAsync(winrt::Windows::Foundation::Uri const& printerUri, param::hstring const& printerName);
     };
     struct WINRT_IMPL_EMPTY_BASES IppResolution : winrt::Windows::Devices::Printers::IIppResolution
     {
@@ -100,7 +119,8 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
         PageConfigurationSettings(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IPageConfigurationSettings(ptr, take_ownership_from_abi) {}
         PageConfigurationSettings();
     };
-    struct WINRT_IMPL_EMPTY_BASES PdlPassthroughProvider : winrt::Windows::Devices::Printers::IPdlPassthroughProvider
+    struct WINRT_IMPL_EMPTY_BASES PdlPassthroughProvider : winrt::Windows::Devices::Printers::IPdlPassthroughProvider,
+        impl::require<PdlPassthroughProvider, winrt::Windows::Devices::Printers::IPdlPassthroughProvider2>
     {
         PdlPassthroughProvider(std::nullptr_t) noexcept {}
         PdlPassthroughProvider(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IPdlPassthroughProvider(ptr, take_ownership_from_abi) {}
@@ -122,6 +142,11 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
     {
         PrintSchema(std::nullptr_t) noexcept {}
         PrintSchema(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IPrintSchema(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES ReplaceDevicePropertiesResult : winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult
+    {
+        ReplaceDevicePropertiesResult(std::nullptr_t) noexcept {}
+        ReplaceDevicePropertiesResult(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Printers::IReplaceDevicePropertiesResult(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES VirtualPrinterInstallationParameters : winrt::Windows::Devices::Printers::IVirtualPrinterInstallationParameters
     {

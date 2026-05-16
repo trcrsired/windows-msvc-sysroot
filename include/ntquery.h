@@ -37,6 +37,9 @@ extern "C"
 #define CI_VERSION_WDS40 0x109 // 265
 #define CI_VERSION_WIN70 0x700 // 1792
 
+// Windows version after which CorrID is supported
+#define CI_VERSION_CORRID 0x800 // 2048
+
 //
 // Use this path for the null catalog, one that doesn't have an index.
 // Use it to search for properties of files that are not indexed.
@@ -67,7 +70,7 @@ STDAPI LoadIFilterEx( PCWSTR pwcsPath,
                       DWORD dwFlags,
                       REFIID riid,
                       _Outptr_ void ** ppIUnk );
-                      
+
 STDAPI BindIFilterFromStorage(_In_ IStorage * pStg,
                               _In_ IUnknown * pUnkOuter,
                               _Outptr_ void ** ppIUnk );
@@ -140,6 +143,8 @@ STDAPI BindIFilterFromStream(_In_ IStream * pStm,
 #define DBPROP_IGNORESBRI                    14
 #define DBPROP_DONOTCOMPUTEEXPENSIVEPROPS    15
 #define DBPROP_ENABLEROWSETEVENTS            16
+#define DBPROP_SESSION_ID                    17
+#define DBPROP_QUERY_ID                      18
 
 // Content Index Framework Core property set
 

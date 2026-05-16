@@ -132,6 +132,39 @@ typedef VOID* WHV_EMULATOR_HANDLE;
 extern "C" {
 #endif
 
+HRESULT
+WINAPI
+WHvEmulatorCreateEmulator(
+    _In_ const WHV_EMULATOR_CALLBACKS* Callbacks,
+    _Out_ WHV_EMULATOR_HANDLE* Emulator
+    );
+
+HRESULT
+WINAPI
+WHvEmulatorDestroyEmulator(
+    _In_ WHV_EMULATOR_HANDLE Emulator
+    );
+
+HRESULT
+WINAPI
+WHvEmulatorTryIoEmulation(
+    _In_ WHV_EMULATOR_HANDLE Emulator,
+    _In_ VOID* Context,
+    _In_ const WHV_VP_EXIT_CONTEXT* VpContext,
+    _In_ const WHV_X64_IO_PORT_ACCESS_CONTEXT* IoInstructionContext,
+    _Out_ WHV_EMULATOR_STATUS* EmulatorReturnStatus
+    );
+
+HRESULT
+WINAPI
+WHvEmulatorTryMmioEmulation(
+    _In_ WHV_EMULATOR_HANDLE Emulator,
+    _In_ VOID* Context,
+    _In_ const WHV_VP_EXIT_CONTEXT* VpContext,
+    _In_ const WHV_MEMORY_ACCESS_CONTEXT* MmioInstructionContext,
+    _Out_ WHV_EMULATOR_STATUS* EmulatorReturnStatus
+    );
+
 #ifdef __cplusplus
 }
 #endif
@@ -155,6 +188,30 @@ extern "C" {
 #if defined(_AMD64_)
 
 #endif
+
+BOOLEAN
+__stdcall
+IsWHvEmulatorCreateEmulatorPresent(
+    VOID
+    );
+
+BOOLEAN
+__stdcall
+IsWHvEmulatorDestroyEmulatorPresent(
+    VOID
+    );
+
+BOOLEAN
+__stdcall
+IsWHvEmulatorTryIoEmulationPresent(
+    VOID
+    );
+
+BOOLEAN
+__stdcall
+IsWHvEmulatorTryMmioEmulationPresent(
+    VOID
+    );
 
 #ifdef __cplusplus
 }

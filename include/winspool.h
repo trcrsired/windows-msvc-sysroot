@@ -1306,6 +1306,8 @@ _Out_         LPDWORD pcReturned
 #define PRINTER_ENUM_CATEGORY_3D  0x04000000
 #endif
 
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+#endif
 
 
 #define SPOOL_FILE_PERSISTENT    0x00000001

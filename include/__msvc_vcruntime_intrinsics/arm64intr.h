@@ -38,18 +38,22 @@ extern "C" {
 
 typedef enum _tag_ARM64INTR_BARRIER_TYPE
 {
-    _ARM64_BARRIER_SY    = 0xF,
-    _ARM64_BARRIER_ST    = 0xE,
-    _ARM64_BARRIER_LD    = 0xD,
-    _ARM64_BARRIER_ISH   = 0xB,
-    _ARM64_BARRIER_ISHST = 0xA,
-    _ARM64_BARRIER_ISHLD = 0x9,
-    _ARM64_BARRIER_NSH   = 0x7,
-    _ARM64_BARRIER_NSHST = 0x6,
-    _ARM64_BARRIER_NSHLD = 0x5,
-    _ARM64_BARRIER_OSH   = 0x3,
-    _ARM64_BARRIER_OSHST = 0x2,
-    _ARM64_BARRIER_OSHLD = 0x1
+    _ARM64_BARRIER_SYNXS  = 0x13,
+    _ARM64_BARRIER_ISHNXS = 0x12,
+    _ARM64_BARRIER_NSHNXS = 0x11,
+    _ARM64_BARRIER_OSHNXS = 0x10,
+    _ARM64_BARRIER_SY     = 0xF,
+    _ARM64_BARRIER_ST     = 0xE,
+    _ARM64_BARRIER_LD     = 0xD,
+    _ARM64_BARRIER_ISH    = 0xB,
+    _ARM64_BARRIER_ISHST  = 0xA,
+    _ARM64_BARRIER_ISHLD  = 0x9,
+    _ARM64_BARRIER_NSH    = 0x7,
+    _ARM64_BARRIER_NSHST  = 0x6,
+    _ARM64_BARRIER_NSHLD  = 0x5,
+    _ARM64_BARRIER_OSH    = 0x3,
+    _ARM64_BARRIER_OSHST  = 0x2,
+    _ARM64_BARRIER_OSHLD  = 0x1
 }
 _ARM64INTR_BARRIER_TYPE;
 
@@ -63,24 +67,24 @@ void __st64b(void *_addr, unsigned __int64 _value[8]);
 unsigned __int64 __st64bv(void *_addr, unsigned __int64 _value[8]);
 unsigned __int64 __st64bv0(void *_addr, unsigned __int64 _value[8]);
 
-static __forceinline data512_t __arm_ld64b(const void *_addr) 
-{ 
+static __forceinline data512_t __arm_ld64b(const void *_addr)
+{
     data512_t _value;
     __ld64b(_addr, _value._val);
     return _value;
 }
 
-static __forceinline void __arm_st64b(void *_addr, data512_t _value)  
+static __forceinline void __arm_st64b(void *_addr, data512_t _value)
 {
     __st64b(_addr, _value._val);
 }
 
-static __forceinline unsigned __int64 __arm_st64bv(void *_addr, data512_t _value)  
+static __forceinline unsigned __int64 __arm_st64bv(void *_addr, data512_t _value)
 {
     return __st64bv(_addr, _value._val);
 }
 
-static __forceinline unsigned __int64 __arm_st64bv0(void *_addr, data512_t _value) 
+static __forceinline unsigned __int64 __arm_st64bv0(void *_addr, data512_t _value)
 {
     return __st64bv0(_addr, _value._val);
 }

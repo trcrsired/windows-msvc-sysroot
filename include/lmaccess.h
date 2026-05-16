@@ -1632,11 +1632,11 @@ NetEnumerateTrustedDomains (
 
 // Debug function codes
 
-#define NETLOGON_CONTROL_UNLOAD_NETLOGON_DLL 0xFFFB
-#define NETLOGON_CONTROL_BACKUP_CHANGE_LOG  0xFFFC
-#define NETLOGON_CONTROL_TRUNCATE_LOG       0xFFFD
-#define NETLOGON_CONTROL_SET_DBFLAG         0xFFFE
-#define NETLOGON_CONTROL_BREAKPOINT         0xFFFF
+#define NETLOGON_CONTROL_UNLOAD_NETLOGON_DLL 0xFFFB  // Unsupported
+#define NETLOGON_CONTROL_BACKUP_CHANGE_LOG   0xFFFC  // Debug builds only
+#define NETLOGON_CONTROL_TRUNCATE_LOG        0xFFFD  // Debug builds only
+#define NETLOGON_CONTROL_SET_DBFLAG          0xFFFE  // Supported in both debug and retail builds
+#define NETLOGON_CONTROL_BREAKPOINT          0xFFFF  // Debug builds only
 
 //
 // Query level 1 for I_NetLogonControl
@@ -1660,7 +1660,7 @@ typedef struct _NETLOGON_INFO_2 {
         //
         NET_API_STATUS netlog2_pdc_connection_status;
 #ifdef MIDL_PASS
-        [string] wchar_t * netlog2_trusted_dc_name;
+        [string,range(0,LM_DNS_MAX_NAME_LENGTH+1)] wchar_t * netlog2_trusted_dc_name;
 #else
         LPWSTR netlog2_trusted_dc_name;
 #endif // MIDL_PASS
@@ -1679,8 +1679,8 @@ typedef struct _NETLOGON_INFO_3 {
 
 typedef struct _NETLOGON_INFO_4 {
 #ifdef MIDL_PASS
-        [string] wchar_t * netlog4_trusted_dc_name;
-        [string] wchar_t * netlog4_trusted_domain_name;
+        [string,range(0,LM_DNS_MAX_NAME_LENGTH+1)] wchar_t * netlog4_trusted_dc_name;
+        [string,range(0,LM_DNS_MAX_NAME_LENGTH+1)] wchar_t * netlog4_trusted_domain_name;
 #else
         LPWSTR netlog4_trusted_dc_name;
         LPWSTR netlog4_trusted_domain_name;

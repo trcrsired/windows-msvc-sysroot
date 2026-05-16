@@ -1,0 +1,114 @@
+// C++/WinRT v2.0.250303.1
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#pragma once
+#ifndef WINRT_Windows_AI_Agents_Mcp_0_H
+#define WINRT_Windows_AI_Agents_Mcp_0_H
+WINRT_EXPORT namespace winrt::Windows::AI::Agents::Mcp
+{
+    enum class McpMessageDirection : int32_t
+    {
+        ClientToServer = 0,
+        ServerToClient = 1,
+    };
+    struct IMcpMessageFilterExperimental;
+    struct IMcpMessageFilterResponse;
+    struct IMcpMessageFilterResponseExperimental;
+    struct IMcpMessageFilterResponseExperimental2;
+    struct McpMessageFilterResponse;
+}
+namespace winrt::impl
+{
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse>{ using type = class_category; };
+    template <> struct category<winrt::Windows::AI::Agents::Mcp::McpMessageDirection>{ using type = enum_category; };
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse> = L"Windows.AI.Agents.Mcp.McpMessageFilterResponse";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::McpMessageDirection> = L"Windows.AI.Agents.Mcp.McpMessageDirection";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental> = L"Windows.AI.Agents.Mcp.IMcpMessageFilterExperimental";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse> = L"Windows.AI.Agents.Mcp.IMcpMessageFilterResponse";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental> = L"Windows.AI.Agents.Mcp.IMcpMessageFilterResponseExperimental";
+    template <> inline constexpr auto& name_v<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2> = L"Windows.AI.Agents.Mcp.IMcpMessageFilterResponseExperimental2";
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental>{ 0xC5F8F821,0x895C,0x5241,{ 0xB4,0x5A,0x92,0xE2,0x49,0xA7,0xD8,0x73 } }; // C5F8F821-895C-5241-B45A-92E249A7D873
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>{ 0x363CE02C,0x7098,0x5E13,{ 0xA4,0x08,0x7B,0x43,0xE1,0xF4,0x52,0xAC } }; // 363CE02C-7098-5E13-A408-7B43E1F452AC
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>{ 0xE215B5F2,0xCB02,0x56CF,{ 0xAA,0xB0,0x84,0xAE,0xF6,0x5D,0x16,0x65 } }; // E215B5F2-CB02-56CF-AAB0-84AEF65D1665
+    template <> inline constexpr guid guid_v<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2>{ 0x10F4B099,0x6632,0x505A,{ 0xA6,0x38,0xE7,0x04,0xC7,0xE4,0x7A,0xBF } }; // 10F4B099-6632-505A-A638-E704C7E47ABF
+    template <> struct default_interface<winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse>{ using type = winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse; };
+    template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall Initialize(void*, uint32_t, void*, void*, uint32_t) noexcept = 0;
+            virtual int32_t __stdcall OnMessage(void*, int32_t, void*) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+        };
+    };
+    template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_IsAllowed(bool*) noexcept = 0;
+            virtual int32_t __stdcall put_IsAllowed(bool) noexcept = 0;
+            virtual int32_t __stdcall get_MessageIfNotAllowed(void**) noexcept = 0;
+            virtual int32_t __stdcall put_MessageIfNotAllowed(void*) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall Allow() noexcept = 0;
+            virtual int32_t __stdcall Reject(void*) noexcept = 0;
+        };
+    };
+    template <typename D>
+    struct consume_Windows_AI_Agents_Mcp_IMcpMessageFilterExperimental
+    {
+        auto Initialize(param::hstring const& clientAppUserModelId, uint32_t clientProcessId, param::hstring const& serverIdentity, param::hstring const& serverName, uint32_t serverProcessId) const;
+        auto OnMessage(param::hstring const& message, winrt::Windows::AI::Agents::Mcp::McpMessageDirection const& direction, winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse const& filterResponse) const;
+    };
+    template <> struct consume<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental>
+    {
+        template <typename D> using type = consume_Windows_AI_Agents_Mcp_IMcpMessageFilterExperimental<D>;
+    };
+    template <typename D>
+    struct consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponse
+    {
+    };
+    template <> struct consume<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>
+    {
+        template <typename D> using type = consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponse<D>;
+    };
+    template <typename D>
+    struct consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponseExperimental
+    {
+        [[nodiscard]] auto IsAllowed() const;
+        auto IsAllowed(bool value) const;
+        [[nodiscard]] auto MessageIfNotAllowed() const;
+        auto MessageIfNotAllowed(param::hstring const& value) const;
+    };
+    template <> struct consume<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental>
+    {
+        template <typename D> using type = consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponseExperimental<D>;
+    };
+    template <typename D>
+    struct consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponseExperimental2
+    {
+        auto Allow() const;
+        auto Reject(param::hstring const& reason) const;
+    };
+    template <> struct consume<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2>
+    {
+        template <typename D> using type = consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponseExperimental2<D>;
+    };
+}
+#endif

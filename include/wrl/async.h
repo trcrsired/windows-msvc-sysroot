@@ -555,6 +555,7 @@ public:
         cCallbackMade_(0),
         cCompleteDelegateAssigned_(0),
         completeDelegate_(nullptr),
+        cCompleteDelegateRefCount_(0),
         completeDelegateBucketAssist_(nullptr),
         currentStatus_(Details::AsyncStatusInternal::_Created),
         errorCode_(S_OK),
@@ -708,7 +709,7 @@ public:
         if (SUCCEEDED(hr))
         {
             // this delegate property is "write once"
-            if (InterlockedIncrement(&cCompleteDelegateAssigned_) == 1)
+            if (::_InterlockedCompareExchange(&cCompleteDelegateAssigned_, 1, 0) == 0)
             {
                 if (completeHandler != nullptr)
                 {
@@ -720,6 +721,11 @@ public:
                 // Guarantee that the write of completeDelegate_ is ordered with respect to the read of state below
                 // as perceived from FireCompletion on another thread.
                 MemoryBarrier();
+
+                // Make the write "visible" to other threads
+                LONG newRefCount = InterlockedIncrement(&cCompleteDelegateRefCount_);
+                __WRL_ASSERT__(newRefCount == 1);
+                (void)newRefCount;
 
                 this->TraceDelegateAssigned();
 
@@ -747,7 +753,33 @@ public:
         HRESULT hr = CheckValidStateForDelegateCall();
         if (SUCCEEDED(hr))
         {
+            LONG currCount = cCompleteDelegateRefCount_;
+            while (currCount != 0)
+            {
+                LONG oldCount = ::_InterlockedCompareExchange(&cCompleteDelegateRefCount_, currCount + 1, currCount);
+                if (oldCount == currCount)
+                {
+                    // Successfully bumped the reference count
+                    break;
+                }
+
+                currCount = oldCount;
+            }
+
+            if (currCount == 0)
+            {
+                // Not set or not safe to read
+                return hr;
+            }
+
+            // Safe to read the pointer
             completeDelegate_.CopyTo(completeHandler);
+
+            if (InterlockedDecrement(&cCompleteDelegateRefCount_) == 0)
+            {
+                // This was the last thread to release shared ownership of the pointer; we need to clean it up
+                completeDelegate_ = nullptr;
+            }
         }
         return hr;
     }
@@ -755,13 +787,13 @@ public:
     virtual HRESULT FireCompletion()
     {
         HRESULT hr = S_OK;
-        // must do this *before* the InterlockedIncrement!
+        // must do this *before* the _InterlockedCompareExchange!
         TryTransitionToCompleted();
 
         __WRL_ASSERT__(IsTerminalState() && "Must only call FireCompletion when operation is in terminal state");
 
         // we guarantee that completion can only ever be fired once
-        if (completeDelegate_ != nullptr && InterlockedIncrement(&cCallbackMade_) == 1)
+        if (completeDelegate_ != nullptr && ::_InterlockedCompareExchange(&cCallbackMade_, 1, 0) == 0)
         {
             ComPtr< ::ABI::Windows::Foundation::IAsyncInfo> asyncInfo = this;
             ComPtr<typename Details::DerefHelper<typename CompleteTraits::Arg1Type>::DerefType> operationInterface;
@@ -778,8 +810,12 @@ public:
                 hr = completeDelegate_->Invoke(operationInterface.Get(), static_cast<::ABI::Windows::Foundation::AsyncStatus>(current));
                 // Filter the errors as per the Error Propagation Policy
                 hr = ErrorPropagationPolicyTraits< AllOptions::PropagationPolicy >::FireCompletionErrorPropagationPolicyFilter(hr, completeDelegate_.Get(), completeDelegateBucketAssist_);
-                completeDelegate_ = nullptr;
 
+                if (InterlockedDecrement(&cCompleteDelegateRefCount_) == 0)
+                {
+                    // No other thread is trying to read the pointer
+                    completeDelegate_ = nullptr;
+                }
 
                 TraceCompletionNotificationComplete();
             }
@@ -1321,7 +1357,8 @@ protected:
 
 private:
     ::Microsoft::WRL::ComPtr<TComplete>     completeDelegate_;
-    void *completeDelegateBucketAssist_;
+    LONG volatile cCompleteDelegateRefCount_;
+    void* completeDelegateBucketAssist_;
 
     ::Microsoft::WRL::ComPtr<IRestrictedErrorInfo> errorInfo_;
     Details::AsyncStatusInternal volatile currentStatus_;

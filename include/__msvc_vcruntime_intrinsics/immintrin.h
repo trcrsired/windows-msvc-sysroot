@@ -109,16 +109,7 @@ inline bool __check_isa_support(unsigned __x, unsigned __v = 0)
 #else
 __inline _Bool __check_isa_support(unsigned __x, unsigned __v)
 #endif
-{ return ((__x & __isa_inverted) == 0) && ((unsigned char)__avx10_version >= __v); }
-
-// Simplified check for 512-bit AVX10 support
-#define __IA_AVX10_512         0x00040000
-#ifdef __cplusplus
-inline bool
-#else
-__inline _Bool
-#endif
-__check_isa_avx10_512(unsigned __v) { return (__avx10_version >= (__v | __IA_AVX10_512)); }
+{ return ((__x & __isa_inverted) == 0) && (__avx10_version >= __v); }
 
 // __arch_inverted() returns cleared bits to signal /arch support
 // (Because these always return constant values, no need for a simplified 512-bit check.)

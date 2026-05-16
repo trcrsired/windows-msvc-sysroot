@@ -175,6 +175,10 @@
 
   <xs:element name="ComExtensions" abstract="true"/>
 
+  <xs:element name="AccessControlChoice" abstract="true"/>
+
+  <xs:element name="ApplicationDataChoice" abstract="true"/>
+
   <xs:complexType name="CT_Identity">
     <xs:attribute name="Name" type="t:ST_PackageName" use="required"/>
     <xs:attribute name="ProcessorArchitecture" type="t:ST_Architecture_v2" use="optional"/>
@@ -207,6 +211,8 @@
       <xs:element ref="heap:HeapPolicy" minOccurs="0"/>
       <xs:element ref="deployment2:StageWhileInUse" minOccurs="0"/>
       <xs:element ref="trustedlaunch:TrustedLaunch" minOccurs="0"/>
+      <xs:element ref="AccessControlChoice" minOccurs="0"/>
+      <xs:element ref="ApplicationDataChoice" minOccurs="0"/>
     </xs:all>
   </xs:complexType>
 
@@ -263,7 +269,7 @@
   </xs:element>
 
   <xs:element name="CustomCapabilityChoice" abstract="true"/>
-  
+
   <xs:element name="DeviceCapability">
     <xs:complexType>
       <xs:sequence>
@@ -307,7 +313,7 @@
       <xs:element ref="ExtensionChoice"/>
     </xs:choice>
   </xs:complexType>
-  
+
   <xs:complexType name="CT_InProcessServer">
     <xs:sequence>
       <xs:element name="Path" type="t:ST_FileName"/>
@@ -458,7 +464,7 @@
   </xs:complexType>
 
   <xs:element name="VisualElementsChoice" abstract="true"/>
-  
+
   <xs:complexType name="CT_ApplicationExtensions">
     <xs:choice minOccurs="0" maxOccurs="10000">
       <xs:element ref="ApplicationExtensionChoice"/>

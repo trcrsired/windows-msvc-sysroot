@@ -68,7 +68,7 @@ extern "C" { /* Begin "C" */
 
 // Suppress C28251: Inconsistent annotation for prior declaration.
 // Depending on the include order the definition may not exist so
-// _Use_decl_annotations_ can not be used. 
+// _Use_decl_annotations_ can not be used.
 #pragma warning(push)
 #pragma warning(disable: 28251)
 

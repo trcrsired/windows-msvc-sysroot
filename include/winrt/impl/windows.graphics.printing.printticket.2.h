@@ -6,6 +6,7 @@
 #pragma once
 #ifndef WINRT_Windows_Graphics_Printing_PrintTicket_2_H
 #define WINRT_Windows_Graphics_Printing_PrintTicket_2_H
+#include "winrt/impl/windows.storage.streams.1.h"
 #include "winrt/impl/windows.graphics.printing.printticket.1.h"
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintTicket
 {
@@ -43,6 +44,7 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintTicket
     {
         WorkflowPrintTicket(std::nullptr_t) noexcept {}
         WorkflowPrintTicket(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::PrintTicket::IWorkflowPrintTicket(ptr, take_ownership_from_abi) {}
+        WorkflowPrintTicket(param::hstring const& printerName, winrt::Windows::Storage::Streams::IInputStream const& printTicketStream);
     };
     struct WINRT_IMPL_EMPTY_BASES WorkflowPrintTicketValidationResult : winrt::Windows::Graphics::Printing::PrintTicket::IWorkflowPrintTicketValidationResult
     {

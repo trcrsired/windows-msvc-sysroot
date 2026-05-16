@@ -582,6 +582,40 @@ namespace winrt::impl
             check_hresult(_winrt_abi_type->put_LimitToExistingPackages(value));
         }
     }
+    template <typename D> auto consume_Windows_Management_Deployment_IAddPackageOptions3<D>::PackageOperationPriority() const
+    {
+        winrt::Windows::Management::Deployment::PackageOperationPriority value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Management::Deployment::IAddPackageOptions3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Management::Deployment::IAddPackageOptions3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::IAddPackageOptions3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_PackageOperationPriority(reinterpret_cast<int32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::IAddPackageOptions3>**)this;
+            check_hresult(_winrt_abi_type->get_PackageOperationPriority(reinterpret_cast<int32_t*>(&value)));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Management_Deployment_IAddPackageOptions3<D>::PackageOperationPriority(winrt::Windows::Management::Deployment::PackageOperationPriority const& value) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::Management::Deployment::IAddPackageOptions3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Management::Deployment::IAddPackageOptions3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::IAddPackageOptions3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->put_PackageOperationPriority(static_cast<int32_t>(value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::IAddPackageOptions3>**)this;
+            check_hresult(_winrt_abi_type->put_PackageOperationPriority(static_cast<int32_t>(value)));
+        }
+    }
     template <typename D> auto consume_Windows_Management_Deployment_IAppInstallerManager<D>::SetAutoUpdateSettings(param::hstring const& packageFamilyName, winrt::Windows::Management::Deployment::AutoUpdateSettingsOptions const& appInstallerInfo) const
     {
         if constexpr (!std::is_same_v<D, winrt::Windows::Management::Deployment::IAppInstallerManager>)
@@ -4394,6 +4428,40 @@ namespace winrt::impl
         }
         return winrt::Windows::Foundation::Collections::IMap<winrt::Windows::Foundation::Uri, hstring>{ value, take_ownership_from_abi };
     }
+    template <typename D> auto consume_Windows_Management_Deployment_IStagePackageOptions3<D>::PackageOperationPriority() const
+    {
+        winrt::Windows::Management::Deployment::PackageOperationPriority value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Management::Deployment::IStagePackageOptions3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Management::Deployment::IStagePackageOptions3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::IStagePackageOptions3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_PackageOperationPriority(reinterpret_cast<int32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::IStagePackageOptions3>**)this;
+            check_hresult(_winrt_abi_type->get_PackageOperationPriority(reinterpret_cast<int32_t*>(&value)));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Management_Deployment_IStagePackageOptions3<D>::PackageOperationPriority(winrt::Windows::Management::Deployment::PackageOperationPriority const& value) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::Management::Deployment::IStagePackageOptions3>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Management::Deployment::IStagePackageOptions3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::IStagePackageOptions3>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->put_PackageOperationPriority(static_cast<int32_t>(value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Management::Deployment::IStagePackageOptions3>**)this;
+            check_hresult(_winrt_abi_type->put_PackageOperationPriority(static_cast<int32_t>(value)));
+        }
+    }
     template <typename D> auto consume_Windows_Management_Deployment_IUpdateSharedPackageContainerOptions<D>::ForceAppShutdown() const
     {
         bool value{};
@@ -4743,6 +4811,26 @@ namespace winrt::impl
         {
             typename D::abi_guard guard(this->shim());
             this->shim().LimitToExistingPackages(value);
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::Management::Deployment::IAddPackageOptions3> : produce_base<D, winrt::Windows::Management::Deployment::IAddPackageOptions3>
+    {
+        int32_t __stdcall get_PackageOperationPriority(int32_t* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::Windows::Management::Deployment::PackageOperationPriority>(this->shim().PackageOperationPriority());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall put_PackageOperationPriority(int32_t value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().PackageOperationPriority(*reinterpret_cast<winrt::Windows::Management::Deployment::PackageOperationPriority const*>(&value));
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -6633,6 +6721,26 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::Management::Deployment::IStagePackageOptions3> : produce_base<D, winrt::Windows::Management::Deployment::IStagePackageOptions3>
+    {
+        int32_t __stdcall get_PackageOperationPriority(int32_t* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::Windows::Management::Deployment::PackageOperationPriority>(this->shim().PackageOperationPriority());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall put_PackageOperationPriority(int32_t value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().PackageOperationPriority(*reinterpret_cast<winrt::Windows::Management::Deployment::PackageOperationPriority const*>(&value));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::Management::Deployment::IUpdateSharedPackageContainerOptions> : produce_base<D, winrt::Windows::Management::Deployment::IUpdateSharedPackageContainerOptions>
     {
         int32_t __stdcall get_ForceAppShutdown(bool* value) noexcept final try
@@ -6922,6 +7030,7 @@ namespace std
 #ifndef WINRT_LEAN_AND_MEAN
     template<> struct hash<winrt::Windows::Management::Deployment::IAddPackageOptions> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Management::Deployment::IAddPackageOptions2> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Management::Deployment::IAddPackageOptions3> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Management::Deployment::IAppInstallerManager> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Management::Deployment::IAppInstallerManagerStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Management::Deployment::IAutoUpdateSettingsOptions> : winrt::impl::hash_base {};
@@ -6962,6 +7071,7 @@ namespace std
     template<> struct hash<winrt::Windows::Management::Deployment::ISharedPackageContainerMemberFactory> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Management::Deployment::IStagePackageOptions> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Management::Deployment::IStagePackageOptions2> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Management::Deployment::IStagePackageOptions3> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Management::Deployment::IUpdateSharedPackageContainerOptions> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Management::Deployment::IUpdateSharedPackageContainerResult> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Management::Deployment::AddPackageOptions> : winrt::impl::hash_base {};

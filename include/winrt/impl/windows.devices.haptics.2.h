@@ -9,6 +9,27 @@
 #include "winrt/impl/windows.devices.haptics.1.h"
 WINRT_EXPORT namespace winrt::Windows::Devices::Haptics
 {
+    struct HapticsControllerOverrideToken
+    {
+        int64_t Value {};
+    };
+    inline bool operator==(HapticsControllerOverrideToken const& left, HapticsControllerOverrideToken const& right) noexcept
+    {
+        return left.Value == right.Value;
+    }
+    inline bool operator!=(HapticsControllerOverrideToken const& left, HapticsControllerOverrideToken const& right) noexcept
+    {
+        return !(left == right);
+    }
+    struct WINRT_IMPL_EMPTY_BASES InputHapticsManager : winrt::Windows::Devices::Haptics::IInputHapticsManager
+    {
+        InputHapticsManager(std::nullptr_t) noexcept {}
+        InputHapticsManager(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Devices::Haptics::IInputHapticsManager(ptr, take_ownership_from_abi) {}
+        static auto IsSupported();
+        static auto IsHapticDevicePresent();
+        static auto GetForCurrentThread();
+        static auto TryGetForThread(uint32_t ThreadId);
+    };
     struct KnownSimpleHapticsControllerWaveforms
     {
         KnownSimpleHapticsControllerWaveforms() = delete;
@@ -27,6 +48,10 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Haptics
         [[nodiscard]] static auto MarkerContinuous();
         [[nodiscard]] static auto PencilContinuous();
         [[nodiscard]] static auto Success();
+        [[nodiscard]] static auto Collide();
+        [[nodiscard]] static auto Align();
+        [[nodiscard]] static auto Step();
+        [[nodiscard]] static auto Grow();
     };
     struct WINRT_IMPL_EMPTY_BASES SimpleHapticsController : winrt::Windows::Devices::Haptics::ISimpleHapticsController
     {

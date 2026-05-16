@@ -5192,32 +5192,6 @@ extern void __cdecl _tile_dphf8ps(__tile dst, __tile src1, __tile src2);
 
 // AMX-TF32
 extern void __cdecl _tile_mmultf32ps(__tile dst, __tile src1, __tile src2);
-extern void __cdecl _tile_tmmultf32ps(__tile dst, __tile src1, __tile src2);
-
-// AMX-TRANSPOSE
-extern void __cdecl _tile_2rpntlvwz0(__tile dst, const void *base, int stride);
-extern void __cdecl _tile_2rpntlvwz0t1(__tile dst, const void *base, int stride);
-extern void __cdecl _tile_2rpntlvwz1(__tile dst, const void *base, int stride);
-extern void __cdecl _tile_2rpntlvwz1t1(__tile dst, const void *base, int stride);
-extern void __cdecl _tile_transposed(__tile dst, __tile src1);
-
-// AMX-TRANSPOSE / AMX-MOVRS
-extern void __cdecl _tile_2rpntlvwz0rs(__tile dst, const void *base, int stride);
-extern void __cdecl _tile_2rpntlvwz0rst1(__tile dst, const void *base, int stride);
-extern void __cdecl _tile_2rpntlvwz1rs(__tile dst, const void *base, int stride);
-extern void __cdecl _tile_2rpntlvwz1rst1(__tile dst, const void *base, int stride);
-
-// AMX-TRANSPOSE / AMX-COMPLEX
-extern void __cdecl _tile_conjtcmmimfp16ps(__tile dst, __tile src1, __tile src2);
-extern void __cdecl _tile_conjtfp16(__tile dst, __tile src1);
-extern void __cdecl _tile_tcmmimfp16ps(__tile dst, __tile src1, __tile src2);
-extern void __cdecl _tile_tcmmrlfp16ps(__tile dst, __tile src1, __tile src2);
-
-// AMX-TRANSPOSE / AMX-BF16
-extern void __cdecl _tile_tdpbf16ps(__tile dst, __tile src1, __tile src2);
-
-// AMX-TRANSPOSE / AMX-FP16
-extern void __cdecl _tile_tdpfp16ps(__tile dst, __tile src1, __tile src2);
 
 #endif  /* defined (_M_X64) */
 
@@ -6752,7 +6726,7 @@ extern unsigned int __cdecl _mm_cvtts_ss_u32(__m128);
 extern unsigned int __cdecl _mm_cvtts_roundss_u32(__m128, const int);
 #if defined (_M_X64)
 extern unsigned long long __cdecl _mm_cvtts_ss_u64(__m128);
-extern unsigned long long __cdecl _mm_cvtts_roundss_u64(__m128, const int); 
+extern unsigned long long __cdecl _mm_cvtts_roundss_u64(__m128, const int);
 #endif
 
 // VCVTTSS2SIS
@@ -6768,7 +6742,7 @@ extern unsigned int __cdecl _mm_cvtts_sd_u32(__m128d);
 extern unsigned int __cdecl _mm_cvtts_roundsd_u32(__m128d, const int);
 #if defined (_M_X64)
 extern unsigned long long __cdecl _mm_cvtts_sd_u64(__m128d);
-extern unsigned long long __cdecl _mm_cvtts_roundsd_u64(__m128d, const int); 
+extern unsigned long long __cdecl _mm_cvtts_roundsd_u64(__m128d, const int);
 #endif
 
 // VCVTTSD2SIS
@@ -6800,9 +6774,9 @@ extern __m128i __cdecl _mm_maskz_cvtts_ps_epu32(__mmask8, __m128);
 extern __m256i __cdecl _mm256_cvtts_ps_epu32(__m256);
 extern __m256i __cdecl _mm256_mask_cvtts_ps_epu32(__m256i, __mmask8, __m256);
 extern __m256i __cdecl _mm256_maskz_cvtts_ps_epu32(__mmask8, __m256);
-extern __m512i __cdecl _mm512_cvtts_ps_epu32(__m512); 
-extern __m512i __cdecl _mm512_mask_cvtts_ps_epu32(__m512i, __mmask16, __m512); 
-extern __m512i __cdecl _mm512_maskz_cvtts_ps_epu32(__mmask16, __m512); 
+extern __m512i __cdecl _mm512_cvtts_ps_epu32(__m512);
+extern __m512i __cdecl _mm512_mask_cvtts_ps_epu32(__m512i, __mmask16, __m512);
+extern __m512i __cdecl _mm512_maskz_cvtts_ps_epu32(__mmask16, __m512);
 extern __m512i __cdecl _mm512_cvtts_roundps_epu32(__m512, const int);
 extern __m512i __cdecl _mm512_mask_cvtts_roundps_epu32(__m512i, __mmask16, __m512, const int);
 extern __m512i __cdecl _mm512_maskz_cvtts_roundps_epu32(__mmask16, __m512, const int);
@@ -6814,9 +6788,9 @@ extern __m128i __cdecl _mm_maskz_cvtts_ps_epi64(__mmask8, __m128);
 extern __m256i __cdecl _mm256_cvtts_ps_epi64(__m128);
 extern __m256i __cdecl _mm256_mask_cvtts_ps_epi64(__m256i, __mmask8, __m128);
 extern __m256i __cdecl _mm256_maskz_cvtts_ps_epi64(__mmask8, __m128);
-extern __m512i __cdecl _mm512_cvtts_ps_epi64(__m256); 
-extern __m512i __cdecl _mm512_mask_cvtts_ps_epi64(__m512i, __mmask8, __m256); 
-extern __m512i __cdecl _mm512_maskz_cvtts_ps_epi64(__mmask8, __m256); 
+extern __m512i __cdecl _mm512_cvtts_ps_epi64(__m256);
+extern __m512i __cdecl _mm512_mask_cvtts_ps_epi64(__m512i, __mmask8, __m256);
+extern __m512i __cdecl _mm512_maskz_cvtts_ps_epi64(__mmask8, __m256);
 extern __m512i __cdecl _mm512_cvtts_roundps_epi64(__m256, const int);
 extern __m512i __cdecl _mm512_mask_cvtts_roundps_epi64(__m512i, __mmask8, __m256, const int);
 extern __m512i __cdecl _mm512_maskz_cvtts_roundps_epi64(__mmask8, __m256, const int);
@@ -6842,8 +6816,8 @@ extern __m128i __cdecl _mm_maskz_cvtts_pd_epu64(__mmask8, __m128d);
 extern __m256i __cdecl _mm256_cvtts_pd_epu64(__m256d);
 extern __m256i __cdecl _mm256_mask_cvtts_pd_epu64(__m256i, __mmask8, __m256d);
 extern __m256i __cdecl _mm256_maskz_cvtts_pd_epu64(__mmask8, __m256d);
-extern __m512i __cdecl _mm512_cvtts_pd_epu64(__m512d); 
-extern __m512i __cdecl _mm512_mask_cvtts_pd_epu64(__m512i, __mmask8, __m512d); 
+extern __m512i __cdecl _mm512_cvtts_pd_epu64(__m512d);
+extern __m512i __cdecl _mm512_mask_cvtts_pd_epu64(__m512i, __mmask8, __m512d);
 extern __m512i __cdecl _mm512_maskz_cvtts_pd_epu64(__mmask8, __m512d);
 extern __m512i __cdecl _mm512_cvtts_roundpd_epu64(__m512d, const int);
 extern __m512i __cdecl _mm512_mask_cvtts_roundpd_epu64(__m512i, __mmask8, __m512d, const int);
@@ -6856,9 +6830,9 @@ extern __m128i __cdecl _mm_maskz_cvtts_pd_epu32(__mmask8, __m128d);
 extern __m128i __cdecl _mm256_cvtts_pd_epu32(__m256d);
 extern __m128i __cdecl _mm256_mask_cvtts_pd_epu32(__m128i, __mmask8, __m256d);
 extern __m128i __cdecl _mm256_maskz_cvtts_pd_epu32(__mmask8, __m256d);
-extern __m256i __cdecl _mm512_cvtts_pd_epu32(__m512d); 
-extern __m256i __cdecl _mm512_mask_cvtts_pd_epu32(__m256i, __mmask8, __m512d); 
-extern __m256i __cdecl _mm512_maskz_cvtts_pd_epu32(__mmask8, __m512d); 
+extern __m256i __cdecl _mm512_cvtts_pd_epu32(__m512d);
+extern __m256i __cdecl _mm512_mask_cvtts_pd_epu32(__m256i, __mmask8, __m512d);
+extern __m256i __cdecl _mm512_maskz_cvtts_pd_epu32(__mmask8, __m512d);
 extern __m256i __cdecl _mm512_cvtts_roundpd_epu32(__m512d, const int);
 extern __m256i __cdecl _mm512_mask_cvtts_roundpd_epu32(__m256i, __mmask8, __m512d, const int);
 extern __m256i __cdecl _mm512_maskz_cvtts_roundpd_epu32(__mmask8, __m512d, const int);
@@ -6870,7 +6844,7 @@ extern __m128i __cdecl _mm_maskz_cvtts_pd_epi64(__mmask8, __m128d);
 extern __m256i __cdecl _mm256_cvtts_pd_epi64(__m256d);
 extern __m256i __cdecl _mm256_mask_cvtts_pd_epi64(__m256i, __mmask8, __m256d);
 extern __m256i __cdecl _mm256_maskz_cvtts_pd_epi64(__mmask8, __m256d);
-extern __m512i __cdecl _mm512_cvtts_pd_epi64(__m512d); 
+extern __m512i __cdecl _mm512_cvtts_pd_epi64(__m512d);
 extern __m512i __cdecl _mm512_mask_cvtts_pd_epi64(__m512i, __mmask8, __m512d);
 extern __m512i __cdecl _mm512_maskz_cvtts_pd_epi64(__mmask8, __m512d);
 extern __m512i __cdecl _mm512_cvtts_roundpd_epi64(__m512d, const int);
@@ -6883,9 +6857,9 @@ extern __m128i __cdecl _mm_mask_cvtts_pd_epi32(__m128i, __mmask8, __m128d);
 extern __m128i __cdecl _mm_maskz_cvtts_pd_epi32(__mmask8, __m128d);
 extern __m128i __cdecl _mm256_cvtts_pd_epi32(__m256d);
 extern __m128i __cdecl _mm256_mask_cvtts_pd_epi32(__m128i, __mmask8, __m256d);
-extern __m128i __cdecl _mm256_maskz_cvtts_pd_epi32(__mmask8, __m256d); 
+extern __m128i __cdecl _mm256_maskz_cvtts_pd_epi32(__mmask8, __m256d);
 extern __m256i __cdecl _mm512_cvtts_pd_epi32(__m512d);
-extern __m256i __cdecl _mm512_mask_cvtts_pd_epi32(__m256i, __mmask8, __m512d); 
+extern __m256i __cdecl _mm512_mask_cvtts_pd_epi32(__m256i, __mmask8, __m512d);
 extern __m256i __cdecl _mm512_maskz_cvtts_pd_epi32(__mmask8, __m512d);
 extern __m256i __cdecl _mm512_cvtts_roundpd_epi32(__m512d, const int);
 extern __m256i __cdecl _mm512_mask_cvtts_roundpd_epi32(__m256i, __mmask8, __m512d, const int);
@@ -7047,7 +7021,7 @@ extern __m512i __cdecl _mm512_ipcvtts_roundps_epu8(__m512, const int);
 extern __m512i __cdecl _mm512_mask_ipcvtts_roundps_epu8(__m512i, __mmask16, __m512, const int);
 extern __m512i __cdecl _mm512_maskz_ipcvtts_roundps_epu8(__mmask16, __m512, const int);
 
-// AVX10.2 MinMax instructions 
+// AVX10.2 MinMax instructions
 // VMINMAXPBF16
 extern __m128bh __cdecl _mm_minmax_pbh(__m128bh, __m128bh, const int);
 extern __m128bh __cdecl _mm_mask_minmax_pbh(__m128bh, __mmask8, __m128bh, __m128bh, const int);
@@ -7121,7 +7095,7 @@ extern __m128 __cdecl _mm_minmax_round_ss(__m128, __m128, const int, const int);
 extern __m128 __cdecl _mm_mask_minmax_round_ss(__m128, __mmask8, __m128, __m128, const int, const int);
 extern __m128 __cdecl _mm_maskz_minmax_round_ss(__mmask8, __m128, __m128, const int, const int);
 
-// AVX10.2 Zero-extending partial vector copy instructions 
+// AVX10.2 Zero-extending partial vector copy instructions
 // VMOV[D,W]
 extern __m128i __cdecl _mm_move_epi32(__m128i);
 extern __m128i __cdecl _mm_move_epi16(__m128i);
@@ -7291,6 +7265,27 @@ extern __m256i __cdecl _mm256_maskz_mpsadbw_epu8(__mmask16, __m256i, __m256i, co
 extern __m512i __cdecl _mm512_mpsadbw_epu8(__m512i, __m512i, const int);
 extern __m512i __cdecl _mm512_mask_mpsadbw_epu8(__m512i, __mmask32, __m512i, __m512i, const int);
 extern __m512i __cdecl _mm512_maskz_mpsadbw_epu8(__mmask32, __m512i, __m512i, const int);
+
+// VBMACOR16X16X16
+extern __m256i __cdecl _mm256_bmacor16x16x16_epi16(__m256i, __m256i, __m256i);
+extern __m512i __cdecl _mm512_bmacor16x16x16_epi16(__m512i, __m512i, __m512i);
+
+// VBMACXOR16X16X16
+extern __m256i __cdecl _mm256_bmacxor16x16x16_epi16(__m256i, __m256i, __m256i);
+extern __m512i __cdecl _mm512_bmacxor16x16x16_epi16(__m512i, __m512i, __m512i);
+
+// VPBITREV
+extern __m128i __cdecl _mm_bitrev_epi8(__m128i);
+extern __m256i __cdecl _mm256_bitrev_epi8(__m256i);
+extern __m512i __cdecl _mm512_bitrev_epi8(__m512i);
+
+extern __m128i __cdecl _mm_mask_bitrev_epi8(__m128i,__mmask16,__m128i);
+extern __m256i __cdecl _mm256_mask_bitrev_epi8(__m256i,__mmask32,__m256i);
+extern __m512i __cdecl _mm512_mask_bitrev_epi8(__m512i,__mmask64,__m512i);
+
+extern __m128i __cdecl _mm_maskz_bitrev_epi8(__mmask16,__m128i);
+extern __m256i __cdecl _mm256_maskz_bitrev_epi8(__mmask32,__m256i);
+extern __m512i __cdecl _mm512_maskz_bitrev_epi8(__mmask64,__m512i);
 
 #ifdef __cplusplus
 }

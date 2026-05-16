@@ -212,6 +212,7 @@
 #define FACILITY_USERMODE_UNIONFS        2341
 #define FACILITY_USERMODE_PRM            2342
 #define FACILITY_USERMODE_WIN_ACCEL      2343
+#define FACILITY_PPF                     2344
 #define FACILITY_PIX                     2748
 
 
@@ -3559,9 +3560,6 @@
 #define ERROR_MEMORY_DECOMPRESSION_FAILURE 479L
 
 //
-// **** Available SYSTEM error codes ****
-//
-//
 // MessageId: ERROR_PNP_QUERY_REMOVE_DEVICE_TIMEOUT
 //
 // MessageText:
@@ -3913,6 +3911,15 @@
 #define ERROR_VOLUME_ROLLBACK_DETECTED   521L
 
 //
+// MessageId: ERROR_INVALID_OPLOCK_REQUEST
+//
+// MessageText:
+//
+// An invalid combination of oplock level and flags was specified for an oplock request.
+//
+#define ERROR_INVALID_OPLOCK_REQUEST     522L
+
+//
 // MessageId: ERROR_CLOUD_FILE_HYDRATION_NOT_AVAILABLE
 //
 // MessageText:
@@ -3920,6 +3927,24 @@
 // Cloud file cannot be retrieved from your cloud provider. Try again after responding to your cloud provider's request for action.
 //
 #define ERROR_CLOUD_FILE_HYDRATION_NOT_AVAILABLE 523L
+
+//
+// MessageId: ERROR_CIMFS_VERIFICATION_FAILED
+//
+// MessageText:
+//
+// An integrity violation was detected when accessing a verified CIM.
+//
+#define ERROR_CIMFS_VERIFICATION_FAILED  524L
+
+//
+// MessageId: ERROR_SYSTEM_FILE_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The specified operation is not supported on a system file.
+//
+#define ERROR_SYSTEM_FILE_NOT_SUPPORTED  525L
 
 //
 // **** Available SYSTEM error codes ****
@@ -6325,7 +6350,7 @@
 //
 // MessageText:
 //
-// An oplock of the requested level cannot be granted.  An oplock of a lower level may be available.
+// The oplock request cannot be satisfied as specified. The output buffer contains more details.
 //
 #define ERROR_CANNOT_GRANT_REQUESTED_OPLOCK 801L
 
@@ -6491,6 +6516,18 @@
 // The section creation request was failed because it would have been satisfied with a direct map and the caller explicitly signified this was not wanted.
 //
 #define ERROR_SECTION_DIRECT_MAP_ONLY    819L
+
+//
+// MessageId: ERROR_LINUX_SUBSYSTEM_UPDATE_REQUIRED_LIFTED_REQUIRED
+//
+// MessageText:
+//
+// The inbox version of the Windows Subsystem For Linux has been disabled by group policy.
+// To install WSL from the store, run 'wsl.exe --update' or visit https://aka.ms/wslstorepage
+// Installing WSL from the Microsoft Store will give you the latest WSL updates, faster.
+// For more information please visit https://aka.ms/wslstoreinfo
+//
+#define ERROR_LINUX_SUBSYSTEM_UPDATE_REQUIRED_LIFTED_REQUIRED 820L
 
 //
 // **** Available SYSTEM error codes ****
@@ -14622,6 +14659,42 @@
 //
 #define ERROR_VSM_KEY_CI_POLICY_ROLLBACK_DETECTED 4562L
 
+//
+// MessageId: ERROR_VSMIDK_KEYGEN_FAILURE
+//
+// MessageText:
+//
+// RSA identity key generation failed.
+//
+#define ERROR_VSMIDK_KEYGEN_FAILURE      4563L
+
+//
+// MessageId: ERROR_VSMIDK_EXPORT_FAILURE
+//
+// MessageText:
+//
+// Exporting RSA key components failed.
+//
+#define ERROR_VSMIDK_EXPORT_FAILURE      4564L
+
+//
+// MessageId: ERROR_VSMIDK_MODULUS_MISMATCH
+//
+// MessageText:
+//
+// Exported modulus size did not match expected key size.
+//
+#define ERROR_VSMIDK_MODULUS_MISMATCH    4565L
+
+//
+// MessageId: ERROR_VSM_FW_MEASUREMENTS_SEAL_FAILURE
+//
+// MessageText:
+//
+// The measurement file included in the firmware update capsule has an invalid format.
+//
+#define ERROR_VSM_FW_MEASUREMENTS_SEAL_FAILURE 4566L
+
 ///////////////////////////////////////////////////
 //                                               //
 //         Platform Manifest Error Codes         //
@@ -16955,6 +17028,33 @@
 // Cluster native update not ready - run Enable-ClusterNativeUpdate to load.
 //
 #define ERROR_CNU_NOT_READY              6256L
+
+//
+// MessageId: ERROR_CNU_RUN_INIT_FAILED
+//
+// MessageText:
+//
+// There were errors trying to initialize a new cluster native update run.
+//
+#define ERROR_CNU_RUN_INIT_FAILED        6257L
+
+//
+// MessageId: ERROR_CNU_RUN_PREPARE_CLUSTER_FAILED
+//
+// MessageText:
+//
+// There were errors while preparing for cluster native update run.
+//
+#define ERROR_CNU_RUN_PREPARE_CLUSTER_FAILED 6258L
+
+//
+// MessageId: ERROR_CNU_RUN_PROCESS_CLUSTER_FAILED
+//
+// MessageText:
+//
+// There were errors while processing nodes in a cluster native update run.
+//
+#define ERROR_CNU_RUN_PROCESS_CLUSTER_FAILED 6259L
 
 
 ///////////////////////////////////////////////////
@@ -29028,6 +29128,15 @@
 //
 #define ERROR_CANNOT_COMPOSE_APISET_EXTENSION 15380L
 
+//
+// MessageId: ERROR_APISET_SCHEMA_VERSION_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The API Set schema version is not supported.
+//
+#define ERROR_APISET_SCHEMA_VERSION_NOT_SUPPORTED 15381L
+
 //////////////////////////////////////////////////
 //                                              //
 //         Start of Run Level error codes       //
@@ -29823,6 +29932,33 @@
 // The package manifest is not found.
 //
 #define ERROR_PACKAGE_MANIFEST_NOT_FOUND 15678L
+
+//
+// MessageId: ERROR_DEPLOYMENT_BLOCKED_BY_REMOVEDEFAULTPACKAGES_POLICY
+//
+// MessageText:
+//
+// The deployment operation on this package is blocked because the package family name is in RemoveDefaultMicrosoftStorePackages policy override.
+//
+#define ERROR_DEPLOYMENT_BLOCKED_BY_REMOVEDEFAULTPACKAGES_POLICY 15679L
+
+//
+// MessageId: ERROR_URI_BLOCKED_BY_POLICY_MSIXALLOWEDZONES
+//
+// MessageText:
+//
+// The source uri is blocked by MsixAllowedZones policy. Please contact your system administrator.
+//
+#define ERROR_URI_BLOCKED_BY_POLICY_MSIXALLOWEDZONES 15680L
+
+//
+// MessageId: ERROR_URI_RECOMMENDED_BLOCK_BY_SMARTSCREEN
+//
+// MessageText:
+//
+// The source uri is recommended to be blocked by SmartScreen. Please contact your system administrator.
+//
+#define ERROR_URI_RECOMMENDED_BLOCK_BY_SMARTSCREEN 15681L
 
 //////////////////////////
 //                      //
@@ -36160,6 +36296,24 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 #define CO_E_CANCEL_DISABLED             _HRESULT_TYPEDEF_(0x80010140L)
 
 //
+// MessageId: CO_E_SERVER_CANNOT_BE_EQUAL_OR_GREATER_PRIVILEGE
+//
+// MessageText:
+//
+// The server was not activated because it cannot support running with privilege equal to the client or greater
+//
+#define CO_E_SERVER_CANNOT_BE_EQUAL_OR_GREATER_PRIVILEGE _HRESULT_TYPEDEF_(0x80010141L)
+
+//
+// MessageId: CO_E_CANNOT_ACTIVATE_CROSS_PACKAGE_IN_SESSION_0
+//
+// MessageText:
+//
+// An Activate As Activator Packaged server class cannot be activated from outside its package in session 0
+//
+#define CO_E_CANNOT_ACTIVATE_CROSS_PACKAGE_IN_SESSION_0 _HRESULT_TYPEDEF_(0x80010142L)
+
+//
 // MessageId: RPC_E_UNEXPECTED
 //
 // MessageText:
@@ -36731,7 +36885,7 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 //
 // MessageText:
 //
-// VBS key isolation is not available.
+// VBS key protection is not available.
 //
 #define NTE_VBS_UNAVAILABLE              _HRESULT_TYPEDEF_(0x80090039L)
 
@@ -50875,7 +51029,7 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 //
 // MessageText:
 //
-// BitLocker recovery password key rotation could not be performed because the device is neither Azure AD joined nor Hybrid Azure AD joined.
+// BitLocker recovery password key rotation could not be performed because the device is neither Entra ID joined nor Hybrid Entra ID joined.
 //
 #define FVE_E_DEVICE_NOT_JOINED_AAD      _HRESULT_TYPEDEF_(0x803100E0L)
 
@@ -50956,7 +51110,7 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 //
 // MessageText:
 //
-// The AAD request has failed and it has been advised to backoff to prevent throttling. Device will retry soon.
+// The Entra ID request has failed and it has been advised to backoff to prevent throttling. Device will retry soon.
 //
 #define FVE_E_AAD_SERVER_FAIL_RETRY_AFTER_AAD _HRESULT_TYPEDEF_(0x803100E9L)
 
@@ -50965,7 +51119,7 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 //
 // MessageText:
 //
-// The AAD request has failed due to server issues and it has been advised to backoff to prevent throttling. Device will retry soon.
+// The Entra ID request has failed due to server issues and it has been advised to backoff to prevent throttling. Device will retry soon.
 //
 #define FVE_E_AAD_SERVER_FAIL_BACKOFF_AAD _HRESULT_TYPEDEF_(0x803100EAL)
 
@@ -51186,6 +51340,15 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 #define FVE_E_PCR_BOOT_LOCK_BOUNDARY     _HRESULT_TYPEDEF_(0xC0310102L)
 
 //
+// MessageId: FVE_E_FW_UPDATE_TPM_BINDINGS_NOT_REFRESHED
+//
+// MessageText:
+//
+// The firmware update was not applied because BitLocker TPM bindings do not include the latest measurements. Restart your computer to retry.
+//
+#define FVE_E_FW_UPDATE_TPM_BINDINGS_NOT_REFRESHED _HRESULT_TYPEDEF_(0xC0310103L)
+
+//
 // MessageId: FVE_E_EXCEED_MAX_LIMIT_RP_IN_MEID
 //
 // MessageText:
@@ -51195,6 +51358,42 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 #define FVE_E_EXCEED_MAX_LIMIT_RP_IN_MEID _HRESULT_TYPEDEF_(0xC0310104L)
 
 //
+// MessageId: FVE_E_INVALID_TPM_BINDING_CONFIGURATION
+//
+// MessageText:
+//
+// The BitLocker TPM binding configuration is invalid.
+//
+#define FVE_E_INVALID_TPM_BINDING_CONFIGURATION _HRESULT_TYPEDEF_(0xC0310105L)
+
+//
+// MessageId: FVE_E_TOO_MANY_TPM_BINDINGS
+//
+// MessageText:
+//
+// The BitLocker TPM protector cannot fit all the necessary TPM bindings.
+//
+#define FVE_E_TOO_MANY_TPM_BINDINGS      _HRESULT_TYPEDEF_(0xC0310106L)
+
+//
+// MessageId: FVE_E_TPM_BINDING_ASSOCIATION_FAILURE
+//
+// MessageText:
+//
+// A BitLocker TPM protector binding is badly formatted.
+//
+#define FVE_E_TPM_BINDING_ASSOCIATION_FAILURE _HRESULT_TYPEDEF_(0xC0310107L)
+
+//
+// MessageId: FVE_E_ORPHANED_PCR_DIGEST_DATUM
+//
+// MessageText:
+//
+// The dataset contains binding information without an associated TPM binding. Try re-enabling BitLocker.
+//
+#define FVE_E_ORPHANED_PCR_DIGEST_DATUM  _HRESULT_TYPEDEF_(0xC0310108L)
+
+//
 // MessageId: FVE_E_HW_ACCELERATED_ENCRYPTION_NOT_ALLOWED
 //
 // MessageText:
@@ -51202,6 +51401,60 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 // BitLocker is prevented from using hardware accelerated encryption.
 //
 #define FVE_E_HW_ACCELERATED_ENCRYPTION_NOT_ALLOWED _HRESULT_TYPEDEF_(0xC0310109L)
+
+//
+// MessageId: FVE_E_NO_MATCHING_TPM_BINDINGS
+//
+// MessageText:
+//
+// BitLocker failed to find a TPM binding that can be used to unlock the drive.
+//
+#define FVE_E_NO_MATCHING_TPM_BINDINGS   _HRESULT_TYPEDEF_(0xC031010AL)
+
+//
+// MessageId: FVE_E_TPMPV2_USED_FAILURE
+//
+// MessageText:
+//
+// BitLocker failed to unlock the drive using a V2 TPM protector.
+//
+#define FVE_E_TPMPV2_USED_FAILURE        _HRESULT_TYPEDEF_(0xC031010BL)
+
+//
+// MessageId: FVE_E_NO_TPM_BINDINGS
+//
+// MessageText:
+//
+// BitLocker failed to find any TPM bindings that can be used to unlock the drive.
+//
+#define FVE_E_NO_TPM_BINDINGS            _HRESULT_TYPEDEF_(0xC031010CL)
+
+//
+// MessageId: FVE_E_BOOT_CRIT_DEVICE_UNEXPECTED_BEHAVIOR
+//
+// MessageText:
+//
+// Boot critical volume device has been found to exhibit unexpected behavior such as device surprise removal or arrivial. This may lead to improper behavior of BitLocker Drive Encryption.
+//
+#define FVE_E_BOOT_CRIT_DEVICE_UNEXPECTED_BEHAVIOR _HRESULT_TYPEDEF_(0xC031010DL)
+
+//
+// MessageId: FVE_E_FW_UPDATE_PCRS_BLOCK
+//
+// MessageText:
+//
+// The firmware update was not applied. To finish installation of the firmware, please suspend BitLocker and restart your device.
+//
+#define FVE_E_FW_UPDATE_PCRS_BLOCK       _HRESULT_TYPEDEF_(0xC031010EL)
+
+//
+// MessageId: FVE_E_FW_UPDATE_PCRS_NOT_EXCLUDED
+//
+// MessageText:
+//
+// The firmware update was not applied because TPM PCRs affected by the firmware installation were not excluded by BitLocker's TPM protector. Restart your computer to retry.
+//
+#define FVE_E_FW_UPDATE_PCRS_NOT_EXCLUDED _HRESULT_TYPEDEF_(0xC031010FL)
 
 //
 // MessageId: FVE_E_DEVICE_NOT_JOINED
@@ -51256,6 +51509,42 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 // FIPS compliance is required, but the hardware crypto key manager does not report compliance with this standard.
 //
 #define FVE_E_HARDWARE_CRYPTO_KEY_MANAGER_NOT_FIPS_COMPLIANT _HRESULT_TYPEDEF_(0xC0310115L)
+
+//
+// MessageId: FVE_E_NOT_ALLOWED_ON_EPHEMERAL_VOLUME
+//
+// MessageText:
+//
+// The operation is not allowed on an ephemeral volume.
+//
+#define FVE_E_NOT_ALLOWED_ON_EPHEMERAL_VOLUME _HRESULT_TYPEDEF_(0xC0310116L)
+
+//
+// MessageId: FVE_E_UNTRUSTED_OFFLOAD_STORAGE
+//
+// MessageText:
+//
+// The operation is not allowed on the volume when untrusted crypto offload storage protection is enabled.
+//
+#define FVE_E_UNTRUSTED_OFFLOAD_STORAGE  _HRESULT_TYPEDEF_(0xC0310117L)
+
+//
+// MessageId: FVE_E_TPM_PCRS_DO_NOT_MATCH_LOG
+//
+// MessageText:
+//
+// The TPM PCR values did not match what was calculated from the TCG log.
+//
+#define FVE_E_TPM_PCRS_DO_NOT_MATCH_LOG  _HRESULT_TYPEDEF_(0xC0310118L)
+
+//
+// MessageId: FVE_E_MISSING_PROTECTORS
+//
+// MessageText:
+//
+// The volume is not configured with protectors required to complete the operation.
+//
+#define FVE_E_MISSING_PROTECTORS         _HRESULT_TYPEDEF_(0xC0310119L)
 
 //
 // =======================================================
@@ -52923,7 +53212,7 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 //
 // MessageText:
 //
-// An attempt to retrieve debugging data failed because none was available.
+// An attempt to retrieve data failed because none was available.
 //
 #define ERROR_HV_NO_DATA                 _NDIS_ERROR_TYPEDEF_(0xC035001BL)
 
@@ -53079,6 +53368,15 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 // The supplied page request specifies a memory access that the guest does not have permissions to perform.
 //
 #define ERROR_HV_PAGE_REQUEST_INVALID    _NDIS_ERROR_TYPEDEF_(0xC0350060L)
+
+//
+// MessageId: ERROR_HV_DEVICE_ALREADY_IN_DOMAIN
+//
+// MessageText:
+//
+// The device is already attached to the device domain.
+//
+#define ERROR_HV_DEVICE_ALREADY_IN_DOMAIN _NDIS_ERROR_TYPEDEF_(0xC0350066L)
 
 //
 // MessageId: ERROR_HV_INVALID_CPU_GROUP_ID
@@ -53682,6 +53980,249 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 #define ERROR_VID_PROCESS_ALREADY_SET    _NDIS_ERROR_TYPEDEF_(0xC0370030L)
 
 //
+// MessageId: ERROR_VID_PARTITION_INVARIANTS_MISMATCH
+//
+// MessageText:
+//
+// The partition invariants for the restoring partition do not match the partition invariants from the original partition.
+//
+#define ERROR_VID_PARTITION_INVARIANTS_MISMATCH _NDIS_ERROR_TYPEDEF_(0xC0370031L)
+
+//
+// MessageId: ERROR_VID_MEMORY_BLOCK_INVARIANTS_MISMATCH
+//
+// MessageText:
+//
+// The invariants for the restoring memory block do not match the invariants from the original memory block.
+//
+#define ERROR_VID_MEMORY_BLOCK_INVARIANTS_MISMATCH _NDIS_ERROR_TYPEDEF_(0xC0370032L)
+
+//
+// MessageId: ERROR_VID_MEMORY_BLOCK_RESTORE_STATE_MISMATCH
+//
+// MessageText:
+//
+// The state for the restoring memory block does not match the state from the original memory block.
+//
+#define ERROR_VID_MEMORY_BLOCK_RESTORE_STATE_MISMATCH _NDIS_ERROR_TYPEDEF_(0xC0370033L)
+
+//
+// MessageId: ERROR_VID_KSR_PERSISTED_ITEMS_STILL_REGISTERED
+//
+// MessageText:
+//
+// Persisted items were still registered after attempting to free persisted data.
+//
+#define ERROR_VID_KSR_PERSISTED_ITEMS_STILL_REGISTERED _NDIS_ERROR_TYPEDEF_(0xC0370034L)
+
+//
+// MessageId: ERROR_VID_MEMORY_PARTITION_SETUP_FAILED
+//
+// MessageText:
+//
+// Setup for the memory partition failed.
+//
+#define ERROR_VID_MEMORY_PARTITION_SETUP_FAILED _NDIS_ERROR_TYPEDEF_(0xC0370035L)
+
+//
+// MessageId: ERROR_VID_MEMORY_RESERVE_NOT_ENABLED
+//
+// MessageText:
+//
+// The memory reserve was not enabled.
+//
+#define ERROR_VID_MEMORY_RESERVE_NOT_ENABLED _NDIS_ERROR_TYPEDEF_(0xC0370036L)
+
+//
+// MessageId: ERROR_VID_MEMORY_BLOCK_PAGECOUNT_MISMATCH
+//
+// MessageText:
+//
+// The restoring memory block's KSR page count does not match the persisted memory block's KSR page count.
+//
+#define ERROR_VID_MEMORY_BLOCK_PAGECOUNT_MISMATCH _NDIS_ERROR_TYPEDEF_(0xC0370037L)
+
+//
+// MessageId: ERROR_VID_KSR_IOHANDLER_PROPERTY_MISMATCH
+//
+// MessageText:
+//
+// The restoring IO handler's properties do not match the persisted IO handler's properties.
+//
+#define ERROR_VID_KSR_IOHANDLER_PROPERTY_MISMATCH _NDIS_ERROR_TYPEDEF_(0xC0370038L)
+
+//
+// MessageId: ERROR_VID_KSR_MSR_HANDLER_PROPERTY_MISMATCH
+//
+// MessageText:
+//
+// The restoring MSR handler's properties do not match the persisted MSR handler's properties.
+//
+#define ERROR_VID_KSR_MSR_HANDLER_PROPERTY_MISMATCH _NDIS_ERROR_TYPEDEF_(0xC0370039L)
+
+//
+// MessageId: ERROR_VID_KSR_MEMORY_PARTITION_STATE_SIZE_MISMATCH
+//
+// MessageText:
+//
+// The size of the preserved KSR memory partition state structure does not match the size of the current KSR memory partition state structure.
+//
+#define ERROR_VID_KSR_MEMORY_PARTITION_STATE_SIZE_MISMATCH _NDIS_ERROR_TYPEDEF_(0xC037003AL)
+
+//
+// MessageId: ERROR_VID_KSR_METADATA_MISMATCH
+//
+// MessageText:
+//
+// The preserved KSR metadata does not match the current KSR metadata.
+//
+#define ERROR_VID_KSR_METADATA_MISMATCH  _NDIS_ERROR_TYPEDEF_(0xC037003BL)
+
+//
+// MessageId: ERROR_VID_KSR_TOTAL_PAGE_COUNT_MISMATCH
+//
+// MessageText:
+//
+// There is a mismatch between the actual amount of KSR pages that were backed and the expected amount of backed KSR pages.
+//
+#define ERROR_VID_KSR_TOTAL_PAGE_COUNT_MISMATCH _NDIS_ERROR_TYPEDEF_(0xC037003CL)
+
+//
+// MessageId: ERROR_VID_MBP_ARRAY_NOT_PERSISTED
+//
+// MessageText:
+//
+// The MBP array was required to be persisted, but was not.
+//
+#define ERROR_VID_MBP_ARRAY_NOT_PERSISTED _NDIS_ERROR_TYPEDEF_(0xC037003DL)
+
+//
+// MessageId: ERROR_VID_KSR_INVALID_PERSIST_ID
+//
+// MessageText:
+//
+// The KSR persistence ID was invalid.
+//
+#define ERROR_VID_KSR_INVALID_PERSIST_ID _NDIS_ERROR_TYPEDEF_(0xC037003EL)
+
+//
+// MessageId: ERROR_VID_KSR_INVALID_PERSISTENCE_OPTIONS
+//
+// MessageText:
+//
+// An invalid combination of persistence options was specified.
+//
+#define ERROR_VID_KSR_INVALID_PERSISTENCE_OPTIONS _NDIS_ERROR_TYPEDEF_(0xC037003FL)
+
+//
+// MessageId: ERROR_VID_GPA_RANGE_INVALID_FLAGS
+//
+// MessageText:
+//
+// An invalid or incompatible combination of GPA flags was specified.
+//
+#define ERROR_VID_GPA_RANGE_INVALID_FLAGS _NDIS_ERROR_TYPEDEF_(0xC0370040L)
+
+//
+// MessageId: ERROR_VID_MEMORY_BLOCK_INVALID_FLAGS
+//
+// MessageText:
+//
+// An invalid or incompatible combination of memory block flags was specified.
+//
+#define ERROR_VID_MEMORY_BLOCK_INVALID_FLAGS _NDIS_ERROR_TYPEDEF_(0xC0370041L)
+
+//
+// MessageId: ERROR_VID_KSR_ALREADY_PERSISTED
+//
+// MessageText:
+//
+// The item has already been persisted.
+//
+#define ERROR_VID_KSR_ALREADY_PERSISTED  _NDIS_ERROR_TYPEDEF_(0xC0370042L)
+
+//
+// MessageId: ERROR_VID_KSR_ALREADY_UNPERSISTED
+//
+// MessageText:
+//
+// The item has already been unpersisted.
+//
+#define ERROR_VID_KSR_ALREADY_UNPERSISTED _NDIS_ERROR_TYPEDEF_(0xC0370043L)
+
+//
+// MessageId: ERROR_VID_KSR_PERSISTENCE_DISALLOWED
+//
+// MessageText:
+//
+// The item is not allowed to be persisted.
+//
+#define ERROR_VID_KSR_PERSISTENCE_DISALLOWED _NDIS_ERROR_TYPEDEF_(0xC0370044L)
+
+//
+// MessageId: ERROR_VID_KSR_CLIENT_TYPE_MISMATCH
+//
+// MessageText:
+//
+// The client type does match the memory block creator mode.
+//
+#define ERROR_VID_KSR_CLIENT_TYPE_MISMATCH _NDIS_ERROR_TYPEDEF_(0xC0370045L)
+
+//
+// MessageId: ERROR_VID_KSR_INVALID_STATE
+//
+// MessageText:
+//
+// The KSR state was invalid for the operation attempted.
+//
+#define ERROR_VID_KSR_INVALID_STATE      _NDIS_ERROR_TYPEDEF_(0xC0370046L)
+
+//
+// MessageId: ERROR_VID_KSR_NOT_READY
+//
+// MessageText:
+//
+// The system is not ready to perform KSR.
+//
+#define ERROR_VID_KSR_NOT_READY          _NDIS_ERROR_TYPEDEF_(0xC0370047L)
+
+//
+// MessageId: ERROR_VID_GPA_RANGE_OVERLAP_PROHIBITED
+//
+// MessageText:
+//
+// The GPA range overlap is prohibited.
+//
+#define ERROR_VID_GPA_RANGE_OVERLAP_PROHIBITED _NDIS_ERROR_TYPEDEF_(0xC0370048L)
+
+//
+// MessageId: ERROR_VID_PARTITION_NOT_HIERARCHICAL_HOST
+//
+// MessageText:
+//
+// The specified partition is not a hierarchical host.
+//
+#define ERROR_VID_PARTITION_NOT_HIERARCHICAL_HOST _NDIS_ERROR_TYPEDEF_(0xC0370049L)
+
+//
+// MessageId: ERROR_VID_GPA_RANGE_INVARIANTS_MISMATCH
+//
+// MessageText:
+//
+// The GPA range invariants for the restoring GPA range do not match the GPA range invariants from the original GPA range.
+//
+#define ERROR_VID_GPA_RANGE_INVARIANTS_MISMATCH _NDIS_ERROR_TYPEDEF_(0xC037004AL)
+
+//
+// MessageId: ERROR_VID_KSR_PSCI_HANDLER_PROPERTY_MISMATCH
+//
+// MessageText:
+//
+// The restoring PSCI handler's properties do not match the persisted PSCI handler's properties.
+//
+#define ERROR_VID_KSR_PSCI_HANDLER_PROPERTY_MISMATCH _NDIS_ERROR_TYPEDEF_(0xC037004BL)
+
+//
 // Host compute service errors (0x0100-0x01ff)
 //
 //
@@ -54154,6 +54695,15 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 // The operation has already been cancelled.
 //
 #define HCS_E_OPERATION_ALREADY_CANCELLED _HRESULT_TYPEDEF_(0x80370121L)
+
+//
+// MessageId: HCS_E_INVALID_PROCESSOR_TOPOLOGY
+//
+// MessageText:
+//
+// The processor topology is invalid.
+//
+#define HCS_E_INVALID_PROCESSOR_TOPOLOGY _HRESULT_TYPEDEF_(0x80370122L)
 
 //
 // Virtual networking errors (0x0200-0x02ff)
@@ -59165,7 +59715,7 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 //
 // MessageText:
 //
-// The object was not found. If calling IDXGIFactory::EnumAdaptes, there is no adapter with the specified ordinal.
+// The object was not found. If calling IDXGIFactory::EnumAdapters, there is no adapter with the specified ordinal.
 //
 #define DXGI_ERROR_NOT_FOUND             _HRESULT_TYPEDEF_(0x887A0002L)
 
@@ -66612,6 +67162,15 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 //
 #define UNIONFS_E_NESTED_UNION_NOT_ALLOWED _HRESULT_TYPEDEF_(0x8925000CL)
 
+//
+// MessageId: UNIONFS_E_BOOT_LAYER_NOT_ATTACHED
+//
+// MessageText:
+//
+// UnionFS failed to attach to a boot layer.
+//
+#define UNIONFS_E_BOOT_LAYER_NOT_ATTACHED _HRESULT_TYPEDEF_(0x8925000DL)
+
 
 //
 // PRM Error codes
@@ -66747,5 +67306,57 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 // The accelerator submission queue is full.
 //
 #define ERROR_ACCELERATOR_SUBMISSION_QUEUE_FULL _HRESULT_TYPEDEF_(0xC9270000L)
+
+
+///////////////////////////////////////////////////
+//                                               //
+// PCR Prediction Framework (PPF) Error codes    //
+//                                               //
+///////////////////////////////////////////////////
+
+//
+// MessageId: PPF_E_TRANSFORM_DIGEST_ALGO_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The transform does not support the digest algorithm selected in the system.
+//
+#define PPF_E_TRANSFORM_DIGEST_ALGO_NOT_SUPPORTED _HRESULT_TYPEDEF_(0xC9280000L)
+
+//
+// MessageId: PPF_E_TRANSFORM_CONFLICT
+//
+// MessageText:
+//
+// The transform being added conflicts with an existing transform in the system.
+//
+#define PPF_E_TRANSFORM_CONFLICT         _HRESULT_TYPEDEF_(0xC9280001L)
+
+//
+// MessageId: PPF_E_TRANSFORM_CLEANED_UP_NA
+//
+// MessageText:
+//
+// The transform was cleaned up because it is no longer applicable.
+//
+#define PPF_E_TRANSFORM_CLEANED_UP_NA    _HRESULT_TYPEDEF_(0xC9280002L)
+
+//
+// MessageId: PPF_E_TRANSFORM_CLEANED_UP_STATE_CHANGE
+//
+// MessageText:
+//
+// The transform was cleaned up because the system state changed unexpectedly.
+//
+#define PPF_E_TRANSFORM_CLEANED_UP_STATE_CHANGE _HRESULT_TYPEDEF_(0xC9280003L)
+
+//
+// MessageId: PPF_E_TRANSFORM_DIGEST_ALGO_NOT_PRESENT
+//
+// MessageText:
+//
+// An event in the transform does not have a digest for the algorithm selected in the system.
+//
+#define PPF_E_TRANSFORM_DIGEST_ALGO_NOT_PRESENT _HRESULT_TYPEDEF_(0xC9280004L)
 
 #endif//_WINERROR_

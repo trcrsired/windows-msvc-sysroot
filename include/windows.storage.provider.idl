@@ -206,6 +206,12 @@ namespace Windows
 
             interface IStorageProviderStatusUISourceFactory;
 
+            interface IStorageProviderSuggestionsHandler;
+
+            interface IStorageProviderSuggestionsHandlerFactory;
+
+            interface IStorageProviderSuggestionsQueryOptions;
+
             interface IStorageProviderSyncRootInfo;
 
             interface IStorageProviderSyncRootInfo2;
@@ -259,6 +265,10 @@ namespace Windows
             runtimeclass StorageProviderSearchResult;
 
             runtimeclass StorageProviderStatusUI;
+
+            runtimeclass StorageProviderSuggestionResult;
+
+            runtimeclass StorageProviderSuggestionsQueryOptions;
 
             runtimeclass StorageProviderSyncRootInfo;
 
@@ -910,6 +920,36 @@ namespace Windows
                 HRESULT GetStatusUISource([in] HSTRING syncRootId, [out] [retval] Windows.Storage.Provider.IStorageProviderStatusUISource** result);
             }
 
+            [contract(Windows.Storage.Provider.CloudFilesContract, 7.0)]
+            [uuid(AFF493F6-E1FD-5D03-B480-F1849C83EF4A)]
+            interface IStorageProviderSuggestionsHandler : IInspectable
+            {
+                HRESULT GetSuggestions([in] Windows.Storage.Provider.StorageProviderSuggestionsQueryOptions* options, [out] [retval] Windows.Storage.Provider.StorageProviderQueryResultSet** result);
+                HRESULT Add([in] Windows.Storage.Provider.StorageProviderResultKind kind, [in] HSTRING remoteFileId);
+                HRESULT Remove([in] Windows.Storage.Provider.StorageProviderResultKind kind, [in] HSTRING remoteFileId);
+                HRESULT GetDetails([in] HSTRING remoteFileId, [in] UINT32 __propertiesToFetchSize, [in] [size_is(__propertiesToFetchSize)] HSTRING* propertiesToFetch, [in] HSTRING queryId, [out] [retval] Windows.Storage.Provider.StorageProviderSuggestionResult** result);
+                HRESULT ReportUsage([in] Windows.Storage.Provider.StorageProviderResultUsageKind resultUsageKind, [in] HSTRING remoteFileId, [in] HSTRING resultId, [in] Windows.Foundation.TimeSpan latency);
+            }
+
+            [contract(Windows.Storage.Provider.CloudFilesContract, 7.0)]
+            [uuid(DC7B35D8-A25B-58A3-ACE7-B3543106A2AA)]
+            interface IStorageProviderSuggestionsHandlerFactory : IInspectable
+            {
+                HRESULT CreateSuggestionsHandler([in] HSTRING cloudProviderId, [out] [retval] Windows.Storage.Provider.IStorageProviderSuggestionsHandler** result);
+            }
+
+            [contract(Windows.Storage.Provider.CloudFilesContract, 7.0)]
+            [exclusiveto(Windows.Storage.Provider.StorageProviderSuggestionsQueryOptions)]
+            [uuid(EFB8B74D-0D84-579C-B137-EA730635D9BB)]
+            interface IStorageProviderSuggestionsQueryOptions : IInspectable
+            {
+                [propget] HRESULT SuggestionsKind([out] [retval] Windows.Storage.Provider.StorageProviderResultKind* value);
+                [propget] HRESULT RemoteFileId([out] [retval] HSTRING* value);
+                [propget] HRESULT MaxResults([out] [retval] UINT32* value);
+                [propget] HRESULT QueryId([out] [retval] HSTRING* value);
+                [propget] HRESULT PropertiesToFetch([out] [retval] Windows.Foundation.Collections.IVectorView<HSTRING>** value);
+            }
+
             [contract(Windows.Storage.Provider.CloudFilesContract, 1.0)]
             [exclusiveto(Windows.Storage.Provider.StorageProviderSyncRootInfo)]
             [uuid(7C1305C4-99F9-41AC-8904-AB055D654926)]
@@ -1166,6 +1206,22 @@ namespace Windows
             runtimeclass StorageProviderStatusUI
             {
                 [default] interface Windows.Storage.Provider.IStorageProviderStatusUI;
+            }
+
+            [activatable(Windows.Storage.Provider.CloudFilesContract, 7.0)]
+            [contract(Windows.Storage.Provider.CloudFilesContract, 7.0)]
+            [marshaling_behavior(agile)]
+            [threading(both)]
+            runtimeclass StorageProviderSuggestionResult
+            {
+                [default] interface Windows.Storage.Provider.IStorageProviderQueryResult;
+            }
+
+            [contract(Windows.Storage.Provider.CloudFilesContract, 7.0)]
+            [marshaling_behavior(agile)]
+            runtimeclass StorageProviderSuggestionsQueryOptions
+            {
+                [default] interface Windows.Storage.Provider.IStorageProviderSuggestionsQueryOptions;
             }
 
             [activatable(Windows.Storage.Provider.CloudFilesContract, 1.0)]

@@ -22,6 +22,78 @@ static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatche
 #include "winrt/impl/windows.graphics.printing.printsupport.2.h"
 namespace winrt::impl
 {
+    template <typename D> auto consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportAppInfo<D>::AppInfo() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_AppInfo(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo>**)this;
+            check_hresult(_winrt_abi_type->get_AppInfo(&value));
+        }
+        return winrt::Windows::ApplicationModel::AppInfo{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportAppInfo<D>::SupportedContracts() const
+    {
+        winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportAppContracts value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_SupportedContracts(reinterpret_cast<uint32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo>**)this;
+            check_hresult(_winrt_abi_type->get_SupportedContracts(reinterpret_cast<uint32_t*>(&value)));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportAppInfoStatics<D>::GetPrintJobShowsUI(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket) const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->GetPrintJobShowsUI(*(void**)(&printerName), *(void**)(&printTicket), &result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics>**)this;
+            check_hresult(_winrt_abi_type->GetPrintJobShowsUI(*(void**)(&printerName), *(void**)(&printTicket), &result));
+        }
+        return winrt::Windows::Foundation::IReference<bool>{ result, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportAppInfoStatics<D>::FromPrinterName(param::hstring const& printerName) const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->FromPrinterName(*(void**)(&printerName), &result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics>**)this;
+            check_hresult(_winrt_abi_type->FromPrinterName(*(void**)(&printerName), &result));
+        }
+        return winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportAppInfo{ result, take_ownership_from_abi };
+    }
     template <typename D> auto consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportCommunicationErrorDetectedEventArgs<D>::ErrorKind() const
     {
         winrt::Windows::Graphics::Printing::PrintSupport::IppCommunicationErrorKind value{};
@@ -93,6 +165,24 @@ namespace winrt::impl
             check_hresult(_winrt_abi_type->GetDeferral(&result));
         }
         return winrt::Windows::Foundation::Deferral{ result, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportEnterpriseManagementUIEventArgs<D>::Printer() const
+    {
+        void* value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_Printer(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs>**)this;
+            check_hresult(_winrt_abi_type->get_Printer(&value));
+        }
+        return winrt::Windows::Devices::Printers::IppPrintDevice{ value, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportExtensionSession<D>::Printer() const
     {
@@ -882,6 +972,22 @@ namespace winrt::impl
         }
         return winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportMxdcImageQualityConfiguration{ value, take_ownership_from_abi };
     }
+    template <typename D> auto consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5<D>::SetPdlPassthroughWithJobAttributesSupported(bool supported) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->SetPdlPassthroughWithJobAttributesSupported(supported));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5>**)this;
+            check_hresult(_winrt_abi_type->SetPdlPassthroughWithJobAttributesSupported(supported));
+        }
+    }
     template <typename D> auto consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics<D>::CreatePeriodicRefresh(winrt::Windows::Foundation::TimeSpan const& updatePeriod) const
     {
         void* result{};
@@ -1037,6 +1143,22 @@ namespace winrt::impl
             check_hresult(_winrt_abi_type->GetDeferral(&result));
         }
         return winrt::Windows::Foundation::Deferral{ result, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrintTicketValidationRequestedEventArgs2<D>::SetPrintJobShowsUI(bool showsUI) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->SetPrintJobShowsUI(showsUI));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs2>**)this;
+            check_hresult(_winrt_abi_type->SetPrintJobShowsUI(showsUI));
+        }
     }
     template <typename D> auto consume_Windows_Graphics_Printing_PrintSupport_IPrintSupportPrinterSelectedEventArgs<D>::SourceAppInfo() const
     {
@@ -1354,6 +1476,49 @@ namespace winrt::impl
     }
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo> : produce_base<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo>
+    {
+        int32_t __stdcall get_AppInfo(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::Windows::ApplicationModel::AppInfo>(this->shim().AppInfo());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_SupportedContracts(uint32_t* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportAppContracts>(this->shim().SupportedContracts());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics> : produce_base<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics>
+    {
+        int32_t __stdcall GetPrintJobShowsUI(void* printerName, void* printTicket, void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::Foundation::IReference<bool>>(this->shim().GetPrintJobShowsUI(*reinterpret_cast<hstring const*>(&printerName), *reinterpret_cast<winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const*>(&printTicket)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall FromPrinterName(void* printerName, void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportAppInfo>(this->shim().FromPrinterName(*reinterpret_cast<hstring const*>(&printerName)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportCommunicationErrorDetectedEventArgs> : produce_base<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportCommunicationErrorDetectedEventArgs>
     {
         int32_t __stdcall get_ErrorKind(int32_t* value) noexcept final try
@@ -1384,6 +1549,20 @@ namespace winrt::impl
             clear_abi(result);
             typename D::abi_guard guard(this->shim());
             *result = detach_from<winrt::Windows::Foundation::Deferral>(this->shim().GetDeferral());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs> : produce_base<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs>
+    {
+        int32_t __stdcall get_Printer(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::Windows::Devices::Printers::IppPrintDevice>(this->shim().Printer());
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -1785,6 +1964,19 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5> : produce_base<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5>
+    {
+        int32_t __stdcall SetPdlPassthroughWithJobAttributesSupported(bool supported) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().SetPdlPassthroughWithJobAttributesSupported(supported);
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicy> : produce_base<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicy>
     {
     };
@@ -1871,6 +2063,19 @@ namespace winrt::impl
             clear_abi(result);
             typename D::abi_guard guard(this->shim());
             *result = detach_from<winrt::Windows::Foundation::Deferral>(this->shim().GetDeferral());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs2> : produce_base<D, winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs2>
+    {
+        int32_t __stdcall SetPrintJobShowsUI(bool showsUI) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().SetPrintJobShowsUI(showsUI);
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -2046,6 +2251,45 @@ namespace winrt::impl
 }
 WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintSupport
 {
+    constexpr auto operator|(PrintSupportAppContracts const left, PrintSupportAppContracts const right) noexcept
+    {
+        return static_cast<PrintSupportAppContracts>(impl::to_underlying_type(left) | impl::to_underlying_type(right));
+    }
+    constexpr auto operator|=(PrintSupportAppContracts& left, PrintSupportAppContracts const right) noexcept
+    {
+        left = left | right;
+        return left;
+    }
+    constexpr auto operator&(PrintSupportAppContracts const left, PrintSupportAppContracts const right) noexcept
+    {
+        return static_cast<PrintSupportAppContracts>(impl::to_underlying_type(left) & impl::to_underlying_type(right));
+    }
+    constexpr auto operator&=(PrintSupportAppContracts& left, PrintSupportAppContracts const right) noexcept
+    {
+        left = left & right;
+        return left;
+    }
+    constexpr auto operator~(PrintSupportAppContracts const value) noexcept
+    {
+        return static_cast<PrintSupportAppContracts>(~impl::to_underlying_type(value));
+    }
+    constexpr auto operator^(PrintSupportAppContracts const left, PrintSupportAppContracts const right) noexcept
+    {
+        return static_cast<PrintSupportAppContracts>(impl::to_underlying_type(left) ^ impl::to_underlying_type(right));
+    }
+    constexpr auto operator^=(PrintSupportAppContracts& left, PrintSupportAppContracts const right) noexcept
+    {
+        left = left ^ right;
+        return left;
+    }
+    inline auto PrintSupportAppInfo::GetPrintJobShowsUI(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket)
+    {
+        return impl::call_factory<PrintSupportAppInfo, IPrintSupportAppInfoStatics>([&](IPrintSupportAppInfoStatics const& f) { return f.GetPrintJobShowsUI(printerName, printTicket); });
+    }
+    inline auto PrintSupportAppInfo::FromPrinterName(param::hstring const& printerName)
+    {
+        return impl::call_factory<PrintSupportAppInfo, IPrintSupportAppInfoStatics>([&](IPrintSupportAppInfoStatics const& f) { return f.FromPrinterName(printerName); });
+    }
     inline auto PrintSupportPrintDeviceCapabilitiesUpdatePolicy::CreatePeriodicRefresh(winrt::Windows::Foundation::TimeSpan const& updatePeriod)
     {
         return impl::call_factory<PrintSupportPrintDeviceCapabilitiesUpdatePolicy, IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics>([&](IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics const& f) { return f.CreatePeriodicRefresh(updatePeriod); });
@@ -2062,7 +2306,10 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintSupport
 namespace std
 {
 #ifndef WINRT_LEAN_AND_MEAN
+    template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfo> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportAppInfoStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportCommunicationErrorDetectedEventArgs> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportExtensionSession3> : winrt::impl::hash_base {};
@@ -2074,16 +2321,20 @@ namespace std
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesChangedEventArgs5> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicy> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketElement> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrintTicketValidationRequestedEventArgs2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportPrinterSelectedEventArgs> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSessionInfo> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsActivatedEventArgs> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsActivatedEventArgs2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportSettingsUISession> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportAppInfo> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportCommunicationErrorDetectedEventArgs> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportEnterpriseManagementUIEventArgs> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionSession> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportExtensionTriggerDetails> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::Graphics::Printing::PrintSupport::PrintSupportIppCommunicationConfiguration> : winrt::impl::hash_base {};
