@@ -2274,6 +2274,19 @@ typedef enum _DXGK_FEATURE_ID
     
 } DXGK_FEATURE_ID;
 
+//
+// Defines the layout of a feature ID (category bits and Sub-ID bits)
+//
+typedef union 
+{
+    struct
+    {
+        UINT32 Feature  : DXGK_FEATURE_ID_FEATURE_BITS;  // 28
+        UINT32 Category : DXGK_FEATURE_ID_CATEGORY_BITS; //  4
+    };
+    DXGK_FEATURE_ID Value;
+} DXGK_DETAILED_FEATURE_ID;
+
 
 #define DXGK_FEATURE_EXTENDED_SEGMENT_FLAGS_VERSION_APERTUREPRESERVEDDURINGSTANDBY 1 // DXGK_SEGMENTFLAGS::AperturePreservedDuringStandby
 

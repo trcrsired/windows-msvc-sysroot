@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.250303.1
+// C++/WinRT v2.0.250303.5
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.

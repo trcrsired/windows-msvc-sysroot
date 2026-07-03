@@ -27295,6 +27295,15 @@ Notes:
 #define STATUS_SMB_TLS_ACCESS_DENIED     ((NTSTATUS)0xC05D0009L)
 
 //
+// MessageId: STATUS_SMB_ALTERNATIVE_PORT_CONFLICT
+//
+// MessageText:
+//
+// Multiple SMB mappings to shared resource(s) on a server, using more than one port for a given transport, are not allowed. Use a single transport port for all mappings to a server and try again.
+//
+#define STATUS_SMB_ALTERNATIVE_PORT_CONFLICT ((NTSTATUS)0xC05D000DL)
+
+//
 // Embedded Security Core
 //
 // Reserved id values 0x0001 - 0x00FF

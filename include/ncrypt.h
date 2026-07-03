@@ -715,6 +715,14 @@ NCryptOpenStorageProvider(
 #if (NTDDI_VERSION >= NTDDI_WIN11_DT)
 #define NCRYPT_KEY_ENCAPSULATION_OPERATION      BCRYPT_KEY_ENCAPSULATION_OPERATION
 #endif
+
+//
+// Additional algorithm operations specific for the Platform Crypto Provider
+//
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+#define NCRYPT_PCP_SDDIDK_OPERATION             0x10000000
+#endif // (NTDDI_VERSION >= NTDDI_WIN11_GE)
+
 // USE EXTREME CAUTION: editing comments that contain "certenrolls_*" tokens
 // could break building CertEnroll idl files:
 // certenrolls_begin -- NCryptAlgorithmName
@@ -1019,6 +1027,12 @@ NCryptCreatePersistedKey(
 #if (NTDDI_VERSION >= NTDDI_WIN10_CO)
 #define NCRYPT_PCP_SYMMETRIC_KEYBITS_PROPERTY              L"PCP_SYMMETRIC_KEYBITS"
 #endif // (NTDDI_VERSION >= NTDDI_WIN10_CO)
+
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+#define NCRYPT_PCP_AIKSTORE_PROPERTY                       L"PCP_AIKSTORE"
+#define NCRYPT_PCP_EKSTORE_PROPERTY                        L"PCP_EKSTORE"
+#define NCRYPT_PCP_SDDIDK_CONTEXT_PROPERTY                 L"PCP_SDDIDK_CONTEXT"
+#endif // (NTDDI_VERSION >= NTDDI_WIN11_GE)
 
 // TPM NCryptSignHash Flag
 

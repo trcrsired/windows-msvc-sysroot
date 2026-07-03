@@ -5988,8 +5988,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Management.Update.WindowsUpdateContract in version 1.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via the Windows.Management.Update.IWindowsUpdateManagerFactory2 interface starting with version 2.0 of the Windows.Management.Update.WindowsUpdateContract API contract
  *   Type can be activated via the Windows.Management.Update.IWindowsUpdateManagerFactory interface starting with version 1.0 of the Windows.Management.Update.WindowsUpdateContract API contract
+ *   Type can be activated via the Windows.Management.Update.IWindowsUpdateManagerFactory2 interface starting with version 2.0 of the Windows.Management.Update.WindowsUpdateContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Management.Update.IWindowsUpdateManager ** Default Interface **
@@ -6014,8 +6014,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Management.Update.WindowsUpdateContract in version 2.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via RoActivateInstance starting with version 2.0 of the Windows.Management.Update.WindowsUpdateContract API contract
  *   Type can be activated via the Windows.Management.Update.IWindowsUpdateManagerScanOptionsFactory interface starting with version 2.0 of the Windows.Management.Update.WindowsUpdateContract API contract
+ *   Type can be activated via RoActivateInstance starting with version 2.0 of the Windows.Management.Update.WindowsUpdateContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Management.Update.IWindowsUpdateManagerScanOptions ** Default Interface **
@@ -6058,8 +6058,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Management.Update.WindowsUpdateContract in version 1.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via RoActivateInstance starting with version 1.0 of the Windows.Management.Update.WindowsUpdateContract API contract
  *   Type can be activated via the Windows.Management.Update.IWindowsUpdateRestartRequestOptionsFactory interface starting with version 1.0 of the Windows.Management.Update.WindowsUpdateContract API contract
+ *   Type can be activated via RoActivateInstance starting with version 1.0 of the Windows.Management.Update.WindowsUpdateContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Management.Update.IWindowsUpdateRestartRequestOptions ** Default Interface **
@@ -14455,8 +14455,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Management.Update.WindowsUpdateContract in version 1.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via the Windows.Management.Update.IWindowsUpdateManagerFactory2 interface starting with version 2.0 of the Windows.Management.Update.WindowsUpdateContract API contract
  *   Type can be activated via the Windows.Management.Update.IWindowsUpdateManagerFactory interface starting with version 1.0 of the Windows.Management.Update.WindowsUpdateContract API contract
+ *   Type can be activated via the Windows.Management.Update.IWindowsUpdateManagerFactory2 interface starting with version 2.0 of the Windows.Management.Update.WindowsUpdateContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Management.Update.IWindowsUpdateManager ** Default Interface **
@@ -14481,8 +14481,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Management.Update.WindowsUpdateContract in version 2.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via RoActivateInstance starting with version 2.0 of the Windows.Management.Update.WindowsUpdateContract API contract
  *   Type can be activated via the Windows.Management.Update.IWindowsUpdateManagerScanOptionsFactory interface starting with version 2.0 of the Windows.Management.Update.WindowsUpdateContract API contract
+ *   Type can be activated via RoActivateInstance starting with version 2.0 of the Windows.Management.Update.WindowsUpdateContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Management.Update.IWindowsUpdateManagerScanOptions ** Default Interface **
@@ -14525,8 +14525,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Management.Update.WindowsUpdateContract in version 1.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via RoActivateInstance starting with version 1.0 of the Windows.Management.Update.WindowsUpdateContract API contract
  *   Type can be activated via the Windows.Management.Update.IWindowsUpdateRestartRequestOptionsFactory interface starting with version 1.0 of the Windows.Management.Update.WindowsUpdateContract API contract
+ *   Type can be activated via RoActivateInstance starting with version 1.0 of the Windows.Management.Update.WindowsUpdateContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Management.Update.IWindowsUpdateRestartRequestOptions ** Default Interface **

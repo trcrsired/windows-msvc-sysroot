@@ -954,6 +954,18 @@ typedef struct _D3DKMT_ISFEATUREENABLED
     DXGK_ISFEATUREENABLED_RESULT Result;
 } D3DKMT_ISFEATUREENABLED;
 
+typedef struct _D3DKMT_QUERYFEATUREINTERFACE
+{
+    D3DKMT_HANDLE                   hAdapter;           // in: Logical adapter handle to query feature support on.
+    DXGK_FEATURE_ID                 FeatureId;          // in: DXG Kernel feature ID.
+
+    DXGK_ISFEATUREENABLED_RESULT    Result;             // out: feature support state for this adapter.
+
+    UINT                            InterfaceTableSize; // out: interface table size in function pointers.
+    D3DKMT_PTR(_Field_size_(InterfaceTableSize)
+    FARPROC const*, InterfaceTable);                    // out: pointer to a constant array that contains InterfaceTableSize function pointers.
+} D3DKMT_QUERYFEATUREINTERFACE;
+
 typedef struct _D3DKMT_RESIZERINGBUFFER_FLAGS
 {
     union
@@ -6090,6 +6102,7 @@ typedef _Check_return_ NTSTATUS (APIENTRY* PFND3DKMT_NOTIFYWORKSUBMISSION)(_In_ 
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_2)
 
 typedef _Check_return_ NTSTATUS (APIENTRY* PFND3DKMT_ISFEATUREENABLED)(_Inout_ D3DKMT_ISFEATUREENABLED*);
+typedef _Check_return_ NTSTATUS (APIENTRY* PFND3DKMT_QUERYFEATUREINTERFACE)(_Inout_ D3DKMT_QUERYFEATUREINTERFACE*);
 typedef _Check_return_ NTSTATUS (APIENTRY* PFND3DKMT_RESIZERINGBUFFER)(_Inout_ D3DKMT_RESIZERINGBUFFER*);
 typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_CREATEHWQUEUEFORUSERMODESUBMISSION)(_Inout_ D3DKMT_CREATEHWQUEUEFORUSERMODESUBMISSION*);
 typedef _Check_return_ NTSTATUS (APIENTRY* PFND3DKMT_ENABLEPROCESSDEBUGBLOBCOLLECTION)();
@@ -6394,8 +6407,10 @@ EXTERN_C _Check_return_ NTSTATUS APIENTRY D3DKMTNotifyWorkSubmission(_In_ D3DKMT
 
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_2)
 EXTERN_C _Check_return_ NTSTATUS APIENTRY D3DKMTIsFeatureEnabled(_Inout_ D3DKMT_ISFEATUREENABLED*);
+EXTERN_C _Check_return_ NTSTATUS APIENTRY D3DKMTQueryFeatureInterface(_Inout_ D3DKMT_QUERYFEATUREINTERFACE*);
 EXTERN_C _Check_return_ NTSTATUS APIENTRY D3DKMTResizeRingBuffer(_Inout_ D3DKMT_RESIZERINGBUFFER*);
 EXTERN_C _Check_return_ NTSTATUS APIENTRY D3DKMTCreateHwQueueForUserModeSubmission(_Inout_ D3DKMT_CREATEHWQUEUEFORUSERMODESUBMISSION*);
+
 
 #endif
 

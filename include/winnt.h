@@ -3055,28 +3055,28 @@ _interlockedbittestandreset64 (
 _Success_(return!=0)
 BOOLEAN
 _BitScanForward (
-    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) DWORD *Index,
+    _Out_ _Deref_out_range_(0, 31) DWORD *Index,
     _In_ DWORD Mask
     );
 
 _Success_(return!=0)
 BOOLEAN
 _BitScanReverse (
-    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) DWORD *Index,
+    _Out_ _Deref_out_range_(0, 31) DWORD *Index,
     _In_ DWORD Mask
     );
 
 _Success_(return!=0)
 BOOLEAN
 _BitScanForward64 (
-    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) DWORD *Index,
+    _Out_ _Deref_out_range_(0, 63) DWORD *Index,
     _In_ DWORD64 Mask
     );
 
 _Success_(return!=0)
 BOOLEAN
 _BitScanReverse64 (
-    _Out_ _Deref_out_range_(0, (sizeof(Mask)*8)-1) DWORD *Index,
+    _Out_ _Deref_out_range_(0, 63) DWORD *Index,
     _In_ DWORD64 Mask
     );
 
@@ -12461,6 +12461,8 @@ typedef enum _TOKEN_INFORMATION_CLASS {
     TokenIsAppSilo,
     TokenLoggingInformation,
     TokenLearningMode,
+    TokenIsSystemManagedAdmin,
+    TokenIsInstaller,
     MaxTokenInfoClass  // MaxTokenInfoClass should always be the last enum
 } TOKEN_INFORMATION_CLASS, *PTOKEN_INFORMATION_CLASS;
 

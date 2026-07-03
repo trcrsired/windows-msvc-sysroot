@@ -20,7 +20,7 @@
 #endif
  
 #if !defined(_VC_CRT_BUILD_VERSION)
-#define _VC_CRT_BUILD_VERSION 36243
+#define _VC_CRT_BUILD_VERSION 36244
 #endif
  
 #if !defined(_VC_CRT_RBUILD_VERSION)

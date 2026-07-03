@@ -1,9 +1,9 @@
-// C++/WinRT v2.0.250303.1
+// C++/WinRT v2.0.250303.5
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-#define CPPWINRT_VERSION "2.0.250303.1"
+#define CPPWINRT_VERSION "2.0.250303.5"
 
 #pragma once
 #ifndef WINRT_BASE_H

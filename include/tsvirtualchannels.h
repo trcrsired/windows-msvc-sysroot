@@ -117,13 +117,6 @@ typedef interface IWTSBitmapRenderService IWTSBitmapRenderService;
 #endif 	/* __IWTSBitmapRenderService_FWD_DEFINED__ */
 
 
-#ifndef __IWTSRemoteAppWindowInfoService_FWD_DEFINED__
-#define __IWTSRemoteAppWindowInfoService_FWD_DEFINED__
-typedef interface IWTSRemoteAppWindowInfoService IWTSRemoteAppWindowInfoService;
-
-#endif 	/* __IWTSRemoteAppWindowInfoService_FWD_DEFINED__ */
-
-
 #ifndef __IWTSWindowChangedCallback_FWD_DEFINED__
 #define __IWTSWindowChangedCallback_FWD_DEFINED__
 typedef interface IWTSWindowChangedCallback IWTSWindowChangedCallback;
@@ -787,7 +780,6 @@ EXTERN_C const IID IID_IWTSVirtualChannel;
 /* [local] */ 
 
 EXTERN_GUID( RDCLIENT_BITMAP_RENDER_SERVICE, 0xe4cc08cb, 0x942e, 0x4b19, 0x85, 0x4, 0xbd, 0x5a, 0x89, 0xa7, 0x47, 0xf5);
-EXTERN_GUID( RDCLIENT_REMOTE_APP_WINDOW_INFO_SERVICE, 0x10d23864, 0xcfa3, 0x447b, 0x89, 0x9f, 0x3f, 0xcf, 0x69, 0x80, 0x81, 0x2a);
 EXTERN_GUID( RDCLIENT_WINDOW_INFO_SERVICE, 0xa9a17a6b, 0xcdb3, 0x4e81, 0xb5, 0xc8, 0xbd, 0x63, 0x82, 0x2a, 0x8d, 0x6c);
 EXTERN_C __declspec(selectany) const IID IID_IWTSPluginServiceProvider = { 0xd3e07363, 0x87c, 0x476c, { 0x86, 0xa7, 0xdb, 0xb1, 0x5f, 0x46, 0xdd, 0xb4 } };
 
@@ -1205,101 +1197,6 @@ EXTERN_C const IID IID_IWTSBitmapRenderService;
 /* interface __MIDL_itf_tsvirtualchannels_0000_0010 */
 /* [local] */ 
 
-EXTERN_C __declspec(selectany) const IID IID_IWTSRemoteAppWindowInfoService = { 0x3869f11a, 0xde41, 0x427f, { 0x80, 0x28, 0x2d, 0x15, 0xd2, 0xec, 0x94, 0x98 } };
-
-
-extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0010_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0010_v0_0_s_ifspec;
-
-#ifndef __IWTSRemoteAppWindowInfoService_INTERFACE_DEFINED__
-#define __IWTSRemoteAppWindowInfoService_INTERFACE_DEFINED__
-
-/* interface IWTSRemoteAppWindowInfoService */
-/* [helpstring][oleautomation][uuid][object] */ 
-
-
-EXTERN_C const IID IID_IWTSRemoteAppWindowInfoService;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("3869F11A-DE41-427F-8028-2D15D2EC9498")
-    IWTSRemoteAppWindowInfoService : public IUnknown
-    {
-    public:
-        virtual /* [helpstring] */ HRESULT STDMETHODCALLTYPE GetLocalHwnd( 
-            /* [in] */ unsigned int remoteWindowId,
-            /* [retval][out] */ __RPC__deref_out_opt HWND *localHwnd) = 0;
-        
-    };
-    
-    
-#else 	/* C style interface */
-
-    typedef struct IWTSRemoteAppWindowInfoServiceVtbl
-    {
-        BEGIN_INTERFACE
-        
-        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            __RPC__in IWTSRemoteAppWindowInfoService * This,
-            /* [in] */ __RPC__in REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppvObject);
-        
-        DECLSPEC_XFGVIRT(IUnknown, AddRef)
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            __RPC__in IWTSRemoteAppWindowInfoService * This);
-        
-        DECLSPEC_XFGVIRT(IUnknown, Release)
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            __RPC__in IWTSRemoteAppWindowInfoService * This);
-        
-        DECLSPEC_XFGVIRT(IWTSRemoteAppWindowInfoService, GetLocalHwnd)
-        /* [helpstring] */ HRESULT ( STDMETHODCALLTYPE *GetLocalHwnd )( 
-            __RPC__in IWTSRemoteAppWindowInfoService * This,
-            /* [in] */ unsigned int remoteWindowId,
-            /* [retval][out] */ __RPC__deref_out_opt HWND *localHwnd);
-        
-        END_INTERFACE
-    } IWTSRemoteAppWindowInfoServiceVtbl;
-
-    interface IWTSRemoteAppWindowInfoService
-    {
-        CONST_VTBL struct IWTSRemoteAppWindowInfoServiceVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IWTSRemoteAppWindowInfoService_QueryInterface(This,riid,ppvObject)	\
-    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
-
-#define IWTSRemoteAppWindowInfoService_AddRef(This)	\
-    ( (This)->lpVtbl -> AddRef(This) ) 
-
-#define IWTSRemoteAppWindowInfoService_Release(This)	\
-    ( (This)->lpVtbl -> Release(This) ) 
-
-
-#define IWTSRemoteAppWindowInfoService_GetLocalHwnd(This,remoteWindowId,localHwnd)	\
-    ( (This)->lpVtbl -> GetLocalHwnd(This,remoteWindowId,localHwnd) ) 
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-
-#endif 	/* __IWTSRemoteAppWindowInfoService_INTERFACE_DEFINED__ */
-
-
-/* interface __MIDL_itf_tsvirtualchannels_0000_0011 */
-/* [local] */ 
-
 typedef 
 enum RdpSessionType
     {
@@ -1322,8 +1219,8 @@ typedef struct WTSWindowInfo
 EXTERN_C __declspec(selectany) const IID IID_IWTSWindowChangedCallback = { 0xe8a47fd3, 0x1af5, 0x4d7f, { 0x8e, 0x15, 0x51, 0x5c, 0xca, 0xe1, 0xc0, 0x0c } };
 
 
-extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0011_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0011_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0010_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0010_v0_0_s_ifspec;
 
 #ifndef __IWTSWindowChangedCallback_INTERFACE_DEFINED__
 #define __IWTSWindowChangedCallback_INTERFACE_DEFINED__
@@ -1409,14 +1306,14 @@ EXTERN_C const IID IID_IWTSWindowChangedCallback;
 #endif 	/* __IWTSWindowChangedCallback_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_tsvirtualchannels_0000_0012 */
+/* interface __MIDL_itf_tsvirtualchannels_0000_0011 */
 /* [local] */ 
 
 EXTERN_C __declspec(selectany) const IID IID_IWTSWindowInfoService = { 0x2a002c7b, 0x0120, 0x4d04, { 0xbf, 0xb1, 0x3c, 0x73, 0x11, 0x0c, 0x85, 0x81 } };
 
 
-extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0012_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0012_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0011_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0011_v0_0_s_ifspec;
 
 #ifndef __IWTSWindowInfoService_INTERFACE_DEFINED__
 #define __IWTSWindowInfoService_INTERFACE_DEFINED__
@@ -1552,15 +1449,15 @@ EXTERN_C const IID IID_IWTSWindowInfoService;
 #endif 	/* __IWTSWindowInfoService_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_tsvirtualchannels_0000_0013 */
+/* interface __MIDL_itf_tsvirtualchannels_0000_0012 */
 /* [local] */ 
 
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
 #pragma endregion
 
 
-extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0013_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0013_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0012_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0012_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

@@ -51547,6 +51547,15 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 #define FVE_E_MISSING_PROTECTORS         _HRESULT_TYPEDEF_(0xC0310119L)
 
 //
+// MessageId: FVE_E_METHOD_MISMATCH
+//
+// MessageText:
+//
+// The encryption method set by a policy doesn't match the selected one.
+//
+#define FVE_E_METHOD_MISMATCH            _HRESULT_TYPEDEF_(0xC031011AL)
+
+//
 // =======================================================
 // Windows Filtering Platform Error Messages
 // =======================================================
@@ -64310,6 +64319,15 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 // The SMB client was denied access to the SMB server during mutual authentication.
 //
 #define ERROR_SMB_TLS_ACCESS_DENIED      _HRESULT_TYPEDEF_(0xC05D0007L)
+
+//
+// MessageId: ERROR_SMB_ALTERNATIVE_PORT_CONFLICT
+//
+// MessageText:
+//
+// Multiple SMB mappings to shared resource(s) on a server, using more than one port for a given transport, are not allowed. Use a single transport port for all mappings to a server and try again.
+//
+#define ERROR_SMB_ALTERNATIVE_PORT_CONFLICT _HRESULT_TYPEDEF_(0xC05D000BL)
 
 //
 // WININET.DLL errors - propagated as HRESULT's using FACILITY=WIN32

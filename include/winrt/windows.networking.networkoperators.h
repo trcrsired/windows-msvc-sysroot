@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.250303.1
+// C++/WinRT v2.0.250303.5
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,8 +7,8 @@
 #ifndef WINRT_Windows_Networking_NetworkOperators_H
 #define WINRT_Windows_Networking_NetworkOperators_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.0.250303.1"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.5"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.5"
 #include "winrt/windows.networking.h"
 #include "winrt/impl/windows.data.xml.dom.2.h"
 #include "winrt/impl/windows.devices.sms.2.h"

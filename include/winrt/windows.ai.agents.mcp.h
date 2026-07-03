@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.250303.1
+// C++/WinRT v2.0.250303.5
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,8 +7,8 @@
 #ifndef WINRT_Windows_AI_Agents_Mcp_H
 #define WINRT_Windows_AI_Agents_Mcp_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.0.250303.1"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.5"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.5"
 #include "winrt/impl/windows.ai.agents.mcp.2.h"
 namespace winrt::impl
 {
@@ -41,6 +41,40 @@ namespace winrt::impl
         else
         {
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental>**)this;
+            check_hresult(_winrt_abi_type->OnMessage(*(void**)(&message), static_cast<int32_t>(direction), *(void**)(&filterResponse)));
+        }
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterExperimental2<D>::Initialize(param::hstring const& clientProcessIdentifier, uint32_t clientProcessId, param::hstring const& serverProcessIdentifier, uint32_t serverProcessId, param::hstring const& serverId) const
+    {
+        bool result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->Initialize(*(void**)(&clientProcessIdentifier), clientProcessId, *(void**)(&serverProcessIdentifier), serverProcessId, *(void**)(&serverId), &result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental2>**)this;
+            check_hresult(_winrt_abi_type->Initialize(*(void**)(&clientProcessIdentifier), clientProcessId, *(void**)(&serverProcessIdentifier), serverProcessId, *(void**)(&serverId), &result));
+        }
+        return result;
+    }
+    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterExperimental2<D>::OnMessage(param::hstring const& message, winrt::Windows::AI::Agents::Mcp::McpMessageDirection const& direction, winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse const& filterResponse) const
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->OnMessage(*(void**)(&message), static_cast<int32_t>(direction), *(void**)(&filterResponse)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental2>**)this;
             check_hresult(_winrt_abi_type->OnMessage(*(void**)(&message), static_cast<int32_t>(direction), *(void**)(&filterResponse)));
         }
     }
@@ -162,6 +196,24 @@ namespace winrt::impl
         }
         catch (...) { return to_hresult(); }
     };
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental2> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental2>
+    {
+        int32_t __stdcall Initialize(void* clientProcessIdentifier, uint32_t clientProcessId, void* serverProcessIdentifier, uint32_t serverProcessId, void* serverId, bool* result) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<bool>(this->shim().Initialize(*reinterpret_cast<hstring const*>(&clientProcessIdentifier), clientProcessId, *reinterpret_cast<hstring const*>(&serverProcessIdentifier), serverProcessId, *reinterpret_cast<hstring const*>(&serverId)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall OnMessage(void* message, int32_t direction, void* filterResponse) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().OnMessage(*reinterpret_cast<hstring const*>(&message), *reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpMessageDirection const*>(&direction), *reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse const*>(&filterResponse));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
     struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>
@@ -227,6 +279,7 @@ namespace std
 {
 #ifndef WINRT_LEAN_AND_MEAN
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterExperimental2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponseExperimental2> : winrt::impl::hash_base {};

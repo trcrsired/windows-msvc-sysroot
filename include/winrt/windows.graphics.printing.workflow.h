@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.250303.1
+// C++/WinRT v2.0.250303.5
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,8 +7,8 @@
 #ifndef WINRT_Windows_Graphics_Printing_Workflow_H
 #define WINRT_Windows_Graphics_Printing_Workflow_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.0.250303.1"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.5"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.5"
 #include "winrt/windows.graphics.printing.h"
 #include "winrt/impl/windows.applicationmodel.activation.2.h"
 #include "winrt/impl/windows.devices.printers.2.h"
@@ -1746,7 +1746,7 @@ namespace winrt::impl
         }
         return winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>{ result, take_ownership_from_abi };
     }
-    template <typename D> auto consume_Windows_Graphics_Printing_Workflow_IPrintWorkflowPrinterJob3<D>::IsPassthroughJob() const
+    template <typename D> auto consume_Windows_Graphics_Printing_Workflow_IPrintWorkflowPrinterJob3<D>::IsPassthroughJobWithAttributes() const
     {
         bool value{};
         if constexpr (!std::is_same_v<D, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>)
@@ -1755,12 +1755,12 @@ namespace winrt::impl
             auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
             check_hresult(_winrt_cast_result_code);
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>**)&_winrt_casted_result;
-            check_hresult(_winrt_abi_type->get_IsPassthroughJob(&value));
+            check_hresult(_winrt_abi_type->get_IsPassthroughJobWithAttributes(&value));
         }
         else
         {
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>**)this;
-            check_hresult(_winrt_abi_type->get_IsPassthroughJob(&value));
+            check_hresult(_winrt_abi_type->get_IsPassthroughJobWithAttributes(&value));
         }
         return value;
     }
@@ -3434,10 +3434,10 @@ namespace winrt::impl
     template <typename D>
     struct produce<D, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3> : produce_base<D, winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>
     {
-        int32_t __stdcall get_IsPassthroughJob(bool* value) noexcept final try
+        int32_t __stdcall get_IsPassthroughJobWithAttributes(bool* value) noexcept final try
         {
             typename D::abi_guard guard(this->shim());
-            *value = detach_from<bool>(this->shim().IsPassthroughJob());
+            *value = detach_from<bool>(this->shim().IsPassthroughJobWithAttributes());
             return 0;
         }
         catch (...) { return to_hresult(); }

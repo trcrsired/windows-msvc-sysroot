@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.250303.1
+// C++/WinRT v2.0.250303.5
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -414,7 +414,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPdlTargetStream>{ 0xA742DFE5,0x1EE3,0x52A9,{ 0x9F,0x9F,0x2E,0x20,0x43,0x18,0x0F,0xD1 } }; // A742DFE5-1EE3-52A9-9F9F-2E2043180FD1
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob>{ 0x12009F94,0x0D14,0x5443,{ 0xBC,0x09,0x25,0x03,0x11,0xCE,0x57,0x0B } }; // 12009F94-0D14-5443-BC09-250311CE570B
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob2>{ 0x747E21D7,0x69A9,0x5229,{ 0xB8,0xF0,0x87,0x4C,0xA1,0xA8,0x87,0x1B } }; // 747E21D7-69A9-5229-B8F0-874CA1A8871B
-    template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>{ 0x6B9BEA6D,0x49B0,0x5685,{ 0x8C,0x09,0xD4,0x37,0xF4,0x33,0xDB,0xC1 } }; // 6B9BEA6D-49B0-5685-8C09-D437F433DBC1
+    template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJob3>{ 0xF0C8EEEC,0x66AC,0x5E14,{ 0x89,0x06,0x0D,0xE6,0x10,0x76,0x93,0x68 } }; // F0C8EEEC-66AC-5E14-8906-0DE610769368
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowPrinterJobStatusChangedEventArgs>{ 0x4A6275B9,0xBE67,0x5718,{ 0x92,0x1A,0x34,0x8C,0x56,0xF9,0xD2,0x5F } }; // 4A6275B9-BE67-5718-921A-348C56F9D25F
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowSourceContent>{ 0x1A28C641,0xCEB1,0x4533,{ 0xBB,0x73,0xFB,0xE6,0x3E,0xEF,0xDB,0x18 } }; // 1A28C641-CEB1-4533-BB73-FBE63EEFDB18
     template <> inline constexpr guid guid_v<winrt::Windows::Graphics::Printing::Workflow::IPrintWorkflowSpoolStreamContent>{ 0x72E55ECE,0xE406,0x4B74,{ 0x84,0xE1,0x3F,0xF3,0xFD,0xCD,0xAF,0x70 } }; // 72E55ECE-E406-4B74-84E1-3FF3FDCDAF70
@@ -759,7 +759,7 @@ namespace winrt::impl
     {
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
-            virtual int32_t __stdcall get_IsPassthroughJob(bool*) noexcept = 0;
+            virtual int32_t __stdcall get_IsPassthroughJobWithAttributes(bool*) noexcept = 0;
             virtual int32_t __stdcall GetPassthroughJobAttributes(void**) noexcept = 0;
             virtual int32_t __stdcall GetPassthroughJobOperationAttributes(void**) noexcept = 0;
         };
@@ -1277,7 +1277,7 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Graphics_Printing_Workflow_IPrintWorkflowPrinterJob3
     {
-        [[nodiscard]] auto IsPassthroughJob() const;
+        [[nodiscard]] auto IsPassthroughJobWithAttributes() const;
         auto GetPassthroughJobAttributes() const;
         auto GetPassthroughJobOperationAttributes() const;
     };

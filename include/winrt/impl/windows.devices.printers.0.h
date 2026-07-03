@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.250303.1
+// C++/WinRT v2.0.250303.5
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -294,7 +294,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormat> = L"Windows.Devices.Printers.IVirtualPrinterSupportedFormat";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::IVirtualPrinterSupportedFormatFactory> = L"Windows.Devices.Printers.IVirtualPrinterSupportedFormatFactory";
     template <> inline constexpr auto& name_v<winrt::Windows::Devices::Printers::PrintersContract> = L"Windows.Devices.Printers.PrintersContract";
-    template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>{ 0xF558776E,0x852A,0x5B89,{ 0xBB,0xA8,0xA5,0xAB,0xC6,0x30,0x3D,0x01 } }; // F558776E-852A-5B89-BBA8-A5ABC6303D01
+    template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>{ 0x91E368DF,0xBFA4,0x5CA1,{ 0xA9,0x2D,0x07,0x93,0xF9,0x88,0xE8,0x2D } }; // 91E368DF-BFA4-5CA1-A92D-0793F988E82D
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IIppAttributeError>{ 0x750FEDA1,0x9EEF,0x5C39,{ 0x93,0xE4,0x46,0x14,0x9B,0xBC,0xEF,0x27 } }; // 750FEDA1-9EEF-5C39-93E4-46149BBCEF27
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IIppAttributeValue>{ 0x99407FED,0xE2BB,0x59A3,{ 0x98,0x8B,0x28,0xA9,0x74,0x05,0x2A,0x26 } }; // 99407FED-E2BB-59A3-988B-28A974052A26
     template <> inline constexpr guid guid_v<winrt::Windows::Devices::Printers::IIppAttributeValueStatics>{ 0x10D43942,0xDD94,0x5998,{ 0xB2,0x35,0xAF,0xAF,0xB6,0xFA,0x79,0x35 } }; // 10D43942-DD94-5998-B235-AFAFB6FA7935
@@ -347,7 +347,7 @@ namespace winrt::impl
     {
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
-            virtual int32_t __stdcall ConvertPrintTicketToIppAttributesForPrinter(void*, void*, void**) noexcept = 0;
+            virtual int32_t __stdcall ConvertPrintTicketToIppAttributesForPrinter(void*, void*, void*, void**) noexcept = 0;
             virtual int32_t __stdcall ConvertBufferToIppAttributes(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ConvertIppAttributesToBuffer(void*, int32_t, void**) noexcept = 0;
         };
@@ -691,7 +691,7 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Devices_Printers_IIppAttributeConverterStatics
     {
-        auto ConvertPrintTicketToIppAttributesForPrinter(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket) const;
+        auto ConvertPrintTicketToIppAttributesForPrinter(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket, param::hstring const& targetPdlFormat) const;
         auto ConvertBufferToIppAttributes(winrt::Windows::Storage::Streams::IBuffer const& attributesBuffer) const;
         auto ConvertIppAttributesToBuffer(param::iterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>> const& attributes, winrt::Windows::Devices::Printers::IppAttributeGroupKind const& attributeGroupKind) const;
     };

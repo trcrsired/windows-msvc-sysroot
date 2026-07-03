@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.250303.1
+// C++/WinRT v2.0.250303.5
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -16,7 +16,7 @@ WINRT_EXPORT namespace winrt::Windows::Devices::Printers
     struct IppAttributeConverter
     {
         IppAttributeConverter() = delete;
-        static auto ConvertPrintTicketToIppAttributesForPrinter(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket);
+        static auto ConvertPrintTicketToIppAttributesForPrinter(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket, param::hstring const& targetPdlFormat);
         static auto ConvertBufferToIppAttributes(winrt::Windows::Storage::Streams::IBuffer const& attributesBuffer);
         static auto ConvertIppAttributesToBuffer(param::iterable<winrt::Windows::Foundation::Collections::IKeyValuePair<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>> const& attributes, winrt::Windows::Devices::Printers::IppAttributeGroupKind const& attributeGroupKind);
     };

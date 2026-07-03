@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.250303.1
+// C++/WinRT v2.0.250303.5
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -7,8 +7,8 @@
 #ifndef WINRT_Windows_Devices_Printers_H
 #define WINRT_Windows_Devices_Printers_H
 #include "winrt/base.h"
-static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatched C++/WinRT headers.");
-#define CPPWINRT_VERSION "2.0.250303.1"
+static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.5"), "Mismatched C++/WinRT headers.");
+#define CPPWINRT_VERSION "2.0.250303.5"
 #include "winrt/windows.devices.h"
 #include "winrt/impl/windows.foundation.2.h"
 #include "winrt/impl/windows.foundation.collections.2.h"
@@ -18,7 +18,7 @@ static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.250303.1"), "Mismatche
 #include "winrt/impl/windows.devices.printers.2.h"
 namespace winrt::impl
 {
-    template <typename D> auto consume_Windows_Devices_Printers_IIppAttributeConverterStatics<D>::ConvertPrintTicketToIppAttributesForPrinter(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket) const
+    template <typename D> auto consume_Windows_Devices_Printers_IIppAttributeConverterStatics<D>::ConvertPrintTicketToIppAttributesForPrinter(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket, param::hstring const& targetPdlFormat) const
     {
         void* result{};
         if constexpr (!std::is_same_v<D, winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>)
@@ -27,12 +27,12 @@ namespace winrt::impl
             auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
             check_hresult(_winrt_cast_result_code);
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>**)&_winrt_casted_result;
-            check_hresult(_winrt_abi_type->ConvertPrintTicketToIppAttributesForPrinter(*(void**)(&printerName), *(void**)(&printTicket), &result));
+            check_hresult(_winrt_abi_type->ConvertPrintTicketToIppAttributesForPrinter(*(void**)(&printerName), *(void**)(&printTicket), *(void**)(&targetPdlFormat), &result));
         }
         else
         {
             auto const _winrt_abi_type = *(abi_t<winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>**)this;
-            check_hresult(_winrt_abi_type->ConvertPrintTicketToIppAttributesForPrinter(*(void**)(&printerName), *(void**)(&printTicket), &result));
+            check_hresult(_winrt_abi_type->ConvertPrintTicketToIppAttributesForPrinter(*(void**)(&printerName), *(void**)(&printTicket), *(void**)(&targetPdlFormat), &result));
         }
         return winrt::Windows::Foundation::Collections::IMap<winrt::Windows::Devices::Printers::IppAttributeGroupKind, winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>>{ result, take_ownership_from_abi };
     }
@@ -2750,11 +2750,11 @@ namespace winrt::impl
     template <typename D>
     struct produce<D, winrt::Windows::Devices::Printers::IIppAttributeConverterStatics> : produce_base<D, winrt::Windows::Devices::Printers::IIppAttributeConverterStatics>
     {
-        int32_t __stdcall ConvertPrintTicketToIppAttributesForPrinter(void* printerName, void* printTicket, void** result) noexcept final try
+        int32_t __stdcall ConvertPrintTicketToIppAttributesForPrinter(void* printerName, void* printTicket, void* targetPdlFormat, void** result) noexcept final try
         {
             clear_abi(result);
             typename D::abi_guard guard(this->shim());
-            *result = detach_from<winrt::Windows::Foundation::Collections::IMap<winrt::Windows::Devices::Printers::IppAttributeGroupKind, winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>>>(this->shim().ConvertPrintTicketToIppAttributesForPrinter(*reinterpret_cast<hstring const*>(&printerName), *reinterpret_cast<winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const*>(&printTicket)));
+            *result = detach_from<winrt::Windows::Foundation::Collections::IMap<winrt::Windows::Devices::Printers::IppAttributeGroupKind, winrt::Windows::Foundation::Collections::IMap<hstring, winrt::Windows::Devices::Printers::IppAttributeValue>>>(this->shim().ConvertPrintTicketToIppAttributesForPrinter(*reinterpret_cast<hstring const*>(&printerName), *reinterpret_cast<winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const*>(&printTicket), *reinterpret_cast<hstring const*>(&targetPdlFormat)));
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -4129,9 +4129,9 @@ namespace winrt::impl
 }
 WINRT_EXPORT namespace winrt::Windows::Devices::Printers
 {
-    inline auto IppAttributeConverter::ConvertPrintTicketToIppAttributesForPrinter(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket)
+    inline auto IppAttributeConverter::ConvertPrintTicketToIppAttributesForPrinter(param::hstring const& printerName, winrt::Windows::Graphics::Printing::PrintTicket::WorkflowPrintTicket const& printTicket, param::hstring const& targetPdlFormat)
     {
-        return impl::call_factory<IppAttributeConverter, IIppAttributeConverterStatics>([&](IIppAttributeConverterStatics const& f) { return f.ConvertPrintTicketToIppAttributesForPrinter(printerName, printTicket); });
+        return impl::call_factory<IppAttributeConverter, IIppAttributeConverterStatics>([&](IIppAttributeConverterStatics const& f) { return f.ConvertPrintTicketToIppAttributesForPrinter(printerName, printTicket, targetPdlFormat); });
     }
     inline auto IppAttributeConverter::ConvertBufferToIppAttributes(winrt::Windows::Storage::Streams::IBuffer const& attributesBuffer)
     {

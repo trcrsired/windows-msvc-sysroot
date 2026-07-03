@@ -281,11 +281,6 @@ interface IWTSVirtualChannel : IUnknown
 cpp_quote( "EXTERN_GUID( RDCLIENT_BITMAP_RENDER_SERVICE, 0xe4cc08cb, 0x942e, 0x4b19, 0x85, 0x4, 0xbd, 0x5a, 0x89, 0xa7, 0x47, 0xf5);" )
 
 //
-// Use this service GUID to retrieve RDCLIENT_REMOTE_APP_WINDOW_INFO_SERVICE through
-// IWTSPluginServiceProvider::GetService
-cpp_quote( "EXTERN_GUID( RDCLIENT_REMOTE_APP_WINDOW_INFO_SERVICE, 0x10d23864, 0xcfa3, 0x447b, 0x89, 0x9f, 0x3f, 0xcf, 0x69, 0x80, 0x81, 0x2a);" )
-
-//
 // Use this service GUID to retrieve RDCLIENT_WINDOW_INFO_SERVICE through
 // IWTSPluginServiceProvider::GetService
 cpp_quote( "EXTERN_GUID( RDCLIENT_WINDOW_INFO_SERVICE, 0xa9a17a6b, 0xcdb3, 0x4e81, 0xb5, 0xc8, 0xbd, 0x63, 0x82, 0x2a, 0x8d, 0x6c);" )
@@ -445,35 +440,6 @@ interface IWTSBitmapRenderService : IUnknown
         [in]    UINT64 mappingId,
         [in]    IWTSBitmapRendererCallback *pMappedRendererCallback,
         [out]   IWTSBitmapRenderer  **ppMappedRenderer
-        );
-};
-
-//
-// =========================================================================
-//
-//  Interface:          IWTSRemoteAppWindowInfoService
-//
-//  Implementation:     Client Side (System)
-//
-//  Description:
-//      This service provides a way for Dynamic Virtual Channel plugins 
-//      to query information about the RDP session window of a Remote App
-//
-// =========================================================================
-//
-cpp_quote("EXTERN_C __declspec(selectany) const IID IID_IWTSRemoteAppWindowInfoService = { 0x3869f11a, 0xde41, 0x427f, { 0x80, 0x28, 0x2d, 0x15, 0xd2, 0xec, 0x94, 0x98 } };")
-[
-    object,
-    uuid(3869F11A-DE41-427F-8028-2D15D2EC9498),
-    oleautomation,
-    helpstring("interface IWTSRemoteAppWindowInfoService")
-]
-interface IWTSRemoteAppWindowInfoService : IUnknown
-{
-    [helpstring("GetLocalHwnd")]
-    HRESULT GetLocalHwnd(
-        [in] unsigned int remoteWindowId,
-        [out, retval] HWND* localHwnd
         );
 };
 

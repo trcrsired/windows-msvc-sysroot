@@ -40,6 +40,9 @@ extern "C"
 // Windows version after which CorrID is supported
 #define CI_VERSION_CORRID 0x800 // 2048
 
+// Windows version after which semantic reliability and process name propagation is supported
+#define CI_VERSION_QUERY_METADATA 0x900 // 2304
+
 //
 // Use this path for the null catalog, one that doesn't have an index.
 // Use it to search for properties of files that are not indexed.

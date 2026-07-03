@@ -705,6 +705,7 @@ typedef struct _SECPKG_CALL_INFO {
 #define SECPKG_CALL_BUFFER_MARSHAL  0x00010000  // Buffer passed is marshaled (by RPC)
 #define SECPKG_CALL_UNLOCK          0x00020000  // Unlock
 #define SECPKG_CALL_CLOUDAP_CONNECT 0x00040000  // the caller of LsaLogonuser() is CloudAP during connection flow
+#define SECPKG_CALL_AGENT_LOGON     0x00080000  // Logon is for an agent account via the agent APIs
 
 //
 // WOWXX: Additional defines to determine which type of WoW guest we are dealing with.

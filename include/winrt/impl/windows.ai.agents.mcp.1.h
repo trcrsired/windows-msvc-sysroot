@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.250303.1
+// C++/WinRT v2.0.250303.5
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -15,6 +15,13 @@ WINRT_EXPORT namespace winrt::Windows::AI::Agents::Mcp
     {
         IMcpMessageFilterExperimental(std::nullptr_t = nullptr) noexcept {}
         IMcpMessageFilterExperimental(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IMcpMessageFilterExperimental2 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IMcpMessageFilterExperimental2>
+    {
+        IMcpMessageFilterExperimental2(std::nullptr_t = nullptr) noexcept {}
+        IMcpMessageFilterExperimental2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES IMcpMessageFilterResponse :
         winrt::Windows::Foundation::IInspectable,

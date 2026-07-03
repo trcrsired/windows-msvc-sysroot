@@ -1,4 +1,4 @@
-// C++/WinRT v2.0.250303.1
+// C++/WinRT v2.0.250303.5
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
@@ -24,7 +24,8 @@ WINRT_EXPORT namespace winrt::Windows::Graphics::Printing::PrintSupport
         PrintSupportCommunicationErrorDetectedEventArgs(std::nullptr_t) noexcept {}
         PrintSupportCommunicationErrorDetectedEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportCommunicationErrorDetectedEventArgs(ptr, take_ownership_from_abi) {}
     };
-    struct WINRT_IMPL_EMPTY_BASES PrintSupportEnterpriseManagementUIEventArgs : winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs
+    struct WINRT_IMPL_EMPTY_BASES PrintSupportEnterpriseManagementUIEventArgs : winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs,
+        impl::require<PrintSupportEnterpriseManagementUIEventArgs, winrt::Windows::ApplicationModel::Activation::IActivatedEventArgs, winrt::Windows::ApplicationModel::Activation::IActivatedEventArgsWithUser>
     {
         PrintSupportEnterpriseManagementUIEventArgs(std::nullptr_t) noexcept {}
         PrintSupportEnterpriseManagementUIEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Graphics::Printing::PrintSupport::IPrintSupportEnterpriseManagementUIEventArgs(ptr, take_ownership_from_abi) {}

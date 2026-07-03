@@ -660,7 +660,7 @@ namespace ABI {
 } /* ABI */
 
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef DEF___FIAsyncOperation_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult_USE
 #define DEF___FIAsyncOperation_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult_USE
@@ -685,11 +685,11 @@ typedef IAsyncOperation<ABI::Windows::Devices::Printers::IppPrintDeviceInstallat
 #endif // !defined(RO_NO_TEMPLATE_NAME)
 #endif /* DEF___FIAsyncOperation_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult_USE */
 
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef DEF___FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult_USE
 #define DEF___FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult_USE
@@ -714,7 +714,7 @@ typedef IAsyncOperationCompletedHandler<ABI::Windows::Devices::Printers::IppPrin
 #endif // !defined(RO_NO_TEMPLATE_NAME)
 #endif /* DEF___FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult_USE */
 
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 namespace ABI {
@@ -791,7 +791,7 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef DEF___FIAsyncOperation_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult_USE
 #define DEF___FIAsyncOperation_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult_USE
@@ -816,9 +816,9 @@ typedef IAsyncOperation<ABI::Windows::Devices::Printers::VirtualPrinterInstallat
 #endif // !defined(RO_NO_TEMPLATE_NAME)
 #endif /* DEF___FIAsyncOperation_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult_USE */
 
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef DEF___FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult_USE
 #define DEF___FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult_USE
@@ -843,7 +843,7 @@ typedef IAsyncOperationCompletedHandler<ABI::Windows::Devices::Printers::Virtual
 #endif // !defined(RO_NO_TEMPLATE_NAME)
 #endif /* DEF___FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult_USE */
 
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef ____x_ABI_CWindows_CStorage_CStreams_CIRandomAccessStreamWithContentType_FWD_DEFINED__
 #define ____x_ABI_CWindows_CStorage_CStreams_CIRandomAccessStreamWithContentType_FWD_DEFINED__
@@ -1330,7 +1330,7 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef DEF___FIIterator_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_USE
 #define DEF___FIIterator_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_USE
@@ -1355,9 +1355,9 @@ typedef IIterator<ABI::Windows::Devices::Printers::VirtualPrinterSupportedFormat
 #endif // !defined(RO_NO_TEMPLATE_NAME)
 #endif /* DEF___FIIterator_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_USE */
 
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef DEF___FIIterable_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_USE
 #define DEF___FIIterable_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_USE
@@ -1382,7 +1382,7 @@ typedef IIterable<ABI::Windows::Devices::Printers::VirtualPrinterSupportedFormat
 #endif // !defined(RO_NO_TEMPLATE_NAME)
 #endif /* DEF___FIIterable_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_USE */
 
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
@@ -1749,8 +1749,7 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
 #ifndef DEF___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_USE
@@ -1777,11 +1776,9 @@ typedef IKeyValuePair<enum ABI::Windows::Devices::Printers::IppAttributeGroupKin
 #endif /* DEF___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_USE */
 
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
 #ifndef DEF___FIIterator_1___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_USE
@@ -1808,11 +1805,9 @@ typedef IIterator<__FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttribute
 #endif /* DEF___FIIterator_1___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_USE */
 
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
 #ifndef DEF___FIIterable_1___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_USE
@@ -1839,8 +1834,7 @@ typedef IIterable<__FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttribute
 #endif /* DEF___FIIterable_1___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_USE */
 
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
@@ -2129,8 +2123,7 @@ typedef IMapView<HSTRING, ABI::Windows::Devices::Printers::IppAttributeError*> _
 
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
 #ifndef DEF___FIMapView_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_USE
@@ -2157,11 +2150,9 @@ typedef IMapView<enum ABI::Windows::Devices::Printers::IppAttributeGroupKind, __
 #endif /* DEF___FIMapView_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_USE */
 
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
 #ifndef DEF___FIMap_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_USE
@@ -2188,8 +2179,7 @@ typedef IMap<enum ABI::Windows::Devices::Printers::IppAttributeGroupKind, __FIMa
 #endif /* DEF___FIMap_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_USE */
 
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 
 #ifndef DEF___FIVectorView_1_boolean_USE
@@ -2374,7 +2364,7 @@ typedef IVectorView<ABI::Windows::Devices::Printers::IppTextWithLanguage*> __FIV
 
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef DEF___FIVectorView_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_USE
 #define DEF___FIVectorView_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_USE
@@ -2399,7 +2389,7 @@ typedef IVectorView<ABI::Windows::Devices::Printers::VirtualPrinterSupportedForm
 #endif // !defined(RO_NO_TEMPLATE_NAME)
 #endif /* DEF___FIVectorView_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_USE */
 
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
@@ -2665,7 +2655,7 @@ typedef IVector<ABI::Windows::Devices::Printers::IppTextWithLanguage*> __FIVecto
 
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef DEF___FIVector_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_USE
 #define DEF___FIVector_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_USE
@@ -2690,7 +2680,7 @@ typedef IVector<ABI::Windows::Devices::Printers::VirtualPrinterSupportedFormat*>
 #endif // !defined(RO_NO_TEMPLATE_NAME)
 #endif /* DEF___FIVector_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_USE */
 
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
@@ -3122,13 +3112,10 @@ namespace ABI {
  *
  * Struct Windows.Devices.Printers.IppAttributeGroupKind
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 namespace ABI {
     namespace Windows {
         namespace Devices {
@@ -3143,8 +3130,7 @@ namespace ABI {
         } /* Devices */
     } /* Windows */
 } /* ABI */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
@@ -3192,13 +3178,13 @@ namespace ABI {
  *
  * Struct Windows.Devices.Printers.IppPrintDeviceInstallationStatus
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
  */
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 namespace ABI {
     namespace Windows {
         namespace Devices {
@@ -3214,7 +3200,7 @@ namespace ABI {
         } /* Devices */
     } /* Windows */
 } /* ABI */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
@@ -3319,10 +3305,10 @@ namespace ABI {
  *
  * Struct Windows.Devices.Printers.VirtualPrinterInstallationStatus
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 namespace ABI {
     namespace Windows {
         namespace Devices {
@@ -3338,16 +3324,16 @@ namespace ABI {
         } /* Devices */
     } /* Windows */
 } /* ABI */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Struct Windows.Devices.Printers.VirtualPrinterPreferredInputFormat
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 namespace ABI {
     namespace Windows {
         namespace Devices {
@@ -3361,21 +3347,18 @@ namespace ABI {
         } /* Devices */
     } /* Windows */
 } /* ABI */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Interface Windows.Devices.Printers.IIppAttributeConverterStatics
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.IppAttributeConverter
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IIppAttributeConverterStatics[] = L"Windows.Devices.Printers.IIppAttributeConverterStatics";
@@ -3383,13 +3366,14 @@ namespace ABI {
     namespace Windows {
         namespace Devices {
             namespace Printers {
-                MIDL_INTERFACE("f558776e-852a-5b89-bba8-a5abc6303d01")
+                MIDL_INTERFACE("91e368df-bfa4-5ca1-a92d-0793f988e82d")
                 IIppAttributeConverterStatics : public IInspectable
                 {
                 public:
                     virtual HRESULT STDMETHODCALLTYPE ConvertPrintTicketToIppAttributesForPrinter(
                         HSTRING printerName,
                         ABI::Windows::Graphics::Printing::PrintTicket::IWorkflowPrintTicket* printTicket,
+                        HSTRING targetPdlFormat,
                         __FIMap_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue** result
                         ) = 0;
                     virtual HRESULT STDMETHODCALLTYPE ConvertBufferToIppAttributes(
@@ -3411,8 +3395,7 @@ namespace ABI {
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
@@ -4044,7 +4027,7 @@ EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDevice5;
  *
  * Interface Windows.Devices.Printers.IIppPrintDeviceInstallationResult
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
@@ -4052,7 +4035,7 @@ EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDevice5;
  *
  */
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceInstallationResult_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceInstallationResult_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IIppPrintDeviceInstallationResult[] = L"Windows.Devices.Printers.IIppPrintDeviceInstallationResult";
@@ -4083,14 +4066,14 @@ namespace ABI {
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceInstallationResult;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceInstallationResult_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
  * Interface Windows.Devices.Printers.IIppPrintDeviceManagerStatics
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
@@ -4098,7 +4081,7 @@ EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceInsta
  *
  */
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceManagerStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceManagerStatics_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IIppPrintDeviceManagerStatics[] = L"Windows.Devices.Printers.IIppPrintDeviceManagerStatics";
@@ -4128,7 +4111,7 @@ namespace ABI {
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceManagerStatics;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceManagerStatics_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
@@ -4475,15 +4458,12 @@ EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIPdlPassthroughProvi
  *
  * Interface Windows.Devices.Printers.IPdlPassthroughProvider2
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.PdlPassthroughProvider
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIPdlPassthroughProvider2_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIPdlPassthroughProvider2_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IPdlPassthroughProvider2[] = L"Windows.Devices.Printers.IPdlPassthroughProvider2";
@@ -4515,8 +4495,7 @@ namespace ABI {
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIPdlPassthroughProvider2;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIPdlPassthroughProvider2_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
@@ -4725,12 +4704,12 @@ EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIReplaceDeviceProper
  *
  * Interface Windows.Devices.Printers.IVirtualPrinterInstallationParameters
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.VirtualPrinterInstallationParameters
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationParameters_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationParameters_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IVirtualPrinterInstallationParameters[] = L"Windows.Devices.Printers.IVirtualPrinterInstallationParameters";
@@ -4794,18 +4773,18 @@ namespace ABI {
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationParameters;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationParameters_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Interface Windows.Devices.Printers.IVirtualPrinterInstallationResult
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.VirtualPrinterInstallationResult
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationResult_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationResult_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IVirtualPrinterInstallationResult[] = L"Windows.Devices.Printers.IVirtualPrinterInstallationResult";
@@ -4833,18 +4812,18 @@ namespace ABI {
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationResult;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationResult_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Interface Windows.Devices.Printers.IVirtualPrinterManagerStatics
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.VirtualPrinterManager
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterManagerStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterManagerStatics_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IVirtualPrinterManagerStatics[] = L"Windows.Devices.Printers.IVirtualPrinterManagerStatics";
@@ -4899,18 +4878,18 @@ namespace ABI {
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterManagerStatics;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterManagerStatics_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Interface Windows.Devices.Printers.IVirtualPrinterSupportedFormat
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.VirtualPrinterSupportedFormat
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormat_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormat_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IVirtualPrinterSupportedFormat[] = L"Windows.Devices.Printers.IVirtualPrinterSupportedFormat";
@@ -4944,18 +4923,18 @@ namespace ABI {
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormat;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormat_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Interface Windows.Devices.Printers.IVirtualPrinterSupportedFormatFactory
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.VirtualPrinterSupportedFormat
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormatFactory_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormatFactory_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IVirtualPrinterSupportedFormatFactory[] = L"Windows.Devices.Printers.IVirtualPrinterSupportedFormatFactory";
@@ -4982,32 +4961,28 @@ namespace ABI {
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormatFactory;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormatFactory_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Class Windows.Devices.Printers.IppAttributeConverter
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Printers.IIppAttributeConverterStatics interface starting with version 20.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Printers.IIppAttributeConverterStatics interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_IppAttributeConverter_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_IppAttributeConverter_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_IppAttributeConverter[] = L"Windows.Devices.Printers.IppAttributeConverter";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
@@ -5108,7 +5083,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Class Windows.Devices.Printers.IppPrintDeviceInstallationResult
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
@@ -5119,24 +5094,24 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  */
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_IppPrintDeviceInstallationResult_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_IppPrintDeviceInstallationResult_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_IppPrintDeviceInstallationResult[] = L"Windows.Devices.Printers.IppPrintDeviceInstallationResult";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
  * Class Windows.Devices.Printers.IppPrintDeviceManager
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Printers.IIppPrintDeviceManagerStatics interface starting with version 20.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Printers.IIppPrintDeviceManagerStatics interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *
@@ -5144,12 +5119,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  */
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_IppPrintDeviceManager_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_IppPrintDeviceManager_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_IppPrintDeviceManager[] = L"Windows.Devices.Printers.IppPrintDeviceManager";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
@@ -5355,10 +5330,10 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Class Windows.Devices.Printers.VirtualPrinterInstallationParameters
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via RoActivateInstance starting with version 20.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Type can be activated via RoActivateInstance starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Printers.IVirtualPrinterInstallationParameters ** Default Interface **
@@ -5368,18 +5343,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterInstallationParameters_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterInstallationParameters_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_VirtualPrinterInstallationParameters[] = L"Windows.Devices.Printers.VirtualPrinterInstallationParameters";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Class Windows.Devices.Printers.VirtualPrinterInstallationResult
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Printers.IVirtualPrinterInstallationResult ** Default Interface **
@@ -5387,42 +5362,42 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterInstallationResult_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterInstallationResult_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_VirtualPrinterInstallationResult[] = L"Windows.Devices.Printers.VirtualPrinterInstallationResult";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Class Windows.Devices.Printers.VirtualPrinterManager
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Printers.IVirtualPrinterManagerStatics interface starting with version 20.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Printers.IVirtualPrinterManagerStatics interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterManager_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterManager_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_VirtualPrinterManager[] = L"Windows.Devices.Printers.VirtualPrinterManager";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Class Windows.Devices.Printers.VirtualPrinterSupportedFormat
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via the Windows.Devices.Printers.IVirtualPrinterSupportedFormatFactory interface starting with version 20.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Type can be activated via the Windows.Devices.Printers.IVirtualPrinterSupportedFormatFactory interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Printers.IVirtualPrinterSupportedFormat ** Default Interface **
@@ -5432,12 +5407,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterSupportedFormat_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterSupportedFormat_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_VirtualPrinterSupportedFormat[] = L"Windows.Devices.Printers.VirtualPrinterSupportedFormat";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #else // !defined(__cplusplus)
 /* Forward Declarations */
@@ -5761,7 +5736,7 @@ interface __FIAsyncOperationCompletedHandler_1_boolean
 typedef interface __FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult __FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult;
 
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____FIAsyncOperation_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult_INTERFACE_DEFINED__)
 #define ____FIAsyncOperation_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult_INTERFACE_DEFINED__
 
@@ -5833,11 +5808,11 @@ interface __FIAsyncOperation_1_Windows__CDevices__CPrinters__CIppPrintDeviceInst
 #endif /* COBJMACROS */
 
 #endif // ____FIAsyncOperation_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult_INTERFACE_DEFINED__
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult_INTERFACE_DEFINED__)
 #define ____FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult_INTERFACE_DEFINED__
 
@@ -5884,7 +5859,7 @@ interface __FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CIp
 #endif /* COBJMACROS */
 
 #endif // ____FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CIppPrintDeviceInstallationResult_INTERFACE_DEFINED__
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 typedef interface __FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CPrint3DDevice __FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CPrint3DDevice;
@@ -6014,7 +5989,7 @@ interface __FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CPr
 
 typedef interface __FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult __FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult;
 
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____FIAsyncOperation_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult_INTERFACE_DEFINED__)
 #define ____FIAsyncOperation_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult_INTERFACE_DEFINED__
 
@@ -6086,9 +6061,9 @@ interface __FIAsyncOperation_1_Windows__CDevices__CPrinters__CVirtualPrinterInst
 #endif /* COBJMACROS */
 
 #endif // ____FIAsyncOperation_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult_INTERFACE_DEFINED__
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult_INTERFACE_DEFINED__)
 #define ____FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult_INTERFACE_DEFINED__
 
@@ -6135,7 +6110,7 @@ interface __FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CVi
 #endif /* COBJMACROS */
 
 #endif // ____FIAsyncOperationCompletedHandler_1_Windows__CDevices__CPrinters__CVirtualPrinterInstallationResult_INTERFACE_DEFINED__
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #ifndef ____x_ABI_CWindows_CStorage_CStreams_CIRandomAccessStreamWithContentType_FWD_DEFINED__
 #define ____x_ABI_CWindows_CStorage_CStreams_CIRandomAccessStreamWithContentType_FWD_DEFINED__
@@ -7271,7 +7246,7 @@ interface __FIIterable_1_Windows__CDevices__CPrinters__CIppTextWithLanguage
 #endif // ____FIIterable_1_Windows__CDevices__CPrinters__CIppTextWithLanguage_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____FIIterator_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_INTERFACE_DEFINED__)
 #define ____FIIterator_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_INTERFACE_DEFINED__
 
@@ -7350,9 +7325,9 @@ interface __FIIterator_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedF
 #endif /* COBJMACROS */
 
 #endif // ____FIIterator_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_INTERFACE_DEFINED__
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____FIIterable_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_INTERFACE_DEFINED__)
 #define ____FIIterable_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_INTERFACE_DEFINED__
 
@@ -7414,7 +7389,7 @@ interface __FIIterable_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedF
 #endif /* COBJMACROS */
 
 #endif // ____FIIterable_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_INTERFACE_DEFINED__
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 #if !defined(____FIKeyValuePair_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__)
@@ -8380,8 +8355,7 @@ interface __FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue
 #endif // ____FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 #if !defined(____FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__)
 #define ____FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__
@@ -8450,11 +8424,9 @@ interface __FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKin
 
 #endif // ____FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 #if !defined(____FIIterator_1___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__)
 #define ____FIIterator_1___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__
@@ -8535,11 +8507,9 @@ interface __FIIterator_1___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAt
 
 #endif // ____FIIterator_1___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 #if !defined(____FIIterable_1___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__)
 #define ____FIIterable_1___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__
@@ -8603,8 +8573,7 @@ interface __FIIterable_1___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAt
 
 #endif // ____FIIterable_1___FIKeyValuePair_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 #if !defined(____FIIterator_1___FIMapView_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__)
@@ -9286,8 +9255,7 @@ interface __FIMapView_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeError
 
 typedef interface __FIMapView_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue __FIMapView_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue;
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 #if !defined(____FIMapView_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__)
 #define ____FIMapView_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__
@@ -9369,11 +9337,9 @@ interface __FIMapView_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___F
 
 #endif // ____FIMapView_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 #if !defined(____FIMap_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__)
 #define ____FIMap_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__
@@ -9470,8 +9436,7 @@ interface __FIMap_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap
 
 #endif // ____FIMap_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #if !defined(____FIVectorView_1_boolean_INTERFACE_DEFINED__)
 #define ____FIVectorView_1_boolean_INTERFACE_DEFINED__
@@ -10062,7 +10027,7 @@ interface __FIVectorView_1_Windows__CDevices__CPrinters__CIppTextWithLanguage
 #endif // ____FIVectorView_1_Windows__CDevices__CPrinters__CIppTextWithLanguage_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____FIVectorView_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_INTERFACE_DEFINED__)
 #define ____FIVectorView_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_INTERFACE_DEFINED__
 
@@ -10145,7 +10110,7 @@ interface __FIVectorView_1_Windows__CDevices__CPrinters__CVirtualPrinterSupporte
 #endif /* COBJMACROS */
 
 #endif // ____FIVectorView_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_INTERFACE_DEFINED__
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 #if !defined(____FIVectorView_1___FIMapView_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__)
@@ -11237,7 +11202,7 @@ interface __FIVector_1_Windows__CDevices__CPrinters__CIppTextWithLanguage
 #endif // ____FIVector_1_Windows__CDevices__CPrinters__CIppTextWithLanguage_INTERFACE_DEFINED__
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____FIVector_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_INTERFACE_DEFINED__)
 #define ____FIVector_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_INTERFACE_DEFINED__
 
@@ -11361,7 +11326,7 @@ interface __FIVector_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFor
 #endif /* COBJMACROS */
 
 #endif // ____FIVector_1_Windows__CDevices__CPrinters__CVirtualPrinterSupportedFormat_INTERFACE_DEFINED__
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0xd0000
 #if !defined(____FIVector_1___FIMapView_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue_INTERFACE_DEFINED__)
@@ -11943,21 +11908,17 @@ enum __x_ABI_CWindows_CDevices_CPrinters_CIppAttributeErrorReason
  *
  * Struct Windows.Devices.Printers.IppAttributeGroupKind
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 enum __x_ABI_CWindows_CDevices_CPrinters_CIppAttributeGroupKind
 {
     IppAttributeGroupKind_Printer = 0,
     IppAttributeGroupKind_Job = 1,
     IppAttributeGroupKind_Operation = 2,
 };
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
@@ -11997,13 +11958,13 @@ enum __x_ABI_CWindows_CDevices_CPrinters_CIppAttributeValueKind
  *
  * Struct Windows.Devices.Printers.IppPrintDeviceInstallationStatus
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
  */
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 enum __x_ABI_CWindows_CDevices_CPrinters_CIppPrintDeviceInstallationStatus
 {
     IppPrintDeviceInstallationStatus_InstallationSucceeded = 0,
@@ -12011,7 +11972,7 @@ enum __x_ABI_CWindows_CDevices_CPrinters_CIppPrintDeviceInstallationStatus
     IppPrintDeviceInstallationStatus_CommunicationError = 2,
     IppPrintDeviceInstallationStatus_OtherFailure = 3,
 };
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
@@ -12084,10 +12045,10 @@ enum __x_ABI_CWindows_CDevices_CPrinters_CReplaceDevicePropertiesStatus
  *
  * Struct Windows.Devices.Printers.VirtualPrinterInstallationStatus
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 enum __x_ABI_CWindows_CDevices_CPrinters_CVirtualPrinterInstallationStatus
 {
     VirtualPrinterInstallationStatus_InstallationSucceeded = 0,
@@ -12095,36 +12056,33 @@ enum __x_ABI_CWindows_CDevices_CPrinters_CVirtualPrinterInstallationStatus
     VirtualPrinterInstallationStatus_PrinterInstallationAccessDenied = 2,
     VirtualPrinterInstallationStatus_PrinterInstallationFailed = 3,
 };
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Struct Windows.Devices.Printers.VirtualPrinterPreferredInputFormat
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 enum __x_ABI_CWindows_CDevices_CPrinters_CVirtualPrinterPreferredInputFormat
 {
     VirtualPrinterPreferredInputFormat_OpenXps = 0,
     VirtualPrinterPreferredInputFormat_PostScript = 1,
 };
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Interface Windows.Devices.Printers.IIppAttributeConverterStatics
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.IppAttributeConverter
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IIppAttributeConverterStatics[] = L"Windows.Devices.Printers.IIppAttributeConverterStatics";
@@ -12147,6 +12105,7 @@ typedef struct __x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatic
     HRESULT (STDMETHODCALLTYPE* ConvertPrintTicketToIppAttributesForPrinter)(__x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics* This,
         HSTRING printerName,
         __x_ABI_CWindows_CGraphics_CPrinting_CPrintTicket_CIWorkflowPrintTicket* printTicket,
+        HSTRING targetPdlFormat,
         __FIMap_2_Windows__CDevices__CPrinters__CIppAttributeGroupKind___FIMap_2_HSTRING_Windows__CDevices__CPrinters__CIppAttributeValue** result);
     HRESULT (STDMETHODCALLTYPE* ConvertBufferToIppAttributes)(__x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics* This,
         __x_ABI_CWindows_CStorage_CStreams_CIBuffer* attributesBuffer,
@@ -12184,8 +12143,8 @@ interface __x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics
 #define __x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics_GetTrustLevel(This, trustLevel) \
     ((This)->lpVtbl->GetTrustLevel(This, trustLevel))
 
-#define __x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics_ConvertPrintTicketToIppAttributesForPrinter(This, printerName, printTicket, result) \
-    ((This)->lpVtbl->ConvertPrintTicketToIppAttributesForPrinter(This, printerName, printTicket, result))
+#define __x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics_ConvertPrintTicketToIppAttributesForPrinter(This, printerName, printTicket, targetPdlFormat, result) \
+    ((This)->lpVtbl->ConvertPrintTicketToIppAttributesForPrinter(This, printerName, printTicket, targetPdlFormat, result))
 
 #define __x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics_ConvertBufferToIppAttributes(This, attributesBuffer, result) \
     ((This)->lpVtbl->ConvertBufferToIppAttributes(This, attributesBuffer, result))
@@ -12197,8 +12156,7 @@ interface __x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIIppAttributeConverterStatics_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
@@ -13307,7 +13265,7 @@ EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDevice5;
  *
  * Interface Windows.Devices.Printers.IIppPrintDeviceInstallationResult
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
@@ -13315,7 +13273,7 @@ EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDevice5;
  *
  */
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceInstallationResult_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceInstallationResult_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IIppPrintDeviceInstallationResult[] = L"Windows.Devices.Printers.IIppPrintDeviceInstallationResult";
@@ -13383,14 +13341,14 @@ interface __x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceInstallationResult
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceInstallationResult;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceInstallationResult_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
  * Interface Windows.Devices.Printers.IIppPrintDeviceManagerStatics
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
@@ -13398,7 +13356,7 @@ EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceInsta
  *
  */
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceManagerStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceManagerStatics_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IIppPrintDeviceManagerStatics[] = L"Windows.Devices.Printers.IIppPrintDeviceManagerStatics";
@@ -13463,7 +13421,7 @@ interface __x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceManagerStatics
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceManagerStatics;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIIppPrintDeviceManagerStatics_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
@@ -14098,15 +14056,12 @@ EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIPdlPassthroughProvi
  *
  * Interface Windows.Devices.Printers.IPdlPassthroughProvider2
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.PdlPassthroughProvider
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIPdlPassthroughProvider2_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIPdlPassthroughProvider2_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IPdlPassthroughProvider2[] = L"Windows.Devices.Printers.IPdlPassthroughProvider2";
@@ -14173,8 +14128,7 @@ interface __x_ABI_CWindows_CDevices_CPrinters_CIPdlPassthroughProvider2
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIPdlPassthroughProvider2;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIPdlPassthroughProvider2_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
@@ -14561,12 +14515,12 @@ EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIReplaceDeviceProper
  *
  * Interface Windows.Devices.Printers.IVirtualPrinterInstallationParameters
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.VirtualPrinterInstallationParameters
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationParameters_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationParameters_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IVirtualPrinterInstallationParameters[] = L"Windows.Devices.Printers.IVirtualPrinterInstallationParameters";
@@ -14689,18 +14643,18 @@ interface __x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationParame
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationParameters;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationParameters_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Interface Windows.Devices.Printers.IVirtualPrinterInstallationResult
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.VirtualPrinterInstallationResult
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationResult_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationResult_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IVirtualPrinterInstallationResult[] = L"Windows.Devices.Printers.IVirtualPrinterInstallationResult";
@@ -14763,18 +14717,18 @@ interface __x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationResult
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationResult;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterInstallationResult_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Interface Windows.Devices.Printers.IVirtualPrinterManagerStatics
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.VirtualPrinterManager
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterManagerStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterManagerStatics_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IVirtualPrinterManagerStatics[] = L"Windows.Devices.Printers.IVirtualPrinterManagerStatics";
@@ -14876,18 +14830,18 @@ interface __x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterManagerStatics
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterManagerStatics;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterManagerStatics_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Interface Windows.Devices.Printers.IVirtualPrinterSupportedFormat
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.VirtualPrinterSupportedFormat
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormat_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormat_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IVirtualPrinterSupportedFormat[] = L"Windows.Devices.Printers.IVirtualPrinterSupportedFormat";
@@ -14960,18 +14914,18 @@ interface __x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormat
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormat;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormat_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Interface Windows.Devices.Printers.IVirtualPrinterSupportedFormatFactory
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Devices.Printers.VirtualPrinterSupportedFormat
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormatFactory_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormatFactory_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Devices_Printers_IVirtualPrinterSupportedFormatFactory[] = L"Windows.Devices.Printers.IVirtualPrinterSupportedFormatFactory";
@@ -15031,32 +14985,28 @@ interface __x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormatFac
 
 EXTERN_C const IID IID___x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormatFactory;
 #endif /* !defined(____x_ABI_CWindows_CDevices_CPrinters_CIVirtualPrinterSupportedFormatFactory_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Class Windows.Devices.Printers.IppAttributeConverter
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Printers.IIppAttributeConverterStatics interface starting with version 20.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Printers.IIppAttributeConverterStatics interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_IppAttributeConverter_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_IppAttributeConverter_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_IppAttributeConverter[] = L"Windows.Devices.Printers.IppAttributeConverter";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
@@ -15157,7 +15107,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Class Windows.Devices.Printers.IppPrintDeviceInstallationResult
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
@@ -15168,24 +15118,24 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  */
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_IppPrintDeviceInstallationResult_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_IppPrintDeviceInstallationResult_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_IppPrintDeviceInstallationResult[] = L"Windows.Devices.Printers.IppPrintDeviceInstallationResult";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
  * Class Windows.Devices.Printers.IppPrintDeviceManager
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Type is for evaluation purposes and is subject to change or removal in future updates.
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Printers.IIppPrintDeviceManagerStatics interface starting with version 20.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Printers.IIppPrintDeviceManagerStatics interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *
@@ -15193,12 +15143,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  */
 #if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_IppPrintDeviceManager_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_IppPrintDeviceManager_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_IppPrintDeviceManager[] = L"Windows.Devices.Printers.IppPrintDeviceManager";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
@@ -15404,10 +15354,10 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Class Windows.Devices.Printers.VirtualPrinterInstallationParameters
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via RoActivateInstance starting with version 20.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Type can be activated via RoActivateInstance starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Printers.IVirtualPrinterInstallationParameters ** Default Interface **
@@ -15417,18 +15367,18 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterInstallationParameters_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterInstallationParameters_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_VirtualPrinterInstallationParameters[] = L"Windows.Devices.Printers.VirtualPrinterInstallationParameters";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Class Windows.Devices.Printers.VirtualPrinterInstallationResult
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Printers.IVirtualPrinterInstallationResult ** Default Interface **
@@ -15436,42 +15386,42 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterInstallationResult_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterInstallationResult_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_VirtualPrinterInstallationResult[] = L"Windows.Devices.Printers.VirtualPrinterInstallationResult";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Class Windows.Devices.Printers.VirtualPrinterManager
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Devices.Printers.IVirtualPrinterManagerStatics interface starting with version 20.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Devices.Printers.IVirtualPrinterManagerStatics interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Threading Model:  Both Single and Multi Threaded Apartment
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterManager_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterManager_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_VirtualPrinterManager[] = L"Windows.Devices.Printers.VirtualPrinterManager";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
  * Class Windows.Devices.Printers.VirtualPrinterSupportedFormat
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * RuntimeClass can be activated.
- *   Type can be activated via the Windows.Devices.Printers.IVirtualPrinterSupportedFormatFactory interface starting with version 20.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Type can be activated via the Windows.Devices.Printers.IVirtualPrinterSupportedFormatFactory interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Devices.Printers.IVirtualPrinterSupportedFormat ** Default Interface **
@@ -15481,12 +15431,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterSupportedFormat_DEFINED
 #define RUNTIMECLASS_Windows_Devices_Printers_VirtualPrinterSupportedFormat_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Devices_Printers_VirtualPrinterSupportedFormat[] = L"Windows.Devices.Printers.VirtualPrinterSupportedFormat";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 #endif // defined(__cplusplus)
 #pragma pop_macro("MIDL_CONST_ID")
