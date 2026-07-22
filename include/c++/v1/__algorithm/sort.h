@@ -832,6 +832,7 @@ _LIBCPP_BEGIN_EXPLICIT_ABI_ANNOTATIONS
 template <class _Comp, class _RandomAccessIterator>
 void __sort(_RandomAccessIterator, _RandomAccessIterator, _Comp);
 
+#ifndef _LIBCPP_FREESTANDING
 extern template _LIBCPP_EXPORTED_FROM_ABI void __sort<__less<char>&, char*>(char*, char*, __less<char>&);
 #if _LIBCPP_HAS_WIDE_CHARACTERS
 extern template _LIBCPP_EXPORTED_FROM_ABI void __sort<__less<wchar_t>&, wchar_t*>(wchar_t*, wchar_t*, __less<wchar_t>&);
@@ -857,6 +858,8 @@ extern template _LIBCPP_EXPORTED_FROM_ABI void __sort<__less<float>&, float*>(fl
 extern template _LIBCPP_EXPORTED_FROM_ABI void __sort<__less<double>&, double*>(double*, double*, __less<double>&);
 extern template _LIBCPP_EXPORTED_FROM_ABI void
 __sort<__less<long double>&, long double*>(long double*, long double*, __less<long double>&);
+#endif
+
 _LIBCPP_END_EXPLICIT_ABI_ANNOTATIONS
 
 template <class _AlgPolicy, class _RandomAccessIterator, class _Comp>

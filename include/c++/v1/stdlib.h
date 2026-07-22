@@ -92,6 +92,25 @@ void *aligned_alloc(size_t alignment, size_t size);                       // C11
 #  if !defined(_LIBCPP_STDLIB_H)
 #    define _LIBCPP_STDLIB_H
 
+#    if !__has_include_next(<stdlib.h>)
+#      ifdef __cplusplus
+extern "C" {
+#      endif
+struct ldiv_t {
+  long quot;
+  long rem;
+};
+struct lldiv_t {
+  long long quot;
+  long long rem;
+};
+ldiv_t ldiv(long x, long y) _NOEXCEPT;
+lldiv_t lldiv(long long x, long long y) _NOEXCEPT;
+#      ifdef __cplusplus
+}
+#      endif
+#    endif
+
 #    ifdef __cplusplus
 extern "C++" {
 // abs

@@ -118,4 +118,18 @@ void perror(const char* s);
 #    undef getchar
 
 #  endif // __cplusplus
+
+#  if !__has_include_next(<stdio.h>)
+#    ifndef EOF
+#      define EOF (-1)
+#    endif
+#    ifdef __cplusplus
+extern "C" {
+#    endif // __cplusplus
+int remove(const char*) _NOEXCEPT;
+#    ifdef __cplusplus
+}
+#    endif // __cplusplus
+#  endif
+
 #endif   // _LIBCPP_STDIO_H

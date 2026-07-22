@@ -51,6 +51,16 @@
 #  include_next <wchar.h> // use the C standard provider of mbstate_t if present
 #elif __has_include_next(<uchar.h>)
 #  include_next <uchar.h> // Try <uchar.h> in absence of <wchar.h> for mbstate_t
+#elif defined(_LIBCPP_FREESTANDING)
+#  ifdef __cplusplus
+extern "C" {
+#  endif
+typedef struct {
+  int __fill[6];
+} mbstate_t;
+#  ifdef __cplusplus
+}
+#  endif
 #else
 #  error "We don't know how to get the definition of mbstate_t on your platform."
 #endif

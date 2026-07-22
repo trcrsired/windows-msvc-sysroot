@@ -302,6 +302,43 @@ long double    truncl(long double x);
 
 #    if __has_include_next(<math.h>)
 #      include_next <math.h>
+#    else
+
+#      ifndef NAN
+#        define NAN __builtin_nanf("")
+#      endif
+
+#      ifndef INFINITY
+#        define INFINITY __builtin_inff()
+#      endif
+
+#      ifndef FP_NAN
+#        define FP_NAN 0
+#      endif
+
+#      ifndef FP_INFINITE
+#        define FP_INFINITE 1
+#      endif
+
+#      ifndef FP_ZERO
+#        define FP_ZERO 2
+#      endif
+
+#      ifndef FP_SUBNORMAL
+#        define FP_SUBNORMAL 3
+#      endif
+
+#      ifndef FP_NORMAL
+#        define FP_NORMAL 4
+#      endif
+#      ifdef __cplusplus
+extern "C" {
+#      endif
+float atan2f(float, float) _NOEXCEPT;
+long double atan2l(long double, long double) _NOEXCEPT;
+#      ifdef __cplusplus
+}
+#      endif
 #    endif
 
 #    ifdef __cplusplus

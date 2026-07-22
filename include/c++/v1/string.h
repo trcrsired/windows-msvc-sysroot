@@ -60,11 +60,48 @@ size_t strlen(const char* s);
 #    pragma GCC system_header
 #  endif
 
+#  include <stddef.h>
 #  if __has_include_next(<string.h>)
 #    include_next <string.h>
-#  endif
+#  else
+#    ifdef __cplusplus
+extern "C" {
+#    endif
 
-#  include <stddef.h>
+/*
+We offer declarations for these C functions,
+leaving the implementations to be handled by users.
+*/
+
+void* memcpy(void* __restrict, const void* __restrict, size_t) _NOEXCEPT;
+void* memmove(void*, const void*, size_t) _NOEXCEPT;
+char* strcpy(char* __restrict, const char* __restrict) _NOEXCEPT;
+char* strncpy(char* __restrict, const char* __restrict, size_t) _NOEXCEPT;
+char* strcat(char* __restrict, const char* __restrict) _NOEXCEPT;
+char* strncat(char* __restrict, const char* __restrict, size_t) _NOEXCEPT;
+int memcmp(const void*, const void*, size_t) _NOEXCEPT;
+int strcmp(const char*, const char*) _NOEXCEPT;
+int strncmp(const char*, const char*, size_t) _NOEXCEPT;
+const void* memchr(const void*, int, size_t) _NOEXCEPT;
+const char* strchr(const char*, int) _NOEXCEPT;
+size_t strcspn(const char*, const char*) _NOEXCEPT;
+const char* strpbrk(const char*, const char*) _NOEXCEPT;
+const char* strrchr(const char*, int) _NOEXCEPT;
+size_t strspn(const char*, const char*) _NOEXCEPT;
+const char* strstr(const char*, const char*) _NOEXCEPT;
+char* strtok(char* __restrict, const char* __restrict) _NOEXCEPT;
+void* memset(void*, int, size_t) _NOEXCEPT;
+size_t strlen(const char*) _NOEXCEPT;
+size_t strnlen(const char*, size_t) _NOEXCEPT;
+void* memset_explicit(void*, int, size_t) _NOEXCEPT;
+int strcoll(const char*, const char*) _NOEXCEPT;
+size_t strxfrm(char* __restrict, const char* __restrict, size_t) _NOEXCEPT;
+char* strerror(int) _NOEXCEPT;
+
+#    ifdef __cplusplus
+}
+#    endif
+#  endif
 
 // MSVCRT, GNU libc and its derivates may already have the correct prototype in
 // <string.h>. This macro can be defined by users if their C library provides
