@@ -58,26 +58,17 @@ _STL_DISABLE_CLANG_WARNINGS
 // In the STL's implementation, we inspect the following detection macros,
 // because various algorithms are vectorized for various architectures.
 
+// _CALL_ALL_X64_VECTOR_ALGORITHMS_ON_ARM64EC is a macro to test ARM64EC fallbacks for x64 algorithms.
+
 #if !_USE_STD_VECTOR_ALGORITHMS
 #define _VECTORIZED_FOR_X64_X86               0
-#define _VECTORIZED_FOR_X64_X86_ARM64         0
 #define _VECTORIZED_FOR_X64_X86_ARM64_ARM64EC 0
-#define _VECTORIZED_FOR_ARM64                 0
-#elif defined(_M_ARM64EC) && !defined(_CALL_ALL_X64_VECTOR_ALGORITHMS_ON_ARM64EC) // normal ARM64EC usage
+#elif defined(_M_ARM64) || (defined(_M_ARM64EC) && !defined(_CALL_ALL_X64_VECTOR_ALGORITHMS_ON_ARM64EC))
 #define _VECTORIZED_FOR_X64_X86               0
-#define _VECTORIZED_FOR_X64_X86_ARM64         0
 #define _VECTORIZED_FOR_X64_X86_ARM64_ARM64EC 1
-#define _VECTORIZED_FOR_ARM64                 0
-#elif defined(_M_ARM64)
-#define _VECTORIZED_FOR_X64_X86               0
-#define _VECTORIZED_FOR_X64_X86_ARM64         1
-#define _VECTORIZED_FOR_X64_X86_ARM64_ARM64EC 1
-#define _VECTORIZED_FOR_ARM64                 1
-#elif defined(_M_X64) || defined(_M_IX86) // also when testing ARM64EC fallbacks for x64 algorithms
+#elif defined(_M_X64) || defined(_M_IX86)
 #define _VECTORIZED_FOR_X64_X86               1
-#define _VECTORIZED_FOR_X64_X86_ARM64         1
 #define _VECTORIZED_FOR_X64_X86_ARM64_ARM64EC 1
-#define _VECTORIZED_FOR_ARM64                 0
 #else // ^^^ known architecture / unknown architecture vvv
 #error Unknown architecture
 #endif // ^^^ unknown architecture ^^^
@@ -98,7 +89,7 @@ _STL_DISABLE_CLANG_WARNINGS
 #define _VECTORIZED_MISMATCH           _VECTORIZED_FOR_X64_X86_ARM64_ARM64EC
 #define _VECTORIZED_REMOVE             _VECTORIZED_FOR_X64_X86_ARM64_ARM64EC
 #define _VECTORIZED_REMOVE_COPY        _VECTORIZED_FOR_X64_X86_ARM64_ARM64EC
-#define _VECTORIZED_REPLACE            _VECTORIZED_FOR_X64_X86_ARM64 // not ARM64EC, which lacks SVE
+#define _VECTORIZED_REPLACE            _VECTORIZED_FOR_X64_X86
 #define _VECTORIZED_REPLACE_COPY       _VECTORIZED_FOR_X64_X86_ARM64_ARM64EC
 #define _VECTORIZED_REVERSE            _VECTORIZED_FOR_X64_X86_ARM64_ARM64EC
 #define _VECTORIZED_REVERSE_COPY       _VECTORIZED_FOR_X64_X86_ARM64_ARM64EC
@@ -112,8 +103,6 @@ _STL_DISABLE_CLANG_WARNINGS
 // We choose not to vectorize minmax_element for 64-bit integers on ARM64/ARM64EC
 // as this does not improve performance over the scalar code.
 #define _VECTORIZED_MINMAX_ELEMENT_64BIT_INT _VECTORIZED_FOR_X64_X86
-
-#define _VECTORIZED_REPLACE_1_2 _VECTORIZED_FOR_ARM64 // not ARM64EC, which lacks SVE
 
 #ifndef _USE_STD_VECTOR_FLOATING_ALGORITHMS
 #if _USE_STD_VECTOR_ALGORITHMS && !defined(_M_FP_EXCEPT)
@@ -1713,25 +1702,32 @@ struct _Is_allocator<_Ty, void_t<typename _Ty::value_type, decltype(_STD declval
     : true_type {}; // selected when _Ty resembles an allocator, N4950 [container.reqmts]/69
 #endif // ^^^ !_HAS_CXX20 ^^^
 
-// deduction guide utilities (N5050 [associative.general]/2)
+// deduction guide utilities (N4950 [associative.general]/2)
 template <class _Iter>
 using _Guide_key_t =
 #if _HAS_CXX23
-    remove_cvref_t<tuple_element_t<0, typename iterator_traits<_Iter>::value_type>>;
+    remove_const_t<tuple_element_t<0, typename iterator_traits<_Iter>::value_type>>;
 #else // ^^^ _HAS_CXX23 / !_HAS_CXX23 vvv
-    _Remove_cvref_t<typename iterator_traits<_Iter>::value_type::first_type>;
+    remove_const_t<typename iterator_traits<_Iter>::value_type::first_type>;
 #endif // ^^^ !_HAS_CXX23 ^^^
 
 template <class _Iter>
 using _Guide_val_t =
 #if _HAS_CXX23
-    remove_cvref_t<tuple_element_t<1, typename iterator_traits<_Iter>::value_type>>;
+    tuple_element_t<1, typename iterator_traits<_Iter>::value_type>;
 #else // ^^^ _HAS_CXX23 / !_HAS_CXX23 vvv
-    _Remove_cvref_t<typename iterator_traits<_Iter>::value_type::second_type>;
+    typename iterator_traits<_Iter>::value_type::second_type;
 #endif // ^^^ !_HAS_CXX23 ^^^
 
 template <class _Iter>
-using _Guide_pair_t = pair<const _Guide_key_t<_Iter>, _Guide_val_t<_Iter>>;
+using _Guide_pair_t =
+#if _HAS_CXX23
+    pair<add_const_t<tuple_element_t<0, typename iterator_traits<_Iter>::value_type>>,
+        tuple_element_t<1, typename iterator_traits<_Iter>::value_type>>;
+#else // ^^^ _HAS_CXX23 / !_HAS_CXX23 vvv
+    pair<add_const_t<typename iterator_traits<_Iter>::value_type::first_type>,
+        typename iterator_traits<_Iter>::value_type::second_type>;
+#endif // ^^^ !_HAS_CXX23 ^^^
 
 _EXPORT_STD template <class _Ty>
 struct _NO_SPECIALIZATIONS_CITING("N5014 [execpol.type]/3") is_execution_policy : false_type {};
