@@ -1477,7 +1477,7 @@ typedef struct _inputQPSettings
     eAVEncVideoQPMapElementDataType dataType;
     INT16 minValue;
     INT16 maxValue;
-    UINT16 steps;
+    UINT16 step;
 } InputQPSettings;
 
 

@@ -1,22 +1,22 @@
 #if defined(_WCHAR_T_DEFINED)
-typedef void (__cdecl *POGOAUTOSWEEPPROCW)(const wchar_t *);
+typedef void(__cdecl* POGOAUTOSWEEPPROCW)(const wchar_t*);
 #else
-typedef void (__cdecl *POGOAUTOSWEEPPROCW)(const unsigned short *);
+typedef void(__cdecl* POGOAUTOSWEEPPROCW)(const unsigned short*);
 #endif
-typedef void (__cdecl *POGOAUTOSWEEPPROCA)(const char *);
+typedef void(__cdecl* POGOAUTOSWEEPPROCA)(const char*);
 
 #ifdef __cplusplus
 extern "C"
 #else
 extern
 #endif
-POGOAUTOSWEEPPROCW PogoAutoSweepW;
+    POGOAUTOSWEEPPROCW PogoAutoSweepW;
 #ifdef __cplusplus
 extern "C"
 #else
 extern
 #endif
-POGOAUTOSWEEPPROCA PogoAutoSweepA;
+    POGOAUTOSWEEPPROCA PogoAutoSweepA;
 
 #ifdef UNICODE
 #define PgoAutoSweep PogoAutoSweepW

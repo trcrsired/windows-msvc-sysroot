@@ -8690,6 +8690,50 @@ __n64 vcreate(unsigned __int64 src);
 #define vqrshrunh_n_s64(src1, src2) neon_sqrshrun_s64((src1), (src2))
 #endif  /* _ARM64_EXTENDED_INTRINSICS */
 
+// LUTI2
+__n128 neon_luti2_lane_8(__n64, __n64, const int);
+__n128 neon_luti2_lane_16(__n64, __n64, const int);
+__n128 neon_luti2_laneq_8(__n64, __n128, const int);
+__n128 neon_luti2_laneq_16(__n64, __n128, const int);
+__n128 neon_luti2q_lane_8(__n128, __n64, const int);
+__n128 neon_luti2q_lane_16(__n128, __n64, const int);
+__n128 neon_luti2q_laneq_8(__n128, __n128, const int);
+__n128 neon_luti2q_laneq_16(__n128, __n128, const int);
+#define vluti2_lane_u8(table, indices, lane) __n128_to_uint8x16_t(neon_luti2_lane_8(__uint8x8_t_to_n64(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2_laneq_u8(table, indices, lane) __n128_to_uint8x16_t(neon_luti2_laneq_8(__uint8x8_t_to_n64(table), __uint8x16_t_to_n128(indices), (lane)))
+#define vluti2q_lane_u8(table, indices, lane) __n128_to_uint8x16_t(neon_luti2q_lane_8(__uint8x16_t_to_n128(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2q_laneq_u8(table, indices, lane) __n128_to_uint8x16_t(neon_luti2q_laneq_8(__uint8x16_t_to_n128(table), __uint8x16_t_to_n128(indices), (lane)))
+
+#define vluti2_lane_u16(table, indices, lane) __n128_to_uint16x8_t(neon_luti2_lane_16(__uint16x4_t_to_n64(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2_laneq_u16(table, indices, lane) __n128_to_uint16x8_t(neon_luti2_laneq_16(__uint16x4_t_to_n64(table), __uint8x16_t_to_n128(indices), (lane)))
+#define vluti2q_lane_u16(table, indices, lane) __n128_to_uint16x8_t(neon_luti2q_lane_16(__uint16x8_t_to_n128(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2q_laneq_u16(table, indices, lane) __n128_to_uint16x8_t(neon_luti2q_laneq_16(__uint16x8_t_to_n128(table), __uint8x16_t_to_n128(indices), (lane)))
+
+#define vluti2_lane_s8(table, indices, lane) __n128_to_int8x16_t(neon_luti2_lane_8(__int8x8_t_to_n64(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2q_lane_s8(table, indices, lane) __n128_to_int8x16_t(neon_luti2q_lane_8(__int8x16_t_to_n128(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2_laneq_s8(table, indices, lane) __n128_to_int8x16_t(neon_luti2_laneq_8(__int8x8_t_to_n64(table), __uint8x16_t_to_n128(indices), (lane)))
+#define vluti2q_laneq_s8(table, indices, lane) __n128_to_int8x16_t(neon_luti2q_laneq_8(__int8x16_t_to_n128(table), __uint8x16_t_to_n128(indices), (lane)))
+
+#define vluti2_lane_s16(table, indices, lane) __n128_to_int16x8_t(neon_luti2_lane_16(__int16x4_t_to_n64(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2q_lane_s16(table, indices, lane) __n128_to_int16x8_t(neon_luti2q_lane_16(__int16x8_t_to_n128(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2_laneq_s16(table, indices, lane) __n128_to_int16x8_t(neon_luti2_laneq_16(__int16x4_t_to_n64(table), __uint8x16_t_to_n128(indices), (lane)))
+#define vluti2q_laneq_s16(table, indices, lane) __n128_to_int16x8_t(neon_luti2q_laneq_16(__int16x8_t_to_n128(table), __uint8x16_t_to_n128(indices), (lane)))
+
+#define vluti2_lane_f16(table, indices, lane) __n128_to_float16x8_t(neon_luti2_lane_16(__float16x4_t_to_n64(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2_laneq_f16(table, indices, lane) __n128_to_float16x8_t(neon_luti2_laneq_16(__float16x4_t_to_n64(table), __uint8x16_t_to_n128(indices), (lane)))
+#define vluti2q_lane_f16(table, indices, lane) __n128_to_float16x8_t(neon_luti2q_lane_16(__float16x8_t_to_n128(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2q_laneq_f16(table, indices, lane) __n128_to_float16x8_t(neon_luti2q_laneq_16(__float16x8_t_to_n128(table), __uint8x16_t_to_n128(indices), (lane)))
+
+#define vluti2_lane_p8(table, indices, lane) __n128_to_poly8x16_t(neon_luti2_lane_8(__poly8x8_t_to_n64(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2_laneq_p8(table, indices, lane) __n128_to_poly8x16_t(neon_luti2_laneq_8(__poly8x8_t_to_n64(table), __uint8x16_t_to_n128(indices), (lane)))
+#define vluti2q_lane_p8(table, indices, lane) __n128_to_poly8x16_t(neon_luti2q_lane_8(__poly8x16_t_to_n128(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2q_laneq_p8(table, indices, lane) __n128_to_poly8x16_t(neon_luti2q_laneq_8(__poly8x16_t_to_n128(table), __uint8x16_t_to_n128(indices), (lane)))
+
+#define vluti2_lane_p16(table, indices, lane) __n128_to_poly16x8_t(neon_luti2_lane_16(__poly16x4_t_to_n64(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2_laneq_p16(table, indices, lane) __n128_to_poly16x8_t(neon_luti2_laneq_16(__poly16x4_t_to_n64(table), __uint8x16_t_to_n128(indices), (lane)))
+#define vluti2q_lane_p16(table, indices, lane) __n128_to_poly16x8_t(neon_luti2q_lane_16(__poly16x8_t_to_n128(table), __uint8x8_t_to_n64(indices), (lane)))
+#define vluti2q_laneq_p16(table, indices, lane) __n128_to_poly16x8_t(neon_luti2q_laneq_16(__poly16x8_t_to_n128(table), __uint8x16_t_to_n128(indices), (lane)))
+
 //vreinterpret
 #if !defined(_ARM64_DISTINCT_NEON_TYPES)
 #define vreinterpret_f32_s8(a)         (a)

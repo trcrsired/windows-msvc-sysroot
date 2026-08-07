@@ -698,6 +698,80 @@ namespace winrt::impl
             _winrt_abi_type->remove_RemainingDischargeTimeChanged(impl::bind_in(token));
         }
     }
+    template <typename D> auto consume_Windows_System_Power_IPowerManagerStatics2<D>::EnergySaverStatus2() const
+    {
+        winrt::Windows::System::Power::EnergySaverStatus2 value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::Power::IPowerManagerStatics2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::Power::IPowerManagerStatics2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::Power::IPowerManagerStatics2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_EnergySaverStatus2(reinterpret_cast<int32_t*>(&value)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::Power::IPowerManagerStatics2>**)this;
+            check_hresult(_winrt_abi_type->get_EnergySaverStatus2(reinterpret_cast<int32_t*>(&value)));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_System_Power_IPowerManagerStatics2<D>::IsEnergySaverStatus2Supported() const
+    {
+        bool value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::Power::IPowerManagerStatics2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::Power::IPowerManagerStatics2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::Power::IPowerManagerStatics2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_IsEnergySaverStatus2Supported(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::Power::IPowerManagerStatics2>**)this;
+            check_hresult(_winrt_abi_type->get_IsEnergySaverStatus2Supported(&value));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_System_Power_IPowerManagerStatics2<D>::EnergySaverStatus2Changed(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const
+    {
+        winrt::event_token token{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::Power::IPowerManagerStatics2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::Power::IPowerManagerStatics2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::Power::IPowerManagerStatics2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->add_EnergySaverStatus2Changed(*(void**)(&handler), put_abi(token)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::Power::IPowerManagerStatics2>**)this;
+            check_hresult(_winrt_abi_type->add_EnergySaverStatus2Changed(*(void**)(&handler), put_abi(token)));
+        }
+        return token;
+    }
+    template <typename D> auto consume_Windows_System_Power_IPowerManagerStatics2<D>::EnergySaverStatus2Changed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const
+    {
+        return impl::make_event_revoker<D, EnergySaverStatus2Changed_revoker>(this, EnergySaverStatus2Changed(handler));
+    }
+    template <typename D> auto consume_Windows_System_Power_IPowerManagerStatics2<D>::EnergySaverStatus2Changed(winrt::event_token const& token) const noexcept
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::Power::IPowerManagerStatics2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::Power::IPowerManagerStatics2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::Power::IPowerManagerStatics2>**)&_winrt_casted_result;
+            _winrt_abi_type->remove_EnergySaverStatus2Changed(impl::bind_in(token));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::Power::IPowerManagerStatics2>**)this;
+            _winrt_abi_type->remove_EnergySaverStatus2Changed(impl::bind_in(token));
+        }
+    }
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
     struct produce<D, winrt::Windows::System::Power::IBackgroundEnergyManagerStatics> : produce_base<D, winrt::Windows::System::Power::IBackgroundEnergyManagerStatics>
@@ -976,6 +1050,40 @@ namespace winrt::impl
         }
     };
 #endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::System::Power::IPowerManagerStatics2> : produce_base<D, winrt::Windows::System::Power::IPowerManagerStatics2>
+    {
+        int32_t __stdcall get_EnergySaverStatus2(int32_t* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::Windows::System::Power::EnergySaverStatus2>(this->shim().EnergySaverStatus2());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_IsEnergySaverStatus2Supported(bool* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<bool>(this->shim().IsEnergySaverStatus2Supported());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall add_EnergySaverStatus2Changed(void* handler, winrt::event_token* token) noexcept final try
+        {
+            zero_abi<winrt::event_token>(token);
+            typename D::abi_guard guard(this->shim());
+            *token = detach_from<winrt::event_token>(this->shim().EnergySaverStatus2Changed(*reinterpret_cast<winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const*>(&handler)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall remove_EnergySaverStatus2Changed(winrt::event_token token) noexcept final
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().EnergySaverStatus2Changed(*reinterpret_cast<winrt::event_token const*>(&token));
+            return 0;
+        }
+    };
+#endif
 }
 WINRT_EXPORT namespace winrt::Windows::System::Power
 {
@@ -1172,6 +1280,27 @@ WINRT_EXPORT namespace winrt::Windows::System::Power
     {
         impl::call_factory<PowerManager, IPowerManagerStatics>([&](IPowerManagerStatics const& f) { return f.RemainingDischargeTimeChanged(token); });
     }
+    inline auto PowerManager::EnergySaverStatus2()
+    {
+        return impl::call_factory_cast<winrt::Windows::System::Power::EnergySaverStatus2(*)(IPowerManagerStatics2 const&), PowerManager, IPowerManagerStatics2>([](IPowerManagerStatics2 const& f) { return f.EnergySaverStatus2(); });
+    }
+    inline auto PowerManager::IsEnergySaverStatus2Supported()
+    {
+        return impl::call_factory_cast<bool(*)(IPowerManagerStatics2 const&), PowerManager, IPowerManagerStatics2>([](IPowerManagerStatics2 const& f) { return f.IsEnergySaverStatus2Supported(); });
+    }
+    inline auto PowerManager::EnergySaverStatus2Changed(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler)
+    {
+        return impl::call_factory<PowerManager, IPowerManagerStatics2>([&](IPowerManagerStatics2 const& f) { return f.EnergySaverStatus2Changed(handler); });
+    }
+    inline auto PowerManager::EnergySaverStatus2Changed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler)
+    {
+        auto f = get_activation_factory<PowerManager, winrt::Windows::System::Power::IPowerManagerStatics2>();
+        return PowerManager::EnergySaverStatus2Changed_revoker{ f, f.EnergySaverStatus2Changed(handler) };
+    }
+    inline auto PowerManager::EnergySaverStatus2Changed(winrt::event_token const& token)
+    {
+        impl::call_factory<PowerManager, IPowerManagerStatics2>([&](IPowerManagerStatics2 const& f) { return f.EnergySaverStatus2Changed(token); });
+    }
 }
 namespace std
 {
@@ -1179,6 +1308,7 @@ namespace std
     template<> struct hash<winrt::Windows::System::Power::IBackgroundEnergyManagerStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::Power::IForegroundEnergyManagerStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::Power::IPowerManagerStatics> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::System::Power::IPowerManagerStatics2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::Power::BackgroundEnergyManager> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::Power::ForegroundEnergyManager> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::Power::PowerManager> : winrt::impl::hash_base {};

@@ -366,7 +366,6 @@ namespace Windows
             };
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
-            [experimental]
             enum IppPrintDeviceInstallationStatus
             {
                 InstallationSucceeded   = 0,
@@ -397,8 +396,7 @@ namespace Windows
                 PdlContent            = 1
             };
 
-            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
-            [experimental]
+            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
             enum ReplaceDevicePropertiesStatus
             {
                 Succeeded    = 0,
@@ -576,9 +574,8 @@ namespace Windows
                 HRESULT GetMaxSupportedPdlVersion([in] HSTRING pdlContentType, [out] [retval] HSTRING* result);
             }
 
-            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
             [exclusiveto(Windows.Devices.Printers.IppPrintDevice)]
-            [experimental]
             [uuid(EA927FCA-E073-5DB4-9AEE-13DF714E853A)]
             interface IIppPrintDevice5 : IInspectable
             {
@@ -588,7 +585,6 @@ namespace Windows
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
             [exclusiveto(Windows.Devices.Printers.IppPrintDeviceInstallationResult)]
-            [experimental]
             [uuid(FB102FCC-87BE-57FF-A086-92272148A256)]
             interface IIppPrintDeviceInstallationResult : IInspectable
             {
@@ -599,7 +595,6 @@ namespace Windows
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
             [exclusiveto(Windows.Devices.Printers.IppPrintDeviceManager)]
-            [experimental]
             [uuid(8F711A45-C1B9-51BB-80C8-38969C81F800)]
             interface IIppPrintDeviceManagerStatics : IInspectable
             {
@@ -729,9 +724,8 @@ namespace Windows
                 HRESULT MergeAndValidateWithDefaultPrintTicketAsync([in] Windows.Storage.Streams.IRandomAccessStreamWithContentType* deltaTicket, [out] [retval] Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IRandomAccessStreamWithContentType*>** operation);
             }
 
-            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
+            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
             [exclusiveto(Windows.Devices.Printers.ReplaceDevicePropertiesResult)]
-            [experimental]
             [uuid(12FECA4B-D973-57E1-826B-F75B9518A9F1)]
             interface IReplaceDevicePropertiesResult : IInspectable
             {
@@ -846,19 +840,17 @@ namespace Windows
                 [contract(Windows.Foundation.UniversalApiContract, 15.0)] interface Windows.Devices.Printers.IIppPrintDevice2;
                 [contract(Windows.Foundation.UniversalApiContract, 17.0)] interface Windows.Devices.Printers.IIppPrintDevice3;
                 [contract(Windows.Foundation.UniversalApiContract, 19.0)] interface Windows.Devices.Printers.IIppPrintDevice4;
-                [contract(Windows.Foundation.UniversalApiContract, 20.0)] [experimental] interface Windows.Devices.Printers.IIppPrintDevice5;
+                [contract(Windows.Foundation.UniversalApiContract, 19.0)] interface Windows.Devices.Printers.IIppPrintDevice5;
             }
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             runtimeclass IppPrintDeviceInstallationResult
             {
-                [default] [experimental] interface Windows.Devices.Printers.IIppPrintDeviceInstallationResult;
+                [default] interface Windows.Devices.Printers.IIppPrintDeviceInstallationResult;
             }
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
-            [experimental]
             [marshaling_behavior(agile)]
             [static(Windows.Devices.Printers.IIppPrintDeviceManagerStatics, Windows.Foundation.UniversalApiContract, 19.0)]
             [threading(both)]
@@ -933,12 +925,11 @@ namespace Windows
                 [default] interface Windows.Devices.Printers.IPrintSchema;
             }
 
-            [contract(Windows.Foundation.UniversalApiContract, 20.0)]
-            [experimental]
+            [contract(Windows.Foundation.UniversalApiContract, 19.0)]
             [marshaling_behavior(agile)]
             runtimeclass ReplaceDevicePropertiesResult
             {
-                [default] [experimental] interface Windows.Devices.Printers.IReplaceDevicePropertiesResult;
+                [default] interface Windows.Devices.Printers.IReplaceDevicePropertiesResult;
             }
 
             [activatable(Windows.Foundation.UniversalApiContract, 19.0)]

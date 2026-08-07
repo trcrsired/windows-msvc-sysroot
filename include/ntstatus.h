@@ -19935,6 +19935,15 @@ Notes:
 //
 #define STATUS_FVE_MISSING_PROTECTORS    ((NTSTATUS)0xC0210064L)
 
+//
+// MessageId: STATUS_FVE_VOLUME_HANDLE_OPEN
+//
+// MessageText:
+//
+// BitLocker Drive Encryption is already performing an operation on this drive. Please complete all operations before continuing.
+//
+#define STATUS_FVE_VOLUME_HANDLE_OPEN    ((NTSTATUS)0xC0210065L)
+
 
 //
 // FWP error codes (fwpkclnt.sys)

@@ -734,6 +734,7 @@ typedef enum _SECPKG_FAILURE_SPECIAL_REASON {
     SecpkgFailureReason_NoLineOfSight,  // The secpkg needed a line-of-sight to a Domain Controller, but none could be found. 
     SecpkgFailureReason_Loopback,       // The secpkg does not support loopback authentication.
     SecpkgFailureReason_NullSession,    // The secpkg does not handle null sessions.
+    SecpkgFailureReason_GlobalSPN,      // The targetname used during InitializeSecurityContext resolved to a global SPN. E.g cifs/contoso.com.
 } SECPKG_FAILURE_SPECIAL_REASON, * PSECPKG_FAILURE_SPECIAL_REASON;
 
 typedef struct _SECPKG_FAILURE_REASON {

@@ -681,6 +681,30 @@ interface IMFMediaEngineAudioEndpointId : IUnknown
         );
 };
 
+//+-----------------------------------------------------------------------------
+//
+//  Interface:  IMFMediaEngineVideoRendererEffect
+//
+//  Synopsis:   IMFMediaEngineVideoRendererEffect extends the media engine
+//              for handling content with multiple video streams by allowing
+//              the app to set a custom Video Renderer Effect.
+//
+//------------------------------------------------------------------------------
+[
+    object,
+    uuid(6BDF1188-6EC8-44FF-8CCC-BFCA0D12AFA3),
+    pointer_default(unique),
+    local
+]
+interface IMFMediaEngineVideoRendererEffect : IUnknown
+{
+    HRESULT SetEffect(
+        [in, annotation("_In_"), ref] IUnknown* pEffect
+        );
+
+    HRESULT ClearEffect();
+};
+
 typedef enum MF_MEDIA_ENGINE_EXTENSION_TYPE
 {
     MF_MEDIA_ENGINE_EXTENSION_TYPE_MEDIASOURCE = 0,

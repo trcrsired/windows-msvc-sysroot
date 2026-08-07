@@ -1332,10 +1332,7 @@ namespace ABI {
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 namespace ABI {
     namespace Windows {
@@ -1360,7 +1357,6 @@ namespace ABI {
     } /* Windows */
 } /* ABI */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1446,12 +1442,9 @@ namespace ABI {
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.Graphics.Printing.PrintSupport.PrintSupportAppInfo
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfo_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfo_INTERFACE_DEFINED__
@@ -1483,7 +1476,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfo;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfo_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1491,12 +1483,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrin
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.Graphics.Printing.PrintSupport.PrintSupportAppInfo
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfoStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfoStatics_INTERFACE_DEFINED__
@@ -1531,7 +1520,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfoStatics;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfoStatics_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1584,15 +1572,12 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrin
  *
  * Interface Windows.Graphics.Printing.PrintSupport.IPrintSupportEnterpriseManagementUIEventArgs
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Graphics.Printing.PrintSupport.PrintSupportEnterpriseManagementUIEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportEnterpriseManagementUIEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportEnterpriseManagementUIEventArgs_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Graphics_Printing_PrintSupport_IPrintSupportEnterpriseManagementUIEventArgs[] = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportEnterpriseManagementUIEventArgs";
@@ -1619,8 +1604,7 @@ namespace ABI {
 
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportEnterpriseManagementUIEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportEnterpriseManagementUIEventArgs_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
@@ -2357,12 +2341,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrin
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.Graphics.Printing.PrintSupport.PrintSupportPrintTicketValidationRequestedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportPrintTicketValidationRequestedEventArgs2_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportPrintTicketValidationRequestedEventArgs2_INTERFACE_DEFINED__
@@ -2391,7 +2372,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportPrintTicketValidationRequestedEventArgs2;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportPrintTicketValidationRequestedEventArgs2_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2628,8 +2608,6 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrin
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * RuntimeClass contains static methods.
  *   Static Methods exist on the Windows.Graphics.Printing.PrintSupport.IPrintSupportAppInfoStatics interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
@@ -2641,14 +2619,12 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrin
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Graphics_Printing_PrintSupport_PrintSupportAppInfo_DEFINED
 #define RUNTIMECLASS_Windows_Graphics_Printing_PrintSupport_PrintSupportAppInfo_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Graphics_Printing_PrintSupport_PrintSupportAppInfo[] = L"Windows.Graphics.Printing.PrintSupport.PrintSupportAppInfo";
 #endif
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -2673,9 +2649,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Class Windows.Graphics.Printing.PrintSupport.PrintSupportEnterpriseManagementUIEventArgs
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Class implements the following interfaces:
  *    Windows.Graphics.Printing.PrintSupport.IPrintSupportEnterpriseManagementUIEventArgs ** Default Interface **
@@ -2685,14 +2659,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Graphics_Printing_PrintSupport_PrintSupportEnterpriseManagementUIEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_Graphics_Printing_PrintSupport_PrintSupportEnterpriseManagementUIEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Graphics_Printing_PrintSupport_PrintSupportEnterpriseManagementUIEventArgs[] = L"Windows.Graphics.Printing.PrintSupport.PrintSupportEnterpriseManagementUIEventArgs";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
@@ -3788,10 +3760,7 @@ enum __x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIppPrinterCommunication
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 enum __x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CPrintSupportAppContracts
 {
@@ -3804,7 +3773,6 @@ enum __x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CPrintSupportAppContract
     PrintSupportAppContracts_EnterpriseManagementUI = 0x20,
 };
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -3860,12 +3828,9 @@ enum __x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CXpsImageQuality
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.Graphics.Printing.PrintSupport.PrintSupportAppInfo
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfo_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfo_INTERFACE_DEFINED__
@@ -3930,7 +3895,6 @@ interface __x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppIn
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfo;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfo_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -3938,12 +3902,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrin
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.Graphics.Printing.PrintSupport.PrintSupportAppInfo
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfoStatics_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfoStatics_INTERFACE_DEFINED__
@@ -4011,7 +3972,6 @@ interface __x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppIn
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfoStatics;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportAppInfoStatics_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4101,15 +4061,12 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrin
  *
  * Interface Windows.Graphics.Printing.PrintSupport.IPrintSupportEnterpriseManagementUIEventArgs
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Interface is a part of the implementation of type Windows.Graphics.Printing.PrintSupport.PrintSupportEnterpriseManagementUIEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportEnterpriseManagementUIEventArgs_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportEnterpriseManagementUIEventArgs_INTERFACE_DEFINED__
 extern const __declspec(selectany) _Null_terminated_ WCHAR InterfaceName_Windows_Graphics_Printing_PrintSupport_IPrintSupportEnterpriseManagementUIEventArgs[] = L"Windows.Graphics.Printing.PrintSupport.IPrintSupportEnterpriseManagementUIEventArgs";
@@ -4167,8 +4124,7 @@ interface __x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportEnter
 
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportEnterpriseManagementUIEventArgs;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportEnterpriseManagementUIEventArgs_INTERFACE_DEFINED__) */
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *
@@ -5480,12 +5436,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrin
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.Graphics.Printing.PrintSupport.PrintSupportPrintTicketValidationRequestedEventArgs
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportPrintTicketValidationRequestedEventArgs2_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportPrintTicketValidationRequestedEventArgs2_INTERFACE_DEFINED__
@@ -5545,7 +5498,6 @@ interface __x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportPrint
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportPrintTicketValidationRequestedEventArgs2;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrintSupportPrintTicketValidationRequestedEventArgs2_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -5963,8 +5915,6 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrin
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * RuntimeClass contains static methods.
  *   Static Methods exist on the Windows.Graphics.Printing.PrintSupport.IPrintSupportAppInfoStatics interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
@@ -5976,14 +5926,12 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CPrinting_CPrintSupport_CIPrin
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Graphics_Printing_PrintSupport_PrintSupportAppInfo_DEFINED
 #define RUNTIMECLASS_Windows_Graphics_Printing_PrintSupport_PrintSupportAppInfo_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Graphics_Printing_PrintSupport_PrintSupportAppInfo[] = L"Windows.Graphics.Printing.PrintSupport.PrintSupportAppInfo";
 #endif
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -6008,9 +5956,7 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  *
  * Class Windows.Graphics.Printing.PrintSupport.PrintSupportEnterpriseManagementUIEventArgs
  *
- * Introduced to Windows.Foundation.UniversalApiContract in version 20.0
- *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
+ * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
  * Class implements the following interfaces:
  *    Windows.Graphics.Printing.PrintSupport.IPrintSupportEnterpriseManagementUIEventArgs ** Default Interface **
@@ -6020,14 +5966,12 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Class Marshaling Behavior:  Agile - Class is agile
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
-#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
+#if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #ifndef RUNTIMECLASS_Windows_Graphics_Printing_PrintSupport_PrintSupportEnterpriseManagementUIEventArgs_DEFINED
 #define RUNTIMECLASS_Windows_Graphics_Printing_PrintSupport_PrintSupportEnterpriseManagementUIEventArgs_DEFINED
 extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_Graphics_Printing_PrintSupport_PrintSupportEnterpriseManagementUIEventArgs[] = L"Windows.Graphics.Printing.PrintSupport.PrintSupportEnterpriseManagementUIEventArgs";
 #endif
-#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x140000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
+#endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 
 /*
  *

@@ -229,7 +229,6 @@ namespace Windows
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
             [exclusiveto(Windows.Graphics.Capture.Direct3D11CaptureFrame)]
-            [experimental]
             [uuid(71616DC8-FEA5-5741-A3D8-591ACC39A9EE)]
             interface IDirect3D11CaptureFrame3 : IInspectable
             {
@@ -266,7 +265,6 @@ namespace Windows
             }
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
-            [experimental]
             [uuid(BB91F61B-218A-587D-8580-2701A74C0525)]
             interface IDisplayGraphicsCaptureSession : IInspectable
             {
@@ -373,7 +371,6 @@ namespace Windows
 
             [contract(Windows.Foundation.UniversalApiContract, 19.0)]
             [exclusiveto(Windows.Graphics.Capture.GraphicsCaptureSession)]
-            [experimental]
             [uuid(82D1AA4D-4366-543E-A6D0-A4805E6BCF2C)]
             interface IGraphicsCaptureSession7 : IInspectable
             {
@@ -394,7 +391,7 @@ namespace Windows
             {
                 [default] interface Windows.Graphics.Capture.IDirect3D11CaptureFrame;
                 [contract(Windows.Foundation.UniversalApiContract, 19.0)] interface Windows.Graphics.Capture.IDirect3D11CaptureFrame2;
-                [contract(Windows.Foundation.UniversalApiContract, 19.0)] [experimental] interface Windows.Graphics.Capture.IDirect3D11CaptureFrame3;
+                [contract(Windows.Foundation.UniversalApiContract, 19.0)] interface Windows.Graphics.Capture.IDirect3D11CaptureFrame3;
                 interface Windows.Foundation.IClosable;
             }
 
@@ -448,7 +445,7 @@ namespace Windows
                 [contract(Windows.Foundation.UniversalApiContract, 19.0)] interface Windows.Graphics.Capture.IGraphicsCaptureSession4;
                 [contract(Windows.Foundation.UniversalApiContract, 19.0)] interface Windows.Graphics.Capture.IGraphicsCaptureSession5;
                 [contract(Windows.Foundation.UniversalApiContract, 19.0)] interface Windows.Graphics.Capture.IGraphicsCaptureSession6;
-                [contract(Windows.Foundation.UniversalApiContract, 19.0)] [experimental] interface Windows.Graphics.Capture.IGraphicsCaptureSession7;
+                [contract(Windows.Foundation.UniversalApiContract, 19.0)] interface Windows.Graphics.Capture.IGraphicsCaptureSession7;
                 interface Windows.Foundation.IClosable;
             }
         }

@@ -25,6 +25,7 @@ _VCRTIMP void _CONST_RETURN* __cdecl memchr(
     _In_                            size_t      _MaxCount
     );
 
+_CRT_DISPATCHED
 _NODISCARD _Check_return_
 int __cdecl memcmp(
     _In_reads_bytes_(_Size) void const* _Buf1,
@@ -40,6 +41,7 @@ _At_buffer_(
     _Size,
     _Post_satisfies_(((unsigned char*)_Dst)[_Iter_] == ((unsigned char*)_Src)[_Iter_])
 )
+_CRT_DISPATCHED
 void* __cdecl memcpy(
     _Out_writes_bytes_all_(_Size) void* _Dst,
     _In_reads_bytes_(_Size)       void const* _Src,
@@ -47,6 +49,7 @@ void* __cdecl memcpy(
     );
 
 _CRT_INSECURE_DEPRECATE_MEMORY(memmove_s)
+_CRT_DISPATCHED
 _VCRTIMP void* __cdecl memmove(
     _Out_writes_bytes_all_opt_(_Size) void*       _Dst,
     _In_reads_bytes_opt_(_Size)       void const* _Src,
@@ -60,6 +63,7 @@ _At_buffer_(
     _Size,
     _Post_satisfies_(((unsigned char*)_Dst)[_Iter_] == _Val)
 )
+_CRT_DISPATCHED
 void* __cdecl memset(
     _Out_writes_bytes_all_(_Size) void*  _Dst,
     _In_                          int    _Val,

@@ -639,7 +639,7 @@
 #define PeBeingDebugged 0x2
 #define PeProcessParameters 0x20
 #define PeKernelCallbackTable 0x58
-#define ProcessEnvironmentBlockLength 0x7d0
+#define ProcessEnvironmentBlockLength 0x7d8
 
 //
 // Process Parameters Block Structure Offset Definitions

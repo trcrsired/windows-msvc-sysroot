@@ -638,11 +638,159 @@ typedef struct _SIPAEVENT_REFS_ROLLBACK_PROTECTION_USER_PAYLOAD_HASH_DATA {
                                                          0x003D)
 
 //
-// Note: 0x3D...0x39 are currently unused; new events can be added in this range
+//  When an ReFS volume attests via PKCS7 certificate, the fingerprint of the
+//  leaf certificate.
+//
+
+#define SIPAEVENT_REFS_ATTESTATION_SUMMARY              (SIPAEVENTTYPE_OSPARAMETER + \
+                                                         0x003E)
+
+//
+// Note: [0x3F, 0x40) are currently unused; new events can be added in this range
 //
 
 #define SIPAEVENT_VTL1_DUMP_CONFIG                      (SIPAEVENTTYPE_OSPARAMETER + \
                                                          0x0040)
+
+typedef enum _SIPAEVENT_REFS_ATTESTATION_ATTESTED_TYPE {
+
+    SIPAEVENT_REFS_ATTESTATION_ATTESTED_TYPE_NONE        = 0x00000000,
+
+    SIPAEVENT_REFS_ATTESTATION_ATTESTED_TYPE_CERTIFICATE = 0x00000001,
+
+    SIPAEVENT_REFS_ATTESTATION_ATTESTED_TYPE_TPM         = 0x00000002,
+
+    SIPAEVENT_REFS_ATTESTATION_ATTESTED_TYPE_KEY_RING    = 0x00000004,
+
+} SIPAEVENT_REFS_ATTESTATION_ATTESTED_TYPE;
+
+DEFINE_ENUM_FLAG_OPERATORS(SIPAEVENT_REFS_ATTESTATION_ATTESTED_TYPE)
+
+#define SIPAEVENT_REFS_ATTESTATION_CERTIFICATE_HEADER_VERSION (1)
+#define SIPAEVENT_REFS_ATTESTATION_SUMMARY_HEADER_VERSION (1)
+
+typedef struct _SIPAEVENT_REFS_ATTESTATION_CERTIFICATE_HEADER {
+
+    //
+    //  The total size of this structure.
+    //
+
+    ULONG Size;
+
+    //
+    //  Version field.
+    //
+
+    ULONG Version;
+
+    //
+    //  The SHA256 fingerprint of both the leaf and root
+    //  certificates. In the case of the certificate being
+    //  self-signed, the below values are equal.
+    //
+
+    ULONG LeafCertificateFingerprintSize;
+    BYTE LeafCertificateFingerprint[64];
+
+    ULONG RootCertificateFingerprintSize;
+    BYTE RootCertificateFingerprint[64];
+
+    //
+    //  The hash that attested with this certificate.
+    //
+
+    ULONG AttestedHashSize;
+    BYTE AttestedHash[64];
+
+    //
+    //  Offset and size of the user payload provided with this
+    //  certificate. 0 if not present.
+    //
+
+    ULONG UserPayloadOffset;
+    ULONG UserPayloadSize;
+
+    //
+    // Leaf certificate X500 DER Issuer.
+    //
+
+    ULONG LeafCertificateIssuerBlobOffset;
+    ULONG LeafCertificateIssuerBlobSize;
+
+    //
+    //  Leaf certificate X500 DER Subject.
+    //
+
+    ULONG LeafCertificateSubjectBlobOffset;
+    ULONG LeafCertificateSubjectBlobSize;
+
+    //
+    //  Some reserved fields for future proofing. These can be used to
+    //  f.e. include the full certificate or the supplemental info in
+    //  this structure.
+    //
+    //  We reserve ULONGLONGs to enforce quad alignment on this structure.
+    //
+
+    ULONGLONG Reserved[2];
+
+    BYTE Data[ANYSIZE_ARRAY];
+
+} SIPAEVENT_REFS_ATTESTATION_CERTIFICATE_HEADER, * PSIPAEVENT_REFS_ATTESTATION_CERTIFICATE_HEADER;
+
+typedef struct _SIPAEVENT_REFS_ATTESTATION_SUMMARY_HEADER {
+
+    //
+    //  The total size of this structure, since the Certificate field is
+    //  variably sized.
+    //
+
+    ULONG Size;
+
+    //
+    //  Version field.
+    //
+
+    ULONG Version;
+
+    //
+    //  The attestation state of the volume as per this mount.
+    //
+
+    SIPAEVENT_REFS_ATTESTATION_ATTESTED_TYPE AttestedType;
+
+    //
+    //  The attested hash of the volume as of this mount.
+    //
+
+    ULONG AttestedHashSize;
+    BYTE AttestedHash[64];
+
+    //
+    //  The proof of origin hash.
+    //
+
+    ULONG ProofOfOriginHashSize;
+    BYTE ProofOfOriginHash[64];
+
+    //
+    //  Some reserved fields for future proofing. These can be used to
+    //  f.e. include the full certificate or the supplemental info in
+    //  this structure.
+    //
+    //  We reserve ULONGLONGs to enforce quad alignment on this structure.
+    //
+
+    ULONGLONG Reserved[4];
+
+    //
+    //  If a certificate was used to sign the volume, a header describing
+    //  said certificate and the optional user payload associated with it.
+    //
+
+    SIPAEVENT_REFS_ATTESTATION_CERTIFICATE_HEADER CertificateHeader;
+
+} SIPAEVENT_REFS_ATTESTATION_SUMMARY_HEADER, *PSIPAEVENT_REFS_ATTESTATION_SUMMARY_HEADER;
 
 #endif// NTDDI_VERSION >= NTDDI_WIN11_DT
 

@@ -659,10 +659,12 @@ typedef struct _D3DKMT_FLIPMODEL_PRESENTHISTORYTOKEN
     D3DDDI_ROTATION                            Rotation;
     union
     {
-        D3DKMT_SCATTERBLTS                     ScatterBlts;     // Unused
+        D3DKMT_SCATTERBLTS                     ScatterBlts;     // Unused (584 bytes)
         struct
         {
-            HANDLE                             hSyncObject;     // NT handle to FlipEx fence.
+            HANDLE                             hSyncObject;       // NT handle to FlipEx fence.
+            HANDLE                             hLayoutSyncObject; // NT handle to layout synchronization object
+
             D3DDDI_HDR_METADATA_TYPE           HDRMetaDataType;
             union
             {
@@ -4065,9 +4067,10 @@ typedef struct _D3DKMT_QUERYSTATISTICS_MEMORY
 
 typedef enum _D3DKMT_QUERYSTATISTICS_SEGMENT_TYPE
 {
-    D3DKMT_QUERYSTATISTICS_SEGMENT_TYPE_APERTURE = 0,
-    D3DKMT_QUERYSTATISTICS_SEGMENT_TYPE_MEMORY   = 1,
-    D3DKMT_QUERYSTATISTICS_SEGMENT_TYPE_SYSMEM   = 2
+    D3DKMT_QUERYSTATISTICS_SEGMENT_TYPE_APERTURE    = 0,
+    D3DKMT_QUERYSTATISTICS_SEGMENT_TYPE_MEMORY      = 1,
+    D3DKMT_QUERYSTATISTICS_SEGMENT_TYPE_SYSMEM      = 2,
+    D3DKMT_QUERYSTATISTICS_SEGMENT_TYPE_PARTITION   = 3
 } D3DKMT_QUERYSTATISTICS_SEGMENT_TYPE;
 
 typedef struct _D3DKMT_QUERYSTATISTICS_SEGMENT_INFORMATION

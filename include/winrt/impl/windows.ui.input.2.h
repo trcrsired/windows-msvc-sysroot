@@ -85,6 +85,13 @@ WINRT_EXPORT namespace winrt::Windows::UI::Input
         EdgeGestureEventArgs(std::nullptr_t) noexcept {}
         EdgeGestureEventArgs(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::UI::Input::IEdgeGestureEventArgs(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES GamepadNavigationConfiguration : winrt::Windows::UI::Input::IGamepadNavigationConfiguration
+    {
+        GamepadNavigationConfiguration(std::nullptr_t) noexcept {}
+        GamepadNavigationConfiguration(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::UI::Input::IGamepadNavigationConfiguration(ptr, take_ownership_from_abi) {}
+        static auto TryGetForCurrentProcess();
+        [[nodiscard]] static auto IsSupported();
+    };
     struct WINRT_IMPL_EMPTY_BASES GestureRecognizer : winrt::Windows::UI::Input::IGestureRecognizer,
         impl::require<GestureRecognizer, winrt::Windows::UI::Input::IGestureRecognizer2>
     {

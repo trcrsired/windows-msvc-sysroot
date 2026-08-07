@@ -81,9 +81,6 @@ inline unsigned char _Get_msb(size_t _Mask)
     return (unsigned char) _Index;
 }
 
-#pragma warning(push)
-#pragma warning(disable: 4127) // Warning 4127 -- while (true) has a constant expression in it
-
 template <typename _Traits>
 class _Concurrent_hash : public _Traits
 {
@@ -1312,8 +1309,6 @@ private:
     size_type                                                       _M_number_of_buckets;            // Current table size
     float                                                           _M_maximum_bucket_size;          // Maximum size of the bucket
 };
-
-#pragma warning(pop) // Warning 4127 -- while (true) has a constant expression in it
 
 } // namespace details;
 } // namespace Concurrency

@@ -924,6 +924,13 @@ typedef struct _USER_MARSHAL_CB
 
 #define USER_CALL_IS_ASYNC              0x0100  /* aux flag: in an [async] call */
 #define USER_CALL_NEW_CORRELATION_DESC  0x0200
+// Output aux flag returned from pfnUnmarshall.
+// For caller-owned unmarshalled objects (e.g., inout BYREF variants), RPC should
+// not perform cleanup. By the time pfnFree is called to clean up, that context
+// has already been lost, and pfnFree has no way to know if the unmarshalled object is owned
+// by the caller anymore. The pfnUnmarshall function signals this flag to RPC that the
+// caller owns the unmarshalled object, so RPC should not clean it up.
+#define USER_MARSHALUNMARSHAL_DONT_CLEANUP_UNMARSHALLED_OBJECT 0X8000
 
 typedef struct _MALLOC_FREE_STRUCT
     {

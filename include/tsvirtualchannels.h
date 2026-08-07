@@ -1216,7 +1216,7 @@ typedef struct WTSWindowInfo
     float Scale;
     } 	WTSWindowInfo;
 
-EXTERN_C __declspec(selectany) const IID IID_IWTSWindowChangedCallback = { 0xe8a47fd3, 0x1af5, 0x4d7f, { 0x8e, 0x15, 0x51, 0x5c, 0xca, 0xe1, 0xc0, 0x0c } };
+EXTERN_C __declspec(selectany) const IID IID_IWTSWindowChangedCallback = { 0xe8a47fd3, 0x1af6, 0x4d7f, { 0x8e, 0x15, 0x51, 0x5c, 0xca, 0xe1, 0xc0, 0x0c } };
 
 
 extern RPC_IF_HANDLE __MIDL_itf_tsvirtualchannels_0000_0010_v0_0_c_ifspec;

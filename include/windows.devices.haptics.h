@@ -1231,9 +1231,9 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 4.0
  *
  * RuntimeClass contains static methods.
+ *   Static Methods exist on the Windows.Devices.Haptics.IKnownSimpleHapticsControllerWaveformsStatics3 interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Haptics.IKnownSimpleHapticsControllerWaveformsStatics interface starting with version 4.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Haptics.IKnownSimpleHapticsControllerWaveformsStatics2 interface starting with version 14.0 of the Windows.Foundation.UniversalApiContract API contract
- *   Static Methods exist on the Windows.Devices.Haptics.IKnownSimpleHapticsControllerWaveformsStatics3 interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *
@@ -3154,9 +3154,9 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 4.0
  *
  * RuntimeClass contains static methods.
+ *   Static Methods exist on the Windows.Devices.Haptics.IKnownSimpleHapticsControllerWaveformsStatics3 interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Haptics.IKnownSimpleHapticsControllerWaveformsStatics interface starting with version 4.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Devices.Haptics.IKnownSimpleHapticsControllerWaveformsStatics2 interface starting with version 14.0 of the Windows.Foundation.UniversalApiContract API contract
- *   Static Methods exist on the Windows.Devices.Haptics.IKnownSimpleHapticsControllerWaveformsStatics3 interface starting with version 19.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Marshaling Behavior:  Agile - Class is agile
  *

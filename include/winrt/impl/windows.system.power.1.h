@@ -30,5 +30,12 @@ WINRT_EXPORT namespace winrt::Windows::System::Power
         IPowerManagerStatics(std::nullptr_t = nullptr) noexcept {}
         IPowerManagerStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IPowerManagerStatics2 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IPowerManagerStatics2>
+    {
+        IPowerManagerStatics2(std::nullptr_t = nullptr) noexcept {}
+        IPowerManagerStatics2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
 }
 #endif

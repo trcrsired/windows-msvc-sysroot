@@ -414,8 +414,6 @@ public:
 	template<typename _Iter_t>
 		void insert(_Iter_t _First, _Iter_t _Last)
 		{	// insert [_First, _Last) one at a time
-#pragma warning(push)
-#pragma warning(disable: 4127)
 		if (_Iter_container(_First) != this)
 			for (; _First != _Last; ++_First)
 				insert_node(*_First);
@@ -429,15 +427,12 @@ public:
 			for (; _Node != nullptr; _Node = _Node->_Right)
 				insert_node(_Node->_Myval);	// insert accumulated sequence
 			}
-#pragma warning(pop)
 		}
 
 	void insert(
 		_STLCLR Generic::IInputIterator<_Value_t>^ _First,
 		_STLCLR Generic::IInputIterator<_Value_t>^ _Last)
 		{	// insert [_First, _Last) one at a time
-#pragma warning(push)
-#pragma warning(disable: 4127)
 		if (_Iter_container(_First) != this)
 			for (; !_First->equal_to(_Last); _First->next())
 				insert_node((value_type%)_First->get_cref());
@@ -451,7 +446,6 @@ public:
 			for (; _Node != nullptr; _Node = _Node->_Right)
 				insert_node(_Node->_Myval);	// insert accumulated sequence
 			}
-#pragma warning(pop)
 		}
 
 	void insert(_Myenum_it^ _Right)
@@ -475,8 +469,6 @@ public:
 		_STLCLR Generic::IInputIterator<_Value_t>^ _First,
 		_STLCLR Generic::IInputIterator<_Value_t>^ _Last)
 		{	// insert [_First, _Last) one at a time
-#pragma warning(push)
-#pragma warning(disable: 4127)
 		if (_First->container() != this)
 			for (; !_First->equal_to(_Last); _First->next())
 				insert_node((value_type%)_First->get_cref());
@@ -490,13 +482,10 @@ public:
 			for (; _Node != nullptr; _Node = _Node->_Right)
 				insert_node(_Node->_Myval);	// insert accumulated sequence
 			}
-#pragma warning(pop)
 		}
 
 	_Pairnb insert_node(value_type _Val)
 		{	// try to insert node with value _Val, return node pointer, bool
-#pragma warning(push)
-#pragma warning(disable: 4127)
 		node_type^ _Node = root_node();
 		node_type^ _Where = head_node();
 		bool _Addleft = true;	// add to left of head if tree empty
@@ -527,13 +516,10 @@ public:
 			else
 				return (_Pairnb(_Node, false));
 			}
-#pragma warning(pop)
 		}
 
 	node_type^ insert_node(node_type^ _Where_node, value_type _Val)
 		{	// try to insert node with value _Val at _Where, return node
-#pragma warning(push)
-#pragma warning(disable: 4127)
 		node_type^ _Where = (node_type^)_Where_node;
 		node_type^ _Next;
 
@@ -609,7 +595,6 @@ public:
 			}
 
 		return (insert_node(_Val).first);	// try usual insert
-#pragma warning(pop)
 		}
 
 	iterator erase(iterator _Where)

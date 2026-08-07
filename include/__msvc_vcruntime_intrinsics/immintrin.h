@@ -104,6 +104,8 @@ typedef union  __declspec(intrin_type) __declspec(align(32)) __m256i {
 // are not defined for ARM64 and ARM64EC.
 extern unsigned long long __isa_inverted;
 extern unsigned __avx10_version;
+#pragma warning(push)
+#pragma warning(disable: 4514) // unreferenced inline function
 #ifdef __cplusplus
 inline bool __check_isa_support(unsigned __x, unsigned __v = 0)
 #else
@@ -144,6 +146,7 @@ __inline unsigned _get_vlen(void)
     else
         return 0;
 }
+#pragma warning(pop)
 #endif // !defined(_M_ARM64) && !defined(_M_ARM64EC)
 
 // The consolidated Intel Architecture ISA feature bits

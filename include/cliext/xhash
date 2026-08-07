@@ -317,8 +317,6 @@ public:
 	template<typename _Iter_t>
 		void insert(_Iter_t _First, _Iter_t _Last)
 		{	// insert [_First, _Last) one at a time
-#pragma warning(push)
-#pragma warning(disable: 4127)
 		if (_Iter_container(_First) != _Mylist)
 			for (; _First != _Last; ++_First)
 				insert_node(*_First, nullptr);
@@ -328,15 +326,12 @@ public:
 				_Mylist->insert_node(_Mylist->front_node(), 1, *_First);
 			_Reinsert();
 			}
-#pragma warning(pop)
 		}
 
 	void insert(
 		_STLCLR Generic::IInputIterator<_Value_t>^ _First,
 		_STLCLR Generic::IInputIterator<_Value_t>^ _Last)
 		{	// insert [_First, _Last) one at a time
-#pragma warning(push)
-#pragma warning(disable: 4127)
 		if (_First->container() != _Mylist)
 			for (; !_First->equal_to(_Last); _First->next())
 				insert_node((value_type%)_First->get_cref(), nullptr);
@@ -347,7 +342,6 @@ public:
 					(value_type%)_First->get_cref());
 			_Reinsert();
 			}
-#pragma warning(pop)
 		}
 
 	void insert(_Myenum_it^ _Right)
@@ -372,8 +366,6 @@ public:
 
 	_Pairnb insert_node(value_type _Val, list_node<value_type>^ _Newnode)
 		{	// try to insert node with value _Val, return node pointer, bool
-#pragma warning(push)
-#pragma warning(disable: 4127)
 		size_type _Bucket = _Hashval(this->get_key(_Val));
 		node_type^ _Node = hash_node(_Bucket + 1);	// end node for bucket
 
@@ -414,7 +406,6 @@ public:
 			_Grow(bucket_count() + 1);
 		++_Mygen;
 		return (_Pairnb(_Newnode, true));	// return added node
-#pragma warning(pop)
 		}
 
 	iterator erase(iterator _Where)

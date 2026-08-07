@@ -1095,12 +1095,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CCapture_CIDirect3D11CaptureFr
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.Graphics.Capture.Direct3D11CaptureFrame
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CCapture_CIDirect3D11CaptureFrame3_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CCapture_CIDirect3D11CaptureFrame3_INTERFACE_DEFINED__
@@ -1127,7 +1124,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CCapture_CIDirect3D11CaptureFrame3;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CCapture_CIDirect3D11CaptureFrame3_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1271,10 +1267,7 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CCapture_CIDirect3D11CaptureFr
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CCapture_CIDisplayGraphicsCaptureSession_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CCapture_CIDisplayGraphicsCaptureSession_INTERFACE_DEFINED__
@@ -1305,7 +1298,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CCapture_CIDisplayGraphicsCaptureSession;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CCapture_CIDisplayGraphicsCaptureSession_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1739,12 +1731,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CCapture_CIGraphicsCaptureSess
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.Graphics.Capture.GraphicsCaptureSession
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CCapture_CIGraphicsCaptureSession7_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CCapture_CIGraphicsCaptureSession7_INTERFACE_DEFINED__
@@ -1771,7 +1760,6 @@ namespace ABI {
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CCapture_CIGraphicsCaptureSession7;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CCapture_CIGraphicsCaptureSession7_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -1838,8 +1826,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 6.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Graphics.Capture.IDirect3D11CaptureFramePoolStatics2 interface starting with version 7.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Graphics.Capture.IDirect3D11CaptureFramePoolStatics interface starting with version 6.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Graphics.Capture.IDirect3D11CaptureFramePoolStatics2 interface starting with version 7.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Graphics.Capture.IDirect3D11CaptureFramePool ** Default Interface **
@@ -3129,12 +3117,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CCapture_CIDirect3D11CaptureFr
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.Graphics.Capture.Direct3D11CaptureFrame
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CCapture_CIDirect3D11CaptureFrame3_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CCapture_CIDirect3D11CaptureFrame3_INTERFACE_DEFINED__
@@ -3194,7 +3179,6 @@ interface __x_ABI_CWindows_CGraphics_CCapture_CIDirect3D11CaptureFrame3
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CCapture_CIDirect3D11CaptureFrame3;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CCapture_CIDirect3D11CaptureFrame3_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -3447,10 +3431,7 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CCapture_CIDirect3D11CaptureFr
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CCapture_CIDisplayGraphicsCaptureSession_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CCapture_CIDisplayGraphicsCaptureSession_INTERFACE_DEFINED__
@@ -3516,7 +3497,6 @@ interface __x_ABI_CWindows_CGraphics_CCapture_CIDisplayGraphicsCaptureSession
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CCapture_CIDisplayGraphicsCaptureSession;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CCapture_CIDisplayGraphicsCaptureSession_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4332,12 +4312,9 @@ EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CCapture_CIGraphicsCaptureSess
  *
  * Introduced to Windows.Foundation.UniversalApiContract in version 19.0
  *
- * Type is for evaluation purposes and is subject to change or removal in future updates.
- *
  * Interface is a part of the implementation of type Windows.Graphics.Capture.GraphicsCaptureSession
  *
  */
-#if defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 #if WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
 #if !defined(____x_ABI_CWindows_CGraphics_CCapture_CIGraphicsCaptureSession7_INTERFACE_DEFINED__)
 #define ____x_ABI_CWindows_CGraphics_CCapture_CIGraphicsCaptureSession7_INTERFACE_DEFINED__
@@ -4397,7 +4374,6 @@ interface __x_ABI_CWindows_CGraphics_CCapture_CIGraphicsCaptureSession7
 EXTERN_C const IID IID___x_ABI_CWindows_CGraphics_CCapture_CIGraphicsCaptureSession7;
 #endif /* !defined(____x_ABI_CWindows_CGraphics_CCapture_CIGraphicsCaptureSession7_INTERFACE_DEFINED__) */
 #endif // WINDOWS_FOUNDATION_UNIVERSALAPICONTRACT_VERSION >= 0x130000
-#endif // defined(ENABLE_WINRT_EXPERIMENTAL_TYPES)
 
 /*
  *
@@ -4497,8 +4473,8 @@ extern const __declspec(selectany) _Null_terminated_ WCHAR RuntimeClass_Windows_
  * Introduced to Windows.Foundation.UniversalApiContract in version 6.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.Graphics.Capture.IDirect3D11CaptureFramePoolStatics2 interface starting with version 7.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.Graphics.Capture.IDirect3D11CaptureFramePoolStatics interface starting with version 6.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.Graphics.Capture.IDirect3D11CaptureFramePoolStatics2 interface starting with version 7.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class implements the following interfaces:
  *    Windows.Graphics.Capture.IDirect3D11CaptureFramePool ** Default Interface **

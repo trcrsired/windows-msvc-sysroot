@@ -453,7 +453,8 @@ enum X509SCEPMessageType
         SCEPMessageGetCertInitial	= 20,
         SCEPMessageGetCert	= 21,
         SCEPMessageGetCRL	= 22,
-        SCEPMessageClaimChallengeAnswer	= 41
+        SCEPMessageClaimChallengeAnswer	= 41,
+        SCEPMessageGetCertifier	= 198
     } 	X509SCEPMessageType;
 
 typedef 

@@ -71,7 +71,6 @@ _STL_DISABLE_CLANG_WARNINGS
 
 #pragma warning(disable: 28197)
 #pragma warning(disable: 4100) // Unreferenced formal parameter - needed for document generation
-#pragma warning(disable: 4127) // constant express in if condition - we use it for meta programming
 
 extern "C++" { // attach declarations in namespace Concurrency to the global module, see N4910 [module.unit]/7
 
@@ -5704,11 +5703,8 @@ namespace details
             {
                 throw ::Platform::Exception::CreateException(_M_errorCode);
             }
-#pragma warning(push)
-#pragma warning(disable: 4127) // Conditional expression is constant
             // single result illegal before transition to Completed or Cancelled state
             if (_ResultType == SingleResult)
-#pragma warning(pop)
             {
                 if (_Current != _AsyncCompleted)
                 {

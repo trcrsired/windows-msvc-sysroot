@@ -109,20 +109,7 @@ typedef unsigned __int64 DWORD_PTR, *PDWORD_PTR;
 #endif  /* defined (_M_IX86) */
 
 #ifdef _DEBUG
-#ifdef _MSC_VER
-// Turn off compiler warnings that are exacerbated by constructs in this
-// file's definitions:
-
-// Warning C4127: conditional expression is constant. This is caused by
-//      the macros with "do { ... } while (false)" syntax. The syntax is
-//      a good way to ensure that a statement-like macro can be used in all
-//      contexts (specifically if statements), but the compiler warns about
-//      the "while (false)" part.
-
-#define _CONCRT_ASSERT(x)   __pragma (warning (suppress: 4127)) do {_ASSERTE(x); __assume(x);} while(false)
-#else  /* _MSC_VER */
 #define _CONCRT_ASSERT(x)   do {_ASSERTE(x); __assume(x);} while(false)
-#endif  /* _MSC_VER */
 #else  /* _DEBUG */
 #define _CONCRT_ASSERT(x)   __assume(x)
 #endif  /* _DEBUG */

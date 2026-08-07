@@ -72,6 +72,20 @@ WINRT_EXPORT namespace winrt::Windows::UI::Input
         IEdgeGestureStatics(std::nullptr_t = nullptr) noexcept {}
         IEdgeGestureStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IGamepadNavigationConfiguration :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IGamepadNavigationConfiguration>
+    {
+        IGamepadNavigationConfiguration(std::nullptr_t = nullptr) noexcept {}
+        IGamepadNavigationConfiguration(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IGamepadNavigationConfigurationStatics :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IGamepadNavigationConfigurationStatics>
+    {
+        IGamepadNavigationConfigurationStatics(std::nullptr_t = nullptr) noexcept {}
+        IGamepadNavigationConfigurationStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IGestureRecognizer :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IGestureRecognizer>

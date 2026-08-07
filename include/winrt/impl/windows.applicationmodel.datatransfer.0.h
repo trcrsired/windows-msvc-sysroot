@@ -54,6 +54,8 @@ WINRT_EXPORT namespace winrt::Windows::ApplicationModel::DataTransfer
         Copy = 0x1,
         Move = 0x2,
         Link = 0x4,
+        NewTarget = 0x40000000,
+        BackgroundTarget = 0x20000000,
     };
     enum class SetHistoryItemAsContentStatus : int32_t
     {

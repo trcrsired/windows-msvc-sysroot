@@ -42,6 +42,10 @@ WINRT_EXPORT namespace winrt::Windows::System::RemoteDesktop::Provider
         RemoteDesktopRegistrar() = delete;
         [[nodiscard]] static auto DesktopInfos();
         static auto IsSwitchToLocalSessionEnabled();
+        static auto ConnectionCenterRequested(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
+        using ConnectionCenterRequested_revoker = impl::factory_event_revoker<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2, &impl::abi_t<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>::remove_ConnectionCenterRequested>;
+        [[nodiscard]] static auto ConnectionCenterRequested(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
+        static auto ConnectionCenterRequested(winrt::event_token const& token);
     };
 }
 #endif

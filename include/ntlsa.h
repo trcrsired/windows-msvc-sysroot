@@ -4218,6 +4218,16 @@ LsaRetrieveAgentLogonCredential(
     _In_ PUNICODE_STRING AgentName,
     _Out_ PLSA_AGENT_LOGON_CREDENTIAL Credential);
 
+NTSTATUS
+NTAPI
+LsaRetrieveCloudAgentLogonCredential(
+    _In_ PSID OwningUser,
+    _In_ PUNICODE_STRING OwningAppPackage,
+    _In_ PUNICODE_STRING AgentName,
+    _In_reads_bytes_(WamTokenSize) PVOID WamToken,  // UTF-16 encoded WAM token string
+    _In_ ULONG WamTokenSize,
+    _Out_ PLSA_AGENT_LOGON_CREDENTIAL Credential);
+
 typedef struct _LSA_AGENT_ACCOUNT_INFO {
     PSID AgentSid;
     UNICODE_STRING OwningAppPackage;

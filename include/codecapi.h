@@ -2015,7 +2015,8 @@ enum eAVDecDDOperationalMode
     eAVDecDDOperationalMode_CUSTOM1    = 4,// Digital dialnorm (dialogue normalization is part of the decoder)
     eAVDecDDOperationalMode_PORTABLE8  = 5,// Dialnorm enabled, dialogue at -8dBFS, dynrng & compr used, high/low scaling NOT allowed (always fully compressed)
     eAVDecDDOperationalMode_PORTABLE11 = 6,// Dialnorm enabled, dialogue at -11dBFS, dynrng & compr used, high/low scaling NOT allowed (always fully compressed)
-    eAVDecDDOperationalMode_PORTABLE14 = 7 // Dialnorm enabled, dialogue at -14dBFS, dynrng & compr used, high/low scaling NOT allowed (always fully compressed)
+    eAVDecDDOperationalMode_PORTABLE14 = 7,// Dialnorm enabled, dialogue at -14dBFS, dynrng & compr used, high/low scaling NOT allowed (always fully compressed)
+    eAVDecDDOperationalMode_PORTABLE16 = 8 // Dialnorm enabled, dialogue at -16dBFS, dynrng & compr used, high/low scaling NOT allowed (always fully compressed)
 };
 
 // AVDecDDMatrixDecodingMode(UINT32)

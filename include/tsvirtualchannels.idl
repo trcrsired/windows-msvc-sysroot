@@ -473,7 +473,7 @@ typedef struct WTSWindowInfo
 //      to provide a callback when the RDP session window changes.
 //
 // =========================================================================
-cpp_quote("EXTERN_C __declspec(selectany) const IID IID_IWTSWindowChangedCallback = { 0xe8a47fd3, 0x1af5, 0x4d7f, { 0x8e, 0x15, 0x51, 0x5c, 0xca, 0xe1, 0xc0, 0x0c } };")
+cpp_quote("EXTERN_C __declspec(selectany) const IID IID_IWTSWindowChangedCallback = { 0xe8a47fd3, 0x1af6, 0x4d7f, { 0x8e, 0x15, 0x51, 0x5c, 0xca, 0xe1, 0xc0, 0x0c } };")
 [
     object,
     uuid(E8A47FD3-1AF6-4D7F-8E15-515CCAE1C00C),

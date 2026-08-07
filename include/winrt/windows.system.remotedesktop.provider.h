@@ -318,6 +318,44 @@ namespace winrt::impl
         }
         return result;
     }
+    template <typename D> auto consume_Windows_System_RemoteDesktop_Provider_IRemoteDesktopRegistrarStatics2<D>::ConnectionCenterRequested(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const
+    {
+        winrt::event_token token{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->add_ConnectionCenterRequested(*(void**)(&handler), put_abi(token)));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>**)this;
+            check_hresult(_winrt_abi_type->add_ConnectionCenterRequested(*(void**)(&handler), put_abi(token)));
+        }
+        return token;
+    }
+    template <typename D> auto consume_Windows_System_RemoteDesktop_Provider_IRemoteDesktopRegistrarStatics2<D>::ConnectionCenterRequested(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const
+    {
+        return impl::make_event_revoker<D, ConnectionCenterRequested_revoker>(this, ConnectionCenterRequested(handler));
+    }
+    template <typename D> auto consume_Windows_System_RemoteDesktop_Provider_IRemoteDesktopRegistrarStatics2<D>::ConnectionCenterRequested(winrt::event_token const& token) const noexcept
+    {
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>**)&_winrt_casted_result;
+            _winrt_abi_type->remove_ConnectionCenterRequested(impl::bind_in(token));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>**)this;
+            _winrt_abi_type->remove_ConnectionCenterRequested(impl::bind_in(token));
+        }
+    }
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
     struct produce<D, winrt::Windows::System::RemoteDesktop::Provider::IPerformLocalActionRequestedEventArgs> : produce_base<D, winrt::Windows::System::RemoteDesktop::Provider::IPerformLocalActionRequestedEventArgs>
@@ -497,6 +535,26 @@ namespace winrt::impl
         catch (...) { return to_hresult(); }
     };
 #endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2> : produce_base<D, winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>
+    {
+        int32_t __stdcall add_ConnectionCenterRequested(void* handler, winrt::event_token* token) noexcept final try
+        {
+            zero_abi<winrt::event_token>(token);
+            typename D::abi_guard guard(this->shim());
+            *token = detach_from<winrt::event_token>(this->shim().ConnectionCenterRequested(*reinterpret_cast<winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const*>(&handler)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall remove_ConnectionCenterRequested(winrt::event_token token) noexcept final
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().ConnectionCenterRequested(*reinterpret_cast<winrt::event_token const*>(&token));
+            return 0;
+        }
+    };
+#endif
 }
 WINRT_EXPORT namespace winrt::Windows::System::RemoteDesktop::Provider
 {
@@ -524,6 +582,19 @@ WINRT_EXPORT namespace winrt::Windows::System::RemoteDesktop::Provider
     {
         return impl::call_factory_cast<bool(*)(IRemoteDesktopRegistrarStatics const&), RemoteDesktopRegistrar, IRemoteDesktopRegistrarStatics>([](IRemoteDesktopRegistrarStatics const& f) { return f.IsSwitchToLocalSessionEnabled(); });
     }
+    inline auto RemoteDesktopRegistrar::ConnectionCenterRequested(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler)
+    {
+        return impl::call_factory<RemoteDesktopRegistrar, IRemoteDesktopRegistrarStatics2>([&](IRemoteDesktopRegistrarStatics2 const& f) { return f.ConnectionCenterRequested(handler); });
+    }
+    inline auto RemoteDesktopRegistrar::ConnectionCenterRequested(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler)
+    {
+        auto f = get_activation_factory<RemoteDesktopRegistrar, winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>();
+        return RemoteDesktopRegistrar::ConnectionCenterRequested_revoker{ f, f.ConnectionCenterRequested(handler) };
+    }
+    inline auto RemoteDesktopRegistrar::ConnectionCenterRequested(winrt::event_token const& token)
+    {
+        impl::call_factory<RemoteDesktopRegistrar, IRemoteDesktopRegistrarStatics2>([&](IRemoteDesktopRegistrarStatics2 const& f) { return f.ConnectionCenterRequested(token); });
+    }
 }
 namespace std
 {
@@ -537,6 +608,7 @@ namespace std
     template<> struct hash<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopInfo> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopInfoFactory> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::RemoteDesktop::Provider::PerformLocalActionRequestedEventArgs> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::RemoteDesktop::Provider::RemoteDesktopConnectionInfo> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::RemoteDesktop::Provider::RemoteDesktopConnectionRemoteInfo> : winrt::impl::hash_base {};

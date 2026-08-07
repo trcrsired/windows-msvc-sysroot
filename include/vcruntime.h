@@ -376,6 +376,14 @@ _CRT_BEGIN_C_HEADER
     #endif
 #endif
 
+#ifndef _CRT_DISPATCHED
+    #ifdef _MSVC_LOAD_TIME_SELECTION
+        #define _CRT_DISPATCHED [[msvc::dispatch]]
+    #else
+        #define _CRT_DISPATCHED
+    #endif
+#endif
+
 #if !defined _M_CEE && !defined __midl
     void __cdecl __security_init_cookie(void);
 

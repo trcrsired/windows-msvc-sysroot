@@ -72,5 +72,12 @@ WINRT_EXPORT namespace winrt::Windows::System::RemoteDesktop::Provider
         IRemoteDesktopRegistrarStatics(std::nullptr_t = nullptr) noexcept {}
         IRemoteDesktopRegistrarStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IRemoteDesktopRegistrarStatics2 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IRemoteDesktopRegistrarStatics2>
+    {
+        IRemoteDesktopRegistrarStatics2(std::nullptr_t = nullptr) noexcept {}
+        IRemoteDesktopRegistrarStatics2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
 }
 #endif

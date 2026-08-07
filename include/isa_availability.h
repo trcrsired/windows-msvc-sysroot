@@ -2,6 +2,23 @@
 #ifndef __ISA_AVAILABILITY__H__
 #define __ISA_AVAILABILITY__H__
 
+#include <vcruntime.h>
+
+#pragma warning(push)
+#pragma warning(disable: _VCRUNTIME_DISABLED_WARNINGS)
+
+_CRT_BEGIN_C_HEADER
+
+// These variables directly record the results of IsProcessorFeaturePresent():
+extern unsigned long long __processor_features_0_63;
+extern unsigned long long __processor_features_64_127;
+
+#ifndef _M_ARM64
+    extern int __isa_available;
+    extern int __isa_enabled;
+    extern int __favor;
+#endif // ^^^ !defined(_M_ARM64) ^^^
+
 /*
  * These are defines for the extern "__isa_available" defined in the CRT,
  * which defines the latest instruction set available for use. The compiler
@@ -21,11 +38,6 @@ enum ISA_AVAILABILITY
     __ISA_AVAILABLE_ENFSTRG = 4,
     __ISA_AVAILABLE_AVX2 = 5,
     __ISA_AVAILABLE_AVX512 = 6,
-
-    __ISA_AVAILABLE_ARMNT   = 0,    // Unused; was for ARM32 without support for 128-bit NEON instructions.
-    __ISA_AVAILABLE_NEON    = 1,    // Unused; was for ARM32 with support for 128-bit NEON instructions.
-    __ISA_AVAILABLE_NEON_ARM64 = 2, // UNUSED! ARM64 has mandatory support for 128-bit NEON instructions.
-                                    // VCRuntime does NOT set this value.
 };
 
 #if defined(_M_IX86) || defined(_M_X64)
@@ -42,22 +54,16 @@ enum ISA_AVAILABILITY
 #define __IA_SUPPORT_AVX10_2   0x00000040 // AVX10.2 128-bit support (scalar and 128-bit)
 #define __IA_SUPPORT_APX       0x00000080 // APX support
 #define __IA_SUPPORT_FP16      0x01000000 // FP16 support (scalar and vector)
-#endif
-
-#if defined(_M_IX86)
 
 /* Defines for: "__favor" defined in the CRT */
 #define __FAVOR_ATOM    0
 #define __FAVOR_ENFSTRG 1 /* Enhanced Fast Strings rep movb/stob */
 /* #define reserved     2 */
 
-#elif defined(_M_X64)
+#endif // ^^^ defined(_M_IX86) || defined(_M_X64) ^^^
 
-/* Defines for: "__favor" defined in the CRT */
-#define __FAVOR_ATOM    0
-#define __FAVOR_ENFSTRG 1 /* Enhanced Fast Strings rep movb/stob */
-/* #define reserved     2 */
+_CRT_END_C_HEADER
 
-#endif
+#pragma warning(pop) // _VCRUNTIME_DISABLED_WARNINGS
 
 #endif // __ISA_AVAILABILITY__H__

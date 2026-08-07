@@ -46,9 +46,6 @@ Abstract:
 
 #define DLOAD_INLINE __inline
 
-#define FAST_FAIL_DLOAD_PROTECTION_FAILURE    25
-#define IMAGE_GUARD_PROTECT_DELAYLOAD_IAT             0x00001000
-
 #if DBG
 
 #define DLOAD_ASSERT(_exp) \

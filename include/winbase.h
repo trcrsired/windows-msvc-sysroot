@@ -3561,6 +3561,9 @@ typedef enum _PROC_THREAD_ATTRIBUTE_NUM {
 #if (NTDDI_VERSION >= NTDDI_WIN11_DT)
     ProcThreadAttributeSmeVectorLength              = 31,
 #endif
+#if (NTDDI_VERSION >= NTDDI_WIN11_GE)
+    ProcThreadAttributeContainmentConfiguration     = 32,
+#endif
 } PROC_THREAD_ATTRIBUTE_NUM;
 #endif
 
@@ -3628,6 +3631,9 @@ typedef union _PROCESS_CREATION_SVE_VECTOR_LENGTH {
         ULONG FlagsReserved : 8;
     };
 } PROCESS_CREATION_SVE_VECTOR_LENGTH, *PPROCESS_CREATION_SVE_VECTOR_LENGTH;
+
+#define PROC_THREAD_ATTRIBUTE_CONTAINMENT_CONFIGURATION \
+    ProcThreadAttributeValue (ProcThreadAttributeContainmentConfiguration, FALSE, TRUE, FALSE)
 
 #endif
 

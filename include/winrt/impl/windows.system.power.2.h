@@ -76,6 +76,12 @@ WINRT_EXPORT namespace winrt::Windows::System::Power
         using RemainingDischargeTimeChanged_revoker = impl::factory_event_revoker<winrt::Windows::System::Power::IPowerManagerStatics, &impl::abi_t<winrt::Windows::System::Power::IPowerManagerStatics>::remove_RemainingDischargeTimeChanged>;
         [[nodiscard]] static auto RemainingDischargeTimeChanged(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
         static auto RemainingDischargeTimeChanged(winrt::event_token const& token);
+        [[nodiscard]] static auto EnergySaverStatus2();
+        [[nodiscard]] static auto IsEnergySaverStatus2Supported();
+        static auto EnergySaverStatus2Changed(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
+        using EnergySaverStatus2Changed_revoker = impl::factory_event_revoker<winrt::Windows::System::Power::IPowerManagerStatics2, &impl::abi_t<winrt::Windows::System::Power::IPowerManagerStatics2>::remove_EnergySaverStatus2Changed>;
+        [[nodiscard]] static auto EnergySaverStatus2Changed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler);
+        static auto EnergySaverStatus2Changed(winrt::event_token const& token);
     };
 }
 #endif

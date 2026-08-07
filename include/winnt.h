@@ -10958,6 +10958,8 @@ typedef struct _ATTRIBUTES_AND_SID {
 
 #define SECURITY_SHADOWADMINACCOUNT_RID (0x00000064L)
 
+#define SECURITY_AGENTIC_PLATFORM_BASE_RID (0x00000065L)
+
 //
 // Virtual account logon is not limited to inbox callers.  Reserve base RID 0x6F for application usage.
 //
@@ -12493,7 +12495,6 @@ typedef struct _SE_TOKEN_USER {
 
 #endif
 
-
 typedef struct _TOKEN_GROUPS {
     DWORD GroupCount;
 #ifdef MIDL_PASS
@@ -12507,7 +12508,6 @@ typedef struct _TOKEN_PRIVILEGES {
     DWORD PrivilegeCount;
     LUID_AND_ATTRIBUTES Privileges[ANYSIZE_ARRAY];
 } TOKEN_PRIVILEGES, *PTOKEN_PRIVILEGES;
-
 
 typedef struct _TOKEN_OWNER {
     PSID Owner;
@@ -13045,6 +13045,20 @@ typedef struct _SECURITY_CAPABILITIES {
     DWORD Reserved;
 } SECURITY_CAPABILITIES, *PSECURITY_CAPABILITIES, *LPSECURITY_CAPABILITIES;
 
+typedef struct _SECURITY_CONTAINMENT_CONFIGURATION {
+    DWORD Size;
+    union {
+        DWORD Flags;
+        struct {
+            DWORD UseDefaultIntegrityLevel : 1;
+            DWORD Reserved : 31;
+        };
+    };
+
+    HANDLE ExistingTokenHandle;
+    SECURITY_CAPABILITIES SecurityCapabilities;
+    DWORD AppContainerIntegrityLevel;
+} SECURITY_CONTAINMENT_CONFIGURATION, *PSECURITY_CONTAINMENT_CONFIGURATION, *LPSECURITY_CONTAINMENT_CONFIGURATION;
 
 #define PROCESS_TERMINATE                  (0x0001)  
 #define PROCESS_CREATE_THREAD              (0x0002)  

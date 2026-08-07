@@ -26,6 +26,13 @@ WINRT_EXPORT namespace winrt::Windows::System::Power
         Off = 1,
         On = 2,
     };
+    enum class EnergySaverStatus2 : int32_t
+    {
+        Unknown = 0,
+        Off = 1,
+        Standard = 2,
+        HighSavings = 3,
+    };
     enum class PowerSupplyStatus : int32_t
     {
         NotPresent = 0,
@@ -35,6 +42,7 @@ WINRT_EXPORT namespace winrt::Windows::System::Power
     struct IBackgroundEnergyManagerStatics;
     struct IForegroundEnergyManagerStatics;
     struct IPowerManagerStatics;
+    struct IPowerManagerStatics2;
     struct BackgroundEnergyManager;
     struct ForegroundEnergyManager;
     struct PowerManager;
@@ -44,24 +52,29 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::System::Power::IBackgroundEnergyManagerStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::System::Power::IForegroundEnergyManagerStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::System::Power::IPowerManagerStatics>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::System::Power::IPowerManagerStatics2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::System::Power::BackgroundEnergyManager>{ using type = class_category; };
     template <> struct category<winrt::Windows::System::Power::ForegroundEnergyManager>{ using type = class_category; };
     template <> struct category<winrt::Windows::System::Power::PowerManager>{ using type = class_category; };
     template <> struct category<winrt::Windows::System::Power::BatteryStatus>{ using type = enum_category; };
     template <> struct category<winrt::Windows::System::Power::EnergySaverStatus>{ using type = enum_category; };
+    template <> struct category<winrt::Windows::System::Power::EnergySaverStatus2>{ using type = enum_category; };
     template <> struct category<winrt::Windows::System::Power::PowerSupplyStatus>{ using type = enum_category; };
     template <> inline constexpr auto& name_v<winrt::Windows::System::Power::BackgroundEnergyManager> = L"Windows.System.Power.BackgroundEnergyManager";
     template <> inline constexpr auto& name_v<winrt::Windows::System::Power::ForegroundEnergyManager> = L"Windows.System.Power.ForegroundEnergyManager";
     template <> inline constexpr auto& name_v<winrt::Windows::System::Power::PowerManager> = L"Windows.System.Power.PowerManager";
     template <> inline constexpr auto& name_v<winrt::Windows::System::Power::BatteryStatus> = L"Windows.System.Power.BatteryStatus";
     template <> inline constexpr auto& name_v<winrt::Windows::System::Power::EnergySaverStatus> = L"Windows.System.Power.EnergySaverStatus";
+    template <> inline constexpr auto& name_v<winrt::Windows::System::Power::EnergySaverStatus2> = L"Windows.System.Power.EnergySaverStatus2";
     template <> inline constexpr auto& name_v<winrt::Windows::System::Power::PowerSupplyStatus> = L"Windows.System.Power.PowerSupplyStatus";
     template <> inline constexpr auto& name_v<winrt::Windows::System::Power::IBackgroundEnergyManagerStatics> = L"Windows.System.Power.IBackgroundEnergyManagerStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::System::Power::IForegroundEnergyManagerStatics> = L"Windows.System.Power.IForegroundEnergyManagerStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::System::Power::IPowerManagerStatics> = L"Windows.System.Power.IPowerManagerStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::System::Power::IPowerManagerStatics2> = L"Windows.System.Power.IPowerManagerStatics2";
     template <> inline constexpr guid guid_v<winrt::Windows::System::Power::IBackgroundEnergyManagerStatics>{ 0xB3161D95,0x1180,0x4376,{ 0x96,0xE1,0x40,0x95,0x56,0x81,0x47,0xCE } }; // B3161D95-1180-4376-96E1-4095568147CE
     template <> inline constexpr guid guid_v<winrt::Windows::System::Power::IForegroundEnergyManagerStatics>{ 0x9FF86872,0xE677,0x4814,{ 0x9A,0x20,0x53,0x37,0xCA,0x73,0x2B,0x98 } }; // 9FF86872-E677-4814-9A20-5337CA732B98
     template <> inline constexpr guid guid_v<winrt::Windows::System::Power::IPowerManagerStatics>{ 0x1394825D,0x62CE,0x4364,{ 0x98,0xD5,0xAA,0x28,0xC7,0xFB,0xD1,0x5B } }; // 1394825D-62CE-4364-98D5-AA28C7FBD15B
+    template <> inline constexpr guid guid_v<winrt::Windows::System::Power::IPowerManagerStatics2>{ 0x67A446C3,0x4F2E,0x5D56,{ 0xB2,0xE8,0x77,0x07,0xC2,0x64,0x74,0x5B } }; // 67A446C3-4F2E-5D56-B2E8-7707C264745B
     template <> struct abi<winrt::Windows::System::Power::IBackgroundEnergyManagerStatics>
     {
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
@@ -115,6 +128,16 @@ namespace winrt::impl
             virtual int32_t __stdcall get_RemainingDischargeTime(int64_t*) noexcept = 0;
             virtual int32_t __stdcall add_RemainingDischargeTimeChanged(void*, winrt::event_token*) noexcept = 0;
             virtual int32_t __stdcall remove_RemainingDischargeTimeChanged(winrt::event_token) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::System::Power::IPowerManagerStatics2>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_EnergySaverStatus2(int32_t*) noexcept = 0;
+            virtual int32_t __stdcall get_IsEnergySaverStatus2Supported(bool*) noexcept = 0;
+            virtual int32_t __stdcall add_EnergySaverStatus2Changed(void*, winrt::event_token*) noexcept = 0;
+            virtual int32_t __stdcall remove_EnergySaverStatus2Changed(winrt::event_token) noexcept = 0;
         };
     };
     template <typename D>
@@ -195,6 +218,20 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::System::Power::IPowerManagerStatics>
     {
         template <typename D> using type = consume_Windows_System_Power_IPowerManagerStatics<D>;
+    };
+    template <typename D>
+    struct consume_Windows_System_Power_IPowerManagerStatics2
+    {
+        [[nodiscard]] auto EnergySaverStatus2() const;
+        [[nodiscard]] auto IsEnergySaverStatus2Supported() const;
+        auto EnergySaverStatus2Changed(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        using EnergySaverStatus2Changed_revoker = impl::event_revoker<winrt::Windows::System::Power::IPowerManagerStatics2, &impl::abi_t<winrt::Windows::System::Power::IPowerManagerStatics2>::remove_EnergySaverStatus2Changed>;
+        [[nodiscard]] auto EnergySaverStatus2Changed(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        auto EnergySaverStatus2Changed(winrt::event_token const& token) const noexcept;
+    };
+    template <> struct consume<winrt::Windows::System::Power::IPowerManagerStatics2>
+    {
+        template <typename D> using type = consume_Windows_System_Power_IPowerManagerStatics2<D>;
     };
 }
 #endif

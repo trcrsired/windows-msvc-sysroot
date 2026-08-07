@@ -5247,11 +5247,6 @@ inline bool _Parallel_buffered_sort_impl(const _Random_iterator &_Begin, size_t 
     }
 }
 
-// Disable the warning saying constant value in condition expression.
-// This is by design that lets the compiler optimize the trivial constructor.
-#pragma warning (push)
-#pragma warning (disable: 4127)
-
 // Allocate and construct a buffer
 template<typename _Allocator>
 inline typename ::std::allocator_traits<_Allocator>::pointer _Construct_buffer(size_t _N, _Allocator &_Alloc)
@@ -5326,8 +5321,6 @@ private:
     typename ::std::allocator_traits<_Allocator>::pointer _M_buffer;
 };
 
-
-#pragma warning (pop)
 
 /// <summary>
 ///     Arranges the elements in a specified range into a nondescending order, or according to an ordering criterion specified by a binary predicate,
@@ -5710,8 +5703,6 @@ inline void parallel_buffered_sort(const _Allocator& _Alloc, const _Random_itera
     parallel_buffered_sort<_Allocator>(_Alloc, _Begin, _End, ::std::less<typename ::std::iterator_traits<_Random_iterator>::value_type>());
 }
 
-#pragma warning(push)
-#pragma warning (disable: 4127)
 //
 // This is a default function used for parallel_radixsort which will return just the value.
 // It also performs compile-time checks to ensure that the data type is integral.
@@ -5723,12 +5714,7 @@ struct _Radix_sort_default_function
     {
         // An instance of the type predicate returns the value if the type _DataType is one of the integral types, otherwise it
         // statically asserts.
-        // An integral type is one of: bool, char, unsigned char, signed char, wchar_t, short, unsigned short, int, unsigned int, long,
-        // and unsigned long.
-        // In addition, with compilers that provide them, an integral type can be one of long long, unsigned long long, __int64, and
-        // unsigned __int64
-        static_assert(::std::is_integral_v<_DataType>,
-            "Type should be integral to use default radix function. For more information on integral types, please refer to https://msdn.microsoft.com/en-us/library/bb983099.aspx.");
+        static_assert(::std::is_integral_v<_DataType>, "Type should be integral to use default radix function.");
         static_assert((sizeof(_DataType) <= sizeof(size_t)), "Passed Type is bigger than size_t.");
 
         if (::std::is_unsigned_v<_DataType>)
@@ -5744,7 +5730,6 @@ struct _Radix_sort_default_function
         }
     }
 };
-#pragma warning (pop)
 
 /// <summary>
 ///     Arranges elements in a specified range into an non descending order using a radix sorting algorithm. This is a stable sort function which requires a

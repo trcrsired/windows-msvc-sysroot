@@ -8,6 +8,7 @@
 #define WINRT_Windows_System_RemoteDesktop_Provider_0_H
 WINRT_EXPORT namespace winrt::Windows::Foundation
 {
+    template <typename T> struct WINRT_IMPL_EMPTY_BASES EventHandler;
     struct EventRegistrationToken;
     template <typename TSender, typename TResult> struct WINRT_IMPL_EMPTY_BASES TypedEventHandler;
     struct Uri;
@@ -42,6 +43,7 @@ WINRT_EXPORT namespace winrt::Windows::System::RemoteDesktop::Provider
     struct IRemoteDesktopInfo;
     struct IRemoteDesktopInfoFactory;
     struct IRemoteDesktopRegistrarStatics;
+    struct IRemoteDesktopRegistrarStatics2;
     struct PerformLocalActionRequestedEventArgs;
     struct RemoteDesktopConnectionInfo;
     struct RemoteDesktopConnectionRemoteInfo;
@@ -59,6 +61,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopInfo>{ using type = interface_category; };
     template <> struct category<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopInfoFactory>{ using type = interface_category; };
     template <> struct category<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::System::RemoteDesktop::Provider::PerformLocalActionRequestedEventArgs>{ using type = class_category; };
     template <> struct category<winrt::Windows::System::RemoteDesktop::Provider::RemoteDesktopConnectionInfo>{ using type = class_category; };
     template <> struct category<winrt::Windows::System::RemoteDesktop::Provider::RemoteDesktopConnectionRemoteInfo>{ using type = class_category; };
@@ -82,6 +85,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopInfo> = L"Windows.System.RemoteDesktop.Provider.IRemoteDesktopInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopInfoFactory> = L"Windows.System.RemoteDesktop.Provider.IRemoteDesktopInfoFactory";
     template <> inline constexpr auto& name_v<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics> = L"Windows.System.RemoteDesktop.Provider.IRemoteDesktopRegistrarStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2> = L"Windows.System.RemoteDesktop.Provider.IRemoteDesktopRegistrarStatics2";
     template <> inline constexpr guid guid_v<winrt::Windows::System::RemoteDesktop::Provider::IPerformLocalActionRequestedEventArgs>{ 0x59359F4F,0x0862,0x53A3,{ 0xA3,0xB3,0xC9,0x32,0xFB,0x71,0x8C,0xDC } }; // 59359F4F-0862-53A3-A3B3-C932FB718CDC
     template <> inline constexpr guid guid_v<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionInfo>{ 0x68BD69D6,0x6DEA,0x543B,{ 0xB7,0x37,0xF3,0x47,0x91,0x9F,0x50,0x93 } }; // 68BD69D6-6DEA-543B-B737-F347919F5093
     template <> inline constexpr guid guid_v<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionInfo2>{ 0x871C0B26,0x23BF,0x5D3C,{ 0xBC,0x35,0xA8,0x5C,0x40,0x5E,0x25,0xE6 } }; // 871C0B26-23BF-5D3C-BC35-A85C405E25E6
@@ -91,6 +95,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopInfo>{ 0xD185BB25,0x2F1E,0x5098,{ 0xB9,0xE0,0xF4,0x6D,0x63,0x58,0xC5,0xC4 } }; // D185BB25-2F1E-5098-B9E0-F46D6358C5C4
     template <> inline constexpr guid guid_v<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopInfoFactory>{ 0xAD0E8D58,0xB56F,0x5A8B,{ 0xB4,0x19,0x80,0x02,0xEE,0x0C,0x5E,0xE9 } }; // AD0E8D58-B56F-5A8B-B419-8002EE0C5EE9
     template <> inline constexpr guid guid_v<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics>{ 0x687C2750,0x46D9,0x5DE3,{ 0x8D,0xC3,0x84,0xA9,0x20,0x2C,0xEC,0xFB } }; // 687C2750-46D9-5DE3-8DC3-84A9202CECFB
+    template <> inline constexpr guid guid_v<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>{ 0x4139976D,0x4F8E,0x5BB4,{ 0xB9,0x53,0xD6,0x44,0x7C,0xAC,0x4E,0x5F } }; // 4139976D-4F8E-5BB4-B953-D6447CAC4E5F
     template <> struct default_interface<winrt::Windows::System::RemoteDesktop::Provider::PerformLocalActionRequestedEventArgs>{ using type = winrt::Windows::System::RemoteDesktop::Provider::IPerformLocalActionRequestedEventArgs; };
     template <> struct default_interface<winrt::Windows::System::RemoteDesktop::Provider::RemoteDesktopConnectionInfo>{ using type = winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionInfo; };
     template <> struct default_interface<winrt::Windows::System::RemoteDesktop::Provider::RemoteDesktopConnectionRemoteInfo>{ using type = winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopConnectionRemoteInfo; };
@@ -164,6 +169,14 @@ namespace winrt::impl
         {
             virtual int32_t __stdcall get_DesktopInfos(void**) noexcept = 0;
             virtual int32_t __stdcall IsSwitchToLocalSessionEnabled(bool*) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall add_ConnectionCenterRequested(void*, winrt::event_token*) noexcept = 0;
+            virtual int32_t __stdcall remove_ConnectionCenterRequested(winrt::event_token) noexcept = 0;
         };
     };
     template <typename D>
@@ -258,6 +271,18 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics>
     {
         template <typename D> using type = consume_Windows_System_RemoteDesktop_Provider_IRemoteDesktopRegistrarStatics<D>;
+    };
+    template <typename D>
+    struct consume_Windows_System_RemoteDesktop_Provider_IRemoteDesktopRegistrarStatics2
+    {
+        auto ConnectionCenterRequested(winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        using ConnectionCenterRequested_revoker = impl::event_revoker<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2, &impl::abi_t<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>::remove_ConnectionCenterRequested>;
+        [[nodiscard]] auto ConnectionCenterRequested(auto_revoke_t, winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable> const& handler) const;
+        auto ConnectionCenterRequested(winrt::event_token const& token) const noexcept;
+    };
+    template <> struct consume<winrt::Windows::System::RemoteDesktop::Provider::IRemoteDesktopRegistrarStatics2>
+    {
+        template <typename D> using type = consume_Windows_System_RemoteDesktop_Provider_IRemoteDesktopRegistrarStatics2<D>;
     };
 }
 #endif

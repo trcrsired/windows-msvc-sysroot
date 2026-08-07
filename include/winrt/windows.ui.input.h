@@ -314,6 +314,78 @@ namespace winrt::impl
         }
         return winrt::Windows::UI::Input::EdgeGesture{ current, take_ownership_from_abi };
     }
+    template <typename D> auto consume_Windows_UI_Input_IGamepadNavigationConfiguration<D>::NavigationEnabled() const
+    {
+        bool value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::UI::Input::IGamepadNavigationConfiguration>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::UI::Input::IGamepadNavigationConfiguration, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Input::IGamepadNavigationConfiguration>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_NavigationEnabled(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Input::IGamepadNavigationConfiguration>**)this;
+            check_hresult(_winrt_abi_type->get_NavigationEnabled(&value));
+        }
+        return value;
+    }
+    template <typename D> auto consume_Windows_UI_Input_IGamepadNavigationConfiguration<D>::TrySetNavigationEnabled(bool enabled) const
+    {
+        bool result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::UI::Input::IGamepadNavigationConfiguration>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::UI::Input::IGamepadNavigationConfiguration, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Input::IGamepadNavigationConfiguration>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->TrySetNavigationEnabled(enabled, &result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Input::IGamepadNavigationConfiguration>**)this;
+            check_hresult(_winrt_abi_type->TrySetNavigationEnabled(enabled, &result));
+        }
+        return result;
+    }
+    template <typename D> auto consume_Windows_UI_Input_IGamepadNavigationConfigurationStatics<D>::TryGetForCurrentProcess() const
+    {
+        void* result{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->TryGetForCurrentProcess(&result));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics>**)this;
+            check_hresult(_winrt_abi_type->TryGetForCurrentProcess(&result));
+        }
+        return winrt::Windows::UI::Input::GamepadNavigationConfiguration{ result, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_UI_Input_IGamepadNavigationConfigurationStatics<D>::IsSupported() const
+    {
+        bool value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_IsSupported(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics>**)this;
+            check_hresult(_winrt_abi_type->get_IsSupported(&value));
+        }
+        return value;
+    }
     template <typename D> auto consume_Windows_UI_Input_IGestureRecognizer<D>::GestureSettings() const
     {
         winrt::Windows::UI::Input::GestureSettings value{};
@@ -6241,6 +6313,47 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::UI::Input::IGamepadNavigationConfiguration> : produce_base<D, winrt::Windows::UI::Input::IGamepadNavigationConfiguration>
+    {
+        int32_t __stdcall get_NavigationEnabled(bool* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<bool>(this->shim().NavigationEnabled());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall TrySetNavigationEnabled(bool enabled, bool* result) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<bool>(this->shim().TrySetNavigationEnabled(enabled));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics> : produce_base<D, winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics>
+    {
+        int32_t __stdcall TryGetForCurrentProcess(void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::UI::Input::GamepadNavigationConfiguration>(this->shim().TryGetForCurrentProcess());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_IsSupported(bool* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<bool>(this->shim().IsSupported());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::UI::Input::IGestureRecognizer> : produce_base<D, winrt::Windows::UI::Input::IGestureRecognizer>
     {
         int32_t __stdcall get_GestureSettings(uint32_t* value) noexcept final try
@@ -9026,6 +9139,14 @@ WINRT_EXPORT namespace winrt::Windows::UI::Input
     {
         return impl::call_factory_cast<winrt::Windows::UI::Input::EdgeGesture(*)(IEdgeGestureStatics const&), EdgeGesture, IEdgeGestureStatics>([](IEdgeGestureStatics const& f) { return f.GetForCurrentView(); });
     }
+    inline auto GamepadNavigationConfiguration::TryGetForCurrentProcess()
+    {
+        return impl::call_factory_cast<winrt::Windows::UI::Input::GamepadNavigationConfiguration(*)(IGamepadNavigationConfigurationStatics const&), GamepadNavigationConfiguration, IGamepadNavigationConfigurationStatics>([](IGamepadNavigationConfigurationStatics const& f) { return f.TryGetForCurrentProcess(); });
+    }
+    inline auto GamepadNavigationConfiguration::IsSupported()
+    {
+        return impl::call_factory_cast<bool(*)(IGamepadNavigationConfigurationStatics const&), GamepadNavigationConfiguration, IGamepadNavigationConfigurationStatics>([](IGamepadNavigationConfigurationStatics const& f) { return f.IsSupported(); });
+    }
     inline GestureRecognizer::GestureRecognizer() :
         GestureRecognizer(impl::call_factory_cast<GestureRecognizer(*)(winrt::Windows::Foundation::IActivationFactory const&), GestureRecognizer>([](winrt::Windows::Foundation::IActivationFactory const& f) { return f.template ActivateInstance<GestureRecognizer>(); }))
     {
@@ -9127,6 +9248,8 @@ namespace std
     template<> struct hash<winrt::Windows::UI::Input::IEdgeGesture> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::UI::Input::IEdgeGestureEventArgs> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::UI::Input::IEdgeGestureStatics> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::UI::Input::IGamepadNavigationConfiguration> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::UI::Input::IGestureRecognizer> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::UI::Input::IGestureRecognizer2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::UI::Input::IHoldingEventArgs> : winrt::impl::hash_base {};
@@ -9196,6 +9319,7 @@ namespace std
     template<> struct hash<winrt::Windows::UI::Input::DraggingEventArgs> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::UI::Input::EdgeGesture> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::UI::Input::EdgeGestureEventArgs> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::UI::Input::GamepadNavigationConfiguration> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::UI::Input::GestureRecognizer> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::UI::Input::HoldingEventArgs> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::UI::Input::InputActivationListener> : winrt::impl::hash_base {};

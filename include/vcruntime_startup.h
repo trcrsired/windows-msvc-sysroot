@@ -46,6 +46,7 @@ __vcrt_bool __cdecl __vcrt_uninitialize_critical(void);
 __vcrt_bool __cdecl __vcrt_thread_attach(void);
 __vcrt_bool __cdecl __vcrt_thread_detach(void);
 
+void __cdecl __processor_features_init(void);
 int __cdecl __isa_available_init(void);
 _crt_argv_mode __CRTDECL _get_startup_argv_mode(void);
 

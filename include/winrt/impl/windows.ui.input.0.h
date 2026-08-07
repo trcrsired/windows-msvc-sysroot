@@ -145,12 +145,12 @@ WINRT_EXPORT namespace winrt::Windows::UI::Input
         ThreeFingerTap = 0,
         FourFingerTap = 1,
         FiveFingerTap = 2,
-        ThreeFingerPressDown = 3,
-        FourFingerPressDown = 4,
-        FiveFingerPressDown = 5,
-        ThreeFingerPressUp = 6,
-        FourFingerPressUp = 7,
-        FiveFingerPressUp = 8,
+        ThreeFingerPress = 3,
+        FourFingerPress = 4,
+        FiveFingerPress = 5,
+        ThreeFingerRelease = 6,
+        FourFingerRelease = 7,
+        FiveFingerRelease = 8,
     };
     enum class TouchpadGlobalGestureKinds : uint32_t
     {
@@ -171,6 +171,8 @@ WINRT_EXPORT namespace winrt::Windows::UI::Input
     struct IEdgeGesture;
     struct IEdgeGestureEventArgs;
     struct IEdgeGestureStatics;
+    struct IGamepadNavigationConfiguration;
+    struct IGamepadNavigationConfigurationStatics;
     struct IGestureRecognizer;
     struct IGestureRecognizer2;
     struct IHoldingEventArgs;
@@ -240,6 +242,7 @@ WINRT_EXPORT namespace winrt::Windows::UI::Input
     struct DraggingEventArgs;
     struct EdgeGesture;
     struct EdgeGestureEventArgs;
+    struct GamepadNavigationConfiguration;
     struct GestureRecognizer;
     struct HoldingEventArgs;
     struct InputActivationListener;
@@ -291,6 +294,8 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::UI::Input::IEdgeGesture>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::Input::IEdgeGestureEventArgs>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::Input::IEdgeGestureStatics>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::UI::Input::IGamepadNavigationConfiguration>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::Input::IGestureRecognizer>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::Input::IGestureRecognizer2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::Input::IHoldingEventArgs>{ using type = interface_category; };
@@ -360,6 +365,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::UI::Input::DraggingEventArgs>{ using type = class_category; };
     template <> struct category<winrt::Windows::UI::Input::EdgeGesture>{ using type = class_category; };
     template <> struct category<winrt::Windows::UI::Input::EdgeGestureEventArgs>{ using type = class_category; };
+    template <> struct category<winrt::Windows::UI::Input::GamepadNavigationConfiguration>{ using type = class_category; };
     template <> struct category<winrt::Windows::UI::Input::GestureRecognizer>{ using type = class_category; };
     template <> struct category<winrt::Windows::UI::Input::HoldingEventArgs>{ using type = class_category; };
     template <> struct category<winrt::Windows::UI::Input::InputActivationListener>{ using type = class_category; };
@@ -416,6 +422,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::DraggingEventArgs> = L"Windows.UI.Input.DraggingEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::EdgeGesture> = L"Windows.UI.Input.EdgeGesture";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::EdgeGestureEventArgs> = L"Windows.UI.Input.EdgeGestureEventArgs";
+    template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::GamepadNavigationConfiguration> = L"Windows.UI.Input.GamepadNavigationConfiguration";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::GestureRecognizer> = L"Windows.UI.Input.GestureRecognizer";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::HoldingEventArgs> = L"Windows.UI.Input.HoldingEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::InputActivationListener> = L"Windows.UI.Input.InputActivationListener";
@@ -476,6 +483,8 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::IEdgeGesture> = L"Windows.UI.Input.IEdgeGesture";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::IEdgeGestureEventArgs> = L"Windows.UI.Input.IEdgeGestureEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::IEdgeGestureStatics> = L"Windows.UI.Input.IEdgeGestureStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::IGamepadNavigationConfiguration> = L"Windows.UI.Input.IGamepadNavigationConfiguration";
+    template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics> = L"Windows.UI.Input.IGamepadNavigationConfigurationStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::IGestureRecognizer> = L"Windows.UI.Input.IGestureRecognizer";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::IGestureRecognizer2> = L"Windows.UI.Input.IGestureRecognizer2";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Input::IHoldingEventArgs> = L"Windows.UI.Input.IHoldingEventArgs";
@@ -549,6 +558,8 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Input::IEdgeGesture>{ 0x580D5292,0x2AB1,0x49AA,{ 0xA7,0xF0,0x33,0xBD,0x3F,0x8D,0xF9,0xF1 } }; // 580D5292-2AB1-49AA-A7F0-33BD3F8DF9F1
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Input::IEdgeGestureEventArgs>{ 0x44FA4A24,0x2D09,0x42E1,{ 0x8B,0x5E,0x36,0x82,0x08,0x79,0x6A,0x4C } }; // 44FA4A24-2D09-42E1-8B5E-368208796A4C
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Input::IEdgeGestureStatics>{ 0xBC6A8519,0x18EE,0x4043,{ 0x98,0x39,0x4F,0xC5,0x84,0xD6,0x0A,0x14 } }; // BC6A8519-18EE-4043-9839-4FC584D60A14
+    template <> inline constexpr guid guid_v<winrt::Windows::UI::Input::IGamepadNavigationConfiguration>{ 0xB8ABAB2D,0xE7F5,0x59A7,{ 0xA3,0xD5,0x97,0x46,0xBF,0xBF,0x22,0x4D } }; // B8ABAB2D-E7F5-59A7-A3D5-9746BFBF224D
+    template <> inline constexpr guid guid_v<winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics>{ 0x9C7C3E1D,0x2AFF,0x5DE0,{ 0x88,0xF1,0x90,0x4A,0xCC,0x56,0x1F,0x68 } }; // 9C7C3E1D-2AFF-5DE0-88F1-904ACC561F68
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Input::IGestureRecognizer>{ 0xB47A37BF,0x3D6B,0x4F88,{ 0x83,0xE8,0x6D,0xCB,0x40,0x12,0xFF,0xB0 } }; // B47A37BF-3D6B-4F88-83E8-6DCB4012FFB0
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Input::IGestureRecognizer2>{ 0xD646097F,0x6EF7,0x5746,{ 0x8B,0xA8,0x8F,0xF2,0x20,0x6E,0x6F,0x3B } }; // D646097F-6EF7-5746-8BA8-8FF2206E6F3B
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Input::IHoldingEventArgs>{ 0x2BF755C5,0xE799,0x41B4,{ 0xBB,0x40,0x24,0x2F,0x40,0x95,0x9B,0x71 } }; // 2BF755C5-E799-41B4-BB40-242F40959B71
@@ -618,6 +629,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::UI::Input::DraggingEventArgs>{ using type = winrt::Windows::UI::Input::IDraggingEventArgs; };
     template <> struct default_interface<winrt::Windows::UI::Input::EdgeGesture>{ using type = winrt::Windows::UI::Input::IEdgeGesture; };
     template <> struct default_interface<winrt::Windows::UI::Input::EdgeGestureEventArgs>{ using type = winrt::Windows::UI::Input::IEdgeGestureEventArgs; };
+    template <> struct default_interface<winrt::Windows::UI::Input::GamepadNavigationConfiguration>{ using type = winrt::Windows::UI::Input::IGamepadNavigationConfiguration; };
     template <> struct default_interface<winrt::Windows::UI::Input::GestureRecognizer>{ using type = winrt::Windows::UI::Input::IGestureRecognizer; };
     template <> struct default_interface<winrt::Windows::UI::Input::HoldingEventArgs>{ using type = winrt::Windows::UI::Input::IHoldingEventArgs; };
     template <> struct default_interface<winrt::Windows::UI::Input::InputActivationListener>{ using type = winrt::Windows::UI::Input::IInputActivationListener; };
@@ -722,6 +734,22 @@ namespace winrt::impl
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetForCurrentView(void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::UI::Input::IGamepadNavigationConfiguration>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_NavigationEnabled(bool*) noexcept = 0;
+            virtual int32_t __stdcall TrySetNavigationEnabled(bool, bool*) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall TryGetForCurrentProcess(void**) noexcept = 0;
+            virtual int32_t __stdcall get_IsSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Input::IGestureRecognizer>
@@ -1524,6 +1552,26 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::UI::Input::IEdgeGestureStatics>
     {
         template <typename D> using type = consume_Windows_UI_Input_IEdgeGestureStatics<D>;
+    };
+    template <typename D>
+    struct consume_Windows_UI_Input_IGamepadNavigationConfiguration
+    {
+        [[nodiscard]] auto NavigationEnabled() const;
+        auto TrySetNavigationEnabled(bool enabled) const;
+    };
+    template <> struct consume<winrt::Windows::UI::Input::IGamepadNavigationConfiguration>
+    {
+        template <typename D> using type = consume_Windows_UI_Input_IGamepadNavigationConfiguration<D>;
+    };
+    template <typename D>
+    struct consume_Windows_UI_Input_IGamepadNavigationConfigurationStatics
+    {
+        auto TryGetForCurrentProcess() const;
+        [[nodiscard]] auto IsSupported() const;
+    };
+    template <> struct consume<winrt::Windows::UI::Input::IGamepadNavigationConfigurationStatics>
+    {
+        template <typename D> using type = consume_Windows_UI_Input_IGamepadNavigationConfigurationStatics<D>;
     };
     template <typename D>
     struct consume_Windows_UI_Input_IGestureRecognizer
