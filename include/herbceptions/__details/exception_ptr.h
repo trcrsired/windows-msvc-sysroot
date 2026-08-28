@@ -22,6 +22,8 @@ extern "C" __HERBCEPTIONS_CXA_CODE_API ::std::error_domain_singleton const *
 __cxa_error_domain_msvc_exception_ptr() noexcept;
 extern "C" __HERBCEPTIONS_CXA_CODE_API ::std::size_t
 __cxa_error_code_msvc_exception_ptr() noexcept;
+extern "C" __HERBCEPTIONS_CXA_CODE_API ::std::size_t
+__cxa_error_code_msvc_exception_ptr_clone(void const *) noexcept;
 #else
 extern "C" __HERBCEPTIONS_CXA_CODE_API ::std::error_domain_singleton const *
 __cxa_error_domain_itanium_exception_ptr() noexcept;
@@ -49,14 +51,16 @@ public:
     return ::std::error_domains::__cxa_error_domain_itanium_exception_ptr();
 #endif
   }
-  static inline ::std::size_t code(errc_type __e) noexcept {
-    // Copy the first pointer-sized word of the exception_ptr. On Itanium
-    // this is the thrown-object pointer; on MSVC it is the exception
-    // record/object handle the domain understands.
-    ::std::size_t __temp;
+  static inline ::std::size_t code(errc_type const &__e) noexcept {
+#ifdef _MSC_VER
+    return ::std::error_domains::__cxa_error_code_msvc_exception_ptr_clone(
+        __builtin_addressof(__e));
+#else
+    void *__temp;
     __builtin_memcpy(__builtin_addressof(__temp), __builtin_addressof(__e),
                      sizeof(void *));
-    return __temp;
+    return ::std::error_domains::__cxa_error_code_itanium_exception_ptr(__temp);
+#endif
   }
 };
 
