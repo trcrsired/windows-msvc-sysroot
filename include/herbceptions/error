@@ -168,7 +168,7 @@ public:
   domain() const noexcept {
     return __domain_opaque;
   }
-  [[nodiscard]] constexpr ::std::size_t code() const noexcept {
+  [[nodiscard]] constexpr __SIZE_TYPE__ code() const noexcept {
     return __code_opaque;
   }
 
@@ -264,14 +264,13 @@ private:
   // The {domain, code} payload, laid out as exactly two words so the value
   // flows through the {void*, size_t} ABI slot unchanged.
   ::std::error_domain_singleton const *__domain_opaque{};
-  ::std::size_t __code_opaque{};
-
-  // a magic function compiler will know how to construct it
-  explicit constexpr error(void const *__domain, ::std::size_t __code) noexcept
-      : __domain_opaque(
-            static_cast<::std::error_domain_singleton const *>(__domain)),
-        __code_opaque(__code) {}
+  __SIZE_TYPE__ __code_opaque{};
 };
+
+static_assert(sizeof(::std::error) == 2 * sizeof(void *),
+              "std::error must be exactly two pointers in size");
+static_assert(alignof(::std::error) == alignof(void *),
+              "std::error alignment must match pointer alignment");
 
 namespace error_domains {
 #if (defined(_WIN32) || defined(__CYGWIN__)) && !defined(__WINE__)
@@ -368,8 +367,8 @@ constexpr auto herbception_cast(::std::error const &__e) noexcept {
 // These are thin wrappers over the compiler's `__is_herbceptions_*` /
 // `__has_herbceptions_*` builtins (available under -fherbceptions), providing
 // standard-library-style trait variable templates. They test the `throws`
-// channel (implicit std::error); there are no `fails{E}` variants because
-// fails{E} is a C-style feature restricted to free functions.
+// channel (implicit std::error); there are no `return_failure{E}` variants
+// because return_failure{E} is a C-style feature restricted to free functions.
 // ---------------------------------------------------------------------------
 #if defined(__HERBCEPTIONS__)
 template <typename __T>
@@ -381,28 +380,31 @@ struct is_herbceptions_throwsable
     : ::std::bool_constant<::std::is_herbceptions_throwsable_v<__T>> {};
 
 template <typename __F>
-inline constexpr bool is_invoke_herbceptions_fails_v =
-    __is_invoke_herbceptions_fails(__F);
+inline constexpr bool is_invoke_herbceptions_return_failure_v =
+    __is_invoke_herbceptions_return_failure(__F);
 
 template <typename __F>
-struct is_invoke_herbceptions_fails
-    : ::std::bool_constant<::std::is_invoke_herbceptions_fails_v<__F>> {};
+struct is_invoke_herbceptions_return_failure
+    : ::std::bool_constant<
+          ::std::is_invoke_herbceptions_return_failure_v<__F>> {};
 
-// __invoke_herbceptions_fails_result<F> yields a synthetic struct with
+// __invoke_herbceptions_return_failure_result<F> yields a synthetic struct with
 // value_type (the success return type) and error_type (the fails{E} error
 // type, void when F is not a fails function). Query it via the trailing _t
 // aliases below.
 template <typename __F>
-using invoke_herbceptions_fails_result_t =
-    __invoke_herbceptions_fails_result<__F>;
+using invoke_herbceptions_return_failure_result_t =
+    __invoke_herbceptions_return_failure_result<__F>;
 
 template <typename __F>
-using invoke_herbceptions_fails_value_t =
-    typename ::std::invoke_herbceptions_fails_result_t<__F>::value_type;
+using invoke_herbceptions_return_failure_value_t =
+    typename ::std::invoke_herbceptions_return_failure_result_t<
+        __F>::value_type;
 
 template <typename __F>
-using invoke_herbceptions_fails_error_t =
-    typename ::std::invoke_herbceptions_fails_result_t<__F>::error_type;
+using invoke_herbceptions_return_failure_error_t =
+    typename ::std::invoke_herbceptions_return_failure_result_t<
+        __F>::error_type;
 
 // Whether a type's throws-constructible/assignable/convertible operations can
 // propagate a herbception error through the `throws` channel.
