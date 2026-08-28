@@ -1,6 +1,0 @@
-/home/cqwrteur/toolchains/windows-msvc-sysroot/.artifacts/windows-msvc-sysroot/x86_64-unknown-windows-msvc/runtimes/CMakeFiles/runtimes-test-depends.dir
-/home/cqwrteur/toolchains/windows-msvc-sysroot/.artifacts/windows-msvc-sysroot/x86_64-unknown-windows-msvc/runtimes/CMakeFiles/check-runtimes.dir
-/home/cqwrteur/toolchains/windows-msvc-sysroot/.artifacts/windows-msvc-sysroot/x86_64-unknown-windows-msvc/runtimes/CMakeFiles/edit_cache.dir
-/home/cqwrteur/toolchains/windows-msvc-sysroot/.artifacts/windows-msvc-sysroot/x86_64-unknown-windows-msvc/runtimes/CMakeFiles/rebuild_cache.dir
-/home/cqwrteur/toolchains/windows-msvc-sysroot/.artifacts/windows-msvc-sysroot/x86_64-unknown-windows-msvc/runtimes/llvm-lit/CMakeFiles/edit_cache.dir
-/home/cqwrteur/toolchains/windows-msvc-sysroot/.artifacts/windows-msvc-sysroot/x86_64-unknown-windows-msvc/runtimes/llvm-lit/CMakeFiles/rebuild_cache.dir
