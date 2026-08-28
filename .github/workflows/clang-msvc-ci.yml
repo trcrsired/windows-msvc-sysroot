@@ -44,7 +44,7 @@ jobs:
       run: |
         SYSROOT="${PWD}"
         TRIPLETS=("i686-unknown-windows-msvc" "x86_64-unknown-windows-msvc" "aarch64-unknown-windows-msvc")
-        STDLIBS=("msstl" "v1")
+        STDLIBS=("msvcstl" "v1")
 
         for triplet in "${TRIPLETS[@]}"; do
           for stdlib in "${STDLIBS[@]}"; do
