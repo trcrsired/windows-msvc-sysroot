@@ -21,7 +21,7 @@ aarch64-windows-msvc
 Windows + CRT Headers Include Directory: ```include```.
 
 ### C++ standard library headers:
-With ```-stdlib=msstl```, headers should be located in ```include/c++/msstl```.
+With ```-stdlib=msvcstl```, headers should be located in ```include/c++/msvcstl```.
 
 With ```-stdlib=libc++```, headers should be located in ```include/c++/v1```.
 
@@ -45,7 +45,7 @@ int main()
 ```
 ```
 # Suppose the repository is cloned in $HOME on Linux
-$ clang++ -o hello.exe hello.cc -O3 -fuse-ld=lld --target=x86_64-windows-msvc -I$HOME/windows-msvc-sysroot/include -I$HOME/windows-msvc-sysroot/include/c++/msstl -L$HOME/windows-msvc-sysroot/lib/x86_64-unknown-windows-msvc
+$ clang++ -o hello.exe hello.cc -O3 -fuse-ld=lld --target=x86_64-windows-msvc -I$HOME/windows-msvc-sysroot/include -I$HOME/windows-msvc-sysroot/include/c++/msvcstl -L$HOME/windows-msvc-sysroot/lib/x86_64-unknown-windows-msvc
 $ wine ./hello.exe
 Hello World
 ```
