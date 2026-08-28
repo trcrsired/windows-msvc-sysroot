@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/cqwrteur/toolchains/windows-msvc-sysroot/.artifacts/windows-msvc-sysroot/x86_64-unknown-windows-msvc/runtimes/cmake_install.cmake",
+		"/home/cqwrteur/toolchains/windows-msvc-sysroot/.artifacts/windows-msvc-sysroot/x86_64-unknown-windows-msvc/runtimes/llvm-lit/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
