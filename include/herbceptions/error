@@ -273,33 +273,9 @@ static_assert(alignof(::std::error) == alignof(void *),
               "std::error alignment must match pointer alignment");
 
 namespace error_domains {
-#if (defined(_WIN32) || defined(__CYGWIN__)) && !defined(__WINE__)
-#if defined(__GNUC__) || defined(__clang__)
-#if defined(_HERBCEPTIONS_BUILDING_RUNTIME)
-#if 0
-//clang bug on windows on arm. Wait for upstream to fix before we set weak
-#define __HERBCEPTIONS_API [[__gnu__::__dllexport__, __gnu__::__weak__]]
-#else
-#define __HERBCEPTIONS_API [[__gnu__::__dllexport__]]
-#endif
-#else
-#define __HERBCEPTIONS_API [[__gnu__::__dllimport__, __gnu__::__const__]]
-#endif
-#elif defined(_MSC_VER)
-#if defined(_HERBCEPTIONS_BUILDING_RUNTIME)
-#define __HERBCEPTIONS_API __declspec(dllexport)
-#else
-#define __HERBCEPTIONS_API __declspec(dllimport)
-#endif
-#endif
-#else
-#if defined(_HERBCEPTIONS_BUILD_RUNTIME)
-#define __HERBCEPTIONS_API                                                     \
-  [[__gnu__::__visibility__("default"), __gnu__::__weak__]]
-#else
-#define __HERBCEPTIONS_API [[__gnu__::__const__]]
-#endif
-#endif
+#pragma push_macro("__HERBCEPTIONS_API")
+#undef __HERBCEPTIONS_API
+#include "__details/macros_guard.h"
 extern "C" {
 __HERBCEPTIONS_API
 ::std::error_domain_singleton const *__cxa_error_domain_win32() noexcept;
@@ -322,8 +298,22 @@ __HERBCEPTIONS_API
 __HERBCEPTIONS_API
 ::std::error_domain_singleton const *__cxa_error_domain_parse() noexcept;
 
+#ifdef _MSC_VER
+__HERBCEPTIONS_API ::std::error_domain_singleton const *
+__cxa_error_domain_msvc_exception_ptr() noexcept;
+__HERBCEPTIONS_API ::std::size_t __cxa_error_code_msvc_exception_ptr() noexcept;
+__HERBCEPTIONS_API ::std::size_t
+__cxa_error_code_msvc_exception_ptr_clone(void const *) noexcept;
+#else
+__HERBCEPTIONS_API ::std::error_domain_singleton const *
+__cxa_error_domain_itanium_exception_ptr() noexcept;
+__HERBCEPTIONS_API ::std::size_t
+__cxa_error_code_itanium_exception_ptr(void *) noexcept;
+#endif
+
 } // extern "C"
 #undef __HERBCEPTIONS_API
+#pragma pop_macro("__HERBCEPTIONS_API")
 } // namespace error_domains
 
 template <typename __Other>
@@ -517,16 +507,16 @@ struct has_herbceptions_throws_move_assign
 
 } // namespace std
 
-#include "herbceptions/__details/cmath_errc.h"
-#include "herbceptions/__details/exception_ptr.h"
-#include "herbceptions/__details/parse.h"
-#include "herbceptions/__details/posix.h"
+#include "__details/cmath_errc.h"
+#include "__details/exception_ptr.h"
+#include "__details/parse.h"
+#include "__details/posix.h"
 
 #ifdef _WIN32
-#include "herbceptions/__details/com.h"
-#include "herbceptions/__details/nt.h"
-#include "herbceptions/__details/win32.h"
-#include "herbceptions/__details/wine.h"
+#include "__details/com.h"
+#include "__details/nt.h"
+#include "__details/win32.h"
+#include "__details/wine.h"
 #endif
 
 // Restore the macros saved above, in reverse order.
