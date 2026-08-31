@@ -1,3 +1,11 @@
+//===----------------------------------------------------------------------===//
+//
+// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// See https://llvm.org/LICENSE.txt for license information.
+// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+//
+//===----------------------------------------------------------------------===//
+
 #pragma once
 /*
 wine (wine_errc) error domain header.
@@ -13,11 +21,9 @@ reports for host-side errors; they differ from the Windows API error codes and
 are independent of the host libc's errno.
 */
 
-#if defined(_WIN32) || defined(__CYGWIN__)
-
 namespace std {
 
-enum class wine_errc : ::std::int_least32_t {
+enum class wine_errc : ::std::uint_least32_t {
   success = 0,                             // __WINE_UNIX_ERRNO_SUCCESS
   operation_not_permitted = 1,             // EPERM
   no_such_file_or_directory = 2,           // ENOENT
@@ -111,5 +117,3 @@ public:
 };
 
 } // namespace std
-
-#endif // _WIN32 || __CYGWIN__

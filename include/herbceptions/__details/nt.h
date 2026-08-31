@@ -1,3 +1,11 @@
+//===----------------------------------------------------------------------===//
+//
+// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// See https://llvm.org/LICENSE.txt for license information.
+// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+//
+//===----------------------------------------------------------------------===//
+
 #pragma once
 /*
 nt (nt_errc) error domain header.
@@ -6,12 +14,6 @@ Declares nt_errc (NTSTATUS STATUS_* codes) and its error_domain
 specialization. The singleton vtable is implemented in src/nt.cpp. Only
 available on _WIN32/__CYGWIN__ targets.
 */
-
-#if defined(_WIN32) || defined(__CYGWIN__)
-
-#include "herbceptions/error"
-
-#include <cstdint>
 
 namespace std {
 
@@ -36,5 +38,3 @@ public:
 };
 
 } // namespace std
-
-#endif // _WIN32 || __CYGWIN__
