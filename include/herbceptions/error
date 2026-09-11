@@ -317,6 +317,8 @@ __HERBCEPTIONS_API ::std::error_domain_singleton const *
 __cxa_error_domain_itanium_exception_ptr() noexcept;
 __HERBCEPTIONS_API ::std::size_t
 __cxa_error_code_itanium_exception_ptr(void *) noexcept;
+__HERBCEPTIONS_API ::std::size_t
+__cxa_error_code_itanium_exception_ptr_clone(void *) noexcept;
 #endif
 
 } // extern "C"

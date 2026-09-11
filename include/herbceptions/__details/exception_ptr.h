@@ -35,7 +35,8 @@ public:
     void *__temp;
     __builtin_memcpy(__builtin_addressof(__temp), __builtin_addressof(__e),
                      sizeof(void *));
-    return ::std::error_domains::__cxa_error_code_itanium_exception_ptr(__temp);
+    return ::std::error_domains::__cxa_error_code_itanium_exception_ptr_clone(
+        __temp);
 #endif
   }
 };
