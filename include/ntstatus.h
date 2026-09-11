@@ -10690,6 +10690,15 @@ Notes:
 //
 #define STATUS_VOLUME_ROLLBACK_DETECTED  ((NTSTATUS)0xC00004E3L)
 
+//
+// MessageId: STATUS_DEVICE_NACKED
+//
+// MessageText:
+//
+// The request failed due to the device passively/actively NACKing the operation.
+//
+#define STATUS_DEVICE_NACKED             ((NTSTATUS)0xC00004E5L)
+
 
 //     **** New SYSTEM error codes can be inserted here ****
 
@@ -11985,6 +11994,15 @@ Notes:
 // Filesystem needs to release all the file resources and callback into Cc to drain pending section deletions, before retrying the operation.
 //
 #define STATUS_CC_NEEDS_CALLBACK_SECTION_DRAIN ((NTSTATUS)0xC000A008L)
+
+//
+// MessageId: STATUS_FIPS_FAILURE
+//
+// MessageText:
+//
+// A cryptographic operation failed FIPS validation.
+//
+#define STATUS_FIPS_FAILURE              ((NTSTATUS)0xC000A009L)
 
 /*++
 

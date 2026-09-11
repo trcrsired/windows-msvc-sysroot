@@ -311,6 +311,7 @@ WINRT_EXPORT namespace winrt::Windows::UI::Notifications
     struct IToastNotificationManagerStatics2;
     struct IToastNotificationManagerStatics4;
     struct IToastNotificationManagerStatics5;
+    struct IToastNotificationStatics;
     struct IToastNotifier;
     struct IToastNotifier2;
     struct IToastNotifier3;
@@ -417,6 +418,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics4>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics5>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::UI::Notifications::IToastNotificationStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::Notifications::IToastNotifier>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::Notifications::IToastNotifier2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::UI::Notifications::IToastNotifier3>{ using type = interface_category; };
@@ -587,6 +589,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics2> = L"Windows.UI.Notifications.IToastNotificationManagerStatics2";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics4> = L"Windows.UI.Notifications.IToastNotificationManagerStatics4";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics5> = L"Windows.UI.Notifications.IToastNotificationManagerStatics5";
+    template <> inline constexpr auto& name_v<winrt::Windows::UI::Notifications::IToastNotificationStatics> = L"Windows.UI.Notifications.IToastNotificationStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Notifications::IToastNotifier> = L"Windows.UI.Notifications.IToastNotifier";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Notifications::IToastNotifier2> = L"Windows.UI.Notifications.IToastNotifier2";
     template <> inline constexpr auto& name_v<winrt::Windows::UI::Notifications::IToastNotifier3> = L"Windows.UI.Notifications.IToastNotifier3";
@@ -653,6 +656,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics2>{ 0x7AB93C52,0x0E48,0x4750,{ 0xBA,0x9D,0x1A,0x41,0x13,0x98,0x18,0x47 } }; // 7AB93C52-0E48-4750-BA9D-1A4113981847
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics4>{ 0x8F993FD3,0xE516,0x45FB,{ 0x81,0x30,0x39,0x8E,0x93,0xFA,0x52,0xC3 } }; // 8F993FD3-E516-45FB-8130-398E93FA52C3
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics5>{ 0xD6F5F569,0xD40D,0x407C,{ 0x89,0x89,0x88,0xCA,0xB4,0x2C,0xFD,0x14 } }; // D6F5F569-D40D-407C-8989-88CAB42CFD14
+    template <> inline constexpr guid guid_v<winrt::Windows::UI::Notifications::IToastNotificationStatics>{ 0x2AA8F213,0xD8C9,0x48FE,{ 0xB6,0x41,0x4A,0x63,0xD6,0x9C,0xE0,0x79 } }; // 2AA8F213-D8C9-48FE-B641-4A63D69CE079
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Notifications::IToastNotifier>{ 0x75927B93,0x03F3,0x41EC,{ 0x91,0xD3,0x6E,0x5B,0xAC,0x1B,0x38,0xE7 } }; // 75927B93-03F3-41EC-91D3-6E5BAC1B38E7
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Notifications::IToastNotifier2>{ 0x354389C6,0x7C01,0x4BD5,{ 0x9C,0x20,0x60,0x43,0x40,0xCD,0x2B,0x74 } }; // 354389C6-7C01-4BD5-9C20-604340CD2B74
     template <> inline constexpr guid guid_v<winrt::Windows::UI::Notifications::IToastNotifier3>{ 0xAE75A04A,0x3B0C,0x51AD,{ 0xB7,0xE8,0xB0,0x8A,0xB6,0x05,0x25,0x49 } }; // AE75A04A-3B0C-51AD-B7E8-B08AB6052549
@@ -1275,6 +1279,13 @@ namespace winrt::impl
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall GetDefault(void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::UI::Notifications::IToastNotificationStatics>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_IsExpandableContentSupported(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::UI::Notifications::IToastNotifier>
@@ -2041,6 +2052,15 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::UI::Notifications::IToastNotificationManagerStatics5>
     {
         template <typename D> using type = consume_Windows_UI_Notifications_IToastNotificationManagerStatics5<D>;
+    };
+    template <typename D>
+    struct consume_Windows_UI_Notifications_IToastNotificationStatics
+    {
+        [[nodiscard]] auto IsExpandableContentSupported() const;
+    };
+    template <> struct consume<winrt::Windows::UI::Notifications::IToastNotificationStatics>
+    {
+        template <typename D> using type = consume_Windows_UI_Notifications_IToastNotificationStatics<D>;
     };
     template <typename D>
     struct consume_Windows_UI_Notifications_IToastNotifier

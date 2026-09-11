@@ -114,6 +114,20 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
         IWindowsSoftwareUpdateFactory(std::nullptr_t = nullptr) noexcept {}
         IWindowsSoftwareUpdateFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IWindowsSoftwareUpdateIdentity :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IWindowsSoftwareUpdateIdentity>
+    {
+        IWindowsSoftwareUpdateIdentity(std::nullptr_t = nullptr) noexcept {}
+        IWindowsSoftwareUpdateIdentity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct WINRT_IMPL_EMPTY_BASES IWindowsSoftwareUpdateIdentityFactory :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IWindowsSoftwareUpdateIdentityFactory>
+    {
+        IWindowsSoftwareUpdateIdentityFactory(std::nullptr_t = nullptr) noexcept {}
+        IWindowsSoftwareUpdateIdentityFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IWindowsSoftwareUpdateLocalizationInfo :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IWindowsSoftwareUpdateLocalizationInfo>
@@ -351,20 +365,6 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
     {
         IWindowsUpdateManagerFactory2(std::nullptr_t = nullptr) noexcept {}
         IWindowsUpdateManagerFactory2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
-    };
-    struct WINRT_IMPL_EMPTY_BASES IWindowsUpdateManagerScanOptions :
-        winrt::Windows::Foundation::IInspectable,
-        impl::consume_t<IWindowsUpdateManagerScanOptions>
-    {
-        IWindowsUpdateManagerScanOptions(std::nullptr_t = nullptr) noexcept {}
-        IWindowsUpdateManagerScanOptions(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
-    };
-    struct WINRT_IMPL_EMPTY_BASES IWindowsUpdateManagerScanOptionsFactory :
-        winrt::Windows::Foundation::IInspectable,
-        impl::consume_t<IWindowsUpdateManagerScanOptionsFactory>
-    {
-        IWindowsUpdateManagerScanOptionsFactory(std::nullptr_t = nullptr) noexcept {}
-        IWindowsUpdateManagerScanOptionsFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     struct WINRT_IMPL_EMPTY_BASES IWindowsUpdateProgressChangedEventArgs :
         winrt::Windows::Foundation::IInspectable,

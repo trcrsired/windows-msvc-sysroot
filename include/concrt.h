@@ -5615,7 +5615,7 @@ enum Concrt_TraceFlags
     PPLEventFlag                    = 0x10,
     AgentEventFlag                  = 0x20,
 
-    AllEventsFlag                   = 0xFFFFFFFF
+    AllEventsFlag                   = -1
 };
 
 /// <summary>

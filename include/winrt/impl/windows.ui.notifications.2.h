@@ -209,6 +209,7 @@ WINRT_EXPORT namespace winrt::Windows::UI::Notifications
         ToastNotification(std::nullptr_t) noexcept {}
         ToastNotification(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::UI::Notifications::IToastNotification(ptr, take_ownership_from_abi) {}
         explicit ToastNotification(winrt::Windows::Data::Xml::Dom::XmlDocument const& content);
+        [[nodiscard]] static auto IsExpandableContentSupported();
     };
     struct WINRT_IMPL_EMPTY_BASES ToastNotificationActionTriggerDetail : winrt::Windows::UI::Notifications::IToastNotificationActionTriggerDetail
     {

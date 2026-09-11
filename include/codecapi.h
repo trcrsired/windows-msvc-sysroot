@@ -410,6 +410,8 @@ Abstract:
     #define STATIC_CODECAPI_AVEncVideoInputAbsoluteQPBlockSettings 0xef95a145, 0x4f91, 0x4dea, 0x81, 0x73, 0xac, 0xff, 0x11, 0x43, 0x42, 0x10
 
     #define STATIC_CODECAPI_AVEncVideoD3D12ReconstructedPictureOutputMode 0x4a7b2e8f, 0x1d93, 0x4c6a, 0xb5, 0x48, 0x91, 0xe2, 0xf8, 0xc5, 0xa7, 0xd3
+    
+    #define STATIC_CODECAPI_AVEncAV1EncoderOperatingMode    0x8f2e1f91, 0x5b4c, 0x4e1a, 0x9c, 0x3d, 0x2f, 0x6a, 0x8b, 0x1d, 0x4e, 0x7c
 
 // end of static definitions }
 
@@ -2219,6 +2221,22 @@ enum eAVEncVideoD3D12ReconstructedPictureOutputMode
 // ulVal must be a value from the eAVEncVideoD3D12ReconstructedPictureOutputMode enumeration.
 DEFINE_CODECAPI_GUID(AVEncVideoD3D12ReconstructedPictureOutputMode, "4A7B2E8F-1D93-4C6A-B548-91E2F8C5A7D3", 0x4a7b2e8f, 0x1d93, 0x4c6a, 0xb5, 0x48, 0x91, 0xe2, 0xf8, 0xc5, 0xa7, 0xd3)
 
+// 
+// AV1 Encoder operating modes 
+// 
+enum eAV1EncoderOperatingMode 
+{ 
+     eAV1EncoderOperatingMode_Auto      = 0, // Let the encoder automatically choose an operating mode. 
+     eAV1EncoderOperatingMode_Reference = 1, // Uses a reference implementation that provides full feature support and deterministic behavior. 
+     eAV1EncoderOperatingMode_Optimized = 2, // Uses an implementation that is optimized for performance, if possible. If the encoding settings are not supported by this mode, the encoder will return an error code about the invalid settings. 
+}; 
+
+// AVEncAV1EncoderOperatingMode (VT_UI4)  
+// This property can be used to configure an AV1 encoder to use a full-feature reference implementation or an implementation that is optimized for scalability and performance. 
+// ulVal should be eAV1EncoderOperatingMode_Auto (0), eAV1EncoderOperatingMode_Reference (1), or eAV1EncoderOperatingMode_Optimized (2). 
+// In Microsoft's software-based AV1 encoder, eAV1EncoderOperatingMode_Optimized uses the "SVT-AV1" implementation, which currently only supports x64 and ARM64 processor architectures, 8 bits or 10 bits per pixel, 4:2:0 chroma subsampling, AV1 Profile 0, and AV1 Levels 2.0 - 6.3. 
+DEFINE_CODECAPI_GUID( AVEncAV1EncoderOperatingMode,"8F2E1F91-5B4C-4E1A-9C3D-2F6A8B1D4E7C", 0x8f2e1f91, 0x5b4c, 0x4e1a, 0x9c, 0x3d, 0x2f, 0x6a, 0x8b, 0x1d, 0x4e, 0x7c ) 
+
 #ifndef UUID_GEN
 // { GUID refs
     #define CODECAPI_AVEncCommonFormatConstraint DEFINE_CODECAPI_GUIDNAMED( AVEncCommonFormatConstraint )
@@ -2568,6 +2586,8 @@ DEFINE_CODECAPI_GUID(AVEncVideoD3D12ReconstructedPictureOutputMode, "4A7B2E8F-1D
     #define CODECAPI_AVEncVideoInputDeltaQPBlockSettings    DEFINE_CODECAPI_GUIDNAMED( AVEncVideoInputDeltaQPBlockSettings )
     #define CODECAPI_AVEncVideoInputAbsoluteQPBlockSettings DEFINE_CODECAPI_GUIDNAMED( AVEncVideoInputAbsoluteQPBlockSettings )
     #define CODECAPI_AVEncVideoD3D12ReconstructedPictureOutputMode    DEFINE_CODECAPI_GUIDNAMED( AVEncVideoD3D12ReconstructedPictureOutputMode )
+    
+    #define CODECAPI_AVEncAV1EncoderOperatingMode   DEFINE_CODECAPI_GUIDNAMED( AVEncAV1EncoderOperatingMode ) 
 #endif
 
 

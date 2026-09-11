@@ -215,6 +215,13 @@ typedef interface IWRdsProtocolConnection2 IWRdsProtocolConnection2;
 #endif 	/* __IWRdsProtocolConnection2_FWD_DEFINED__ */
 
 
+#ifndef __IWRdsProtocolConnection3_Experimental_FWD_DEFINED__
+#define __IWRdsProtocolConnection3_Experimental_FWD_DEFINED__
+typedef interface IWRdsProtocolConnection3_Experimental IWRdsProtocolConnection3_Experimental;
+
+#endif 	/* __IWRdsProtocolConnection3_Experimental_FWD_DEFINED__ */
+
+
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
@@ -3476,6 +3483,7 @@ EXTERN_C const IID IID_IWRdsEnhancedFastReconnectArbitrator;
 
 
 
+
 extern RPC_IF_HANDLE __MIDL_itf_wtsprotocol_0000_0023_v0_0_c_ifspec;
 extern RPC_IF_HANDLE __MIDL_itf_wtsprotocol_0000_0023_v0_0_s_ifspec;
 
@@ -3774,7 +3782,315 @@ EXTERN_C const IID IID_IWRdsProtocolConnection2;
 #endif 	/* __IWRdsProtocolConnection2_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wtsprotocol_0000_0024 */
+#ifndef __IWRdsProtocolConnection3_Experimental_INTERFACE_DEFINED__
+#define __IWRdsProtocolConnection3_Experimental_INTERFACE_DEFINED__
+
+/* interface IWRdsProtocolConnection3_Experimental */
+/* [unique][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IWRdsProtocolConnection3_Experimental;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("3AA87DA3-F60B-4280-B385-F1CC22AD5D9F")
+    IWRdsProtocolConnection3_Experimental : public IWRdsProtocolConnection2
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetSerializedUserCredentialInteractively( 
+            /* [in] */ __RPC__in const GUID *scenarioId,
+            /* [string][in] */ __RPC__in_string const wchar_t *usernameHint,
+            /* [out] */ __RPC__deref_out_opt WRDS_SERIALIZED_USER_CREDENTIAL **userCredential) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IWRdsProtocolConnection3_ExperimentalVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, GetLogonErrorRedirector)
+        HRESULT ( STDMETHODCALLTYPE *GetLogonErrorRedirector )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [out] */ __RPC__deref_out_opt IWRdsProtocolLogonErrorRedirector **ppLogonErrorRedir);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, AcceptConnection)
+        HRESULT ( STDMETHODCALLTYPE *AcceptConnection )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, GetClientData)
+        HRESULT ( STDMETHODCALLTYPE *GetClientData )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [out] */ __RPC__out WRDS_CLIENT_DATA *pClientData);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, GetClientMonitorData)
+        HRESULT ( STDMETHODCALLTYPE *GetClientMonitorData )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [out] */ __RPC__out UINT *pNumMonitors,
+            /* [out] */ __RPC__out UINT *pPrimaryMonitor);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, GetUserCredentials)
+        HRESULT ( STDMETHODCALLTYPE *GetUserCredentials )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [out] */ __RPC__out WRDS_USER_CREDENTIAL *pUserCreds);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, GetLicenseConnection)
+        HRESULT ( STDMETHODCALLTYPE *GetLicenseConnection )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [out] */ __RPC__deref_out_opt IWRdsProtocolLicenseConnection **ppLicenseConnection);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, AuthenticateClientToSession)
+        HRESULT ( STDMETHODCALLTYPE *AuthenticateClientToSession )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [out] */ __RPC__out WRDS_SESSION_ID *SessionId);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, NotifySessionId)
+        HRESULT ( STDMETHODCALLTYPE *NotifySessionId )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [in] */ __RPC__in WRDS_SESSION_ID *SessionId,
+            /* [in] */ HANDLE_PTR SessionHandle);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, GetInputHandles)
+        HRESULT ( STDMETHODCALLTYPE *GetInputHandles )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [out] */ __RPC__out HANDLE_PTR *pKeyboardHandle,
+            /* [out] */ __RPC__out HANDLE_PTR *pMouseHandle,
+            /* [out] */ __RPC__out HANDLE_PTR *pBeepHandle);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, GetVideoHandle)
+        HRESULT ( STDMETHODCALLTYPE *GetVideoHandle )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [out] */ __RPC__out HANDLE_PTR *pVideoHandle);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, ConnectNotify)
+        HRESULT ( STDMETHODCALLTYPE *ConnectNotify )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [in] */ ULONG SessionId);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, IsUserAllowedToLogon)
+        HRESULT ( STDMETHODCALLTYPE *IsUserAllowedToLogon )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [in] */ ULONG SessionId,
+            /* [in] */ HANDLE_PTR UserToken,
+            /* [string][in] */ __RPC__in_string WCHAR *pDomainName,
+            /* [string][in] */ __RPC__in_string WCHAR *pUserName);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, SessionArbitrationEnumeration)
+        HRESULT ( STDMETHODCALLTYPE *SessionArbitrationEnumeration )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [in] */ HANDLE_PTR hUserToken,
+            /* [in] */ BOOL bSingleSessionPerUserEnabled,
+            /* [size_is][out] */ __RPC__out_ecount_full(*pdwSessionIdentifierCount) ULONG *pSessionIdArray,
+            /* [out][in] */ __RPC__inout ULONG *pdwSessionIdentifierCount);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, LogonNotify)
+        HRESULT ( STDMETHODCALLTYPE *LogonNotify )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [in] */ HANDLE_PTR hClientToken,
+            /* [string][in] */ __RPC__in_string WCHAR *wszUserName,
+            /* [string][in] */ __RPC__in_string WCHAR *wszDomainName,
+            /* [in] */ __RPC__in WRDS_SESSION_ID *SessionId,
+            /* [out][in] */ __RPC__inout PWRDS_CONNECTION_SETTINGS pWRdsConnectionSettings);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, PreDisconnect)
+        HRESULT ( STDMETHODCALLTYPE *PreDisconnect )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [in] */ ULONG DisconnectReason);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, DisconnectNotify)
+        HRESULT ( STDMETHODCALLTYPE *DisconnectNotify )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, Close)
+        HRESULT ( STDMETHODCALLTYPE *Close )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, GetProtocolStatus)
+        HRESULT ( STDMETHODCALLTYPE *GetProtocolStatus )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [out] */ __RPC__out WRDS_PROTOCOL_STATUS *pProtocolStatus);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, GetLastInputTime)
+        HRESULT ( STDMETHODCALLTYPE *GetLastInputTime )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [out] */ __RPC__out ULONG64 *pLastInputTime);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, SetErrorInfo)
+        HRESULT ( STDMETHODCALLTYPE *SetErrorInfo )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [in] */ ULONG ulError);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, CreateVirtualChannel)
+        HRESULT ( STDMETHODCALLTYPE *CreateVirtualChannel )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [string][in] */ __RPC__in_string CHAR *szEndpointName,
+            /* [in] */ BOOL bStatic,
+            /* [in] */ ULONG RequestedPriority,
+            /* [out] */ __RPC__out ULONG_PTR *phChannel);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, QueryProperty)
+        HRESULT ( STDMETHODCALLTYPE *QueryProperty )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [in] */ GUID QueryType,
+            /* [in] */ ULONG ulNumEntriesIn,
+            /* [in] */ ULONG ulNumEntriesOut,
+            /* [size_is][optional][in] */ __RPC__in_ecount_full(ulNumEntriesIn) PWRDS_PROPERTY_VALUE pPropertyEntriesIn,
+            /* [size_is][optional][out] */ __RPC__out_ecount_full(ulNumEntriesOut) PWRDS_PROPERTY_VALUE pPropertyEntriesOut);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, GetShadowConnection)
+        HRESULT ( STDMETHODCALLTYPE *GetShadowConnection )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [out] */ __RPC__deref_out_opt IWRdsProtocolShadowConnection **ppShadowConnection);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection, NotifyCommandProcessCreated)
+        HRESULT ( STDMETHODCALLTYPE *NotifyCommandProcessCreated )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [in] */ ULONG SessionId);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection2, GetSerializedUserCredential)
+        HRESULT ( STDMETHODCALLTYPE *GetSerializedUserCredential )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [out] */ __RPC__deref_out_opt WRDS_SERIALIZED_USER_CREDENTIAL **userCredential);
+        
+        DECLSPEC_XFGVIRT(IWRdsProtocolConnection3_Experimental, GetSerializedUserCredentialInteractively)
+        HRESULT ( STDMETHODCALLTYPE *GetSerializedUserCredentialInteractively )( 
+            __RPC__in IWRdsProtocolConnection3_Experimental * This,
+            /* [in] */ __RPC__in const GUID *scenarioId,
+            /* [string][in] */ __RPC__in_string const wchar_t *usernameHint,
+            /* [out] */ __RPC__deref_out_opt WRDS_SERIALIZED_USER_CREDENTIAL **userCredential);
+        
+        END_INTERFACE
+    } IWRdsProtocolConnection3_ExperimentalVtbl;
+
+    interface IWRdsProtocolConnection3_Experimental
+    {
+        CONST_VTBL struct IWRdsProtocolConnection3_ExperimentalVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IWRdsProtocolConnection3_Experimental_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IWRdsProtocolConnection3_Experimental_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IWRdsProtocolConnection3_Experimental_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IWRdsProtocolConnection3_Experimental_GetLogonErrorRedirector(This,ppLogonErrorRedir)	\
+    ( (This)->lpVtbl -> GetLogonErrorRedirector(This,ppLogonErrorRedir) ) 
+
+#define IWRdsProtocolConnection3_Experimental_AcceptConnection(This)	\
+    ( (This)->lpVtbl -> AcceptConnection(This) ) 
+
+#define IWRdsProtocolConnection3_Experimental_GetClientData(This,pClientData)	\
+    ( (This)->lpVtbl -> GetClientData(This,pClientData) ) 
+
+#define IWRdsProtocolConnection3_Experimental_GetClientMonitorData(This,pNumMonitors,pPrimaryMonitor)	\
+    ( (This)->lpVtbl -> GetClientMonitorData(This,pNumMonitors,pPrimaryMonitor) ) 
+
+#define IWRdsProtocolConnection3_Experimental_GetUserCredentials(This,pUserCreds)	\
+    ( (This)->lpVtbl -> GetUserCredentials(This,pUserCreds) ) 
+
+#define IWRdsProtocolConnection3_Experimental_GetLicenseConnection(This,ppLicenseConnection)	\
+    ( (This)->lpVtbl -> GetLicenseConnection(This,ppLicenseConnection) ) 
+
+#define IWRdsProtocolConnection3_Experimental_AuthenticateClientToSession(This,SessionId)	\
+    ( (This)->lpVtbl -> AuthenticateClientToSession(This,SessionId) ) 
+
+#define IWRdsProtocolConnection3_Experimental_NotifySessionId(This,SessionId,SessionHandle)	\
+    ( (This)->lpVtbl -> NotifySessionId(This,SessionId,SessionHandle) ) 
+
+#define IWRdsProtocolConnection3_Experimental_GetInputHandles(This,pKeyboardHandle,pMouseHandle,pBeepHandle)	\
+    ( (This)->lpVtbl -> GetInputHandles(This,pKeyboardHandle,pMouseHandle,pBeepHandle) ) 
+
+#define IWRdsProtocolConnection3_Experimental_GetVideoHandle(This,pVideoHandle)	\
+    ( (This)->lpVtbl -> GetVideoHandle(This,pVideoHandle) ) 
+
+#define IWRdsProtocolConnection3_Experimental_ConnectNotify(This,SessionId)	\
+    ( (This)->lpVtbl -> ConnectNotify(This,SessionId) ) 
+
+#define IWRdsProtocolConnection3_Experimental_IsUserAllowedToLogon(This,SessionId,UserToken,pDomainName,pUserName)	\
+    ( (This)->lpVtbl -> IsUserAllowedToLogon(This,SessionId,UserToken,pDomainName,pUserName) ) 
+
+#define IWRdsProtocolConnection3_Experimental_SessionArbitrationEnumeration(This,hUserToken,bSingleSessionPerUserEnabled,pSessionIdArray,pdwSessionIdentifierCount)	\
+    ( (This)->lpVtbl -> SessionArbitrationEnumeration(This,hUserToken,bSingleSessionPerUserEnabled,pSessionIdArray,pdwSessionIdentifierCount) ) 
+
+#define IWRdsProtocolConnection3_Experimental_LogonNotify(This,hClientToken,wszUserName,wszDomainName,SessionId,pWRdsConnectionSettings)	\
+    ( (This)->lpVtbl -> LogonNotify(This,hClientToken,wszUserName,wszDomainName,SessionId,pWRdsConnectionSettings) ) 
+
+#define IWRdsProtocolConnection3_Experimental_PreDisconnect(This,DisconnectReason)	\
+    ( (This)->lpVtbl -> PreDisconnect(This,DisconnectReason) ) 
+
+#define IWRdsProtocolConnection3_Experimental_DisconnectNotify(This)	\
+    ( (This)->lpVtbl -> DisconnectNotify(This) ) 
+
+#define IWRdsProtocolConnection3_Experimental_Close(This)	\
+    ( (This)->lpVtbl -> Close(This) ) 
+
+#define IWRdsProtocolConnection3_Experimental_GetProtocolStatus(This,pProtocolStatus)	\
+    ( (This)->lpVtbl -> GetProtocolStatus(This,pProtocolStatus) ) 
+
+#define IWRdsProtocolConnection3_Experimental_GetLastInputTime(This,pLastInputTime)	\
+    ( (This)->lpVtbl -> GetLastInputTime(This,pLastInputTime) ) 
+
+#define IWRdsProtocolConnection3_Experimental_SetErrorInfo(This,ulError)	\
+    ( (This)->lpVtbl -> SetErrorInfo(This,ulError) ) 
+
+#define IWRdsProtocolConnection3_Experimental_CreateVirtualChannel(This,szEndpointName,bStatic,RequestedPriority,phChannel)	\
+    ( (This)->lpVtbl -> CreateVirtualChannel(This,szEndpointName,bStatic,RequestedPriority,phChannel) ) 
+
+#define IWRdsProtocolConnection3_Experimental_QueryProperty(This,QueryType,ulNumEntriesIn,ulNumEntriesOut,pPropertyEntriesIn,pPropertyEntriesOut)	\
+    ( (This)->lpVtbl -> QueryProperty(This,QueryType,ulNumEntriesIn,ulNumEntriesOut,pPropertyEntriesIn,pPropertyEntriesOut) ) 
+
+#define IWRdsProtocolConnection3_Experimental_GetShadowConnection(This,ppShadowConnection)	\
+    ( (This)->lpVtbl -> GetShadowConnection(This,ppShadowConnection) ) 
+
+#define IWRdsProtocolConnection3_Experimental_NotifyCommandProcessCreated(This,SessionId)	\
+    ( (This)->lpVtbl -> NotifyCommandProcessCreated(This,SessionId) ) 
+
+
+#define IWRdsProtocolConnection3_Experimental_GetSerializedUserCredential(This,userCredential)	\
+    ( (This)->lpVtbl -> GetSerializedUserCredential(This,userCredential) ) 
+
+
+#define IWRdsProtocolConnection3_Experimental_GetSerializedUserCredentialInteractively(This,scenarioId,usernameHint,userCredential)	\
+    ( (This)->lpVtbl -> GetSerializedUserCredentialInteractively(This,scenarioId,usernameHint,userCredential) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IWRdsProtocolConnection3_Experimental_INTERFACE_DEFINED__ */
+
+
+/* interface __MIDL_itf_wtsprotocol_0000_0025 */
 /* [local] */ 
 
 #endif
@@ -3782,8 +4098,8 @@ EXTERN_C const IID IID_IWRdsProtocolConnection2;
 #pragma endregion
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wtsprotocol_0000_0024_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wtsprotocol_0000_0024_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wtsprotocol_0000_0025_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wtsprotocol_0000_0025_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

@@ -6760,6 +6760,28 @@ interface ID3D12GBVDiagnostics
 }
 
 
+typedef struct D3D12_CREATE_STATE_OBJECT_STATISTICS
+{
+    UINT NumCreated;
+    UINT NumPSDBCacheMissed;
+    UINT NumTotalCacheMissed;
+    UINT NumCacheUnknown;
+} D3D12_CREATE_STATE_OBJECT_STATISTICS;
+
+typedef struct D3D12_STATE_OBJECT_STATISTICS
+{
+    BOOL DefaultPSDBRegistered;
+    D3D12_CREATE_STATE_OBJECT_STATISTICS PipelineStateObjectStatistics;
+    D3D12_CREATE_STATE_OBJECT_STATISTICS StateObjectStatistics;
+} D3D12_STATE_OBJECT_STATISTICS;
+
+[uuid(3d5ca1a8-a39e-4619-95e0-f9b0a40340f5), object, local, pointer_default(unique)]
+interface ID3D12DeviceStatistics
+    : IUnknown
+{
+    HRESULT GetStateObjectStatistics([annotation("_Out_")] D3D12_STATE_OBJECT_STATISTICS *pStatistics);
+};
+
 //----------------------------------------------------------------------------------------------------------
 // Old types which are still supported by the runtime for app-compat
 
@@ -6849,3 +6871,4 @@ cpp_quote( "DEFINE_GUID(IID_ID3D12GraphicsCommandList9,0x34ed2808,0xffe6,0x4c2b,
 cpp_quote( "DEFINE_GUID(IID_ID3D12GraphicsCommandList10,0x7013c015,0xd161,0x4b63,0xa0,0x8c,0x23,0x85,0x52,0xdd,0x8a,0xcc);" )
 cpp_quote( "DEFINE_GUID(IID_ID3D12DSRDeviceFactory,0xf343d1a0,0xafe3,0x439f,0xb1,0x3d,0xcd,0x87,0xa4,0x3b,0x70,0xca);" )
 cpp_quote( "DEFINE_GUID(IID_ID3D12GBVDiagnostics,0x597985ab,0x9b75,0x4dbb,0xbe,0x23,0x07,0x61,0x19,0x5b,0xeb,0xee);" )
+cpp_quote( "DEFINE_GUID(IID_ID3D12DeviceStatistics,0x3d5ca1a8,0xa39e,0x4619,0x95,0xe0,0xf9,0xb0,0xa4,0x03,0x40,0xf5);" )

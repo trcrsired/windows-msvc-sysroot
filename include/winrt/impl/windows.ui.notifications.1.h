@@ -436,6 +436,13 @@ WINRT_EXPORT namespace winrt::Windows::UI::Notifications
         IToastNotificationManagerStatics5(std::nullptr_t = nullptr) noexcept {}
         IToastNotificationManagerStatics5(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct WINRT_IMPL_EMPTY_BASES IToastNotificationStatics :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IToastNotificationStatics>
+    {
+        IToastNotificationStatics(std::nullptr_t = nullptr) noexcept {}
+        IToastNotificationStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct WINRT_IMPL_EMPTY_BASES IToastNotifier :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IToastNotifier>

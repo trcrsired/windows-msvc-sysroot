@@ -107,11 +107,16 @@ DEFINE_GUID(GUID_DEVINTERFACE_UNIFIED_ACCESS_RPMB,    0x27447c21L, 0xbcc3, 0x4d0
 // and in IOCTL to identify why section is requested by the user mode application
 //
 
-// /* d8e2592f-1aab-4d56-a746-1f7585df40f4 */
+//  /* d8e2592f-1aab-4d56-a746-1f7585df40f4 */
 DEFINE_GUID(GUID_DEVICEDUMP_STORAGE_DEVICE,             0xd8e2592f,0x1aab,0x4d56,0xa7, 0x46, 0x1f, 0x75, 0x85, 0xdf, 0x40, 0xf4);
 
 //  /* da82441d-7142-4bc1-b844-0807c5a4b67f */
 DEFINE_GUID(GUID_DEVICEDUMP_DRIVER_STORAGE_PORT,        0xda82441d,0x7142,0x4bc1,0xb8, 0x44, 0x08, 0x07, 0xc5, 0xa4, 0xb6, 0x7f);
+
+//
+//  /* c939c73b-17dc-4a44-904c-e2d987f52649 */
+//
+DEFINE_GUID(GUID_STORPORT_PAGING_DEVICE_DUMP,           0xc939c73b,0x17dc,0x4a44,0x90, 0x4c, 0xe2, 0xd9, 0x87, 0xf5, 0x26, 0x49);
 
 // end_tcioctlguids
 
@@ -6494,6 +6499,61 @@ typedef _Struct_size_bytes_(Descriptor.dwSize) struct _DEVICEDUMP_STORAGESTACK_P
         DEVICEDUMP_STORAGESTACK_PUBLIC_STATE_RECORD RecordArray[ANYSIZE_ARRAY]; //ANYSIZE_ARRAY
 
 } DEVICEDUMP_STORAGESTACK_PUBLIC_DUMP,*PDEVICEDUMP_STORAGESTACK_PUBLIC_DUMP;
+
+//
+// Maximum number of paging devices to report in secondary dump.
+//
+#define STOR_MAX_PAGING_DEVICES     16
+
+//
+// Miniport name length limit for dump output.
+//
+#define STOR_PAGING_DEVICE_MINIPORT_NAME_LENGTH    32
+#define STOR_PAGING_DEVICE_MODEL_NAME_LENGTH       64
+#define STOR_PAGING_DEVICE_FW_REVISION_LENGTH      16
+
+#pragma warning(push)
+#pragma warning(disable:4201) // nameless struct/union
+#pragma warning(disable:4214) // bit fields other than int to disable this around the struct
+
+//
+// Per-device info collected for paging device dump.
+//
+typedef struct _STOR_PAGING_DEVICE_DUMP_ENTRY {
+
+    CHAR MiniportName[STOR_PAGING_DEVICE_MINIPORT_NAME_LENGTH + 1];
+    CHAR ModelName[STOR_PAGING_DEVICE_MODEL_NAME_LENGTH + 1];
+    CHAR FirmwareRevision[STOR_PAGING_DEVICE_FW_REVISION_LENGTH + 1];
+    USHORT PagingPathCount;
+
+    union {
+        struct {
+            UCHAR IsBootDevice : 1;
+            UCHAR IsNativeNVMe : 1;
+            UCHAR Reserved : 6;
+        } DUMMYSTRUCTNAME;
+        UCHAR AsUchar;
+    } Flags;
+
+} STOR_PAGING_DEVICE_DUMP_ENTRY, *PSTOR_PAGING_DEVICE_DUMP_ENTRY;
+
+#pragma warning(pop)
+
+//
+// Header for the paging device dump data written to secondary dump.
+// Uses DEVICEDUMP_STRUCTURE_VERSION as the descriptor for consistency
+// with the existing DEVICEDUMP_STORAGESTACK_PUBLIC_DUMP format.
+// Shares GUID_DEVICEDUMP_DRIVER_STORAGE_PORT with the IO telemetry section;
+// the dwSignature ('PGDV': paging device) distinguishes this section from 'PTSD'.
+//
+typedef struct _STOR_PAGING_DEVICE_DUMP_DATA {
+
+    DEVICEDUMP_STRUCTURE_VERSION Descriptor;  // dwSignature='PGDV', dwVersion=1, dwSize=actual used
+    ULONG EntryCount;
+    ULONG EntrySize;
+    STOR_PAGING_DEVICE_DUMP_ENTRY Entries[ANYSIZE_ARRAY];
+
+} STOR_PAGING_DEVICE_DUMP_DATA, *PSTOR_PAGING_DEVICE_DUMP_DATA;
 
 // End of the packed structure group
 #include <poppack.h>

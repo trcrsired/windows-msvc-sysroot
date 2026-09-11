@@ -68,6 +68,7 @@ WINRT_EXPORT namespace winrt::Windows::System::Profile
     struct IPlatformAutomaticAppSignInManagerStatics;
     struct IPlatformDiagnosticsAndUsageDataSettingsStatics;
     struct IRetailInfoStatics;
+    struct IRetailInfoStatics2;
     struct ISharedModeSettingsStatics;
     struct ISharedModeSettingsStatics2;
     struct ISmartAppControlPolicyStatics;
@@ -112,6 +113,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::System::Profile::IPlatformAutomaticAppSignInManagerStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::System::Profile::IPlatformDiagnosticsAndUsageDataSettingsStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::System::Profile::IRetailInfoStatics>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::System::Profile::IRetailInfoStatics2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::System::Profile::ISharedModeSettingsStatics>{ using type = interface_category; };
     template <> struct category<winrt::Windows::System::Profile::ISharedModeSettingsStatics2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::System::Profile::ISmartAppControlPolicyStatics>{ using type = interface_category; };
@@ -176,6 +178,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::System::Profile::IPlatformAutomaticAppSignInManagerStatics> = L"Windows.System.Profile.IPlatformAutomaticAppSignInManagerStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::System::Profile::IPlatformDiagnosticsAndUsageDataSettingsStatics> = L"Windows.System.Profile.IPlatformDiagnosticsAndUsageDataSettingsStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::System::Profile::IRetailInfoStatics> = L"Windows.System.Profile.IRetailInfoStatics";
+    template <> inline constexpr auto& name_v<winrt::Windows::System::Profile::IRetailInfoStatics2> = L"Windows.System.Profile.IRetailInfoStatics2";
     template <> inline constexpr auto& name_v<winrt::Windows::System::Profile::ISharedModeSettingsStatics> = L"Windows.System.Profile.ISharedModeSettingsStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::System::Profile::ISharedModeSettingsStatics2> = L"Windows.System.Profile.ISharedModeSettingsStatics2";
     template <> inline constexpr auto& name_v<winrt::Windows::System::Profile::ISmartAppControlPolicyStatics> = L"Windows.System.Profile.ISmartAppControlPolicyStatics";
@@ -200,6 +203,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::System::Profile::IPlatformAutomaticAppSignInManagerStatics>{ 0x1AC9AFCE,0x8DD5,0x5C2D,{ 0xB4,0x20,0x76,0x7D,0x1F,0x3B,0x7D,0x03 } }; // 1AC9AFCE-8DD5-5C2D-B420-767D1F3B7D03
     template <> inline constexpr guid guid_v<winrt::Windows::System::Profile::IPlatformDiagnosticsAndUsageDataSettingsStatics>{ 0xB6E24C1B,0x7B1C,0x4B32,{ 0x8C,0x62,0xA6,0x65,0x97,0xCE,0x72,0x3A } }; // B6E24C1B-7B1C-4B32-8C62-A66597CE723A
     template <> inline constexpr guid guid_v<winrt::Windows::System::Profile::IRetailInfoStatics>{ 0x0712C6B8,0x8B92,0x4F2A,{ 0x84,0x99,0x03,0x1F,0x17,0x98,0xD6,0xEF } }; // 0712C6B8-8B92-4F2A-8499-031F1798D6EF
+    template <> inline constexpr guid guid_v<winrt::Windows::System::Profile::IRetailInfoStatics2>{ 0xA3B5D762,0x9E04,0x4F4C,{ 0xB8,0xE2,0x7A,0x3C,0x5D,0x6E,0x8F,0x01 } }; // A3B5D762-9E04-4F4C-B8E2-7A3C5D6E8F01
     template <> inline constexpr guid guid_v<winrt::Windows::System::Profile::ISharedModeSettingsStatics>{ 0x893DF40E,0xCAD6,0x4D50,{ 0x8C,0x49,0x6F,0xCF,0xC0,0x3E,0xDB,0x29 } }; // 893DF40E-CAD6-4D50-8C49-6FCFC03EDB29
     template <> inline constexpr guid guid_v<winrt::Windows::System::Profile::ISharedModeSettingsStatics2>{ 0x608988A4,0xCCF1,0x4EE8,{ 0xA5,0xE2,0xFD,0x6A,0x1D,0x0C,0xFA,0xC8 } }; // 608988A4-CCF1-4EE8-A5E2-FD6A1D0CFAC8
     template <> inline constexpr guid guid_v<winrt::Windows::System::Profile::ISmartAppControlPolicyStatics>{ 0x5FF8C75B,0x073E,0x5015,{ 0x8D,0x98,0x5F,0xF2,0x24,0x18,0x0A,0x0B } }; // 5FF8C75B-073E-5015-8D98-5FF224180A0B
@@ -323,6 +327,13 @@ namespace winrt::impl
         {
             virtual int32_t __stdcall get_IsDemoModeEnabled(bool*) noexcept = 0;
             virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::System::Profile::IRetailInfoStatics2>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_IsDemoModeEnabledEx(bool*) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::System::Profile::ISharedModeSettingsStatics>
@@ -531,6 +542,15 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::System::Profile::IRetailInfoStatics>
     {
         template <typename D> using type = consume_Windows_System_Profile_IRetailInfoStatics<D>;
+    };
+    template <typename D>
+    struct consume_Windows_System_Profile_IRetailInfoStatics2
+    {
+        [[nodiscard]] auto IsDemoModeEnabledEx() const;
+    };
+    template <> struct consume<winrt::Windows::System::Profile::IRetailInfoStatics2>
+    {
+        template <typename D> using type = consume_Windows_System_Profile_IRetailInfoStatics2<D>;
     };
     template <typename D>
     struct consume_Windows_System_Profile_ISharedModeSettingsStatics

@@ -757,6 +757,24 @@ namespace winrt::impl
         }
         return winrt::Windows::Foundation::Collections::IMapView<hstring, winrt::Windows::Foundation::IInspectable>{ value, take_ownership_from_abi };
     }
+    template <typename D> auto consume_Windows_System_Profile_IRetailInfoStatics2<D>::IsDemoModeEnabledEx() const
+    {
+        bool value{};
+        if constexpr (!std::is_same_v<D, winrt::Windows::System::Profile::IRetailInfoStatics2>)
+        {
+            winrt::hresult _winrt_cast_result_code;
+            auto const _winrt_casted_result = impl::try_as_with_reason<winrt::Windows::System::Profile::IRetailInfoStatics2, D const*>(static_cast<D const*>(this), _winrt_cast_result_code);
+            check_hresult(_winrt_cast_result_code);
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::Profile::IRetailInfoStatics2>**)&_winrt_casted_result;
+            check_hresult(_winrt_abi_type->get_IsDemoModeEnabledEx(&value));
+        }
+        else
+        {
+            auto const _winrt_abi_type = *(abi_t<winrt::Windows::System::Profile::IRetailInfoStatics2>**)this;
+            check_hresult(_winrt_abi_type->get_IsDemoModeEnabledEx(&value));
+        }
+        return value;
+    }
     template <typename D> auto consume_Windows_System_Profile_ISharedModeSettingsStatics<D>::IsEnabled() const
     {
         bool value{};
@@ -1518,6 +1536,19 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::System::Profile::IRetailInfoStatics2> : produce_base<D, winrt::Windows::System::Profile::IRetailInfoStatics2>
+    {
+        int32_t __stdcall get_IsDemoModeEnabledEx(bool* value) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<bool>(this->shim().IsDemoModeEnabledEx());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::System::Profile::ISharedModeSettingsStatics> : produce_base<D, winrt::Windows::System::Profile::ISharedModeSettingsStatics>
     {
         int32_t __stdcall get_IsEnabled(bool* value) noexcept final try
@@ -1887,6 +1918,10 @@ WINRT_EXPORT namespace winrt::Windows::System::Profile
     {
         return impl::call_factory_cast<winrt::Windows::Foundation::Collections::IMapView<hstring, winrt::Windows::Foundation::IInspectable>(*)(IRetailInfoStatics const&), RetailInfo, IRetailInfoStatics>([](IRetailInfoStatics const& f) { return f.Properties(); });
     }
+    inline auto RetailInfo::IsDemoModeEnabledEx()
+    {
+        return impl::call_factory_cast<bool(*)(IRetailInfoStatics2 const&), RetailInfo, IRetailInfoStatics2>([](IRetailInfoStatics2 const& f) { return f.IsDemoModeEnabledEx(); });
+    }
     inline auto SharedModeSettings::IsEnabled()
     {
         return impl::call_factory_cast<bool(*)(ISharedModeSettingsStatics const&), SharedModeSettings, ISharedModeSettingsStatics>([](ISharedModeSettingsStatics const& f) { return f.IsEnabled(); });
@@ -1982,6 +2017,7 @@ namespace std
     template<> struct hash<winrt::Windows::System::Profile::IPlatformAutomaticAppSignInManagerStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::Profile::IPlatformDiagnosticsAndUsageDataSettingsStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::Profile::IRetailInfoStatics> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::System::Profile::IRetailInfoStatics2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::Profile::ISharedModeSettingsStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::Profile::ISharedModeSettingsStatics2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::System::Profile::ISmartAppControlPolicyStatics> : winrt::impl::hash_base {};

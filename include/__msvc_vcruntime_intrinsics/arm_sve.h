@@ -7202,6 +7202,92 @@ svfloat32_t svmin_n_f32_m(svbool_t pg, svfloat32_t op1, float32_t op2);
     )(pg, op1, op2)
 #endif
 
+// sve2: Vector arithmetic / Minimum: Absolute minimum
+svfloat16_t svamin_f16_m(svbool_t pg, svfloat16_t op1, svfloat16_t op2);
+svfloat32_t svamin_f32_m(svbool_t pg, svfloat32_t op1, svfloat32_t op2);
+svfloat64_t svamin_f64_m(svbool_t pg, svfloat64_t op1, svfloat64_t op2);
+svfloat32_t svamin_n_f32_m(svbool_t pg, svfloat32_t op1, float32_t op2);
+svfloat64_t svamin_n_f64_m(svbool_t pg, svfloat64_t op1, float64_t op2);
+svfloat16_t svamin_f16_z(svbool_t pg, svfloat16_t op1, svfloat16_t op2);
+svfloat32_t svamin_f32_z(svbool_t pg, svfloat32_t op1, svfloat32_t op2);
+svfloat64_t svamin_f64_z(svbool_t pg, svfloat64_t op1, svfloat64_t op2);
+svfloat32_t svamin_n_f32_z(svbool_t pg, svfloat32_t op1, float32_t op2);
+svfloat64_t svamin_n_f64_z(svbool_t pg, svfloat64_t op1, float64_t op2);
+svfloat16_t svamin_f16_x(svbool_t pg, svfloat16_t op1, svfloat16_t op2);
+svfloat32_t svamin_f32_x(svbool_t pg, svfloat32_t op1, svfloat32_t op2);
+svfloat64_t svamin_f64_x(svbool_t pg, svfloat64_t op1, svfloat64_t op2);
+svfloat32_t svamin_n_f32_x(svbool_t pg, svfloat32_t op1, float32_t op2);
+svfloat64_t svamin_n_f64_x(svbool_t pg, svfloat64_t op1, float64_t op2);
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L
+#define svamin_m(pg, op1, op2) _Generic((op2), \
+    float64_t: svamin_n_f64_m, \
+    float32_t: svamin_n_f32_m, \
+    svfloat16_t: svamin_f16_m, \
+    svfloat32_t: svamin_f32_m, \
+    svfloat64_t: svamin_f64_m, \
+    default: __assume(0) \
+    )(pg, op1, op2)
+#define svamin_z(pg, op1, op2) _Generic((op2), \
+    float64_t: svamin_n_f64_z, \
+    float32_t: svamin_n_f32_z, \
+    svfloat16_t: svamin_f16_z, \
+    svfloat32_t: svamin_f32_z, \
+    svfloat64_t: svamin_f64_z, \
+    default: __assume(0) \
+    )(pg, op1, op2)
+#define svamin_x(pg, op1, op2) _Generic((op2), \
+    float64_t: svamin_n_f64_x, \
+    float32_t: svamin_n_f32_x, \
+    svfloat16_t: svamin_f16_x, \
+    svfloat32_t: svamin_f32_x, \
+    svfloat64_t: svamin_f64_x, \
+    default: __assume(0) \
+    )(pg, op1, op2)
+#endif
+
+// sve2: Vector arithmetic / Maximum: Absolute maximum
+svfloat16_t svamax_f16_m(svbool_t pg, svfloat16_t op1, svfloat16_t op2);
+svfloat32_t svamax_f32_m(svbool_t pg, svfloat32_t op1, svfloat32_t op2);
+svfloat64_t svamax_f64_m(svbool_t pg, svfloat64_t op1, svfloat64_t op2);
+svfloat32_t svamax_n_f32_m(svbool_t pg, svfloat32_t op1, float32_t op2);
+svfloat64_t svamax_n_f64_m(svbool_t pg, svfloat64_t op1, float64_t op2);
+svfloat16_t svamax_f16_z(svbool_t pg, svfloat16_t op1, svfloat16_t op2);
+svfloat32_t svamax_f32_z(svbool_t pg, svfloat32_t op1, svfloat32_t op2);
+svfloat64_t svamax_f64_z(svbool_t pg, svfloat64_t op1, svfloat64_t op2);
+svfloat32_t svamax_n_f32_z(svbool_t pg, svfloat32_t op1, float32_t op2);
+svfloat64_t svamax_n_f64_z(svbool_t pg, svfloat64_t op1, float64_t op2);
+svfloat16_t svamax_f16_x(svbool_t pg, svfloat16_t op1, svfloat16_t op2);
+svfloat32_t svamax_f32_x(svbool_t pg, svfloat32_t op1, svfloat32_t op2);
+svfloat64_t svamax_f64_x(svbool_t pg, svfloat64_t op1, svfloat64_t op2);
+svfloat32_t svamax_n_f32_x(svbool_t pg, svfloat32_t op1, float32_t op2);
+svfloat64_t svamax_n_f64_x(svbool_t pg, svfloat64_t op1, float64_t op2);
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L
+#define svamax_m(pg, op1, op2) _Generic((op2), \
+    float64_t: svamax_n_f64_m, \
+    float32_t: svamax_n_f32_m, \
+    svfloat16_t: svamax_f16_m, \
+    svfloat32_t: svamax_f32_m, \
+    svfloat64_t: svamax_f64_m, \
+    default: __assume(0) \
+    )(pg, op1, op2)
+#define svamax_z(pg, op1, op2) _Generic((op2), \
+    float64_t: svamax_n_f64_z, \
+    float32_t: svamax_n_f32_z, \
+    svfloat16_t: svamax_f16_z, \
+    svfloat32_t: svamax_f32_z, \
+    svfloat64_t: svamax_f64_z, \
+    default: __assume(0) \
+    )(pg, op1, op2)
+#define svamax_x(pg, op1, op2) _Generic((op2), \
+    float64_t: svamax_n_f64_x, \
+    float32_t: svamax_n_f32_x, \
+    svfloat16_t: svamax_f16_x, \
+    svfloat32_t: svamax_f32_x, \
+    svfloat64_t: svamax_f64_x, \
+    default: __assume(0) \
+    )(pg, op1, op2)
+#endif
+
 // sve: Vector arithmetic / Minimum: Minimum number
 svfloat32_t svminnm_f32_z(svbool_t pg, svfloat32_t op1, svfloat32_t op2);
 svfloat16_t svminnm_f16_m(svbool_t pg, svfloat16_t op1, svfloat16_t op2);
@@ -19032,6 +19118,36 @@ __forceinline svuint8_t svmin_x(svbool_t pg, svuint8_t op1, uint8_t op2) { retur
 __forceinline svuint16_t svmin_x(svbool_t pg, svuint16_t op1, uint16_t op2) { return svmin_n_u16_x(pg, op1, op2); }
 __forceinline svfloat64_t svmin_m(svbool_t pg, svfloat64_t op1, float64_t op2) { return svmin_n_f64_m(pg, op1, op2); }
 __forceinline svfloat32_t svmin_m(svbool_t pg, svfloat32_t op1, float32_t op2) { return svmin_n_f32_m(pg, op1, op2); }
+__forceinline svfloat16_t svamin_m(svbool_t pg, svfloat16_t op1, svfloat16_t op2) { return svamin_f16_m(pg, op1, op2); }
+__forceinline svfloat32_t svamin_m(svbool_t pg, svfloat32_t op1, svfloat32_t op2) { return svamin_f32_m(pg, op1, op2); }
+__forceinline svfloat64_t svamin_m(svbool_t pg, svfloat64_t op1, svfloat64_t op2) { return svamin_f64_m(pg, op1, op2); }
+__forceinline svfloat32_t svamin_m(svbool_t pg, svfloat32_t op1, float32_t op2) { return svamin_n_f32_m(pg, op1, op2); }
+__forceinline svfloat64_t svamin_m(svbool_t pg, svfloat64_t op1, float64_t op2) { return svamin_n_f64_m(pg, op1, op2); }
+__forceinline svfloat16_t svamin_z(svbool_t pg, svfloat16_t op1, svfloat16_t op2) { return svamin_f16_z(pg, op1, op2); }
+__forceinline svfloat32_t svamin_z(svbool_t pg, svfloat32_t op1, svfloat32_t op2) { return svamin_f32_z(pg, op1, op2); }
+__forceinline svfloat64_t svamin_z(svbool_t pg, svfloat64_t op1, svfloat64_t op2) { return svamin_f64_z(pg, op1, op2); }
+__forceinline svfloat32_t svamin_z(svbool_t pg, svfloat32_t op1, float32_t op2) { return svamin_n_f32_z(pg, op1, op2); }
+__forceinline svfloat64_t svamin_z(svbool_t pg, svfloat64_t op1, float64_t op2) { return svamin_n_f64_z(pg, op1, op2); }
+__forceinline svfloat16_t svamin_x(svbool_t pg, svfloat16_t op1, svfloat16_t op2) { return svamin_f16_x(pg, op1, op2); }
+__forceinline svfloat32_t svamin_x(svbool_t pg, svfloat32_t op1, svfloat32_t op2) { return svamin_f32_x(pg, op1, op2); }
+__forceinline svfloat64_t svamin_x(svbool_t pg, svfloat64_t op1, svfloat64_t op2) { return svamin_f64_x(pg, op1, op2); }
+__forceinline svfloat32_t svamin_x(svbool_t pg, svfloat32_t op1, float32_t op2) { return svamin_n_f32_x(pg, op1, op2); }
+__forceinline svfloat64_t svamin_x(svbool_t pg, svfloat64_t op1, float64_t op2) { return svamin_n_f64_x(pg, op1, op2); }
+__forceinline svfloat16_t svamax_m(svbool_t pg, svfloat16_t op1, svfloat16_t op2) { return svamax_f16_m(pg, op1, op2); }
+__forceinline svfloat32_t svamax_m(svbool_t pg, svfloat32_t op1, svfloat32_t op2) { return svamax_f32_m(pg, op1, op2); }
+__forceinline svfloat64_t svamax_m(svbool_t pg, svfloat64_t op1, svfloat64_t op2) { return svamax_f64_m(pg, op1, op2); }
+__forceinline svfloat32_t svamax_m(svbool_t pg, svfloat32_t op1, float32_t op2) { return svamax_n_f32_m(pg, op1, op2); }
+__forceinline svfloat64_t svamax_m(svbool_t pg, svfloat64_t op1, float64_t op2) { return svamax_n_f64_m(pg, op1, op2); }
+__forceinline svfloat16_t svamax_z(svbool_t pg, svfloat16_t op1, svfloat16_t op2) { return svamax_f16_z(pg, op1, op2); }
+__forceinline svfloat32_t svamax_z(svbool_t pg, svfloat32_t op1, svfloat32_t op2) { return svamax_f32_z(pg, op1, op2); }
+__forceinline svfloat64_t svamax_z(svbool_t pg, svfloat64_t op1, svfloat64_t op2) { return svamax_f64_z(pg, op1, op2); }
+__forceinline svfloat32_t svamax_z(svbool_t pg, svfloat32_t op1, float32_t op2) { return svamax_n_f32_z(pg, op1, op2); }
+__forceinline svfloat64_t svamax_z(svbool_t pg, svfloat64_t op1, float64_t op2) { return svamax_n_f64_z(pg, op1, op2); }
+__forceinline svfloat16_t svamax_x(svbool_t pg, svfloat16_t op1, svfloat16_t op2) { return svamax_f16_x(pg, op1, op2); }
+__forceinline svfloat32_t svamax_x(svbool_t pg, svfloat32_t op1, svfloat32_t op2) { return svamax_f32_x(pg, op1, op2); }
+__forceinline svfloat64_t svamax_x(svbool_t pg, svfloat64_t op1, svfloat64_t op2) { return svamax_f64_x(pg, op1, op2); }
+__forceinline svfloat32_t svamax_x(svbool_t pg, svfloat32_t op1, float32_t op2) { return svamax_n_f32_x(pg, op1, op2); }
+__forceinline svfloat64_t svamax_x(svbool_t pg, svfloat64_t op1, float64_t op2) { return svamax_n_f64_x(pg, op1, op2); }
 __forceinline svfloat32_t svminnm_z(svbool_t pg, svfloat32_t op1, svfloat32_t op2) { return svminnm_f32_z(pg, op1, op2); }
 __forceinline svfloat16_t svminnm_m(svbool_t pg, svfloat16_t op1, svfloat16_t op2) { return svminnm_f16_m(pg, op1, op2); }
 __forceinline svfloat16_t svminnm_z(svbool_t pg, svfloat16_t op1, svfloat16_t op2) { return svminnm_f16_z(pg, op1, op2); }

@@ -626,6 +626,13 @@ typedef interface ID3D12GBVDiagnostics ID3D12GBVDiagnostics;
 #endif 	/* __ID3D12GBVDiagnostics_FWD_DEFINED__ */
 
 
+#ifndef __ID3D12DeviceStatistics_FWD_DEFINED__
+#define __ID3D12DeviceStatistics_FWD_DEFINED__
+typedef interface ID3D12DeviceStatistics ID3D12DeviceStatistics;
+
+#endif 	/* __ID3D12DeviceStatistics_FWD_DEFINED__ */
+
+
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
@@ -36102,6 +36109,112 @@ EXTERN_C const IID IID_ID3D12GBVDiagnostics;
 /* interface __MIDL_itf_d3d12_0000_0082 */
 /* [local] */ 
 
+typedef struct D3D12_CREATE_STATE_OBJECT_STATISTICS
+    {
+    UINT NumCreated;
+    UINT NumPSDBCacheMissed;
+    UINT NumTotalCacheMissed;
+    UINT NumCacheUnknown;
+    } 	D3D12_CREATE_STATE_OBJECT_STATISTICS;
+
+typedef struct D3D12_STATE_OBJECT_STATISTICS
+    {
+    BOOL DefaultPSDBRegistered;
+    D3D12_CREATE_STATE_OBJECT_STATISTICS PipelineStateObjectStatistics;
+    D3D12_CREATE_STATE_OBJECT_STATISTICS StateObjectStatistics;
+    } 	D3D12_STATE_OBJECT_STATISTICS;
+
+
+
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0082_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0082_v0_0_s_ifspec;
+
+#ifndef __ID3D12DeviceStatistics_INTERFACE_DEFINED__
+#define __ID3D12DeviceStatistics_INTERFACE_DEFINED__
+
+/* interface ID3D12DeviceStatistics */
+/* [unique][local][object][uuid] */ 
+
+
+EXTERN_C const IID IID_ID3D12DeviceStatistics;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("3d5ca1a8-a39e-4619-95e0-f9b0a40340f5")
+    ID3D12DeviceStatistics : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetStateObjectStatistics( 
+            _Out_  D3D12_STATE_OBJECT_STATISTICS *pStatistics) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ID3D12DeviceStatisticsVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ID3D12DeviceStatistics * This,
+            REFIID riid,
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ID3D12DeviceStatistics * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ID3D12DeviceStatistics * This);
+        
+        DECLSPEC_XFGVIRT(ID3D12DeviceStatistics, GetStateObjectStatistics)
+        HRESULT ( STDMETHODCALLTYPE *GetStateObjectStatistics )( 
+            ID3D12DeviceStatistics * This,
+            _Out_  D3D12_STATE_OBJECT_STATISTICS *pStatistics);
+        
+        END_INTERFACE
+    } ID3D12DeviceStatisticsVtbl;
+
+    interface ID3D12DeviceStatistics
+    {
+        CONST_VTBL struct ID3D12DeviceStatisticsVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ID3D12DeviceStatistics_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ID3D12DeviceStatistics_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ID3D12DeviceStatistics_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ID3D12DeviceStatistics_GetStateObjectStatistics(This,pStatistics)	\
+    ( (This)->lpVtbl -> GetStateObjectStatistics(This,pStatistics) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ID3D12DeviceStatistics_INTERFACE_DEFINED__ */
+
+
+/* interface __MIDL_itf_d3d12_0000_0083 */
+/* [local] */ 
+
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES) */
 #pragma endregion
 DEFINE_GUID(IID_ID3D12Object,0xc4fec28f,0x7966,0x4e95,0x9f,0x94,0xf4,0x31,0xcb,0x56,0xc3,0xb8);
@@ -36186,10 +36299,11 @@ DEFINE_GUID(IID_ID3D12GraphicsCommandList9,0x34ed2808,0xffe6,0x4c2b,0xb1,0x1a,0x
 DEFINE_GUID(IID_ID3D12GraphicsCommandList10,0x7013c015,0xd161,0x4b63,0xa0,0x8c,0x23,0x85,0x52,0xdd,0x8a,0xcc);
 DEFINE_GUID(IID_ID3D12DSRDeviceFactory,0xf343d1a0,0xafe3,0x439f,0xb1,0x3d,0xcd,0x87,0xa4,0x3b,0x70,0xca);
 DEFINE_GUID(IID_ID3D12GBVDiagnostics,0x597985ab,0x9b75,0x4dbb,0xbe,0x23,0x07,0x61,0x19,0x5b,0xeb,0xee);
+DEFINE_GUID(IID_ID3D12DeviceStatistics,0x3d5ca1a8,0xa39e,0x4619,0x95,0xe0,0xf9,0xb0,0xa4,0x03,0x40,0xf5);
 
 
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0082_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0082_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0083_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_d3d12_0000_0083_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

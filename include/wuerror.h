@@ -3272,6 +3272,15 @@
 #define WU_E_UH_DRV_PREINSTALL_OPERATION_FAILED _HRESULT_TYPEDEF_(0x80242028L)
 
 //
+// MessageId: WU_E_UH_DRV_INSTALL_REJECTED_REBOOT_LEVEL
+//
+// MessageText:
+//
+// The driver update was rejected because the queried reboot level exceeds the caller's requested reboot level.
+//
+#define WU_E_UH_DRV_INSTALL_REJECTED_REBOOT_LEVEL _HRESULT_TYPEDEF_(0x80242029L)
+
+//
 // MessageId: WU_E_UH_UNEXPECTED
 //
 // MessageText:

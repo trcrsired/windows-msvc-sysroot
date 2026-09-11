@@ -87,7 +87,7 @@ class _Concurrent_hash : public _Traits
 public:
     // Type definitions
     typedef _Concurrent_hash<_Traits> _Mytype;
-    typedef typename _Split_ordered_list<typename _Traits::value_type, typename _Traits::allocator_type> _Mylist;
+    typedef _Split_ordered_list<typename _Traits::value_type, typename _Traits::allocator_type> _Mylist;
     typedef typename _Traits::_Key_compare _Key_compare;
     typedef typename _Traits::_Value_compare _Value_compare;
 

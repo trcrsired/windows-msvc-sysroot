@@ -1975,8 +1975,8 @@ EXTERN_C const IID IID___x_ABI_CWindows_CSystem_CUserProfile_CIUserProfilePerson
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.System.UserProfile.IAdvertisingManagerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.System.UserProfile.IAdvertisingManagerStatics2 interface starting with version 3.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.System.UserProfile.IAdvertisingManagerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Marshaling Behavior:  Standard - Class marshals using the standard marshaler
  *
@@ -5129,8 +5129,8 @@ EXTERN_C const IID IID___x_ABI_CWindows_CSystem_CUserProfile_CIUserProfilePerson
  * Introduced to Windows.Foundation.UniversalApiContract in version 1.0
  *
  * RuntimeClass contains static methods.
- *   Static Methods exist on the Windows.System.UserProfile.IAdvertisingManagerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *   Static Methods exist on the Windows.System.UserProfile.IAdvertisingManagerStatics2 interface starting with version 3.0 of the Windows.Foundation.UniversalApiContract API contract
+ *   Static Methods exist on the Windows.System.UserProfile.IAdvertisingManagerStatics interface starting with version 1.0 of the Windows.Foundation.UniversalApiContract API contract
  *
  * Class Marshaling Behavior:  Standard - Class marshals using the standard marshaler
  *

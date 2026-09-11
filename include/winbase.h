@@ -3562,7 +3562,7 @@ typedef enum _PROC_THREAD_ATTRIBUTE_NUM {
     ProcThreadAttributeSmeVectorLength              = 31,
 #endif
 #if (NTDDI_VERSION >= NTDDI_WIN11_GE)
-    ProcThreadAttributeContainmentConfiguration     = 32,
+    ProcThreadAttributeContainmentConfiguration     = 33,
 #endif
 } PROC_THREAD_ATTRIBUTE_NUM;
 #endif
@@ -3655,6 +3655,7 @@ typedef struct _PROCESS_CREATION_SME_VECTOR_LENGTH {
 } PROCESS_CREATION_SME_VECTOR_LENGTH, *PPROCESS_CREATION_SME_VECTOR_LENGTH;
 
 #endif
+
 
 #if (_WIN32_WINNT >= _WIN32_WINNT_WIN7)
 //

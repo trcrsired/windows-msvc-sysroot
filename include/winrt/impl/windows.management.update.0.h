@@ -17,7 +17,6 @@ WINRT_EXPORT namespace winrt::Windows::Foundation
 WINRT_EXPORT namespace winrt::Windows::Foundation::Collections
 {
     template <typename T> struct WINRT_IMPL_EMPTY_BASES IIterable;
-    struct PropertySet;
     struct ValueSet;
 }
 WINRT_EXPORT namespace winrt::Windows::Management::Update
@@ -45,6 +44,22 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
         X64 = 2,
         Arm = 3,
         Arm64 = 4,
+    };
+    enum class WindowsSoftwareUpdateCategory : int32_t
+    {
+        Other = 0,
+        Application = 1,
+        Driver = 2,
+        Firmware = 3,
+        Definition = 4,
+        Feature = 5,
+        Quality = 6,
+        AIComponent = 7,
+    };
+    enum class WindowsSoftwareUpdateIdentityType : int32_t
+    {
+        ProductCode = 0,
+        PackageFamilyName = 1,
     };
     enum class WindowsSoftwareUpdateInstallationType : int32_t
     {
@@ -132,6 +147,16 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
         BlockedByAppClose = 33,
         BlockedByAppRestart = 34,
         OtherUpdateReverting = 35,
+        RepairInProgress = 36,
+        WaitingForLeadingUpdate = 37,
+        Undefined = 38,
+    };
+    enum class WindowsUpdateManagerScanMode : int32_t
+    {
+        Default = 0,
+        BypassScanDeferrals = 1,
+        UserInitiated = 2,
+        WhatIf = 100,
     };
     struct IPreviewBuildsManager;
     struct IPreviewBuildsManagerStatics;
@@ -148,6 +173,8 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
     struct IWindowsSoftwareUpdateExecutionInfo;
     struct IWindowsSoftwareUpdateExecutionInfoFactory;
     struct IWindowsSoftwareUpdateFactory;
+    struct IWindowsSoftwareUpdateIdentity;
+    struct IWindowsSoftwareUpdateIdentityFactory;
     struct IWindowsSoftwareUpdateLocalizationInfo;
     struct IWindowsSoftwareUpdateLocalizationInfoFactory;
     struct IWindowsSoftwareUpdateOptionalActionInfo;
@@ -182,8 +209,6 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
     struct IWindowsUpdateManager2;
     struct IWindowsUpdateManagerFactory;
     struct IWindowsUpdateManagerFactory2;
-    struct IWindowsUpdateManagerScanOptions;
-    struct IWindowsUpdateManagerScanOptionsFactory;
     struct IWindowsUpdateProgressChangedEventArgs;
     struct IWindowsUpdateRestartRequestOptions;
     struct IWindowsUpdateRestartRequestOptionsFactory;
@@ -197,6 +222,7 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
     struct WindowsSoftwareUpdateAppPackageInfo;
     struct WindowsSoftwareUpdateApprovalInfo;
     struct WindowsSoftwareUpdateExecutionInfo;
+    struct WindowsSoftwareUpdateIdentity;
     struct WindowsSoftwareUpdateLocalizationInfo;
     struct WindowsSoftwareUpdateOptionalActionInfo;
     struct WindowsSoftwareUpdateOptionalInfo;
@@ -218,7 +244,6 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
     struct WindowsUpdateGetAdministratorResult;
     struct WindowsUpdateItem;
     struct WindowsUpdateManager;
-    struct WindowsUpdateManagerScanOptions;
     struct WindowsUpdateProgressChangedEventArgs;
     struct WindowsUpdateRestartRequestOptions;
     struct WindowsUpdateScanCompletedEventArgs;
@@ -241,6 +266,8 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Management::Update::IWindowsSoftwareUpdateExecutionInfo>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Management::Update::IWindowsSoftwareUpdateExecutionInfoFactory>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Management::Update::IWindowsSoftwareUpdateFactory>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::Management::Update::IWindowsSoftwareUpdateIdentity>{ using type = interface_category; };
+    template <> struct category<winrt::Windows::Management::Update::IWindowsSoftwareUpdateIdentityFactory>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Management::Update::IWindowsSoftwareUpdateLocalizationInfo>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Management::Update::IWindowsSoftwareUpdateLocalizationInfoFactory>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalActionInfo>{ using type = interface_category; };
@@ -275,8 +302,6 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Management::Update::IWindowsUpdateManager2>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Management::Update::IWindowsUpdateManagerFactory>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Management::Update::IWindowsUpdateManagerFactory2>{ using type = interface_category; };
-    template <> struct category<winrt::Windows::Management::Update::IWindowsUpdateManagerScanOptions>{ using type = interface_category; };
-    template <> struct category<winrt::Windows::Management::Update::IWindowsUpdateManagerScanOptionsFactory>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Management::Update::IWindowsUpdateProgressChangedEventArgs>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Management::Update::IWindowsUpdateRestartRequestOptions>{ using type = interface_category; };
     template <> struct category<winrt::Windows::Management::Update::IWindowsUpdateRestartRequestOptionsFactory>{ using type = interface_category; };
@@ -290,6 +315,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateAppPackageInfo>{ using type = class_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateApprovalInfo>{ using type = class_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateExecutionInfo>{ using type = class_category; };
+    template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateIdentity>{ using type = class_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateLocalizationInfo>{ using type = class_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalActionInfo>{ using type = class_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalInfo>{ using type = class_category; };
@@ -311,13 +337,14 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Management::Update::WindowsUpdateGetAdministratorResult>{ using type = class_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsUpdateItem>{ using type = class_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsUpdateManager>{ using type = class_category; };
-    template <> struct category<winrt::Windows::Management::Update::WindowsUpdateManagerScanOptions>{ using type = class_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsUpdateProgressChangedEventArgs>{ using type = class_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsUpdateRestartRequestOptions>{ using type = class_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsUpdateScanCompletedEventArgs>{ using type = class_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateActionResult>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateActionType>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateArchitecture>{ using type = enum_category; };
+    template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateCategory>{ using type = enum_category; };
+    template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateIdentityType>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateInstallationType>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateProviderRegistrationType>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsSoftwareUpdateProviderTrustState>{ using type = enum_category; };
@@ -326,6 +353,7 @@ namespace winrt::impl
     template <> struct category<winrt::Windows::Management::Update::WindowsUpdateAdministratorOptions>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsUpdateAdministratorStatus>{ using type = enum_category; };
     template <> struct category<winrt::Windows::Management::Update::WindowsUpdateAttentionRequiredReason>{ using type = enum_category; };
+    template <> struct category<winrt::Windows::Management::Update::WindowsUpdateManagerScanMode>{ using type = enum_category; };
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::PreviewBuildsManager> = L"Windows.Management.Update.PreviewBuildsManager";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::PreviewBuildsState> = L"Windows.Management.Update.PreviewBuildsState";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdate> = L"Windows.Management.Update.WindowsSoftwareUpdate";
@@ -335,6 +363,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateAppPackageInfo> = L"Windows.Management.Update.WindowsSoftwareUpdateAppPackageInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateApprovalInfo> = L"Windows.Management.Update.WindowsSoftwareUpdateApprovalInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateExecutionInfo> = L"Windows.Management.Update.WindowsSoftwareUpdateExecutionInfo";
+    template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateIdentity> = L"Windows.Management.Update.WindowsSoftwareUpdateIdentity";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateLocalizationInfo> = L"Windows.Management.Update.WindowsSoftwareUpdateLocalizationInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalActionInfo> = L"Windows.Management.Update.WindowsSoftwareUpdateOptionalActionInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalInfo> = L"Windows.Management.Update.WindowsSoftwareUpdateOptionalInfo";
@@ -356,13 +385,14 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsUpdateGetAdministratorResult> = L"Windows.Management.Update.WindowsUpdateGetAdministratorResult";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsUpdateItem> = L"Windows.Management.Update.WindowsUpdateItem";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsUpdateManager> = L"Windows.Management.Update.WindowsUpdateManager";
-    template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsUpdateManagerScanOptions> = L"Windows.Management.Update.WindowsUpdateManagerScanOptions";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsUpdateProgressChangedEventArgs> = L"Windows.Management.Update.WindowsUpdateProgressChangedEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsUpdateRestartRequestOptions> = L"Windows.Management.Update.WindowsUpdateRestartRequestOptions";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsUpdateScanCompletedEventArgs> = L"Windows.Management.Update.WindowsUpdateScanCompletedEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateActionResult> = L"Windows.Management.Update.WindowsSoftwareUpdateActionResult";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateActionType> = L"Windows.Management.Update.WindowsSoftwareUpdateActionType";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateArchitecture> = L"Windows.Management.Update.WindowsSoftwareUpdateArchitecture";
+    template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateCategory> = L"Windows.Management.Update.WindowsSoftwareUpdateCategory";
+    template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateIdentityType> = L"Windows.Management.Update.WindowsSoftwareUpdateIdentityType";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateInstallationType> = L"Windows.Management.Update.WindowsSoftwareUpdateInstallationType";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateProviderRegistrationType> = L"Windows.Management.Update.WindowsSoftwareUpdateProviderRegistrationType";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsSoftwareUpdateProviderTrustState> = L"Windows.Management.Update.WindowsSoftwareUpdateProviderTrustState";
@@ -371,6 +401,7 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsUpdateAdministratorOptions> = L"Windows.Management.Update.WindowsUpdateAdministratorOptions";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsUpdateAdministratorStatus> = L"Windows.Management.Update.WindowsUpdateAdministratorStatus";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsUpdateAttentionRequiredReason> = L"Windows.Management.Update.WindowsUpdateAttentionRequiredReason";
+    template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::WindowsUpdateManagerScanMode> = L"Windows.Management.Update.WindowsUpdateManagerScanMode";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IPreviewBuildsManager> = L"Windows.Management.Update.IPreviewBuildsManager";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IPreviewBuildsManagerStatics> = L"Windows.Management.Update.IPreviewBuildsManagerStatics";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IPreviewBuildsState> = L"Windows.Management.Update.IPreviewBuildsState";
@@ -386,6 +417,8 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateExecutionInfo> = L"Windows.Management.Update.IWindowsSoftwareUpdateExecutionInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateExecutionInfoFactory> = L"Windows.Management.Update.IWindowsSoftwareUpdateExecutionInfoFactory";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateFactory> = L"Windows.Management.Update.IWindowsSoftwareUpdateFactory";
+    template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateIdentity> = L"Windows.Management.Update.IWindowsSoftwareUpdateIdentity";
+    template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateIdentityFactory> = L"Windows.Management.Update.IWindowsSoftwareUpdateIdentityFactory";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateLocalizationInfo> = L"Windows.Management.Update.IWindowsSoftwareUpdateLocalizationInfo";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateLocalizationInfoFactory> = L"Windows.Management.Update.IWindowsSoftwareUpdateLocalizationInfoFactory";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalActionInfo> = L"Windows.Management.Update.IWindowsSoftwareUpdateOptionalActionInfo";
@@ -420,8 +453,6 @@ namespace winrt::impl
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsUpdateManager2> = L"Windows.Management.Update.IWindowsUpdateManager2";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsUpdateManagerFactory> = L"Windows.Management.Update.IWindowsUpdateManagerFactory";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsUpdateManagerFactory2> = L"Windows.Management.Update.IWindowsUpdateManagerFactory2";
-    template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsUpdateManagerScanOptions> = L"Windows.Management.Update.IWindowsUpdateManagerScanOptions";
-    template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsUpdateManagerScanOptionsFactory> = L"Windows.Management.Update.IWindowsUpdateManagerScanOptionsFactory";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsUpdateProgressChangedEventArgs> = L"Windows.Management.Update.IWindowsUpdateProgressChangedEventArgs";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsUpdateRestartRequestOptions> = L"Windows.Management.Update.IWindowsUpdateRestartRequestOptions";
     template <> inline constexpr auto& name_v<winrt::Windows::Management::Update::IWindowsUpdateRestartRequestOptionsFactory> = L"Windows.Management.Update.IWindowsUpdateRestartRequestOptionsFactory";
@@ -430,7 +461,7 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IPreviewBuildsManager>{ 0xFA07DD61,0x7E4F,0x59F7,{ 0x7C,0x9F,0xDE,0xF9,0x05,0x1C,0x5F,0x62 } }; // FA07DD61-7E4F-59F7-7C9F-DEF9051C5F62
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IPreviewBuildsManagerStatics>{ 0x3E422887,0xB112,0x5A70,{ 0x7D,0xA1,0x97,0xD7,0x8D,0x32,0xAA,0x29 } }; // 3E422887-B112-5A70-7DA1-97D78D32AA29
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IPreviewBuildsState>{ 0xA2F2903E,0xB223,0x5F63,{ 0x75,0x46,0x3E,0x8E,0xAC,0x07,0x0A,0x2E } }; // A2F2903E-B223-5F63-7546-3E8EAC070A2E
-    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdate>{ 0xD8F19211,0x98FE,0x58DD,{ 0xAF,0x0F,0x47,0x05,0x32,0xAA,0x33,0x41 } }; // D8F19211-98FE-58DD-AF0F-470532AA3341
+    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdate>{ 0x7BCD30BE,0x0A5E,0x540F,{ 0x9B,0xD8,0xB8,0xB6,0x65,0x98,0x0B,0x8B } }; // 7BCD30BE-0A5E-540F-9BD8-B8B665980B8B
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateActionInfo>{ 0x2F6723B5,0xF704,0x5362,{ 0xB6,0x00,0xD1,0x88,0x08,0xF3,0x97,0x3E } }; // 2F6723B5-F704-5362-B600-D18808F3973E
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateActionInfoFactory>{ 0x5E83B58E,0xD982,0x5D93,{ 0xA7,0xCB,0xBF,0x6C,0x9B,0x6E,0xE5,0xA6 } }; // 5E83B58E-D982-5D93-A7CB-BF6C9B6EE5A6
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateActionProgress>{ 0x17DC15FD,0x75F2,0x522B,{ 0xB5,0x55,0x35,0x9D,0xA8,0xDE,0x55,0x81 } }; // 17DC15FD-75F2-522B-B555-359DA8DE5581
@@ -441,14 +472,16 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateApprovalInfoFactory>{ 0xAB291C7C,0xD29F,0x5AC5,{ 0xB4,0x47,0x0B,0xFC,0xAB,0xDC,0x2C,0xC3 } }; // AB291C7C-D29F-5AC5-B447-0BFCABDC2CC3
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateExecutionInfo>{ 0x091AEA19,0x9128,0x5F24,{ 0xAF,0xC1,0xA6,0x22,0x52,0xDF,0x55,0xC0 } }; // 091AEA19-9128-5F24-AFC1-A62252DF55C0
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateExecutionInfoFactory>{ 0x88596F7E,0xB9EF,0x5583,{ 0x81,0x35,0x94,0xD6,0x2E,0xD6,0x6E,0xD4 } }; // 88596F7E-B9EF-5583-8135-94D62ED66ED4
-    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateFactory>{ 0x28E7E01B,0x4225,0x52C8,{ 0xBB,0x51,0xC6,0x8F,0x0B,0x07,0x1B,0xE5 } }; // 28E7E01B-4225-52C8-BB51-C68F0B071BE5
+    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateFactory>{ 0x2A6E4E2D,0x3627,0x5943,{ 0xB0,0xAD,0xBF,0x0B,0x06,0xCE,0xAE,0x4C } }; // 2A6E4E2D-3627-5943-B0AD-BF0B06CEAE4C
+    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateIdentity>{ 0x6040C757,0x5447,0x5C1F,{ 0x8B,0x25,0x89,0x76,0xBC,0xE1,0x27,0x86 } }; // 6040C757-5447-5C1F-8B25-8976BCE12786
+    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateIdentityFactory>{ 0xC84999FC,0x8CE6,0x5711,{ 0xB8,0x8C,0xD5,0xB9,0x26,0xE2,0xE5,0xDB } }; // C84999FC-8CE6-5711-B88C-D5B926E2E5DB
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateLocalizationInfo>{ 0xADC2DE4B,0x5966,0x5F9F,{ 0xAE,0x07,0x00,0xD4,0xA2,0x85,0xD9,0x33 } }; // ADC2DE4B-5966-5F9F-AE07-00D4A285D933
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateLocalizationInfoFactory>{ 0x76979B24,0xF5BD,0x5C8C,{ 0xBD,0xB7,0xA4,0x61,0x87,0x37,0x4A,0xFF } }; // 76979B24-F5BD-5C8C-BDB7-A46187374AFF
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalActionInfo>{ 0x4AC035D0,0xE50E,0x5CCB,{ 0xBF,0xD8,0xA3,0x03,0x56,0x28,0x91,0xD2 } }; // 4AC035D0-E50E-5CCB-BFD8-A303562891D2
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalActionInfoFactory>{ 0x88D2FCC1,0x4791,0x51B6,{ 0xB9,0x88,0x96,0x6E,0xF9,0x3A,0x18,0x0B } }; // 88D2FCC1-4791-51B6-B988-966EF93A180B
-    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalInfo>{ 0x78084A73,0x50C4,0x5C33,{ 0xA7,0x51,0x7A,0x12,0x1F,0x5A,0xAE,0x70 } }; // 78084A73-50C4-5C33-A751-7A121F5AAE70
-    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalInfoFactory>{ 0xD837DEED,0xA5F2,0x5C89,{ 0x8B,0xEB,0x85,0x2D,0x28,0x97,0xB2,0xEF } }; // D837DEED-A5F2-5C89-8BEB-852D2897B2EF
-    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateProvider>{ 0x20B67F4A,0xE28E,0x5D20,{ 0x9C,0x00,0xBF,0x24,0x99,0x22,0xEF,0xBE } }; // 20B67F4A-E28E-5D20-9C00-BF249922EFBE
+    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalInfo>{ 0xA755841C,0xED10,0x5A3C,{ 0x85,0x26,0x3F,0xC1,0xFD,0x96,0x96,0x18 } }; // A755841C-ED10-5A3C-8526-3FC1FD969618
+    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalInfoFactory>{ 0xBE28A884,0x5B20,0x5B8B,{ 0x96,0xA2,0x1C,0x52,0x8C,0x44,0x1A,0xCD } }; // BE28A884-5B20-5B8B-96A2-1C528C441ACD
+    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateProvider>{ 0xFD6F6D8C,0xC6FD,0x58E0,{ 0x94,0x9E,0xA3,0x44,0x71,0x7A,0x81,0x66 } }; // FD6F6D8C-C6FD-58E0-949E-A344717A8166
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateProviderActionResult>{ 0xAFD92B50,0x6BB9,0x54DE,{ 0xBD,0xDA,0x9D,0xFB,0x6C,0xC1,0x7C,0x16 } }; // AFD92B50-6BB9-54DE-BDDA-9DFB6CC17C16
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateProviderActionResultFactory>{ 0x0C002684,0x30C9,0x59E9,{ 0xB5,0x3F,0x88,0x46,0xA8,0x5D,0x2D,0xC6 } }; // 0C002684-30C9-59E9-B53F-8846A85D2DC6
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsSoftwareUpdateProviderFactory>{ 0xFC0D5FC4,0xE15E,0x5116,{ 0xB2,0xED,0xDB,0x0A,0x64,0x99,0x7F,0xFA } }; // FC0D5FC4-E15E-5116-B2ED-DB0A64997FFA
@@ -473,11 +506,9 @@ namespace winrt::impl
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsUpdateGetAdministratorResult>{ 0xBB39FFC4,0x2C42,0x5B1C,{ 0x89,0x95,0x34,0x33,0x41,0xC9,0x2C,0x50 } }; // BB39FFC4-2C42-5B1C-8995-343341C92C50
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsUpdateItem>{ 0xB222E44A,0x49B6,0x59BF,{ 0xA0,0x33,0xEF,0x61,0x7C,0xD7,0x3A,0x98 } }; // B222E44A-49B6-59BF-A033-EF617CD73A98
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsUpdateManager>{ 0x5DD966C0,0xA71A,0x5602,{ 0xBB,0xD0,0x09,0xA7,0x0E,0x45,0x73,0xFA } }; // 5DD966C0-A71A-5602-BBD0-09A70E4573FA
-    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsUpdateManager2>{ 0x564E7683,0xBD21,0x57A4,{ 0xB1,0x7F,0x7B,0xF6,0x35,0x0F,0x4C,0x75 } }; // 564E7683-BD21-57A4-B17F-7BF6350F4C75
+    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsUpdateManager2>{ 0xB8BA4965,0x423C,0x5E71,{ 0xB8,0x9E,0x0B,0x79,0x40,0xE7,0x39,0x0F } }; // B8BA4965-423C-5E71-B89E-0B7940E7390F
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsUpdateManagerFactory>{ 0x1B394DF8,0xDECB,0x5F44,{ 0xB4,0x7C,0x6C,0xCF,0x3B,0xCF,0xDB,0x37 } }; // 1B394DF8-DECB-5F44-B47C-6CCF3BCFDB37
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsUpdateManagerFactory2>{ 0xBA08D663,0xD160,0x59B9,{ 0x98,0x98,0x97,0xA1,0x86,0xAD,0x52,0xEA } }; // BA08D663-D160-59B9-9898-97A186AD52EA
-    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsUpdateManagerScanOptions>{ 0xB7C30113,0x5E4B,0x59D8,{ 0x99,0xAD,0xF5,0x8D,0x67,0xB2,0xAE,0xFC } }; // B7C30113-5E4B-59D8-99AD-F58D67B2AEFC
-    template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsUpdateManagerScanOptionsFactory>{ 0x1A0F9198,0xF18D,0x5CFD,{ 0x8C,0xB9,0x08,0xF3,0xFB,0x74,0xDA,0x70 } }; // 1A0F9198-F18D-5CFD-8CB9-08F3FB74DA70
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsUpdateProgressChangedEventArgs>{ 0xBBFBDEEB,0x94C8,0x5AA7,{ 0xB0,0xFB,0x66,0xC6,0x7C,0x23,0x3B,0x0A } }; // BBFBDEEB-94C8-5AA7-B0FB-66C67C233B0A
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsUpdateRestartRequestOptions>{ 0x38CFB7D3,0x4188,0x5222,{ 0x90,0x5C,0x6C,0x44,0x43,0xC9,0x51,0xEE } }; // 38CFB7D3-4188-5222-905C-6C4443C951EE
     template <> inline constexpr guid guid_v<winrt::Windows::Management::Update::IWindowsUpdateRestartRequestOptionsFactory>{ 0x75F41D04,0x0E17,0x50D0,{ 0x8C,0x15,0x6B,0x9D,0x05,0x39,0xB3,0xA9 } }; // 75F41D04-0E17-50D0-8C15-6B9D0539B3A9
@@ -491,6 +522,7 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Management::Update::WindowsSoftwareUpdateAppPackageInfo>{ using type = winrt::Windows::Management::Update::IWindowsSoftwareUpdateAppPackageInfo; };
     template <> struct default_interface<winrt::Windows::Management::Update::WindowsSoftwareUpdateApprovalInfo>{ using type = winrt::Windows::Management::Update::IWindowsSoftwareUpdateApprovalInfo; };
     template <> struct default_interface<winrt::Windows::Management::Update::WindowsSoftwareUpdateExecutionInfo>{ using type = winrt::Windows::Management::Update::IWindowsSoftwareUpdateExecutionInfo; };
+    template <> struct default_interface<winrt::Windows::Management::Update::WindowsSoftwareUpdateIdentity>{ using type = winrt::Windows::Management::Update::IWindowsSoftwareUpdateIdentity; };
     template <> struct default_interface<winrt::Windows::Management::Update::WindowsSoftwareUpdateLocalizationInfo>{ using type = winrt::Windows::Management::Update::IWindowsSoftwareUpdateLocalizationInfo; };
     template <> struct default_interface<winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalActionInfo>{ using type = winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalActionInfo; };
     template <> struct default_interface<winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalInfo>{ using type = winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalInfo; };
@@ -512,7 +544,6 @@ namespace winrt::impl
     template <> struct default_interface<winrt::Windows::Management::Update::WindowsUpdateGetAdministratorResult>{ using type = winrt::Windows::Management::Update::IWindowsUpdateGetAdministratorResult; };
     template <> struct default_interface<winrt::Windows::Management::Update::WindowsUpdateItem>{ using type = winrt::Windows::Management::Update::IWindowsUpdateItem; };
     template <> struct default_interface<winrt::Windows::Management::Update::WindowsUpdateManager>{ using type = winrt::Windows::Management::Update::IWindowsUpdateManager; };
-    template <> struct default_interface<winrt::Windows::Management::Update::WindowsUpdateManagerScanOptions>{ using type = winrt::Windows::Management::Update::IWindowsUpdateManagerScanOptions; };
     template <> struct default_interface<winrt::Windows::Management::Update::WindowsUpdateProgressChangedEventArgs>{ using type = winrt::Windows::Management::Update::IWindowsUpdateProgressChangedEventArgs; };
     template <> struct default_interface<winrt::Windows::Management::Update::WindowsUpdateRestartRequestOptions>{ using type = winrt::Windows::Management::Update::IWindowsUpdateRestartRequestOptions; };
     template <> struct default_interface<winrt::Windows::Management::Update::WindowsUpdateScanCompletedEventArgs>{ using type = winrt::Windows::Management::Update::IWindowsUpdateScanCompletedEventArgs; };
@@ -551,12 +582,13 @@ namespace winrt::impl
             virtual int32_t __stdcall get_Title(void**) noexcept = 0;
             virtual int32_t __stdcall get_Description(void**) noexcept = 0;
             virtual int32_t __stdcall get_MoreInfoUrl(void**) noexcept = 0;
+            virtual int32_t __stdcall get_IsSeeker(bool*) noexcept = 0;
+            virtual int32_t __stdcall get_UpdateCategory(int32_t*) noexcept = 0;
+            virtual int32_t __stdcall get_UpdateIdentity(void**) noexcept = 0;
             virtual int32_t __stdcall get_DownloadSizeInBytes(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_InstallSizeInBytes(uint64_t*) noexcept = 0;
             virtual int32_t __stdcall get_SourceVersion(void**) noexcept = 0;
             virtual int32_t __stdcall get_TargetVersion(void**) noexcept = 0;
-            virtual int32_t __stdcall get_ProductCode(void**) noexcept = 0;
-            virtual int32_t __stdcall get_PackageFamilyName(void**) noexcept = 0;
             virtual int32_t __stdcall Approve(void*, void**) noexcept = 0;
             virtual int32_t __stdcall ApproveCurrentAction(bool, void**) noexcept = 0;
             virtual int32_t __stdcall get_CurrentAction(void**) noexcept = 0;
@@ -569,6 +601,8 @@ namespace winrt::impl
             virtual int32_t __stdcall get_AppPackageInfo(void**) noexcept = 0;
             virtual int32_t __stdcall get_ExecutionInfo(void**) noexcept = 0;
             virtual int32_t __stdcall get_OptionalInfo(void**) noexcept = 0;
+            virtual int32_t __stdcall get_Properties(void**) noexcept = 0;
+            virtual int32_t __stdcall GetPropertyValue(void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsSoftwareUpdateActionInfo>
@@ -662,8 +696,22 @@ namespace winrt::impl
     {
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
-            virtual int32_t __stdcall CreateInstance(void*, int32_t, void*, void*, void*, void*, uint64_t, uint64_t, void*, void*, void*, void*, void*, void**) noexcept = 0;
-            virtual int32_t __stdcall CreateInstance2(void*, int32_t, void*, void*, void*, void*, uint64_t, uint64_t, void*, void*, void*, void*, void*, void*, void*, void**) noexcept = 0;
+            virtual int32_t __stdcall CreateInstance(void*, int32_t, void*, void*, void*, void*, uint64_t, uint64_t, void*, void*, void*, void*, void*, void*, void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::Management::Update::IWindowsSoftwareUpdateIdentity>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall get_Type(int32_t*) noexcept = 0;
+            virtual int32_t __stdcall get_Identity(void**) noexcept = 0;
+        };
+    };
+    template <> struct abi<winrt::Windows::Management::Update::IWindowsSoftwareUpdateIdentityFactory>
+    {
+        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
+        {
+            virtual int32_t __stdcall CreateInstance(int32_t, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsSoftwareUpdateLocalizationInfo>
@@ -706,14 +754,14 @@ namespace winrt::impl
             virtual int32_t __stdcall get_LocalizationInfo(void**) noexcept = 0;
             virtual int32_t __stdcall get_ComplianceDeadlineInDays(void**) noexcept = 0;
             virtual int32_t __stdcall get_ComplianceGracePeriodInDays(void**) noexcept = 0;
+            virtual int32_t __stdcall get_Category(void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalInfoFactory>
     {
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
-            virtual int32_t __stdcall CreateInstance(void*, void*, void**) noexcept = 0;
-            virtual int32_t __stdcall CreateInstance2(void*, void*, void*, void**) noexcept = 0;
+            virtual int32_t __stdcall CreateInstance(void*, void*, void*, void*, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsSoftwareUpdateProvider>
@@ -723,6 +771,7 @@ namespace winrt::impl
             virtual int32_t __stdcall Register(void**) noexcept = 0;
             virtual int32_t __stdcall Unregister(void**) noexcept = 0;
             virtual int32_t __stdcall Validate(void**) noexcept = 0;
+            virtual int32_t __stdcall get_SchemaVersion(void**) noexcept = 0;
             virtual int32_t __stdcall get_Id(void**) noexcept = 0;
             virtual int32_t __stdcall get_Version(void**) noexcept = 0;
             virtual int32_t __stdcall get_FolderPath(void**) noexcept = 0;
@@ -1011,7 +1060,7 @@ namespace winrt::impl
             virtual int32_t __stdcall GetProvider(void*, void**) noexcept = 0;
             virtual int32_t __stdcall get_ProviderIds(uint32_t* __valueSize, void***) noexcept = 0;
             virtual int32_t __stdcall GetApplicableSoftwareUpdates(void**) noexcept = 0;
-            virtual int32_t __stdcall PerformScan(void*, void**) noexcept = 0;
+            virtual int32_t __stdcall PerformScan(int32_t, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateManagerFactory>
@@ -1026,25 +1075,6 @@ namespace winrt::impl
         struct WINRT_IMPL_NOVTABLE type : inspectable_abi
         {
             virtual int32_t __stdcall CreateInstance(void*, uint32_t, void**, void**) noexcept = 0;
-        };
-    };
-    template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateManagerScanOptions>
-    {
-        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
-        {
-            virtual int32_t __stdcall get_IsUserInitiated(bool*) noexcept = 0;
-            virtual int32_t __stdcall put_IsUserInitiated(bool) noexcept = 0;
-            virtual int32_t __stdcall get_AllowBypassThrottling(bool*) noexcept = 0;
-            virtual int32_t __stdcall put_AllowBypassThrottling(bool) noexcept = 0;
-            virtual int32_t __stdcall get_PerformUpdateActions(bool*) noexcept = 0;
-            virtual int32_t __stdcall put_PerformUpdateActions(bool) noexcept = 0;
-        };
-    };
-    template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateManagerScanOptionsFactory>
-    {
-        struct WINRT_IMPL_NOVTABLE type : inspectable_abi
-        {
-            virtual int32_t __stdcall CreateInstance(bool, void**) noexcept = 0;
         };
     };
     template <> struct abi<winrt::Windows::Management::Update::IWindowsUpdateProgressChangedEventArgs>
@@ -1132,12 +1162,13 @@ namespace winrt::impl
         [[nodiscard]] auto Title() const;
         [[nodiscard]] auto Description() const;
         [[nodiscard]] auto MoreInfoUrl() const;
+        [[nodiscard]] auto IsSeeker() const;
+        [[nodiscard]] auto UpdateCategory() const;
+        [[nodiscard]] auto UpdateIdentity() const;
         [[nodiscard]] auto DownloadSizeInBytes() const;
         [[nodiscard]] auto InstallSizeInBytes() const;
         [[nodiscard]] auto SourceVersion() const;
         [[nodiscard]] auto TargetVersion() const;
-        [[nodiscard]] auto ProductCode() const;
-        [[nodiscard]] auto PackageFamilyName() const;
         auto Approve(winrt::Windows::Management::Update::WindowsSoftwareUpdateApprovalInfo const& approvalInfo) const;
         auto ApproveCurrentAction(bool approve) const;
         [[nodiscard]] auto CurrentAction() const;
@@ -1150,6 +1181,8 @@ namespace winrt::impl
         [[nodiscard]] auto AppPackageInfo() const;
         [[nodiscard]] auto ExecutionInfo() const;
         [[nodiscard]] auto OptionalInfo() const;
+        [[nodiscard]] auto Properties() const;
+        auto GetPropertyValue(param::hstring const& name) const;
     };
     template <> struct consume<winrt::Windows::Management::Update::IWindowsSoftwareUpdate>
     {
@@ -1265,12 +1298,30 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Management_Update_IWindowsSoftwareUpdateFactory
     {
-        auto CreateInstance(param::hstring const& providerId, winrt::Windows::Management::Update::WindowsSoftwareUpdateInstallationType const& installationType, param::hstring const& updateId, param::hstring const& title, param::hstring const& description, winrt::Windows::Foundation::Uri const& moreInfoUrl, uint64_t downloadSizeInBytes, uint64_t installSizeInBytes, winrt::Windows::Management::Update::WindowsSoftwareUpdateVersion const& sourceVersion, winrt::Windows::Management::Update::WindowsSoftwareUpdateVersion const& targetVersion, winrt::Windows::Management::Update::WindowsSoftwareUpdateAppPackageInfo const& appPackageInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateExecutionInfo const& executionInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalInfo const& optionalInfo) const;
-        auto CreateInstance2(param::hstring const& providerId, winrt::Windows::Management::Update::WindowsSoftwareUpdateInstallationType const& installationType, param::hstring const& updateId, param::hstring const& title, param::hstring const& description, winrt::Windows::Foundation::Uri const& moreInfoUrl, uint64_t downloadSizeInBytes, uint64_t installSizeInBytes, winrt::Windows::Foundation::IReference<winrt::guid> const& productCode, param::hstring const& packageFamilyName, winrt::Windows::Management::Update::WindowsSoftwareUpdateVersion const& sourceVersion, winrt::Windows::Management::Update::WindowsSoftwareUpdateVersion const& targetVersion, winrt::Windows::Management::Update::WindowsSoftwareUpdateAppPackageInfo const& appPackageInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateExecutionInfo const& executionInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalInfo const& optionalInfo) const;
+        auto CreateInstance(param::hstring const& providerId, winrt::Windows::Management::Update::WindowsSoftwareUpdateInstallationType const& installationType, param::hstring const& updateId, param::hstring const& title, param::hstring const& description, winrt::Windows::Foundation::Uri const& moreInfoUrl, uint64_t downloadSizeInBytes, uint64_t installSizeInBytes, winrt::Windows::Management::Update::WindowsSoftwareUpdateIdentity const& updateIdentity, winrt::Windows::Management::Update::WindowsSoftwareUpdateVersion const& sourceVersion, winrt::Windows::Management::Update::WindowsSoftwareUpdateVersion const& targetVersion, winrt::Windows::Management::Update::WindowsSoftwareUpdateAppPackageInfo const& appPackageInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateExecutionInfo const& executionInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalInfo const& optionalInfo) const;
     };
     template <> struct consume<winrt::Windows::Management::Update::IWindowsSoftwareUpdateFactory>
     {
         template <typename D> using type = consume_Windows_Management_Update_IWindowsSoftwareUpdateFactory<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Management_Update_IWindowsSoftwareUpdateIdentity
+    {
+        [[nodiscard]] auto Type() const;
+        [[nodiscard]] auto Identity() const;
+    };
+    template <> struct consume<winrt::Windows::Management::Update::IWindowsSoftwareUpdateIdentity>
+    {
+        template <typename D> using type = consume_Windows_Management_Update_IWindowsSoftwareUpdateIdentity<D>;
+    };
+    template <typename D>
+    struct consume_Windows_Management_Update_IWindowsSoftwareUpdateIdentityFactory
+    {
+        auto CreateInstance(winrt::Windows::Management::Update::WindowsSoftwareUpdateIdentityType const& type, param::hstring const& identity) const;
+    };
+    template <> struct consume<winrt::Windows::Management::Update::IWindowsSoftwareUpdateIdentityFactory>
+    {
+        template <typename D> using type = consume_Windows_Management_Update_IWindowsSoftwareUpdateIdentityFactory<D>;
     };
     template <typename D>
     struct consume_Windows_Management_Update_IWindowsSoftwareUpdateLocalizationInfo
@@ -1319,6 +1370,7 @@ namespace winrt::impl
         [[nodiscard]] auto LocalizationInfo() const;
         [[nodiscard]] auto ComplianceDeadlineInDays() const;
         [[nodiscard]] auto ComplianceGracePeriodInDays() const;
+        [[nodiscard]] auto Category() const;
     };
     template <> struct consume<winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalInfo>
     {
@@ -1327,8 +1379,7 @@ namespace winrt::impl
     template <typename D>
     struct consume_Windows_Management_Update_IWindowsSoftwareUpdateOptionalInfoFactory
     {
-        auto CreateInstance(winrt::Windows::Foundation::IReference<int32_t> const& complianceDeadlineInDays, winrt::Windows::Foundation::IReference<int32_t> const& complianceGracePeriodInDays) const;
-        auto CreateInstance2(param::iterable<winrt::Windows::Management::Update::WindowsSoftwareUpdateLocalizationInfo> const& localizationInfo, winrt::Windows::Foundation::IReference<int32_t> const& complianceDeadlineInDays, winrt::Windows::Foundation::IReference<int32_t> const& complianceGracePeriodInDays) const;
+        auto CreateInstance(winrt::Windows::Foundation::IReference<winrt::Windows::Management::Update::WindowsSoftwareUpdateCategory> const& category, param::iterable<winrt::Windows::Management::Update::WindowsSoftwareUpdateLocalizationInfo> const& localizationInfo, winrt::Windows::Foundation::IReference<int32_t> const& complianceDeadlineInDays, winrt::Windows::Foundation::IReference<int32_t> const& complianceGracePeriodInDays) const;
     };
     template <> struct consume<winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalInfoFactory>
     {
@@ -1340,6 +1391,7 @@ namespace winrt::impl
         auto Register() const;
         auto Unregister() const;
         auto Validate() const;
+        [[nodiscard]] auto SchemaVersion() const;
         [[nodiscard]] auto Id() const;
         [[nodiscard]] auto Version() const;
         [[nodiscard]] auto FolderPath() const;
@@ -1692,7 +1744,7 @@ namespace winrt::impl
         auto GetProvider(param::hstring const& id) const;
         [[nodiscard]] auto ProviderIds() const;
         auto GetApplicableSoftwareUpdates() const;
-        auto PerformScan(winrt::Windows::Management::Update::WindowsUpdateManagerScanOptions const& options) const;
+        auto PerformScan(winrt::Windows::Management::Update::WindowsUpdateManagerScanMode const& scanMode) const;
     };
     template <> struct consume<winrt::Windows::Management::Update::IWindowsUpdateManager2>
     {
@@ -1715,29 +1767,6 @@ namespace winrt::impl
     template <> struct consume<winrt::Windows::Management::Update::IWindowsUpdateManagerFactory2>
     {
         template <typename D> using type = consume_Windows_Management_Update_IWindowsUpdateManagerFactory2<D>;
-    };
-    template <typename D>
-    struct consume_Windows_Management_Update_IWindowsUpdateManagerScanOptions
-    {
-        [[nodiscard]] auto IsUserInitiated() const;
-        auto IsUserInitiated(bool value) const;
-        [[nodiscard]] auto AllowBypassThrottling() const;
-        auto AllowBypassThrottling(bool value) const;
-        [[nodiscard]] auto PerformUpdateActions() const;
-        auto PerformUpdateActions(bool value) const;
-    };
-    template <> struct consume<winrt::Windows::Management::Update::IWindowsUpdateManagerScanOptions>
-    {
-        template <typename D> using type = consume_Windows_Management_Update_IWindowsUpdateManagerScanOptions<D>;
-    };
-    template <typename D>
-    struct consume_Windows_Management_Update_IWindowsUpdateManagerScanOptionsFactory
-    {
-        auto CreateInstance(bool isUserInitiated) const;
-    };
-    template <> struct consume<winrt::Windows::Management::Update::IWindowsUpdateManagerScanOptionsFactory>
-    {
-        template <typename D> using type = consume_Windows_Management_Update_IWindowsUpdateManagerScanOptionsFactory<D>;
     };
     template <typename D>
     struct consume_Windows_Management_Update_IWindowsUpdateProgressChangedEventArgs

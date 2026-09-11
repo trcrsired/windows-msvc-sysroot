@@ -92,6 +92,7 @@ WINRT_EXPORT namespace winrt::Windows::System::Profile
         RetailInfo() = delete;
         [[nodiscard]] static auto IsDemoModeEnabled();
         [[nodiscard]] static auto Properties();
+        [[nodiscard]] static auto IsDemoModeEnabledEx();
     };
     struct SharedModeSettings
     {

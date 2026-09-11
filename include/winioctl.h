@@ -6661,6 +6661,61 @@ typedef _Struct_size_bytes_(Descriptor.dwSize) struct _DEVICEDUMP_STORAGESTACK_P
 
 } DEVICEDUMP_STORAGESTACK_PUBLIC_DUMP,*PDEVICEDUMP_STORAGESTACK_PUBLIC_DUMP;
 
+//
+// Maximum number of paging devices to report in secondary dump.
+//
+#define STOR_MAX_PAGING_DEVICES     16
+
+//
+// Miniport name length limit for dump output.
+//
+#define STOR_PAGING_DEVICE_MINIPORT_NAME_LENGTH    32
+#define STOR_PAGING_DEVICE_MODEL_NAME_LENGTH       64
+#define STOR_PAGING_DEVICE_FW_REVISION_LENGTH      16
+
+#pragma warning(push)
+#pragma warning(disable:4201) // nameless struct/union
+#pragma warning(disable:4214) // bit fields other than int to disable this around the struct
+
+//
+// Per-device info collected for paging device dump.
+//
+typedef struct _STOR_PAGING_DEVICE_DUMP_ENTRY {
+
+    CHAR MiniportName[STOR_PAGING_DEVICE_MINIPORT_NAME_LENGTH + 1];
+    CHAR ModelName[STOR_PAGING_DEVICE_MODEL_NAME_LENGTH + 1];
+    CHAR FirmwareRevision[STOR_PAGING_DEVICE_FW_REVISION_LENGTH + 1];
+    WORD   PagingPathCount;
+
+    union {
+        struct {
+            BYTE  IsBootDevice : 1;
+            BYTE  IsNativeNVMe : 1;
+            BYTE  Reserved : 6;
+        } DUMMYSTRUCTNAME;
+        BYTE  AsUchar;
+    } Flags;
+
+} STOR_PAGING_DEVICE_DUMP_ENTRY, *PSTOR_PAGING_DEVICE_DUMP_ENTRY;
+
+#pragma warning(pop)
+
+//
+// Header for the paging device dump data written to secondary dump.
+// Uses DEVICEDUMP_STRUCTURE_VERSION as the descriptor for consistency
+// with the existing DEVICEDUMP_STORAGESTACK_PUBLIC_DUMP format.
+// Shares GUID_DEVICEDUMP_DRIVER_STORAGE_PORT with the IO telemetry section;
+// the dwSignature ('PGDV': paging device) distinguishes this section from 'PTSD'.
+//
+typedef struct _STOR_PAGING_DEVICE_DUMP_DATA {
+
+    DEVICEDUMP_STRUCTURE_VERSION Descriptor;  // dwSignature='PGDV', dwVersion=1, dwSize=actual used
+    DWORD EntryCount;
+    DWORD EntrySize;
+    STOR_PAGING_DEVICE_DUMP_ENTRY Entries[ANYSIZE_ARRAY];
+
+} STOR_PAGING_DEVICE_DUMP_DATA, *PSTOR_PAGING_DEVICE_DUMP_DATA;
+
 // End of the packed structure group
 #include <poppack.h>
 

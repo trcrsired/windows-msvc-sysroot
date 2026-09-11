@@ -27,8 +27,7 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
     {
         WindowsSoftwareUpdate(std::nullptr_t) noexcept {}
         WindowsSoftwareUpdate(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Update::IWindowsSoftwareUpdate(ptr, take_ownership_from_abi) {}
-        WindowsSoftwareUpdate(param::hstring const& providerId, winrt::Windows::Management::Update::WindowsSoftwareUpdateInstallationType const& installationType, param::hstring const& updateId, param::hstring const& title, param::hstring const& description, winrt::Windows::Foundation::Uri const& moreInfoUrl, uint64_t downloadSizeInBytes, uint64_t installSizeInBytes, winrt::Windows::Management::Update::WindowsSoftwareUpdateVersion const& sourceVersion, winrt::Windows::Management::Update::WindowsSoftwareUpdateVersion const& targetVersion, winrt::Windows::Management::Update::WindowsSoftwareUpdateAppPackageInfo const& appPackageInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateExecutionInfo const& executionInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalInfo const& optionalInfo);
-        WindowsSoftwareUpdate(param::hstring const& providerId, winrt::Windows::Management::Update::WindowsSoftwareUpdateInstallationType const& installationType, param::hstring const& updateId, param::hstring const& title, param::hstring const& description, winrt::Windows::Foundation::Uri const& moreInfoUrl, uint64_t downloadSizeInBytes, uint64_t installSizeInBytes, winrt::Windows::Foundation::IReference<winrt::guid> const& productCode, param::hstring const& packageFamilyName, winrt::Windows::Management::Update::WindowsSoftwareUpdateVersion const& sourceVersion, winrt::Windows::Management::Update::WindowsSoftwareUpdateVersion const& targetVersion, winrt::Windows::Management::Update::WindowsSoftwareUpdateAppPackageInfo const& appPackageInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateExecutionInfo const& executionInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalInfo const& optionalInfo);
+        WindowsSoftwareUpdate(param::hstring const& providerId, winrt::Windows::Management::Update::WindowsSoftwareUpdateInstallationType const& installationType, param::hstring const& updateId, param::hstring const& title, param::hstring const& description, winrt::Windows::Foundation::Uri const& moreInfoUrl, uint64_t downloadSizeInBytes, uint64_t installSizeInBytes, winrt::Windows::Management::Update::WindowsSoftwareUpdateIdentity const& updateIdentity, winrt::Windows::Management::Update::WindowsSoftwareUpdateVersion const& sourceVersion, winrt::Windows::Management::Update::WindowsSoftwareUpdateVersion const& targetVersion, winrt::Windows::Management::Update::WindowsSoftwareUpdateAppPackageInfo const& appPackageInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateExecutionInfo const& executionInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalInfo const& optionalInfo);
     };
     struct WINRT_IMPL_EMPTY_BASES WindowsSoftwareUpdateActionInfo : winrt::Windows::Management::Update::IWindowsSoftwareUpdateActionInfo
     {
@@ -65,6 +64,12 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
         WindowsSoftwareUpdateExecutionInfo(winrt::Windows::Management::Update::WindowsSoftwareUpdateActionInfo const& downloadInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateActionInfo const& installInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalActionInfo const& actions);
         WindowsSoftwareUpdateExecutionInfo(winrt::Windows::Management::Update::WindowsSoftwareUpdateActionInfo const& deployInfo, winrt::Windows::Management::Update::WindowsSoftwareUpdateOptionalActionInfo const& actions);
     };
+    struct WINRT_IMPL_EMPTY_BASES WindowsSoftwareUpdateIdentity : winrt::Windows::Management::Update::IWindowsSoftwareUpdateIdentity
+    {
+        WindowsSoftwareUpdateIdentity(std::nullptr_t) noexcept {}
+        WindowsSoftwareUpdateIdentity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Update::IWindowsSoftwareUpdateIdentity(ptr, take_ownership_from_abi) {}
+        WindowsSoftwareUpdateIdentity(winrt::Windows::Management::Update::WindowsSoftwareUpdateIdentityType const& type, param::hstring const& identity);
+    };
     struct WINRT_IMPL_EMPTY_BASES WindowsSoftwareUpdateLocalizationInfo : winrt::Windows::Management::Update::IWindowsSoftwareUpdateLocalizationInfo
     {
         WindowsSoftwareUpdateLocalizationInfo(std::nullptr_t) noexcept {}
@@ -81,8 +86,7 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
     {
         WindowsSoftwareUpdateOptionalInfo(std::nullptr_t) noexcept {}
         WindowsSoftwareUpdateOptionalInfo(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Update::IWindowsSoftwareUpdateOptionalInfo(ptr, take_ownership_from_abi) {}
-        WindowsSoftwareUpdateOptionalInfo(winrt::Windows::Foundation::IReference<int32_t> const& complianceDeadlineInDays, winrt::Windows::Foundation::IReference<int32_t> const& complianceGracePeriodInDays);
-        WindowsSoftwareUpdateOptionalInfo(param::iterable<winrt::Windows::Management::Update::WindowsSoftwareUpdateLocalizationInfo> const& localizationInfo, winrt::Windows::Foundation::IReference<int32_t> const& complianceDeadlineInDays, winrt::Windows::Foundation::IReference<int32_t> const& complianceGracePeriodInDays);
+        WindowsSoftwareUpdateOptionalInfo(winrt::Windows::Foundation::IReference<winrt::Windows::Management::Update::WindowsSoftwareUpdateCategory> const& category, param::iterable<winrt::Windows::Management::Update::WindowsSoftwareUpdateLocalizationInfo> const& localizationInfo, winrt::Windows::Foundation::IReference<int32_t> const& complianceDeadlineInDays, winrt::Windows::Foundation::IReference<int32_t> const& complianceGracePeriodInDays);
     };
     struct WINRT_IMPL_EMPTY_BASES WindowsSoftwareUpdateProvider : winrt::Windows::Management::Update::IWindowsSoftwareUpdateProvider
     {
@@ -192,13 +196,6 @@ WINRT_EXPORT namespace winrt::Windows::Management::Update
         WindowsUpdateManager(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Update::IWindowsUpdateManager(ptr, take_ownership_from_abi) {}
         explicit WindowsUpdateManager(param::hstring const& clientId);
         WindowsUpdateManager(param::hstring const& clientId, array_view<hstring const> providerIdFilter);
-    };
-    struct WINRT_IMPL_EMPTY_BASES WindowsUpdateManagerScanOptions : winrt::Windows::Management::Update::IWindowsUpdateManagerScanOptions
-    {
-        WindowsUpdateManagerScanOptions(std::nullptr_t) noexcept {}
-        WindowsUpdateManagerScanOptions(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Management::Update::IWindowsUpdateManagerScanOptions(ptr, take_ownership_from_abi) {}
-        WindowsUpdateManagerScanOptions();
-        explicit WindowsUpdateManagerScanOptions(bool isUserInitiated);
     };
     struct WINRT_IMPL_EMPTY_BASES WindowsUpdateProgressChangedEventArgs : winrt::Windows::Management::Update::IWindowsUpdateProgressChangedEventArgs
     {

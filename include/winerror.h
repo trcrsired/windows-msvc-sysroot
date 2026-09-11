@@ -3596,6 +3596,15 @@
 #define ERROR_DEVICE_HARDWARE_ERROR      483L
 
 //
+// MessageId: ERROR_DEVICE_NACKED
+//
+// MessageText:
+//
+// The request failed due to the device passively/actively NACKing the operation.
+//
+#define ERROR_DEVICE_NACKED              484L
+
+//
 // MessageId: ERROR_INVALID_ADDRESS
 //
 // MessageText:
@@ -36899,6 +36908,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 #define NTE_VBS_CANNOT_DECRYPT_KEY       _HRESULT_TYPEDEF_(0x8009003AL)
 
 //
+// MessageId: NTE_FIPS_FAILURE
+//
+// MessageText:
+//
+// A cryptographic operation failed FIPS validation.
+//
+#define NTE_FIPS_FAILURE                 _HRESULT_TYPEDEF_(0x8009003BL)
+
+//
 // MessageId: SEC_E_INSUFFICIENT_MEMORY
 //
 // MessageText:
@@ -66734,6 +66752,24 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 //
 #define UTC_E_TRACE_THROTTLED            _HRESULT_TYPEDEF_(0x87C5105DL)
 
+//
+// MessageId: UTC_E_WINRE_COMPLIANCE_CAPTURE_FAILED
+//
+// MessageText:
+//
+// Offline windows state could not be read or was malformned. 
+//
+#define UTC_E_WINRE_COMPLIANCE_CAPTURE_FAILED _HRESULT_TYPEDEF_(0x87C5105EL)
+
+//
+// MessageId: UTC_E_WINRE_ETM_ENABLED
+//
+// MessageText:
+//
+// Offline windows has the Event Transcript Manager enabled. 
+//
+#define UTC_E_WINRE_ETM_ENABLED          _HRESULT_TYPEDEF_(0x87C5105FL)
+
 
 //
 // WinML
@@ -67376,5 +67412,86 @@ FORCEINLINE HRESULT HRESULT_FROM_SETUPAPI(unsigned long x) { return (((x) & (0x2
 // An event in the transform does not have a digest for the algorithm selected in the system.
 //
 #define PPF_E_TRANSFORM_DIGEST_ALGO_NOT_PRESENT _HRESULT_TYPEDEF_(0xC9280004L)
+
+//
+// MessageId: PPF_E_TRANSFORM_UNKNOWN_FORMAT
+//
+// MessageText:
+//
+// The transform format is unknown to PCR Prediction Framework.
+//
+#define PPF_E_TRANSFORM_UNKNOWN_FORMAT   _HRESULT_TYPEDEF_(0xC9280005L)
+
+//
+// MessageId: PPF_E_JSONTX_INSERT_NO_MATCH_EVENTS
+//
+// MessageText:
+//
+// The JSON transform cannot be applied by PCR Prediction Framework. NewEventsInsertionType is MatchedEvents, but no MatchEventsType or MatchEvents are present.
+//
+#define PPF_E_JSONTX_INSERT_NO_MATCH_EVENTS _HRESULT_TYPEDEF_(0xC9280006L)
+
+//
+// MessageId: PPF_E_JSONTX_MULTIPLE_MATCHES_FOR_UNIQUE
+//
+// MessageText:
+//
+// The JSON transform cannot be applied by PCR Prediction Framework. One or more events in MatchEvents have multiple matches, but MatchEventsType is Unique.
+//
+#define PPF_E_JSONTX_MULTIPLE_MATCHES_FOR_UNIQUE _HRESULT_TYPEDEF_(0xC9280007L)
+
+//
+// MessageId: PPF_E_TXGENBM_NO_EVENTS_GENERATED
+//
+// MessageText:
+//
+// PCR Prediction Framework could not generate any replacement events for the boot manager transform.
+//
+#define PPF_E_TXGENBM_NO_EVENTS_GENERATED _HRESULT_TYPEDEF_(0xC9280008L)
+
+//
+// MessageId: PPF_E_TRANSFORM_NOT_APPLICABLE
+//
+// MessageText:
+//
+// PCR Prediction Framework could not apply the transform because it's not applicable. This could be because the current boot TCG log does not contain prerequisite events for this transform.
+//
+#define PPF_E_TRANSFORM_NOT_APPLICABLE   _HRESULT_TYPEDEF_(0xC9280009L)
+
+//
+// MessageId: PPF_E_JSONTX_NO_MATCH_EVENTS
+//
+// MessageText:
+//
+// The JSON transform cannot be applied by PCR Prediction Framework. No MatchEvents present while MatchEventsType is present.
+//
+#define PPF_E_JSONTX_NO_MATCH_EVENTS     _HRESULT_TYPEDEF_(0xC928000AL)
+
+//
+// MessageId: PPF_E_JSONTX_NO_NEW_EVENTS_TO_INSERT
+//
+// MessageText:
+//
+// The JSON transform cannot be applied by PCR Prediction Framework. No NewEventsToInsert present while NewEventsInsertionType is present.
+//
+#define PPF_E_JSONTX_NO_NEW_EVENTS_TO_INSERT _HRESULT_TYPEDEF_(0xC928000BL)
+
+//
+// MessageId: PPF_E_JSONTX_EMPTY_RULE
+//
+// MessageText:
+//
+// The JSON transform cannot be applied by PCR Prediction Framework. No MatchEvents or NewEventsToInsert.
+//
+#define PPF_E_JSONTX_EMPTY_RULE          _HRESULT_TYPEDEF_(0xC928000CL)
+
+//
+// MessageId: PPF_E_JSONTX_EVENT_TYPE_ERROR
+//
+// MessageText:
+//
+// The JSON transform cannot be applied by PCR Prediction Framework. EventType or EventTypeInt is missing, invalid, or mismatched.
+//
+#define PPF_E_JSONTX_EVENT_TYPE_ERROR    _HRESULT_TYPEDEF_(0xC928000DL)
 
 #endif//_WINERROR_

@@ -5190,9 +5190,6 @@ extern void __cdecl _tile_dpbhf8ps(__tile dst, __tile src1, __tile src2);
 extern void __cdecl _tile_dphbf8ps(__tile dst, __tile src1, __tile src2);
 extern void __cdecl _tile_dphf8ps(__tile dst, __tile src1, __tile src2);
 
-// AMX-TF32
-extern void __cdecl _tile_mmultf32ps(__tile dst, __tile src1, __tile src2);
-
 #endif  /* defined (_M_X64) */
 
 /* hfni */
