@@ -243,6 +243,7 @@
   { include: [ "<__bit/invert_if.h>", "private", "<bit>", "public" ] },
   { include: [ "<__bit/popcount.h>", "private", "<bit>", "public" ] },
   { include: [ "<__bit/rotate.h>", "private", "<bit>", "public" ] },
+  { include: [ "<__bit/shift.h>", "private", "<bit>", "public" ] },
   { include: [ "<__bit_reference>", "private", "<bitset>", "public" ] },
   { include: [ "<__bit_reference>", "private", "<vector>", "public" ] },
   { include: [ "<__charconv/chars_format.h>", "private", "<charconv>", "public" ] },

@@ -312,6 +312,15 @@ __cxa_error_domain_msvc_exception_ptr() noexcept;
 __HERBCEPTIONS_API ::std::size_t __cxa_error_code_msvc_exception_ptr() noexcept;
 __HERBCEPTIONS_API ::std::size_t
 __cxa_error_code_msvc_exception_ptr_clone(void const *) noexcept;
+// Mint the same error code __cxa_error_code_msvc_exception_ptr produces for
+// a caught in-flight exception, but directly from the throw arguments
+// (exception object, _ThrowInfo*): the compiler's herbceptions-legacy-eh-fold
+// pass emits this when a `throw` provably reaches only the legacy->std::error
+// conversion site, so no exception is ever raised. Boxes the object exactly
+// like __ExceptionPtrCopyException (the make_exception_ptr path).
+__HERBCEPTIONS_API ::std::size_t
+__cxa_error_code_msvc_exception_ptr_direct(void const *,
+                                           void const *) noexcept;
 #else
 __HERBCEPTIONS_API ::std::error_domain_singleton const *
 __cxa_error_domain_itanium_exception_ptr() noexcept;
@@ -319,6 +328,15 @@ __HERBCEPTIONS_API ::std::size_t
 __cxa_error_code_itanium_exception_ptr(void *) noexcept;
 __HERBCEPTIONS_API ::std::size_t
 __cxa_error_code_itanium_exception_ptr_clone(void *) noexcept;
+// Mint the same error code __cxa_error_code_itanium_exception_ptr produces
+// for a caught in-flight exception, but directly from the __cxa_throw
+// arguments (thrown object, type_info, destructor): initializes the
+// primary-exception header without raising and holds the flight reference
+// as an owned refcount. Emitted by the herbceptions-legacy-eh-fold pass when a
+// throw provably reaches only the legacy->std::error conversion site.
+__HERBCEPTIONS_API ::std::size_t
+__cxa_error_code_itanium_exception_ptr_direct(void *, void *,
+                                              void *) noexcept;
 #endif
 
 } // extern "C"
