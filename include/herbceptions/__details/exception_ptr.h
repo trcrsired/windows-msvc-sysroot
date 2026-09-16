@@ -29,14 +29,14 @@ public:
   }
   static inline ::std::size_t code(errc_type const &__e) noexcept {
 #ifdef _MSC_VER
-    return ::std::error_domains::__cxa_error_code_msvc_exception_ptr_clone(
-        __builtin_addressof(__e));
+    return ::std::error_domains::__cxa_error_code_msvc_exception_ptr(
+        0, __builtin_addressof(__e), nullptr);
 #else
     void *__temp;
     __builtin_memcpy(__builtin_addressof(__temp), __builtin_addressof(__e),
                      sizeof(void *));
-    return ::std::error_domains::__cxa_error_code_itanium_exception_ptr_clone(
-        __temp);
+    return ::std::error_domains::__cxa_error_code_itanium_exception_ptr(
+        0, __temp, nullptr, nullptr);
 #endif
   }
 };
