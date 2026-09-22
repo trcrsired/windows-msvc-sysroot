@@ -6,8 +6,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef _LIBCPP___TYPE_TRAITS_IS_WITHIN_LIFETIME_H
-#define _LIBCPP___TYPE_TRAITS_IS_WITHIN_LIFETIME_H
+#ifndef _LIBCPP___LOCALE_DIR_SUPPORT_GET_C_LOCALE_H
+#define _LIBCPP___LOCALE_DIR_SUPPORT_GET_C_LOCALE_H
 
 #include <__config>
 
@@ -17,14 +17,16 @@
 
 _LIBCPP_BEGIN_NAMESPACE_STD
 
-#if _LIBCPP_STD_VER >= 26 && __has_builtin(__builtin_is_within_lifetime)
-template <class _Up = void, class _Tp>
-[[nodiscard]] _LIBCPP_HIDE_FROM_ABI consteval bool is_within_lifetime(const _Tp* __p) noexcept {
-  return __builtin_is_within_lifetime(__p) &&
-         __builtin_constant_p(static_cast<bool>(static_cast<const volatile _Up*>(__p)));
-}
-#endif
+// Get the C locale object
+_LIBCPP_BEGIN_EXPLICIT_ABI_ANNOTATIONS
+_LIBCPP_EXPORTED_FROM_ABI __locale::__locale_t __cloc();
+_LIBCPP_END_EXPLICIT_ABI_ANNOTATIONS
+#define __cloc_defined
+
+namespace __locale {
+inline __locale_t __get_c_locale() { return std::__cloc(); }
+} // namespace __locale
 
 _LIBCPP_END_NAMESPACE_STD
 
-#endif // _LIBCPP___TYPE_TRAITS_IS_WITHIN_LIFETIME_H
+#endif // _LIBCPP___LOCALE_DIR_SUPPORT_GET_C_LOCALE_H
