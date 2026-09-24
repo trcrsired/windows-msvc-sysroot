@@ -3,39 +3,62 @@
 patch_arm64_kuser.py -- Patch the ARM64 MSVC CRT atomics.obj stub that
 hardcodes KUSER_SHARED_DATA at 0x7ffe0000.
 
-The stub lives in _InterlockedDetectSupport inside
-    crt/vcstartup ... arm64[ec]/atomics.obj
-which is shipped in libcmt.lib, libcmtd.lib, msvcrt.lib and msvcrtd.lib.
-On Windows (and Wine on x86-64 hosts) the shared data page is always
-mapped at 0x7ffe0000, but on Apple Silicon that address is inside the
-kernel's page-zero region and cannot be mapped, so the hardcoded read
-faults at process start:
+WHY THIS PATCH EXISTS
+---------------------
+This sysroot is used to build Windows ARM64 binaries that are run under
+Wine on Apple Silicon (macOS cannot run Windows natively).  The MSVC
+static CRT startup code in atomics.obj (_InterlockedDetectSupport, CPU
+feature detection for __isa_available / _AtomicsV81Support) reads
+KUSER_SHARED_DATA through the hardcoded fixed address 0x7ffe0000:
 
     mov  x16, #0x7ffe0000        ; <-- hardcoded KUSER_SHARED_DATA
     ldrb w16, [x16, #0x296]      ; ProcessorFeatures[PF_ARM_V81_*] -> fault
 
-The patch replaces the EL0 path so the shared data page is found relative
-to the TEB instead:
+On real Windows that page is always mapped, but on Apple Silicon the low
+addresses are inside the kernel's page-zero region and CANNOT be mapped,
+so every CRT-linked binary (even `int main(){}`) dies at process start:
+
+    wine: Unhandled page fault on read access to 000000007FFE0296
+
+Wine instead maps the shared data page dynamically; in the Wine build
+used here it sits directly below the TEB, i.e.
 
     KUSER_SHARED_DATA = TPIDRRO_EL0 - 0x1000;
 
-i.e. mrs x16, TPIDRRO_EL0; sub x16, x16, #0x1000; ldrb w16, [x16, #0x296].
+so the patch rewrites the EL0 path to
+    mrs  x16, TPIDRRO_EL0
+    sub  x16, x16, #0x1000
+    ldrb w16, [x16, #0x296]
 
-Two stub variants are handled:
-
-  * vcstartup (libcmt.lib, libcmtd.lib, msvcrt.lib, msvcrtd.lib and the
-    store/uwp/onecore/enclave subdirs): 0x44-byte section, single KUSER
-    read.  The EL1 (ID_AA64ISAR0_EL1) path is preserved; the PAGEOFFSET_12L
-    relocation of the final `str w16, [x17]` is moved 0x30 -> 0x3c.
-
-  * nt helper CRT (arm64rt.lib): 0x4c-byte section, two KUSER reads
-    (+0x296 and +0x2b2).  The EL0 sequence needs 5 insns and cannot fit
-    alongside the EL1 path, so the CurrentEL check is dropped and the
-    TEB-relative read is always used (user-mode/Wine targets only).
-    No relocation changes.
+This is a sysroot-local workaround: Microsoft's libcmt is closed source
+and shipped prebuilt, so the fix must go into the shipped objects until
+Microsoft relocates the access upstream.
 
 Upstream bug report:
 https://developercommunity.visualstudio.com/t/MSVC-static-CRT-ARM64-startup-hardcodes-/11133417
+
+AFFECTED OBJECTS
+----------------
+The stub lives in atomics.obj, shipped (arm64 and arm64ec members) in
+libcmt.lib, libcmtd.lib, msvcrt.lib, msvcrtd.lib (incl. the store/uwp/
+onecore/enclave subdirectory variants) and arm64rt.lib.  Three layouts
+are handled:
+
+  * vcstartup (libcmt/libcmtd/msvcrt/msvcrtd + subdir variants):
+    0x44-byte section, single KUSER read.  The EL1 (ID_AA64ISAR0_EL1)
+    path is preserved; the PAGEOFFSET_12L relocation of the final
+    `str w16, [x17]` is moved 0x30 -> 0x3c.
+
+  * nthelper (arm64rt.lib arm64 member): 0x4c-byte section, two KUSER
+    reads (+0x296 and +0x2b2).  The EL0 sequence needs 5 insns and cannot
+    fit alongside the EL1 path, so the CurrentEL check is dropped and the
+    TEB-relative read is always used (user-mode/Wine targets only).
+    No relocation changes.
+
+  * nthelper-ec (arm64rt.lib arm64ec member): 0x3c-byte section, two
+    KUSER reads.  EL0 path inline; epilogue shifts down one insn (store
+    reloc 0x20 -> 0x24).  The unreachable EL1 fragment keeps its `b`
+    retargeted to the new epilogue; remaining slots are nops.
 
 Usage:
     # emit patched .obj files to put on the link line (recommended:
