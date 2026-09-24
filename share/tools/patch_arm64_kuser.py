@@ -15,8 +15,10 @@ KUSER_SHARED_DATA through the hardcoded fixed address 0x7ffe0000:
     ldrb w16, [x16, #0x296]      ; ProcessorFeatures[PF_ARM_V81_*] -> fault
 
 On real Windows that page is always mapped, but on Apple Silicon the low
-addresses are inside the kernel's page-zero region and CANNOT be mapped,
-so every CRT-linked binary (even `int main(){}`) dies at process start:
+addresses are inside the kernel's page-zero region and CANNOT be mapped.
+As a result EVERY binary linked against the MSVC CRT (even `int
+main(){}`) FAILS TO WORK under Wine on Apple Silicon Macs -- it dies at
+process start:
 
     wine: Unhandled page fault on read access to 000000007FFE0296
 
