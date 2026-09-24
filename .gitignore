@@ -2,3 +2,4 @@
 !.vscode/launch.json
 include/en-US
 include/zh-CN
+__pycache__/
