@@ -22,15 +22,28 @@ process start:
 
     wine: Unhandled page fault on read access to 000000007FFE0296
 
-Wine instead maps the shared data page dynamically; in the Wine build
-used here it sits directly below the TEB, i.e.
+There is no portable way to locate the page from user mode: on real
+Windows TPIDRRO_EL0 is not a TEB pointer (observed values: 1, 2, ... --
+x18 holds the TEB there) while under Wine it points to Wine's unix
+thread data with the shared page placed at TPIDRRO_EL0 - 0x1000, and the
+PEB carries no KUSER pointer on either platform (UserSharedInfoPtr/0x58
+and SharedData/0x90 are both NULL).  A TPIDRRO_EL0 plausibility check is
+not robust -- the register is unsanctioned scratch on real Windows and
+could hold a pointer-like value someday.
 
-    KUSER_SHARED_DATA = TPIDRRO_EL0 - 0x1000;
+Since the feature byte only gates ARMv8.1 LSE atomics (the stub's bit0
+selects single-instruction `ldaddal`/`casal`/`swpal` vs. the always-legal
+`ldxr`/`stxr` retry loop), the patch simply makes the EL0 path report
+"not supported":
 
-so the patch rewrites the EL0 path to
-    mrs  x16, TPIDRRO_EL0
-    sub  x16, x16, #0x1000
-    ldrb w16, [x16, #0x296]
+    mov  w16, #0          ; feature bits = 0 -> permanent LL/SC fallback
+    b    <epilogue>       ; -> orr #0x80000000 (detected), str, br x15
+
+This is purely a performance trade-off, not a semantic one: the LL/SC
+loops are the intended fallback for non-LSE silicon and are correct
+everywhere, on real Windows and under Wine alike.  The EL1 path
+(reading ID_AA64ISAR0_EL1 directly) is preserved, so kernel-mode
+consumers of arm64rt.lib still get real feature detection.
 
 This is a sysroot-local workaround: Microsoft's libcmt is closed source
 and shipped prebuilt, so the fix must go into the shipped objects until
@@ -48,19 +61,18 @@ are handled:
 
   * vcstartup (libcmt/libcmtd/msvcrt/msvcrtd + subdir variants):
     0x44-byte section, single KUSER read.  The EL1 (ID_AA64ISAR0_EL1)
-    path is preserved; the PAGEOFFSET_12L relocation of the final
-    `str w16, [x17]` is moved 0x30 -> 0x3c.
+    path is preserved for real kernel-mode detection; the EL0 block
+    becomes `mov w16,#0; b epilogue; nop`.  No relocation changes.
 
   * nthelper (arm64rt.lib arm64 member): 0x4c-byte section, two KUSER
-    reads (+0x296 and +0x2b2).  The EL0 sequence needs 5 insns and cannot
-    fit alongside the EL1 path, so the CurrentEL check is dropped and the
-    TEB-relative read is always used (user-mode/Wine targets only).
-    No relocation changes.
+    reads (+0x296 and +0x2b2).  The inline EL0 read sequence becomes
+    `mov w16,#0; b epilogue; nop; nop`; the EL1 fragment at the end is
+    preserved.  No relocation changes.
 
   * nthelper-ec (arm64rt.lib arm64ec member): 0x3c-byte section, two
-    KUSER reads.  EL0 path inline; epilogue shifts down one insn (store
-    reloc 0x20 -> 0x24).  The unreachable EL1 fragment keeps its `b`
-    retargeted to the new epilogue; remaining slots are nops.
+    KUSER reads.  The inline EL0 read sequence becomes `mov w16,#0; b
+    epilogue; nop; nop`; the unreachable EL1 fragment is preserved.
+    No relocation changes.
 
 Usage:
     # emit patched .obj files to put on the link line (recommended:
@@ -108,27 +120,27 @@ ORIG_CODE = bytes.fromhex(
     "fbffff17"  # 40 b    0x2c
 )
 
-# Patched version: EL0 reads shared data at TPIDRRO_EL0 - 0x1000.
-# Both paths converge on the epilogue, which moved down by one insn so the
-# EL0 sequence (mrs/sub/ldrb) fits; the final str reloc moves 0x30 -> 0x3c.
+# Patched version: the EL0 block reports "no LSE" (w16 = 0 -> the epilogue
+# stores 0x80000000) so the CRT permanently uses its ldxr/stxr fallback.
+# Everything before the EL0 block and the epilogue reloc are unchanged.
 NEW_CODE = bytes.fromhex(
     "1000b0d2"  # 00 mov  x16, #0x80000000
     "11000090"  # 04 adrp x17, _AtomicsV81Support      (PAGEBASE_REL21)
     "300200b9"  # 08 str  w16, [x17]                   (PAGEOFFSET_12L)
-    "504238d5"  # 0c mrs  x16, CurrentEL
-    "100e42d3"  # 10 ubfx x16, x16, #2, #2
-    "d00000b4"  # 14 cbz  x16, 0x2c            ; EL0 -> TEB-relative read
-    "100638d5"  # 18 mrs  x16, ID_AA64ISAR0_EL1        ; EL1+ path
-    "105e54d3"  # 1c ubfx x16, x16, #20, #4
-    "1f0a00f1"  # 20 cmp  x16, #2
-    "f0379f9a"  # 24 cset x16, hs
-    "04000014"  # 28 b    0x38                 ; -> epilogue
-    "70d03bd5"  # 2c mrs  x16, TPIDRRO_EL0     ; EL0: TEB
-    "100640d1"  # 30 sub  x16, x16, #0x1000    ; KUSER = TEB - 0x1000
-    "105a4a39"  # 34 ldrb w16, [x16, #0x296]   ; ProcessorFeatures[34]
-    "100261b2"  # 38 orr  x16, x16, #0x80000000        ; epilogue
-    "300200b9"  # 3c str  w16, [x17]           ; (PAGEOFFSET_12L @ 0x3c)
-    "e0011fd6"  # 40 br   x15
+    "100080d2"  # 0c mov  x16, #0
+    "504238d5"  # 10 mrs  x16, CurrentEL
+    "100e42d3"  # 14 ubfx x16, x16, #2, #2
+    "100100b4"  # 18 cbz  x16, 0x38            ; EL0 -> constant path
+    "100638d5"  # 1c mrs  x16, ID_AA64ISAR0_EL1        ; EL1+ path (kept)
+    "105e54d3"  # 20 ubfx x16, x16, #20, #4
+    "1f0a00f1"  # 24 cmp  x16, #2
+    "f0379f9a"  # 28 cset x16, hs
+    "100261b2"  # 2c orr  x16, x16, #0x80000000        ; epilogue
+    "300200b9"  # 30 str  w16, [x17]                   (PAGEOFFSET_12L)
+    "e0011fd6"  # 34 br   x15
+    "10008052"  # 38 mov  w16, #0              ; EL0: report no LSE
+    "fcffff17"  # 3c b    0x2c                 ; -> epilogue
+    "1f2003d5"  # 40 nop
 )
 
 # arm64rt.lib (minkernel/crts/crtw32/helper/nt atomics.obj) variant:
@@ -156,30 +168,32 @@ ORIG_RT_CODE = bytes.fromhex(
     "f9ffff17"  # 48 b    0x2c
 )
 
-# Patched rt variant: always read KUSER via TPIDRRO_EL0 - 0x1000 (the EL0
-# sequence needs 5 insns, which cannot share the section with the EL1
-# path, so CurrentEL dispatch is removed).  Epilogue and both str relocs
-# are unchanged.
+# Patched rt variant: the inline EL0 read sequence becomes `mov w16,#0;
+# b epilogue; nop; nop` -- EL0 reports no LSE/LSE2 so the LL/SC fallback
+# is always used in user mode.  The CurrentEL dispatch and the EL1
+# (ID_AA64ISAR0_EL1) fragment at the end are preserved, so kernel-mode
+# callers still get real detection.  Epilogue and both str relocs are
+# unchanged.
 NEW_RT_CODE = bytes.fromhex(
     "1000b0d2"  # 00 mov  x16, #0x80000000
     "11000090"  # 04 adrp x17, _AtomicsV81Support      (PAGEBASE_REL21)
     "300200b9"  # 08 str  w16, [x17]                   (PAGEOFFSET_12L)
-    "70d03bd5"  # 0c mrs  x16, TPIDRRO_EL0     ; TEB
-    "100640d1"  # 10 sub  x16, x16, #0x1000    ; KUSER = TEB - 0x1000
-    "0aca4a39"  # 14 ldrb w10, [x16, #0x2b2]
-    "105a4a39"  # 18 ldrb w16, [x16, #0x296]
-    "10060a2a"  # 1c orr  w16, w16, w10, lsl #1
-    "03000014"  # 20 b    0x2c
+    "100080d2"  # 0c mov  x16, #0
+    "504238d5"  # 10 mrs  x16, CurrentEL
+    "100e42d3"  # 14 ubfx x16, x16, #2, #2
+    "100100b5"  # 18 cbnz x16, 0x38            ; EL1+ -> end fragment (kept)
+    "10008052"  # 1c mov  w16, #0              ; EL0: report no LSE/LSE2
+    "03000014"  # 20 b    0x2c                 ; -> epilogue
     "1f2003d5"  # 24 nop
     "1f2003d5"  # 28 nop
     "100261b2"  # 2c orr  x16, x16, #0x80000000        ; epilogue
     "300200b9"  # 30 str  w16, [x17]                   (PAGEOFFSET_12L)
     "e0011fd6"  # 34 br   x15
-    "1f2003d5"  # 38 nop
-    "1f2003d5"  # 3c nop
-    "1f2003d5"  # 40 nop
-    "1f2003d5"  # 44 nop
-    "1f2003d5"  # 48 nop
+    "100638d5"  # 38 mrs  x16, ID_AA64ISAR0_EL1        ; EL1+ path (kept)
+    "105e54d3"  # 3c ubfx x16, x16, #20, #4
+    "1f0a00f1"  # 40 cmp  x16, #2
+    "f0379f9a"  # 44 cset x16, hs
+    "f9ffff17"  # 48 b    0x2c
 )
 
 # arm64rt.lib arm64ec variant: 0x3c-byte section.  EL0 path is inline at
@@ -203,26 +217,25 @@ ORIG_RT_EC_CODE = bytes.fromhex(
     "f9ffff17"  # 38 b    0x1c
 )
 
-# Patched ec variant: EL0 reads KUSER via TPIDRRO_EL0 - 0x1000; epilogue
-# shifts down one insn (store reloc 0x20 -> 0x24); the dead EL1 fragment
-# keeps its trailing `b` (retargeted to the new epilogue at 0x20), the
-# remaining slots are nops (unreachable: no symbol/branch reaches it).
+# Patched ec variant: the inline EL0 read sequence becomes `mov w16,#0;
+# b epilogue; nop; nop` -- EL0 reports no LSE/LSE2.  The epilogue and the
+# dead EL1 fragment are preserved.  No relocation changes.
 NEW_RT_EC_CODE = bytes.fromhex(
     "1000b0d2"  # 00 mov  x16, #0x80000000
     "11000090"  # 04 adrp x17, _AtomicsV81Support      (PAGEBASE_REL21)
     "300200b9"  # 08 str  w16, [x17]                   (PAGEOFFSET_12L)
-    "70d03bd5"  # 0c mrs  x16, TPIDRRO_EL0     ; TEB
-    "100640d1"  # 10 sub  x16, x16, #0x1000    ; KUSER = TEB - 0x1000
-    "0aca4a39"  # 14 ldrb w10, [x16, #0x2b2]
-    "105a4a39"  # 18 ldrb w16, [x16, #0x296]
-    "10060a2a"  # 1c orr  w16, w16, w10, lsl #1
-    "100261b2"  # 20 orr  x16, x16, #0x80000000        ; epilogue
-    "300200b9"  # 24 str  w16, [x17]           ; (PAGEOFFSET_12L @ 0x24)
-    "e0011fd6"  # 28 br   x15
-    "1f2003d5"  # 2c nop                               ; dead EL1 fragment -> pad
-    "1f2003d5"  # 30 nop
-    "1f2003d5"  # 34 nop
-    "faffff17"  # 38 b    0x20                 ; -> epilogue (dead code)
+    "10008052"  # 0c mov  w16, #0              ; EL0: report no LSE/LSE2
+    "03000014"  # 10 b    0x1c                 ; -> epilogue
+    "1f2003d5"  # 14 nop
+    "1f2003d5"  # 18 nop
+    "100261b2"  # 1c orr  x16, x16, #0x80000000        ; epilogue
+    "300200b9"  # 20 str  w16, [x17]                   (PAGEOFFSET_12L)
+    "e0011fd6"  # 24 br   x15
+    "100638d5"  # 28 mrs  x16, ID_AA64ISAR0_EL1        ; dead EL1 fragment
+    "105e54d3"  # 2c ubfx x16, x16, #20, #4
+    "1f0a00f1"  # 30 cmp  x16, #2
+    "f0379f9a"  # 34 cset x16, hs
+    "f9ffff17"  # 38 b    0x1c
 )
 
 KUSER_INSN = bytes.fromhex("d0ffafd2")  # mov x16, #0x7ffe0000
@@ -236,9 +249,9 @@ IMAGE_REL_ARM64_PAGEOFFSET_12L = 0x0007
 
 # (variant name, original code, patched code, {reloc VA: new VA})
 PATCHES = [
-    ("vcstartup", ORIG_CODE, NEW_CODE, {0x30: 0x3C}),
+    ("vcstartup", ORIG_CODE, NEW_CODE, {}),
     ("nthelper", ORIG_RT_CODE, NEW_RT_CODE, {}),
-    ("nthelper-ec", ORIG_RT_EC_CODE, NEW_RT_EC_CODE, {0x20: 0x24}),
+    ("nthelper-ec", ORIG_RT_EC_CODE, NEW_RT_EC_CODE, {}),
 ]
 
 
@@ -319,7 +332,7 @@ def scan_obj(buf):
             buf[rptr:rptr + rsize] = new
             patched += n
             out.append("sec %d %s: patched _InterlockedDetectSupport (%s; "
-                       "KUSER := TPIDRRO_EL0 - 0x1000)%s" %
+                       "EL0 -> constant \"no LSE\", LL/SC fallback)%s" %
                        (i + 1, name, vname,
                         "".join(", reloc %#x->%#x" % (a, b) for a, b in reloc_moves.items())))
             break
