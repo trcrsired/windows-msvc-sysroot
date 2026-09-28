@@ -10,8 +10,7 @@
 #define _LIBCPP___LOCALE_DIR_SUPPORT_WASI_H
 
 #include <__locale_dir/support/default.h>
-#define _LIBCPP_PROVIDES_DEFAULT_RUNE_TABLE 1
 
-#include <__locale_dir/support/default/get_c_locale.h>
+#define _LIBCPP_PROVIDES_DEFAULT_RUNE_TABLE 1
 
 #endif // _LIBCPP___LOCALE_DIR_SUPPORT_WASI_H

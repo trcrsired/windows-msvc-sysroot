@@ -54,9 +54,8 @@
 // ------------------
 // namespace __locale {
 //  // required by the headers
-//  float               __strtof(const char*, char**, __locale_t);
-//  double              __strtod(const char*, char**, __locale_t);
-//  long double         __strtold(const char*, char**, __locale_t);
+//  template <class FloatT>
+//  FloatT __str_to_float_c_locale(const char*, char**);
 // }
 //
 // Character manipulation functions
