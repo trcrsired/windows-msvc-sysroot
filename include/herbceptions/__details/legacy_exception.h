@@ -289,4 +289,3 @@ public:
 } // namespace std
 
 #undef __HERBCEPTIONS_CONSTEXPR_EXCEPTION
-

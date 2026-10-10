@@ -339,6 +339,9 @@ __HERBCEPTIONS_API
 __HERBCEPTIONS_API
 ::std::error_domain_singleton const *__cxa_error_domain_http() noexcept;
 
+__HERBCEPTIONS_API
+::std::error_domain_singleton const *__cxa_error_domain_tls() noexcept;
+
 /*
 Legacy-EH boxing support: __cxa_error_query_information_* back the cached
 what() buffer of ::std::cxx_std_error_legacy_exception. create() drives the
@@ -623,6 +626,7 @@ struct has_herbceptions_throws_move_assign
 #include "__details/legacy_exception.h"
 #include "__details/parse.h"
 #include "__details/posix.h"
+#include "__details/tls.h"
 
 #ifdef _WIN32
 #include "__details/com.h"
