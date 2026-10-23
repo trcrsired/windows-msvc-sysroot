@@ -153,19 +153,15 @@ class cxx_std_error_legacy_exception : public ::std::exception {
   // public ownership constructor.
   struct __borrowed_t {};
 
-  // error::throw_legacy_exception*() borrow the {domain, code} pair
-  // through this: the message is still queried under the source domain
-  // unless __query_what_message is false (the
-  // throw_legacy_exception_no_what() variant — its what()
-  // stays empty and the throw site never allocates), then an owned code
-  // is demoted to the posix errc form so the box shares no ownership with
-  // the std::error it outlives.
+  // error::throw_legacy_exception() borrows the {domain, code} pair
+  // through this: the message is queried under the source domain, then an
+  // owned code is demoted to the posix errc form so the box shares no
+  // ownership with the std::error it outlives.
   constexpr cxx_std_error_legacy_exception(
       __borrowed_t, ::std::error_domain_singleton const *__domain,
-      ::std::size_t __code, bool __query_what_message) noexcept
+      ::std::size_t __code) noexcept
       : __domain_opaque(__domain), __code_opaque(__code),
-        __what(__query_what_message ? __query_what(__domain, __code)
-                                    : ::std::io_scatter_t{}) {
+        __what(__query_what(__domain, __code)) {
     ::std::__details::__demote_owned_error_code_for_legacy_exception(
         __domain_opaque, __code_opaque);
   }

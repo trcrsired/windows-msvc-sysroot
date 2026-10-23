@@ -17,6 +17,16 @@ second free would corrupt the heap.
 #if (defined(_WIN32) && !defined(__WINE__)) || defined(__CYGWIN__)
 #if defined(__GNUC__) || defined(__clang__)
 #if defined(_HERBCEPTIONS_BUILDING_RUNTIME)
+#if defined(_HERBCEPTIONS_LIBSTDCXX)
+/*
+libstdc++ exports through the PE linker's automatic export set: one dllexport
+symbol turns that off for the whole DLL, and weak symbols are not part of the
+automatic set either. Keep the entry points as plain externals so libstdc++'s
+own export mechanism picks them up.
+*/
+#define __HERBCEPTIONS_API
+#define __HERBCEPTIONS_API_ALLOC
+#else
 #if 0
 //clang bug on windows on arm. Wait for upstream to fix before we set weak
 #define __HERBCEPTIONS_API [[__gnu__::__dllexport__, __gnu__::__weak__]]
@@ -24,6 +34,7 @@ second free would corrupt the heap.
 #define __HERBCEPTIONS_API [[__gnu__::__dllexport__]]
 #endif
 #define __HERBCEPTIONS_API_ALLOC [[__gnu__::__dllexport__]]
+#endif
 #else
 #define __HERBCEPTIONS_API [[__gnu__::__dllimport__, __gnu__::__const__]]
 #define __HERBCEPTIONS_API_ALLOC [[__gnu__::__dllimport__]]

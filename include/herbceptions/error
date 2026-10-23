@@ -157,6 +157,24 @@ struct error_domain_singleton {
 };
 
 /*
+ * Basic validity check for a domain table: do_equivalent, do_query_information
+ * and do_to_errc are the hooks every domain must provide. do_cleanup and
+ * do_throw_legacy_exception are optional, so a null pointer there is fine.
+ * constexpr, so a constexpr domain table can be validated in a static_assert.
+ */
+[[nodiscard]] constexpr bool is_valid_error_domain_singleton(
+    ::std::error_domain_singleton const &__singleton) noexcept {
+  return __singleton.do_equivalent != nullptr &&
+         __singleton.do_query_information != nullptr &&
+         __singleton.do_to_errc != nullptr;
+}
+[[nodiscard]] constexpr bool is_valid_error_domain_singleton(
+    ::std::error_domain_singleton const *__singleton) noexcept {
+  return __singleton != nullptr &&
+         is_valid_error_domain_singleton(*__singleton);
+}
+
+/*
  * The C ABI twin of std::error: exactly {domain pointer, code} — two words,
  * which is what the herbceptions error channel carries. The compiler
  * recognizes any struct tagged 'herbceptions_cxx_std_error' with this layout
@@ -264,23 +282,16 @@ public:
 #if defined(_LIBHERBCEPTIONS_CPP_EXCEPTIONS)
       ;
 #else
-  {
-    // P1105R0: with exceptions disabled, a throw terminates instead of
-    // being ill-formed.
-    ::std::terminate();
-  }
-#endif
-  // Faster sibling: the boxed fallback skips the do_query_information
-  // message query (its what() is empty), so the throw site never allocates
-  // — and when the unwind edge provably folds back onto the channel, no
-  // exception object is materialized at all.
-  [[noreturn]] void throw_legacy_exception_no_what() const
-#if defined(_LIBHERBCEPTIONS_CPP_EXCEPTIONS)
-      ;
+  // With EH disabled there is no mechanism to raise the legacy exception,
+  // so the call is ill-formed at compile time instead of terminating
+  // (P1105R0 only covers `throw`, whose termination is defined).
+#if defined(__cpp_deleted_function) && __cpp_deleted_function >= 202403L
+      = delete ("std::error::throw_legacy_exception requires C++ legacy "
+                "exception handling; this translation unit is built with "
+                "C++ legacy exceptions disabled (-fno-exceptions)");
 #else
-  {
-    ::std::terminate();
-  }
+      = delete;
+#endif
 #endif
   template <typename __Other>
     requires(::std::is_class_v<__Other> || ::std::is_enum_v<__Other>)
@@ -677,21 +688,7 @@ inline void error::throw_legacy_exception() const {
   // taking ownership.
   throw ::std::cxx_std_error_legacy_exception(
       ::std::cxx_std_error_legacy_exception::__borrowed_t{}, __domain_opaque,
-      static_cast<::std::size_t>(__code_opaque), true /*__query_what_message*/);
-}
-
-// Same control flow as throw_legacy_exception(), but the boxed fallback
-// skips the message query: no do_query_information calls, no allocation.
-inline void error::throw_legacy_exception_no_what() const {
-  auto __dothrow{__domain_opaque->do_throw_legacy_exception};
-  if (__dothrow) {
-    __dothrow(static_cast<::std::size_t>(this->code()),
-              ::std::legacy_exception_abi::platform);
-  }
-  throw ::std::cxx_std_error_legacy_exception(
-      ::std::cxx_std_error_legacy_exception::__borrowed_t{}, __domain_opaque,
-      static_cast<::std::size_t>(__code_opaque),
-      false /*__query_what_message*/);
+      static_cast<::std::size_t>(__code_opaque));
 }
 #endif
 } // namespace std
