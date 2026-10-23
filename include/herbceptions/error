@@ -168,11 +168,6 @@ struct error_domain_singleton {
          __singleton.do_query_information != nullptr &&
          __singleton.do_to_errc != nullptr;
 }
-[[nodiscard]] constexpr bool is_valid_error_domain_singleton(
-    ::std::error_domain_singleton const *__singleton) noexcept {
-  return __singleton != nullptr &&
-         is_valid_error_domain_singleton(*__singleton);
-}
 
 /*
  * The C ABI twin of std::error: exactly {domain pointer, code} — two words,
