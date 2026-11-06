@@ -46,7 +46,7 @@ public:
   using errc_type = ::std::cmath_errc;
   static inline constexpr ::std::error_domain_singleton const *
   domain() noexcept {
-    return ::std::error_domains::__cxa_error_domain_parse();
+    return ::std::error_domains::__cxa_error_domain_cmath();
   }
   static inline constexpr ::std::size_t code(errc_type __e) noexcept {
     return static_cast<::std::size_t>(static_cast<::std::uint_least32_t>(__e));
